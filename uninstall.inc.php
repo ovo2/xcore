@@ -11,8 +11,14 @@
  * @author markus.staab[at]redaxo[dot]de Markus Staab
  *
  * @package redaxo 4.3.x/4.4.x
- * @version 1.5.3
+ * @version 1.5.0
  */
 
-$REX['ADDON']['install']['rexseo'] = 0;
+$sql = new rex_sql();
+//$sql->debugsql = true;
+$sql->setQuery('ALTER TABLE `' . $REX['TABLE_PREFIX'] . 'article` DROP `seo_title`, DROP `seo_description`, DROP `seo_keywords`, DROP `seo_url`, DROP `seo_noindex`, DROP `seo_ignore_prefix`');
+
+rex_generateAll();
+
+$REX['ADDON']['install']['rexseo_lite'] = 0;
 ?>

@@ -11,11 +11,14 @@
  * @author markus.staab[at]redaxo[dot]de Markus Staab
  *
  * @package redaxo 4.3.x/4.4.x
- * @version 1.5.3
+ * @version 1.5.0
  */
 
-define('REXSEO_PATHLIST', $REX['INCLUDE_PATH'].'/generated/files/rexseo_pathlist.php');
-
+if (isset($REX['GENERATED_PATH'])) {
+	define('REXSEO_PATHLIST', $REX['GENERATED_PATH'] . '/files/rexseo_pathlist.php');
+} else {
+	define('REXSEO_PATHLIST', $REX['INCLUDE_PATH'].'/generated/files/rexseo_pathlist.php');
+}
 
 class RexseoRewrite
 {
@@ -35,7 +38,7 @@ class RexseoRewrite
   /**
   * LOGERROR()
   */
-  public function logError($err_txt=false,$err_type=false,$trace=false)
+  private function logError($err_txt=false,$err_type=false,$trace=false)
   {
     global $REX;
 
@@ -47,7 +50,7 @@ class RexseoRewrite
 
     if($trace!=false)
     {
-      $logfile = $REX['INCLUDE_PATH'].'/addons/rexseo/rexseo.log';
+      $logfile = $REX['INCLUDE_PATH'].'/addons/rexseo_lite/rexseo.log';
       $log_content = file_exists($logfile) ? rex_get_file_contents($logfile) : '';
       $log_content = $log_content!='empty..' ? $log_content : '';
 
@@ -70,11 +73,7 @@ class RexseoRewrite
   {
     global $REX, $REXSEO_URLS, $REXSEO_IDS;
 
-    if(!file_exists(REXSEO_PATHLIST))
-    {
-      rexseo_generate_pathlist(array());
-    }
-
+    if(!file_exists(REXSEO_PATHLIST)) rexseo_generate_pathlist(array());
     require_once(REXSEO_PATHLIST);
 
     if(!$REX['REDAXO'])
@@ -84,17 +83,10 @@ class RexseoRewrite
       $start_id        = $REX['START_ARTICLE_ID'];
       $notfound_id     = $REX['NOTFOUND_ARTICLE_ID'];
 
-      $params_starter  = $REX['ADDON']['rexseo']['settings']['params_starter'];
-      $install_subdir  = $REX['ADDON']['rexseo']['settings']['install_subdir'];
-      $allow_articleid = $REX['ADDON']['rexseo']['settings']['allow_articleid'];
-      $homelang        = $REX['ADDON']['rexseo']['settings']['homelang'];
-
-
-      // TRY IMMEDIATE MATCH OF REQUEST_URI AGAINST PATHLIST..
-      if(self::resolve_from_pathlist(ltrim($_SERVER['REQUEST_URI'],'/')))
-      {
-        return;
-      }
+      $params_starter  = $REX['ADDON']['rexseo_lite']['settings']['params_starter'];
+      $install_subdir  = $REX['ADDON']['rexseo_lite']['settings']['install_subdir'];
+      $allow_articleid = $REX['ADDON']['rexseo_lite']['settings']['allow_articleid'];
+      $homelang        = $REX['ADDON']['rexseo_lite']['settings']['homelang'];
 
 
       // IF NON_REWRITTEN URLS ALLOWED -> USE ARTICLE_ID FROM REQUEST
@@ -119,18 +111,21 @@ class RexseoRewrite
       $path = substr(ltrim($_SERVER['REQUEST_URI'],'/'), $length);
 
 
+      // IMMEDIATE SHORTCUT TO STARTPAGE
+      if (!$path || $path == '' || $path == 'index.php')
+      {
+        return self::setArticleId($start_id,$homelang);
+      }
+
+
       // TRIM STANDARD PARAMS
       if(($pos = strpos($path, '?')) !== false)
-      {
         $path = substr($path, 0, $pos);
-      }
 
 
       // TRIM ANCHORS
       if(($pos = strpos($path, '#')) !== false)
-      {
         $path = substr($path, 0, $pos);
-      }
 
 
       // RESOLVE REWRITTEN PARAMS -> POPULATE GET/REQUEST GLOBALS
@@ -142,10 +137,27 @@ class RexseoRewrite
         self::populateGlobals($vars);
       }
 
-      // RETRY RESOLVE VIA PATHLIST
-      if(self::resolve_from_pathlist($path))
+
+      // RESOLVE URL VIA PATHLIST
+      if(isset($REXSEO_URLS[$path]))
       {
-        return;
+        $status = isset($REXSEO_URLS[$path]['status']) ? $REXSEO_URLS[$path]['status'] : 200;
+
+        switch($status)
+        {
+          case 301:
+          case 302:
+          case 303:
+          case 307:
+            $redirect = array('id'    => $REXSEO_URLS[$path]['id'],
+                              'clang' => $REXSEO_URLS[$path]['clang'],
+                              'status'=> $status);
+            return self::redirect($redirect);
+          default:
+            if(isset($REXSEO_URLS[$path]['params']))
+              self::populateGlobals($REXSEO_URLS[$path]['params'],false);
+            return self::setArticleId($REXSEO_URLS[$path]['id'],$REXSEO_URLS[$path]['clang']);
+        }
       }
 
 
@@ -183,42 +195,6 @@ class RexseoRewrite
 
 
   /**
-  * RESOLVE_FROM_PATHLIST()
-  *
-  * @param  $path  string  URL to look up in pathlist
-  * @return        boolean
-  */
-  function resolve_from_pathlist($path)
-  {
-    global $REXSEO_URLS;
-
-    if(isset($REXSEO_URLS[$path]))
-    {
-      $status = isset($REXSEO_URLS[$path]['status']) ? $REXSEO_URLS[$path]['status'] : 200;
-
-      switch($status)
-      {
-        case 301:
-        case 302:
-        case 303:
-        case 307:
-          $redirect = array('id'    => $REXSEO_URLS[$path]['id'],
-                            'clang' => $REXSEO_URLS[$path]['clang'],
-                            'status'=> $status);
-          self::redirect($redirect);
-          return true;
-        default:
-          if(isset($REXSEO_URLS[$path]['params']))
-            self::populateGlobals($REXSEO_URLS[$path]['params'],false);
-          self::setArticleId($REXSEO_URLS[$path]['id'],$REXSEO_URLS[$path]['clang']);
-          return true;
-      }
-    }
-    return false;
-}
-
-
-  /**
   * REWRITE()
   *
   * rewrite URL
@@ -245,13 +221,14 @@ class RexseoRewrite
     $id             = $params['id'];
     $name           = $params['name'];
     $clang          = $params['clang'];
-    $subdir         = $REX['ADDON']['rexseo']['settings']['install_subdir'];
+    $subdir         = $REX['ADDON']['rexseo_lite']['settings']['install_subdir'];
     $notfound_id    = $REX['NOTFOUND_ARTICLE_ID'];
 
     // GET PARAMS STRING
     $urlparams = self::makeUrlParams($params);
 
     // GET URL FROM PATHLIST AND APPEND PARAMS
+
     if(isset($REXSEO_IDS[$id]) && isset($REXSEO_IDS[$id][$clang]))
     {
       $base_url = $REXSEO_IDS[$id][$clang]['url'];
@@ -260,10 +237,17 @@ class RexseoRewrite
     }
     else
     {
-      $url = $base_url = $REXSEO_IDS[$notfound_id][$clang]['url'];
+      // RexDude
+      $url = '';
+	  $base_url = '';
+
+	  if (!empty($REXSEO_IDS)) {
+	      $url = $base_url = $REXSEO_IDS[$notfound_id][$clang]['url'];
+	  }
+
       $notfound = true;
 
-      if($REX['ADDON']['rexseo']['debug_log']==1)
+      if($REX['ADDON']['rexseo_lite']['debug_log']==1)
       {
         $trace = debug_backtrace();
         self::logError('article (id='.$id.'/clang='.$clang.') does not exist',E_USER_WARNING,$trace);
@@ -283,9 +267,6 @@ class RexseoRewrite
     // modules/slices in the redaxo backend
     $url = str_replace('/redaxo/','/',$subdir.$url);
 
-    // STRIP LEADING SLASH IF A ABSOLUTE URL WAS GIVEN VIA REXSEO CUSTOM URL
-    $url = substr($url,0,8)=='/http://' ? ltrim($url,'/') : $url;
-
 
     // EP "REXSEO_POST_REWRITE"
     $ep_params = array('article_id'     => $id,
@@ -296,8 +277,8 @@ class RexseoRewrite
                        'urlparams'      => $urlparams,
                        'params'         => $params['params'],
                        'divider'        => $params['divider'],
-                       'params_starter' => $REX['ADDON']['rexseo']['settings']['params_starter'],
-                       'urlencode'      => $REX['ADDON']['rexseo']['settings']['urlencode'],
+                       'params_starter' => $REX['ADDON']['rexseo_lite']['settings']['params_starter'],
+                       'urlencode'      => $REX['ADDON']['rexseo_lite']['settings']['urlencode'],
                        );
     $url = rex_register_extension_point('REXSEO_POST_REWRITE', $url, $ep_params);
 
@@ -312,16 +293,14 @@ class RexseoRewrite
   * redirect request
   * @param $redirect   (array) params passed through from EP
   */
-  protected function redirect($redirect)
+  private function redirect($redirect)
   {
     global $REXSEO_IDS;
 
     $status   = isset($redirect['status']) ? $redirect['status'] : 200;
-    $location = rexseo::base().$REXSEO_IDS[$redirect['id']][$redirect['clang']]['url'];
+    $location = $REXSEO_IDS[$redirect['id']][$redirect['clang']]['url'];
 
-    while(ob_get_level()){
-      ob_end_clean();
-    }
+    while(@ob_end_clean());
 
     header('HTTP/1.1 '.$status);
     header('Location:'.$location);
@@ -337,7 +316,7 @@ class RexseoRewrite
   * @param $art_id   article id
   * @param $clang_id language id
   */
-  protected function setArticleId($art_id, $clang_id = -1)
+  private function setArticleId($art_id, $clang_id = -1)
   {
     global $REX;
     $REX['ARTICLE_ID'] = $art_id;
@@ -353,12 +332,12 @@ class RexseoRewrite
   * Create params string for url
   * @param $EPparams   (array) urlencoded params from rex_getUrl/URL_REWRITE
   */
-  protected function makeUrlParams($EPparams)
+  private function makeUrlParams($EPparams)
   {
     global $REX;
     $divider        = $EPparams['divider'];
     $urlparams      = $EPparams['params'];
-    $params_starter = $REX['ADDON']['rexseo']['settings']['params_starter'];
+    $params_starter = $REX['ADDON']['rexseo_lite']['settings']['params_starter'];
 
     if($this->use_params_rewrite)
     {
@@ -386,7 +365,7 @@ class RexseoRewrite
   * @param $vars   (array) resolved URL Parameters
   * @param $decode (bool)  urldecode vars yes/no
   */
-  protected function populateGlobals($vars,$decode=true)
+  private function populateGlobals($vars,$decode=true)
   {
     if(is_array($vars))
     {
@@ -531,17 +510,8 @@ function rexseo_generate_pathlist($params)
     $db->setQuery('UPDATE '. $REX['TABLE_PREFIX'] .'article SET revision = 0 WHERE revision IS NULL;');
     $db->setQuery('UPDATE '. $REX['TABLE_PREFIX'] .'article_slice SET revision = 0 WHERE revision IS NULL;');
 
-    $db->setQuery('SELECT `id`, `clang`, `path`, `startpage`,`art_rexseo_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE '. $where.' AND revision=0 OR revision IS NULL');
-
-    // CHECK & REPAIR DORKED METAINFO
-    if($db->hasError() && $db->getErrno()==1054)
-    {
-      rexseo_setup_metainfo();
-      $db->setQuery('SELECT `id`, `clang`, `path`, `startpage`,`art_rexseo_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE '. $where.' AND revision=0 OR revision IS NULL');
-    }
-
-    // HARDCODED PATH: REDIRECT INDEX.PHP TO START-ARTICLE
-    $REXSEO_URLS['index.php']  = array('id'  => $REX['START_ARTICLE_ID'], 'clang' => $REX['ADDON']['rexseo']['settings']['homelang'], 'status' => 301);
+    //$db->setQuery('SELECT `id`, `clang`, `path`, `startpage`,`seo_url`,`seo_url_path`,`seo_url_file` FROM '. $REX['TABLE_PREFIX'] .'article WHERE '. $where.' AND revision=0 OR revision IS NULL');
+	$db->setQuery('SELECT `id`, `clang`, `path`, `startpage`,`seo_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE '. $where.' AND revision=0 OR revision IS NULL');
 
     while($db->hasNext())
     {
@@ -549,19 +519,15 @@ function rexseo_generate_pathlist($params)
       $id         = $db->getValue('id');
       $clang      = $db->getValue('clang');
       $path       = $db->getValue('path');
-      $rexseo_url = trim($db->getValue('art_rexseo_url'));
+      $rexseo_url = $db->getValue('seo_url');
+	
+	  //$rexseo_url_path = $db->getValue('seo_url_path');
+	  //$rexseo_url_file = $db->getValue('seo_url_file');
 
       // FALLS REXSEO URL -> ERSETZEN
       if ($rexseo_url != '')
       {
-        if(substr($rexseo_url,0,7)=='http://')
-        {
-          $REXSEO_IDS[$id][$clang] = array('url' => $rexseo_url);
-          $db->next();
-          continue;
-        }
-
-        $pathname = ltrim($rexseo_url,'/'); // sanitize leading slash
+        $pathname = ltrim(trim($rexseo_url),'/'); // sanitize whitespaces & leading slash
         $pathname = urlencode($pathname);
         $pathname = str_replace('%2F','/',$pathname); // decode slahes..
 
@@ -570,7 +536,7 @@ function rexseo_generate_pathlist($params)
       else
       {
         // LANG SLUG
-        if (count($REX['CLANG']) > 1 && $clang != $REX['ADDON']['rexseo']['settings']['hide_langslug'])
+        if (count($REX['CLANG']) > 1 && $clang != $REX['ADDON']['rexseo_lite']['settings']['hide_langslug'])
         {
           $pathname = $REX['CLANG'][$clang].'/';
         }
@@ -583,13 +549,6 @@ function rexseo_generate_pathlist($params)
           foreach ($path as $p)
           {
             $ooc = OOCategory::getCategoryById($p, $clang);
-
-            // PREVENT FATALS IN RARE CONDITIONS WHERE DB/CACHE ARE OUT OF SYNC
-            if(!is_a($ooc,'OOCategory')){
-              RexseoRewrite::logError('couldn\'t create OOCategory object with params id='.$p.'/clang='.$clang.'',E_USER_WARNING);
-              continue;
-            }
-
             $name = $ooc->getName();
             unset($ooc);
 
@@ -598,14 +557,6 @@ function rexseo_generate_pathlist($params)
         }
 
         $ooa = OOArticle::getArticleById($id, $clang);
-
-        // PREVENT FATALS IN RARE CONDITIONS WHERE DB/CACHE ARE OUT OF SYNC
-        if(!is_a($ooa,'OOArticle')){
-          RexseoRewrite::logError('couldn\'t create OOArticle object with params id='.$id.'/clang='.$clang.'',E_USER_WARNING);
-          $db->next();
-          continue;
-        }
-
         if($ooa->isStartArticle())
         {
           $ooc = $ooa->getCategory();
@@ -614,7 +565,7 @@ function rexseo_generate_pathlist($params)
           $pathname = rexseo_appendToPath($pathname, $catname, $id, $clang);
         }
 
-        if($REX['ADDON']['rexseo']['settings']['url_schema'] == 'rexseo')
+        if($REX['ADDON']['rexseo_lite']['settings']['url_schema'] == 'rexseo')
         {
           if(!$ooa->isStartArticle())
           {
@@ -633,16 +584,16 @@ function rexseo_generate_pathlist($params)
         }
 
         // ALLGEMEINE URL ENDUNG
-        $pathname = substr($pathname,0,strlen($pathname)-1).$REX['ADDON']['rexseo']['settings']['url_ending'];
+        $pathname = substr($pathname,0,strlen($pathname)-1).$REX['ADDON']['rexseo_lite']['settings']['url_ending'];
 
         // STARTSEITEN URL FORMAT
         if($db->getValue('id')    == $REX['START_ARTICLE_ID'] &&
-           $db->getValue('clang') == $REX['ADDON']['rexseo']['settings']['homelang'] &&
-           $REX['ADDON']['rexseo']['settings']['homeurl'] == 1)
+           $db->getValue('clang') == $REX['ADDON']['rexseo_lite']['settings']['homelang'] &&
+           $REX['ADDON']['rexseo_lite']['settings']['homeurl'] == 1)
         {
           $pathname = '';
         }
-        elseif($REX['ADDON']['rexseo']['settings']['homeurl'] == 2 &&
+        elseif($REX['ADDON']['rexseo_lite']['settings']['homeurl'] == 2 &&
                $db->getValue('id') == $REX['START_ARTICLE_ID'] &&
                count($REX['CLANG']) > 1)
         {
@@ -650,6 +601,34 @@ function rexseo_generate_pathlist($params)
         }
 
       }
+
+		// RexDude
+
+		//$lastSlashPos = strrpos($pathname , '/');
+
+		//$curname = substr($pathname, (lastSlashPos * -1));
+
+		/*if ($rexseo_url_path != ""){
+			$pathname = $rexseo_url_path;
+		
+			if ($rexseo_url_file == ""){
+				$pathname .= $curname;
+			}
+		}
+	
+		if ($rexseo_url_file != ""){
+			if ($rexseo_url_path == ""){
+				$pathname = dirname($pathname);
+				$pathname = trim($pathname,'.');
+				$pathname .= "/";
+			}
+		
+			$pathname .= str_replace(' ','-',$rexseo_url_file);
+		}
+		$pathname = trim($pathname,'/');
+		*/
+		// RexDude
+
 
       // SANITIZE MULTIPLE "-" IN PATHNAME
       $pathname = preg_replace('/[-]{1,}/', '-', $pathname);
@@ -693,7 +672,13 @@ function rexseo_generate_pathlist($params)
 function rexseo_purgeCacheFiles($ext='.content')
 {
   global $REX;
-  $pattern     = $REX['INCLUDE_PATH'].'/generated/articles/*'.$ext;
+
+  if (isset($REX['GENERATED_PATH'])) {
+	  $pattern = $REX['GENERATED_PATH'] . '/articles/*'.$ext;
+  } else {
+	  $pattern = $REX['INCLUDE_PATH'].'/generated/articles/*'.$ext;
+  }
+
   $purge_files = glob($pattern);
 
   if(is_array($purge_files) && count($purge_files)>0)
@@ -716,7 +701,7 @@ function rexseo_compressPathlist($str)
 {
   global $REX;
 
-  switch($REX['ADDON']['rexseo']['settings']['compress_pathlist'])
+  switch($REX['ADDON']['rexseo_lite']['settings']['compress_pathlist'])
   {
     case 0:
       return $str;
@@ -752,10 +737,10 @@ function rexseo_appendToPath($path, $name, $article_id, $clang)
 
   if ($name != '')
   {
-    if($REX['ADDON']['rexseo']['settings']['urlencode'] == 0)
+    if($REX['ADDON']['rexseo_lite']['settings']['urlencode'] == 0)
     {
       $name = strtolower(rexseo_parse_article_name($name, $article_id, $clang));
-      $name = str_replace('+',$REX['ADDON']['rexseo']['settings']['url_whitespace_replace'],$name);
+      $name = str_replace('+',$REX['ADDON']['rexseo_lite']['settings']['url_whitespace_replace'],$name);
     }
     else
     {
@@ -789,20 +774,21 @@ function rexseo_parse_article_name($name, $article_id, $clang)
   {
     global $REX, $I18N;
 
+    // Im Frontend gibts kein I18N
     if(!$I18N)
       $I18N = rex_create_lang($REX['LANG']);
 
+    // Sprachspezifische Sonderzeichen Filtern
     $translation = array(
       'search'  => explode('|', $I18N->msg('special_chars')),
       'replace' => explode('|', $I18N->msg('special_chars_rewrite')),
       );
 
-    // EXTENSION POINT
-    $translation = rex_register_extension_point('REXSEO_SPECIAL_CHARS',$translation,array('article_id'=>$article_id,'clang'=>$clang));
-
     $firstCall = false;
   }
 
+  // EXTENSION POINT
+  $translation = rex_register_extension_point('REXSEO_SPECIAL_CHARS',$translation,array('article_id'=>$article_id,'clang'=>$clang));
 
   // SANITIZE LAST CHARACTER
   $name = rtrim($name,'-');

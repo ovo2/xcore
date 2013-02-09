@@ -11,7 +11,7 @@
  * @author markus.staab[at]redaxo[dot]de Markus Staab
  *
  * @package redaxo 4.3.x/4.4.x
- * @version 1.5.3
+ * @version 1.5.0
  */
 
 global $REX;
@@ -23,7 +23,7 @@ if (rex_request('rexseo_func')!='')
   switch (rex_request('rexseo_func'))
   {
     case 'googlesitemap':
-      require_once $REX['INCLUDE_PATH'].'/addons/rexseo/classes/class.rexseo_sitemap.inc.php';
+      require_once $REX['INCLUDE_PATH'].'/addons/rexseo_lite/classes/class.rexseo_sitemap.inc.php';
       $map = new rexseo_sitemap;
 
       switch(rex_request('mode'))
@@ -41,11 +41,10 @@ if (rex_request('rexseo_func')!='')
 
 
   case 'robots':
-      require_once $REX['INCLUDE_PATH'].'/addons/rexseo/classes/class.rexseo_robots.inc.php';
+      require_once $REX['INCLUDE_PATH'].'/addons/rexseo_lite/classes/class.rexseo_robots.inc.php';
 
       $robots = new rexseo_robots;
-      if (isset ($REX['ADDON']['rexseo']['settings']['robots']) && $REX['ADDON']['rexseo']['settings']['robots'] != '')
-        $robots->setContent($REX['ADDON']['rexseo']['settings']['robots']);
+      $robots->setContent($REX['ADDON']['rexseo_lite']['settings']['robots']);
       $robots->addSitemapLink();
       $robots->send();
 

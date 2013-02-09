@@ -11,7 +11,7 @@
  * @author markus.staab[at]redaxo[dot]de Markus Staab
  *
  * @package redaxo 4.3.x/4.4.x
- * @version 1.5.3
+ * @version 1.5.0
  */
 
 class rexseo_sitemap
@@ -32,16 +32,16 @@ class rexseo_sitemap
 
     $db_articles = array();
     $db = new rex_sql;
-    $qry = 'SELECT `id`,`clang`,`updatedate`,`path`,`art_rexseo_priority`,`art_rexseo_changefreq`
+    $qry = 'SELECT `id`,`clang`,`updatedate`,`path`,`seo_noindex`
             FROM `'.$REX['TABLE_PREFIX'].'article`
-            WHERE `art_rexseo_sitemap_out`=\'show\'
-            OR    (`art_rexseo_sitemap_out`=\'\' AND `status`=1);';
+            WHERE `status`=1;';
     foreach($db->getDbArray($qry) as $art)
     {
       $db_articles[$art['id']][$art['clang']] = array('loc'        => rex_getUrl($art['id'],$art['clang']),
                                                        'lastmod'    => date('Y-m-d\TH:i:s',$art['updatedate']).'+00:00',
-                                                       'changefreq' => self::calc_article_changefreq($art['updatedate'],$art['art_rexseo_changefreq']),
-                                                       'priority'   => self::calc_article_priority($art['id'],$art['clang'],$art['path'],$art['art_rexseo_priority'])
+                                                       'changefreq' => self::calc_article_changefreq($art['updatedate'], ''),
+                                                       'priority'   => self::calc_article_priority($art['id'],$art['clang'],$art['path'], ''),
+													   'noindex'   => $art['seo_noindex']
                                                        );
     }
 
@@ -61,16 +61,16 @@ class rexseo_sitemap
    * @param $article_id           (int)     rex_article.article_id
    * @param $clang                (int)     rex_article.clang
    * @param $path                 (string)  rex_article.path
-   * @param $art_rexseo_priority  (float)   rex_article.art_rexseo_priority
+   * @param $seo_priority  (float)   rex_article.seo_priority
    *
    * @return                      (float)   priority
    */
-  private function calc_article_priority($article_id,$clang,$path,$art_rexseo_priority='')
+  private function calc_article_priority($article_id,$clang,$path,$seo_priority='')
   {
     global $REX;
 
-    if($art_rexseo_priority!='')
-      return $art_rexseo_priority;
+    if($seo_priority!='')
+      return $seo_priority;
 
     if($article_id==$REX['START_ARTICLE_ID'] && $clang==$REX['START_CLANG_ID'])
       return 1.0;
@@ -83,14 +83,14 @@ class rexseo_sitemap
    * CALCULATE ARTICLE CHANGEFREQ
    *
    * @param $updatedate            (int)    rex_article.updatedate
-   * @param $art_rexseo_changefreq (string) rex_article.art_rexseo_changefreq
+   * @param $seo_changefreq (string) rex_article.seo_changefreq
    *
    * @return                       (string) change frequency  [never|yearly|monthly|weekly|daily|hourly|always]
    */
-  private function calc_article_changefreq($updatedate,$art_rexseo_changefreq='')
+  private function calc_article_changefreq($updatedate,$seo_changefreq='')
   {
-    if($art_rexseo_changefreq!='')
-      return $art_rexseo_changefreq;
+    if($seo_changefreq!='')
+      return $seo_changefreq;
 
     $age = time() - $updatedate;
 
@@ -118,12 +118,12 @@ class rexseo_sitemap
    */
   private function xml_loc_fragment($loc,$lastmod,$changefreq,$priority)
   {
-    $xml_loc = '  <url>'.PHP_EOL.
-    '    <loc>'.$this->host.$loc.'</loc>'.PHP_EOL.
-    '    <lastmod>'.$lastmod.'</lastmod>'.PHP_EOL.
-    '    <changefreq>'.$changefreq.'</changefreq>'.PHP_EOL.
-    '    <priority>'.number_format($priority, 2, ".", "").'</priority>'.PHP_EOL.
-    '  </url>'.PHP_EOL;
+    $xml_loc = "\t" . '<url>'.PHP_EOL.
+    "\t\t" . '<loc>'.$this->host.$loc.'</loc>'.PHP_EOL.
+    "\t\t" . '<lastmod>'.$lastmod.'</lastmod>'.PHP_EOL.
+    "\t\t" . '<changefreq>'.$changefreq.'</changefreq>'.PHP_EOL.
+    "\t\t" . '<priority>'.number_format($priority, 2, ".", "").'</priority>'.PHP_EOL.
+    "\t" . '</url>'.PHP_EOL;
 
     return $xml_loc;
   }
@@ -173,6 +173,7 @@ class rexseo_sitemap
    */
   public function get()
   {
+
     switch($this->mode)
     {
       case'json':
@@ -182,14 +183,27 @@ class rexseo_sitemap
       default:
         $xml_sitemap = '<?xml version="1.0" encoding="UTF-8"?>'.PHP_EOL.
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'.PHP_EOL;
+		global $REX;
 
-        foreach($this->db_articles as $id=>$clangs)
-        {
-          foreach($clangs as $art)
-          {
-            $xml_sitemap .= self::xml_loc_fragment($art['loc'],$art['lastmod'],$art['changefreq'],$art['priority']);
-          }
-        }
+		if (isset($REX["ADDON"]["rexseo"]["settings"]["one_page_mode"]) && $REX["ADDON"]["rexseo"]["settings"]["one_page_mode"]) { // RexDude
+			$art = $this->db_articles[$REX['START_ARTICLE_ID']][0];
+
+			if ($art['noindex'] != true) {
+			   	$xml_sitemap .= self::xml_loc_fragment($art['loc'],$art['lastmod'],$art['changefreq'],$art['priority']);
+			}		
+		} else {
+			if ($this->db_articles[$REX['START_ARTICLE_ID']][$REX['START_CLANG_ID']]['noindex'] != true) { // RexDude: Do not add Articles to Sitemap if Start Article has NoIndex Flag set.
+				foreach($this->db_articles as $id=>$clangs)
+				{
+				  foreach($clangs as $art)
+				  { 
+					if ($art['noindex'] != true) {
+				    	$xml_sitemap .= self::xml_loc_fragment($art['loc'],$art['lastmod'],$art['changefreq'],$art['priority']);
+					}
+				  }
+				}
+			}
+		}
 
         // EXTENSIONPOINT REXSEO_SITEMAP_INJECT
         $inject = rex_register_extension_point('REXSEO_SITEMAP_INJECT');
@@ -226,6 +240,8 @@ class rexseo_sitemap
       default:
     }
     header('Content-Length: '.strlen($map));
+	header('X-Robots-Tag: noindex, noarchive');
+
     echo $map;
     die();
   }

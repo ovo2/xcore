@@ -1,0 +1,4 @@
+<IfModule mod_rewrite.c>
+	# DISABLE REWRITING
+	RewriteEngine Off
+</IfModule>

@@ -11,7 +11,7 @@
  * @author markus.staab[at]redaxo[dot]de Markus Staab
  *
  * @package redaxo 4.3.x/4.4.x
- * @version 1.5.3
+ * @version 1.5.0
  */
 
 if (!function_exists('rexseo_recursive_copy'))
@@ -62,12 +62,6 @@ if (!function_exists('rexseo_recursive_copy'))
         {
           if(is_file($target.$item)) /* FILE EXISTS IN TARGET */
           {
-            $slug = date("d.m.y_H.i.s_");
-            if(!rename($target.$item,$target.$slug.$item))
-            {
-              echo rex_warning('Datei "'.$target.$item.'" konnte nicht umbenannt werden!');
-            }
-            else
             {
               if(!copy($source.$item,$target.$item))
               {
@@ -83,7 +77,7 @@ if (!function_exists('rexseo_recursive_copy'))
                 if(chmod($target.$item,$filePermission))
                 {
                   $result[$counter]['copystate'] = 1;
-                  echo rex_info('Datei "'.$target.$item.'" wurde erfolgreich angelegt.');
+                  //echo rex_info('Datei "'.$target.$item.'" wurde angelegt.');
                 }
                 else
                 {
@@ -109,7 +103,7 @@ if (!function_exists('rexseo_recursive_copy'))
               if(chmod($target.$item,$filePermission))
               {
                 $result[$counter]['copystate'] = 1;
-                echo rex_info('Datei "'.$target.$item.'" wurde erfolgreich angelegt.');
+                //echo rex_info('Datei "'.$target.$item.'" wurde erfolgreich angelegt.');
               }
               else
               {
@@ -386,7 +380,7 @@ function rexseo_fix_42x_links($params)
 {
   global $REX;
 
-  $subdir = $REX['ADDON']['rexseo']['settings']['install_subdir'];
+  $subdir = $REX['ADDON']['rexseo_lite']['settings']['install_subdir'];
   if($subdir=='')
   {
     $relpath     = '/redaxo/';
@@ -406,68 +400,11 @@ function rexseo_fix_42x_links($params)
   );
 }
 
-
-// SETUP/REPAIR REXSEO'S METAINFOS
-////////////////////////////////////////////////////////////////////////////////
-function rexseo_setup_metainfo()
-{
-  global $REX;
-
-  if(!isset($REX['USER'])){
-    return;
-  }
-
-  $install_metas = array(
-    'art_rexseo_legend'         => array('RexSEO Rewrite',              'art_rexseo_legend',        100,    '',         12,     '',       '',                                                                                                     '',               ''),
-    'art_rexseo_url'            => array('Custom URL',                  'art_rexseo_url',           101,    '',          1,     '',       '',                                                                                                     '',               ''),
-    'art_rexseo_canonicalurl'   => array('Custom Canonical URL',        'art_rexseo_canonicalurl',  102,    '',          1,     '',       '',                                                                                                     '',               ''),
-    'art_rexseo_title'          => array('Custom Page Title',           'art_rexseo_title',         103,    '',          1,     '',       '',                                                                                                     '',               ''),
-    'art_rexseo_sitemap_legend' => array('RexSEO Sitemap',              'art_rexseo_sitemap_legend',104,    '',         12,     '',       '',                                                                                                     '',               ''),
-    'art_rexseo_priority'       => array('Sitemap Priority',            'art_rexseo_priority',      105,    '',          3,     '',       ':auto|1.00:1.00|0.80:0.80|0.64:0.64|0.51:0.51|0.33:0.33|0.00:0.00',                                    '',               ''),
-    'art_rexseo_changefreq'     => array('Sitemap Changefreq',          'art_rexseo_changefreq',    105,    '',          3,     '',       ':auto|never:never|yearly:yearly|monthly:monthly|weekly:weekly|daily:daily|hourly:hourly|always:always','',               ''),
-    'art_rexseo_sitemap_out'    => array('Sitemap Output',              'art_rexseo_sitemap_out',   106,    '',          3,     '',       ':auto|show:show|hide:hide',                                                                            '',               ''),
-    );
-
-  $db = new rex_sql;
-  foreach($db->getDbArray('SHOW COLUMNS FROM `rex_article` LIKE \'art_rexseo_%\';') as $column)
-  {
-    unset($install_metas[$column['Field']]);
-  }
-
-  foreach($install_metas as $k => $v)
-  {
-    $db->setQuery('SELECT `name` FROM `rex_62_params` WHERE `name`=\''.$k.'\';');
-
-    if($db->getRows()>0)
-    {
-      // FIELD KNOWN TO METAINFO BUT MISSING IN ARTICLE..
-      $db->setQuery('ALTER TABLE `rex_article` ADD `'.$k.'` TEXT NOT NULL;');
-      if($REX['REDAXO'])
-      {
-        echo rex_info('Metainfo Feld '.$k.' wurde repariert.');
-      }
-    }
-    else
-    {
-      if(!function_exists('a62_add_field')) {
-        require_once($REX['INCLUDE_PATH'].'/addons/metainfo/functions/function_metainfo.inc.php');
-      }
-
-      a62_add_field($v[0], $v[1], $v[2], $v[3], $v[4], $v[5], $v[6], $v[7], $v[8]);
-
-      if($REX['REDAXO']) {
-        echo rex_info('Metainfo Feld '.$k.' wurde angelegt.');
-      }
-    }
-  }
-
-}
-
 /**
  * legacy function
  **/
 function rexseo_htaccess_update_redirects(){
-  if(OOPlugin::isAvailable('rexseo','redirects_manager')){
+  if(OOPlugin::isAvailable('rexseo_lite','redirects_manager')){
     redirects_manager::updateHtaccess();
   }
 }

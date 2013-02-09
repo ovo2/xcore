@@ -11,7 +11,7 @@
  * @author markus.staab[at]redaxo[dot]de Markus Staab
  *
  * @package redaxo 4.3.x/4.4.x
- * @version 1.5.3
+ * @version 1.5.0
  */
 
 class rexseo_robots
@@ -27,8 +27,7 @@ class rexseo_robots
   {
     global $REX;
     $this->host = $REX['SERVER'];
-    $this->robots_txt = 'User-agent: *
-    Disallow:';
+    $this->robots_txt = '';
   }
 
 
@@ -50,7 +49,30 @@ class rexseo_robots
    */
   public function setContent($content)
   {
-    $this->robots_txt = $content;
+	global $REX;
+	$out = '';
+	$langs = array_keys($REX['CLANG']); // get clang ids
+
+	foreach ($langs as $lang) {
+		$query = "SELECT id FROM ".$REX['TABLE_PREFIX']."article WHERE seo_noindex = '1' AND status = 1"; 
+		$sql = new rex_sql(); 
+		$sql->setQuery($query);
+	
+		for ($i = 1; $i <= $sql->getRows(); $i++) { 
+	  		$out .= "Disallow: " .  rex_getUrl($sql->getValue('id'), $lang) . "\r\n"; 
+		  	$sql->next(); 
+		}
+	}
+	
+	if ($out != '') {
+		$out = "User-agent: *" . "\r\n" . $out . "\r\n";
+	}
+
+	if ($out == '' && $content == '') {
+		$this->robots_txt = 'User-agent: *' . "\r\n" . 'Disallow:';
+	} else {
+	    $this->robots_txt = $out . $content;
+	}
   }
 
 
@@ -61,7 +83,8 @@ class rexseo_robots
    */
   public function addSitemapLink()
   {
-    $this->robots_txt .= PHP_EOL.'Sitemap: '.$this->host.'sitemap.xml';
+	$this->robots_txt = rtrim($this->robots_txt, "\r\n");
+    $this->robots_txt .= "\r\n" . PHP_EOL.'Sitemap: '.$this->host.'sitemap.xml';
   }
 
 
@@ -83,8 +106,9 @@ class rexseo_robots
   {
     $robots = self::get();
 
-    header('Content-Type: text/plain; charset=UTF-8');
+    header('Content-Type: text/plain; charset=utf-8');
     header('Content-Length: '.strlen($robots));
+	header('X-Robots-Tag: noindex, noarchive');
     echo $robots;
     die();
   }
