@@ -18,8 +18,8 @@ Hinweise
 * Läuft nur mit REDAXO 4.5+
 * AddOn-Ordner lautet: `rexseo_lite`
 
-Ein herzliches Dankeschön geht an:
-----------------------------------
+Credits
+-------
 
 * [GN2](https://github.com/gn2netwerk) und [jdlx](https://github.com/jdlx) für das original RexSEO AddOn
 * [Markus Staab](https://github.com/staabm) für das zugrundeliegende url_rewrite AddOn
