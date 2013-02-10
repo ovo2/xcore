@@ -81,7 +81,7 @@ echo '
 							<div style="display: inline-block;margin-left: 167px; margin-top: 8px;">
 								<span id="title-preview"></span>
 							</div>
-						<div style="position: absolute;top: 6px; right: 68px;">
+						<div style="position: absolute;top: 6px; left: 538px;">
 							<input id="prefix-check" style="position: relative; top: 3px;" type="checkbox" tabindex="35" value="';
 
 if ($seoData['seo_ignore_prefix'] == '1') {
@@ -92,7 +92,7 @@ if ($seoData['seo_ignore_prefix'] == '1') {
 	$check = "";
 }
 
-						echo '" name="seo_ignore_prefix[]" class="rex-form-checkbox" ' . $check . '>&nbsp;Kein Prefix anzeigen</div>
+						echo '" name="seo_ignore_prefix[]" class="rex-form-checkbox" ' . $check . '>&nbsp;Kein Prefix</div>
  
 						</div>
 						<div class="rex-form-row" style="position: relative;"><p class="rex-form-textarea">
@@ -105,18 +105,18 @@ if ($seoData['seo_ignore_prefix'] == '1') {
 						<p class="rex-form-textarea">
 							<label for="Suchbegriffe">Suchbegriffe</label>
 							<textarea name="seo_keywords" id="seo_keywords" tabindex="32" rows="2" cols="50" class="rex-form-textarea">' . $seoData['seo_keywords'] . '</textarea>
-							<div style="position: absolute;right:224px;top:69px"><div style="display: inline;" id="keywords-wordcount">0</div>/6 Wörter
+							<div style="position: absolute;right:224px;top:69px"><div style="display: inline;" id="keywords-wordcount">0</div>/7 Wörter
 						</div>
 					</div>
 				</fieldset>
 
 				<fieldset class="rex-form-col-1"><legend>URL und Indizierung</legend><div class="rex-form-wrapper">
 				<div class="rex-form-row"><p class="rex-form-text" style="margin-bottom: -3px;">
-					<label for="custom-url">Benutzerdefinierte URL (mit / am Anfang)</label>
+					<label for="custom-url">Benutzerdefinierte URL</label>
 					<input type="text" value="' . $seoData['seo_url'] . '" name="seo_url" id="custom-url" tabindex="37" class="rex-form-text">
 					</p>
 
-					<div style="display: inline-block;margin-left: 167px; margin-top: 0px;" id="custom-url-preview"></div>
+					<div style="display: inline-block;margin-left: 167px; margin-top: 12px;" id="custom-url-preview"></div>
 				</div>
 
 				<div class="rex-form-row"><p class="rex-form-col-a rex-form-checkbox">
