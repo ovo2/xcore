@@ -36,7 +36,7 @@ require $REX['INCLUDE_PATH'] . '/layout/top.php';
 
 // REX TITLE/NAVI
 ////////////////////////////////////////////////////////////////////////////////
-rex_title('RexSEO Lite <span style="font-size:14px; color:silver;">based on RexSEO 1.5.0</span>', $REX['ADDON'][$myself]['SUBPAGES']);
+rex_title($REX['ADDON']['name'][$myself] . ' <span style="font-size:14px; color:silver;">' . $REX['ADDON']['version'][$myself] . '</span>', $REX['ADDON'][$myself]['SUBPAGES']);
 
 // INCLUDE SUBPAGE
 ////////////////////////////////////////////////////////////////////////////////
