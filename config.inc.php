@@ -52,7 +52,6 @@ require_once($myroot . '/classes/class.rexseo_lite.inc.php');
 ////////////////////////////////////////////////////////////////////////////////
 // --- DYN
 $REX["ADDON"]["rexseo_lite"]["settings"] = array (
-  'rexseo_version' => '1.5.0',
   'first_run' => 0,
   'alert_setup' => 0,
   'install_subdir' => '',
@@ -61,9 +60,7 @@ $REX["ADDON"]["rexseo_lite"]["settings"] = array (
   'title_schema' => '%B - %S',
   'url_schema' => 'rexseo',
   'url_ending' => '.html',
-  'hide_langslug' => 0,
   'homeurl' => 1,
-  'homelang' => 0,
   'allow_articleid' => 0,
   'levenshtein' => 0,
   'robots' => '',
@@ -74,7 +71,9 @@ $REX["ADDON"]["rexseo_lite"]["settings"] = array (
   'def_keys' => 
   array (
   ),
+  'homelang' => 0,
   'rewrite_params' => 0,
+  'hide_langslug' => 0,
   'urlencode' => 0,
   'one_page_mode' => 0,
 );
