@@ -16,7 +16,7 @@
 
 // ADDON PARAMS
 ////////////////////////////////////////////////////////////////////////////////
-$myself = 'rexseo_lite';
+$myself = 'rexseo42';
 $myroot = $REX['INCLUDE_PATH'].'/addons/'.$myself;
 
 $REX['ADDON'][$myself]['VERSION'] = array
@@ -27,9 +27,9 @@ $REX['ADDON'][$myself]['VERSION'] = array
 );
 
 $REX['ADDON']['rxid'][$myself]        = '0';
-$REX['ADDON']['name'][$myself]        = 'rexseo lite';
+$REX['ADDON']['name'][$myself]        = 'rexseo42';
 $REX['ADDON']['version'][$myself]     = '1.0.0';
-$REX['ADDON']['author'][$myself]      = 'Markus Staab, Wolfgang Huttegger, Dave Holloway, Jan Kristinus, jdlx, RexDude ;)';
+$REX['ADDON']['author'][$myself]      = 'Markus Staab, Wolfgang Huttegger, Dave Holloway, Jan Kristinus, jdlx, RexDude';
 $REX['ADDON']['supportpage'][$myself] = 'forum.redaxo.de';
 $REX['ADDON']['perm'][$myself]        = $myself.'[]';
 $REX['PERM'][]                        = $myself.'[]';
@@ -46,12 +46,12 @@ $REX['PROTOCOL'] = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'htt
 // INCLUDES
 ////////////////////////////////////////////////////////////////////////////////
 require_once($myroot . '/functions/function.rexseo_helpers.inc.php');
-require_once($myroot . '/classes/class.rexseo_lite.inc.php');
+require_once($myroot . '/classes/class.rexseo42.inc.php');
 
 // USER SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
 // --- DYN
-$REX["ADDON"]["rexseo_lite"]["settings"] = array (
+$REX["ADDON"]["rexseo42"]["settings"] = array (
   'first_run' => 0,
   'alert_setup' => 0,
   'install_subdir' => '',
@@ -79,7 +79,7 @@ $REX["ADDON"]["rexseo_lite"]["settings"] = array (
 );
 // --- /DYN
 
-$REX["ADDON"]["rexseo_lite"]["settings"]['params_starter']  = '++';
+$REX["ADDON"]["rexseo42"]["settings"]['params_starter']  = '++';
 
 // RUN ON ADDONS INLCUDED
 ////////////////////////////////////////////////////////////////////////////////
@@ -95,10 +95,10 @@ if(!function_exists('rexseo_init')){
     if ($REX['MOD_REWRITE'] !== false)
     {
       // REWRITE
-      $levenshtein    = (bool) $REX['ADDON']['rexseo_lite']['settings']['levenshtein'];
-      $rewrite_params = (bool) $REX['ADDON']['rexseo_lite']['settings']['rewrite_params'];
+      $levenshtein    = (bool) $REX['ADDON']['rexseo42']['settings']['levenshtein'];
+      $rewrite_params = (bool) $REX['ADDON']['rexseo42']['settings']['rewrite_params'];
 
-      require_once $REX['INCLUDE_PATH'].'/addons/rexseo_lite/classes/class.rexseo_rewrite.inc.php';
+      require_once $REX['INCLUDE_PATH'].'/addons/rexseo42/classes/class.rexseo_rewrite.inc.php';
 
       $rewriter = new RexseoRewrite($levenshtein,$rewrite_params);
       $rewriter->resolve();
@@ -107,7 +107,7 @@ if(!function_exists('rexseo_init')){
     }
 
     // CONTROLLER
-    include $REX['INCLUDE_PATH'].'/addons/rexseo_lite/controller.inc.php';
+    include $REX['INCLUDE_PATH'].'/addons/rexseo42/controller.inc.php';
 
     // REXSEO POST INIT
     rex_register_extension_point('REXSEO_POST_INIT');
@@ -138,7 +138,7 @@ if ($REX['REDAXO']) {
 		global $REX, $I18N;
 
 		if ($params['mode']  == 'seo') {
-			include($REX['INCLUDE_PATH'] . '/addons/rexseo_lite/pages/seopage.inc.php');
+			include($REX['INCLUDE_PATH'] . '/addons/rexseo42/pages/seopage.inc.php');
 		}
 	});
 }

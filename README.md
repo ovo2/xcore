@@ -1,5 +1,5 @@
-rexseo lite AddOn for REDAXO 4.5
-================================
+rexseo42 AddOn für REDAXO 4.5
+=============================
 
 Ein Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzerführung und noch ein paar kleinen Extras.
 
@@ -16,7 +16,7 @@ Hinweise
 --------
 
 * Läuft nur mit REDAXO 4.5+
-* AddOn-Ordner lautet: `rexseo_lite`
+* AddOn-Ordner lautet: `rexseo42`
 
 Credits
 -------

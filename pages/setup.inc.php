@@ -9,8 +9,8 @@ if ($func == "do_copy") {
 	// first backup files
 	$htaccessRoot = $REX['FRONTEND_PATH'] . '/.htaccess';
 	$htaccessRedaxo = $REX['FRONTEND_PATH'] . '/redaxo/.htaccess';
-	$backupPathRoot = $REX['INCLUDE_PATH'] . '/addons/rexseo_lite/backup/';
-	$backupPathRedaxo = $REX['INCLUDE_PATH'] . '/addons/rexseo_lite/backup/redaxo/';
+	$backupPathRoot = $REX['INCLUDE_PATH'] . '/addons/rexseo42/backup/';
+	$backupPathRedaxo = $REX['INCLUDE_PATH'] . '/addons/rexseo42/backup/redaxo/';
 	$htaccessBackupFile = '_htaccess_' . date('Ymd_His');
 	$doCopy = true;
 	$fileExists = false;
@@ -39,7 +39,7 @@ if ($func == "do_copy") {
 
 	// then copy if backup was successful
 	if ($doCopy) {
-		$source = $REX['INCLUDE_PATH'] . '/addons/rexseo_lite/install/';
+		$source = $REX['INCLUDE_PATH'] . '/addons/rexseo42/install/';
 		$target = $REX['HTDOCS_PATH'];
 		$result = rexseo_recursive_copy($source, $target);
 
@@ -105,12 +105,12 @@ if ($func == "do_copy") {
 	<div class="rex-area-content">
 		<p>Diese .htaccess Dateien müssen in die entsprechenden Verzeichnisse kopiert werden:</p>
 		<ul class="no-bottom-margin">
-			<li><code>/rexseo_lite/install/.htaccess</code> nach <code>/.htaccess</code></li>
-			<li><code>/rexseo_lite/install/redaxo/.htaccess</code> nach <code>/redaxo/.htaccess</code></li>
+			<li><code>/rexseo42/install/.htaccess</code> nach <code>/.htaccess</code></li>
+			<li><code>/rexseo42/install/redaxo/.htaccess</code> nach <code>/redaxo/.htaccess</code></li>
 		</ul>
 
 		<form action="index.php" method="get">
-			<input type="hidden" name="page" value="rexseo_lite" />
+			<input type="hidden" name="page" value="rexseo42" />
 			<input type="hidden" name="subpage" value="setup" />
 			<input type="hidden" name="func" value="do_copy" />
 			<div class="rex-form-row">
@@ -140,7 +140,7 @@ if ($func == "do_copy") {
 				<input type="checkbox" checked="checked" value="1" id="mod_rewrite" name="mod_rewrite" />
 			</p>
 
-			<input type="hidden" name="page" value="rexseo_lite" />
+			<input type="hidden" name="page" value="rexseo42" />
 			<input type="hidden" name="subpage" value="setup" />
 			<input type="hidden" name="func" value="apply_settings" />
 			<div class="rex-form-row">
@@ -152,12 +152,12 @@ if ($func == "do_copy") {
 
 <?php
 $codeExample2 = '<head>
-	<base href="<?php echo rexseo_lite::getBaseUrl(); ?>" />
-	<title><?php echo rexseo_lite::getTitle(); ?></title>
-	<meta name="description" content="<?php echo rexseo_lite::getDescription(); ?>" />
-	<meta name="keywords" content="<?php echo rexseo_lite::getKeywords(); ?>" />
-	<meta name="robots" content="<?php echo rexseo_lite::getRobotRules();?>" />
-	<link rel="canonical" href="<?php echo rexseo_lite::getCanonicalUrl(); ?>" />
+	<base href="<?php echo rexseo42::getBaseUrl(); ?>" />
+	<title><?php echo rexseo42::getTitle(); ?></title>
+	<meta name="description" content="<?php echo rexseo42::getDescription(); ?>" />
+	<meta name="keywords" content="<?php echo rexseo42::getKeywords(); ?>" />
+	<meta name="robots" content="<?php echo rexseo42::getRobotRules();?>" />
+	<link rel="canonical" href="<?php echo rexseo42::getCanonicalUrl(); ?>" />
 </head>';
 ?>
 
@@ -169,40 +169,40 @@ $codeExample2 = '<head>
 </div>
 
 <style type="text/css">
-#rex-page-rexseo-lite .rex-code {
+#rex-page-rexseo42 .rex-code {
     word-wrap: break-word;
 }
 
-#rex-page-rexseo-lite .info-msg {
+#rex-page-rexseo42 .info-msg {
 	margin-bottom: 10px;
 }
 
-#rex-page-rexseo-lite .no-bottom-margin {
+#rex-page-rexseo42 .no-bottom-margin {
 	margin-bottom: 0px;
 	margin-top: 7px;
 }
 
-#rex-page-rexseo-lite .button {
+#rex-page-rexseo42 .button {
 	float: right; 
 	margin-bottom: 10px; 
 	margin-right: 5px;
 }
 
-#rex-page-rexseo-lite p.rex-form-col-a.first-textfield {
+#rex-page-rexseo42 p.rex-form-col-a.first-textfield {
 	margin-bottom: 3px;
 }
 
-#rex-page-rexseo-lite p.rex-form-col-a label {
+#rex-page-rexseo42 p.rex-form-col-a label {
 	width: 160px;
 	display: inline-block;
 	margin-bottom: 10px;
 }
 
-#rex-page-rexseo-lite p.rex-form-col-a input.rex-form-text {
+#rex-page-rexseo42 p.rex-form-col-a input.rex-form-text {
 	width: 320px;
 }
 
-#rex-page-rexseo-lite p.rex-form-checkbox input {
+#rex-page-rexseo42 p.rex-form-checkbox input {
 	position: relative;
 	top: 3px;
 }

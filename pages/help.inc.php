@@ -13,16 +13,16 @@ $myroot  = $REX['INCLUDE_PATH'].'/addons/' . $page;
 		<p>Ganz einfach: Weil RexSEO zwar sehr gefällt, aber so wie es ist in manchen Punkten (z.B. Setup) nicht den Vorstellungen vom RexDude entspricht und es ja außerdem völlig legitim ist einen Fork nach seinem eigenem Gusto zu machen.</p>
 
 		<h2>Ich habe eine Seite importiert und jetzt hagelt es Fehlermeldungen im HTML-Quellcode!?</h2>
-		<p>rexseo lite <a href="index.php?page=addon&addonname=rexseo_lite&install=1">reinstallieren</a> sollte das Problem beheben.</p>
+		<p>rexseo42 <a href="index.php?page=addon&addonname=rexseo42&install=1">reinstallieren</a> sollte das Problem beheben.</p>
 
 		<h2>Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterverzeichnis installiert habe?</h2>
 		<p>Ja. In der .htaccess im Root-Ordner bei RewriteBase das Unterverzeichnis ergänzen: <code>RewriteBase /UNTERVERZEICHNIS</code> sowie darauf achten, dass "Url dieser Website" ohne das Unterverzechnis angegeben wird.</p>
 
 		<h2>Ich mag das Pipe-Zeichen nicht im Titel. Wie kann ich das umstellen?</h2>
-		<p>Momentan so: der Methode getTitle das neue Zeichen als Parameter übergeben: <code>rexseo_lite::getTitle("-");</code></p>
+		<p>Momentan so: der Methode getTitle das neue Zeichen als Parameter übergeben: <code>rexseo42::getTitle("-");</code></p>
 
 		<h2>Wie kann ich den Titel sonst noch beinflussen?</h2>
-		<p>Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix anzeigen" wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode <code>rexseo_lite::getTitle()</code> für Spezial-Titel-Geschichten überschreiben.</p>
+		<p>Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix anzeigen" wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode <code>rexseo42::getTitle()</code> für Spezial-Titel-Geschichten überschreiben.</p>
 
 		<h2>Warum wird der Titel für die Startseite "andersherum" ausgegeben wie für die Folgeseiten?</h2>
 		<p>Siehe PDF in Antwort zur nächsten Frage.</p>
@@ -40,19 +40,19 @@ $myroot  = $REX['INCLUDE_PATH'].'/addons/' . $page;
 		<p>In der .htaccess im Root-Ordner an oberster Stelle pro URL eine 301 Weiterleitung nach diesem Schema einrichten:<br /><code>Redirect 301 /alte-seite.html http://www.my-domain.de/neue-seite.html</code></p>
 
 		<h2>Habe gehört das es SEO-technisch gut wäre wenn Bilder ein Alt-Attribut zugewiesen bekommen?</h2>
-		<p>Dafür kann man die Methode <code>rexseo_lite::getImageTag($file)</code> nutzen, die dann einen kompletten Image-Tag inkl. Alt-Attribute ausspuckt. Und im Medienpool wird dieser dann im Titel-Feld gesetzt.</p>
+		<p>Dafür kann man die Methode <code>rexseo42::getImageTag($file)</code> nutzen, die dann einen kompletten Image-Tag inkl. Alt-Attribute ausspuckt. Und im Medienpool wird dieser dann im Titel-Feld gesetzt.</p>
 
 		<h2>Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?</h2>
 		<p>Immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. <code>redaxo://13#anker</code></p>
 
-		<h2>Wo legt rexseo lite die Backups für die .htaccess Dateien an?</h2>
-		<p>Im Backup-Verzeichnis des AddOns: <code>/rexseo_lite/backup/</code></p>
+		<h2>Wo legt rexseo42 die Backups für die .htaccess Dateien an?</h2>
+		<p>Im Backup-Verzeichnis des AddOns: <code>/rexseo42/backup/</code></p>
 
 		<h2>Ich hab ne Frage die hier net auftaucht. Was tun?</h2>
 		<p>Schau doch mal ins original RexSEO. Da steht noch mehr Stuff... ;)</p>
 
-		<h2>Mir gefällt rexseo lite nicht! Wie krieg ich das wieder raus aus meinem REDAXO?</h2>
-		<p>Kein Problem ;) Einfach das Setup von hinten nach vorne durchlaufen und das AddOn <a href="index.php?page=addon&addonname=rexseo_lite&uninstall=1">deinstallieren</a>.</p>
+		<h2>Mir gefällt rexseo42 nicht! Wie krieg ich das wieder raus aus meinem REDAXO?</h2>
+		<p>Kein Problem ;) Einfach das Setup von hinten nach vorne durchlaufen und das AddOn <a href="index.php?page=addon&addonname=rexseo42&uninstall=1">deinstallieren</a>.</p>
 
 		<h2>Wie lautet die Antwort auf die Frage aller Fragen nach dem Leben, dem Universum und dem ganzen Rest?</h2>
 		<p>42</p>
@@ -61,19 +61,19 @@ $myroot  = $REX['INCLUDE_PATH'].'/addons/' . $page;
 </div>
 
 <style type="text/css">
-#rex-page-rexseo-lite .rex-area-content {
+#rex-page-rexseo42 .rex-area-content {
 	padding: 12px;
 }
 
-#rex-page-rexseo-lite .rex-area-content h2 {
+#rex-page-rexseo42 .rex-area-content h2 {
 	font-size: 13px;
 }
 
-#rex-page-rexseo-lite .rex-area-content p {
+#rex-page-rexseo42 .rex-area-content p {
 	margin-bottom: 15px;
 }
 
-#rex-page-rexseo-lite a.extern {
+#rex-page-rexseo42 a.extern {
 	background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAA8CAYAAACq76C9AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFFSURBVHjaYtTpO/CfAQcACCAmBjwAIIAY//9HaNTtP4hiCkAAMeGSAAGAAGJCl7hcaM8IYwMEEBMuCRAACCAmXBIgABBAKA5CBwABhNcrAAGEVxIggPBKAgQQXkmAAMIrCRBAeCUBAgivJEAA4ZUECCC8kgABhFcSIIDwSgIEEF5JgADCKwkQQHglAQIIryRAAOGVBAggvJIAAYRXEiCA8EoCBBBeSYAAwisJEEB4JQECiAVbNoABgADCqxMggPDmMoAAwpvLAAIIby4DCCC8uQwggPDmMoAAwpvLAAIIr1cAAgivJEAA4ZUECCC8kgABhFcSIIDwSgIEEF5JgADCKwkQQHglAQIIryRAAOGVBAggvJIAAYRXEiCA8EoCBBBeSYAAwisJEEB4JQECCK8kQADhlQQIILySAAGEVxIggPBKAgQYAARTLlfrU5G2AAAAAElFTkSuQmCC) no-repeat right 3px;
 	padding-right: 10px;
 }

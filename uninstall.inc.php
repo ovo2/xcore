@@ -20,5 +20,5 @@ $sql->setQuery('ALTER TABLE `' . $REX['TABLE_PREFIX'] . 'article` DROP `seo_titl
 
 rex_generateAll();
 
-$REX['ADDON']['install']['rexseo_lite'] = 0;
+$REX['ADDON']['install']['rexseo42'] = 0;
 ?>

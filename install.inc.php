@@ -16,7 +16,7 @@
 
 // INSTALL SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
-$myself            = 'rexseo_lite';
+$myself            = 'rexseo42';
 $myroot            = $REX['INCLUDE_PATH'].'/addons/'.$myself;
 
 $minimum_REX       = '4.5.0';

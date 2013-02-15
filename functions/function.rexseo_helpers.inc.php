@@ -380,7 +380,7 @@ function rexseo_fix_42x_links($params)
 {
   global $REX;
 
-  $subdir = $REX['ADDON']['rexseo_lite']['settings']['install_subdir'];
+  $subdir = $REX['ADDON']['rexseo42']['settings']['install_subdir'];
   if($subdir=='')
   {
     $relpath     = '/redaxo/';
@@ -404,7 +404,7 @@ function rexseo_fix_42x_links($params)
  * legacy function
  **/
 function rexseo_htaccess_update_redirects(){
-  if(OOPlugin::isAvailable('rexseo_lite','redirects_manager')){
+  if(OOPlugin::isAvailable('rexseo42','redirects_manager')){
     redirects_manager::updateHtaccess();
   }
 }

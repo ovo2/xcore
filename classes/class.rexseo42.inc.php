@@ -1,6 +1,6 @@
 <?php
 
-class rexseo_lite {
+class rexseo42 {
 	static $titleDelimiter = "|";
 	static $robotsArchiveFlag = "noarchive";
 	static $robotsFollowFlag = "follow";

@@ -23,7 +23,7 @@ if (rex_request('rexseo_func')!='')
   switch (rex_request('rexseo_func'))
   {
     case 'googlesitemap':
-      require_once $REX['INCLUDE_PATH'].'/addons/rexseo_lite/classes/class.rexseo_sitemap.inc.php';
+      require_once $REX['INCLUDE_PATH'].'/addons/rexseo42/classes/class.rexseo_sitemap.inc.php';
       $map = new rexseo_sitemap;
 
       switch(rex_request('mode'))
@@ -41,10 +41,10 @@ if (rex_request('rexseo_func')!='')
 
 
   case 'robots':
-      require_once $REX['INCLUDE_PATH'].'/addons/rexseo_lite/classes/class.rexseo_robots.inc.php';
+      require_once $REX['INCLUDE_PATH'].'/addons/rexseo42/classes/class.rexseo_robots.inc.php';
 
       $robots = new rexseo_robots;
-      $robots->setContent($REX['ADDON']['rexseo_lite']['settings']['robots']);
+      $robots->setContent($REX['ADDON']['rexseo42']['settings']['robots']);
       $robots->addSitemapLink();
       $robots->send();
 

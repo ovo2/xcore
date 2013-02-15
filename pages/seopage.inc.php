@@ -228,12 +228,12 @@ jQuery(document).ready(function() {
 });
 
 function updateTitlePreview() {
-	var titlePrefix = '<?php echo rexseo_lite::getPrefix(); ?>';
-	var articleName = '<?php echo rexseo_lite::getArticleName(); ?>';
+	var titlePrefix = '<?php echo rexseo42::getPrefix(); ?>';
+	var articleName = '<?php echo rexseo42::getArticleName(); ?>';
 	var customTitle = jQuery('#seo_title').val();
-	var pipeSymbol = '<?php echo rexseo_lite::getTitleDelimiter(); ?>';
+	var pipeSymbol = '<?php echo rexseo42::getTitleDelimiter(); ?>';
 	var hasPrefix = !jQuery('#prefix-check').is(':checked');
-	var isStartPage = <?php if (rexseo_lite::isStartPage()) { echo 'true'; } else { echo 'false'; } ?>;
+	var isStartPage = <?php if (rexseo42::isStartPage()) { echo 'true'; } else { echo 'false'; } ?>;
 	var curTitle = '';
 	var curTitlePart = '';
 
@@ -261,7 +261,7 @@ function updateDescriptionCount() {
 }
 
 function updateCustomUrlPreview() {
-	var base = '<?php echo rtrim(rexseo_lite::getBaseUrl(), "/"); ?>';
+	var base = '<?php echo rtrim(rexseo42::getBaseUrl(), "/"); ?>';
 	var autoUrl = '/' + '<?php echo rex_getUrl($REX["ARTICLE_ID"], $REX["CUR_CLANG"]); ?>';
 	var customUrl = jQuery('#custom-url').val();
 	var curUrl = '';

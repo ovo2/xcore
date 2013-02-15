@@ -50,7 +50,7 @@ class RexseoRewrite
 
     if($trace!=false)
     {
-      $logfile = $REX['INCLUDE_PATH'].'/addons/rexseo_lite/rexseo.log';
+      $logfile = $REX['INCLUDE_PATH'].'/addons/rexseo42/rexseo.log';
       $log_content = file_exists($logfile) ? rex_get_file_contents($logfile) : '';
       $log_content = $log_content!='empty..' ? $log_content : '';
 
@@ -83,10 +83,10 @@ class RexseoRewrite
       $start_id        = $REX['START_ARTICLE_ID'];
       $notfound_id     = $REX['NOTFOUND_ARTICLE_ID'];
 
-      $params_starter  = $REX['ADDON']['rexseo_lite']['settings']['params_starter'];
-      $install_subdir  = $REX['ADDON']['rexseo_lite']['settings']['install_subdir'];
-      $allow_articleid = $REX['ADDON']['rexseo_lite']['settings']['allow_articleid'];
-      $homelang        = $REX['ADDON']['rexseo_lite']['settings']['homelang'];
+      $params_starter  = $REX['ADDON']['rexseo42']['settings']['params_starter'];
+      $install_subdir  = $REX['ADDON']['rexseo42']['settings']['install_subdir'];
+      $allow_articleid = $REX['ADDON']['rexseo42']['settings']['allow_articleid'];
+      $homelang        = $REX['ADDON']['rexseo42']['settings']['homelang'];
 
 
       // IF NON_REWRITTEN URLS ALLOWED -> USE ARTICLE_ID FROM REQUEST
@@ -221,7 +221,7 @@ class RexseoRewrite
     $id             = $params['id'];
     $name           = $params['name'];
     $clang          = $params['clang'];
-    $subdir         = $REX['ADDON']['rexseo_lite']['settings']['install_subdir'];
+    $subdir         = $REX['ADDON']['rexseo42']['settings']['install_subdir'];
     $notfound_id    = $REX['NOTFOUND_ARTICLE_ID'];
 
     // GET PARAMS STRING
@@ -247,7 +247,7 @@ class RexseoRewrite
 
       $notfound = true;
 
-      if($REX['ADDON']['rexseo_lite']['debug_log']==1)
+      if($REX['ADDON']['rexseo42']['debug_log']==1)
       {
         $trace = debug_backtrace();
         self::logError('article (id='.$id.'/clang='.$clang.') does not exist',E_USER_WARNING,$trace);
@@ -277,8 +277,8 @@ class RexseoRewrite
                        'urlparams'      => $urlparams,
                        'params'         => $params['params'],
                        'divider'        => $params['divider'],
-                       'params_starter' => $REX['ADDON']['rexseo_lite']['settings']['params_starter'],
-                       'urlencode'      => $REX['ADDON']['rexseo_lite']['settings']['urlencode'],
+                       'params_starter' => $REX['ADDON']['rexseo42']['settings']['params_starter'],
+                       'urlencode'      => $REX['ADDON']['rexseo42']['settings']['urlencode'],
                        );
     $url = rex_register_extension_point('REXSEO_POST_REWRITE', $url, $ep_params);
 
@@ -337,7 +337,7 @@ class RexseoRewrite
     global $REX;
     $divider        = $EPparams['divider'];
     $urlparams      = $EPparams['params'];
-    $params_starter = $REX['ADDON']['rexseo_lite']['settings']['params_starter'];
+    $params_starter = $REX['ADDON']['rexseo42']['settings']['params_starter'];
 
     if($this->use_params_rewrite)
     {
@@ -536,7 +536,7 @@ function rexseo_generate_pathlist($params)
       else
       {
         // LANG SLUG
-        if (count($REX['CLANG']) > 1 && $clang != $REX['ADDON']['rexseo_lite']['settings']['hide_langslug'])
+        if (count($REX['CLANG']) > 1 && $clang != $REX['ADDON']['rexseo42']['settings']['hide_langslug'])
         {
           $pathname = $REX['CLANG'][$clang].'/';
         }
@@ -565,7 +565,7 @@ function rexseo_generate_pathlist($params)
           $pathname = rexseo_appendToPath($pathname, $catname, $id, $clang);
         }
 
-        if($REX['ADDON']['rexseo_lite']['settings']['url_schema'] == 'rexseo')
+        if($REX['ADDON']['rexseo42']['settings']['url_schema'] == 'rexseo')
         {
           if(!$ooa->isStartArticle())
           {
@@ -584,16 +584,16 @@ function rexseo_generate_pathlist($params)
         }
 
         // ALLGEMEINE URL ENDUNG
-        $pathname = substr($pathname,0,strlen($pathname)-1).$REX['ADDON']['rexseo_lite']['settings']['url_ending'];
+        $pathname = substr($pathname,0,strlen($pathname)-1).$REX['ADDON']['rexseo42']['settings']['url_ending'];
 
         // STARTSEITEN URL FORMAT
         if($db->getValue('id')    == $REX['START_ARTICLE_ID'] &&
-           $db->getValue('clang') == $REX['ADDON']['rexseo_lite']['settings']['homelang'] &&
-           $REX['ADDON']['rexseo_lite']['settings']['homeurl'] == 1)
+           $db->getValue('clang') == $REX['ADDON']['rexseo42']['settings']['homelang'] &&
+           $REX['ADDON']['rexseo42']['settings']['homeurl'] == 1)
         {
           $pathname = '';
         }
-        elseif($REX['ADDON']['rexseo_lite']['settings']['homeurl'] == 2 &&
+        elseif($REX['ADDON']['rexseo42']['settings']['homeurl'] == 2 &&
                $db->getValue('id') == $REX['START_ARTICLE_ID'] &&
                count($REX['CLANG']) > 1)
         {
@@ -701,7 +701,7 @@ function rexseo_compressPathlist($str)
 {
   global $REX;
 
-  switch($REX['ADDON']['rexseo_lite']['settings']['compress_pathlist'])
+  switch($REX['ADDON']['rexseo42']['settings']['compress_pathlist'])
   {
     case 0:
       return $str;
@@ -737,10 +737,10 @@ function rexseo_appendToPath($path, $name, $article_id, $clang)
 
   if ($name != '')
   {
-    if($REX['ADDON']['rexseo_lite']['settings']['urlencode'] == 0)
+    if($REX['ADDON']['rexseo42']['settings']['urlencode'] == 0)
     {
       $name = strtolower(rexseo_parse_article_name($name, $article_id, $clang));
-      $name = str_replace('+',$REX['ADDON']['rexseo_lite']['settings']['url_whitespace_replace'],$name);
+      $name = str_replace('+',$REX['ADDON']['rexseo42']['settings']['url_whitespace_replace'],$name);
     }
     else
     {

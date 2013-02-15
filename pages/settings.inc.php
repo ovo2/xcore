@@ -19,7 +19,7 @@
 $myself  = rex_request('page',            'string');
 $subpage = rex_request('subpage',         'string');
 $func    = rex_request('func',            'string');
-$backup  = $REX['INCLUDE_PATH'].'/backup/addons/rexseo_lite/config.inc.php';
+$backup  = $REX['INCLUDE_PATH'].'/backup/addons/rexseo42/config.inc.php';
 $table   = $REX['TABLE_PREFIX'].'rexseo_redirects';
 
 // SETTINGS PARAMS
@@ -79,16 +79,16 @@ if($REX['ADDON'][$myself]['settings']['first_run'] == 1 && file_exists($backup))
   $db = new rex_sql;
   $db->setQuery('SELECT * FROM `'.$table.'`;');
 
-  if(isset($REX['ADDON']['rexseo_lite']['settings']['301s']) &&
-     count($REX['ADDON']['rexseo_lite']['settings']['301s'])>0 &&
+  if(isset($REX['ADDON']['rexseo42']['settings']['301s']) &&
+     count($REX['ADDON']['rexseo42']['settings']['301s'])>0 &&
      $db->getRows()==0)
   {
     $qry = 'INSERT INTO `'.$table.'` (`id`, `createdate`, `updatedate`, `expiredate`, `creator`, `status`, `from_url`, `to_article_id`, `to_clang`, `http_status`) VALUES';
     $date = time();
     if(!isset($REX['ADDON'][$myself]['settings']['default_redirect_expire']))
       $REX['ADDON'][$myself]['settings']['default_redirect_expire'] = 60;
-    $expire = $date + ($REX['ADDON']['rexseo_lite']['settings']['default_redirect_expire']*24*60*60);
-    foreach($REX['ADDON']['rexseo_lite']['settings']['301s'] as $k=>$v)
+    $expire = $date + ($REX['ADDON']['rexseo42']['settings']['default_redirect_expire']*24*60*60);
+    foreach($REX['ADDON']['rexseo42']['settings']['301s'] as $k=>$v)
     {
       $qry .= PHP_EOL.'(\'\', \''.$date.'\', \''.$date.'\', \''.$expire.'\', \''.$REX['USER']->getValue('login').'\', 1, \''.$k.'\', '.$v['article_id'].', '.$v['clang'].', 301),';
     }
@@ -305,7 +305,7 @@ echo '
   <div class="rex-form">
 
   <form action="index.php" method="post">
-    <input type="hidden" name="page"                   value="rexseo_lite" />
+    <input type="hidden" name="page"                   value="rexseo42" />
     <input type="hidden" name="subpage"                value="" />
     <input type="hidden" name="func"                   value="update" />
     <input type="hidden" name="first_run"              value="0" />
@@ -397,7 +397,7 @@ echo '
 		  <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
               <label for="robots-txt" class="helptopic">Link zur robots.txt</label>
-              <span class="rex-form-read" id="robots-txt"><a href="' . rexseo_lite::getBaseUrl() . 'robots.txt" target="_blank">' . rexseo_lite::getBaseUrl() . 'robots.txt</a></span>
+              <span class="rex-form-read" id="robots-txt"><a href="' . rexseo42::getBaseUrl() . 'robots.txt" target="_blank">' . rexseo42::getBaseUrl() . 'robots.txt</a></span>
             </p>
           </div><!-- /rex-form-row -->
 
@@ -412,7 +412,7 @@ echo '
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
               <label for="xml-sitemap" class="helptopic">Link zur sitemap.xml</label>
-              <span class="rex-form-read" id="xml-sitemap"><a href="' . rexseo_lite::getBaseUrl() . 'sitemap.xml" target="_blank">' . rexseo_lite::getBaseUrl() . 'sitemap.xml</a></span>
+              <span class="rex-form-read" id="xml-sitemap"><a href="' . rexseo42::getBaseUrl() . 'sitemap.xml" target="_blank">' . rexseo42::getBaseUrl() . 'sitemap.xml</a></span>
             </p>
           </div><!-- /rex-form-row -->
 
