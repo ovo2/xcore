@@ -67,40 +67,6 @@ if ($func == 'update')
   //echo rex_info('Pathlist wurden aktuallisiert.');
 }
 
-
-// RESTORE SETTINGS FROM BACKUP FILE
-////////////////////////////////////////////////////////////////////////////////
-if($REX['ADDON'][$myself]['settings']['first_run'] == 1 && file_exists($backup))
-{
-  require_once $backup;
-  echo rex_info('Daten wurden aus Backup ins Formular &uuml;bernommen - bitte Einstellungen speichern!');
-
-  // IMPORT REDIRECTS FROM BACKUP CONFIG TO DB
-  $db = new rex_sql;
-  $db->setQuery('SELECT * FROM `'.$table.'`;');
-
-  if(isset($REX['ADDON']['rexseo42']['settings']['301s']) &&
-     count($REX['ADDON']['rexseo42']['settings']['301s'])>0 &&
-     $db->getRows()==0)
-  {
-    $qry = 'INSERT INTO `'.$table.'` (`id`, `createdate`, `updatedate`, `expiredate`, `creator`, `status`, `from_url`, `to_article_id`, `to_clang`, `http_status`) VALUES';
-    $date = time();
-    if(!isset($REX['ADDON'][$myself]['settings']['default_redirect_expire']))
-      $REX['ADDON'][$myself]['settings']['default_redirect_expire'] = 60;
-    $expire = $date + ($REX['ADDON']['rexseo42']['settings']['default_redirect_expire']*24*60*60);
-    foreach($REX['ADDON']['rexseo42']['settings']['301s'] as $k=>$v)
-    {
-      $qry .= PHP_EOL.'(\'\', \''.$date.'\', \''.$date.'\', \''.$expire.'\', \''.$REX['USER']->getValue('login').'\', 1, \''.$k.'\', '.$v['article_id'].', '.$v['clang'].', 301),';
-    }
-    $qry = rtrim($qry,',').';';
-    if($db->setQuery($qry))
-    {
-      echo rex_info('Weiterleitungen wurden aus Backup in die DB importiert.');
-    }
-  }
-}
-
-
 // SUBDIR CHANGE NOTIFY
 ////////////////////////////////////////////////////////////////////////////////
 if($REX['ADDON'][$myself]['settings']['install_subdir'] != rexseo_subdir())
