@@ -1,8 +1,5 @@
 <?php
 
-$REX["ADDON"]["rexseo42"]["settings"]['drop_dbfields_on_uninstall'] = true; // switch to false to maintain all rexseo42 db fields on uninstall
-$REX["ADDON"]["rexseo42"]["settings"]['params_starter']  = '++';
-
 // --- DYN
 $REX["ADDON"]["rexseo42"]["settings"] = array (
   'first_run' => 0,
@@ -31,4 +28,7 @@ $REX["ADDON"]["rexseo42"]["settings"] = array (
   'one_page_mode' => 0,
 );
 // --- /DYN
+
+$REX["ADDON"]["rexseo42"]["settings"]['params_starter']  = '++';
+$REX["ADDON"]["rexseo42"]["settings"]['drop_dbfields_on_uninstall'] = true; // switch to false to maintain all rexseo42 db fields on uninstall
 
