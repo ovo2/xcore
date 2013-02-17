@@ -6,7 +6,7 @@ rexseo42 - Changelog
 * Changelog eingeführt
 * Entfernt: Restore Config/Settings Backup
 * Einstellungen aus config.inc.php in settings.inc.php verschoben
-* Option in settings.inc.php: bei Deinstallation rexseo42 DB-Felder inkl. Daten erhalten 
+* Option in settings.inc.php: bei Deinstallation DB-Felder inkl. Daten erhalten 
 
 ### Version 1.0.0 - 09. Feburar 2013
 
