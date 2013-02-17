@@ -1,5 +1,6 @@
 <?php
 
+$REX["ADDON"]["rexseo42"]["settings"]['drop_dbfields_on_uninstall'] = true; // switch to false to maintain all rexseo42 db fields on uninstall
 $REX["ADDON"]["rexseo42"]["settings"]['params_starter']  = '++';
 
 // --- DYN
