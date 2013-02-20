@@ -55,7 +55,7 @@ require_once($myroot . '/settings.inc.php');
 // RUN ON ADDONS INLCUDED
 ////////////////////////////////////////////////////////////////////////////////
 if(!$REX['SETUP']){
-  rex_register_extension('ADDONS_INCLUDED','rexseo_init');
+  rex_register_extension('ADDONS_INCLUDED','rexseo_init', '', REX_EXTENSION_EARLY);
 }
 
 if(!function_exists('rexseo_init')){
