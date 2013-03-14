@@ -1,5 +1,5 @@
-REXSEO42 AddOn für REDAXO 4.5
-=============================
+REXSEO42 AddOn für REDAXO 4.5+
+==============================
 
 Ein Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzerführung und noch ein paar kleinen Extras.
 
@@ -17,6 +17,16 @@ Hinweise
 
 * Läuft nur mit REDAXO 4.5+
 * AddOn-Ordner lautet: `rexseo42`
+
+Changelog
+---------
+
+siehe [CHANGELOG.md](CHANGELOG.md)
+
+Lizenz
+------
+
+siehe [LICENSE.md](LICENSE.md)
 
 Credits
 -------
