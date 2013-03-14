@@ -1,4 +1,4 @@
-rexseo42 AddOn für REDAXO 4.5
+REXSEO42 AddOn für REDAXO 4.5
 =============================
 
 Ein Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzerführung und noch ein paar kleinen Extras.

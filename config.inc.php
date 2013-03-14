@@ -27,7 +27,7 @@ $REX['ADDON'][$myself]['VERSION'] = array
 );
 
 $REX['ADDON']['rxid'][$myself]        = '0';
-$REX['ADDON']['name'][$myself]        = 'rexseo42';
+$REX['ADDON']['name'][$myself]        = 'REXSEO42';
 $REX['ADDON']['version'][$myself]     = '1.0.1';
 $REX['ADDON']['author'][$myself]      = 'Markus Staab, Wolfgang Huttegger, Dave Holloway, Jan Kristinus, jdlx, RexDude';
 $REX['ADDON']['supportpage'][$myself] = 'forum.redaxo.de';

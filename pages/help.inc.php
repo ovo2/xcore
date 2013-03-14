@@ -13,7 +13,7 @@ $myroot  = $REX['INCLUDE_PATH'].'/addons/' . $page;
 		<p>Ganz einfach: Weil RexSEO zwar sehr gefällt, aber so wie es ist in manchen Punkten (z.B. Setup) nicht den Vorstellungen vom RexDude entspricht und es ja außerdem völlig legitim ist einen Fork nach seinem eigenem Gusto zu machen.</p>
 
 		<h2>Ich habe eine Seite importiert und jetzt hagelt es Fehlermeldungen im HTML-Quellcode!?</h2>
-		<p>rexseo42 <a href="index.php?page=addon&addonname=rexseo42&install=1">reinstallieren</a> sollte das Problem beheben.</p>
+		<p>REXSEO42 <a href="index.php?page=addon&addonname=rexseo42&install=1">reinstallieren</a> sollte das Problem beheben.</p>
 
 		<h2>Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterverzeichnis installiert habe?</h2>
 		<p>Ja. In der .htaccess im Root-Ordner bei RewriteBase das Unterverzeichnis ergänzen: <code>RewriteBase /UNTERVERZEICHNIS</code> sowie darauf achten, dass "Url dieser Website" ohne das Unterverzechnis angegeben wird.</p>
@@ -45,13 +45,13 @@ $myroot  = $REX['INCLUDE_PATH'].'/addons/' . $page;
 		<h2>Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?</h2>
 		<p>Immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. <code>redaxo://13#anker</code></p>
 
-		<h2>Wo legt rexseo42 die Backups für die .htaccess Dateien an?</h2>
+		<h2>Wo legt REXSEO42 die Backups für die .htaccess Dateien an?</h2>
 		<p>Im Backup-Verzeichnis des AddOns: <code>/rexseo42/backup/</code></p>
 
 		<h2>Ich hab ne Frage die hier net auftaucht. Was tun?</h2>
 		<p>Schau doch mal ins original RexSEO. Da steht noch mehr Stuff... ;)</p>
 
-		<h2>Mir gefällt rexseo42 nicht! Wie krieg ich das wieder raus aus meinem REDAXO?</h2>
+		<h2>Mir gefällt REXSEO42 nicht! Wie krieg ich das wieder raus aus meinem REDAXO?</h2>
 		<p>Kein Problem ;) Einfach das Setup von hinten nach vorne durchlaufen und das AddOn <a href="index.php?page=addon&addonname=rexseo42&uninstall=1">deinstallieren</a>.</p>
 
 		<h2>Wie lautet die Antwort auf die Frage aller Fragen nach dem Leben, dem Universum und dem ganzen Rest?</h2>

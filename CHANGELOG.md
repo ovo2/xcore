@@ -1,4 +1,4 @@
-rexseo42 - Changelog
+REXSEO42 - Changelog
 ====================
 
 ### Version 1.0.1 - 17. Feburar 2013
