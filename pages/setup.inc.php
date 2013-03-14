@@ -126,12 +126,12 @@ if ($func == "do_copy") {
 		<p class="info-msg">Bitte die folgenden <a href="index.php?page=specials">System</a> Einstellungen vornehmen bzw. ergänzen:
 		<form action="index.php" method="post" id="settings-form">
 			<p class="rex-form-col-a first-textfield">
-				<label for="servername">Name dieser Website</label>
+				<label for="servername">Name der Website</label>
 				<input name="servername" id="servername" type="text" class="rex-form-text" value="<?php echo htmlspecialchars($REX['SERVERNAME']); ?>" />
 			</p>
 
 			<p class="rex-form-col-a">
-				<label for="server">URL dieser Website</label>
+				<label for="server">Domain der Website</label>
 				<input name="server" id="server" type="text" class="rex-form-text" value="<?php echo htmlspecialchars($REX['SERVER']); ?>" />
 			</p>
 
