@@ -18,30 +18,27 @@
 ////////////////////////////////////////////////////////////////////////////////
 $myself            = 'rexseo42';
 $myroot            = $REX['INCLUDE_PATH'].'/addons/'.$myself;
-
-$minimum_REX       = '4.5.0';
-$minimum_PHP       = 5;
-$disable_addons    = array('url_rewrite');
-
 $error             = array();
 
 // CHECK REDAXO VERSION
 ////////////////////////////////////////////////////////////////////////////////
-if(version_compare($REX['VERSION'].'.'.$REX['SUBVERSION'].'.'.$REX['MINORVERSION'], $minimum_REX, '<'))
+if(version_compare($REX['VERSION'].'.'.$REX['SUBVERSION'].'.'.$REX['MINORVERSION'], '4.4.1', '<='))
 {
-  $error[] = 'Dieses Addon ben&ouml;tigt Redaxo Version '.$minimum_REX.' oder h&ouml;her.';
+  $error[] = 'Dieses Addon ben&ouml;tigt Redaxo Version 4.5.0 oder h&ouml;her.';
 }
 
 
 // CHECK PHP VERSION
 ////////////////////////////////////////////////////////////////////////////////
-if(version_compare(PHP_VERSION, $minimum_PHP, '<'))
+if(version_compare(PHP_VERSION, 5, '<'))
 {
   $error[] = 'Dieses Addon ben&ouml;tigt mind. PHP '.$minimum_PHP.'!';
 }
 
 // CHECK ADDONS TO DISABLE
 ////////////////////////////////////////////////////////////////////////////////
+$disable_addons = array('url_rewrite');
+
 foreach($disable_addons as $a)
 {
   if (OOAddon::isInstalled($a) || OOAddon::isAvailable($a))
