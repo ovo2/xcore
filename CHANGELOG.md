@@ -12,7 +12,7 @@ REXSEO42 - Changelog
 
 Erstes Release mit folgenden Änderungen/Features gegenüber dem original RexSEO:
 
-* Läuft nur mit REDAXO 4.5
+* Läuft nur mit REDAXO 4.5+
 * Entfernt: Selten gebrauchte Features aus der Benutzeroberfläche
 * Entfernt: Hilfe-Icons
 * Entfernt: Textile Abhängigkeit 
@@ -34,5 +34,7 @@ Erstes Release mit folgenden Änderungen/Features gegenüber dem original RexSEO
 * Klasse `rexseo_meta` durch statische Klasse `rexseo42` ersetzt
 * sitemap.xml sowie robots.txt erhalten die Headeranweisung "X-Robots-tag: noindex"
 * Links zur robots.txt und sitemap.xml in der Einstellungen-Seite
-* .htaccess-Datei enthält Rewrite-Regel für suchamschinenfreundliche Image-Manager-URLs 
+* .htaccess-Datei enthält Rewrite-Regel für suchmaschinenfreundliche Image-Manager-URLs 
+* PHP Notices entfernt, Strict-Kompatibel
+* REX['GENERATED_PATH'] aus REDAXO 4.5 wird genutzt
 * FAQ mit der Antwort auf die Fragen aller Fragen ;)
