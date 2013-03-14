@@ -37,7 +37,7 @@ if(version_compare(PHP_VERSION, 5, '<'))
 
 // CHECK ADDONS TO DISABLE
 ////////////////////////////////////////////////////////////////////////////////
-$disable_addons = array('url_rewrite');
+$disable_addons = array('url_rewrite', 'yrewrite', 'rexseo');
 
 foreach($disable_addons as $a)
 {
