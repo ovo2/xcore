@@ -301,7 +301,7 @@ class RexseoRewrite
     global $REXSEO_IDS;
 
 	$base = $_SERVER['HTTPS'] && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://';
-	$base .= $_SERVER['HTTP_HOST'] . '/' . $REX['ADDON']['rexseo']['settings']['install_subdir'];
+	$base .= $_SERVER['HTTP_HOST'] . '/' . $REX['ADDON']['rexseo42']['settings']['install_subdir'];
 
     $status   = isset($redirect['status']) ? $redirect['status'] : 200;
     $location = $base.$REXSEO_IDS[$redirect['id']][$redirect['clang']]['url'];
@@ -522,7 +522,7 @@ function rexseo_generate_pathlist($params)
 	$db->setQuery('SELECT `id`, `clang`, `path`, `startpage`,`seo_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE '. $where.' AND revision=0 OR revision IS NULL');
 
     // HARDCODED PATH: REDIRECT INDEX.PHP TO START-ARTICLE
-    $REXSEO_URLS['index.php']  = array('id'  => $REX['START_ARTICLE_ID'], 'clang' => $REX['ADDON']['rexseo']['settings']['homelang'], 'status' => 301);
+    $REXSEO_URLS['index.php']  = array('id'  => $REX['START_ARTICLE_ID'], 'clang' => $REX['ADDON']['rexseo42']['settings']['homelang'], 'status' => 301);
 
     while($db->hasNext())
     {
