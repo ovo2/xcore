@@ -682,7 +682,9 @@ function rexseo_compressPathlist($str)
 {
   global $REX;
 
-  switch($REX['ADDON']['rexseo42']['settings']['compress_pathlist'])
+  $compressMode = 1;
+
+  switch($compressMode)
   {
     case 0:
       return $str;
