@@ -118,7 +118,7 @@ class rexseo42 {
 	static function getCountryCode() {
 		global $REX;
 
-		return $REX['CUR_CLANG'][$REX['CUR_CLANG']];
+		return $REX['CLANG'][$REX['CUR_CLANG']];
 	}
 	
 	static function getBaseUrl() {
