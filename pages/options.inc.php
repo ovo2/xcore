@@ -35,16 +35,16 @@ if ($func == 'update') {
 	';
 
 	if (rex_replace_dynamic_contents($config_file, str_replace("\t", "", $content)) !== false) {
-		echo rex_info('Einstellungen wurde aktualisiert!');
+		echo rex_info($I18N->msg('rexseo42_config_ok'));
 	} else {
-		echo rex_warning('Einstellungen konnte nicht gespeichert werden!');
+		echo rex_warning($I18N->msg('rexseo42_config_error'));
 	}
 
 	rexseo_generate_pathlist('');
 }
 
 if (!is_writable($config_file)) {
-	echo rex_warning('Konfigurationsdatei "{0}" ist nicht beschreibbar!', $config_file);
+	echo rex_warning($I18N->msg('rexseo42_config_file_no_perms'), $config_file);
 }
 
 // SUBDIR CHANGE NOTIFY

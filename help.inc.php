@@ -1,2 +1,2 @@
-Ein Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzerführung und noch ein paar kleinen Extras.
+<?php echo $I18N->msg('rexseo42_help_message'); ?>
 <br />

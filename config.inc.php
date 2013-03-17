@@ -10,13 +10,6 @@ $REX['ADDON']['supportpage'][$myself] = 'forum.redaxo.de';
 $REX['ADDON']['perm'][$myself] = $myself . '[]';
 $REX['PERM'][] = $myself . '[]';
 
-// subpages
-$REX['ADDON'][$myself]['SUBPAGES'] = array(
-	array('', 'Einstellungen'),
-	array('setup', 'Setup'),
-	array('help', 'Hilfe')
-);
-
 // includes
 require_once($myroot . '/functions/function.rexseo_helpers.inc.php');
 require_once($myroot . '/classes/class.rexseo42.inc.php');
@@ -53,16 +46,28 @@ function rexseo_init($params) {
 
 // seo page
 if ($REX['REDAXO']) {
+	// add lang file
+	$I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/rexseo42/lang/');
+
+	// subpages
+	$REX['ADDON'][$myself]['SUBPAGES'] = array(
+		array('', $I18N->msg('rexseo42_settings')),
+		array('setup', $I18N->msg('rexseo42_setup')),
+		array('help', $I18N->msg('rexseo42_help'))
+	);
+
 	// add new menu item
 	if (!$REX['ADDON']['rexseo42']['settings']['one_page_mode'] || ($REX['ADDON']['rexseo42']['settings']['one_page_mode'] && $REX['ARTICLE_ID'] == $REX['START_ARTICLE_ID'])) {
 		rex_register_extension('PAGE_CONTENT_MENU', function ($params) {
+			global $I18N;
+			
 			$class = "";
 
 			if ($params['mode']  == 'seo') {
 				$class = 'class="rex-active"';
 			}
 
-			$seoLink = '<a '.$class.' href="index.php?page=content&amp;article_id=' . $params['article_id'] . '&amp;mode=seo&amp;clang=' . $params['clang'] . '&amp;ctype=' . rex_request('ctype') . '">SEO</a>';
+			$seoLink = '<a '.$class.' href="index.php?page=content&amp;article_id=' . $params['article_id'] . '&amp;mode=seo&amp;clang=' . $params['clang'] . '&amp;ctype=' . rex_request('ctype') . '">' . $I18N->msg('rexseo42_seopage_linktext') . '</a>';
 			array_splice($params['subject'], '-2', '-2', $seoLink);
 
 			return $params['subject'];

@@ -5,7 +5,7 @@ $error = array();
 
 // check redaxo version
 if (version_compare($REX['VERSION'] . '.' . $REX['SUBVERSION'] . '.' . $REX['MINORVERSION'], '4.4.1', '<=')) {
-  $error[] = 'Dieses Addon ben&ouml;tigt Redaxo Version 4.5.0 oder h&ouml;her.';
+  $error[] = $I18N->msg('rexseo42_install_rex_version');
 }
 
 // check for concurrent addons
@@ -13,7 +13,7 @@ $disable_addons = array('url_rewrite', 'yrewrite', 'rexseo');
 
 foreach ($disable_addons as $a) {
   if (OOAddon::isInstalled($a) || OOAddon::isAvailable($a)) {
-    $error[] = 'Addon "'.$a.'" muß erst deinstalliert werden.  <span style="float:right;">[ <a href="index.php?page=addon&addonname='.$a.'&uninstall=1">'.$a.' de-installieren</a> ]</span>';
+    $error[] = $I18N->msg('rexseo42_install_concurrent') . ' ' . $a;
   }
 }
 
