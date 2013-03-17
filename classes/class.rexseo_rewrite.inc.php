@@ -300,7 +300,7 @@ class RexseoRewrite
   {
     global $REXSEO_IDS;
 
-	$base = $_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://';
+	$base = $_SERVER['HTTPS'] && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://';
 	$base .= $_SERVER['HTTP_HOST'] . '/' . $REX['ADDON']['rexseo']['settings']['install_subdir'];
 
     $status   = isset($redirect['status']) ? $redirect['status'] : 200;

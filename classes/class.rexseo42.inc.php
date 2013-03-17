@@ -140,4 +140,16 @@ class rexseo42 {
 
 		return '<img src="/files/' . $file . '" width="' . $media->getWidth() . '" height="' . $media->getHeight() . '" alt="' . $media->getTitle() . '" />';
 	}
+
+	static function getHtmlTags($indent = "\t") {
+		$out = '<base href="' . self::getBaseUrl() . '" />';
+		$out .= PHP_EOL . $indent . '<title>' . self::getTitle() . '</title>';
+		$out .= PHP_EOL . $indent . '<meta name="description" content="' . self::getDescription() . '" />';
+		$out .= PHP_EOL . $indent . '<meta name="keywords" content="' . self::getKeywords() . '" />';
+		$out .= PHP_EOL . $indent . '<meta name="robots" content="' . self::getRobotRules() . '" />';
+		$out .= PHP_EOL . $indent . '<link rel="canonical" href="' . self::getCanonicalUrl() . '" />';
+		$out .= PHP_EOL;
+
+		return $out;
+	}
 }
