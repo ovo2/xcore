@@ -1,7 +1,7 @@
 rexseo42_help_message = Ein Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzerführung und noch ein paar kleinen Extras.
 rexseo42_settings = Einstellungen
 rexseo42_setup = Setup
-rexseo42_help = hilfe
+rexseo42_help = Hilfe
 rexseo42_seopage_linktext = SEO
 rexseo42_install_rex_version = Dieses AddOn benötigt REDAXO Version 4.5.0 oder höher.
 rexseo42_install_concurrent = Bitte folgendes AddOn zuvor deinstallieren:
