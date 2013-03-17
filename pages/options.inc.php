@@ -5,8 +5,7 @@ $func    = rex_request('func', 'string');
 
 $config_file = $REX['INCLUDE_PATH'] . '/addons/rexseo42/settings.inc.php';
 
-// UPDATE/SAVE SETTINGS
-////////////////////////////////////////////////////////////////////////////////
+// save settings
 if ($func == 'update') {
 	$_install_subdir = trim(rex_request('install_subdir', 'string'));
 	$_url_schema = trim(rex_request('url_schema', 'string'));
@@ -47,8 +46,7 @@ if (!is_writable($config_file)) {
 	echo rex_warning($I18N->msg('rexseo42_config_file_no_perms'), $config_file);
 }
 
-// SUBDIR CHANGE NOTIFY
-////////////////////////////////////////////////////////////////////////////////
+// subdir chanage notify
 if($REX['ADDON'][$myself]['settings']['install_subdir'] != rexseo_subdir())
 {
   echo rex_warning('ACHTUNG: Das aktuelle Installationsverzeichnis von Redaxo scheint sich ge&auml;ndert zu haben.<br />
@@ -57,8 +55,7 @@ if($REX['ADDON'][$myself]['settings']['install_subdir'] != rexseo_subdir())
 }
 
 
-// TOGGLE REDIRECT
-////////////////////////////////////////////////////////////////////////////////
+// toggle redirect
 if(rex_request('func','string')=='toggle_redirect' && intval(rex_request('id','int'))>0)
 {
   $db = new rex_sql;
@@ -67,8 +64,7 @@ if(rex_request('func','string')=='toggle_redirect' && intval(rex_request('id','i
 }
 
 
-// DELETE REDIRECT
-////////////////////////////////////////////////////////////////////////////////
+// delete redirect
 if(rex_request('func','string')=='delete_redirect' && intval(rex_request('id','int'))>0)
 {
   $db = new rex_sql;
@@ -77,8 +73,7 @@ if(rex_request('func','string')=='delete_redirect' && intval(rex_request('id','i
 }
 
 
-// URL_SCHEMA SELECT BOX
-////////////////////////////////////////////////////////////////////////////////
+// url schema select box
 $url_schema_select = new rex_select();
 $url_schema_select->setSize(1);
 $url_schema_select->setName('url_schema');
@@ -87,8 +82,7 @@ $url_schema_select->addOption('url_rewrite','url_rewrite');
 $url_schema_select->setAttribute('style','width:250px');
 $url_schema_select->setSelected($REX['ADDON'][$myself]['settings']['url_schema']);
 
-// URL_ENDING SELECT BOX
-////////////////////////////////////////////////////////////////////////////////
+// url ending select box
 $url_ending_select = new rex_select();
 $url_ending_select->setSize(1);
 $url_ending_select->setName('url_ending');
@@ -98,9 +92,7 @@ $url_ending_select->addOption('(ohne)','');
 $url_ending_select->setAttribute('style','width:70px;margin-left:20px;');
 $url_ending_select->setSelected($REX['ADDON'][$myself]['settings']['url_ending']);
 
-
-// HOMEURL SELECT BOX
-////////////////////////////////////////////////////////////////////////////////
+// home url select box
 $ooa = OOArticle::getArticleById($REX['START_ARTICLE_ID']);
 if($ooa)
 {
@@ -121,9 +113,7 @@ $homeurl_select->addOption($REX['SERVER'].'lang-slug/',2);
 $homeurl_select->setAttribute('style','width:250px;');
 $homeurl_select->setSelected($REX['ADDON'][$myself]['settings']['homeurl']);
 
-
-// LANGSLUG SELECT BOX
-////////////////////////////////////////////////////////////////////////////////
+// lang slug select box
 if(count($REX['CLANG']) > 1)
 {
   $hide_langslug_select = new rex_select();
@@ -148,9 +138,7 @@ else
   $hide_langslug_select = '';
 }
 
-
-// HOMELANG SELECT BOX
-////////////////////////////////////////////////////////////////////////////////
+// home lang select box
 if(count($REX['CLANG']) > 1)
 {
   $homelang_select = new rex_select();
@@ -174,8 +162,7 @@ else
   $homelang_box = '';
 }
 
-// FORM
-////////////////////////////////////////////////////////////////////////////////
+// form
 echo '
 
 <div class="rex-addon-output">
