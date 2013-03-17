@@ -16,7 +16,6 @@ $CAST = array (
       'homeurl'                    => 'int',
       'homelang'                   => 'int',
       'allow_articleid'            => 'int',
-      'expert_settings'            => 'int',
       'rewrite_params'             => 'int',
       'hide_langslug'              => 'int',
       'urlencode'                  => 'int',
@@ -203,20 +202,6 @@ $urlencode_select->addOption('Zeichenersetzung per lang Datei',0);
 $urlencode_select->addOption('Kodierung per urlencode',1);
 $urlencode_select->setSelected($REX['ADDON'][$myself]['settings']['urlencode']);
 
-
-// EXPERT SETTINGS CHECKBOX OPTIONS
-////////////////////////////////////////////////////////////////////////////////
-if($REX['ADDON'][$myself]['settings']['expert_settings'] == 1)
-{
-  $expert_display = '';
-  $expert_checked = 'checked="checked"';
-}
-else
-{
-   $expert_display = '';
-   $expert_checked = 'checked="checked"';
-}
-
 // ONE PAGE MODE CHECKBOX
 ////////////////////////////////////////////////////////////////////////////////
 if($REX['ADDON'][$myself]['settings']['one_page_mode'] == 1)
@@ -244,7 +229,7 @@ echo '
 ';
 
 echo '
-    <div id="expert_block" style="'.$expert_display.'margin:0;padding:0;">
+    <div id="expert_block" style="margin:0;padding:0;">
 
       <fieldset class="rex-form-col-1">
         <legend>URL Rewrite Optionen</legend>
@@ -332,10 +317,6 @@ echo '
         <div class="rex-form-wrapper">
 
           <div class="rex-form-row rex-form-element-v2">
-            <p style="display: none;" class="rex-form-checkbox">
-              <label for="expert_settings" style="width:145px !important;">Erweiterte Einstellungen</label>
-              <input type="checkbox" '.$expert_checked.' value="1" id="expert_settings" name="expert_settings">
-            </p>
 
 			<!--<p class="rex-form-checkbox"style="display:inline !important;">
               <label for="onepage_settings" style="width:145px !important;">One Page Mode</label>

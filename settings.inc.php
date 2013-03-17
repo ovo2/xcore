@@ -8,7 +8,6 @@ $REX["ADDON"]["rexseo42"]["settings"] = array (
   'homeurl' => 1,
   'allow_articleid' => 0,
   'robots' => '',
-  'expert_settings' => 1,
   'def_desc' => 
   array (
   ),
