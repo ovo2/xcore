@@ -1,14 +1,14 @@
 <?php
 $myself = 'rexseo42';
-$myroot = $REX['INCLUDE_PATH'].'/addons/'.$myself;
+$myroot = $REX['INCLUDE_PATH'] . '/addons/' . $myself;
 
 $REX['ADDON']['rxid'][$myself] = '0';
 $REX['ADDON']['name'][$myself] = 'REXSEO42';
 $REX['ADDON']['version'][$myself] = '1.0.1';
 $REX['ADDON']['author'][$myself] = 'Markus Staab, Wolfgang Huttegger, Dave Holloway, Jan Kristinus, jdlx, RexDude';
 $REX['ADDON']['supportpage'][$myself] = 'forum.redaxo.de';
-$REX['ADDON']['perm'][$myself] = $myself.'[]';
-$REX['PERM'][] = $myself.'[]';
+$REX['ADDON']['perm'][$myself] = $myself . '[]';
+$REX['PERM'][] = $myself . '[]';
 
 // subpages
 $REX['ADDON'][$myself]['SUBPAGES'] = array(
@@ -44,7 +44,7 @@ function rexseo_init($params) {
 	}
 
 	// controller
-	include $REX['INCLUDE_PATH'].'/addons/rexseo42/controller.inc.php';
+	include $REX['INCLUDE_PATH'] . '/addons/rexseo42/controller.inc.php';
 
 	// rexseo post init
 	rex_register_extension_point('REXSEO_POST_INIT');
