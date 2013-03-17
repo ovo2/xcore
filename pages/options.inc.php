@@ -227,7 +227,7 @@ echo '
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
               <label for="robots" class="helptopic">Zusätzliche Einträge</label>
-              <textarea id="rexseo_robots" name="robots" rows="3">'.stripslashes($REX['ADDON'][$myself]['settings']['robots']).'</textarea>
+              <textarea id="rexseo_robots" name="robots" rows="2">'.stripslashes($REX['ADDON'][$myself]['settings']['robots']).'</textarea>
             </p>
           </div><!-- /rex-form-row -->
 
