@@ -141,7 +141,7 @@ class rexseo42 {
 		return '<img src="/files/' . $file . '" width="' . $media->getWidth() . '" height="' . $media->getHeight() . '" alt="' . $media->getTitle() . '" />';
 	}
 
-	static function getHtmlTags($indent = "\t") {
+	static function getHtml($indent = "\t") {
 		$out = '<base href="' . self::getBaseUrl() . '" />';
 		$out .= PHP_EOL . $indent . '<title>' . self::getTitle() . '</title>';
 		$out .= PHP_EOL . $indent . '<meta name="description" content="' . self::getDescription() . '" />';
