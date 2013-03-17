@@ -11,7 +11,6 @@ $REX['ADDON']['perm'][$myself] = $myself.'[]';
 $REX['PERM'][] = $myself.'[]';
 
 // extras
-$REX['ADDON'][$myself]['settings']['default_redirect_expire'] = 60;
 $REX['PROTOCOL'] = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://';
 
 // subpages
