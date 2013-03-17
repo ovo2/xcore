@@ -254,7 +254,6 @@ echo '
     <input type="hidden" name="subpage"                value="" />
     <input type="hidden" name="func"                   value="update" />
     <input type="hidden" name="install_subdir"         value="'.rexseo_subdir().'" />
-    <input type="hidden" name="url_whitespace_replace" value="-" />
     <input type="hidden" name="compress_pathlist"      value="1" />
 ';
 

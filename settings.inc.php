@@ -3,7 +3,6 @@
 // --- DYN
 $REX["ADDON"]["rexseo42"]["settings"] = array (
   'install_subdir' => '',
-  'url_whitespace_replace' => '-',
   'compress_pathlist' => 1,
   'title_schema' => '%B - %S',
   'url_schema' => 'rexseo',
@@ -27,6 +26,7 @@ $REX["ADDON"]["rexseo42"]["settings"] = array (
 );
 // --- /DYN
 
+$REX["ADDON"]["rexseo42"]["settings"]['url_whitespace_replace']  = '-';
 $REX["ADDON"]["rexseo42"]["settings"]['params_starter']  = '++';
 $REX["ADDON"]["rexseo42"]["settings"]['drop_dbfields_on_uninstall'] = true; // switch to false to maintain all rexseo42 db fields on uninstall
 
