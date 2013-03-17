@@ -10,9 +10,6 @@ $REX['ADDON']['supportpage'][$myself] = 'forum.redaxo.de';
 $REX['ADDON']['perm'][$myself] = $myself.'[]';
 $REX['PERM'][] = $myself.'[]';
 
-// extras
-$REX['PROTOCOL'] = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://';
-
 // subpages
 $REX['ADDON'][$myself]['SUBPAGES'] = array(
 	array('', 'Einstellungen'),
