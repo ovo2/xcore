@@ -1,40 +1,53 @@
 <?php
-$myself  = rex_request('page',            'string');
-$subpage = rex_request('subpage',         'string');
-$func    = rex_request('func',            'string');
+$myself  = rex_request('page', 'string');
+$subpage = rex_request('subpage', 'string');
+$func    = rex_request('func', 'string');
+
 $backup  = $REX['INCLUDE_PATH'].'/backup/addons/rexseo42/config.inc.php';
 $table   = $REX['TABLE_PREFIX'].'rexseo_redirects';
 
-$CAST = array (
-      'page'                       => 'unset',
-      'subpage'                    => 'unset',
-      'func'                       => 'unset',
-      'submit'                     => 'unset',
-      'sendit'                     => 'unset',
-      'homeurl'                    => 'int',
-      'homelang'                   => 'int',
-      'hide_langslug'              => 'int',
-      );
-
+$config_file = $REX['INCLUDE_PATH'] . '/addons/rexseo42/settings.inc.php';
 
 // UPDATE/SAVE SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
-if ($func == 'update')
-{
-  // GET ADDON SETTINGS FROM REQUEST
-  $myCONF = rexseo_batch_cast($_POST,$CAST);
+if ($func == 'update') {
+	$_install_subdir = trim(rex_request('install_subdir', 'string'));
+	$_url_schema = trim(rex_request('url_schema', 'string'));
+	$_url_ending = trim(rex_request('url_ending', 'string'));
+	$_hide_langslug = trim(rex_request('hide_langslug', 'int'));
+	$_homeurl = trim(rex_request('homeurl', 'int'));
+	$_homelang = trim(rex_request('homelang', 'int'));
+	$_robots = trim(rex_request('robots', 'string'));
 
-  // UPDATE REX
-  $REX['ADDON'][$myself]['settings'] = $myCONF;
+	$REX['ADDON']['rexseo42']['settings']['install_subdir'] = $_install_subdir;
+	$REX['ADDON']['rexseo42']['settings']['url_schema'] = $_url_schema;
+	$REX['ADDON']['rexseo42']['settings']['url_ending'] = $_url_ending;
+	$REX['ADDON']['rexseo42']['settings']['hide_langslug'] = $_hide_langslug;
+	$REX['ADDON']['rexseo42']['settings']['homeurl'] = $_homeurl;
+	$REX['ADDON']['rexseo42']['settings']['homelang'] = $_homelang;
+	$REX['ADDON']['rexseo42']['settings']['robots'] = $_robots;
 
-  // SAVE ADDON SETTINGS
-  $DYN    = '$REX[\'ADDON\'][\''.$myself.'\'][\'settings\'] = '.stripslashes(var_export($myCONF,true)).';';
-  $config = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/settings.inc.php';
-  rex_replace_dynamic_contents($config, $DYN);
-  //rex_replace_dynamic_contents($backup, $DYN); // RexDude
-  echo rex_info('Einstellungen wurden gespeichert.');
-  rexseo_generate_pathlist('');
-  //echo rex_info('Pathlist wurden aktuallisiert.');
+	$content = '
+		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'install_subdir\'] = "' . $_install_subdir . '";
+		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'url_schema\'] = "' . $_url_schema . '";
+		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'url_ending\'] = "' . $_url_ending . '";
+		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'hide_langslug\'] = ' . $_hide_langslug . ';
+		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'homeurl\'] = ' . $_homeurl . ';
+		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'homelang\'] = ' . $_homelang . ';
+		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'robots\'] = "' . $_robots . '";
+	';
+
+	if (rex_replace_dynamic_contents($config_file, str_replace("\t", "", $content)) !== false) {
+		echo rex_info('Einstellungen wurde aktualisiert!');
+	} else {
+		echo rex_warning('Einstellungen konnte nicht gespeichert werden!');
+	}
+
+	rexseo_generate_pathlist('');
+}
+
+if (!is_writable($config_file)) {
+	echo rex_warning('Konfigurationsdatei "{0}" ist nicht beschreibbar!', $config_file);
 }
 
 // SUBDIR CHANGE NOTIFY
