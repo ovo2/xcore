@@ -49,7 +49,7 @@ if (!is_writable($config_file)) {
 // subdir chanage notify
 if($REX['ADDON'][$myself]['settings']['install_subdir'] != rexseo_subdir())
 {
-  echo rex_warning('ACHTUNG: Das aktuelle Installationsverzeichnis von Redaxo scheint sich ge&auml;ndert zu haben.<br />
+  echo rex_info('ACHTUNG: Das aktuelle Installationsverzeichnis von Redaxo scheint sich ge&auml;ndert zu haben.<br />
                    Zum aktualisieren einmal die RexSEO settings speichern.<br />
                    Evtl. notwendige <a href="index.php?page=seo&subpage=help&chapter=&func=alert_setup&highlight='.urlencode('Installation in Unterverzeichnissen:').'">Anpassung der RewriteBase</a> in der .htaccess beachten!');
 }
