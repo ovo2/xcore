@@ -15,7 +15,6 @@ $CAST = array (
       'homelang'                   => 'int',
       'allow_articleid'            => 'int',
       'hide_langslug'              => 'int',
-      'urlencode'                  => 'int',
 	  'one_page_mode'              => 'int',
       );
 
@@ -177,15 +176,6 @@ $allow_articleid_select->addOption('Zulässig, 301 Weiterleitung auf korrekte UR
 //$allow_articleid_select->addOption('Zulässig ohne Weiterleitung'                ,2);
 $allow_articleid_select->setSelected($REX['ADDON'][$myself]['settings']['allow_articleid']);
 
-// URL ENCODE SELECT BOX
-////////////////////////////////////////////////////////////////////////////////
-$urlencode_select = new rex_select();
-$urlencode_select->setSize(1);
-$urlencode_select->setName('urlencode');
-$urlencode_select->addOption('Zeichenersetzung per lang Datei',0);
-$urlencode_select->addOption('Kodierung per urlencode',1);
-$urlencode_select->setSelected($REX['ADDON'][$myself]['settings']['urlencode']);
-
 // ONE PAGE MODE CHECKBOX
 ////////////////////////////////////////////////////////////////////////////////
 if($REX['ADDON'][$myself]['settings']['one_page_mode'] == 1)
@@ -240,13 +230,6 @@ echo '
                 '.$homelang_box.'
             </p>
           </div><!-- /rex-form-row -->
-
-          <!--<div class="rex-form-row">
-            <p class="rex-form-col-a rex-form-select">
-              <label for="urlencode" class="helptopic">URL-Encoding</label>
-                '.$urlencode_select->get().'
-            </p>
-          </div>--><!-- /rex-form-row -->
 
 		  <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
