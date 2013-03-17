@@ -20,7 +20,6 @@ $CAST = array (
       'expert_settings'            => 'int',
       'rewrite_params'             => 'int',
       'hide_langslug'              => 'int',
-      'compress_pathlist'          => 'int',
       'urlencode'                  => 'int',
 	  'one_page_mode'              => 'int',
       );
@@ -254,7 +253,6 @@ echo '
     <input type="hidden" name="subpage"                value="" />
     <input type="hidden" name="func"                   value="update" />
     <input type="hidden" name="install_subdir"         value="'.rexseo_subdir().'" />
-    <input type="hidden" name="compress_pathlist"      value="1" />
 ';
 
 echo '
