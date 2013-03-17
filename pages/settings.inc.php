@@ -15,7 +15,6 @@ $CAST = array (
       'homelang'                   => 'int',
       'allow_articleid'            => 'int',
       'hide_langslug'              => 'int',
-	  'one_page_mode'              => 'int',
       );
 
 
@@ -176,18 +175,6 @@ $allow_articleid_select->addOption('Zulässig, 301 Weiterleitung auf korrekte UR
 //$allow_articleid_select->addOption('Zulässig ohne Weiterleitung'                ,2);
 $allow_articleid_select->setSelected($REX['ADDON'][$myself]['settings']['allow_articleid']);
 
-// ONE PAGE MODE CHECKBOX
-////////////////////////////////////////////////////////////////////////////////
-if($REX['ADDON'][$myself]['settings']['one_page_mode'] == 1)
-{
-  $onepagemode_checked = 'checked="checked"';
-}
-else
-{
-  $onepagemode_checked = '';
-}
-
-
 // FORM
 ////////////////////////////////////////////////////////////////////////////////
 echo '
@@ -284,11 +271,6 @@ echo '
         <div class="rex-form-wrapper">
 
           <div class="rex-form-row rex-form-element-v2">
-
-			<!--<p class="rex-form-checkbox"style="display:inline !important;">
-              <label for="onepage_settings" style="width:145px !important;">One Page Mode</label>
-              <input type="checkbox" '.$onepagemode_checked.' value="1" id="one_page_mode" name="one_page_mode">
-            </p>-->
 
             <p class="rex-form-submit">
               <input style="margin-top: 5px; margin-bottom: 5px;" class="rex-form-submit" type="submit" id="sendit" name="sendit" value="Einstellungen speichern" />
