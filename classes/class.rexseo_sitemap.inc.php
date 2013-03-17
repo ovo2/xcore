@@ -170,7 +170,7 @@ class rexseo_sitemap
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'.PHP_EOL;
 		global $REX;
 
-		if (isset($REX["ADDON"]["rexseo"]["settings"]["one_page_mode"]) && $REX["ADDON"]["rexseo"]["settings"]["one_page_mode"]) { // RexDude
+		if ($REX['ADDON']['rexseo42']['settings']['one_page_mode']) {
 			$art = $this->db_articles[$REX['START_ARTICLE_ID']][0];
 
 			if ($art['noindex'] != true) {

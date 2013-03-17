@@ -54,26 +54,38 @@ function rexseo_init($params) {
 // seo page
 if ($REX['REDAXO']) {
 	// add new menu item
-	rex_register_extension('PAGE_CONTENT_MENU', function ($params) {
-		$class = "";
+	if (!$REX['ADDON']['rexseo42']['settings']['one_page_mode'] || ($REX['ADDON']['rexseo42']['settings']['one_page_mode'] && $REX['ARTICLE_ID'] == $REX['START_ARTICLE_ID'])) {
+		rex_register_extension('PAGE_CONTENT_MENU', function ($params) {
+			$class = "";
 
-		if ($params['mode']  == 'seo') {
-			$class = 'class="rex-active"';
-		}
+			if ($params['mode']  == 'seo') {
+				$class = 'class="rex-active"';
+			}
 
-		$seoLink = '<a '.$class.' href="index.php?page=content&amp;article_id=' . $params['article_id'] . '&amp;mode=seo&amp;clang=' . $params['clang'] . '&amp;ctype=' . rex_request('ctype') . '">SEO</a>';
-		array_splice($params['subject'], '-2', '-2', $seoLink);
+			$seoLink = '<a '.$class.' href="index.php?page=content&amp;article_id=' . $params['article_id'] . '&amp;mode=seo&amp;clang=' . $params['clang'] . '&amp;ctype=' . rex_request('ctype') . '">SEO</a>';
+			array_splice($params['subject'], '-2', '-2', $seoLink);
 
-		return $params['subject'];
-	});
+			return $params['subject'];
+		});
 
-	// include seo page
-	rex_register_extension('PAGE_CONTENT_OUTPUT', function ($params) {
-		global $REX, $I18N;
+		// include seo page
+		rex_register_extension('PAGE_CONTENT_OUTPUT', function ($params) {
+			global $REX, $I18N;
 
-		if ($params['mode']  == 'seo') {
-			include($REX['INCLUDE_PATH'] . '/addons/rexseo42/pages/seopage.inc.php');
-		}
-	});
+			if ($params['mode']  == 'seo') {
+				include($REX['INCLUDE_PATH'] . '/addons/rexseo42/pages/seopage.inc.php');
+			}
+		});
+	}
+
+	// for one page mode link to frontend is always "../"
+	if ($REX['ADDON']['rexseo42']['settings']['one_page_mode'] && $REX['ARTICLE_ID'] != $REX['START_ARTICLE_ID']) {
+		rex_register_extension('PAGE_CONTENT_MENU', function ($params) {
+			$lastElement = count($params['subject']) - 1;
+			$params['subject'][$lastElement] = preg_replace("/(?<=href=(\"|'))[^\"']+(?=(\"|'))/", '../', $params['subject'][$lastElement]);
+
+			return $params['subject'];
+		});
+	}
 }
 
