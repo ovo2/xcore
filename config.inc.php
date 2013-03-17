@@ -2,13 +2,6 @@
 $myself = 'rexseo42';
 $myroot = $REX['INCLUDE_PATH'].'/addons/'.$myself;
 
-$REX['ADDON'][$myself]['VERSION'] = array
-(
-'VERSION'      => 1,
-'MINORVERSION' => 5,
-'SUBVERSION'   => 0,
-);
-
 $REX['ADDON']['rxid'][$myself]        = '0';
 $REX['ADDON']['name'][$myself]        = 'REXSEO42';
 $REX['ADDON']['version'][$myself]     = '1.0.1';
