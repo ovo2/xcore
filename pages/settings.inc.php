@@ -25,13 +25,13 @@ if ($func == 'update') {
 	$REX['ADDON']['rexseo42']['settings']['robots'] = $_robots;
 
 	$content = '
-		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'install_subdir\'] = "' . $_install_subdir . '";
-		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'url_schema\'] = "' . $_url_schema . '";
-		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'url_ending\'] = "' . $_url_ending . '";
+		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'install_subdir\'] = \'' . $_install_subdir . '\';
+		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'url_schema\'] = \'' . $_url_schema . '\';
+		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'url_ending\'] = \'' . $_url_ending . '\';
 		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'hide_langslug\'] = ' . $_hide_langslug . ';
 		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'homeurl\'] = ' . $_homeurl . ';
 		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'homelang\'] = ' . $_homelang . ';
-		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'robots\'] = "' . $_robots . '";
+		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'robots\'] = \'' . $_robots . '\';
 	';
 
 	if (rex_replace_dynamic_contents($config_file, str_replace("\t", "", $content)) !== false) {
