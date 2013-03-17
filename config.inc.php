@@ -40,7 +40,7 @@ function rexseo_init($params) {
 	include $REX['INCLUDE_PATH'] . '/addons/rexseo42/controller.inc.php';
 
 	// rexseo post init
-	rex_register_extension_point('REXSEO_POST_INIT');
+	rex_register_extension_point('REXSEO_INCLUDED');
 }
 
 

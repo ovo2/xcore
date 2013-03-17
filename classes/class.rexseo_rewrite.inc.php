@@ -25,7 +25,7 @@ class RexseoRewrite
   /**
   * LOGERROR()
   */
-  private function logError($err_txt=false,$err_type=false,$trace=false)
+  public function logError($err_txt=false,$err_type=false,$trace=false)
   {
     global $REX;
 
@@ -274,7 +274,7 @@ class RexseoRewrite
   * redirect request
   * @param $redirect   (array) params passed through from EP
   */
-  private function redirect($redirect)
+  protected function redirect($redirect)
   {
     global $REXSEO_IDS;
 
@@ -297,7 +297,7 @@ class RexseoRewrite
   * @param $art_id   article id
   * @param $clang_id language id
   */
-  private function setArticleId($art_id, $clang_id = -1)
+  protected function setArticleId($art_id, $clang_id = -1)
   {
     global $REX;
     $REX['ARTICLE_ID'] = $art_id;
@@ -313,7 +313,7 @@ class RexseoRewrite
   * Create params string for url
   * @param $EPparams   (array) urlencoded params from rex_getUrl/URL_REWRITE
   */
-  private function makeUrlParams($EPparams)
+  protected function makeUrlParams($EPparams)
   {
     global $REX;
     $divider        = $EPparams['divider'];
@@ -346,7 +346,7 @@ class RexseoRewrite
   * @param $vars   (array) resolved URL Parameters
   * @param $decode (bool)  urldecode vars yes/no
   */
-  private function populateGlobals($vars,$decode=true)
+  protected function populateGlobals($vars,$decode=true)
   {
     if(is_array($vars))
     {
@@ -757,21 +757,19 @@ function rexseo_parse_article_name($name, $article_id, $clang)
   {
     global $REX, $I18N;
 
-    // Im Frontend gibts kein I18N
     if(!$I18N)
       $I18N = rex_create_lang($REX['LANG']);
 
-    // Sprachspezifische Sonderzeichen Filtern
     $translation = array(
       'search'  => explode('|', $I18N->msg('special_chars')),
       'replace' => explode('|', $I18N->msg('special_chars_rewrite')),
       );
 
+    // EXTENSION POINT
+    $translation = rex_register_extension_point('REXSEO_SPECIAL_CHARS',$translation,array('article_id'=>$article_id,'clang'=>$clang));
+
     $firstCall = false;
   }
-
-  // EXTENSION POINT
-  $translation = rex_register_extension_point('REXSEO_SPECIAL_CHARS',$translation,array('article_id'=>$article_id,'clang'=>$clang));
 
   // SANITIZE LAST CHARACTER
   $name = rtrim($name,'-');
