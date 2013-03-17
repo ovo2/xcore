@@ -720,15 +720,15 @@ function rexseo_appendToPath($path, $name, $article_id, $clang)
 
   if ($name != '')
   {
-    if($REX['ADDON']['rexseo42']['settings']['urlencode'] == 0)
-    {
-      $name = strtolower(rexseo_parse_article_name($name, $article_id, $clang));
-      $name = str_replace('+',$REX['ADDON']['rexseo42']['settings']['url_whitespace_replace'],$name);
-    }
-    else
+    if ($REX['ADDON']['rexseo42']['settings']['urlencode'])
     {
       $name = str_replace('/','-',$name);
       $name = rawurlencode($name);
+    }
+    else
+    {
+      $name = strtolower(rexseo_parse_article_name($name, $article_id, $clang));
+      $name = str_replace('+',$REX['ADDON']['rexseo42']['settings']['url_whitespace_replace'],$name);
     }
 
     // SANITIZE LAST CHARACTER
