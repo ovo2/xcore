@@ -28,7 +28,7 @@ if ($func == 'update')
   $REX['ADDON'][$myself]['settings'] = $myCONF;
 
   // SAVE ADDON SETTINGS
-  $DYN    = '$REX["ADDON"]["'.$myself.'"]["settings"] = '.stripslashes(var_export($myCONF,true)).';';
+  $DYN    = '$REX[\'ADDON\'][\''.$myself.'\'][\'settings\'] = '.stripslashes(var_export($myCONF,true)).';';
   $config = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/settings.inc.php';
   rex_replace_dynamic_contents($config, $DYN);
   //rex_replace_dynamic_contents($backup, $DYN); // RexDude
