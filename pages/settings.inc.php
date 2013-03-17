@@ -3,9 +3,6 @@ $myself  = rex_request('page', 'string');
 $subpage = rex_request('subpage', 'string');
 $func    = rex_request('func', 'string');
 
-$backup  = $REX['INCLUDE_PATH'].'/backup/addons/rexseo42/config.inc.php';
-$table   = $REX['TABLE_PREFIX'].'rexseo_redirects';
-
 $config_file = $REX['INCLUDE_PATH'] . '/addons/rexseo42/settings.inc.php';
 
 // UPDATE/SAVE SETTINGS
@@ -65,7 +62,7 @@ if($REX['ADDON'][$myself]['settings']['install_subdir'] != rexseo_subdir())
 if(rex_request('func','string')=='toggle_redirect' && intval(rex_request('id','int'))>0)
 {
   $db = new rex_sql;
-  $db->setQuery('UPDATE `'.$table.'` SET `status` = IF(status=1, 0, 1) WHERE `id`='.rex_request('id','int').';');
+  $db->setQuery('UPDATE `'.$REX['TABLE_PREFIX'].'rexseo_redirects'.'` SET `status` = IF(status=1, 0, 1) WHERE `id`='.rex_request('id','int').';');
   rexseo_htaccess_update_redirects();
 }
 
@@ -75,7 +72,7 @@ if(rex_request('func','string')=='toggle_redirect' && intval(rex_request('id','i
 if(rex_request('func','string')=='delete_redirect' && intval(rex_request('id','int'))>0)
 {
   $db = new rex_sql;
-  $db->setQuery('DELETE FROM `'.$table.'` WHERE `id`='.rex_request('id','int').';');
+  $db->setQuery('DELETE FROM `'.$REX['TABLE_PREFIX'].'rexseo_redirects'.'` WHERE `id`='.rex_request('id','int').';');
   rexseo_htaccess_update_redirects();
 }
 
