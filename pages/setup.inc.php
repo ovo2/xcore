@@ -8,9 +8,7 @@ $myroot  = $REX['INCLUDE_PATH'].'/addons/' . $page;
 if ($func == "do_copy") {
 	// first backup files
 	$htaccessRoot = $REX['FRONTEND_PATH'] . '/.htaccess';
-	$htaccessRedaxo = $REX['FRONTEND_PATH'] . '/redaxo/.htaccess';
 	$backupPathRoot = $REX['INCLUDE_PATH'] . '/addons/rexseo42/backup/';
-	$backupPathRedaxo = $REX['INCLUDE_PATH'] . '/addons/rexseo42/backup/redaxo/';
 	$htaccessBackupFile = '_htaccess_' . date('Ymd_His');
 	$doCopy = true;
 	$fileExists = false;
@@ -26,25 +24,14 @@ if ($func == "do_copy") {
 		} 
 	}
 
-	if (file_exists($htaccessRedaxo)) {
-		$fileExists = true;
-
-		if (copy($htaccessRedaxo, $backupPathRedaxo . $htaccessBackupFile)) {
-			$doCopy = true;
-		} else {
-			rex_warning('Datei "' . $htaccessRedaxo . '" konnte nicht gesichert werden!');
-			$doCopy = false;
-		} 
-	}
-
 	// then copy if backup was successful
 	if ($doCopy) {
 		$source = $REX['INCLUDE_PATH'] . '/addons/rexseo42/install/';
 		$target = $REX['HTDOCS_PATH'];
 		$result = rexseo_recursive_copy($source, $target);
 
-		if ($result[1]['copystate'] == 1 && $result[2]['copystate'] == 1) {
-			$msg = 'Kopieren der Dateien erfolgreich.';
+		if ($result[1]['copystate'] == 1) {
+			$msg = 'Kopieren der Datei erfolgreich.';
 	
 			if ($fileExists) {
 				$msg .= ' Ein Backup wurde zuvor angelegt.';
@@ -52,10 +39,10 @@ if ($func == "do_copy") {
 
 			echo rex_info($msg);
 		} else {
-			echo rex_warning('Beim Kopieren der .htaccess Dateien ist ein Fehler aufgetreten. Bitte kopieren Sie die Dateien manuell.');	
+			echo rex_warning('Beim Kopieren der .htaccess Datei ist ein Fehler aufgetreten. Bitte kopieren Sie die Datei manuell.');	
 		}
 	} else {
-		echo rex_warning('Backup der .htaccess Dateien fehlgeschlagen. Bitte kopieren Sie die Dateien manuell.');
+		echo rex_warning('Backup der .htaccess Datei fehlgeschlagen. Bitte kopieren Sie die Datei manuell.');
 	}
 } elseif ($func == "apply_settings") {
 	$server = str_replace("\\'", "'", rex_post('server', 'string'));
@@ -101,12 +88,11 @@ if ($func == "do_copy") {
 ?>
 
 <div class="rex-addon-output">
-	<h2 class="rex-hl2">Schritt 1: Dateien kopieren</h2>
+	<h2 class="rex-hl2">Schritt 1: Datei kopieren</h2>
 	<div class="rex-area-content">
-		<p>Diese .htaccess Dateien müssen in die entsprechenden Verzeichnisse kopiert werden:</p>
+		<p>Diese .htaccess Datei muss in das Hauptverzeichnis von REDAXO kopiert werden:</p>
 		<ul class="no-bottom-margin">
-			<li><code>/rexseo42/install/.htaccess</code> nach <code>/.htaccess</code></li>
-			<li><code>/rexseo42/install/redaxo/.htaccess</code> nach <code>/redaxo/.htaccess</code></li>
+			<li><code>/redaxo/include/addons/rexseo42/install/.htaccess</code> nach <code>/.htaccess</code></li>
 		</ul>
 
 		<form action="index.php" method="get">
