@@ -258,21 +258,6 @@ echo '
 echo '
     <div id="expert_block" style="'.$expert_display.'margin:0;padding:0;">
 
-      <fieldset class="rex-form-col-1" style="display: none;">
-        <legend>Page Title</legend>
-        <div class="rex-form-wrapper">
-
-          <div class="rex-form-row">
-            <p class="rex-form-col-a rex-form-text">
-              <label for="title_schema" class="helptopic">Title Elemente</label>
-              <input id="title_schema" class="rex-form-text" type="text" name="title_schema" value="'.stripslashes($REX['ADDON'][$myself]['settings']['title_schema']).'" /><br />
-              <em style="color:gray;font-size:10px;">%B = breadcrumb | %N = article name | %C = category name | %S = server/host</em>
-            </p>
-          </div><!-- /rex-form-row -->
-
-        </div><!-- /rex-form-wrapper -->
-      </fieldset>
-
       <fieldset class="rex-form-col-1">
         <legend>URL Rewrite Optionen</legend>
         <div class="rex-form-wrapper">

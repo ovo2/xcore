@@ -3,7 +3,6 @@
 // --- DYN
 $REX["ADDON"]["rexseo42"]["settings"] = array (
   'install_subdir' => '',
-  'title_schema' => '%B - %S',
   'url_schema' => 'rexseo',
   'url_ending' => '.html',
   'homeurl' => 1,
