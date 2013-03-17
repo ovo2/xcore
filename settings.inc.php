@@ -10,10 +10,10 @@ $REX['ADDON']['rexseo42']['settings']['homelang'] = 0;
 $REX['ADDON']['rexseo42']['settings']['robots'] = '';
 // --- /DYN
 
-// special expert settings
+// expert settings
 $REX['ADDON']['rexseo42']['settings']['one_page_mode'] = 0;
 $REX['ADDON']['rexseo42']['settings']['urlencode'] = 0;
-$REX['ADDON']['rexseo42']['settings']['allow_articleid'] = 0;
+$REX['ADDON']['rexseo42']['settings']['allow_articleid'] = 0; // 0 = don't allow article_id urls | 1 = allow and 301 redirect to rewritten url | 2 = just allow (not recommended!)
 $REX['ADDON']['rexseo42']['settings']['compress_pathlist'] = 1;
 $REX['ADDON']['rexseo42']['settings']['url_whitespace_replace']  = '-';
 $REX['ADDON']['rexseo42']['settings']['drop_dbfields_on_uninstall'] = 1;
