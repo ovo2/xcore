@@ -233,12 +233,6 @@ class RexseoRewrite
 	  }
 
       $notfound = true;
-
-      if($REX['ADDON']['rexseo42']['debug_log']==1)
-      {
-        $trace = debug_backtrace();
-        self::logError('article (id='.$id.'/clang='.$clang.') does not exist',E_USER_WARNING,$trace);
-      }
     }
 
     // SUBDIR
