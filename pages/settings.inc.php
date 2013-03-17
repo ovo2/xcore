@@ -1,29 +1,10 @@
 <?php
-/**
- * RexSEO - URLRewriter Addon
- *
- * @link https://github.com/gn2netwerk/rexseo
- *
- * @author dh[at]gn2-netwerk[dot]de Dave Holloway
- * @author code[at]rexdev[dot]de jdlx
- *
- * Based on url_rewrite Addon by
- * @author markus.staab[at]redaxo[dot]de Markus Staab
- *
- * @package redaxo 4.3.x/4.4.x
- * @version 1.5.0
- */
-
-// MAIN PARAMS
-////////////////////////////////////////////////////////////////////////////////
 $myself  = rex_request('page',            'string');
 $subpage = rex_request('subpage',         'string');
 $func    = rex_request('func',            'string');
 $backup  = $REX['INCLUDE_PATH'].'/backup/addons/rexseo42/config.inc.php';
 $table   = $REX['TABLE_PREFIX'].'rexseo_redirects';
 
-// SETTINGS PARAMS
-////////////////////////////////////////////////////////////////////////////////
 $CAST = array (
       'page'                       => 'unset',
       'subpage'                    => 'unset',
@@ -417,5 +398,5 @@ echo '
 ';
 
 unset($levenshtein_select,$allow_articleid_select,$homeurl_select,$url_ending_select,$url_schema_select);
-?>
+
 

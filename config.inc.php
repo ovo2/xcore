@@ -1,21 +1,4 @@
 <?php
-/**
- * RexSEO - URLRewriter Addon
- *
- * @link https://github.com/gn2netwerk/rexseo
- *
- * @author dh[at]gn2-netwerk[dot]de Dave Holloway
- * @author code[at]rexdev[dot]de jdlx
- *
- * Based on url_rewrite Addon by
- * @author markus.staab[at]redaxo[dot]de Markus Staab
- *
- * @package redaxo 4.3.x/4.4.x
- * @version 1.5.0
- */
-
-// ADDON PARAMS
-////////////////////////////////////////////////////////////////////////////////
 $myself = 'rexseo42';
 $myroot = $REX['INCLUDE_PATH'].'/addons/'.$myself;
 
@@ -42,18 +25,12 @@ $REX['ADDON'][$myself]['debug_log']   = 0;
 $REX['ADDON'][$myself]['settings']['default_redirect_expire'] = 60;
 $REX['PROTOCOL'] = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://';
 
-
-// INCLUDES
-////////////////////////////////////////////////////////////////////////////////
+// includes
 require_once($myroot . '/functions/function.rexseo_helpers.inc.php');
 require_once($myroot . '/classes/class.rexseo42.inc.php');
-
-// USER SETTINGS
-////////////////////////////////////////////////////////////////////////////////
 require_once($myroot . '/settings.inc.php');
 
-// RUN ON ADDONS INLCUDED
-////////////////////////////////////////////////////////////////////////////////
+// init
 if(!$REX['SETUP']){
   rex_register_extension('ADDONS_INCLUDED','rexseo_init', '', REX_EXTENSION_EARLY);
 }
@@ -65,7 +42,7 @@ if(!function_exists('rexseo_init')){
 
     if ($REX['MOD_REWRITE'] !== false)
     {
-      // REWRITE
+      // rewrite
       $levenshtein    = (bool) $REX['ADDON']['rexseo42']['settings']['levenshtein'];
       $rewrite_params = (bool) $REX['ADDON']['rexseo42']['settings']['rewrite_params'];
 
@@ -77,18 +54,16 @@ if(!function_exists('rexseo_init')){
       rex_register_extension('URL_REWRITE', array ($rewriter, 'rewrite'));
     }
 
-    // CONTROLLER
+    // controller
     include $REX['INCLUDE_PATH'].'/addons/rexseo42/controller.inc.php';
 
-    // REXSEO POST INIT
+    // rexseo post init
     rex_register_extension_point('REXSEO_POST_INIT');
 
   }
 }
 
-// SEOPAGE
-////////////////////////////////////////////////////////////////////////////////
-
+// seo page
 if ($REX['REDAXO']) {
 	// add new menu item
 	rex_register_extension('PAGE_CONTENT_MENU', function ($params) {
@@ -114,4 +89,3 @@ if ($REX['REDAXO']) {
 	});
 }
 
-?>

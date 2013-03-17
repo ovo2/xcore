@@ -1,19 +1,6 @@
 <?php
-/**
- * RexSEO - URLRewriter Addon
- *
- * @link https://github.com/gn2netwerk/rexseo
- *
- * @author dh[at]gn2-netwerk[dot]de Dave Holloway
- * @author code[at]rexdev[dot]de jdlx
- *
- * Based on url_rewrite Addon by
- * @author markus.staab[at]redaxo[dot]de Markus Staab
- *
- * @package redaxo 4.3.x/4.4.x
- * @version 1.5.0
- */
 
+// use new rex var introduced in REDAXO 4.5
 if (isset($REX['GENERATED_PATH'])) {
 	define('REXSEO_PATHLIST', $REX['GENERATED_PATH'] . '/files/rexseo_pathlist.php');
 } else {

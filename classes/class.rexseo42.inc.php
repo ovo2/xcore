@@ -1,5 +1,4 @@
 <?php
-
 class rexseo42 {
 	static $titleDelimiter = "|";
 	static $robotsArchiveFlag = "noarchive";
