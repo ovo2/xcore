@@ -1,6 +1,6 @@
 <?php
 $myself        = rex_request('page', 'string');
-$subpage       = rex_request('subpage', 'string')!='' ? rex_request('subpage', 'string'): 'settings';
+$subpage       = rex_request('subpage', 'string')!='' ? rex_request('subpage', 'string'): 'options';
 $chapter       = rex_request('chapter', 'string');
 $func          = rex_request('func', 'string');
 $section_id    = rex_request('section_id', 'string');
@@ -21,8 +21,8 @@ rex_title($REX['ADDON']['name'][$myself] . ' <span class="version">' . $REX['ADD
 // subpages
 switch($subpage){
 	case'':
-		$subpage = 'settings';
-	case'settings':
+		$subpage = 'options';
+	case'options':
 	case'setup':
 	case'help':
 		$local_path = '/addons/'.$myself.'/pages/';
