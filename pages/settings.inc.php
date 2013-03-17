@@ -14,7 +14,6 @@ $CAST = array (
       'homeurl'                    => 'int',
       'homelang'                   => 'int',
       'allow_articleid'            => 'int',
-      'rewrite_params'             => 'int',
       'hide_langslug'              => 'int',
       'urlencode'                  => 'int',
 	  'one_page_mode'              => 'int',
@@ -178,24 +177,11 @@ $allow_articleid_select->addOption('Zulässig, 301 Weiterleitung auf korrekte UR
 //$allow_articleid_select->addOption('Zulässig ohne Weiterleitung'                ,2);
 $allow_articleid_select->setSelected($REX['ADDON'][$myself]['settings']['allow_articleid']);
 
-// PARAMS REWRITE SELECT BOX
-////////////////////////////////////////////////////////////////////////////////
-/*$params_rewrite_select = new rex_select();
-$params_rewrite_select->setSize(1);
-$params_rewrite_select->setName('rewrite_params');
-$params_rewrite_select->setAttribute('style','width:250px;');
-$params_rewrite_select->setAttribute('id','rewrite_params');
-$params_rewrite_select->addOption('Aus : ?param1=wert1&param2=wert2',0);
-$params_rewrite_select->addOption('Ein : '.$REX['ADDON'][$myself]['settings']['params_starter'].'/param1/wert1/param2/wert2',1);
-$params_rewrite_select->setSelected($REX['ADDON'][$myself]['settings']['rewrite_params']);*/
-
-
 // URL ENCODE SELECT BOX
 ////////////////////////////////////////////////////////////////////////////////
 $urlencode_select = new rex_select();
 $urlencode_select->setSize(1);
 $urlencode_select->setName('urlencode');
-$urlencode_select->setAttribute('id','rewrite_params');
 $urlencode_select->addOption('Zeichenersetzung per lang Datei',0);
 $urlencode_select->addOption('Kodierung per urlencode',1);
 $urlencode_select->setSelected($REX['ADDON'][$myself]['settings']['urlencode']);
