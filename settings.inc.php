@@ -7,7 +7,6 @@ $REX["ADDON"]["rexseo42"]["settings"] = array (
   'url_ending' => '.html',
   'homeurl' => 1,
   'allow_articleid' => 0,
-  'levenshtein' => 0,
   'robots' => '',
   'expert_settings' => 1,
   'def_desc' => 
@@ -24,8 +23,8 @@ $REX["ADDON"]["rexseo42"]["settings"] = array (
 );
 // --- /DYN
 
-
-$REX["ADDON"]["rexseo42"]["settings"]['compress_pathlist'] = '1';
+$REX["ADDON"]["rexseo42"]["settings"]['levenshtein'] = 0; // 0 = Strikte URL-Übereinstimmung, sonst Fehlerseite (404) | 1 = Artikel mit ähnlichster URL anzeigen
+$REX["ADDON"]["rexseo42"]["settings"]['compress_pathlist'] = 1;
 $REX["ADDON"]["rexseo42"]["settings"]['url_whitespace_replace']  = '-';
 $REX["ADDON"]["rexseo42"]["settings"]['params_starter']  = '++';
 $REX["ADDON"]["rexseo42"]["settings"]['drop_dbfields_on_uninstall'] = true; // switch to false to maintain all rexseo42 db fields on uninstall

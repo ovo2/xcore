@@ -16,7 +16,6 @@ $CAST = array (
       'homeurl'                    => 'int',
       'homelang'                   => 'int',
       'allow_articleid'            => 'int',
-      'levenshtein'                => 'int',
       'expert_settings'            => 'int',
       'rewrite_params'             => 'int',
       'hide_langslug'              => 'int',
@@ -182,17 +181,6 @@ $allow_articleid_select->addOption('Zulässig, 301 Weiterleitung auf korrekte UR
 //$allow_articleid_select->addOption('Zulässig ohne Weiterleitung'                ,2);
 $allow_articleid_select->setSelected($REX['ADDON'][$myself]['settings']['allow_articleid']);
 
-
-// LEVENSHTEIN SELECT BOX
-////////////////////////////////////////////////////////////////////////////////
-$levenshtein_select = new rex_select();
-$levenshtein_select->setSize(1);
-$levenshtein_select->setName('levenshtein');
-$levenshtein_select->addOption('Strikte URL-Übereinstimmung, sonst Fehlerseite (404)',0);
-$levenshtein_select->addOption('Artikel mit ähnlichster URL anzeigen',1);
-$levenshtein_select->setSelected($REX['ADDON'][$myself]['settings']['levenshtein']);
-
-
 // PARAMS REWRITE SELECT BOX
 ////////////////////////////////////////////////////////////////////////////////
 /*$params_rewrite_select = new rex_select();
@@ -298,13 +286,6 @@ echo '
                 </p>
           </div>
 
-		  <div class="rex-form-row" style="display:none;">
-            <p class="rex-form-col-a rex-form-select">
-              <label for="levenshtein" class="helptopic">Genauigkeit</label>
-                '.$levenshtein_select->get().'
-            </p>
-          </div>
-
         </div><!-- /rex-form-wrapper -->
       </fieldset>
 
@@ -375,6 +356,6 @@ echo '
 
 ';
 
-unset($levenshtein_select,$allow_articleid_select,$homeurl_select,$url_ending_select,$url_schema_select);
+unset($allow_articleid_select,$homeurl_select,$url_ending_select,$url_schema_select);
 
 
