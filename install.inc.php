@@ -8,11 +8,6 @@ if (version_compare($REX['VERSION'] . '.' . $REX['SUBVERSION'] . '.' . $REX['MIN
   $error[] = 'Dieses Addon ben&ouml;tigt Redaxo Version 4.5.0 oder h&ouml;her.';
 }
 
-// check php version
-if (version_compare(PHP_VERSION, 5, '<')) {
-  $error[] = 'Dieses Addon ben&ouml;tigt mind. PHP '.$minimum_PHP.'!';
-}
-
 // check for concurrent addons
 $disable_addons = array('url_rewrite', 'yrewrite', 'rexseo');
 
