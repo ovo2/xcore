@@ -18,7 +18,6 @@ $CAST = array (
       'allow_articleid'            => 'int',
       'levenshtein'                => 'int',
       'expert_settings'            => 'int',
-      'alert_setup'                => 'int',
       'rewrite_params'             => 'int',
       'hide_langslug'              => 'int',
       'compress_pathlist'          => 'int',
@@ -254,7 +253,6 @@ echo '
     <input type="hidden" name="page"                   value="rexseo42" />
     <input type="hidden" name="subpage"                value="" />
     <input type="hidden" name="func"                   value="update" />
-    <input type="hidden" name="alert_setup"            value="'.$REX['ADDON'][$myself]['settings']['alert_setup'].'" />
     <input type="hidden" name="install_subdir"         value="'.rexseo_subdir().'" />
     <input type="hidden" name="url_whitespace_replace" value="-" />
     <input type="hidden" name="compress_pathlist"      value="1" />

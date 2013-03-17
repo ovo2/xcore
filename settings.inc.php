@@ -2,7 +2,6 @@
 
 // --- DYN
 $REX["ADDON"]["rexseo42"]["settings"] = array (
-  'alert_setup' => 0,
   'install_subdir' => '',
   'url_whitespace_replace' => '-',
   'compress_pathlist' => 1,
