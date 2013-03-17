@@ -5,15 +5,15 @@ $REX["ADDON"]["rexseo42"]["settings"] = array (
   'install_subdir' => '',
   'url_schema' => 'rexseo',
   'url_ending' => '.html',
-  'homeurl' => 1,
-  'allow_articleid' => 0,
-  'robots' => '',
-  'homelang' => 0,
   'hide_langslug' => 0,
+  'homeurl' => 1,
+  'homelang' => 0,
+  'robots' => '',
 );
 // --- /DYN
 
 $REX["ADDON"]["rexseo42"]["settings"]['urlencode'] = 0;
+$REX['ADDON']["rexseo42"]['settings']['allow_articleid'] = 0;
 $REX["ADDON"]["rexseo42"]["settings"]['one_page_mode'] = 0;
 $REX["ADDON"]["rexseo42"]["settings"]['compress_pathlist'] = 1;
 $REX["ADDON"]["rexseo42"]["settings"]['url_whitespace_replace']  = '-';

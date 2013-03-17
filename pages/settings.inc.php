@@ -13,7 +13,6 @@ $CAST = array (
       'sendit'                     => 'unset',
       'homeurl'                    => 'int',
       'homelang'                   => 'int',
-      'allow_articleid'            => 'int',
       'hide_langslug'              => 'int',
       );
 
@@ -165,16 +164,6 @@ else
   $homelang_box = '';
 }
 
-// ARTICLE_ID SELECT BOX
-////////////////////////////////////////////////////////////////////////////////
-$allow_articleid_select = new rex_select();
-$allow_articleid_select->setSize(1);
-$allow_articleid_select->setName('allow_articleid');
-$allow_articleid_select->addOption('Nicht zulässig, nur rewrite URLs',0);
-$allow_articleid_select->addOption('Zulässig, 301 Weiterleitung auf korrekte URL (ohne Parameter)',1);
-//$allow_articleid_select->addOption('Zulässig ohne Weiterleitung'                ,2);
-$allow_articleid_select->setSelected($REX['ADDON'][$myself]['settings']['allow_articleid']);
-
 // FORM
 ////////////////////////////////////////////////////////////////////////////////
 echo '
@@ -217,13 +206,6 @@ echo '
                 '.$homelang_box.'
             </p>
           </div><!-- /rex-form-row -->
-
-		  <div class="rex-form-row">
-            <p class="rex-form-col-a rex-form-select">
-              <label for="allow_articleid" class="helptopic">Aufruf via article_id</label>
-                '.$allow_articleid_select->get().'
-                </p>
-          </div>
 
         </div><!-- /rex-form-wrapper -->
       </fieldset>
@@ -286,6 +268,6 @@ echo '
 
 ';
 
-unset($allow_articleid_select,$homeurl_select,$url_ending_select,$url_schema_select);
+unset($homeurl_select,$url_ending_select,$url_schema_select);
 
 
