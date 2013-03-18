@@ -258,21 +258,6 @@ jQuery(document).ready(function() {
 	updateKeywordsCount();
 	updateCustomUrlPreview();
 
-	jQuery('#seo-form').submit(function() {
-		var customUrl = jQuery('#custom-url').val();
-
-		if (customUrl === '') {
-			return true;
-		} else {
-			if (customUrl.substring(0, 1) === '/') {
-				return true;
-			} else {
-				alert('Die benutzerdefinierte URL muss mit "/" beginnen.');
-				return false;
-			}
-		}
-	});
-
 	<?php if ($dataUpdated) { ?>jQuery('.rex-navi-content li:last-child a').attr('href', '../<?php echo rex_getUrl(); ?>');<?php } ?>
 });
 
@@ -310,18 +295,23 @@ function updateDescriptionCount() {
 }
 
 function updateCustomUrlPreview() {
-	var base = '<?php echo rtrim(rexseo42::getBaseUrl(), "/"); ?>';
-	var autoUrl = '/' + '<?php echo rex_getUrl($REX["ARTICLE_ID"], $REX["CUR_CLANG"]); ?>';
+	var base = '<?php echo rexseo42::getBaseUrl(); ?>';
+	var autoUrl = '<?php echo rex_getUrl($REX["ARTICLE_ID"], $REX["CUR_CLANG"]); ?>';
 	var customUrl = jQuery('#custom-url').val();
 	var curUrl = '';
 
 	if (customUrl !== '') {
-		curUrl = base + customUrl;
+		curUrl = base + ltrim(customUrl, '/');
 	} else {
-		curUrl = base + autoUrl;
+		curUrl = base + ltrim(autoUrl, '/');
 	}
 
 	jQuery('#custom-url-preview').html(curUrl);
+}
+
+function ltrim(str, chr) {
+  var rgxtrim = (!chr) ? new RegExp('^\\s+') : new RegExp('^'+chr+'+');
+  return str.replace(rgxtrim, '');
 }
 
 function updateKeywordsCount() {
