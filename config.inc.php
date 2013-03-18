@@ -62,8 +62,8 @@ if ($REX['REDAXO']) {
 		array('help', $I18N->msg('rexseo42_help'))
 	);
 
-	// add new menu item
 	if (!$REX['ADDON']['rexseo42']['settings']['one_page_mode'] || ($REX['ADDON']['rexseo42']['settings']['one_page_mode'] && $REX['ARTICLE_ID'] == $REX['START_ARTICLE_ID'])) {
+		// add new menu item
 		rex_register_extension('PAGE_CONTENT_MENU', function ($params) {
 			global $I18N;
 			

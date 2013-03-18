@@ -1,10 +1,11 @@
 <?php
 class rexseo42 {
-	private static $curArticle;
-	private static $startArticleID;
-	private static $titleDelimeter;
-	private static $robotsFollowFlag;
-	private static $robotsArchiveFlag;
+	protected static $curArticle;
+	protected static $startArticleID;
+	protected static $titleDelimeter;
+	protected static $robotsFollowFlag;
+	protected static $robotsArchiveFlag;
+	protected static $serverProtocol;
 
 	public static function init() {
 		global $REX;
@@ -14,6 +15,7 @@ class rexseo42 {
 		self::$titleDelimeter = $REX['ADDON']['rexseo42']['settings']['title_delimeter'];
 		self::$robotsFollowFlag = $REX['ADDON']['rexseo42']['settings']['robots_follow_flag'];
 		self::$robotsArchiveFlag = $REX['ADDON']['rexseo42']['settings']['robots_archive_flag'];
+		self::$serverProtocol = $REX['ADDON']['rexseo42']['settings']['server_protocol'];
 	}
 
 	public static function getBaseUrl() {
@@ -106,14 +108,6 @@ class rexseo42 {
 		
 		return $REX['SERVERNAME'];
 	}
-
-	public static function isStartPage() {
-		if (self::$curArticle->getId() == self::$startArticleID) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 	
 	public static function getLangCode($clangID = -1) {
 		global $REX;
@@ -129,10 +123,6 @@ class rexseo42 {
 		}
 	}
 
-	public static function sanitizeUrl($url) {
-		return preg_replace('@^https?://|/.*|[^\w.-]@', '', $url);
-	}
-
 	public static function getServer() {
 		global $REX;
 
@@ -142,6 +132,18 @@ class rexseo42 {
 	public static function getServerUrl() {
 		global $REX;
 
-		return $REX['ADDON']['rexseo42']['settings']['server_protocol'] . self::getServer() . '/';
+		return self::$serverProtocol . self::getServer() . '/';
+	}
+
+	public static function isStartPage() {
+		if (self::$curArticle->getId() == self::$startArticleID) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static function sanitizeUrl($url) {
+		return preg_replace('@^https?://|/.*|[^\w.-]@', '', $url);
 	}
 }

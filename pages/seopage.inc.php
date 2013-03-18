@@ -21,7 +21,7 @@ if (rex_post('saveseo', 'boolean')) {
 	$keywords = strtolower(rexseo_sanitizeString($keywords)); // also keywords should be all lowercase
 
 	$new_url = str_replace("\\\\", '/', rex_post('seo_url')); // replace backslash with forward slash
-	$new_url = ltrim($new_url, '/'); // remvoe first slash if there is any
+	$new_url = ltrim($new_url, '/'); // remove first slash if there is any
 
 	// seo fields
 	$sql->setValue('seo_title', $title);
@@ -158,7 +158,6 @@ echo '
 ?>
 
 <style type="text/css">
-  
 #seo-page  #title-preview {
     display: block;
     overflow: hidden;
