@@ -13,7 +13,7 @@ $REX['PERM'][] = $myself . '[]';
 // includes
 require_once($myroot . '/functions/function.rexseo_helpers.inc.php');
 require_once($myroot . '/classes/class.rexseo42.inc.php');
-require_once($myroot . '/settings.inc.php');
+require_once($myroot . '/settings.dyn.inc.php');
 require_once($myroot . '/settings.expert.inc.php');
 require_once($myroot . '/settings.langcodes.inc.php');
 

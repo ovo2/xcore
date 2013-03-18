@@ -3,7 +3,7 @@ $myself  = rex_request('page', 'string');
 $subpage = rex_request('subpage', 'string');
 $func    = rex_request('func', 'string');
 
-$config_file = $REX['INCLUDE_PATH'] . '/addons/rexseo42/settings.inc.php';
+$config_file = $REX['INCLUDE_PATH'] . '/addons/rexseo42/settings.dyn.inc.php';
 
 // save settings
 if ($func == 'update') {
