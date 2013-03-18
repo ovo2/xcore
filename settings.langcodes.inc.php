@@ -1,6 +1,6 @@
 <?php
 
-// purpose: used for determine the lang slugs of the url, like /de/foo.html
+// purpose: used to determine the lang slugs of the url, like /de/foo.html
 // usage: $REX['ADDON']['rexseo42']['langcodes'][CLANGID] = 'LANG_CODE';
 
 // hint #1: if lang codes are not set in this file, $REX['CLANG'] will be used.

@@ -24,9 +24,13 @@ $REX['ADDON']['rexseo42']['settings']['robots_follow_flag'] = 'follow';
 // default archive flag for robots meta tag, can be empty
 $REX['ADDON']['rexseo42']['settings']['robots_archive_flag'] = 'noarchive';
 
-// don't change this! otherwise the seo god won't be happy ;)
+// if true pages with similar urls will be accepted (not recommended!)
 $REX['ADDON']['rexseo42']['settings']['levenshtein'] = false;
+
+// if true parameters will be rewritten to ++/param1/value1/param2/value2 (not recommended!)
 $REX['ADDON']['rexseo42']['settings']['rewrite_params']  = false;
+
+// only for rewrite_params settings: start param rewrite with this string
 $REX['ADDON']['rexseo42']['settings']['params_starter']  = '++';
 
 
