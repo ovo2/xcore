@@ -12,6 +12,42 @@ rexseo42_config_file_no_perms = Konfigurationsdatei "{0}" ist nicht beschreibbar
 rexseo42_dbfields_readded = Fehlende DB-Felder des AddOns "{0}" wurden hinzugefügt.<br />WICHTIG: Bitte überprüfen Sie ob das AddOn-Setup (Schritt 3) erneut durchgeführt werden muss.
 rexseo42_check_langcodes_msg = Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.langcodes.inc.php" Datei von {0}.
 
+rexseo42_settings_subdir_change = 'Hinweis: Das aktuelle Installationsverzeichnis von REDAXO scheint sich geändert zu haben.<br />Zum aktualisieren einmal die {0}-Einstellungen speichern und evtl. notwendige Anpassung der RewriteBase in der .htaccess beachten!
+rexseo42_settings_url_ending_without = (ohne)
+rexseo42_settings_langslug_all = Bei allen Sprachen einfügen
+rexseo42_settings_langslug_noslug = Kein lang slug für Sprache:
+rexseo42_settings_langslug = Lang slug
+rexseo42_settings_language = Sprache
+rexseo42_settings_extension = Endung
+rexseo42_settings_schema = Schema
+rexseo42_settings_startpage = Startseite
+rexseo42_settings_rewrite_section = URL Rewrite Optionen
+rexseo42_settings_robots_additional = Zusätzliche Einträge
+rexseo42_settings_robots_link = Link zur robots.txt
+rexseo42_settings_sitemap_link = Link zur sitemap.xml
+rexseo42_settings_submit = Einstellungen speichern
+
+rexseo42_setup_file_backup_failed = Datei "{0}" konnte nicht gesichert werden!
+rexseo42_setup_file_copy_successful = Kopieren der Datei erfolgreich.
+rexseo42_setup_file_copy_failed = Beim Kopieren der .htaccess Datei ist ein Fehler aufgetreten. Bitte kopieren Sie die Datei manuell.
+rexseo42_setup_backup_successful = Ein Backup wurde zuvor angelegt.
+rexseo42_setup_backup_failed = Backup der .htaccess Datei fehlgeschlagen. Bitte kopieren Sie die Datei manuell.
+rexseo42_setup_settings_saved = Einstellungen wurden übernommen.
+rexseo42_setup_settings_save_failed = Speichern der Einstellungen fehlgeschlagen. Bitte nehmen Sie die Einstellungen manuell auf der System-Seite vor.
+rexseo42_setup_step1 = Schritt 1: Datei kopieren
+rexseo42_setup_step1_msg1 = Diese .htaccess Datei muss in das Hauptverzeichnis von REDAXO kopiert werden:
+rexseo42_setup_to = nach
+rexseo42_setup_step1_button = Datei kopieren
+rexseo42_setup_step2 = Schritt 2: Einstellungen vornehmen
+rexseo42_setup_step2_msg1 = Bitte die folgenden <a href="index.php?page=specials">System</a> Einstellungen vornehmen bzw. ergänzen:
+rexseo42_setup_website_name = Name der Website
+rexseo42_setup_website_domain = Domain der Website
+rexseo42_setup_activate_mod_rewrite = Mod-Rewrite einschalten
+rexseo42_setup_step2_button = Einstellungen übernehmen
+rexseo42_setup_step3 = Schritt 3: Template ergänzen
+rexseo42_setup_step3_msg1 = Zuletzt ergänzen Sie den Head-Bereich Ihres Templates wie folgt:
+rexseo42_setup_mod_rewrite_alert = Bitte beachten Sie dass Mod-Rewrite eingeschaltet sein muss!
+
 rexseo42_seopage_updated = SEO-Daten wurden aktualisiert.
 rexseo42_seopage_main_section = Allgemein
 rexseo42_seopage_title = Titel

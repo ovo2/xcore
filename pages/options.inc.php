@@ -47,31 +47,23 @@ if (!is_writable($config_file)) {
 }
 
 // subdir chanage notify
-if($REX['ADDON'][$myself]['settings']['install_subdir'] != rexseo_subdir())
-{
-  echo rex_info('ACHTUNG: Das aktuelle Installationsverzeichnis von Redaxo scheint sich ge&auml;ndert zu haben.<br />
-                   Zum aktualisieren einmal die RexSEO settings speichern.<br />
-                   Evtl. notwendige <a href="index.php?page=seo&subpage=help&chapter=&func=alert_setup&highlight='.urlencode('Installation in Unterverzeichnissen:').'">Anpassung der RewriteBase</a> in der .htaccess beachten!');
+if($REX['ADDON'][$myself]['settings']['install_subdir'] != rexseo_subdir()) {
+  echo rex_info($I18N->msg('rexseo42_settings_subdir_change', $REX['ADDON']['name']['rexseo42']));
 }
 
-
 // toggle redirect
-if(rex_request('func','string')=='toggle_redirect' && intval(rex_request('id','int'))>0)
-{
+if(rex_request('func','string')=='toggle_redirect' && intval(rex_request('id','int'))>0) {
   $db = new rex_sql;
   $db->setQuery('UPDATE `'.$REX['TABLE_PREFIX'].'rexseo_redirects'.'` SET `status` = IF(status=1, 0, 1) WHERE `id`='.rex_request('id','int').';');
   rexseo_htaccess_update_redirects();
 }
 
-
 // delete redirect
-if(rex_request('func','string')=='delete_redirect' && intval(rex_request('id','int'))>0)
-{
+if(rex_request('func','string')=='delete_redirect' && intval(rex_request('id','int'))>0) {
   $db = new rex_sql;
   $db->setQuery('DELETE FROM `'.$REX['TABLE_PREFIX'].'rexseo_redirects'.'` WHERE `id`='.rex_request('id','int').';');
   rexseo_htaccess_update_redirects();
 }
-
 
 // url schema select box
 $url_schema_select = new rex_select();
@@ -88,7 +80,7 @@ $url_ending_select->setSize(1);
 $url_ending_select->setName('url_ending');
 $url_ending_select->addOption('.html','.html');
 $url_ending_select->addOption('/','/');
-$url_ending_select->addOption('(ohne)','');
+$url_ending_select->addOption($I18N->msg('rexseo42_settings_url_ending_without'), '');
 $url_ending_select->setAttribute('style','width:70px;margin-left:20px;');
 $url_ending_select->setSelected($REX['ADDON'][$myself]['settings']['url_ending']);
 
@@ -119,16 +111,16 @@ if(count($REX['CLANG']) > 1)
   $hide_langslug_select = new rex_select();
   $hide_langslug_select->setSize(1);
   $hide_langslug_select->setName('hide_langslug');
-  $hide_langslug_select->addOption('Bei allen Sprachen einfügen',-1);
+  $hide_langslug_select->addOption($I18N->msg('rexseo42_settings_langslug_all'),-1);
   foreach($REX['CLANG'] as $id => $str)
   {
-    $hide_langslug_select->addOption('Kein lang slug für Sprache: '.$str,$id);
+    $hide_langslug_select->addOption($I18N->msg('rexseo42_settings_langslug_noslug') . ' '.$str,$id);
   }
   $hide_langslug_select->setSelected($REX['ADDON'][$myself]['settings']['hide_langslug']);
   $hide_langslug_select = '
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
-              <label for="hide_langslug">Lang slug</label>
+              <label for="hide_langslug">' . $I18N->msg('rexseo42_settings_langslug') . '</label>
                 '.$hide_langslug_select->get().'
                 </p>
           </div><!-- /rex-form-row -->';
@@ -152,7 +144,7 @@ if(count($REX['CLANG']) > 1)
   $homelang_select->setAttribute('style','width:70px;margin-left:20px;');
   $homelang_box = '
               <span style="margin:0 4px 0 4px;display:inline-block;width:100px;text-align:right;">
-                Sprache
+                ' . $I18N->msg('rexseo42_settings_language') . '
               </span>
               '.$homelang_select->get().'
               ';
@@ -179,17 +171,17 @@ echo '
     <div id="expert_block" style="margin:0;padding:0;">
 
       <fieldset class="rex-form-col-1">
-        <legend>URL Rewrite Optionen</legend>
+        <legend>' . $I18N->msg('rexseo42_settings_rewrite_section') . '</legend>
         <div class="rex-form-wrapper">
 
 		  
 
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
-              <label for="url_schema" class="helptopic">Schema:</label>
+              <label for="url_schema" class="helptopic">' . $I18N->msg('rexseo42_settings_schema') . '</label>
                 '.$url_schema_select->get().'
 
-              <span style="margin:0 4px 0 4px;display:inline-block;width:100px;text-align:right;" class="helptopic">Endung</span>
+              <span style="margin:0 4px 0 4px;display:inline-block;width:100px;text-align:right;" class="helptopic">' . $I18N->msg('rexseo42_settings_extension') . '</span>
                 '.$url_ending_select->get().'
             </p>
           </div><!-- /rex-form-row -->
@@ -198,7 +190,7 @@ echo '
 
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
-              <label for="homeurl" class="helptopic">Startseite</label>
+              <label for="homeurl" class="helptopic">' . $I18N->msg('rexseo42_settings_startpage') . '</label>
                 '.$homeurl_select->get().'
                 '.$homelang_box.'
             </p>
@@ -213,14 +205,14 @@ echo '
 
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
-              <label for="robots" class="helptopic">Zusätzliche Einträge</label>
+              <label for="robots" class="helptopic">' . $I18N->msg('rexseo42_settings_robots_additional') . '</label>
               <textarea id="rexseo_robots" name="robots" rows="2">'.stripslashes($REX['ADDON'][$myself]['settings']['robots']).'</textarea>
             </p>
           </div><!-- /rex-form-row -->
 
 		  <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
-              <label for="robots-txt" class="helptopic">Link zur robots.txt</label>
+              <label for="robots-txt" class="helptopic">' . $I18N->msg('rexseo42_settings_robots_link') . '</label>
               <span class="rex-form-read" id="robots-txt"><a href="' . rexseo42::getBaseUrl() . 'robots.txt" target="_blank">' . rexseo42::getBaseUrl() . 'robots.txt</a></span>
             </p>
           </div><!-- /rex-form-row -->
@@ -235,7 +227,7 @@ echo '
 
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
-              <label for="xml-sitemap" class="helptopic">Link zur sitemap.xml</label>
+              <label for="xml-sitemap" class="helptopic">' . $I18N->msg('rexseo42_settings_sitemap_link') . '</label>
               <span class="rex-form-read" id="xml-sitemap"><a href="' . rexseo42::getBaseUrl() . 'sitemap.xml" target="_blank">' . rexseo42::getBaseUrl() . 'sitemap.xml</a></span>
             </p>
           </div><!-- /rex-form-row -->
@@ -252,7 +244,7 @@ echo '
           <div class="rex-form-row rex-form-element-v2">
 
             <p class="rex-form-submit">
-              <input style="margin-top: 5px; margin-bottom: 5px;" class="rex-form-submit" type="submit" id="sendit" name="sendit" value="Einstellungen speichern" />
+              <input style="margin-top: 5px; margin-bottom: 5px;" class="rex-form-submit" type="submit" id="sendit" name="sendit" value="' . $I18N->msg('rexseo42_settings_submit') . '" />
             </p>
           </div><!-- /rex-form-row -->
 

@@ -1,6 +1,6 @@
 <?php
 
-// don't change this manuelly! use the settings page of rexseo42.
+// don't change this manually! instead use the settings page of rexseo42...
 
 // --- DYN
 $REX['ADDON']['rexseo42']['settings']['install_subdir'] = '';

@@ -19,7 +19,7 @@ if ($func == "do_copy") {
 		if (copy($htaccessRoot, $backupPathRoot . $htaccessBackupFile)) {
 			$doCopy = true;
 		} else {
-			rex_warning('Datei "' . $htaccessRoot . '" konnte nicht gesichert werden!');
+			rex_warning($I18N->msg('rexseo42_setup_file_backup_failed', $htaccessRoot));
 			$doCopy = false;
 		} 
 	}
@@ -31,18 +31,18 @@ if ($func == "do_copy") {
 		$result = rexseo_recursive_copy($source, $target);
 
 		if ($result[1]['copystate'] == 1) {
-			$msg = 'Kopieren der Datei erfolgreich.';
+			$msg = $I18N->msg('rexseo42_setup_file_copy_successful');
 	
 			if ($fileExists) {
-				$msg .= ' Ein Backup wurde zuvor angelegt.';
+				$msg .= ' ' . $I18N->msg('rexseo42_setup_backup_successful');
 			}
 
 			echo rex_info($msg);
 		} else {
-			echo rex_warning('Beim Kopieren der .htaccess Datei ist ein Fehler aufgetreten. Bitte kopieren Sie die Datei manuell.');	
+			echo rex_warning($I18N->msg('rexseo42_setup_file_copy_failed'));	
 		}
 	} else {
-		echo rex_warning('Backup der .htaccess Datei fehlgeschlagen. Bitte kopieren Sie die Datei manuell.');
+		echo rex_warning($I18N->msg('rexseo42_setup_backup_failed'));
 	}
 } elseif ($func == "apply_settings") {
 	$server = str_replace("\\'", "'", rex_post('server', 'string'));
@@ -78,23 +78,23 @@ if ($func == "do_copy") {
 	$content = preg_replace($replace['search'], $replace['replace'], $content);
 
 	if (rex_put_file_contents($masterFile, $content) > 0) {
-		echo rex_info('Einstellungen wurden übernommen.');
+		echo rex_info($I18N->msg('rexseo42_setup_settings_saved'));
 
 		$REX['MOD_REWRITE'] = $modRewrite;
 		$REX['SERVER'] = stripslashes($server);
 		$REX['SERVERNAME'] = stripslashes($servername);
 	} else {
-		echo rex_warning('Speichern der Einstellungen fehlgeschlagen. Bitte nehmen Sie die Einstellungen manuell auf der System-Seite vor.');
+		echo rex_warning($I18N->msg('rexseo42_setup_settings_save_failed'));
 	}
 }
 ?>
 
 <div class="rex-addon-output">
-	<h2 class="rex-hl2">Schritt 1: Datei kopieren</h2>
+	<h2 class="rex-hl2"><?php echo $I18N->msg('rexseo42_setup_step1'); ?></h2>
 	<div class="rex-area-content">
-		<p>Diese .htaccess Datei muss in das Hauptverzeichnis von REDAXO kopiert werden:</p>
+		<p><?php echo $I18N->msg('rexseo42_setup_step1_msg1'); ?></p>
 		<ul class="no-bottom-margin">
-			<li><code>/redaxo/include/addons/rexseo42/install/.htaccess</code> nach <code>/.htaccess</code></li>
+			<li><code>/redaxo/include/addons/rexseo42/install/.htaccess</code> <?php echo $I18N->msg('rexseo42_setup_to'); ?> <code>/.htaccess</code></li>
 		</ul>
 
 		<form action="index.php" method="get">
@@ -102,29 +102,29 @@ if ($func == "do_copy") {
 			<input type="hidden" name="subpage" value="setup" />
 			<input type="hidden" name="func" value="do_copy" />
 			<div class="rex-form-row">
-				<p class="button"><input type="submit" class="rex-form-submit" name="sendit" value="Datei kopieren" /></p>
+				<p class="button"><input type="submit" class="rex-form-submit" name="sendit" value="<?php echo $I18N->msg('rexseo42_setup_step1_button'); ?>" /></p>
 			</div>
 		</form>
 	</div>
 </div>
 
 <div class="rex-addon-output">
-	<h2 class="rex-hl2">Schritt 2: Einstellungen vornehmen</h2>
+	<h2 class="rex-hl2"><?php echo $I18N->msg('rexseo42_setup_step2'); ?></h2>
 	<div class="rex-area-content">
-		<p class="info-msg">Bitte die folgenden <a href="index.php?page=specials">System</a> Einstellungen vornehmen bzw. ergänzen:
+		<p class="info-msg"><?php echo $I18N->msg('rexseo42_setup_step2_msg1'); ?></p>
 		<form action="index.php" method="post" id="settings-form">
 			<p class="rex-form-col-a first-textfield">
-				<label for="servername">Name der Website</label>
+				<label for="servername"><?php echo $I18N->msg('rexseo42_setup_website_name'); ?></label>
 				<input name="servername" id="servername" type="text" class="rex-form-text" value="<?php echo htmlspecialchars($REX['SERVERNAME']); ?>" />
 			</p>
 
 			<p class="rex-form-col-a">
-				<label for="server">Domain der Website</label>
+				<label for="server"><?php echo $I18N->msg('rexseo42_setup_website_domain'); ?></label>
 				<input name="server" id="server" type="text" class="rex-form-text" value="<?php echo htmlspecialchars($REX['SERVER']); ?>" />
 			</p>
 
 			<p class="rex-form-col-a rex-form-checkbox ">
-				<label for="mod_rewrite">Mod-Rewrite einschalten</label>
+				<label for="mod_rewrite"><?php echo $I18N->msg('rexseo42_setup_activate_mod_rewrite'); ?></label>
 				<input type="checkbox" checked="checked" value="1" id="mod_rewrite" name="mod_rewrite" />
 			</p>
 
@@ -132,7 +132,7 @@ if ($func == "do_copy") {
 			<input type="hidden" name="subpage" value="setup" />
 			<input type="hidden" name="func" value="apply_settings" />
 			<div class="rex-form-row">
-				<p class="button"><input type="submit" class="rex-form-submit" name="sendit" value="Einstellungen übernehmen" /></p>
+				<p class="button"><input type="submit" class="rex-form-submit" name="sendit" value="<?php echo $I18N->msg('rexseo42_setup_step2_button'); ?>" /></p>
 			</div>
 		</form>
 	</div>
@@ -150,9 +150,9 @@ $codeExample2 = '<head>
 ?>
 
 <div class="rex-addon-output">
-	<h2 class="rex-hl2">Schritt 3: Template ergänzen</h2>
+	<h2 class="rex-hl2"><?php echo $I18N->msg('rexseo42_setup_step3'); ?></h2>
 	<div class="rex-area-content">
-		<p class="info-msg">Zuletzt ergänzen Sie den Head-Bereich Ihres Templates wie folgt:</p><?php rex_highlight_string($codeExample2); ?>
+		<p class="info-msg"><?php echo $I18N->msg('rexseo42_setup_step3_msg1'); ?></p><?php rex_highlight_string($codeExample2); ?>
 	</div>
 </div>
 
@@ -202,7 +202,7 @@ jQuery(document).ready( function() {
 		var thisCheck = jQuery(this);
 		
 		if (!thisCheck.is(':checked')) 	{
-			alert("Mod-Rewrite muss eingeschaltet sein!");
+			alert("<?php echo $I18N->msg('rexseo42_setup_mod_rewrite_alert'); ?>");
 		}
 	});
 });

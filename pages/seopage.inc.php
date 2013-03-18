@@ -76,7 +76,7 @@ echo '
 <div class="rex-content-body" id="seo-page">
 	<div class="rex-content-body-2">
 		<div class="rex-form" id="rex-form-content-metamode">
-			<form action="index.php" method="post" enctype="multipart/form-data" id="seo-form" name="seo-form">
+			<form action="index.php" method="post" id="seo-form" name="seo-form">
 				<input type="hidden" name="page" value="content" />
 				<input type="hidden" name="article_id" value="' . $articleID . '" />
 				<input type="hidden" name="mode" value="seo" />
@@ -91,13 +91,13 @@ echo '
 
 						<div class="rex-form-row">
               <p class="rex-form-text">
-                <label for="Titel">' . $I18N->msg('rexseo42_seopage_title') . '</label>
-                <input type="text" value="' . $seoData['seo_title'] . '" name="seo_title" id="seo_title" tabindex="30" class="rex-form-text seo-title" />
+                <label for="seo_title">' . $I18N->msg('rexseo42_seopage_title') . '</label>
+                <input type="text" value="' . $seoData['seo_title'] . '" name="seo_title" id="seo_title" class="rex-form-text seo-title" />
                 <span class="rex-form-notice">
 					<span id="title-preview">&nbsp;</span>
                 </span>
 					<p id="show-prefix" class="rex-form-checkbox rex-form-label-right">
-					<input id="prefix-check" type="checkbox" tabindex="35" value="';
+					<input id="prefix-check" type="checkbox" value="';
 
 if ($seoData['seo_ignore_prefix'] == '1') {
 	echo "1";
@@ -120,8 +120,8 @@ if ($seoData['seo_ignore_prefix'] == '1') {
 						
 						<div class="rex-form-row">
 						  <p class="rex-form-textarea">
-                <label for="Beschreibung">' . $I18N->msg('rexseo42_seopage_description') . '</label>
-                <textarea name="seo_description" id="seo_description" tabindex="31" rows="2" cols="50" class="rex-form-textarea">' . $seoData['seo_description'] . '</textarea>
+                <label for="seo_description">' . $I18N->msg('rexseo42_seopage_description') . '</label>
+                <textarea name="seo_description" id="seo_description" rows="2" cols="50" class="rex-form-textarea">' . $seoData['seo_description'] . '</textarea>
 							  <span class="rex-form-notice right">
 							    <span id="description-charcount">0</span>/156 ' . $I18N->msg('rexseo42_seopage_chars') . '
 							  </span>
@@ -129,8 +129,8 @@ if ($seoData['seo_ignore_prefix'] == '1') {
 
 					<div class="rex-form-row">
 						<p class="rex-form-textarea">
-							<label for="Suchbegriffe">' . $I18N->msg('rexseo42_seopage_keywords') . '</label>
-							<textarea name="seo_keywords" id="seo_keywords" tabindex="32" rows="2" cols="50" class="rex-form-textarea">' . $seoData['seo_keywords'] . '</textarea>
+							<label for="seo_keywords">' . $I18N->msg('rexseo42_seopage_keywords') . '</label>
+							<textarea name="seo_keywords" id="seo_keywords" rows="2" cols="50" class="rex-form-textarea">' . $seoData['seo_keywords'] . '</textarea>
 							  <span class="rex-form-notice right">
 							    <span id="keywords-wordcount">0</span>/7 ' . $I18N->msg('rexseo42_seopage_words') . '
 							  </span>
@@ -142,14 +142,14 @@ if ($seoData['seo_ignore_prefix'] == '1') {
 				<div class="rex-form-row">
 				  <p class="rex-form-text">
             <label for="custom-url">' . $I18N->msg('rexseo42_seopage_userdef_url') . '</label>
-            <input type="text" value="' . $seoData['seo_url'] . '" name="seo_url" id="custom-url" tabindex="37" class="rex-form-text">
+            <input type="text" value="' . $seoData['seo_url'] . '" name="seo_url" id="custom-url" class="rex-form-text">
   					<span class="rex-form-notice" id="custom-url-preview">&nbsp;</span>
 					</p>
 				</div>
 
 				<div class="rex-form-row">
 				  <p class="rex-form-col-a rex-form-checkbox">
-					<input type="checkbox" tabindex="35" id="Suchmaschinen_die_Indizierung_nicht_erlauben" value="';
+					<input type="checkbox" id="seo_noindex" value="';
 
 if ($seoData['seo_noindex'] == '1') {
 	echo "1";
@@ -160,14 +160,14 @@ if ($seoData['seo_noindex'] == '1') {
 }
 
 					echo '" name="seo_noindex[]" class="rex-form-checkbox" ' . $check . ' />
-					<label for="Suchmaschinen_die_Indizierung_nicht_erlauben">' . $I18N->msg('rexseo42_seopage_noindex') . '</label>
+					<label for="seo_noindex">' . $I18N->msg('rexseo42_seopage_noindex') . '</label>
 
 				</p>
 			</div>
 
 			<div class="rex-form-row">
 				<p class="rex-form-col-a rex-form-submit">
-					<input type="submit" tabindex="39" value="' . $I18N->msg('rexseo42_seopage_button_text') . '" name="saveseo" class="rex-form-submit">
+					<input type="submit" value="' . $I18N->msg('rexseo42_seopage_button_text') . '" name="saveseo" class="rex-form-submit">
 					<br/><br/>
 				</p>
 			</div>
