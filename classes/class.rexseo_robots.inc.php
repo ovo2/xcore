@@ -39,7 +39,7 @@ class rexseo_robots
 	$langs = array_keys($REX['CLANG']); // get clang ids
 
 	foreach ($langs as $lang) {
-		$query = "SELECT id FROM ".$REX['TABLE_PREFIX']."article WHERE seo_noindex = '1' AND status = 1"; 
+		$query = "SELECT id FROM ".$REX['TABLE_PREFIX']."article WHERE seo_noindex = '1' AND status = 1 AND clang = " . $lang; 
 		$sql = new rex_sql(); 
 		$sql->setQuery($query);
 	
