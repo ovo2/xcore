@@ -1,25 +1,10 @@
 <?php
 class rexseo42 {
-	static $titleDelimiter = "|";
-	static $robotsArchiveFlag = "noarchive";
-	static $robotsFollowFlag = "follow";
-
-	static function setTitleDelimiter($delimiter) {
-		self::$titleDelimiter = $delimiter;
-	}
-
-	static function getTitleDelimiter() {
-		return self::$titleDelimiter;
-	}
-
-	static function getTitle($titleDelimiter = "") {
+	static function getTitle() {
 		global $REX;
+
 		$title = "";
 		$fullTitle = "";
-
-		if ($titleDelimiter != "") {
-			self::$titleDelimiter = $titleDelimiter;
-		}
 
 		// userdef title or article name?
 		if ($REX['ART'][$REX['ARTICLE_ID']]['seo_title'][$REX['CUR_CLANG']] != "") {
@@ -34,10 +19,10 @@ class rexseo42 {
 		} else { 
 			if (self::isStartPage()) {
 				// the start article shows the servername first
-				$fullTitle = self::getPrefix() . ' ' . self::$titleDelimiter . ' ' . $title;
+				$fullTitle = self::getPrefix() . $REX['ADDON']['rexseo42']['settings']['title_delimeter'] . $title;
 			} else {
 				// all other articles will show title first
-				$fullTitle = $title . ' ' . self::$titleDelimiter . ' ' . self::getPrefix();
+				$fullTitle = $title . $REX['ADDON']['rexseo42']['settings']['title_delimeter'] . self::getPrefix();
 			}
 			
 			return htmlspecialchars($fullTitle);
@@ -67,7 +52,9 @@ class rexseo42 {
 	}
 
 	static function getCompletePrefixLength() {
-		return strlen(self::getPrefix()) + strlen(self::$titleDelimiter) + 2 /* spaces */;
+		global $REX;
+
+		return strlen(self::getPrefix()) + strlen($REX['ADDON']['rexseo42']['settings']['title_delimeter']);
 	} 
 	
 	static function getDescription() {
@@ -88,12 +75,12 @@ class rexseo42 {
 			$robots = "index";
 		}
 		
-		if (self::$robotsFollowFlag != '') {
-			$robots .= ", " . self::$robotsFollowFlag;
+		if ($REX['ADDON']['rexseo42']['settings']['robots_follow_flag'] != '') {
+			$robots .= ", " . $REX['ADDON']['rexseo42']['settings']['robots_follow_flag'];
 		}
 
-		if (self::$robotsArchiveFlag != '') {
-			$robots .= ", " . self::$robotsArchiveFlag;
+		if ($REX['ADDON']['rexseo42']['settings']['robots_archive_flag'] != '') {
+			$robots .= ", " . $REX['ADDON']['rexseo42']['settings']['robots_archive_flag'];
 		}
 
 		return $robots;
