@@ -14,6 +14,7 @@ $REX['PERM'][] = $myself . '[]';
 require_once($myroot . '/functions/function.rexseo_helpers.inc.php');
 require_once($myroot . '/classes/class.rexseo42.inc.php');
 require_once($myroot . '/settings.inc.php');
+require_once($myroot . '/settings.expert.inc.php');
 
 // init
 if (!$REX['SETUP']) {
