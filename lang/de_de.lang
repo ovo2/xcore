@@ -12,3 +12,65 @@ rexseo42_config_file_no_perms = Konfigurationsdatei "{0}" ist nicht beschreibbar
 rexseo42_dbfields_readded = Fehlende DB-Felder des AddOns "{0}" wurden hinzugefügt.<br />WICHTIG: Bitte überprüfen Sie ob das AddOn-Setup (Schritt 3) erneut durchgeführt werden muss.
 rexseo42_check_langcodes_msg = Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.langcodes.inc.php" Datei von {0}.
 
+rexseo42_seopage_updated = SEO-Daten wurden aktualisiert.
+rexseo42_seopage_main_section = Allgemein
+rexseo42_seopage_title = Titel
+rexseo42_seopage_description = Beschreibung
+rexseo42_seopage_keywords = Suchbegriffe
+rexseo42_seopage_title_noprefix = Kein Prefix
+rexseo42_seopage_chars = Zeichen
+rexseo42_seopage_words = Wörter
+rexseo42_seopage_url_section = URL und Indizierung
+rexseo42_seopage_userdef_url = Benutzerdefinierte URL
+rexseo42_seopage_noindex = Indizierung nicht erlauben
+rexseo42_seopage_button_text = SEO-Daten aktualisieren
+
+rexseo42_faq01a = Warum brauchts eigentlich noch ein weiteres RexSEO?
+rexseo42_faq01b = Ganz einfach: Weil RexSEO zwar sehr gefällt, aber so wie es ist in manchen Punkten (z.B. Setup) nicht den Vorstellungen vom RexDude entspricht und es ja außerdem völlig legitim ist einen Fork nach seinem eigenem Gusto zu machen.
+
+rexseo42_faq02a = Ich habe eine Seite importiert und jetzt hagelt es Fehlermeldungen im HTML-Quellcode!?
+rexseo42_faq02b = {0} <a href="index.php?page=addon&addonname=rexseo42&install=1">reinstallieren</a> sollte das Problem beheben.
+
+rexseo42_faq03a = Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterverzeichnis installiert habe?
+rexseo42_faq03b = Ja. In der .htaccess im Root-Ordner bei RewriteBase das Unterverzeichnis ergänzen: <code>RewriteBase /UNTERVERZEICHNIS</code> sowie darauf achten, dass "Url dieser Website" ohne das Unterverzechnis angegeben wird.
+
+rexseo42_faq04a = Ich mag das Pipe-Zeichen nicht im Titel. Wie kann ich das umstellen?
+rexseo42_faq04b = Momentan so: der Methode getTitle das neue Zeichen als Parameter übergeben: <code>rexseo42::getTitle("-");</code>
+
+rexseo42_faq05a = Wie kann ich den Titel sonst noch beinflussen?
+rexseo42_faq05b = Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix anzeigen" wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode <code>rexseo42::getTitle()</code> für Spezial-Titel-Geschichten überschreiben.
+
+rexseo42_faq06a = Warum wird der Titel für die Startseite "andersherum" ausgegeben wie für die Folgeseiten?
+rexseo42_faq06b = Siehe PDF in Antwort zur nächsten Frage.
+
+rexseo42_faq07a = Wo bekomme ich eigentlich eine gute verständliche Einführung in das Thema "Suchmaschinenoptimierung"?
+rexseo42_faq07b = Zum Beispiel hier: <a href="http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf" target="_blank" class="extern">einfuehrung-in-suchmaschinenoptimierung.pdf</a>
+
+rexseo42_faq08a = Wie kann ich suchmaschinenfreundlichere URLs für Bilder aus dem Image Manager erhalten?
+rexseo42_faq08b = Im HTML anstelle von <code>index.php?rex_img_type=ImgTypeName&rex_img_file=ImageFileName</code> dass hier verwenden:<br /><code>/files/imagetypes/ImgTypeName/ImageFileName</code>
+
+rexseo42_faq09a = Ich möchte nicht-www Anfragen auf die www Variante umleiten lassen. Soll doch SEO-technisch gut sein, oder?
+rexseo42_faq09b = Yup. In der .htaccess im Root-Ordner die entsprechenden Zeilen un-auskommentieren.
+
+rexseo42_faq10a = Meine URLs haben sich geändert. Wie kann ich saubere Weiterleitungen hinbekommen?
+rexseo42_faq10b = In der .htaccess im Root-Ordner an oberster Stelle pro URL eine 301 Weiterleitung nach diesem Schema einrichten:<br /><code>Redirect 301 /alte-seite.html http://www.my-domain.de/neue-seite.html</code>
+
+rexseo42_faq11a = Habe gehört das es SEO-technisch gut wäre wenn Bilder ein Alt-Attribut zugewiesen bekommen?
+rexseo42_faq11b = Dafür kann man die Methode <code>rexseo42::getImageTag($file)</code> nutzen, die dann einen kompletten Image-Tag inkl. Alt-Attribute ausspuckt. Und im Medienpool wird dieser dann im Titel-Feld gesetzt.
+
+rexseo42_faq12a = Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?
+rexseo42_faq12b = Immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. <code>redaxo://13#anker</code>
+
+rexseo42_faq13a = Wo legt {0} die Backups für die .htaccess Dateien an?
+rexseo42_faq13b = Im Backup-Verzeichnis des AddOns: <code>/rexseo42/backup/</code>
+
+rexseo42_faq14a = Ich hab ne Frage die hier net auftaucht. Was tun?
+rexseo42_faq14b = Schau doch mal ins original RexSEO. Da steht noch mehr Stuff... ;)
+
+rexseo42_faq15a = Mir gefällt {0} nicht! Wie krieg ich das wieder raus aus meinem REDAXO?
+rexseo42_faq15b = Kein Problem ;) Einfach das Setup von hinten nach vorne durchlaufen und das AddOn deinstallieren.
+
+rexseo42_faq16a = Wie lautet die Antwort auf die Frage aller Fragen nach dem Leben, dem Universum und dem ganzen Rest?
+rexseo42_faq16b = 42
+
+
