@@ -4,6 +4,20 @@ function rexseo_sanitizeString($string) {
 	return preg_replace("/\s\s+/", " ", $string);
 }
 
+function rexseo_afterDBImport($params) {
+	global $REX, $I18N;
+
+	$sqlStatement = 'SELECT seo_title, seo_description, seo_keywords, seo_url, seo_noindex, seo_ignore_prefix FROM ' . $REX['TABLE_PREFIX'] . 'article';
+	$sql = rex_sql::factory();
+	$sql->setQuery($sqlStatement);
+
+	// check for db fields
+	if ($sql->getRows() == 0) {
+		require($REX['INCLUDE_PATH'] . '/addons/rexseo42/install.inc.php');
+		echo rex_info($I18N->msg('rexseo42_dbfields_readded', $REX['ADDON']['name']['rexseo42']));
+	}
+}
+
 if (!function_exists('rexseo_recursive_copy'))
 {
   function rexseo_recursive_copy($source, $target, $makedir=TRUE, &$result=array(), $counter=1, $folderPermission='', $filePermission='')

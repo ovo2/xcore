@@ -93,5 +93,10 @@ if ($REX['REDAXO']) {
 			return $params['subject'];
 		});
 	}
+
+	// check for missing db field after db import
+	if (!$REX['SETUP']) {
+		rex_register_extension('A1_AFTER_DB_IMPORT', 'rexseo_afterDBImport');
+	}
 }
 
