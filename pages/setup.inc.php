@@ -46,6 +46,8 @@ if ($func == "do_copy") {
 	}
 } elseif ($func == "apply_settings") {
 	$server = str_replace("\\'", "'", rex_post('server', 'string'));
+	$server = rexseo42::sanitizeUrl($server);	
+
 	$servername  = str_replace("\\'", "'", rex_post('servername', 'string'));
 	$modRewrite = rex_post('mod_rewrite', 'int');
 
@@ -196,18 +198,6 @@ $codeExample2 = '<head>
 
 <script type="text/javascript">
 jQuery(document).ready( function() {
-	jQuery('#settings-form').submit(function() {
-		var pat = /^https?:\/\//i;
-		var serverString = jQuery('#server').val();
-
-		if ((pat.test(serverString)) && (serverString.charAt(serverString.length - 1) == '/')) {
-			return true;
-		}
-
-		alert('URL dieser Website muss mit "http://" beginnen und mit "/" enden.');
-		return false;
-	});
-
 	jQuery('#mod_rewrite').click(function () {
 		var thisCheck = jQuery(this);
 		

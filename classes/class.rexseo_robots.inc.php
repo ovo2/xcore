@@ -11,7 +11,7 @@ class rexseo_robots
   public function rexseo_robots()
   {
     global $REX;
-    $this->host = $REX['SERVER'];
+    $this->host = rexseo42::getServerUrl();
     $this->robots_txt = '';
   }
 

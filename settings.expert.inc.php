@@ -24,6 +24,9 @@ $REX['ADDON']['rexseo42']['settings']['robots_follow_flag'] = 'follow';
 // default archive flag for robots meta tag, can be empty
 $REX['ADDON']['rexseo42']['settings']['robots_archive_flag'] = 'noarchive';
 
+// protocol for base/server url, can also be changed to https:// 
+$REX['ADDON']['rexseo42']['settings']['server_protocol'] = 'http://';
+
 // if true pages with similar urls will be accepted (not recommended!)
 $REX['ADDON']['rexseo42']['settings']['levenshtein'] = false;
 

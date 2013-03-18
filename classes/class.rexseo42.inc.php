@@ -19,10 +19,10 @@ class rexseo42 {
 		} else { 
 			if (self::isStartPage()) {
 				// the start article shows the servername first
-				$fullTitle = self::getPrefix() . $REX['ADDON']['rexseo42']['settings']['title_delimeter'] . $title;
+				$fullTitle = self::getWebsiteName() . $REX['ADDON']['rexseo42']['settings']['title_delimeter'] . $title;
 			} else {
 				// all other articles will show title first
-				$fullTitle = $title . $REX['ADDON']['rexseo42']['settings']['title_delimeter'] . self::getPrefix();
+				$fullTitle = $title . $REX['ADDON']['rexseo42']['settings']['title_delimeter'] . self::getWebsiteName();
 			}
 			
 			return htmlspecialchars($fullTitle);
@@ -51,7 +51,7 @@ class rexseo42 {
 		return $REX['ART'][$REX['ARTICLE_ID']]['name'][$REX['CUR_CLANG']];
 	}
 	
-	static function getPrefix() {
+	static function getWebsiteName() {
 		global $REX;
 		
 		return $REX['SERVERNAME'];
@@ -60,7 +60,7 @@ class rexseo42 {
 	static function getCompletePrefixLength() {
 		global $REX;
 
-		return strlen(self::getPrefix()) + strlen($REX['ADDON']['rexseo42']['settings']['title_delimeter']);
+		return strlen(self::getWebsiteName()) + strlen($REX['ADDON']['rexseo42']['settings']['title_delimeter']);
 	} 
 	
 	static function getDescription() {
@@ -121,13 +121,25 @@ class rexseo42 {
 			return $REX['CLANG'][$clangID];
 		}
 	}
+
+	static function sanitizeUrl($url) {
+		return preg_replace('@^https?://|/.*|[^\w.-]@', '', $url);
+	}
+
+	static function getServer() {
+		global $REX;
+
+		return self::sanitizeUrl($REX['SERVER']);
+	}
+
+	static function getServerUrl() {
+		global $REX;
+
+		return $REX['ADDON']['rexseo42']['settings']['server_protocol'] . self::getServer() . '/';
+	}
 	
 	static function getBaseUrl() {
-		global $REX;
-	
-		$baseUrl = $REX['SERVER'];
-
-		return $baseUrl;
+		return self::getServerUrl();
 	}
 
 	static function getCanonicalUrl() {

@@ -123,7 +123,7 @@ class rexseo_sitemap
 
     $this->db_articles = array();
     $this->mode         = 'xml';
-    $this->host         = rtrim($REX['SERVER'],'/');
+    $this->host         = rtrim(rexseo42::getServerUrl(),'/');
 
     self::get_db_articles();
   }
