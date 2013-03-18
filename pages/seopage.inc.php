@@ -4,6 +4,8 @@ $clang = rex_request('clang');
 $ctype = rex_request('ctype');
 $savedURL = rex_request('saved_seo_url');
 
+$dataUpdated = false;
+
 if (rex_post('saveseo', 'boolean')) {
 	$sql = rex_sql::factory();
 
@@ -47,6 +49,8 @@ if (rex_post('saveseo', 'boolean')) {
 		if ($savedURL != rex_post('seo_url')) {
 			rexseo_generate_pathlist('');
 		}
+
+		$dataUpdated = true; // this is for frontend link fix 
 	} else {
 		// err msg
 		echo rex_warning($sql->getError());
@@ -261,6 +265,8 @@ jQuery(document).ready(function() {
 			}
 		}
 	});
+
+	<?php if ($dataUpdated) { ?>jQuery('.rex-navi-content li:last-child a').attr('href', '../<?php echo rex_getUrl(); ?>');<?php } ?>
 });
 
 function updateTitlePreview() {
