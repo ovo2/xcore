@@ -268,7 +268,7 @@ function updateTitlePreview() {
 	var titlePrefix = '<?php echo rexseo42::getPrefix(); ?>';
 	var articleName = '<?php echo rexseo42::getArticleName(); ?>';
 	var customTitle = jQuery('#seo_title').val();
-	var pipeSymbol = '<?php echo rexseo42::getTitleDelimiter(); ?>';
+	var titleDelimeter = '<?php echo rexseo42::getTitleDelimiter(); ?>';
 	var hasPrefix = !jQuery('#prefix-check').is(':checked');
 	var isStartPage = <?php if (rexseo42::isStartPage()) { echo 'true'; } else { echo 'false'; } ?>;
 	var curTitle = '';
@@ -284,9 +284,9 @@ function updateTitlePreview() {
 		curTitle = curTitlePart;
 	} else {
 		if (isStartPage) {
-			curTitle = titlePrefix + ' ' + pipeSymbol + ' ' + curTitlePart;
+			curTitle = titlePrefix + titleDelimeter + curTitlePart;
 		} else {
-			curTitle = curTitlePart + ' ' + pipeSymbol + ' ' + titlePrefix;
+			curTitle = curTitlePart + titleDelimeter + titlePrefix;
 		}
 	}
 

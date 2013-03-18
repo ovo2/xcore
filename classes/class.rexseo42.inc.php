@@ -29,6 +29,12 @@ class rexseo42 {
 		 }
 	}
 
+	static function getTitleDelimiter() {
+		global $REX;
+
+		return $REX['ADDON']['rexseo42']['settings']['title_delimeter'];
+	}
+
 	static function isStartPage() {
 		global $REX;
 
