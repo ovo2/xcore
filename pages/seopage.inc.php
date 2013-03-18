@@ -310,8 +310,8 @@ function updateCustomUrlPreview() {
 }
 
 function ltrim(str, chr) {
-  var rgxtrim = (!chr) ? new RegExp('^\\s+') : new RegExp('^'+chr+'+');
-  return str.replace(rgxtrim, '');
+	var rgxtrim = (!chr) ? new RegExp('^\\s+') : new RegExp('^' + chr + '+');
+	return str.replace(rgxtrim, '');
 }
 
 function updateKeywordsCount() {
