@@ -18,8 +18,7 @@ function rexseo_afterDBImport($params) {
 	}
 }
 
-if (!function_exists('rexseo_recursive_copy'))
-{
+
   function rexseo_recursive_copy($source, $target, $makedir=TRUE, &$result=array(), $counter=1, $folderPermission='', $filePermission='')
   {
     global $REX;
@@ -126,156 +125,7 @@ if (!function_exists('rexseo_recursive_copy'))
     }
     return $result;
   }
-}
 
-
-
-/**
- * CONTENT PARSER FUNKTIONEN
- * @author rexdev.de
- * @package redaxo4.2
- * @version svn:$Id$
- */
-
-// INCLUDE PARSER FUNCTION
-////////////////////////////////////////////////////////////////////////////////
-if (!function_exists('rexseo_incparse'))
-{
-  function rexseo_incparse($root,$source,$parsemode,$return=false)
-  {
-
-    switch ($parsemode)
-    {
-      case 'textile':
-      $source = $root.$source;
-      $new_redirects = file_get_contents($source);
-      $html = rexseo_textileparser($new_redirects,true);
-      break;
-
-      case 'txt':
-      $source = $root.$source;
-      $new_redirects = file_get_contents($source);
-      $html =  '<pre class="plain">'.$new_redirects.'</pre>';
-      break;
-
-      case 'raw':
-      $source = $root.$source;
-      $new_redirects = file_get_contents($source);
-      $html = $new_redirects;
-      break;
-
-      case 'php':
-      $source = $root.$source;
-      $html =  get_include_contents($source);
-      break;
-
-
-
-      case 'iframe':
-      $html = '<iframe src="'.$source.'" width="99%" height="600px"></iframe>';
-      break;
-
-      case 'jsopenwin':
-      $html = 'Externer link: <a href="'.$source.'">'.$source.'</a>
-      <script language="JavaScript">
-      <!--
-      window.open(\''.$source.'\',\''.$source.'\');
-      //-->
-      </script>';
-      break;
-
-      case 'extlink':
-      $html = 'Externer link: <a href="'.$source.'">'.$source.'</a>';
-      break;
-    }
-
-    if($return)
-    {
-      return $html;
-    }
-    else
-    {
-      echo $html;
-    }
-
-  }
-}
-
-// TEXTILE PARSER FUNCTION
-////////////////////////////////////////////////////////////////////////////////
-if (!function_exists('rexseo_textileparser'))
-{
-  function rexseo_textileparser($textile,$return=false)
-  {
-    if(OOAddon::isAvailable("textile"))
-    {
-      global $REX;
-
-      if($textile!='')
-      {
-        $textile = htmlspecialchars_decode($textile);
-        $textile = str_replace("<br />","",$textile);
-        $textile = str_replace("&#039;","'",$textile);
-        if (strpos($REX['LANG'],'utf'))
-        {
-          $html = rex_a79_textile($textile);
-        }
-        else
-        {
-          $html =  utf8_decode(rex_a79_textile($textile));
-        }
-        $html = preg_replace('|<span class="caps">([^<]+)</span>|','\1',$html);
-
-        if($return)
-        {
-          return $html;
-        }
-        else
-        {
-          echo $html;
-        }
-      }
-
-    }
-    else
-    {
-      $html = rex_warning('WARNUNG: Das <a href="index.php?page=addon">Textile Addon</a> ist nicht aktiviert! Der Text wird ungeparst angezeigt..');
-      $html .= '<pre>'.$textile.'</pre>';
-
-      if($return)
-      {
-        return $html;
-      }
-      else
-      {
-        echo $html;
-      }
-    }
-  }
-}
-
-// ECHO TEXTILE FORMATED STRING
-////////////////////////////////////////////////////////////////////////////////
-if (!function_exists('echotextile'))
-{
-  function echotextile($msg) {
-    global $REX;
-    if(OOAddon::isAvailable("textile")) {
-      if($msg!='') {
-         $msg = str_replace("	","",$msg); // tabs entfernen
-         if (strpos($REX['LANG'],'utf')) {
-          echo rex_a79_textile($msg);
-        } else {
-          echo utf8_decode(rex_a79_textile($msg));
-        }
-      }
-    } else {
-      $fallback = rex_warning('WARNUNG: Das <a href="index.php?page=addon">Textile Addon</a> ist nicht aktiviert! Der Text wird ungeparst angezeigt..');
-      $fallback .= '<pre>'.$msg.'</pre>';
-      echo $fallback;
-    }
-  }
-}
 
 
 // http://php.net/manual/de/function.include.php
@@ -297,17 +147,15 @@ if (!function_exists('get_include_contents'))
 
 // REDAXO INSTALL ORDNER ERMITTELN
 ////////////////////////////////////////////////////////////////////////////////
-if (!function_exists('rexseo_subdir'))
+function rexseo_subdir()
 {
-  function rexseo_subdir()
-  {
-    global $REX;
-    $path_diff = $REX['REDAXO'] ? array('index.php','redaxo'):array('index.php');
-    $install_subdir = array_diff_assoc(array_reverse(explode('/',trim($_SERVER['SCRIPT_NAME'],'/'))),$path_diff);
-    $rexseo_subdir = count($install_subdir)>0 ? implode('/',array_reverse($install_subdir)).'/' :'';
-    return $rexseo_subdir;
-  }
+  global $REX;
+  $path_diff = $REX['REDAXO'] ? array('index.php','redaxo'):array('index.php');
+  $install_subdir = array_diff_assoc(array_reverse(explode('/',trim($_SERVER['SCRIPT_NAME'],'/'))),$path_diff);
+  $rexseo_subdir = count($install_subdir)>0 ? implode('/',array_reverse($install_subdir)).'/' :'';
+  return $rexseo_subdir;
 }
+
 
 
 // PARAMS CAST FUNCTIONS

@@ -100,7 +100,7 @@ if ($func == "do_copy") {
 			<input type="hidden" name="subpage" value="setup" />
 			<input type="hidden" name="func" value="do_copy" />
 			<div class="rex-form-row">
-				<p class="button"><input type="submit" class="rex-form-submit" name="sendit" value="Dateien kopieren" /></p>
+				<p class="button"><input type="submit" class="rex-form-submit" name="sendit" value="Datei kopieren" /></p>
 			</div>
 		</form>
 	</div>
