@@ -73,109 +73,88 @@ $seoData = $sql->getArray('SELECT * FROM '. $REX['TABLE_PREFIX'] .'article WHERE
 $seoData = $seoData[0];
 
 echo '
-<div class="rex-content-body" id="seo-page">
-	<div class="rex-content-body-2">
-		<div class="rex-form" id="rex-form-content-metamode">
-			<form action="index.php" method="post" id="seo-form" name="seo-form">
-				<input type="hidden" name="page" value="content" />
-				<input type="hidden" name="article_id" value="' . $articleID . '" />
-				<input type="hidden" name="mode" value="seo" />
-				<input type="hidden" name="save" value="1" />
-				<input type="hidden" name="clang" value="' . $clang . '" />
-				<input type="hidden" name="ctype" value="' . $ctype . '" />
-				<input type="hidden" name="saved_seo_url" value="' . $seoData['seo_url'] . '" />
+	<div class="rex-content-body" id="seo-page">
+		<div class="rex-content-body-2">
+			<div class="rex-form" id="rex-form-content-metamode">
+				<form action="index.php" method="post" id="seo-form" name="seo-form">
+					<input type="hidden" name="page" value="content" />
+					<input type="hidden" name="article_id" value="' . $articleID . '" />
+					<input type="hidden" name="mode" value="seo" />
+					<input type="hidden" name="save" value="1" />
+					<input type="hidden" name="clang" value="' . $clang . '" />
+					<input type="hidden" name="ctype" value="' . $ctype . '" />
+					<input type="hidden" name="saved_seo_url" value="' . $seoData['seo_url'] . '" />
 
-				<fieldset class="rex-form-col-1">
-					<legend id="seo-default">' . $I18N->msg('rexseo42_seopage_main_section') . '</legend>
-					<div class="rex-form-wrapper">
-
-						<div class="rex-form-row">
-              <p class="rex-form-text">
-                <label for="seo_title">' . $I18N->msg('rexseo42_seopage_title') . '</label>
-                <input type="text" value="' . $seoData['seo_title'] . '" name="seo_title" id="seo_title" class="rex-form-text seo-title" />
-                <span class="rex-form-notice">
-					<span id="title-preview">&nbsp;</span>
-                </span>
-					<p id="show-prefix" class="rex-form-checkbox rex-form-label-right">
-					<input id="prefix-check" type="checkbox" value="';
-
-if ($seoData['seo_ignore_prefix'] == '1') {
-	echo "1";
-	$check = 'checked = "checked"';
-} else {
-	echo "";
-	$check = "";
-}
-
-						echo '" name="seo_ignore_prefix[]" class="rex-form-checkbox" ' . $check . ' />
-						    <label for="prefix-check">' . $I18N->msg('rexseo42_seopage_title_noprefix') . '</label>
-						  </p>
-              </p>
+					<fieldset class="rex-form-col-1">
+						<legend id="seo-default">' . $I18N->msg('rexseo42_seopage_main_section') . '</legend>
+						<div class="rex-form-wrapper">
+							<div class="rex-form-row">
+								<p class="rex-form-text">
+									<label for="seo_title">' . $I18N->msg('rexseo42_seopage_title') . '</label>
+									<input type="text" value="' . $seoData['seo_title'] . '" name="seo_title" id="seo_title" class="rex-form-text seo-title" />
+									<span class="rex-form-notice">
+										<span id="title-preview">&nbsp;</span>
+									</span>
+								</p>
+								<p id="show-prefix" class="rex-form-checkbox rex-form-label-right">
+									<input id="prefix-check" type="checkbox" value="';
+									if ($seoData['seo_ignore_prefix'] == '1') { echo "1"; $check = 'checked = "checked"'; } else { echo ""; $check = ""; }
+									echo '" name="seo_ignore_prefix[]" class="rex-form-checkbox" ' . $check . ' />
+									<label for="prefix-check">' . $I18N->msg('rexseo42_seopage_title_noprefix') . '</label>
+								</p>
+							</div>
+							<div class="rex-form-row">
+								<p class="rex-form-textarea">
+									<label for="seo_description">' . $I18N->msg('rexseo42_seopage_description') . '</label>
+									<textarea name="seo_description" id="seo_description" rows="2" cols="50" class="rex-form-textarea">' . $seoData['seo_description'] . '</textarea>
+									<span class="rex-form-notice right">
+										<span id="description-charcount">0</span>/156 ' . $I18N->msg('rexseo42_seopage_chars') . '
+									</span>
+								</p>
+							</div>
+							<div class="rex-form-row">
+								<p class="rex-form-textarea">
+									<label for="seo_keywords">' . $I18N->msg('rexseo42_seopage_keywords') . '</label>
+									<textarea name="seo_keywords" id="seo_keywords" rows="2" cols="50" class="rex-form-textarea">' . $seoData['seo_keywords'] . '</textarea>
+									<span class="rex-form-notice right">
+										<span id="keywords-wordcount">0</span>/7 ' . $I18N->msg('rexseo42_seopage_words') . '
+									</span>
+								</p>
+							</div>
 						</div>
+					</fieldset>
+					<fieldset class="rex-form-col-1"><legend>' . $I18N->msg('rexseo42_seopage_url_section') . '</legend>
+						<div class="rex-form-wrapper">
+							<div class="rex-form-row">
+								<p class="rex-form-text">
+									<label for="custom-url">' . $I18N->msg('rexseo42_seopage_userdef_url') . '</label>
+									<input type="text" value="' . $seoData['seo_url'] . '" name="seo_url" id="custom-url" class="rex-form-text">
+									<span class="rex-form-notice" id="custom-url-preview">&nbsp;</span>
+								</p>
+							</div>
 
-						
-						  
-							  
-						
-						
-						<div class="rex-form-row">
-						  <p class="rex-form-textarea">
-                <label for="seo_description">' . $I18N->msg('rexseo42_seopage_description') . '</label>
-                <textarea name="seo_description" id="seo_description" rows="2" cols="50" class="rex-form-textarea">' . $seoData['seo_description'] . '</textarea>
-							  <span class="rex-form-notice right">
-							    <span id="description-charcount">0</span>/156 ' . $I18N->msg('rexseo42_seopage_chars') . '
-							  </span>
-					  </div>
+							<div class="rex-form-row">
+								<p class="rex-form-col-a rex-form-checkbox">
+									<input type="checkbox" id="seo_noindex" value="';
+									if ($seoData['seo_noindex'] == '1') { echo "1"; $check = 'checked = "checked"'; } else { echo ""; $check = ""; }
+									echo '" name="seo_noindex[]" class="rex-form-checkbox" ' . $check . ' />
+									<label for="seo_noindex">' . $I18N->msg('rexseo42_seopage_noindex') . '</label>
+								</p>
+							</div>
 
-					<div class="rex-form-row">
-						<p class="rex-form-textarea">
-							<label for="seo_keywords">' . $I18N->msg('rexseo42_seopage_keywords') . '</label>
-							<textarea name="seo_keywords" id="seo_keywords" rows="2" cols="50" class="rex-form-textarea">' . $seoData['seo_keywords'] . '</textarea>
-							  <span class="rex-form-notice right">
-							    <span id="keywords-wordcount">0</span>/7 ' . $I18N->msg('rexseo42_seopage_words') . '
-							  </span>
+							<div class="rex-form-row">
+								<p class="rex-form-col-a rex-form-submit">
+									<input type="submit" value="' . $I18N->msg('rexseo42_seopage_button_text') . '" name="saveseo" class="rex-form-submit" />
+									<br/><br/>
+								</p>
+							</div>
+							<div class="rex-clearer"></div>
 						</div>
-					</div>
-				</fieldset>
-
-				<fieldset class="rex-form-col-1"><legend>' . $I18N->msg('rexseo42_seopage_url_section') . '</legend><div class="rex-form-wrapper">
-				<div class="rex-form-row">
-				  <p class="rex-form-text">
-            <label for="custom-url">' . $I18N->msg('rexseo42_seopage_userdef_url') . '</label>
-            <input type="text" value="' . $seoData['seo_url'] . '" name="seo_url" id="custom-url" class="rex-form-text">
-  					<span class="rex-form-notice" id="custom-url-preview">&nbsp;</span>
-					</p>
-				</div>
-
-				<div class="rex-form-row">
-				  <p class="rex-form-col-a rex-form-checkbox">
-					<input type="checkbox" id="seo_noindex" value="';
-
-if ($seoData['seo_noindex'] == '1') {
-	echo "1";
-	$check = 'checked = "checked"';
-} else {
-	echo "";
-	$check = "";
-}
-
-					echo '" name="seo_noindex[]" class="rex-form-checkbox" ' . $check . ' />
-					<label for="seo_noindex">' . $I18N->msg('rexseo42_seopage_noindex') . '</label>
-
-				</p>
+					</fieldset>
+				</form>
 			</div>
-
-			<div class="rex-form-row">
-				<p class="rex-form-col-a rex-form-submit">
-					<input type="submit" value="' . $I18N->msg('rexseo42_seopage_button_text') . '" name="saveseo" class="rex-form-submit">
-					<br/><br/>
-				</p>
-			</div>
-			<div class="rex-clearer"></div>
 		</div>
-	</fieldset>
-</form>
-</div></div></div>';
+	</div>';
 ?>
 
 <style type="text/css">
