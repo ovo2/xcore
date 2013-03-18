@@ -1,114 +1,121 @@
 <?php
 class rexseo42 {
-	static function getTitle() {
+	private static $curArticle;
+	private static $startArticleID;
+	private static $titleDelimeter;
+	private static $robotsFollowFlag;
+	private static $robotsArchiveFlag;
+
+	public static function init() {
 		global $REX;
 
-		$title = "";
-		$fullTitle = "";
+		self::$curArticle = OOArticle::getArticleById($REX['ARTICLE_ID']);
+		self::$startArticleID = $REX['START_ARTICLE_ID'];
+		self::$titleDelimeter = $REX['ADDON']['rexseo42']['settings']['title_delimeter'];
+		self::$robotsFollowFlag = $REX['ADDON']['rexseo42']['settings']['robots_follow_flag'];
+		self::$robotsArchiveFlag = $REX['ADDON']['rexseo42']['settings']['robots_archive_flag'];
+	}
 
-		// userdef title or article name?
-		if ($REX['ART'][$REX['ARTICLE_ID']]['seo_title'][$REX['CUR_CLANG']] != "") {
-			$title = $REX['ART'][$REX['ARTICLE_ID']]['seo_title'][$REX['CUR_CLANG']];
+	public static function getBaseUrl() {
+		return self::getServerUrl();
+	}
+
+	public static function getTitle() {
+		if (self::$curArticle->getValue('seo_title') != '') {
+			// use userdef title
+			$title = self::$curArticle->getValue('seo_title');
 		} else {
+			// use article name as title
 			$title = self::getArticleName();
 		}
 		
-		if ($REX['ART'][$REX['ARTICLE_ID']]['seo_ignore_prefix'][$REX['CUR_CLANG']] == "1") {
-			// no prefix, just the title
+		if (self::$curArticle->getValue('seo_ignore_prefix') == '1') {
+			// no prefix, just return the title
 			return htmlspecialchars($title);
 		} else { 
 			if (self::isStartPage()) {
 				// the start article shows the servername first
-				$fullTitle = self::getWebsiteName() . $REX['ADDON']['rexseo42']['settings']['title_delimeter'] . $title;
+				$fullTitle = self::getWebsiteName() . self::$titleDelimeter . $title;
 			} else {
 				// all other articles will show title first
-				$fullTitle = $title . $REX['ADDON']['rexseo42']['settings']['title_delimeter'] . self::getWebsiteName();
+				$fullTitle = $title . self::$titleDelimeter . self::getWebsiteName();
 			}
 			
 			return htmlspecialchars($fullTitle);
 		 }
 	}
 
-	static function getTitleDelimiter() {
-		global $REX;
-
-		return $REX['ADDON']['rexseo42']['settings']['title_delimeter'];
+	public static function getDescription() {
+		return htmlspecialchars(self::$curArticle->getValue('seo_description'));
 	}
 
-	static function isStartPage() {
-		global $REX;
+	public static function getKeywords() {	
+		return htmlspecialchars(self::$curArticle->getValue('seo_keywords'));
+	}
 
-		if ($REX['ARTICLE_ID'] == $REX['START_ARTICLE_ID']) {
-			return true;
+	public static function getRobotRules() {
+		if (self::$curArticle->getValue('seo_noindex') == '1') { 
+			$robots = "noindex";
 		} else {
-			return false;
+			$robots = "index";
 		}
+		
+		if (self::$robotsFollowFlag != '') {
+			$robots .= ", " . self::$robotsFollowFlag;
+		}
+
+		if (self::$robotsArchiveFlag != '') {
+			$robots .= ", " . self::$robotsArchiveFlag;
+		}
+
+		return $robots;
 	}
 
-	static function getArticleName() {
-		global $REX;
-		
-		return $REX['ART'][$REX['ARTICLE_ID']]['name'][$REX['CUR_CLANG']];
+	public static function getCanonicalUrl() {	
+		return rtrim(self::getBaseUrl(), '/') . rex_getUrl(self::$curArticle->getId());
+	}
+
+	public static function getHtml($indent = "\t") {
+		$out = '<base href="' . self::getBaseUrl() . '" />';
+		$out .= PHP_EOL . $indent . '<title>' . self::getTitle() . '</title>';
+		$out .= PHP_EOL . $indent . '<meta name="description" content="' . self::getDescription() . '" />';
+		$out .= PHP_EOL . $indent . '<meta name="keywords" content="' . self::getKeywords() . '" />';
+		$out .= PHP_EOL . $indent . '<meta name="robots" content="' . self::getRobotRules() . '" />';
+		$out .= PHP_EOL . $indent . '<link rel="canonical" href="' . self::getCanonicalUrl() . '" />';
+		$out .= PHP_EOL;
+
+		return $out;
+	}
+
+	public static function getImageTag($file) {
+		$media = OOMedia::getMediaByFileName($file);
+
+		return '<img src="/files/' . $file . '" width="' . $media->getWidth() . '" height="' . $media->getHeight() . '" alt="' . $media->getTitle() . '" />';
+	}
+
+	public static function getTitleDelimiter() {
+		return self::$titleDelimeter;
+	}
+
+	public static function getArticleName() {
+		return self::$curArticle->getName();
 	}
 	
-	static function getWebsiteName() {
+	public static function getWebsiteName() {
 		global $REX;
 		
 		return $REX['SERVERNAME'];
 	}
 
-	static function getCompletePrefixLength() {
-		global $REX;
-
-		return strlen(self::getWebsiteName()) + strlen($REX['ADDON']['rexseo42']['settings']['title_delimeter']);
-	} 
-	
-	static function getDescription() {
-		global $REX;
-		$description = "";
-		$description = $REX['ART'][$REX['ARTICLE_ID']]['seo_description'][$REX['CUR_CLANG']];
-
-		return htmlspecialchars($description);
-	}
-	
-	static function getRobotRules() {
-		global $REX;
-		$robots = "";
-		
-		if (self::isNoIndex($REX['ART'][$REX['ARTICLE_ID']]['seo_noindex'][$REX['CUR_CLANG']])) { 
-			$robots = "noindex";
-		} else { 
-			$robots = "index";
-		}
-		
-		if ($REX['ADDON']['rexseo42']['settings']['robots_follow_flag'] != '') {
-			$robots .= ", " . $REX['ADDON']['rexseo42']['settings']['robots_follow_flag'];
-		}
-
-		if ($REX['ADDON']['rexseo42']['settings']['robots_archive_flag'] != '') {
-			$robots .= ", " . $REX['ADDON']['rexseo42']['settings']['robots_archive_flag'];
-		}
-
-		return $robots;
-	}
-	
-	static function isNoIndex($value) {
-		if ($value == '1') { 
-			return 1;
+	public static function isStartPage() {
+		if (self::$curArticle->getId() == self::$startArticleID) {
+			return true;
 		} else {
-			return 0;
+			return false;
 		}
 	}
 	
-	static function getKeywords() {
-		global $REX;
-		$keywords = "";
-		$keywords = $REX['ART'][$REX['ARTICLE_ID']]['seo_keywords'][$REX['CUR_CLANG']];
-		
-		return htmlspecialchars($keywords);
-	}
-	
-	static function getLangCode($clangID = -1) {
+	public static function getLangCode($clangID = -1) {
 		global $REX;
 
 		if ($clangID == -1) {
@@ -122,47 +129,19 @@ class rexseo42 {
 		}
 	}
 
-	static function sanitizeUrl($url) {
+	public static function sanitizeUrl($url) {
 		return preg_replace('@^https?://|/.*|[^\w.-]@', '', $url);
 	}
 
-	static function getServer() {
+	public static function getServer() {
 		global $REX;
 
 		return self::sanitizeUrl($REX['SERVER']);
 	}
 
-	static function getServerUrl() {
+	public static function getServerUrl() {
 		global $REX;
 
 		return $REX['ADDON']['rexseo42']['settings']['server_protocol'] . self::getServer() . '/';
-	}
-	
-	static function getBaseUrl() {
-		return self::getServerUrl();
-	}
-
-	static function getCanonicalUrl() {
-		global $REX;
-		
-		return rtrim(self::getBaseUrl(), '/') . rex_getUrl($REX['ARTICLE_ID']);
-	}
-
-	static function getImageTag($file) {
-		$media = OOMedia::getMediaByFileName($file);
-
-		return '<img src="/files/' . $file . '" width="' . $media->getWidth() . '" height="' . $media->getHeight() . '" alt="' . $media->getTitle() . '" />';
-	}
-
-	static function getHtml($indent = "\t") {
-		$out = '<base href="' . self::getBaseUrl() . '" />';
-		$out .= PHP_EOL . $indent . '<title>' . self::getTitle() . '</title>';
-		$out .= PHP_EOL . $indent . '<meta name="description" content="' . self::getDescription() . '" />';
-		$out .= PHP_EOL . $indent . '<meta name="keywords" content="' . self::getKeywords() . '" />';
-		$out .= PHP_EOL . $indent . '<meta name="robots" content="' . self::getRobotRules() . '" />';
-		$out .= PHP_EOL . $indent . '<link rel="canonical" href="' . self::getCanonicalUrl() . '" />';
-		$out .= PHP_EOL;
-
-		return $out;
 	}
 }

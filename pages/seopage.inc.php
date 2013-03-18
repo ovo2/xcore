@@ -265,7 +265,7 @@ jQuery(document).ready(function() {
 });
 
 function updateTitlePreview() {
-	var titlePrefix = '<?php echo rexseo42::getPrefix(); ?>';
+	var titlePrefix = '<?php echo rexseo42::getWebsiteName(); ?>';
 	var articleName = '<?php echo rexseo42::getArticleName(); ?>';
 	var customTitle = jQuery('#seo_title').val();
 	var titleDelimeter = '<?php echo rexseo42::getTitleDelimiter(); ?>';

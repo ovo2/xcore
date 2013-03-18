@@ -34,7 +34,11 @@ function rexseo_init($params) {
 
 		$rewriter = new RexseoRewrite($levenshtein,$rewrite_params);
 		$rewriter->resolve();
+		
+		// init helper class
+		rexseo42::init();
 
+		// rewrite ep 
 		rex_register_extension('URL_REWRITE', array ($rewriter, 'rewrite'));
 	}
 
