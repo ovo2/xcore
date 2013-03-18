@@ -74,15 +74,16 @@ echo '
 				<fieldset class="rex-form-col-1">
 					<legend id="seo-default">Allgemein</legend>
 					<div class="rex-form-wrapper">
-						<div class="rex-form-row"  style="position: relative;">
-						<p class="rex-form-text">
-							<label for="Titel">Titel</label>
-							<input type="text" value="' . $seoData['seo_title'] . '" name="seo_title" id="seo_title" tabindex="30" class="rex-form-text seo-title" />
-							<div style="display: inline-block;margin-left: 167px; margin-top: 8px;">
-								<span id="title-preview"></span>
-							</div>
-						<div style="position: absolute;top: 6px; left: 538px;">
-							<input id="prefix-check" style="position: relative; top: 3px;" type="checkbox" tabindex="35" value="';
+
+						<div class="rex-form-row">
+              <p class="rex-form-text">
+                <label for="Titel">Titel</label>
+                <input type="text" value="' . $seoData['seo_title'] . '" name="seo_title" id="seo_title" tabindex="30" class="rex-form-text seo-title" />
+                <span class="rex-form-notice">
+					<span id="title-preview">&nbsp;</span>
+                </span>
+					<p id="show-prefix" class="rex-form-checkbox rex-form-label-right">
+					<input id="prefix-check" type="checkbox" tabindex="35" value="';
 
 if ($seoData['seo_ignore_prefix'] == '1') {
 	echo "1";
@@ -92,35 +93,48 @@ if ($seoData['seo_ignore_prefix'] == '1') {
 	$check = "";
 }
 
-						echo '" name="seo_ignore_prefix[]" class="rex-form-checkbox" ' . $check . '>&nbsp;Kein Prefix</div>
- 
+						echo '" name="seo_ignore_prefix[]" class="rex-form-checkbox" ' . $check . ' />
+						    <label for="prefix-check">Kein Prefix</label>
+						  </p>
+              </p>
 						</div>
-						<div class="rex-form-row" style="position: relative;"><p class="rex-form-textarea">
-							<label for="Beschreibung">Beschreibung</label>
-							<textarea name="seo_description" id="seo_description" tabindex="31" rows="2" cols="50" class="rex-form-textarea">' . $seoData['seo_description'] . '</textarea>
-							<div style="position: absolute;right:224px;top:69px"><div style="display: inline;" id="description-charcount">0</div>/156 Zeichen
-						</div>
-					</div>
-					<div class="rex-form-row" style="position: relative;">
+
+						
+						  
+							  
+						
+						
+						<div class="rex-form-row">
+						  <p class="rex-form-textarea">
+                <label for="Beschreibung">Beschreibung</label>
+                <textarea name="seo_description" id="seo_description" tabindex="31" rows="2" cols="50" class="rex-form-textarea">' . $seoData['seo_description'] . '</textarea>
+							  <span class="rex-form-notice right">
+							    <span id="description-charcount">0</span>/156 Zeichen
+							  </span>
+					  </div>
+
+					<div class="rex-form-row">
 						<p class="rex-form-textarea">
 							<label for="Suchbegriffe">Suchbegriffe</label>
 							<textarea name="seo_keywords" id="seo_keywords" tabindex="32" rows="2" cols="50" class="rex-form-textarea">' . $seoData['seo_keywords'] . '</textarea>
-							<div style="position: absolute;right:224px;top:69px"><div style="display: inline;" id="keywords-wordcount">0</div>/7 Wörter
+							  <span class="rex-form-notice right">
+							    <span id="keywords-wordcount">0</span>/7 Wörter
+							  </span>
 						</div>
 					</div>
 				</fieldset>
 
 				<fieldset class="rex-form-col-1"><legend>URL und Indizierung</legend><div class="rex-form-wrapper">
-				<div class="rex-form-row"><p class="rex-form-text" style="margin-bottom: -3px;">
-					<label for="custom-url">Benutzerdefinierte URL</label>
-					<input type="text" value="' . $seoData['seo_url'] . '" name="seo_url" id="custom-url" tabindex="37" class="rex-form-text">
+				<div class="rex-form-row">
+				  <p class="rex-form-text">
+            <label for="custom-url">Benutzerdefinierte URL</label>
+            <input type="text" value="' . $seoData['seo_url'] . '" name="seo_url" id="custom-url" tabindex="37" class="rex-form-text">
+  					<span class="rex-form-notice" id="custom-url-preview">&nbsp;</span>
 					</p>
-
-					<div style="display: inline-block;margin-left: 167px; margin-top: 12px;" id="custom-url-preview"></div>
 				</div>
 
-				<div class="rex-form-row"><p class="rex-form-col-a rex-form-checkbox">
-					<label for="Suchmaschinen_die_Indizierung_nicht_erlauben">Indizierung nicht erlauben</label>
+				<div class="rex-form-row">
+				  <p class="rex-form-col-a rex-form-checkbox">
 					<input type="checkbox" tabindex="35" id="Suchmaschinen_die_Indizierung_nicht_erlauben" value="';
 
 if ($seoData['seo_noindex'] == '1') {
@@ -131,7 +145,8 @@ if ($seoData['seo_noindex'] == '1') {
 	$check = "";
 }
 
-					echo '" name="seo_noindex[]" class="rex-form-checkbox" ' . $check . '>
+					echo '" name="seo_noindex[]" class="rex-form-checkbox" ' . $check . ' />
+					<label for="Suchmaschinen_die_Indizierung_nicht_erlauben">Indizierung nicht erlauben</label>
 
 				</p>
 			</div>
@@ -150,10 +165,7 @@ if ($seoData['seo_noindex'] == '1') {
 ?>
 
 <style type="text/css">
-#seo-page div.rex-form div.rex-form-row {
-    padding: 7px 0;
-}
-
+  
 #seo-page  #title-preview {
     display: block;
     overflow: hidden;
@@ -170,17 +182,41 @@ if ($seoData['seo_noindex'] == '1') {
 	font-weight: bold;
 }
 
-#seo-page div.rex-form div.rex-form-row label {
-	width: 155px;
+div.rex-form div.rex-form-row label, div.rex-form div.rex-form-row p.rex-form-label {
+    width: 155px;
 }
 
-#seo-page div.rex-form div.rex-form-row p input.rex-form-submit {
-	margin-left: 165px;
+div.rex-form div.rex-form-row p span.rex-form-notice {
+	 margin-left: 165px;
+	margin-top: 4px;
+}
+
+#show-prefix {
+	margin-top: 3px;
+}
+
+#show-prefix label {
+	width: auto !important;
+}
+
+#prefix-check {
+	margin-left: 475px;
+	margin-bottom: 4px;
+}
+
+div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row div.rex-form-checkboxes-wrapper, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row div.rex-form-radios-wrapper, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-label-right label, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-read span, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-text input, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-select select, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p textarea {
+    width: 390px;
+}
+
+div.rex-form div.rex-form-row p span.rex-form-notice.right {
+    float: right;
+    margin-left: 0;
+    margin-right: 184px;
+}
+
+div.rex-form div.rex-form-row p input.rex-form-submit {
 	margin-top: 8px;
-}
-
-#seo-page .rex-form-textarea {
-	margin-bottom: 12px;
+    margin-left: 165px;
 }
 </style>
 
@@ -286,4 +322,5 @@ function updateKeywordsCount() {
 	jQuery('#keywords-wordcount').html(keywordCount);
 }
 </script>
+
 
