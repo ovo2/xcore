@@ -18,6 +18,12 @@ function rexseo_afterDBImport($params) {
 	}
 }
 
+function rexseo_showMsgAfterClangModified($params) {
+	global $I18N, $REX;
+
+	echo rex_info($I18N->msg('rexseo42_check_langcodes_msg', $REX['ADDON']['name']['rexseo42']));
+}
+
 
   function rexseo_recursive_copy($source, $target, $makedir=TRUE, &$result=array(), $counter=1, $folderPermission='', $filePermission='')
   {

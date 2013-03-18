@@ -10,4 +10,5 @@ rexseo42_config_ok = Einstellungen wurde aktualisiert.
 rexseo42_config_error = Einstellungen konnte nicht gespeichert werden!
 rexseo42_config_file_no_perms = Konfigurationsdatei "{0}" ist nicht beschreibbar!
 rexseo42_dbfields_readded = Fehlende DB-Felder des AddOns "{0}" wurden hinzugefügt.<br />WICHTIG: Bitte überprüfen Sie ob das AddOn-Setup (Schritt 3) erneut durchgeführt werden muss.
+rexseo42_check_langcodes_msg = Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.langcodes.inc.php" Datei von {0}.
 

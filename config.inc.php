@@ -15,6 +15,7 @@ require_once($myroot . '/functions/function.rexseo_helpers.inc.php');
 require_once($myroot . '/classes/class.rexseo42.inc.php');
 require_once($myroot . '/settings.inc.php');
 require_once($myroot . '/settings.expert.inc.php');
+require_once($myroot . '/settings.langcodes.inc.php');
 
 // init
 if (!$REX['SETUP']) {
@@ -98,5 +99,9 @@ if ($REX['REDAXO']) {
 	if (!$REX['SETUP']) {
 		rex_register_extension('A1_AFTER_DB_IMPORT', 'rexseo_afterDBImport');
 	}
+
+	// if clang is added/deleted show message to the user that he should check his langcodes settings
+	rex_register_extension('CLANG_ADDED', 'rexseo_showMsgAfterClangModified');
+	rex_register_extension('CLANG_DELETED', 'rexseo_showMsgAfterClangModified');
 }
 

@@ -108,10 +108,18 @@ class rexseo42 {
 		return htmlspecialchars($keywords);
 	}
 	
-	static function getCountryCode() {
+	static function getLangCode($clangID = -1) {
 		global $REX;
 
-		return $REX['CLANG'][$REX['CUR_CLANG']];
+		if ($clangID == -1) {
+			$clangID = $REX['CUR_CLANG'];
+		}
+
+		if (isset($REX['ADDON']['rexseo42']['langcodes'][$clangID])) {
+			return $REX['ADDON']['rexseo42']['langcodes'][$clangID];
+		} else {
+			return $REX['CLANG'][$clangID];
+		}
 	}
 	
 	static function getBaseUrl() {
