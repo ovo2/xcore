@@ -13,10 +13,17 @@ if (rex_post('saveseo', 'boolean')) {
 	//$sql->debugsql = 1;
 	$sql->setWhere("id=" . $articleID . " AND clang=" . $clang);
 
+	//sanitize
+	$title = rexseo_sanitizeString(rex_post('seo_title'));
+	$description = rexseo_sanitizeString(rex_post('seo_description'));
+
+	$kexwords = str_replace(',', ', ', rex_post('seo_keywords')); // always have a whitespace char after comma 
+	$keywords = strtolower(rexseo_sanitizeString($kexwords)); // also keywords should be all lowercase
+
 	// seo fields
-	$sql->setValue('seo_title', rex_post('seo_title'));
-	$sql->setValue('seo_description', rex_post('seo_description'));
-	$sql->setValue('seo_keywords', rex_post('seo_keywords'));
+	$sql->setValue('seo_title', $title);
+	$sql->setValue('seo_description', $description);
+	$sql->setValue('seo_keywords', $keywords);
 	$sql->setValue('seo_url', rex_post('seo_url'));
 
 	// ignore prefix
@@ -50,7 +57,7 @@ if (rex_post('saveseo', 'boolean')) {
 			rexseo_generate_pathlist('');
 		}
 
-		$dataUpdated = true; // this is for frontend link fix 
+		$dataUpdated = true; // this is for frontend link fix with js
 	} else {
 		// err msg
 		echo rex_warning($sql->getError());

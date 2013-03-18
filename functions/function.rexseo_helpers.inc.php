@@ -1,5 +1,9 @@
 <?php
 
+function rexseo_sanitizeString($string) {
+	return preg_replace("/\s\s+/", " ", $string);
+}
+
 if (!function_exists('rexseo_recursive_copy'))
 {
   function rexseo_recursive_copy($source, $target, $makedir=TRUE, &$result=array(), $counter=1, $folderPermission='', $filePermission='')
