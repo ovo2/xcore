@@ -51,20 +51,6 @@ if($REX['ADDON'][$myself]['settings']['install_subdir'] != rexseo_subdir()) {
   echo rex_info($I18N->msg('rexseo42_settings_subdir_change', $REX['ADDON']['name']['rexseo42']));
 }
 
-// toggle redirect
-if(rex_request('func','string')=='toggle_redirect' && intval(rex_request('id','int'))>0) {
-  $db = new rex_sql;
-  $db->setQuery('UPDATE `'.$REX['TABLE_PREFIX'].'rexseo_redirects'.'` SET `status` = IF(status=1, 0, 1) WHERE `id`='.rex_request('id','int').';');
-  rexseo_htaccess_update_redirects();
-}
-
-// delete redirect
-if(rex_request('func','string')=='delete_redirect' && intval(rex_request('id','int'))>0) {
-  $db = new rex_sql;
-  $db->setQuery('DELETE FROM `'.$REX['TABLE_PREFIX'].'rexseo_redirects'.'` WHERE `id`='.rex_request('id','int').';');
-  rexseo_htaccess_update_redirects();
-}
-
 // url schema select box
 $url_schema_select = new rex_select();
 $url_schema_select->setSize(1);
