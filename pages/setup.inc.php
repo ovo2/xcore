@@ -13,6 +13,7 @@ if ($func == "do_copy") {
 	$htaccessBackupFile = '_htaccess_' . date('Ymd_His');
 	$doCopy = true;
 	$htaccessFileExists = false;
+	$copySuccessful = false;
 
 	if (file_exists($htaccessRoot)) {
 		$htaccessFileExists = true;
@@ -28,9 +29,9 @@ if ($func == "do_copy") {
 	// then copy if backup was successful
 	if ($doCopy) {
 		$sourceFile = $REX['INCLUDE_PATH'] . '/addons/rexseo42/install/_htaccess';
-		$targetFile = $REX['HTDOCS_PATH'] . '.htaccess';
 
-		if (copy($sourceFile, $targetFile)) {
+		if (copy($sourceFile, $htaccessRoot)) {
+			$copySuccessful = true;
 			$msg = $I18N->msg('rexseo42_setup_file_copy_successful');
 	
 			if ($htaccessFileExists) {
@@ -44,12 +45,26 @@ if ($func == "do_copy") {
 	} else {
 		echo rex_warning($I18N->msg('rexseo42_setup_backup_failed'));
 	}
-} elseif ($func == "apply_settings") {
-	$server = str_replace("\\'", "'", rex_post('server', 'string'));
-	$server = rexseo42::sanitizeUrl($server);	
 
+	if ($copySuccessful && rex_request('www_redirect', 'int') == 1) {
+		// this is for non-ww to www redirect
+		$wwwRedirect1 = '#RewriteCond %{HTTP_HOST} !^www\. [NC]';
+		$wwwRedirect2 = '#RewriteRule (.*) http://www.%{HTTP_HOST}/$1 [R=301,L]';
+	
+		$content = rex_get_file_contents($htaccessRoot);
+		$content = str_replace($wwwRedirect1, ltrim($wwwRedirect1, '#'), $content);
+		$content = str_replace($wwwRedirect2, ltrim($wwwRedirect2, '#'), $content);
+
+		if (rex_put_file_contents($htaccessRoot, $content) > 0) {
+			echo rex_info($I18N->msg('rexseo42_setup_www_redirect_patch_ok'));
+		} else {
+			echo rex_warning($I18N->msg('rexseo42_setup_www_redirect_patch_failed'));
+		}
+	}
+} elseif ($func == "apply_settings") {
+	$server = rexseo42::sanitizeUrl(str_replace("\\'", "'", rex_post('server', 'string')));	
 	$servername  = str_replace("\\'", "'", rex_post('servername', 'string'));
-	$modRewrite = rex_post('mod_rewrite', 'int');
+	$modRewrite = rex_request('mod_rewrite', 'int');
 
 	if ($modRewrite == 1) {
 		$modRewriteBool = 'true';
@@ -93,11 +108,16 @@ if ($func == "do_copy") {
 	<h2 class="rex-hl2"><?php echo $I18N->msg('rexseo42_setup_step1'); ?></h2>
 	<div class="rex-area-content">
 		<p><?php echo $I18N->msg('rexseo42_setup_step1_msg1'); ?></p>
-		<ul class="no-bottom-margin">
-			<li><code>/redaxo/include/addons/rexseo42/install/_htaccess</code> <?php echo $I18N->msg('rexseo42_setup_to'); ?> <code>/.htaccess</code></li>
-		</ul>
+		<form action="index.php" method="post">
+			<ul class="no-bottom-margin">
+				<li><code>/redaxo/include/addons/rexseo42/install/_htaccess</code> <?php echo $I18N->msg('rexseo42_setup_to'); ?> <code>/.htaccess</code></li>
+			</ul>
 
-		<form action="index.php" method="get">
+			<p class="rex-form-checkbox rex-form-label-right"> 
+				<input type="checkbox" value="1" id="www_redirect" name="www_redirect" />
+				<label for="www_redirect"><?php echo $I18N->msg('rexseo42_setup_www_redirect_checkbox'); ?></label>
+			</p>
+
 			<input type="hidden" name="page" value="rexseo42" />
 			<input type="hidden" name="subpage" value="setup" />
 			<input type="hidden" name="func" value="do_copy" />
@@ -193,6 +213,11 @@ $codeExample2 = '<head>
 #rex-page-rexseo42 p.rex-form-checkbox input {
 	position: relative;
 	top: 3px;
+}
+
+#rex-page-rexseo42 #www_redirect {
+    margin-left: 4px;
+    margin-top: 8px;
 }
 </style>
 
