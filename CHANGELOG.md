@@ -1,6 +1,33 @@
 REXSEO42 - Changelog
 ====================
 
+### Version 1.0.42 BETA - 19. März 2013
+
+* Neue Hilfe Unterpunkte: Codebeispiele und Links, Faq überarbeitet
+* Verzeichnis-Auflistung für files und files/addons wird per .htaccess Datei unterbunden
+* Neues Feature: One Page Mode, für Websites die nur über eine lange Seite verfügen 
+* Neues Feature: Tools mit Linksammlung zu wichtigen SEO-Tools
+* Neue Permission: rexseo42[seopage] um für nicht Admnins die Sichtabrkeit der SEO-Page zu steuern
+* editContentOnly[] wird nun berücksichtigt
+* Neues Fearure: Checkbox zum setzen der WWW-Umleitung im Setup
+* REX['MEDIA_DIR'] wird genutzt
+* Domain der Website wird jetzt ohne http:// gesetzt
+* noIndex jetzt auch mehrsprachig
+* Lang Codes für die Lang Slugs können nun vorläufig in der `settings.langcodes.inc.php` definiert werden
+* Auto DB Fix nach Db-Import wenn die DB Felder fehlen sollten
+* SEO-Page: Title, Description und Keywords abgesichert. Keywords werden immer kleingeschrieben.
+* SEO-Page: Html und CSS aufgeräumt und verbessert
+* rexseo42 Klasse aufgeräumt und ergänzt: getHtml(), getImageTag(), getImageManagerUrl(), etc.
+* Änderungen bis RexSEO 1.5.4 reingenommen
+* I18N Support: Alles Strings in die Lang-Datei gepackt
+* .htaccess Datei aufgeräumt und vereinfacht, redaxo/.htaccess entfernt
+* Weitere Einstellungen  wurden in die `settings.expert.inc.php` gepackt
+* Code wurde generell vereinfacht und aufgeräumt 
+* Lizendatei hinzugefügt
+* Installation wird bei bei diesen installierten Addons verweigert: rexseo, url_rewrite, yrewrite
+* REDAXO 4.5 Beta Versionen funktionieren nun auch mit dem AddOn
+* Aufruf von ADDONS_INCLUDED auf early gesetzt
+
 ### Version 1.0.1 - 17. Feburar 2013
 
 * Changelog eingeführt
