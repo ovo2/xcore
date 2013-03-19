@@ -36,7 +36,7 @@ class rexseo42 {
 			return htmlspecialchars($title);
 		} else { 
 			if (self::isStartPage()) {
-				// the start article shows the servername first
+				// the start article shows the website name first
 				$fullTitle = self::getWebsiteName() . self::$titleDelimeter . $title;
 			} else {
 				// all other articles will show title first
@@ -90,9 +90,11 @@ class rexseo42 {
 	}
 
 	public static function getImageTag($file) {
+		global $REX;
+
 		$media = OOMedia::getMediaByFileName($file);
 
-		return '<img src="/files/' . $file . '" width="' . $media->getWidth() . '" height="' . $media->getHeight() . '" alt="' . $media->getTitle() . '" />';
+		return '<img src="/' . $REX['MEDIA_DIR'] . '/' . $file . '" width="' . $media->getWidth() . '" height="' . $media->getHeight() . '" alt="' . $media->getTitle() . '" />';
 	}
 
 	public static function getTitleDelimiter() {
