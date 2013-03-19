@@ -157,7 +157,7 @@ echo '
     <div id="expert_block" style="margin:0;padding:0;">
 
       <fieldset class="rex-form-col-1">
-        <legend>' . $I18N->msg('rexseo42_settings_rewrite_section') . '</legend>
+        <legend>' . $I18N->msg('rexseo42_settings_main_section') . '</legend>
         <div class="rex-form-wrapper">
 
 		  
@@ -180,7 +180,23 @@ echo '
                 '.$homeurl_select->get().'
                 '.$homelang_box.'
             </p>
-          </div><!-- /rex-form-row -->
+          </div><!-- /rex-form-row -->';
+
+if (count($REX['CLANG']) > 1) {
+	echo '<div class="rex-form-row rex-form-element-v1">
+			<p class="rex-form-col-a rex-form-read">
+				<label for="langcode_hint">' . $I18N->msg('rexseo42_settings_langcode_hint') . '</label>
+				<span class="rex-form-read" id="langcode_hint"><code>/rexseo42/settings.langcodes.inc.php</code></span>
+			</p>
+		</div>';
+}
+
+	echo '<div class="rex-form-row rex-form-element-v1">
+			<p class="rex-form-col-a rex-form-read">
+				<label for="expert_hint">' . $I18N->msg('rexseo42_settings_expert_hint') . '</label>
+				<span class="rex-form-read" id="expert_hint"><code>/rexseo42/settings.expert.inc.php</code></span>
+			</p>
+		</div>
 
         </div><!-- /rex-form-wrapper -->
       </fieldset>

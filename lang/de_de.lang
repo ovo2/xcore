@@ -21,11 +21,13 @@ rexseo42_settings_language = Sprache
 rexseo42_settings_extension = Endung
 rexseo42_settings_schema = Schema
 rexseo42_settings_startpage = Startseite
-rexseo42_settings_rewrite_section = URL Rewrite Optionen
+rexseo42_settings_main_section = Allgemein
 rexseo42_settings_robots_additional = Zusätzliche Einträge
 rexseo42_settings_robots_link = Link zur robots.txt
 rexseo42_settings_sitemap_link = Link zur sitemap.xml
 rexseo42_settings_submit = Einstellungen speichern
+rexseo42_settings_langcode_hint = Langcode Einstellungen
+rexseo42_settings_expert_hint = Weitere Einstellungen
 
 rexseo42_setup_file_backup_failed = Datei "{0}" konnte nicht gesichert werden!
 rexseo42_setup_file_copy_successful = Kopieren der Datei erfolgreich.
