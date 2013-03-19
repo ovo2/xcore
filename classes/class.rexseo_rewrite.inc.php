@@ -1,11 +1,6 @@
 <?php
 
-// use new rex var introduced in REDAXO 4.5
-if (isset($REX['GENERATED_PATH'])) {
-	define('REXSEO_PATHLIST', $REX['GENERATED_PATH'] . '/files/rexseo_pathlist.php');
-} else {
-	define('REXSEO_PATHLIST', $REX['INCLUDE_PATH'].'/generated/files/rexseo_pathlist.php');
-}
+define('REXSEO_PATHLIST', $REX['GENERATED_PATH'] . '/files/rexseo_pathlist.php'); // uses new rex var introduced in REDAXO 4.5
 
 class RexseoRewrite
 {
@@ -700,12 +695,7 @@ function rexseo_purgeCacheFiles($ext='.content')
 {
   global $REX;
 
-  if (isset($REX['GENERATED_PATH'])) {
-	  $pattern = $REX['GENERATED_PATH'] . '/articles/*'.$ext;
-  } else {
-	  $pattern = $REX['INCLUDE_PATH'].'/generated/articles/*'.$ext;
-  }
-
+  $pattern = $REX['GENERATED_PATH'] . '/articles/*'.$ext; // uses new rex var introduced in REDAXO 4.5
   $purge_files = glob($pattern);
 
   if(is_array($purge_files) && count($purge_files)>0)

@@ -55,7 +55,7 @@ if (rex_post('saveseo', 'boolean')) {
 		// delete cached article
 		rex_generateArticle($articleID);
 
-		// generated path list if url has changed
+		// generate path list if url has changed
 		if ($savedURL != rex_post('seo_url')) {
 			rexseo_generate_pathlist('');
 		}
