@@ -214,6 +214,10 @@ class rexseo_sitemap
   {
     $map = self::get();
 
+    while(ob_get_level()){
+      ob_end_clean();
+    } 
+
     switch($this->mode)
     {
       case'json':
