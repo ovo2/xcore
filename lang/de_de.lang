@@ -1,5 +1,6 @@
 rexseo42_help_message = Ein Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzerführung und noch ein paar kleinen Extras.
 rexseo42_settings = Einstellungen
+rexseo42_tools = Tools
 rexseo42_setup = Setup
 rexseo42_help = Hilfe
 rexseo42_seopage_linktext = SEO
@@ -11,6 +12,24 @@ rexseo42_config_error = Einstellungen konnte nicht gespeichert werden!
 rexseo42_config_file_no_perms = Konfigurationsdatei "{0}" ist nicht beschreibbar!
 rexseo42_dbfields_readded = Fehlende DB-Felder des AddOns "{0}" wurden hinzugefügt.<br />WICHTIG: Bitte überprüfen Sie ob das AddOn-Setup (Schritt 3) erneut durchgeführt werden muss.
 rexseo42_check_langcodes_msg = Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.langcodes.inc.php" Datei von {0}.
+
+rexseo42_tools_caption = SEO Tools
+rexseo42_tool1 = Google Index dieser Website anzeigen
+rexseo42_tool1_desc = Schauen Sie wie Google Ihre Website {0} indiziert hat.
+rexseo42_tool2 = Google Submit Url
+rexseo42_tool2_desc = Geben Sie hiermit Ihre neue Website Google bekannt. Registrierung bzw. Google-Konto erforderlich.
+rexseo42_tool3 = Google Webmaster Tools
+rexseo42_tool3_desc = Die Webmaster-Tools bietet Ihnen ausführliche Berichte über die Präsenz Ihrer Seiten auf Google.
+rexseo42_tool4 = PageRank ermitteln
+rexseo42_tool4_desc = Mit diesem Tool lässt sich der PageRank Ihrer Website ermitteln.
+rexseo42_tool5 = TrafficScanner
+rexseo42_tool5_desc = Der TrafficScanner ruft wie ein Webbrowser eine Webseite auf und zeigt die Dateien die geladen werden.
+rexseo42_tool6 = Seitwert Quick-Analyse
+rexseo42_tool6_desc = Eine erste kostenlose Analyse Ihrer Website durch den Webdienst Seitwert.de.
+rexseo42_tool7 = Majestic Site Explorer
+rexseo42_tool7_desc = Ein teilweise kostenloser Site Explorer der die Anzahl der Backlinks einer Website anzeigt.
+rexseo42_tool8 = Google SERP Snippet Optimization Tool
+rexseo42_tool8_desc = Das Google SERP Snippet Optimization Tool zeigt eine Vorschau der Snippets die Google generiert.
 
 rexseo42_settings_subdir_change = 'Hinweis: Das aktuelle Installationsverzeichnis von REDAXO scheint sich geändert zu haben.<br />Zum aktualisieren einmal die {0}-Einstellungen speichern und evtl. notwendige Anpassung der RewriteBase in der .htaccess beachten!
 rexseo42_settings_url_ending_without = (ohne)

@@ -13,11 +13,11 @@ $REX['PERM'][] = 'rexseo42[]';
 $REX['EXTPERM'][] = 'rexseo42[seopage]';
 
 // includes
-require_once($myroot . '/functions/function.rexseo_helpers.inc.php');
-require_once($myroot . '/classes/class.rexseo42.inc.php');
-require_once($myroot . '/settings.dyn.inc.php');
-require_once($myroot . '/settings.expert.inc.php');
-require_once($myroot . '/settings.langcodes.inc.php');
+require($myroot . '/functions/function.rexseo_helpers.inc.php');
+require($myroot . '/classes/class.rexseo42.inc.php');
+require($myroot . '/settings.dyn.inc.php');
+require($myroot . '/settings.expert.inc.php');
+require($myroot . '/settings.langcodes.inc.php');
 
 // init
 if (!$REX['SETUP']) {
@@ -60,6 +60,7 @@ if ($REX['REDAXO']) {
 	// subpages
 	$REX['ADDON'][$myself]['SUBPAGES'] = array(
 		array('', $I18N->msg('rexseo42_settings')),
+		array('tools', $I18N->msg('rexseo42_tools')),
 		array('setup', $I18N->msg('rexseo42_setup')),
 		array('help', $I18N->msg('rexseo42_help'))
 	);

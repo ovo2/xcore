@@ -23,6 +23,7 @@ switch($subpage){
 	case'':
 		$subpage = 'options';
 	case'options':
+	case'tools':
 	case'setup':
 	case'help':
 		$local_path = '/addons/'.$myself.'/pages/';
