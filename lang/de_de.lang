@@ -119,31 +119,34 @@ rexseo42_help_faq03a = Gibts was bestimmtes zu beachten wenn ich REDAXO in einem
 rexseo42_help_faq03b = Ja. In der .htaccess im Root-Ordner bei RewriteBase das Unterverzeichnis ergänzen: <code>RewriteBase /UNTERVERZEICHNIS</code> sowie darauf achten, dass "Url dieser Website" ohne das Unterverzechnis angegeben wird.
 
 rexseo42_help_faq04a = Ich mag das Pipe-Zeichen nicht im Titel. Wie kann ich das umstellen?
-rexseo42_help_faq04b = Momentan so: der Methode getTitle das neue Zeichen als Parameter übergeben: <code>rexseo42::getTitle("-");</code>
+rexseo42_help_faq04b = Über die <code>settings.expert.inc.php</code> oder wie im Codebeispiel 4 in dieser Hilfe.
+
+rexseo42_help_faq17a = Wo sind eigentlich all die restlichen Einstellungen von RexSEO abgeblieben?
+rexseo42_help_faq17b = Vorläufig wurden diese hier ausgelagert: <code>settings.expert.inc.php</code>
 
 rexseo42_help_faq05a = Wie kann ich den Titel sonst noch beinflussen?
-rexseo42_help_faq05b = Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix anzeigen" wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode <code>rexseo42::getTitle()</code> für Spezial-Titel-Geschichten überschreiben.
+rexseo42_help_faq05b = Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix" wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode <code>rexseo42::getTitle()</code> überschreiben, siehe dazu Codebeispiel 5 in dieser Hilfe.
 
 rexseo42_help_faq06a = Warum wird der Titel für die Startseite "andersherum" ausgegeben wie für die Folgeseiten?
-rexseo42_help_faq06b = Siehe PDF in Antwort zur nächsten Frage.
+rexseo42_help_faq06b = Dies wurde in nachfolgenden PDF von Google angeguckt.
 
 rexseo42_help_faq07a = Wo bekomme ich eigentlich eine gute verständliche Einführung in das Thema "Suchmaschinenoptimierung"?
 rexseo42_help_faq07b = Zum Beispiel hier: <a href="http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf" target="_blank" class="extern">einfuehrung-in-suchmaschinenoptimierung.pdf</a>
 
 rexseo42_help_faq08a = Wie kann ich suchmaschinenfreundlichere URLs für Bilder aus dem Image Manager erhalten?
-rexseo42_help_faq08b = Im HTML anstelle von <code>index.php?rex_img_type=ImgTypeName&rex_img_file=ImageFileName</code> dass hier verwenden:<br /><code>/files/imagetypes/ImgTypeName/ImageFileName</code>
+rexseo42_help_faq08b = Siehe Codebeispiel Nr. 2 in dieser Hilfe.
 
 rexseo42_help_faq09a = Ich möchte nicht-www Anfragen auf die www Variante umleiten lassen. Soll doch SEO-technisch gut sein, oder?
-rexseo42_help_faq09b = Yup. In der .htaccess im Root-Ordner die entsprechenden Zeilen un-auskommentieren.
+rexseo42_help_faq09b = Yup. In der .htaccess die entsprechenden Zeilen un-auskommentieren bzw. im über Setup Schritt 1 automatisch machen lassen.
 
 rexseo42_help_faq10a = Meine URLs haben sich geändert. Wie kann ich saubere Weiterleitungen hinbekommen?
 rexseo42_help_faq10b = In der .htaccess im Root-Ordner an oberster Stelle pro URL eine 301 Weiterleitung nach diesem Schema einrichten:<br /><code>Redirect 301 /alte-seite.html http://www.my-domain.de/neue-seite.html</code>
 
 rexseo42_help_faq11a = Habe gehört das es SEO-technisch gut wäre wenn Bilder ein Alt-Attribut zugewiesen bekommen?
-rexseo42_help_faq11b = Dafür kann man die Methode <code>rexseo42::getImageTag($file)</code> nutzen, die dann einen kompletten Image-Tag inkl. Alt-Attribute ausspuckt. Und im Medienpool wird dieser dann im Titel-Feld gesetzt.
+rexseo42_help_faq11b = Dafür kann man die Methode <code>rexseo42::getImageTag()</code> nutzen, die dann einen kompletten Image-Tag inkl. Alt-Attribut ausspuckt (siehe Codebeispiel 2). Und im Medienpool wird dieser dann im Titel-Feld gesetzt.
 
 rexseo42_help_faq12a = Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?
-rexseo42_help_faq12b = Immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. <code>redaxo://13#anker</code>
+rexseo42_help_faq12b = Immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. <code>redaxo://13#anker</code> oder den JS Fix von der Links-Seite nutzen.
 
 rexseo42_help_faq13a = Wo legt {0} die Backups für die .htaccess Dateien an?
 rexseo42_help_faq13b = Im Backup-Verzeichnis des AddOns: <code>/rexseo42/backup/</code>
