@@ -37,6 +37,9 @@ rexseo42_setup_settings_save_failed = Speichern der Einstellungen fehlgeschlagen
 rexseo42_setup_step1 = Schritt 1: Datei kopieren
 rexseo42_setup_step1_msg1 = Folgende Datei muss in das Hauptverzeichnis von REDAXO kopiert und korrekt umbenannt werden:
 rexseo42_setup_to = nach
+rexseo42_setup_www_redirect_checkbox = Dauerhafte Umleitung auf die WWW-Domain aktivieren
+rexseo42_setup_www_redirect_patch_ok = Umleitung auf die WWW-Domain wurde eingerichtet.
+rexseo42_setup_www_redirect_patch_failed = Umleitung auf die WWW-Domain konnte nicht aktiviert werden :(
 rexseo42_setup_step1_button = Datei kopieren
 rexseo42_setup_step2 = Schritt 2: Einstellungen vornehmen
 rexseo42_setup_step2_msg1 = Bitte die folgenden <a href="index.php?page=specials">System</a> Einstellungen vornehmen bzw. ergänzen:
