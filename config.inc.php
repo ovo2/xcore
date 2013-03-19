@@ -4,7 +4,7 @@ $myroot = $REX['INCLUDE_PATH'] . '/addons/' . $myself;
 
 $REX['ADDON']['rxid'][$myself] = '0';
 $REX['ADDON']['name'][$myself] = 'REXSEO42';
-$REX['ADDON']['version'][$myself] = '1.0.1';
+$REX['ADDON']['version'][$myself] = '1.0.42 BETA';
 $REX['ADDON']['author'][$myself] = 'Markus Staab, Wolfgang Huttegger, Dave Holloway, Jan Kristinus, jdlx, RexDude';
 $REX['ADDON']['supportpage'][$myself] = 'forum.redaxo.de';
 $REX['ADDON']['perm'][$myself] = $myself . '[]';
