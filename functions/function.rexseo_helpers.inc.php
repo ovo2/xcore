@@ -24,116 +24,7 @@ function rexseo_showMsgAfterClangModified($params) {
 	echo rex_info($I18N->msg('rexseo42_check_langcodes_msg', $REX['ADDON']['name']['rexseo42']));
 }
 
-
-  function rexseo_recursive_copy($source, $target, $makedir=TRUE, &$result=array(), $counter=1, $folderPermission='', $filePermission='')
-  {
-    global $REX;
-    $folderPermission = (empty($folderPermission)) ? $REX['DIRPERM'] : $folderPermission;
-    $filePermission = (empty($filePermission)) ? $REX['FILEPERM'] : $filePermission;
-
-    // SCAN SOURCE DIR WHILE IGNORING  CERTAIN FILES
-    $ignore = array('.DS_Store','.svn','.','..');
-    $dirscan = array_diff(scandir($source), $ignore);
-
-    // WALK THROUGH RESULT RECURSIVELY
-    foreach($dirscan as $item)
-    {
-
-      // DO DIR STUFF
-      if (is_dir($source.$item)) /* ITEM IS A DIR */
-      {
-        if(!is_dir($target.$item) && $makedir=TRUE) /* DIR NONEXISTANT IN TARGET */
-        {
-          if(mkdir($target.$item)) /* CREATE DIR IN TARGET */
-          {
-            if(chmod($source.$item,$folderPermission))
-            {
-            }
-            else
-            {
-              echo rex_warning('Rechte für "'.$target.$item.'" konnten nicht gesetzt werden!');
-            }
-          }
-          else
-          {
-            echo rex_warning('Das Verzeichnis '.$source.$item.' konnte nicht angelegt werden!');
-          }
-        }
-
-        // RECURSION
-        rexseo_recursive_copy($source.$item.'/', $target.$item.'/', $makedir, $result, $counter);
-      }
-
-      // DO FILE STUFF
-      elseif (is_file($source.$item)) /* ITEM IS A FILE */
-      {
-        if (rex_is_writable($target)) /* CHECK WRITE PERMISSION */
-        {
-          if(is_file($target.$item)) /* FILE EXISTS IN TARGET */
-          {
-            {
-              if(!copy($source.$item,$target.$item))
-              {
-                $result[$counter]['path'] = $target;
-                $result[$counter]['item'] = $item;
-                $result[$counter]['copystate'] = 0;
-                echo rex_warning('Datei "'.$target.$item.'" konnte nicht geschrieben werden!');
-              }
-              else
-              {
-                $result[$counter]['path'] = $target;
-                $result[$counter]['item'] = $item;
-                if(chmod($target.$item,$filePermission))
-                {
-                  $result[$counter]['copystate'] = 1;
-                  //echo rex_info('Datei "'.$target.$item.'" wurde angelegt.');
-                }
-                else
-                {
-                  $result[$counter]['copystate'] = 0;
-                  echo rex_warning('Rechte für "'.$target.$item.'" konnten nicht gesetzt werden!');
-                }
-              }
-            }
-          }
-          else
-          {
-            if(!copy($source.$item,$target.$item))
-            {
-              $result[$counter]['path'] = $target;
-              $result[$counter]['item'] = $item;
-              $result[$counter]['copystate'] = 0;
-              echo rex_warning('Datei "'.$target.$item.'" konnte nicht geschrieben werden!');
-            }
-            else
-            {
-              $result[$counter]['path'] = $target;
-              $result[$counter]['item'] = $item;
-              if(chmod($target.$item,$filePermission))
-              {
-                $result[$counter]['copystate'] = 1;
-                //echo rex_info('Datei "'.$target.$item.'" wurde erfolgreich angelegt.');
-              }
-              else
-              {
-                $result[$counter]['copystate'] = 0;
-                echo rex_warning('Rechte für "'.$target.$item.'" konnten nicht gesetzt werden!');
-              }
-            }
-          }
-        }
-        else
-        {
-          echo rex_warning('Keine Schreibrechte für das Verzeichnis "'.$target.'" !');
-        }
-      }
-      $counter++;
-    }
-    return $result;
-  }
-
-
-
+////////////////////////////////////////////////////////////////////////////////
 // http://php.net/manual/de/function.include.php
 ////////////////////////////////////////////////////////////////////////////////
 if (!function_exists('get_include_contents'))
@@ -150,7 +41,6 @@ if (!function_exists('get_include_contents'))
   }
 }
 
-
 // REDAXO INSTALL ORDNER ERMITTELN
 ////////////////////////////////////////////////////////////////////////////////
 function rexseo_subdir()
@@ -161,8 +51,6 @@ function rexseo_subdir()
   $rexseo_subdir = count($install_subdir)>0 ? implode('/',array_reverse($install_subdir)).'/' :'';
   return $rexseo_subdir;
 }
-
-
 
 // PARAMS CAST FUNCTIONS
 ////////////////////////////////////////////////////////////////////////////////
@@ -230,7 +118,6 @@ function rexseo_batch_cast($request,$conf)
     trigger_error('wrong input type, array expected', E_USER_ERROR);
   }
 }
-
 
 // FIX INTERNAL LAINKAS FOR TINY/TEXTILE
 ////////////////////////////////////////////////////////////////////////////////

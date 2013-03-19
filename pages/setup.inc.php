@@ -1,9 +1,10 @@
 <?php
-$page    = rex_request('page', 'string');
+$page = rex_request('page', 'string');
 $subpage = rex_request('subpage', 'string');
 $chapter = rex_request('chapter', 'string');
-$func    = rex_request('func', 'string');
-$myroot  = $REX['INCLUDE_PATH'].'/addons/' . $page;
+$func = rex_request('func', 'string');
+
+$myroot  = $REX['INCLUDE_PATH'] . '/addons/' . $page;
 
 if ($func == "do_copy") {
 	// first backup files
@@ -11,10 +12,10 @@ if ($func == "do_copy") {
 	$backupPathRoot = $REX['INCLUDE_PATH'] . '/addons/rexseo42/backup/';
 	$htaccessBackupFile = '_htaccess_' . date('Ymd_His');
 	$doCopy = true;
-	$fileExists = false;
+	$htaccessFileExists = false;
 
 	if (file_exists($htaccessRoot)) {
-		$fileExists = true;
+		$htaccessFileExists = true;
 
 		if (copy($htaccessRoot, $backupPathRoot . $htaccessBackupFile)) {
 			$doCopy = true;
@@ -26,14 +27,13 @@ if ($func == "do_copy") {
 
 	// then copy if backup was successful
 	if ($doCopy) {
-		$source = $REX['INCLUDE_PATH'] . '/addons/rexseo42/install/';
-		$target = $REX['HTDOCS_PATH'];
-		$result = rexseo_recursive_copy($source, $target);
+		$sourceFile = $REX['INCLUDE_PATH'] . '/addons/rexseo42/install/_htaccess';
+		$targetFile = $REX['HTDOCS_PATH'] . '.htaccess';
 
-		if ($result[1]['copystate'] == 1) {
+		if (copy($sourceFile, $targetFile)) {
 			$msg = $I18N->msg('rexseo42_setup_file_copy_successful');
 	
-			if ($fileExists) {
+			if ($htaccessFileExists) {
 				$msg .= ' ' . $I18N->msg('rexseo42_setup_backup_successful');
 			}
 
@@ -94,7 +94,7 @@ if ($func == "do_copy") {
 	<div class="rex-area-content">
 		<p><?php echo $I18N->msg('rexseo42_setup_step1_msg1'); ?></p>
 		<ul class="no-bottom-margin">
-			<li><code>/redaxo/include/addons/rexseo42/install/.htaccess</code> <?php echo $I18N->msg('rexseo42_setup_to'); ?> <code>/.htaccess</code></li>
+			<li><code>/redaxo/include/addons/rexseo42/install/_htaccess</code> <?php echo $I18N->msg('rexseo42_setup_to'); ?> <code>/.htaccess</code></li>
 		</ul>
 
 		<form action="index.php" method="get">
