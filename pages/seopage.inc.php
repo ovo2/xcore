@@ -5,11 +5,18 @@ $ctype = rex_request('ctype');
 $savedURL = rex_request('saved_seo_url');
 
 $dataUpdated = false;
+$hideNonContentSection = '';
+$disableCustomUrl = '';
 
 // react on editContentOnly[]
 if (is_object($REX['USER']) && $REX['USER']->hasPerm('editContentOnly[]')) {
 	// hide userdef url and noindex option for now
-	$cssStyle = 'style="display: none;"';
+	$hideNonContentSection = 'style="display: none;"';
+}
+
+// react on / rewrite of start article
+if ($REX['ADDON']['rexseo42']['settings']['homeurl'] == 1 && rexseo42::isStartPAge() && $REX['CUR_CLANG'] == 0) {
+	$disableCustomUrl = 'disabled="disabled"';
 }
 
 if (rex_post('saveseo', 'boolean')) {
@@ -129,13 +136,13 @@ echo '
 							</div>
 						</div>
 					</fieldset>
-					<fieldset ' . $cssStyle . ' class="rex-form-col-1">
+					<fieldset ' . $hideNonContentSection . ' class="rex-form-col-1">
 						<legend>' . $I18N->msg('rexseo42_seopage_url_section') . '</legend>
 						<div class="rex-form-wrapper">
 							<div class="rex-form-row">
 								<p class="rex-form-text">
 									<label for="custom-url">' . $I18N->msg('rexseo42_seopage_userdef_url') . '</label>
-									<input type="text" value="' . $seoData['seo_url'] . '" name="seo_url" id="custom-url" class="rex-form-text">
+									<input type="text" value="' . $seoData['seo_url'] . '" name="seo_url" id="custom-url" class="rex-form-text" ' . $disableCustomUrl . ' />
 									<span class="rex-form-notice" id="custom-url-preview">&nbsp;</span>
 								</p>
 							</div>
