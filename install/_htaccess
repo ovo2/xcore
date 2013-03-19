@@ -1,3 +1,6 @@
+# PREVENT DIRECTORY LISTING
+Options -Indexes
+
 <IfModule mod_rewrite.c>
 	# ENABLE REWRITING
 	RewriteEngine On
