@@ -6,6 +6,12 @@ $savedURL = rex_request('saved_seo_url');
 
 $dataUpdated = false;
 
+// react on editContentOnly[]
+if (is_object($REX['USER']) && $REX['USER']->hasPerm('editContentOnly[]')) {
+	// hide userdef url and noindex option for now
+	$cssStyle = 'style="display: none;"';
+}
+
 if (rex_post('saveseo', 'boolean')) {
 	$sql = rex_sql::factory();
 
@@ -123,7 +129,8 @@ echo '
 							</div>
 						</div>
 					</fieldset>
-					<fieldset class="rex-form-col-1"><legend>' . $I18N->msg('rexseo42_seopage_url_section') . '</legend>
+					<fieldset ' . $cssStyle . ' class="rex-form-col-1">
+						<legend>' . $I18N->msg('rexseo42_seopage_url_section') . '</legend>
 						<div class="rex-form-wrapper">
 							<div class="rex-form-row">
 								<p class="rex-form-text">
@@ -141,7 +148,10 @@ echo '
 									<label for="seo_noindex">' . $I18N->msg('rexseo42_seopage_noindex') . '</label>
 								</p>
 							</div>
-
+						</div>
+					</fieldset>
+					<fieldset class="rex-form-col-1">
+						<div class="rex-form-wrapper">
 							<div class="rex-form-row">
 								<p class="rex-form-col-a rex-form-submit">
 									<input type="submit" value="' . $I18N->msg('rexseo42_seopage_button_text') . '" name="saveseo" class="rex-form-submit" />
