@@ -7,4 +7,5 @@
 // hint #2: don't forget to DELETE CACHE after you made changes to this file!
 
 $REX['ADDON']['rexseo42']['langcodes'][0] = 'de';
+//$REX['ADDON']['rexseo42']['langcodes'][1] = 'en';
 
