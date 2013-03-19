@@ -16,9 +16,6 @@ $toolManager->addTool($tool);
 $tool = new rexseo42_tool($I18N->msg('rexseo42_tool4'), $I18N->msg('rexseo42_tool4_desc'), 'http://www.gaijin.at/olsgprank.php');
 $toolManager->addTool($tool);
 
-$tool = new rexseo42_tool($I18N->msg('rexseo42_tool5'), $I18N->msg('rexseo42_tool5_desc'), 'http://floern.com/tools/trafficscanner');
-$toolManager->addTool($tool);
-
 $tool = new rexseo42_tool($I18N->msg('rexseo42_tool6'), $I18N->msg('rexseo42_tool6_desc'), 'http://www.seitwert.de/#quick');
 $toolManager->addTool($tool);
 

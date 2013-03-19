@@ -172,7 +172,9 @@ $codeExample2 = '<head>
 <div class="rex-addon-output">
 	<h2 class="rex-hl2"><?php echo $I18N->msg('rexseo42_setup_step3'); ?></h2>
 	<div class="rex-area-content">
-		<p class="info-msg"><?php echo $I18N->msg('rexseo42_setup_step3_msg1'); ?></p><?php rex_highlight_string($codeExample2); ?>
+		<p class="info-msg"><?php echo $I18N->msg('rexseo42_setup_step3_msg1'); ?></p>
+		<?php rex_highlight_string($codeExample2); ?>
+		<p class="info-msg no-bottom-margin"><?php echo $I18N->msg('rexseo42_setup_codeexamples'); ?></p>
 	</div>
 </div>
 

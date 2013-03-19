@@ -3,6 +3,9 @@
 // if false seo database fields won't be dropped if rexseo42 will be uninstalled. perhaps someday interesting when updateing rexseo42...
 $REX['ADDON']['rexseo42']['settings']['drop_dbfields_on_uninstall'] = true; 
 
+// if true rexseo42::getImageManagerUrl() and rexseo42::getImageTag will produced seo friendly urls
+$REX['ADDON']['rexseo42']['settings']['seo_friendly_image_manager_urls'] = true;
+
 // character to replace whitespaces with in urls
 $REX['ADDON']['rexseo42']['settings']['url_whitespace_replace']  = '-'; 
 

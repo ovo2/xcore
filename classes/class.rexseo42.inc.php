@@ -6,6 +6,9 @@ class rexseo42 {
 	protected static $robotsFollowFlag;
 	protected static $robotsArchiveFlag;
 	protected static $serverProtocol;
+	protected static $mediaDir;
+	protected static $seoFriendlyImageManagerUrls;
+	
 
 	public static function init() {
 		global $REX;
@@ -16,13 +19,20 @@ class rexseo42 {
 		self::$robotsFollowFlag = $REX['ADDON']['rexseo42']['settings']['robots_follow_flag'];
 		self::$robotsArchiveFlag = $REX['ADDON']['rexseo42']['settings']['robots_archive_flag'];
 		self::$serverProtocol = $REX['ADDON']['rexseo42']['settings']['server_protocol'];
+		self::$mediaDir = $REX['MEDIA_DIR'];
+		self::$seoFriendlyImageManagerUrls = $REX['ADDON']['rexseo42']['settings']['seo_friendly_image_manager_urls'];
 	}
 
 	public static function getBaseUrl() {
 		return self::getServerUrl();
 	}
 
-	public static function getTitle() {
+	public static function getTitle($titleDelimeter = '') {
+		if ($titleDelimeter == '') {
+			// use default title delimeter defined in settings.expert.inc.php
+			$titleDelimeter = self::$titleDelimeter;
+		}
+
 		if (self::$curArticle->getValue('seo_title') != '') {
 			// use userdef title
 			$title = self::$curArticle->getValue('seo_title');
@@ -32,19 +42,19 @@ class rexseo42 {
 		}
 		
 		if (self::$curArticle->getValue('seo_ignore_prefix') == '1') {
-			// no prefix, just return the title
-			return htmlspecialchars($title);
+			// no prefix, just the title
+			$fullTitle = $title;
 		} else { 
 			if (self::isStartPage()) {
 				// the start article shows the website name first
-				$fullTitle = self::getWebsiteName() . self::$titleDelimeter . $title;
+				$fullTitle = self::getWebsiteName() . $titleDelimeter . $title;
 			} else {
 				// all other articles will show title first
-				$fullTitle = $title . self::$titleDelimeter . self::getWebsiteName();
+				$fullTitle = $title . $titleDelimeter . self::getWebsiteName();
 			}
-			
-			return htmlspecialchars($fullTitle);
 		 }
+
+		return htmlspecialchars($fullTitle);
 	}
 
 	public static function getDescription() {
@@ -77,6 +87,26 @@ class rexseo42 {
 		return rtrim(self::getBaseUrl(), '/') . rex_getUrl(self::$curArticle->getId());
 	}
 
+	public static function getImageTag($imageFile, $imageType = '') {
+		$media = OOMedia::getMediaByFileName($imageFile);
+
+		if ($imageType == '') {
+			$url = '/' . self::$mediaDir . '/' . $imageFile;
+		} else {
+			$url = self::getImageManagerUrl($imageFile, $imageType);
+		}
+
+		return '<img src="' . $url . '" width="' . $media->getWidth() . '" height="' . $media->getHeight() . '" alt="' . $media->getTitle() . '" />';
+	}
+
+	public static function getImageManagerUrl($imageFile, $imageType) {
+		if (self::$seoFriendlyImageManagerUrls) {
+			return '/' . self::$mediaDir . '/imagetypes/' . $imageType . '/' . $imageFile;
+		} else {
+			return '/index.php?rex_img_type=' . $imageType . '&rex_img_file=' . $imageFile;
+		}
+	}
+
 	public static function getHtml($indent = "\t") {
 		$out = '<base href="' . self::getBaseUrl() . '" />';
 		$out .= PHP_EOL . $indent . '<title>' . self::getTitle() . '</title>';
@@ -87,14 +117,6 @@ class rexseo42 {
 		$out .= PHP_EOL;
 
 		return $out;
-	}
-
-	public static function getImageTag($file) {
-		global $REX;
-
-		$media = OOMedia::getMediaByFileName($file);
-
-		return '<img src="/' . $REX['MEDIA_DIR'] . '/' . $file . '" width="' . $media->getWidth() . '" height="' . $media->getHeight() . '" alt="' . $media->getTitle() . '" />';
 	}
 
 	public static function getTitleDelimiter() {

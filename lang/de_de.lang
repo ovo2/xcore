@@ -15,15 +15,13 @@ rexseo42_check_langcodes_msg = Bitte überprüfen und aktualisieren Sie ggf. auc
 
 rexseo42_tools_caption = SEO Tools
 rexseo42_tool1 = Google Index dieser Website anzeigen
-rexseo42_tool1_desc = Schauen Sie wie Google Ihre Website {0} indiziert hat.
+rexseo42_tool1_desc = Überprüfen Sie wie Google Ihre Website {0} indiziert hat.
 rexseo42_tool2 = Google Submit Url
-rexseo42_tool2_desc = Geben Sie hiermit Ihre neue Website Google bekannt. Registrierung bzw. Google-Konto erforderlich.
+rexseo42_tool2_desc = Geben Sie Google Ihre neue Website bekannt. Registrierung bzw. Google-Konto erforderlich.
 rexseo42_tool3 = Google Webmaster Tools
-rexseo42_tool3_desc = Die Webmaster-Tools bietet Ihnen ausführliche Berichte über die Präsenz Ihrer Seiten auf Google.
+rexseo42_tool3_desc = Die Webmaster-Tools bieten Ihnen ausführliche Berichte über die Präsenz Ihrer Seiten auf Google.
 rexseo42_tool4 = PageRank ermitteln
 rexseo42_tool4_desc = Mit diesem Tool lässt sich der PageRank Ihrer Website ermitteln.
-rexseo42_tool5 = TrafficScanner
-rexseo42_tool5_desc = Der TrafficScanner ruft wie ein Webbrowser eine Webseite auf und zeigt die Dateien die geladen werden.
 rexseo42_tool6 = Seitwert Quick-Analyse
 rexseo42_tool6_desc = Eine erste kostenlose Analyse Ihrer Website durch den Webdienst Seitwert.de.
 rexseo42_tool7 = Majestic Site Explorer
@@ -71,6 +69,7 @@ rexseo42_setup_step2_button = Einstellungen übernehmen
 rexseo42_setup_step3 = Schritt 3: Template ergänzen
 rexseo42_setup_step3_msg1 = Zuletzt ergänzen Sie den Head-Bereich Ihres Templates wie folgt:
 rexseo42_setup_mod_rewrite_alert = Bitte beachten Sie dass Mod-Rewrite eingeschaltet sein muss!
+rexseo42_setup_codeexamples = Hier gibt es weitere <a href="index.php?page=rexseo42&subpage=help&chapter=codeexamples">Codebeispiele</a> für ein perfektes SEO :)
 
 rexseo42_seopage_updated = SEO-Daten wurden aktualisiert.
 rexseo42_seopage_main_section = Allgemein
@@ -85,52 +84,77 @@ rexseo42_seopage_userdef_url = Benutzerdefinierte URL
 rexseo42_seopage_noindex = Indizierung nicht erlauben
 rexseo42_seopage_button_text = SEO-Daten aktualisieren
 
-rexseo42_faq01a = Warum brauchts eigentlich noch ein weiteres RexSEO?
-rexseo42_faq01b = Ganz einfach: Weil RexSEO zwar sehr gefällt, aber so wie es ist in manchen Punkten (z.B. Setup) nicht den Vorstellungen vom RexDude entspricht und es ja außerdem völlig legitim ist einen Fork nach seinem eigenem Gusto zu machen.
+rexseo42_help_links = Links
+rexseo42_help_link1 = REXSEO42 auf GitHub
+rexseo42_help_link2 = REXSEO42 Bugs auf GitHub
+rexseo42_help_link3 = RexSEO Extensions Points
+rexseo42_help_link4 = Aufbau der RexSEO Pathlist
+rexseo42_help_link5 = Anchors per JS fixen
 
-rexseo42_faq02a = Ich habe eine Seite importiert und jetzt hagelt es Fehlermeldungen im HTML-Quellcode!?
-rexseo42_faq02b = {0} <a href="index.php?page=addon&addonname=rexseo42&install=1">reinstallieren</a> sollte das Problem beheben.
+rexseo42_help_codeexamples = Codebeispiele
+rexseo42_help_codeexamples_title1 = SEO-Tags für den Head-Bereich eines Templates einbinden
+rexseo42_help_codeexamples_description1 = Neben dem Beispiel im Setup Schritt 3 kann man auch die ganzen Tags so einbinden:
+rexseo42_help_codeexamples_title2 = Suchmaschinenfreundliche Image Manager Urls
+rexseo42_help_codeexamples_description2 = Über diese Methoden lassen sich suchmaschinenfreundliche Urls sowie ganze Image Tags erzeugen: 
+rexseo42_help_codeexamples_title3 = Lang Code ausgeben
+rexseo42_help_codeexamples_description3 = Geben Sie so den aktuellen Lang Code aus der in der <code>settings.langcodes.inc.php</code> definiert werden kann:
+rexseo42_help_codeexamples_title4 = Titel Trenner ändern
+rexseo42_help_codeexamples_description4 = Der Trennstrich für den Titel kann entweder in der <code>settings.expert.inc.php</code> oder so geändert werden:
+rexseo42_help_codeexamples_title5 = Titel Schema ändern
+rexseo42_help_codeexamples_description5 = Ein eigenes Titel Schema lässt sich momentan nur über die Überschreibung der getTitle() Methode realisieren:
+rexseo42_help_codeexamples_thatsallfolks = That's all folks...
+rexseo42_help_codeexamples_ex2_alt = Titel aus dem Medienpool
+rexseo42_help_codeexamples_ex5_comment1 = eigene klasse ableiten (hier als beispiel um den titel in kleinbuchstaben auszugeben):
+rexseo42_help_codeexamples_ex5_comment2 = gesamten titel in kleinbuchstaben ausgeben
+rexseo42_help_codeexamples_ex5_comment3 = methoden aufrufe dann nur noch über diese abgeleitete klasse:
 
-rexseo42_faq03a = Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterverzeichnis installiert habe?
-rexseo42_faq03b = Ja. In der .htaccess im Root-Ordner bei RewriteBase das Unterverzeichnis ergänzen: <code>RewriteBase /UNTERVERZEICHNIS</code> sowie darauf achten, dass "Url dieser Website" ohne das Unterverzechnis angegeben wird.
+rexseo42_help_faq = FAQ
+rexseo42_help_faq01a = Warum brauchts eigentlich noch ein weiteres RexSEO?
+rexseo42_help_faq01b = Ganz einfach: Weil RexSEO zwar sehr gefällt, aber so wie es ist in manchen Punkten (z.B. Setup) nicht den Vorstellungen vom RexDude entspricht und es ja außerdem völlig legitim ist einen Fork nach seinem eigenem Gusto zu machen.
 
-rexseo42_faq04a = Ich mag das Pipe-Zeichen nicht im Titel. Wie kann ich das umstellen?
-rexseo42_faq04b = Momentan so: der Methode getTitle das neue Zeichen als Parameter übergeben: <code>rexseo42::getTitle("-");</code>
+rexseo42_help_faq02a = Ich habe eine Seite importiert und jetzt hagelt es Fehlermeldungen im HTML-Quellcode!?
+rexseo42_help_faq02b = {0} <a href="index.php?page=addon&addonname=rexseo42&install=1">reinstallieren</a> sollte das Problem beheben.
 
-rexseo42_faq05a = Wie kann ich den Titel sonst noch beinflussen?
-rexseo42_faq05b = Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix anzeigen" wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode <code>rexseo42::getTitle()</code> für Spezial-Titel-Geschichten überschreiben.
+rexseo42_help_faq03a = Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterverzeichnis installiert habe?
+rexseo42_help_faq03b = Ja. In der .htaccess im Root-Ordner bei RewriteBase das Unterverzeichnis ergänzen: <code>RewriteBase /UNTERVERZEICHNIS</code> sowie darauf achten, dass "Url dieser Website" ohne das Unterverzechnis angegeben wird.
 
-rexseo42_faq06a = Warum wird der Titel für die Startseite "andersherum" ausgegeben wie für die Folgeseiten?
-rexseo42_faq06b = Siehe PDF in Antwort zur nächsten Frage.
+rexseo42_help_faq04a = Ich mag das Pipe-Zeichen nicht im Titel. Wie kann ich das umstellen?
+rexseo42_help_faq04b = Momentan so: der Methode getTitle das neue Zeichen als Parameter übergeben: <code>rexseo42::getTitle("-");</code>
 
-rexseo42_faq07a = Wo bekomme ich eigentlich eine gute verständliche Einführung in das Thema "Suchmaschinenoptimierung"?
-rexseo42_faq07b = Zum Beispiel hier: <a href="http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf" target="_blank" class="extern">einfuehrung-in-suchmaschinenoptimierung.pdf</a>
+rexseo42_help_faq05a = Wie kann ich den Titel sonst noch beinflussen?
+rexseo42_help_faq05b = Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix anzeigen" wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode <code>rexseo42::getTitle()</code> für Spezial-Titel-Geschichten überschreiben.
 
-rexseo42_faq08a = Wie kann ich suchmaschinenfreundlichere URLs für Bilder aus dem Image Manager erhalten?
-rexseo42_faq08b = Im HTML anstelle von <code>index.php?rex_img_type=ImgTypeName&rex_img_file=ImageFileName</code> dass hier verwenden:<br /><code>/files/imagetypes/ImgTypeName/ImageFileName</code>
+rexseo42_help_faq06a = Warum wird der Titel für die Startseite "andersherum" ausgegeben wie für die Folgeseiten?
+rexseo42_help_faq06b = Siehe PDF in Antwort zur nächsten Frage.
 
-rexseo42_faq09a = Ich möchte nicht-www Anfragen auf die www Variante umleiten lassen. Soll doch SEO-technisch gut sein, oder?
-rexseo42_faq09b = Yup. In der .htaccess im Root-Ordner die entsprechenden Zeilen un-auskommentieren.
+rexseo42_help_faq07a = Wo bekomme ich eigentlich eine gute verständliche Einführung in das Thema "Suchmaschinenoptimierung"?
+rexseo42_help_faq07b = Zum Beispiel hier: <a href="http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf" target="_blank" class="extern">einfuehrung-in-suchmaschinenoptimierung.pdf</a>
 
-rexseo42_faq10a = Meine URLs haben sich geändert. Wie kann ich saubere Weiterleitungen hinbekommen?
-rexseo42_faq10b = In der .htaccess im Root-Ordner an oberster Stelle pro URL eine 301 Weiterleitung nach diesem Schema einrichten:<br /><code>Redirect 301 /alte-seite.html http://www.my-domain.de/neue-seite.html</code>
+rexseo42_help_faq08a = Wie kann ich suchmaschinenfreundlichere URLs für Bilder aus dem Image Manager erhalten?
+rexseo42_help_faq08b = Im HTML anstelle von <code>index.php?rex_img_type=ImgTypeName&rex_img_file=ImageFileName</code> dass hier verwenden:<br /><code>/files/imagetypes/ImgTypeName/ImageFileName</code>
 
-rexseo42_faq11a = Habe gehört das es SEO-technisch gut wäre wenn Bilder ein Alt-Attribut zugewiesen bekommen?
-rexseo42_faq11b = Dafür kann man die Methode <code>rexseo42::getImageTag($file)</code> nutzen, die dann einen kompletten Image-Tag inkl. Alt-Attribute ausspuckt. Und im Medienpool wird dieser dann im Titel-Feld gesetzt.
+rexseo42_help_faq09a = Ich möchte nicht-www Anfragen auf die www Variante umleiten lassen. Soll doch SEO-technisch gut sein, oder?
+rexseo42_help_faq09b = Yup. In der .htaccess im Root-Ordner die entsprechenden Zeilen un-auskommentieren.
 
-rexseo42_faq12a = Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?
-rexseo42_faq12b = Immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. <code>redaxo://13#anker</code>
+rexseo42_help_faq10a = Meine URLs haben sich geändert. Wie kann ich saubere Weiterleitungen hinbekommen?
+rexseo42_help_faq10b = In der .htaccess im Root-Ordner an oberster Stelle pro URL eine 301 Weiterleitung nach diesem Schema einrichten:<br /><code>Redirect 301 /alte-seite.html http://www.my-domain.de/neue-seite.html</code>
 
-rexseo42_faq13a = Wo legt {0} die Backups für die .htaccess Dateien an?
-rexseo42_faq13b = Im Backup-Verzeichnis des AddOns: <code>/rexseo42/backup/</code>
+rexseo42_help_faq11a = Habe gehört das es SEO-technisch gut wäre wenn Bilder ein Alt-Attribut zugewiesen bekommen?
+rexseo42_help_faq11b = Dafür kann man die Methode <code>rexseo42::getImageTag($file)</code> nutzen, die dann einen kompletten Image-Tag inkl. Alt-Attribute ausspuckt. Und im Medienpool wird dieser dann im Titel-Feld gesetzt.
 
-rexseo42_faq14a = Ich hab ne Frage die hier net auftaucht. Was tun?
-rexseo42_faq14b = Schau doch mal ins original RexSEO. Da steht noch mehr Stuff... ;)
+rexseo42_help_faq12a = Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?
+rexseo42_help_faq12b = Immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. <code>redaxo://13#anker</code>
 
-rexseo42_faq15a = Mir gefällt {0} nicht! Wie krieg ich das wieder raus aus meinem REDAXO?
-rexseo42_faq15b = Kein Problem ;) Einfach das Setup von hinten nach vorne durchlaufen und das AddOn deinstallieren.
+rexseo42_help_faq13a = Wo legt {0} die Backups für die .htaccess Dateien an?
+rexseo42_help_faq13b = Im Backup-Verzeichnis des AddOns: <code>/rexseo42/backup/</code>
 
-rexseo42_faq16a = Wie lautet die Antwort auf die Frage aller Fragen nach dem Leben, dem Universum und dem ganzen Rest?
-rexseo42_faq16b = 42
+rexseo42_help_faq14a = Ich hab ne Frage die hier net auftaucht. Was tun?
+rexseo42_help_faq14b = Schau doch mal ins original RexSEO. Da steht noch mehr Stuff... ;)
+
+rexseo42_help_faq15a = Mir gefällt {0} nicht! Wie krieg ich das wieder raus aus meinem REDAXO?
+rexseo42_help_faq15b = Kein Problem ;) Einfach das Setup von hinten nach vorne durchlaufen und das AddOn deinstallieren.
+
+rexseo42_help_faq16a = Wie lautet die Antwort auf die Frage aller Fragen nach dem Leben, dem Universum und dem ganzen Rest?
+rexseo42_help_faq16b = 42
 
 
