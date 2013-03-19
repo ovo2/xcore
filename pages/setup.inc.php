@@ -109,9 +109,9 @@ if ($func == "do_copy") {
 	<div class="rex-area-content">
 		<p><?php echo $I18N->msg('rexseo42_setup_step1_msg1'); ?></p>
 		<form action="index.php" method="post">
-			<ul class="no-bottom-margin">
-				<li><code>/redaxo/include/addons/rexseo42/install/_htaccess</code> <?php echo $I18N->msg('rexseo42_setup_to'); ?> <code>/.htaccess</code></li>
-			</ul>
+			<p class="no-bottom-margin" id="codeline">
+				<code>/redaxo/include/addons/rexseo42/install/_htaccess</code> <?php echo $I18N->msg('rexseo42_setup_to'); ?> <code>/.htaccess</code>
+			</p>
 
 			<p class="rex-form-checkbox rex-form-label-right"> 
 				<input type="checkbox" value="1" id="www_redirect" name="www_redirect" />
@@ -216,7 +216,6 @@ $codeExample2 = '<head>
 }
 
 #rex-page-rexseo42 #www_redirect {
-    margin-left: 4px;
     margin-top: 8px;
 }
 </style>
