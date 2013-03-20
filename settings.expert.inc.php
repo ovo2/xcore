@@ -15,7 +15,7 @@ $REX['ADDON']['rexseo42']['settings']['one_page_mode'] = false;
 // only set to true if you want't to have urls wth special chars like in chinese language etc.
 $REX['ADDON']['rexseo42']['settings']['urlencode'] = false; 
 
-// 0 = don't allow article_id urls | 1 = allow and 301 redirect to non-article_id urls | 2 = just allow both (not recommended!)
+// 0 = don't allow article_id urls, show 404 error article | 1 = allow and 301 redirect to non-article_id urls | 2 = just allow both (not recommended!)
 $REX['ADDON']['rexseo42']['settings']['allow_articleid'] = 0;
 
 // character to replace whitespaces with in urls

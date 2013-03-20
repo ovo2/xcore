@@ -2,7 +2,7 @@
 class rexseo42 {
 	protected static $curArticle;
 	protected static $startArticleID;
-	protected static $titleDelimeter;
+	protected static $defaultTitleDelimeter;
 	protected static $robotsFollowFlag;
 	protected static $robotsArchiveFlag;
 	protected static $serverProtocol;
@@ -15,7 +15,7 @@ class rexseo42 {
 
 		self::$curArticle = OOArticle::getArticleById($REX['ARTICLE_ID']);
 		self::$startArticleID = $REX['START_ARTICLE_ID'];
-		self::$titleDelimeter = $REX['ADDON']['rexseo42']['settings']['title_delimeter'];
+		self::$defaultTitleDelimeter = $REX['ADDON']['rexseo42']['settings']['title_delimeter'];
 		self::$robotsFollowFlag = $REX['ADDON']['rexseo42']['settings']['robots_follow_flag'];
 		self::$robotsArchiveFlag = $REX['ADDON']['rexseo42']['settings']['robots_archive_flag'];
 		self::$serverProtocol = $REX['ADDON']['rexseo42']['settings']['server_protocol'];
@@ -30,15 +30,15 @@ class rexseo42 {
 	public static function getTitle($titleDelimeter = '') {
 		if ($titleDelimeter == '') {
 			// use default title delimeter defined in settings.expert.inc.php
-			$titleDelimeter = self::$titleDelimeter;
+			$titleDelimeter = self::$defaultTitleDelimeter;
 		}
 
-		if (self::$curArticle->getValue('seo_title') != '') {
-			// use userdef title
-			$title = self::$curArticle->getValue('seo_title');
-		} else {
+		if (self::$curArticle->getValue('seo_title') == '') {
 			// use article name as title
 			$title = self::getArticleName();
+		} else {
+			// use title that user defined
+			$title = self::$curArticle->getValue('seo_title');
 		}
 		
 		if (self::$curArticle->getValue('seo_ignore_prefix') == '1') {
@@ -103,7 +103,7 @@ class rexseo42 {
 		if (self::$seoFriendlyImageManagerUrls) {
 			return '/' . self::$mediaDir . '/imagetypes/' . $imageType . '/' . $imageFile;
 		} else {
-			return '/index.php?rex_img_type=' . $imageType . '&rex_img_file=' . $imageFile;
+			return '/index.php?rex_img_type=' . $imageType . '&amp;rex_img_file=' . $imageFile;
 		}
 	}
 
@@ -120,7 +120,7 @@ class rexseo42 {
 	}
 
 	public static function getTitleDelimiter() {
-		return self::$titleDelimeter;
+		return self::$defaultTitleDelimeter;
 	}
 
 	public static function getArticleName() {

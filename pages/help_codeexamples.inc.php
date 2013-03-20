@@ -26,15 +26,15 @@ class rexseo42_ex extends rexseo42
 	public static function getTitle($titleDelimeter = "") {
 		if ($titleDelimeter == "") {
 			// use default title delimeter defined in settings.expert.inc.php
-			$titleDelimeter = self::$titleDelimeter;
+			$titleDelimeter = self::$defaultTitleDelimeter;
 		}
 
-		if (self::$curArticle->getValue("seo_title") != "") {
-			// use userdef title
-			$title = self::$curArticle->getValue("seo_title");
-		} else {
+		if (self::$curArticle->getValue("seo_title") == "") {
 			// use article name as title
 			$title = self::getArticleName();
+		} else {
+			// use title that user defined
+			$title = self::$curArticle->getValue("seo_title");
 		}
 	
 		if (self::$curArticle->getValue("seo_ignore_prefix") == "1") {
@@ -84,5 +84,11 @@ echo rexseo42_ex::getKeywords();
 <?php rex_highlight_string($codeExample5); ?>
 
 <p><?php echo $I18N->msg('rexseo42_help_codeexamples_thatsallfolks'); ?></p>
+
+<style type="text/css">
+.rex-addon-content h2 {
+	font-size: 14px;
+}
+</style>
 
 

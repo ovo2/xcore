@@ -10,7 +10,8 @@ rexseo42_uninstall_dbfields_not_removed = Die Datenbankfelder wurden NICHT entfe
 rexseo42_config_ok = Einstellungen wurde aktualisiert.
 rexseo42_config_error = Einstellungen konnte nicht gespeichert werden!
 rexseo42_config_file_no_perms = Konfigurationsdatei "{0}" ist nicht beschreibbar!
-rexseo42_dbfields_readded = Fehlende DB-Felder des AddOns "{0}" wurden hinzugefügt.<br />WICHTIG: Bitte überprüfen Sie ob das AddOn-Setup (Schritt 3) erneut durchgeführt werden muss.
+rexseo42_dbfields_readded = Fehlende DB-Felder des {0} AddOns wurden hinzugefügt.
+rexseo42_dbfields_readded_check_template = Bitte überprüfen Sie ob das {0} Setup (Schritt 3) erneut durchgeführt werden muss.
 rexseo42_check_langcodes_msg = Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.langcodes.inc.php" Datei von {0}.
 
 rexseo42_tools_caption = SEO Tools
@@ -29,7 +30,7 @@ rexseo42_tool7_desc = Ein teilweise kostenloser Site Explorer der die Anzahl der
 rexseo42_tool8 = Google SERP Snippet Optimization Tool
 rexseo42_tool8_desc = Das Google SERP Snippet Optimization Tool zeigt eine Vorschau der Snippets die Google generiert.
 
-rexseo42_settings_subdir_change = 'Hinweis: Das aktuelle Installationsverzeichnis von REDAXO scheint sich geändert zu haben.<br />Zum aktualisieren einmal die {0}-Einstellungen speichern und evtl. notwendige Anpassung der RewriteBase in der .htaccess beachten!
+rexseo42_settings_subdir_change = Hinweis: Das aktuelle Installationsverzeichnis von REDAXO scheint sich geändert zu haben.<br />Zum aktualisieren einmal die {0}-Einstellungen speichern und evtl. notwendige Anpassung der RewriteBase in der .htaccess beachten!
 rexseo42_settings_url_ending_without = (ohne)
 rexseo42_settings_langslug_all = Bei allen Sprachen einfügen
 rexseo42_settings_langslug_noslug = Kein lang slug für Sprache:
@@ -78,7 +79,7 @@ rexseo42_seopage_description = Beschreibung
 rexseo42_seopage_keywords = Suchbegriffe
 rexseo42_seopage_title_noprefix = Kein Prefix
 rexseo42_seopage_chars = Zeichen
-rexseo42_seopage_words = Wörter
+rexseo42_seopage_words = Begriffe
 rexseo42_seopage_url_section = URL und Indizierung
 rexseo42_seopage_userdef_url = Benutzerdefinierte URL
 rexseo42_seopage_noindex = Indizierung nicht erlauben
@@ -112,8 +113,8 @@ rexseo42_help_faq = FAQ
 rexseo42_help_faq01a = Warum brauchts eigentlich noch ein weiteres RexSEO?
 rexseo42_help_faq01b = Ganz einfach: Weil RexSEO zwar sehr gefällt, aber so wie es ist in manchen Punkten (z.B. Setup) nicht den Vorstellungen vom RexDude entspricht und es ja außerdem völlig legitim ist einen Fork nach seinem eigenem Gusto zu machen.
 
-rexseo42_help_faq02a = REXSEO42 läuft nicht mehr rund. Es hagelt z.B. Fehlermeldungen im HTML-Quellcode!?
-rexseo42_help_faq02b = {0} <a href="index.php?page=addon&addonname=rexseo42&install=1">reinstallieren</a> sollte das Problem beheben.
+rexseo42_help_faq02a = {0} läuft nicht mehr rund. Es hagelt z.B. Fehlermeldungen im HTML-Quellcode!?
+rexseo42_help_faq02b = Das AddOn <a href="index.php?page=addon&addonname=rexseo42&install=1">reinstallieren</a> sollte das Problem beheben.
 
 rexseo42_help_faq03a = Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterverzeichnis installiert habe?
 rexseo42_help_faq03b = Ja. In der .htaccess im Root-Ordner bei RewriteBase das Unterverzeichnis ergänzen: <code>RewriteBase /UNTERVERZEICHNIS</code> sowie darauf achten, dass "Url dieser Website" ohne das Unterverzechnis angegeben wird.
