@@ -128,7 +128,7 @@ rexseo42_help_faq05a = Wie kann ich den Titel sonst noch beinflussen?
 rexseo42_help_faq05b = Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix" wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode <code>rexseo42::getTitle()</code> überschreiben, siehe dazu Codebeispiel 5 in dieser Hilfe.
 
 rexseo42_help_faq06a = Warum wird der Titel für die Startseite "andersherum" ausgegeben wie für die Folgeseiten?
-rexseo42_help_faq06b = Dies wurde in nachfolgenden PDF von Google angeguckt.
+rexseo42_help_faq06b = Dies wurde in nachfolgenden PDF von Google abgeguckt.
 
 rexseo42_help_faq07a = Wo bekomme ich eigentlich eine gute verständliche Einführung in das Thema "Suchmaschinenoptimierung"?
 rexseo42_help_faq07b = Zum Beispiel hier: <a href="http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf" target="_blank" class="extern">einfuehrung-in-suchmaschinenoptimierung.pdf</a>
