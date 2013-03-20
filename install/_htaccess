@@ -24,6 +24,10 @@ Options -Indexes
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_FILENAME} !-l
 
+	# EXCLUDE FOLDERS FROM REWRITE ENGINE
+	RewriteCond %{REQUEST_URI} !/files/
+	RewriteCond %{REQUEST_URI} !/redaxo/
+
 	# REWRITE ALL OTHER REQUESTS TO INDEX.PHP
 	RewriteRule ^(.*)$ index.php?%{QUERY_STRING} [L]
 </IfModule>
