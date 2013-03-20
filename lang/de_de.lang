@@ -85,11 +85,10 @@ rexseo42_seopage_noindex = Indizierung nicht erlauben
 rexseo42_seopage_button_text = SEO-Daten aktualisieren
 
 rexseo42_help_links = Links
-rexseo42_help_link1 = REXSEO42 auf GitHub
-rexseo42_help_link2 = REXSEO42 Bugs auf GitHub
-rexseo42_help_link3 = RexSEO Extensions Points
-rexseo42_help_link4 = Aufbau der RexSEO Pathlist
-rexseo42_help_link5 = Anchors per JS fixen
+rexseo42_help_link1 = {0} Bugtracker
+rexseo42_help_link2 = RexSEO Extensions Points
+rexseo42_help_link3 = Aufbau der RexSEO Pathlist
+rexseo42_help_link4 = Anchors per JS fixen
 
 rexseo42_help_codeexamples = Codebeispiele
 rexseo42_help_codeexamples_title1 = SEO-Tags für den Head-Bereich eines Templates einbinden
@@ -104,15 +103,16 @@ rexseo42_help_codeexamples_title5 = Titel Schema ändern
 rexseo42_help_codeexamples_description5 = Ein eigenes Titel Schema lässt sich momentan nur über die Überschreibung der getTitle() Methode realisieren:
 rexseo42_help_codeexamples_thatsallfolks = That's all folks...
 rexseo42_help_codeexamples_ex2_alt = Titel aus dem Medienpool
-rexseo42_help_codeexamples_ex5_comment1 = eigene klasse ableiten (hier als beispiel um den titel in kleinbuchstaben auszugeben):
-rexseo42_help_codeexamples_ex5_comment2 = gesamten titel in kleinbuchstaben ausgeben
-rexseo42_help_codeexamples_ex5_comment3 = methoden aufrufe dann nur noch über diese abgeleitete klasse:
+rexseo42_help_codeexamples_ex5_comment1 = 1.) eigene klasse ableiten und getTitle() methode überschreiben:
+rexseo42_help_codeexamples_ex5_comment2 = 2.) gesamten titel in kleinbuchstaben ausgeben:
+rexseo42_help_codeexamples_ex5_comment3 = 3.) methoden aufrufe dann nur noch über diese abgeleitete klasse:
+rexseo42_help_codeexamples_ex5_comment4 = gibt nun den titel in kleinbuchstaben aus
 
 rexseo42_help_faq = FAQ
 rexseo42_help_faq01a = Warum brauchts eigentlich noch ein weiteres RexSEO?
 rexseo42_help_faq01b = Ganz einfach: Weil RexSEO zwar sehr gefällt, aber so wie es ist in manchen Punkten (z.B. Setup) nicht den Vorstellungen vom RexDude entspricht und es ja außerdem völlig legitim ist einen Fork nach seinem eigenem Gusto zu machen.
 
-rexseo42_help_faq02a = Ich habe eine Seite importiert und jetzt hagelt es Fehlermeldungen im HTML-Quellcode!?
+rexseo42_help_faq02a = REXSEO42 läuft nicht mehr rund. Es hagelt z.B. Fehlermeldungen im HTML-Quellcode!?
 rexseo42_help_faq02b = {0} <a href="index.php?page=addon&addonname=rexseo42&install=1">reinstallieren</a> sollte das Problem beheben.
 
 rexseo42_help_faq03a = Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterverzeichnis installiert habe?
@@ -131,7 +131,7 @@ rexseo42_help_faq06a = Warum wird der Titel für die Startseite "andersherum" au
 rexseo42_help_faq06b = Dies wurde in nachfolgenden PDF von Google abgeguckt.
 
 rexseo42_help_faq07a = Wo bekomme ich eigentlich eine gute verständliche Einführung in das Thema "Suchmaschinenoptimierung"?
-rexseo42_help_faq07b = Zum Beispiel hier: <a href="http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf" target="_blank" class="extern">einfuehrung-in-suchmaschinenoptimierung.pdf</a>
+rexseo42_help_faq07b = Zum Beispiel hier: <a href="http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf" target="_blank" class="extern">http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf</a>
 
 rexseo42_help_faq08a = Wie kann ich suchmaschinenfreundlichere URLs für Bilder aus dem Image Manager erhalten?
 rexseo42_help_faq08b = Siehe Codebeispiel Nr. 2 in dieser Hilfe.
@@ -154,7 +154,7 @@ rexseo42_help_faq13b = Im Backup-Verzeichnis des AddOns: <code>/rexseo42/backup/
 rexseo42_help_faq14a = Ich hab ne Frage die hier net auftaucht. Was tun?
 rexseo42_help_faq14b = Schau doch mal ins original RexSEO. Da steht noch mehr Stuff... ;)
 
-rexseo42_help_faq15a = Mir gefällt {0} nicht! Wie krieg ich das wieder raus aus meinem REDAXO?
+rexseo42_help_faq15a = Mir gefällt {0} nicht! Wie krieg ich das AddOn wieder entfernt?
 rexseo42_help_faq15b = Kein Problem ;) Einfach das Setup von hinten nach vorne durchlaufen und das AddOn deinstallieren.
 
 rexseo42_help_faq16a = Wie lautet die Antwort auf die Frage aller Fragen nach dem Leben, dem Universum und dem ganzen Rest?

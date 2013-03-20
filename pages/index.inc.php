@@ -36,6 +36,10 @@ require $REX['INCLUDE_PATH'].$local_path.$subpage.'.inc.php';
 ?>
 
 <style type="text/css">
+div.rex-addon-content p.rex-code {
+    word-wrap: break-word;
+}
+
 #rex-title .version {
 	font-size:14px; 
 	color:silver;

@@ -50,13 +50,13 @@ class rexseo42_ex extends rexseo42
 			}
 		 }
 
-		// !!! ' . $I18N->msg('rexseo42_help_codeexamples_ex5_comment2') . ' !!!
+		// ' . $I18N->msg('rexseo42_help_codeexamples_ex5_comment2') . '
 		return strtolower(htmlspecialchars($fullTitle));
 	}
 }
 
 // ' . $I18N->msg('rexseo42_help_codeexamples_ex5_comment3') . '
-echo rexseo42_ex::getTitel();
+echo rexseo42_ex::getTitel(); // ' . $I18N->msg('rexseo42_help_codeexamples_ex5_comment4') . '
 echo rexseo42_ex::getDescription();
 echo rexseo42_ex::getKeywords();
 ?>';

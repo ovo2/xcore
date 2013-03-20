@@ -3,11 +3,11 @@
 <h2><?php echo $I18N->msg('rexseo42_help_faq01a'); ?></h2>
 <p><?php echo $I18N->msg('rexseo42_help_faq01b'); ?></p>
 
-<h2><?php echo $I18N->msg('rexseo42_help_faq13a',  $REX['ADDON']['name']['rexseo42']); ?></h2>
-<p><?php echo $I18N->msg('rexseo42_help_faq13b'); ?></p>
-
 <h2><?php echo $I18N->msg('rexseo42_help_faq03a'); ?></h2>
 <p><?php echo $I18N->msg('rexseo42_help_faq03b'); ?></p>
+
+<h2><?php echo $I18N->msg('rexseo42_help_faq13a',  $REX['ADDON']['name']['rexseo42']); ?></h2>
+<p><?php echo $I18N->msg('rexseo42_help_faq13b'); ?></p>
 
 <h2><?php echo $I18N->msg('rexseo42_help_faq02a'); ?></h2>
 <p><?php echo $I18N->msg('rexseo42_help_faq02b',  $REX['ADDON']['name']['rexseo42']); ?></p>
