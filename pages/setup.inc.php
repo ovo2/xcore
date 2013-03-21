@@ -228,7 +228,7 @@ jQuery(document).ready( function() {
 		var thisCheck = jQuery(this);
 		
 		if (!thisCheck.is(':checked')) 	{
-			alert("<?php echo $I18N->msg('rexseo42_setup_mod_rewrite_alert'); ?>");
+			alert("<?php echo $I18N->msg('rexseo42_setup_mod_rewrite_alert', $REX['ADDON']['name']['rexseo42']); ?>");
 		}
 	});
 });

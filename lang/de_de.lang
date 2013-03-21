@@ -69,7 +69,7 @@ rexseo42_setup_activate_mod_rewrite = Mod-Rewrite einschalten
 rexseo42_setup_step2_button = Einstellungen übernehmen
 rexseo42_setup_step3 = Schritt 3: Template ergänzen
 rexseo42_setup_step3_msg1 = Zuletzt ergänzen Sie den Head-Bereich Ihres Templates wie folgt:
-rexseo42_setup_mod_rewrite_alert = Bitte beachten Sie dass Mod-Rewrite eingeschaltet sein muss!
+rexseo42_setup_mod_rewrite_alert = Bitte beachten Sie dass Mod-Rewrite eingeschaltet sein muss, damit {0} funktionieren kann!
 rexseo42_setup_codeexamples = Hier gibt es weitere <a href="index.php?page=rexseo42&subpage=help&chapter=codeexamples">Codebeispiele</a> für ein perfektes SEO :)
 
 rexseo42_seopage_updated = SEO-Daten wurden aktualisiert.
@@ -97,7 +97,7 @@ rexseo42_help_codeexamples_description1 = Neben dem Beispiel im Setup Schritt 3 
 rexseo42_help_codeexamples_title2 = Suchmaschinenfreundliche Image Manager Urls
 rexseo42_help_codeexamples_description2 = Über diese Methoden lassen sich suchmaschinenfreundliche Urls sowie ganze Image Tags erzeugen: 
 rexseo42_help_codeexamples_title3 = Lang Code ausgeben
-rexseo42_help_codeexamples_description3 = Geben Sie so den aktuellen Lang Code aus der in der <code>settings.langcodes.inc.php</code> definiert werden kann:
+rexseo42_help_codeexamples_description3 = Geben Sie so den aktuellen Lang Code aus der momentan in der <code>settings.langcodes.inc.php</code> definiert werden kann:
 rexseo42_help_codeexamples_title4 = Titel Trenner ändern
 rexseo42_help_codeexamples_description4 = Der Trennstrich für den Titel kann entweder in der <code>settings.expert.inc.php</code> oder so geändert werden:
 rexseo42_help_codeexamples_title5 = Titel Schema ändern
