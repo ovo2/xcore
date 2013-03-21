@@ -3,6 +3,9 @@ $myself = 'rexseo42';
 $myroot = $REX['INCLUDE_PATH'].'/addons/'.$myself;
 $error = array();
 
+// append lang file
+$I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/rexseo42/lang/');
+
 // check redaxo version
 if (version_compare($REX['VERSION'] . '.' . $REX['SUBVERSION'] . '.' . $REX['MINORVERSION'], '4.4.1', '<=')) {
 	$error[] = $I18N->msg('rexseo42_install_rex_version');
