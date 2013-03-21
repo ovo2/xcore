@@ -793,16 +793,21 @@ function rexseo_parse_article_name($name, $article_id, $clang)
   {
     global $REX, $I18N;
 
-    if(!$I18N)
+    if(!$I18N) {
       $I18N = rex_create_lang($REX['LANG']);
+    }
+
+    if (!$I18N->hasMsg('rexseo42_special_chars')) {
+        $I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/rexseo42/lang/');
+    }
 
     $translation = array(
-      'search'  => explode('|', $I18N->msg('special_chars')),
-      'replace' => explode('|', $I18N->msg('special_chars_rewrite')),
+      'search'  => explode('|', $I18N->msg('rexseo42_special_chars')),
+      'replace' => explode('|', $I18N->msg('rexseo42_special_chars_rewrite')),
       );
 
     // EXTENSION POINT
-    $translation = rex_register_extension_point('REXSEO_SPECIAL_CHARS',$translation,array('article_id'=>$article_id,'clang'=>$clang));
+	$translation = rex_register_extension_point('REXSEO_SPECIAL_CHARS',$translation,array('article_id'=>$article_id,'clang'=>$clang));
 
     $firstCall = false;
   }
