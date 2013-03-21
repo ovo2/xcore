@@ -807,8 +807,11 @@ function rexseo_parse_article_name($name, $article_id, $clang)
     $firstCall = false;
   }
 
-  // SANITIZE LAST CHARACTER
-  $name = rtrim($name,'-');
+  // SANITIZE STUFF
+  $name = trim($name); // trim outside whitespaces
+  $name = trim($name,'-'); // trim outside dashes
+  $name = trim($name, '.'); // trim outside dots
+  $name = str_replace('.', '-', $name); // replace dots inside with dash
 
   return
     // + durch - ersetzen
