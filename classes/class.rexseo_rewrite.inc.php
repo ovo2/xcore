@@ -811,9 +811,7 @@ function rexseo_parse_article_name($name, $article_id, $clang)
   }
 
   // SANITIZE STUFF
-  $name = trim($name); // trim outside whitespaces
-  $name = trim($name,'-'); // trim outside dashes
-  $name = trim($name, '.'); // trim outside dots
+  $name = trim($name, " \t\r\n-.");
   $name = str_replace('.', '-', $name); // replace dots inside with dash
 
   return
