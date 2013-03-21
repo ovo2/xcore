@@ -1,7 +1,7 @@
 <?php
 
 function rexseo_sanitizeString($string) {
-	return preg_replace("/\s\s+/", " ", $string);
+	return trim(preg_replace("/\s\s+/", " ", $string));
 }
 
 function rexseo_afterDBImport($params) {

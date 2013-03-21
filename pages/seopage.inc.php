@@ -33,7 +33,8 @@ if (rex_post('saveseo', 'boolean')) {
 	$keywords = str_replace(',', ', ', rex_post('seo_keywords')); // always have a whitespace char after comma 
 	$keywords = strtolower(rexseo_sanitizeString($keywords)); // also keywords should be all lowercase
 
-	$url = str_replace("\\\\", '/', rex_post('seo_url')); // replace backslash with forward slash
+	$url = rexseo_sanitizeString(rex_post('seo_url'));
+	$url = str_replace("\\\\", '/', $url); // replace backslash with forward slash
 	$url = ltrim($url, '/'); // remove first slash if there is any
 
 	// seo fields
