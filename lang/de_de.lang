@@ -15,7 +15,7 @@ rexseo42_config_error = Einstellungen konnte nicht gespeichert werden!
 rexseo42_config_file_no_perms = Konfigurationsdatei "{0}" ist nicht beschreibbar!
 rexseo42_dbfields_readded = Fehlende DB-Felder des {0} AddOns wurden hinzugefügt.
 rexseo42_dbfields_readded_check_template = Bitte überprüfen Sie ob das {0} Setup (Schritt 3) erneut durchgeführt werden muss.
-rexseo42_check_langcodes_msg = Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.langcodes.inc.php" Datei von {0}.
+rexseo42_check_langs_msg = Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.lang.inc.php" Datei von {0}.
 
 rexseo42_tools_caption = SEO Tools
 rexseo42_tool1 = Google Index dieser Website anzeigen
@@ -47,7 +47,7 @@ rexseo42_settings_robots_additional = Zusätzliche Einträge
 rexseo42_settings_robots_link = Link zur robots.txt
 rexseo42_settings_sitemap_link = Link zur sitemap.xml
 rexseo42_settings_submit = Einstellungen speichern
-rexseo42_settings_langcode_hint = Langcode Einstellungen
+rexseo42_settings_lang_hint = Spracheinstellungen
 rexseo42_settings_expert_hint = Weitere Einstellungen
 
 rexseo42_setup_file_backup_failed = Datei "{0}" konnte nicht gesichert werden!
@@ -100,7 +100,7 @@ rexseo42_help_codeexamples_description1 = Neben dem Beispiel im Setup Schritt 3 
 rexseo42_help_codeexamples_title2 = Suchmaschinenfreundliche Image Manager Urls
 rexseo42_help_codeexamples_description2 = Über diese Methoden lassen sich suchmaschinenfreundliche Urls sowie ganze Image Tags erzeugen: 
 rexseo42_help_codeexamples_title3 = Lang Code ausgeben
-rexseo42_help_codeexamples_description3 = Geben Sie so den aktuellen Lang Code aus der momentan in der <code>settings.langcodes.inc.php</code> definiert werden kann:
+rexseo42_help_codeexamples_description3 = Geben Sie so den aktuellen Lang Code aus der momentan in der <code>settings.lang.inc.php</code> definiert werden kann:
 rexseo42_help_codeexamples_title4 = Titel Trenner ändern
 rexseo42_help_codeexamples_description4 = Der Trennstrich für den Titel kann entweder in der <code>settings.expert.inc.php</code> oder so geändert werden:
 rexseo42_help_codeexamples_title5 = Titel Schema ändern

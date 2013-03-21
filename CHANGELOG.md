@@ -13,7 +13,7 @@ REXSEO42 - Changelog
 * REX['MEDIA_DIR'] wird genutzt
 * Domain der Website wird jetzt ohne http:// gesetzt
 * Robots noIndex Option jetzt auch mehrsprachig
-* Lang Codes für die Lang Slugs können nun vorläufig in der `settings.langcodes.inc.php` definiert werden
+* Lang Codes für die Lang Slugs können nun vorläufig in der `settings.lang.inc.php` definiert werden
 * Auto DB Fix nach Db-Import wenn die DB Felder fehlen sollten
 * SEO-Page: Title, Description und Keywords abgesichert. Keywords werden immer kleingeschrieben.
 * SEO-Page: Html und CSS aufgeräumt und verbessert
