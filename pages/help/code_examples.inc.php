@@ -12,13 +12,13 @@ echo rexseo42::getUrlStart();
 ' . $I18N->msg('rexseo42_help_codeexamples_ex2_comment3') . '
 
 echo rexseo42::getMediaDir();
-// --> "/files/"
+// --> /files/
 
 echo rexseo42::getMediaFile("image.png");
-// --> "/files/image.png"
+// --> /files/image.png
 
 echo rexseo42::getMediaAddonDir();
-// --> "/files/addons/"
+// --> /files/addons/
 ?>';
 
 $codeExample3 = '<?php
@@ -91,8 +91,8 @@ echo rexseo42_ex::getKeywords();
 <p><?php echo $I18N->msg('rexseo42_help_codeexamples_description3'); ?></p>
 <?php rex_highlight_string($codeExample3); ?>
 
-<h2>4) <?php echo $I18N->msg('rexseo42_help_codeexamples_title5'); ?></h2>
-<p><?php echo $I18N->msg('rexseo42_help_codeexamples_description5'); ?></p>
+<h2>4) <?php echo $I18N->msg('rexseo42_help_codeexamples_title4'); ?></h2>
+<p><?php echo $I18N->msg('rexseo42_help_codeexamples_description4'); ?></p>
 <?php rex_highlight_string($codeExample4); ?>
 
 <h2>5) <?php echo $I18N->msg('rexseo42_help_codeexamples_title5'); ?></h2>
