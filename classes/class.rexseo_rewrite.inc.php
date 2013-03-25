@@ -587,7 +587,7 @@ function rexseo_generate_pathlist($params)
                $db->getValue('id') == $REX['START_ARTICLE_ID'] &&
                count($REX['CLANG']) > 1)
         {
-          $pathname = $REX['CLANG'][$clang].'/';
+          $pathname = rexseo42::getLangCode($clang).'/';
         }
 
       }
