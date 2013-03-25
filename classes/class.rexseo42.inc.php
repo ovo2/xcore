@@ -29,7 +29,7 @@ class rexseo42 {
 
 	public static function getTitle($titleDelimeter = '') {
 		if ($titleDelimeter == '') {
-			// use default title delimeter defined in settings.expert.inc.php
+			// use default title delimeter defined in settings.advanced.inc.php
 			$titleDelimeter = self::$defaultTitleDelimeter;
 		}
 

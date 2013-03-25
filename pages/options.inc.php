@@ -140,13 +140,9 @@ echo '
 ';
 
 echo '
-    <div id="expert_block" style="margin:0;padding:0;">
-
       <fieldset class="rex-form-col-1">
         <legend>' . $I18N->msg('rexseo42_settings_main_section') . '</legend>
         <div class="rex-form-wrapper">
-
-		  
 
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
@@ -156,7 +152,7 @@ echo '
               <span style="margin:0 4px 0 4px;display:inline-block;width:100px;text-align:right;">' . $I18N->msg('rexseo42_settings_extension') . '</span>
                 '.$url_ending_select->get().'
             </p>
-          </div><!-- /rex-form-row -->
+          </div>
 
           '.$hide_langslug_select.'
 
@@ -166,7 +162,7 @@ echo '
                 '.$homeurl_select->get().'
                 '.$homelang_box.'
             </p>
-          </div><!-- /rex-form-row -->';
+          </div>';
 
 if (count($REX['CLANG']) > 1) {
 	echo '<div class="rex-form-row rex-form-element-v1">
@@ -179,12 +175,12 @@ if (count($REX['CLANG']) > 1) {
 
 	echo '<div class="rex-form-row rex-form-element-v1">
 			<p class="rex-form-col-a rex-form-read">
-				<label for="expert_hint">' . $I18N->msg('rexseo42_settings_expert_hint') . '</label>
-				<span class="rex-form-read" id="expert_hint"><code>/rexseo42/settings.expert.inc.php</code></span>
+				<label for="advanced_hint">' . $I18N->msg('rexseo42_settings_advanced_hint') . '</label>
+				<span class="rex-form-read" id="advanced_hint"><code>/rexseo42/settings.advanced.inc.php</code></span>
 			</p>
 		</div>
 
-        </div><!-- /rex-form-wrapper -->
+        </div>
       </fieldset>
 
       <fieldset class="rex-form-col-1">
@@ -196,16 +192,16 @@ if (count($REX['CLANG']) > 1) {
               <label for="robots">' . $I18N->msg('rexseo42_settings_robots_additional') . '</label>
               <textarea id="rexseo_robots" name="robots" rows="2">'.stripslashes($REX['ADDON'][$myself]['settings']['robots']).'</textarea>
             </p>
-          </div><!-- /rex-form-row -->
+          </div>
 
 		  <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
               <label for="robots-txt">' . $I18N->msg('rexseo42_settings_robots_link') . '</label>
               <span class="rex-form-read" id="robots-txt"><a href="' . rexseo42::getBaseUrl() . 'robots.txt" target="_blank">' . rexseo42::getBaseUrl() . 'robots.txt</a></span>
             </p>
-          </div><!-- /rex-form-row -->
+          </div>
 
-        </div><!-- /rex-form-wrapper -->
+        </div>
       </fieldset>
 
 
@@ -218,12 +214,10 @@ if (count($REX['CLANG']) > 1) {
               <label for="xml-sitemap">' . $I18N->msg('rexseo42_settings_sitemap_link') . '</label>
               <span class="rex-form-read" id="xml-sitemap"><a href="' . rexseo42::getBaseUrl() . 'sitemap.xml" target="_blank">' . rexseo42::getBaseUrl() . 'sitemap.xml</a></span>
             </p>
-          </div><!-- /rex-form-row -->
+          </div>
 
-        </div><!-- /rex-form-wrapper -->
+        </div>
       </fieldset>
-
-    </div><!-- /expert / one page mode -->
 
       <fieldset class="rex-form-col-1">
         <legend>&nbsp;</legend>
@@ -234,14 +228,14 @@ if (count($REX['CLANG']) > 1) {
             <p class="rex-form-submit">
               <input style="margin-top: 5px; margin-bottom: 5px;" class="rex-form-submit" type="submit" id="sendit" name="sendit" value="' . $I18N->msg('rexseo42_settings_submit') . '" />
             </p>
-          </div><!-- /rex-form-row -->
+          </div>
 
-        </div><!-- /rex-form-wrapper -->
+        </div>
       </fieldset>
 
   </form>
-  </div><!-- /rex-addon-output -->
-</div><!-- /rex-form -->
+  </div>
+</div>
 
 ';
 

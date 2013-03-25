@@ -21,7 +21,7 @@ REXSEO42 - Changelog
 * Änderungen bis RexSEO 1.5.4 reingenommen
 * I18N Support: Alles Strings in die Lang-Datei gepackt
 * .htaccess Datei aufgeräumt und vereinfacht, redaxo/.htaccess entfernt
-* Weitere Einstellungen wurden in die `settings.expert.inc.php` gepackt
+* Weitere Einstellungen wurden in die `settings.advanced.inc.php` gepackt
 * Code wurde generell vereinfacht und aufgeräumt 
 * Lizendatei hinzugefügt
 * Installation wird bei bei diesen installierten Addons verweigert: rexseo, url_rewrite, yrewrite

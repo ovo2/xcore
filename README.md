@@ -7,7 +7,7 @@ Features
 --------
 
 * Einstellungen-Seite auf das Wesentliche reduziert 
-* Zusätzliche Einstellungen vorerst in die 'settings.expert.inc.php' verlagert
+* Zusätzliche Einstellungen vorerst in die 'settings.advanced.inc.php' verlagert
 * Neue Setup-Routine
 * Kommt ohne MetaInfos aus
 * Extra SEO-Page für jeden Artikel inkl. Titel-Vorschau

@@ -19,7 +19,7 @@ require($myroot . '/classes/class.rexseo42.inc.php');
 require($myroot . '/classes/class.rexseo42_utils.inc.php');
 
 require($myroot . '/settings.dyn.inc.php');
-require($myroot . '/settings.expert.inc.php');
+require($myroot . '/settings.advanced.inc.php');
 require($myroot . '/settings.lang.inc.php');
 
 // init
