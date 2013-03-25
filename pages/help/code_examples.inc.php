@@ -6,22 +6,38 @@ $codeExample1 = '<head>
 </head>';
 
 $codeExample2 = '<?php
+echo rexseo42::getUrlStart(); 
+' . $I18N->msg('rexseo42_help_codeexamples_ex2_comment1') . '
+' . $I18N->msg('rexseo42_help_codeexamples_ex2_comment2') . '
+' . $I18N->msg('rexseo42_help_codeexamples_ex2_comment3') . '
+
+echo rexseo42::getMediaDir();
+// --> "/files/"
+
+echo rexseo42::getMediaFile("image.png");
+// --> "/files/image.png"
+
+echo rexseo42::getMediaAddonDir();
+// --> "/files/addons/"
+?>';
+
+$codeExample3 = '<?php
 echo rexseo42::getImageManagerUrl("image.png", "rex_mediapool_detail"); 
 // --> /files/imagestypes/rex_mediapool_detail/image.png
 
 echo rexseo42::getImageTag("image.png");
-// --> <img src="/files/image.png" width="300" height="200" alt="' . $I18N->msg('rexseo42_help_codeexamples_ex2_alt') . '" />
+// --> <img src="/files/image.png" width="300" height="200" alt="' . $I18N->msg('rexseo42_help_codeexamples_ex3_alt') . '" />
 
 echo rexseo42::getImageTag("image.png", "rex_mediapool_detail", 150, 100);
-// --> <img src="/files/imagestypes/rex_mediapool_detail/image.png" width="150" height="100" alt="' . $I18N->msg('rexseo42_help_codeexamples_ex2_alt') . '" />;
+// --> <img src="/files/imagestypes/rex_mediapool_detail/image.png" width="150" height="100" alt="' . $I18N->msg('rexseo42_help_codeexamples_ex3_alt') . '" />;
 ?>';
 
-$codeExample3 = '<html lang="<?php echo rexseo42::getLangCode(); ?>">';
+$codeExample4 = '<html lang="<?php echo rexseo42::getLangCode(); ?>">';
 
-$codeExample4 = '<?php echo rexseo42::getTitle(" - "); ?>';
+$codeExample5 = '<?php echo rexseo42::getTitle(" - "); ?>';
 
-$codeExample5 = '<?php
-// ' . $I18N->msg('rexseo42_help_codeexamples_ex5_comment1') . '
+$codeExample6 = '<?php
+// ' . $I18N->msg('rexseo42_help_codeexamples_ex6_comment1') . '
 class rexseo42_ex extends rexseo42
 	public static function getTitle($titleDelimeter = "") {
 		if ($titleDelimeter == "") {
@@ -50,13 +66,13 @@ class rexseo42_ex extends rexseo42
 			}
 		 }
 
-		// ' . $I18N->msg('rexseo42_help_codeexamples_ex5_comment2') . '
+		// ' . $I18N->msg('rexseo42_help_codeexamples_ex6_comment2') . '
 		return strtolower(htmlspecialchars($fullTitle));
 	}
 }
 
-// ' . $I18N->msg('rexseo42_help_codeexamples_ex5_comment3') . '
-echo rexseo42_ex::getTitel(); // ' . $I18N->msg('rexseo42_help_codeexamples_ex5_comment4') . '
+// ' . $I18N->msg('rexseo42_help_codeexamples_ex6_comment3') . '
+echo rexseo42_ex::getTitel(); // ' . $I18N->msg('rexseo42_help_codeexamples_ex6_comment4') . '
 echo rexseo42_ex::getDescription();
 echo rexseo42_ex::getKeywords();
 ?>';
@@ -75,13 +91,17 @@ echo rexseo42_ex::getKeywords();
 <p><?php echo $I18N->msg('rexseo42_help_codeexamples_description3'); ?></p>
 <?php rex_highlight_string($codeExample3); ?>
 
-<h2>4) <?php echo $I18N->msg('rexseo42_help_codeexamples_title4'); ?></h2>
-<p><?php echo $I18N->msg('rexseo42_help_codeexamples_description4'); ?></p>
+<h2>4) <?php echo $I18N->msg('rexseo42_help_codeexamples_title5'); ?></h2>
+<p><?php echo $I18N->msg('rexseo42_help_codeexamples_description5'); ?></p>
 <?php rex_highlight_string($codeExample4); ?>
 
 <h2>5) <?php echo $I18N->msg('rexseo42_help_codeexamples_title5'); ?></h2>
 <p><?php echo $I18N->msg('rexseo42_help_codeexamples_description5'); ?></p>
 <?php rex_highlight_string($codeExample5); ?>
+
+<h2>6) <?php echo $I18N->msg('rexseo42_help_codeexamples_title6'); ?></h2>
+<p><?php echo $I18N->msg('rexseo42_help_codeexamples_description6'); ?></p>
+<?php rex_highlight_string($codeExample6); ?>
 
 <p><?php echo $I18N->msg('rexseo42_help_codeexamples_thatsallfolks'); ?></p>
 

@@ -1,6 +1,13 @@
 <?php
 
-$REX['ADDON']['rexseo42']['settings']['install_subdir'] = '';
+// if true you get full urls like wordpress has :) rexseo42::getUrlStart() and co. needs to be used consequently for all extra urls (like mediapool urls, etc.)
+$REX['ADDON']['rexseo42']['settings']['full_urls'] = false;
+
+// url start piece for all urls spit out rex_getUrl(), rexseo42::getUrlStart() and co. should to be used for all extra urls | can be "/" (recommended, no base tag needed) or "./" (base tag needed!)
+$REX['ADDON']['rexseo42']['settings']['url_start'] = '/';
+
+// url start piece for redaxo subdir installations | can be "./" (recommended, base tag needed!)
+$REX['ADDON']['rexseo42']['settings']['url_start_subdir'] = './';
 
 // if false seo database fields won't be dropped if rexseo42 will be uninstalled. perhaps someday interesting when updateing rexseo42...
 $REX['ADDON']['rexseo42']['settings']['drop_dbfields_on_uninstall'] = true; 
@@ -11,7 +18,7 @@ $REX['ADDON']['rexseo42']['settings']['seo_friendly_image_manager_urls'] = true;
 // default title delimeter (including whitespace chars) for seperating name of website and page title
 $REX['ADDON']['rexseo42']['settings']['title_delimeter'] = ' | ';
 
-// if true seo page will be only visible in start article of website. also the frontend links will all point to start article and sitemap.xml will show up only one url
+// if true seopage will be only visible at start article of website. also the frontend links will all point to start article and sitemap.xml will show only one url
 $REX['ADDON']['rexseo42']['settings']['one_page_mode'] = false;  
 
 // only set to true if you want't to have urls wth special chars like in chinese language etc.
@@ -28,9 +35,6 @@ $REX['ADDON']['rexseo42']['settings']['robots_follow_flag'] = 'follow';
 
 // default archive flag for robots meta tag, can be empty
 $REX['ADDON']['rexseo42']['settings']['robots_archive_flag'] = 'noarchive';
-
-// default protocol for base/server url, can also be https:// 
-$REX['ADDON']['rexseo42']['settings']['server_protocol'] = 'http://';
 
 // if true pages with similar urls will be accepted (not recommended!)
 $REX['ADDON']['rexseo42']['settings']['levenshtein'] = false;

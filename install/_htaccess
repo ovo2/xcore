@@ -4,7 +4,6 @@ Options -Indexes
 <IfModule mod_rewrite.c>
 	# ENABLE REWRITING
 	RewriteEngine On
-	RewriteBase /
 
 	# REDIRECT NON-WWW TO WWW
 	#RewriteCond %{HTTP_HOST} !^www\. [NC]

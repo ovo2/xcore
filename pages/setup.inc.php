@@ -63,7 +63,7 @@ if ($func == "do_copy") {
 		}
 	}
 } elseif ($func == "apply_settings") {
-	$server = rexseo42::sanitizeUrl(str_replace("\\'", "'", rex_post('server', 'string')));	
+	$server = str_replace("\\'", "'", rex_post('server', 'string'));
 	$servername  = str_replace("\\'", "'", rex_post('servername', 'string'));
 	$modRewrite = rex_request('mod_rewrite', 'int');
 
@@ -140,7 +140,7 @@ if ($func == "do_copy") {
 			</p>
 
 			<p class="rex-form-col-a">
-				<label for="server"><?php echo $I18N->msg('rexseo42_setup_website_domain'); ?></label>
+				<label for="server"><?php echo $I18N->msg('rexseo42_setup_website_url'); ?></label>
 				<input name="server" id="server" type="text" class="rex-form-text" value="<?php echo htmlspecialchars($REX['SERVER']); ?>" />
 			</p>
 
@@ -160,7 +160,16 @@ if ($func == "do_copy") {
 </div>
 
 <?php
-$codeExample2 = '<head>
+$codeExample = '<head>
+	<title><?php echo rexseo42::getTitle(); ?></title>
+	<meta name="description" content="<?php echo rexseo42::getDescription(); ?>" />
+	<meta name="keywords" content="<?php echo rexseo42::getKeywords(); ?>" />
+	<meta name="robots" content="<?php echo rexseo42::getRobotRules();?>" />
+	<link rel="canonical" href="<?php echo rexseo42::getCanonicalUrl(); ?>" />
+</head>';
+
+
+$codeExampleSubdir = '<head>
 	<base href="<?php echo rexseo42::getBaseUrl(); ?>" />
 	<title><?php echo rexseo42::getTitle(); ?></title>
 	<meta name="description" content="<?php echo rexseo42::getDescription(); ?>" />
@@ -174,12 +183,18 @@ $codeExample2 = '<head>
 	<h2 class="rex-hl2"><?php echo $I18N->msg('rexseo42_setup_step3'); ?></h2>
 	<div class="rex-area-content">
 		<p class="info-msg"><?php echo $I18N->msg('rexseo42_setup_step3_msg1'); ?></p>
-		<?php rex_highlight_string($codeExample2); ?>
+		<div id="code-example"><?php rex_highlight_string($codeExample); ?></div>
+		<div id="code-example-subdir"><?php rex_highlight_string($codeExampleSubdir); ?></div>
 		<p class="info-msg no-bottom-margin"><?php echo $I18N->msg('rexseo42_setup_codeexamples'); ?></p>
 	</div>
 </div>
 
 <style type="text/css">
+#code-example-subdir,
+#code-example {
+	display: none;
+}
+
 #rex-page-rexseo42 .rex-code {
     word-wrap: break-word;
 }
@@ -225,6 +240,20 @@ $codeExample2 = '<head>
 
 <script type="text/javascript">
 jQuery(document).ready( function() {
+	jQuery('#settings-form').submit(function() {
+		var pat = /^https?:\/\//i;
+		var serverString = jQuery('#server').val();
+		var slashPosAfterDomain = serverString.indexOf("/", 8); // https:// = 8
+
+		if (pat.test(serverString) && slashPosAfterDomain !== -1 && (serverString.charAt(serverString.length - 1) == '/')) {
+			return true;
+		}
+
+		alert('<?php echo $I18N->msg('rexseo42_setup_url_alert'); ?>');
+
+		return false;
+	});
+
 	jQuery('#mod_rewrite').click(function () {
 		var thisCheck = jQuery(this);
 		
@@ -240,6 +269,34 @@ jQuery(document).ready( function() {
 		}
 	});
 	<?php } ?>
+
+	jQuery('#server').keyup(function() {
+		updateCodeExample();
+	});
+
+	updateCodeExample();
 });
+
+function updateCodeExample() {
+	var pat = /^https?:\/\//i;
+	var hasSubdir = false;
+	var url = jQuery('#server').val();
+	var slashPosAfterDomain = url.indexOf("/", 8); // https:// = 8
+
+	if (pat.test(url) && slashPosAfterDomain !== -1) {
+		var subdir = url.substr(slashPosAfterDomain + 1);
+		if (subdir !== '') {
+			hasSubdir = true;
+		}
+	}
+
+	if (hasSubdir) {
+		jQuery('#code-example').hide();
+		jQuery('#code-example-subdir').show();
+	} else {
+		jQuery('#code-example-subdir').hide();
+		jQuery('#code-example').show();
+	}
+}
 </script>
 

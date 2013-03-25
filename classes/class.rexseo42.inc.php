@@ -5,26 +5,68 @@ class rexseo42 {
 	protected static $defaultTitleDelimeter;
 	protected static $robotsFollowFlag;
 	protected static $robotsArchiveFlag;
-	protected static $serverProtocol;
 	protected static $mediaDir;
+	protected static $mediaAddonDir;
 	protected static $seoFriendlyImageManagerUrls;
-	
+	protected static $fullUrls;
 
+	protected static $server;
+	protected static $serverUrl;
+	protected static $serverProtocol;
+	protected static $serverSubdir;
+	protected static $isSubdirInstall;
+	protected static $urlStart;
+	
 	public static function init() {
+		// to be called before resolve()
 		global $REX;
 
-		self::$curArticle = OOArticle::getArticleById($REX['ARTICLE_ID']);
+		// default inits
 		self::$startArticleID = $REX['START_ARTICLE_ID'];
 		self::$defaultTitleDelimeter = $REX['ADDON']['rexseo42']['settings']['title_delimeter'];
 		self::$robotsFollowFlag = $REX['ADDON']['rexseo42']['settings']['robots_follow_flag'];
 		self::$robotsArchiveFlag = $REX['ADDON']['rexseo42']['settings']['robots_archive_flag'];
-		self::$serverProtocol = $REX['ADDON']['rexseo42']['settings']['server_protocol'];
 		self::$mediaDir = $REX['MEDIA_DIR'];
+		self::$mediaAddonDir = $REX['MEDIA_ADDON_DIR'];
 		self::$seoFriendlyImageManagerUrls = $REX['ADDON']['rexseo42']['settings']['seo_friendly_image_manager_urls'];
+		self::$fullUrls = $REX['ADDON']['rexseo42']['settings']['full_urls'];
+
+		// pull apart server url
+		$urlParts = self::getUrlParts($REX['SERVER']);
+
+		self::$serverUrl = $REX['SERVER'];
+		self::$serverProtocol = $urlParts['protocol'];
+		self::$server = $urlParts['site'];
+		self::$serverSubdir = trim($urlParts['resource'], '/'); 
+
+		// check for subdir install
+		if (self::$serverSubdir == '') {
+			self::$isSubdirInstall = false;
+		} else {
+			self::$isSubdirInstall = true;
+		}
+
+		// get url start 
+		if (self::$fullUrls) {
+			self::$urlStart = self::$serverUrl;
+		} else {
+			if (self::$isSubdirInstall) {
+				self::$urlStart = $REX['ADDON']['rexseo42']['settings']['url_start_subdir'];
+			} else {
+				self::$urlStart = $REX['ADDON']['rexseo42']['settings']['url_start'];
+			}
+		}
+	}
+
+	public static function setCurArticle() {
+		// to be called after resolve()
+		global $REX;
+
+		self::$curArticle = OOArticle::getArticleById($REX['ARTICLE_ID']);
 	}
 
 	public static function getBaseUrl() {
-		return self::getServerUrl();
+		return self::$serverUrl;
 	}
 
 	public static function getTitle($titleDelimeter = '') {
@@ -83,8 +125,12 @@ class rexseo42 {
 		return $robots;
 	}
 
-	public static function getCanonicalUrl() {	
-		return rtrim(self::getBaseUrl(), '/') . rex_getUrl(self::$curArticle->getId());
+	public static function getCanonicalUrl() {
+		if (self::$fullUrls) {
+			return rex_getUrl(self::$curArticle->getId());
+		} else {
+			return self::getBaseUrl() . ltrim(rex_getUrl(self::$curArticle->getId()), "./");
+		}
 	}
 
 	public static function getImageTag($imageFile, $imageType = '', $width = 0, $height = 0) {
@@ -115,7 +161,7 @@ class rexseo42 {
 
 		// make url
 		if ($imageType == '') {
-			$url = '/' . self::$mediaDir . '/' . $imageFile;
+			$url = self::getMediaFile($imageFile);
 		} else {
 			$url = self::getImageManagerUrl($imageFile, $imageType);
 		}
@@ -125,20 +171,25 @@ class rexseo42 {
 
 	public static function getImageManagerUrl($imageFile, $imageType) {
 		if (self::$seoFriendlyImageManagerUrls) {
-			return '/' . self::$mediaDir . '/imagetypes/' . $imageType . '/' . $imageFile;
+			return self::getMediaDir() . 'imagetypes/' . $imageType . '/' . $imageFile;
 		} else {
 			return '/index.php?rex_img_type=' . $imageType . '&amp;rex_img_file=' . $imageFile;
 		}
 	}
 
 	public static function getHtml($indent = "\t") {
-		$out = '<base href="' . self::getBaseUrl() . '" />';
-		$out .= PHP_EOL . $indent . '<title>' . self::getTitle() . '</title>';
-		$out .= PHP_EOL . $indent . '<meta name="description" content="' . self::getDescription() . '" />';
-		$out .= PHP_EOL . $indent . '<meta name="keywords" content="' . self::getKeywords() . '" />';
-		$out .= PHP_EOL . $indent . '<meta name="robots" content="' . self::getRobotRules() . '" />';
-		$out .= PHP_EOL . $indent . '<link rel="canonical" href="' . self::getCanonicalUrl() . '" />';
-		$out .= PHP_EOL;
+		$out = '';
+
+		if (self::$isSubdirInstall && !self::$fullUrls) {
+			$out .= '<base href="' . self::getBaseUrl() . '" />' . PHP_EOL;
+            $out .= $indent;
+		}
+
+		$out .= '<title>' . self::getTitle() . '</title>' . PHP_EOL;
+		$out .= $indent . '<meta name="description" content="' . self::getDescription() . '" />' . PHP_EOL;
+		$out .= $indent . '<meta name="keywords" content="' . self::getKeywords() . '" />' . PHP_EOL;
+		$out .= $indent . '<meta name="robots" content="' . self::getRobotRules() . '" />' . PHP_EOL;
+		$out .= $indent . '<link rel="canonical" href="' . self::getCanonicalUrl() . '" />' . PHP_EOL;
 
 		return $out;
 	}
@@ -172,15 +223,53 @@ class rexseo42 {
 	}
 
 	public static function getServer() {
-		global $REX;
-
-		return self::sanitizeUrl($REX['SERVER']);
+		return self::$server;
 	}
 
 	public static function getServerUrl() {
+		return self::$serverUrl;
+	}
+
+	public static function getServerProtocol() {
+		return self::$serverProtocol;
+	}
+
+	public static function getServerSubdir() {
+		return self::$serverSubdir;
+	}
+
+	public static function isSubdirInstall() {
+		return self::$isSubdirInstall;
+	}
+
+	public static function getServerWithSubdir() {
+		if (self::$isSubdirInstall) {
+			return self::$server . '/' . self::$serverSubdir;
+		} else {
+			return self::$server;
+		}
+	}
+
+	public static function getUrlStart() {
+		return self::$urlStart;
+	}
+
+	public static function setUrlStart($urlStart) {
+		self::$urlStart = $urlStart;
+	}
+
+	public static function getMediaDir() {
+		return self::$urlStart . self::$mediaDir . '/';
+	}
+
+	public static function getMediaFile($file) {
+		return self::getMediaDir() . $file;
+	}
+
+	public static function getMediaAddonDir() {
 		global $REX;
 
-		return self::$serverProtocol . self::getServer() . '/';
+		return self::$urlStart . self::$mediaAddonDir . '/';
 	}
 
 	public static function isStartPage() {
@@ -193,5 +282,32 @@ class rexseo42 {
 
 	public static function sanitizeUrl($url) {
 		return preg_replace('@^https?://|/.*|[^\w.-]@', '', $url);
+	}
+
+	public static function getUrlParts($url) {
+		$result = array();
+		 
+		// Get the protocol, site and resource parts of the URL
+		// original url = http://example.com/blog/index?name=foo
+		// protocol = http://
+		// site = example.com/
+		// resource = blog/index?name=foo
+		$regex = '#^(.*?//)*([\w\.\d]*)(:(\d+))*(/*)(.*)$#';
+		$matches = array();
+		preg_match($regex, $url, $matches);
+		 
+		// Assign the matched parts of url to the result array
+		$result['protocol'] = $matches[1];
+		$result['port'] = $matches[4];
+		$result['site'] = $matches[2];
+		$result['resource'] = $matches[6];
+		 
+		// clean up the site portion by removing the trailing /
+		$result['site'] = preg_replace('#/$#', '', $result['site']);
+		 
+		// clean up the protocol portion by removing the trailing ://
+		$result['protocol'] = preg_replace('#://$#', '', $result['protocol']);
+		 
+		return $result;
 	}
 }

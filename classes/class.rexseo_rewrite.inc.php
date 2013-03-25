@@ -39,7 +39,7 @@ class RexseoRewrite
       $notfound_id     = $REX['NOTFOUND_ARTICLE_ID'];
 
       $params_starter  = $REX['ADDON']['rexseo42']['settings']['params_starter'];
-      $install_subdir  = $REX['ADDON']['rexseo42']['settings']['install_subdir'];
+      $install_subdir  = rexseo42::getServerSubdir(); // 42
       $allow_articleid = $REX['ADDON']['rexseo42']['settings']['allow_articleid'];
       $homelang        = $REX['ADDON']['rexseo42']['settings']['homelang'];
 
@@ -68,7 +68,7 @@ class RexseoRewrite
 
       // GET PATH RELATIVE TO INTALL_SUBDIR
       $length = strlen($install_subdir);
-      $path = substr(ltrim($_SERVER['REQUEST_URI'],'/'), $length);
+      $path = substr(ltrim($_SERVER['REQUEST_URI'],'/'), ($length + 1));  // + 1 for slash | 42
 
       // TRIM STANDARD PARAMS
       if(($pos = strpos($path, '?')) !== false)
@@ -195,7 +195,7 @@ class RexseoRewrite
     $id             = $params['id'];
     $name           = $params['name'];
     $clang          = $params['clang'];
-    $subdir         = $REX['ADDON']['rexseo42']['settings']['install_subdir'];
+    $subdir         = ''; // 42 | $REX['ADDON']['rexseo42']['settings']['install_subdir']
     $notfound_id    = $REX['NOTFOUND_ARTICLE_ID'];
 
     // GET PARAMS STRING
@@ -223,7 +223,7 @@ class RexseoRewrite
     }
 
     // SUBDIR
-    $subdir = !$REX['REDAXO'] ? '/'.$subdir  : '';
+    $subdir = !$REX['REDAXO'] ? rexseo42::getUrlStart().$subdir  : ''; // 42
 
     // HACK: EP URL_REWRITE WON'T ACCEPT EMPTY STRING AS RETURN
     if($subdir == '' && $url == '')
@@ -266,7 +266,7 @@ class RexseoRewrite
     global $REXSEO_IDS;
 
 	$base = $_SERVER['HTTPS'] && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://';
-	$base .= $_SERVER['HTTP_HOST'] . '/' . $REX['ADDON']['rexseo42']['settings']['install_subdir'];
+	$base .= $_SERVER['HTTP_HOST'] . '/'; // 42 | . $REX['ADDON']['rexseo42']['settings']['install_subdir'];
 
     $status   = isset($redirect['status']) ? $redirect['status'] : 200;
     $location = $base.$REXSEO_IDS[$redirect['id']][$redirect['clang']]['url'];
