@@ -19,7 +19,10 @@ $REX['ADDON']['rexseo42']['settings']['seo_friendly_image_manager_urls'] = true;
 $REX['ADDON']['rexseo42']['settings']['title_delimeter'] = ' | ';
 
 // if true seopage will be only visible at start article of website. also the frontend links will all point to start article and sitemap.xml will show only one url
-$REX['ADDON']['rexseo42']['settings']['one_page_mode'] = false;  
+$REX['ADDON']['rexseo42']['settings']['one_page_mode'] = false;
+
+// if true root categories will be completly ignored and not be visible in generated urls
+$REX['ADDON']['rexseo42']['settings']['ignore_root_cats'] = false;
 
 // only set to true if you want't to have urls wth special chars like in chinese language etc.
 $REX['ADDON']['rexseo42']['settings']['urlencode'] = false; 
@@ -28,7 +31,7 @@ $REX['ADDON']['rexseo42']['settings']['urlencode'] = false;
 $REX['ADDON']['rexseo42']['settings']['allow_articleid'] = 0;
 
 // character to replace whitespaces with in urls
-$REX['ADDON']['rexseo42']['settings']['url_whitespace_replace']  = '-'; 
+$REX['ADDON']['rexseo42']['settings']['url_whitespace_replace']  = '-';
 
 // default follow flag for robots meta tag, can be empty
 $REX['ADDON']['rexseo42']['settings']['robots_follow_flag'] = 'follow';

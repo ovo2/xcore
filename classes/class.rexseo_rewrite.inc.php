@@ -512,6 +512,11 @@ function rexseo_generate_pathlist($params)
               continue;
 			} 
 
+			// 42
+			if ($REX['ADDON']['rexseo42']['settings']['ignore_root_cats'] && $ooc->getParentId() == 0) {
+              continue;
+            }
+
             $name = $ooc->getName();
             unset($ooc);
 
