@@ -592,34 +592,6 @@ function rexseo_generate_pathlist($params)
 
       }
 
-		// RexDude
-
-		//$lastSlashPos = strrpos($pathname , '/');
-
-		//$curname = substr($pathname, (lastSlashPos * -1));
-
-		/*if ($rexseo_url_path != ""){
-			$pathname = $rexseo_url_path;
-		
-			if ($rexseo_url_file == ""){
-				$pathname .= $curname;
-			}
-		}
-	
-		if ($rexseo_url_file != ""){
-			if ($rexseo_url_path == ""){
-				$pathname = dirname($pathname);
-				$pathname = trim($pathname,'.');
-				$pathname .= "/";
-			}
-		
-			$pathname .= str_replace(' ','-',$rexseo_url_file);
-		}
-		$pathname = trim($pathname,'/');
-		*/
-		// RexDude
-
-
       // SANITIZE MULTIPLE "-" IN PATHNAME
       $pathname = preg_replace('/[-]{1,}/', '-', $pathname);
 
@@ -780,7 +752,8 @@ function rexseo_parse_article_name($name, $article_id, $clang)
 
   // SANITIZE STUFF
   $name = trim($name, " \t\r\n-.");
-  $name = str_replace('.', '-', $name); // replace dots inside with dash
+  $name = str_replace('/', '-', $name);
+  $name = str_replace('.', '-', $name);
 
   return
     // + durch - ersetzen
