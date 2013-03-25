@@ -7,13 +7,13 @@ $codeExample1 = '<head>
 
 $codeExample2 = '<?php
 echo rexseo42::getImageManagerUrl("image.png", "rex_mediapool_detail"); 
-// /files/imagestypes/rex_mediapool_detail/image.png
+// --> /files/imagestypes/rex_mediapool_detail/image.png
 
 echo rexseo42::getImageTag("image.png");
-// <img src="/files/image.png" width="200" height="100" alt="' . $I18N->msg('rexseo42_help_codeexamples_ex2_alt') . '" />
+// --> <img src="/files/image.png" width="200" height="100" alt="' . $I18N->msg('rexseo42_help_codeexamples_ex2_alt') . '" />
 
 echo rexseo42::getImageTag("image.png", "rex_mediapool_detail");
-// <img src="/files/imagestypes/rex_mediapool_detail/image.png" width="200" height="100" alt="' . $I18N->msg('rexseo42_help_codeexamples_ex2_alt') . '" />;
+// --> <img src="/files/imagestypes/rex_mediapool_detail/image.png" width="200" height="100" alt="' . $I18N->msg('rexseo42_help_codeexamples_ex2_alt') . '" />;
 ?>';
 
 $codeExample3 = '<html lang="<?php echo rexseo42::getLangCode(); ?>">';

@@ -138,7 +138,7 @@ echo '
 						</div>
 					</fieldset>
 					<fieldset ' . $hideNonContentSection . ' class="rex-form-col-1">
-						<legend>' . $I18N->msg('rexseo42_seopage_url_section') . '</legend>
+						<legend>' . $I18N->msg('rexseo42_seopage_extended_section') . '</legend>
 						<div class="rex-form-wrapper">
 							<div class="rex-form-row">
 								<p class="rex-form-text">

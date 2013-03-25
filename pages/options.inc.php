@@ -55,7 +55,7 @@ if($REX['ADDON'][$myself]['settings']['install_subdir'] != rexseo_subdir()) {
 $url_schema_select = new rex_select();
 $url_schema_select->setSize(1);
 $url_schema_select->setName('url_schema');
-$url_schema_select->addOption('RexSEO','rexseo');
+$url_schema_select->addOption('rexseo','rexseo');
 $url_schema_select->addOption('url_rewrite','url_rewrite');
 $url_schema_select->setAttribute('style','width:250px');
 $url_schema_select->setSelected($REX['ADDON'][$myself]['settings']['url_schema']);

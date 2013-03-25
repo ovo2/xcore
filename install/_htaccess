@@ -1,4 +1,4 @@
-# PREVENT DIRECTORY LISTING FOR ALL FOLDERS
+# PREVENT DIRECTORY LISTING
 Options -Indexes
 
 <IfModule mod_rewrite.c>
@@ -11,7 +11,7 @@ Options -Indexes
 	#RewriteRule (.*) http://www.%{HTTP_HOST}/$1 [R=301,L]
 
 	# REDIRECT SITEMAP.XML TO REXSEO SITEMAP FUNCTION
-	RewriteRule ^sitemap\.xml$ index.php?rexseo_func=googlesitemap [NC,L]
+	RewriteRule ^sitemap\.xml$ index.php?rexseo_func=sitemap [NC,L]
 
 	# REDIRECT ROBOTS.TXT TO REXSEO ROBOTS FUNCTION
 	RewriteRule ^robots\.txt$ index.php?rexseo_func=robots [NC,L]

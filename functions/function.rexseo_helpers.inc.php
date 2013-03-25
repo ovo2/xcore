@@ -15,7 +15,7 @@ function rexseo_afterDBImport($params) {
 	if ($sql->getRows() == 0) {
 		require($REX['INCLUDE_PATH'] . '/addons/rexseo42/install.inc.php');
 		echo rex_info($I18N->msg('rexseo42_dbfields_readded', $REX['ADDON']['name']['rexseo42']));
-		echo rex_warning($I18N->msg('rexseo42_dbfields_readded_check_template', $REX['ADDON']['name']['rexseo42']));
+		echo rex_info($I18N->msg('rexseo42_dbfields_readded_check_setup', $REX['ADDON']['name']['rexseo42']));
 	}
 }
 

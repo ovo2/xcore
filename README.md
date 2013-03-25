@@ -6,11 +6,13 @@ Ein Fork des original RexSEO AddOns f체r REDAXO mit alternativer Benutzeroberfl�
 Features
 --------
 
-* Auf das Wesentliche reduziert
+* Einstellungen-Seite auf das Wesentliche reduziert 
+* Zus채tzliche Einstellungen vorerst in die 'settings.expert.inc.php' verlagert
 * Neue Setup-Routine
 * Kommt ohne MetaInfos aus
 * Extra SEO-Page f체r jeden Artikel inkl. Titel-Vorschau
 * SEO Tools
+* und noch viel mehr...
 
 Hinweise
 --------
@@ -36,4 +38,5 @@ Credits
 * [Markus Staab](https://github.com/staabm) f체r das zugrundeliegende url_rewrite AddOn
 * [Jan Kristinus](http://github.com/dergel) f체r REDAXO und den neuen EP in REDAXO 4.5
 * [Gregor Harlan](https://github.com/gharlan) und [Thomas Blum](https://github.com/tbaddade) f체r Hilfe, Code und Bugmeldungen :)
+* Danke an alle die sich mit Idee und Bugmeldungen eingebracht haben :)
 

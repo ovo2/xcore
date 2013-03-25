@@ -3,19 +3,19 @@ REXSEO42 - Changelog
 
 ### Version 1.0.42 BETA - 19. März 2013
 
+* "Normale" 404-Seite des Webservers, wenn eine Datei unter `files` oder `redaxo` nicht gefunden wurde
 * Neue Hilfe Unterpunkte: Codebeispiele und Links, Faq überarbeitet
-* Verzeichnis-Auflistung für files und files/addons wird per .htaccess Datei unterbunden
-* Neues Feature: One Page Mode, für Websites die nur über eine lange Seite verfügen 
-* Neues Feature: Tools mit Linksammlung zu wichtigen SEO-Tools
-* Neue Permission: rexseo42[seopage] um für nicht Admnins die Sichtbarkeit der SEO-Page zu steuern
+* Verzeichnis-Auflistung z.B. für files und files/addons wird per .htaccess Datei unterbunden
+* Neues Feature: One Page Mode, für Websites die nur über eine einzige Seite verfügen 
+* Neues Feature: SEO Tools  - eine Linksammlung zu wichtigen SEO-Tools im Netz
+* Neue Permission: rexseo42[seopage] um für Nicht-Admins die Sichtbarkeit der SEO-Page zu steuern
 * editContentOnly[] wird nun berücksichtigt
 * Neues Feature: Checkbox zum setzen der WWW-Umleitung im Setup
 * REX['MEDIA_DIR'] wird genutzt
-* Domain der Website wird jetzt ohne http:// gesetzt
-* Robots noIndex Option jetzt auch mehrsprachig
+* Robots noIndex Option:  Bug gefixt der bei Mehrsprachigkeit auftrat
 * Lang Codes für die Lang Slugs können nun vorläufig in der `settings.lang.inc.php` definiert werden
 * Auto DB Fix nach Db-Import wenn die DB Felder fehlen sollten
-* SEO-Page: Title, Description und Keywords abgesichert. Keywords werden immer kleingeschrieben.
+* SEO-Page: Title, Description und Keywords abgesichert. Keywords werden z.B. nur kleingeschrieben übernommen.
 * SEO-Page: Html und CSS aufgeräumt und verbessert
 * rexseo42 Klasse aufgeräumt und ergänzt: getHtml(), getImageTag(), getImageManagerUrl(), etc.
 * Änderungen bis RexSEO 1.5.4 reingenommen

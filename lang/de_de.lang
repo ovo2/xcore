@@ -11,7 +11,7 @@ rexseo42_config_ok = Einstellungen wurde aktualisiert.
 rexseo42_config_error = Einstellungen konnte nicht gespeichert werden!
 rexseo42_config_file_no_perms = Konfigurationsdatei "{0}" ist nicht beschreibbar!
 rexseo42_dbfields_readded = Fehlende DB-Felder des {0} AddOns wurden hinzugefügt.
-rexseo42_dbfields_readded_check_template = Bitte überprüfen Sie ob das {0} Setup (Schritt 3) erneut durchgeführt werden muss.
+rexseo42_dbfields_readded_check_setup = WICHTIG: Bitte überprüfen Sie ob das {0} Setup (Schritt 3) erneut durchgeführt werden muss.
 rexseo42_check_langs_msg = Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.lang.inc.php" Datei von {0}.
 
 rexseo42_tools_caption = SEO Tools
@@ -54,7 +54,7 @@ rexseo42_setup_backup_successful = Ein Backup wurde zuvor angelegt.
 rexseo42_setup_backup_failed = Backup der .htaccess Datei fehlgeschlagen. Bitte kopieren Sie die Datei manuell.
 rexseo42_setup_settings_saved = Einstellungen wurden übernommen.
 rexseo42_setup_settings_save_failed = Speichern der Einstellungen fehlgeschlagen. Bitte nehmen Sie die Einstellungen manuell auf der System-Seite vor.
-rexseo42_setup_step1 = Schritt 1: Datei kopieren
+rexseo42_setup_step1 = Schritt 1: .htaccess kopieren
 rexseo42_setup_step1_msg1 = Folgende Datei muss in das Hauptverzeichnis von REDAXO kopiert und korrekt umbenannt werden:
 rexseo42_setup_to = nach
 rexseo42_setup_www_redirect_checkbox = Dauerhafte Umleitung auf die WWW-Domain aktivieren
@@ -69,7 +69,7 @@ rexseo42_setup_activate_mod_rewrite = Mod-Rewrite einschalten
 rexseo42_setup_step2_button = Einstellungen übernehmen
 rexseo42_setup_step3 = Schritt 3: Template ergänzen
 rexseo42_setup_step3_msg1 = Zuletzt ergänzen Sie den Head-Bereich Ihres Templates wie folgt:
-rexseo42_setup_mod_rewrite_alert = Bitte beachten Sie dass Mod-Rewrite eingeschaltet sein muss, damit {0} funktionieren kann!
+rexseo42_setup_mod_rewrite_alert = Die Mod-Rewrite Funktion von REDAXO muss aktiviert werden, damit {0} funktionieren kann!
 rexseo42_setup_codeexamples = Hier gibt es weitere <a href="index.php?page=rexseo42&subpage=help&chapter=codeexamples">Codebeispiele</a> für ein perfektes SEO :)
 
 rexseo42_seopage_updated = SEO-Daten wurden aktualisiert.
@@ -80,7 +80,7 @@ rexseo42_seopage_keywords = Suchbegriffe
 rexseo42_seopage_title_noprefix = Kein Prefix
 rexseo42_seopage_chars = Zeichen
 rexseo42_seopage_words = Begriffe
-rexseo42_seopage_url_section = URL und Indizierung
+rexseo42_seopage_extended_section = Erweitert
 rexseo42_seopage_userdef_url = Benutzerdefinierte URL
 rexseo42_seopage_noindex = Indizierung nicht erlauben
 rexseo42_seopage_button_text = SEO-Daten aktualisieren
@@ -113,32 +113,32 @@ rexseo42_help_faq = FAQ
 rexseo42_help_faq01a = Warum brauchts eigentlich noch ein weiteres RexSEO?
 rexseo42_help_faq01b = Ganz einfach: Weil RexSEO zwar sehr gefällt, aber so wie es ist in manchen Punkten (z.B. Setup) nicht den Vorstellungen vom RexDude entspricht und es ja außerdem völlig legitim ist einen Fork nach seinem eigenem Gusto zu machen.
 
-rexseo42_help_faq02a = {0} läuft nicht mehr rund. Es hagelt z.B. Fehlermeldungen im HTML-Quellcode!?
-rexseo42_help_faq02b = Das AddOn <a href="index.php?page=addon&addonname=rexseo42&install=1">reinstallieren</a> sollte das Problem beheben.
+rexseo42_help_faq02a = {0} läuft nicht mehr rund. Es kommen z.B. Fehlermeldungen im HTML-Quellcode!?
+rexseo42_help_faq02b = Das AddOn <a href="index.php?page=addon&addonname=rexseo42&install=1">reinstallieren</a> und evtl. das Setup neu durchlaufen sollte das Problem beheben.
 
 rexseo42_help_faq03a = Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterverzeichnis installiert habe?
 rexseo42_help_faq03b = Ja. In der .htaccess im Root-Ordner bei RewriteBase das Unterverzeichnis ergänzen: <code>RewriteBase /UNTERVERZEICHNIS</code> sowie darauf achten, dass "Url dieser Website" ohne das Unterverzechnis angegeben wird.
 
 rexseo42_help_faq04a = Ich mag das Pipe-Zeichen nicht im Titel. Wie kann ich das umstellen?
-rexseo42_help_faq04b = Über die <code>settings.expert.inc.php</code> oder wie im Codebeispiel 4 in dieser Hilfe.
+rexseo42_help_faq04b = Über die <code>settings.expert.inc.php</code> oder wie im Codebeispiel 4 in der Hilfe.
 
 rexseo42_help_faq17a = Wo sind eigentlich all die restlichen Einstellungen von RexSEO abgeblieben?
 rexseo42_help_faq17b = Vorläufig wurden diese hier ausgelagert: <code>settings.expert.inc.php</code>
 
 rexseo42_help_faq05a = Wie kann ich den Titel sonst noch beinflussen?
-rexseo42_help_faq05b = Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix" wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode <code>rexseo42::getTitle()</code> überschreiben, siehe dazu Codebeispiel 5 in dieser Hilfe.
+rexseo42_help_faq05b = Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix" wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode <code>rexseo42::getTitle()</code> überschreiben, siehe dazu Codebeispiel 5 in der Hilfe.
 
 rexseo42_help_faq06a = Warum wird der Titel für die Startseite "andersherum" ausgegeben wie für die Folgeseiten?
-rexseo42_help_faq06b = Dies wurde in nachfolgenden PDF von Google abgeguckt.
+rexseo42_help_faq06b = Dies wurde im nachfolgenden PDF von Google abgeguckt (siehe nächste Frage).
 
 rexseo42_help_faq07a = Wo bekomme ich eigentlich eine gute verständliche Einführung in das Thema "Suchmaschinenoptimierung"?
 rexseo42_help_faq07b = Zum Beispiel hier: <a href="http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf" target="_blank" class="extern">http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf</a>
 
 rexseo42_help_faq08a = Wie kann ich suchmaschinenfreundlichere URLs für Bilder aus dem Image Manager erhalten?
-rexseo42_help_faq08b = Siehe Codebeispiel Nr. 2 in dieser Hilfe.
+rexseo42_help_faq08b = Siehe Codebeispiel Nr. 2 in der Hilfe.
 
 rexseo42_help_faq09a = Ich möchte nicht-www Anfragen auf die www Variante umleiten lassen. Soll doch SEO-technisch gut sein, oder?
-rexseo42_help_faq09b = Yup. In der .htaccess die entsprechenden Zeilen un-auskommentieren bzw. im über Setup Schritt 1 automatisch machen lassen.
+rexseo42_help_faq09b = Yup. In der .htaccess die entsprechenden Zeilen un-auskommentieren bzw. über Setup Schritt 1 automatisch machen lassen.
 
 rexseo42_help_faq10a = Meine URLs haben sich geändert. Wie kann ich saubere Weiterleitungen hinbekommen?
 rexseo42_help_faq10b = In der .htaccess im Root-Ordner an oberster Stelle pro URL eine 301 Weiterleitung nach diesem Schema einrichten:<br /><code>Redirect 301 /alte-seite.html http://www.my-domain.de/neue-seite.html</code>

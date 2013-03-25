@@ -7,7 +7,7 @@ if (rex_request('rexseo_func')!='')
 
   switch (rex_request('rexseo_func'))
   {
-    case 'googlesitemap':
+    case 'sitemap':
       require_once $REX['INCLUDE_PATH'].'/addons/rexseo42/classes/class.rexseo_sitemap.inc.php';
       $map = new rexseo_sitemap;
 
