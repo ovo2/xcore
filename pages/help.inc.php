@@ -5,9 +5,9 @@ $chapter = rex_request('chapter', 'string');
 $func    = rex_request('func',    'string');
 
 $chapterpages = array (
-	'' => array('FAQ', 'pages/help_faq.inc.php'),
-	'codeexamples' => array('Codebeispiele', 'pages/help_codeexamples.inc.php'),
-	'links' => array('Links', 'pages/help_links.inc.php')
+	'' => array('FAQ', 'pages/help/faq.inc.php'),
+	'codeexamples' => array('Codebeispiele', 'pages/help/code_examples.inc.php'),
+	'links' => array('Links', 'pages/help/links.inc.php')
 );
 
 // build chapter navigation
