@@ -27,13 +27,13 @@ if (rex_post('saveseo', 'boolean')) {
 	$sql->setWhere("id=" . $articleID . " AND clang=" . $clang);
 
 	//sanitize
-	$title = rexseo_sanitizeString(rex_post('seo_title'));
-	$description = rexseo_sanitizeString(rex_post('seo_description'));
+	$title = rexseo42_utils::sanitizeString(rex_post('seo_title'));
+	$description = rexseo42_utils::sanitizeString(rex_post('seo_description'));
 
 	$keywords = str_replace(',', ', ', rex_post('seo_keywords')); // always have a whitespace char after comma 
-	$keywords = strtolower(rexseo_sanitizeString($keywords)); // also keywords should be all lowercase
+	$keywords = strtolower(rexseo42_utils::sanitizeString($keywords)); // also keywords should be all lowercase
 
-	$url = rexseo_sanitizeString(rex_post('seo_url'));
+	$url = rexseo42_utils::sanitizeString(rex_post('seo_url'));
 	$url = str_replace("\\\\", '/', $url); // replace backslash with forward slash
 	$url = ltrim($url, '/'); // remove first slash if there is any
 

@@ -1,19 +1,18 @@
 <?php
-$myself        = rex_request('page', 'string');
-$subpage       = rex_request('subpage', 'string')!='' ? rex_request('subpage', 'string'): 'options';
-$chapter       = rex_request('chapter', 'string');
-$func          = rex_request('func', 'string');
-$section_id    = rex_request('section_id', 'string');
+$myself = rex_request('page', 'string');
+$subpage = rex_request('subpage', 'string')!='' ? rex_request('subpage', 'string'): 'options';
+$chapter = rex_request('chapter', 'string');
+$func = rex_request('func', 'string');
+$section_id = rex_request('section_id', 'string');
 $section_class = rex_request('section_class', 'string');
-$highlight     = rex_request('highlight', 'string');
-$myroot        = $REX['INCLUDE_PATH'].'/addons/'.$myself;
+$highlight = rex_request('highlight', 'string');
+$myroot = $REX['INCLUDE_PATH'].'/addons/'.$myself;
 
 // includes
-require_once $myroot.'/functions/function.rexseo_helpers.inc.php';
-require_once $myroot.'/classes/class.rexseo_rewrite.inc.php';
+require_once($myroot.'/classes/class.rexseo_rewrite.inc.php');
 
 // layout top
-require $REX['INCLUDE_PATH'] . '/layout/top.php';
+require($REX['INCLUDE_PATH'] . '/layout/top.php');
 
 // title
 rex_title($REX['ADDON']['name'][$myself] . ' <span class="version">' . $REX['ADDON']['version'][$myself] . '</span>', $REX['ADDON'][$myself]['SUBPAGES']);
