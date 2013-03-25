@@ -17,7 +17,7 @@ foreach ($chapterpages as $chapterparam => $chapterprops) {
   if ($chapter != $chapterparam) {
     $chapternav .= ' | <a href="?page='.$mypage.'&subpage='.$subpage.'&chapter='.$chapterparam.'" class="chapter '.$chapterparam.'">'.$chapterprops[0].'</a>';
   } else {
-    $chapternav .= ' | <span class="chapter '.$chapterparam.'">'.$chapterprops[0].'</span>';
+    $chapternav .= ' | <a class="rex-active" href="?page='.$mypage.'&subpage='.$subpage.'&chapter='.$chapterparam.'" class="chapter '.$chapterparam.'">'.$chapterprops[0].'</a>';
   }
 }
 $chapternav = ltrim($chapternav, " | ");
@@ -51,6 +51,10 @@ div.rex-addon-content p.rex-code {
 .addon-template h1 {
 	font-size: 18px;
 	margin-bottom: 7px;
+}
+
+#subpage-help a.rex-active {
+    color: #14568A;
 }
 </style>
 
