@@ -31,22 +31,22 @@ class rexseo42_ex extends rexseo42
 
 		if (self::$curArticle->getValue("seo_title") == "") {
 			// use article name as title
-			$title = self::getArticleName();
+			$titlePart = self::getArticleName();
 		} else {
 			// use title that user defined
-			$title = self::$curArticle->getValue("seo_title");
+			$titlePart = self::$curArticle->getValue("seo_title");
 		}
 	
 		if (self::$curArticle->getValue("seo_ignore_prefix") == "1") {
 			// no prefix, just the title
-			$fullTitle = $title;
+			$fullTitle = $titlePart;
 		} else { 
 			if (self::isStartPage()) {
 				// the start article shows the website name first
-				$fullTitle = self::getWebsiteName() . $titleDelimeter . $title;
+				$fullTitle = self::getWebsiteName() . $titleDelimeter . $titlePart;
 			} else {
 				// all other articles will show title first
-				$fullTitle = $title . $titleDelimeter . self::getWebsiteName();
+				$fullTitle = $titlePart . $titleDelimeter . self::getWebsiteName();
 			}
 		 }
 
