@@ -69,6 +69,7 @@ rexseo42_setup_step2_button = Einstellungen übernehmen
 rexseo42_setup_step3 = Schritt 3: Template ergänzen
 rexseo42_setup_step3_msg1 = Zuletzt ergänzen Sie den Head-Bereich Ihres Templates wie folgt:
 rexseo42_setup_mod_rewrite_alert = Die Mod-Rewrite Funktion von REDAXO muss aktiviert werden, damit {0} funktionieren kann!
+rexseo42_setup_htaccess_alert = Im Hauptverzeichnis von REDAXO existiert bereits eine .htaccess Datei.\r\nWollen Sie diese überschreiben?\r\n\r\nHinweis: Ein Backup der Datei wird in /rexseo42/backup/ gespeichert.
 rexseo42_setup_codeexamples = Hier gibt es weitere <a href="index.php?page=rexseo42&subpage=help&chapter=codeexamples">Codebeispiele</a> für ein perfektes SEO :)
 
 rexseo42_seopage_updated = SEO-Daten wurden aktualisiert.

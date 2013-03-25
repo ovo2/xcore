@@ -6,10 +6,11 @@ $func = rex_request('func', 'string');
 
 $myroot  = $REX['INCLUDE_PATH'] . '/addons/' . $page;
 
+$htaccessRoot = $REX['FRONTEND_PATH'] . '/.htaccess';
+$backupPathRoot = $REX['INCLUDE_PATH'] . '/addons/rexseo42/backup/';
+
 if ($func == "do_copy") {
 	// first backup files
-	$htaccessRoot = $REX['FRONTEND_PATH'] . '/.htaccess';
-	$backupPathRoot = $REX['INCLUDE_PATH'] . '/addons/rexseo42/backup/';
 	$htaccessBackupFile = '_htaccess_' . date('Ymd_His');
 	$doCopy = true;
 	$htaccessFileExists = false;
@@ -122,7 +123,7 @@ if ($func == "do_copy") {
 			<input type="hidden" name="subpage" value="setup" />
 			<input type="hidden" name="func" value="do_copy" />
 			<div class="rex-form-row">
-				<p class="button"><input type="submit" class="rex-form-submit" name="sendit" value="<?php echo $I18N->msg('rexseo42_setup_step1_button'); ?>" /></p>
+				<p class="button"><input type="submit" class="rex-form-submit" name="sendit" id="copy-file-submit" value="<?php echo $I18N->msg('rexseo42_setup_step1_button'); ?>" /></p>
 			</div>
 		</form>
 	</div>
@@ -231,6 +232,14 @@ jQuery(document).ready( function() {
 			alert("<?php echo $I18N->msg('rexseo42_setup_mod_rewrite_alert', $REX['ADDON']['name']['rexseo42']); ?>");
 		}
 	});
+
+	<?php if (file_exists($htaccessRoot)) { ?>
+	jQuery('#copy-file-submit').click(function(e) {
+		if (!confirm("<?php echo $I18N->msg('rexseo42_setup_htaccess_alert'); ?>")) {
+			e.preventDefault();
+		}
+	});
+	<?php } ?>
 });
 </script>
 
