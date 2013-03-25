@@ -64,14 +64,13 @@ $url_ending_select->setSelected($REX['ADDON'][$myself]['settings']['url_ending']
 
 // home url select box
 $ooa = OOArticle::getArticleById($REX['START_ARTICLE_ID']);
-if($ooa)
-{
+
+if ($ooa) {
   $homename = strtolower($ooa->getName());
-}
-else
-{
+} else {
   $homename = 'Startartikel';
 }
+
 unset($ooa);
 
 $homeurl_select = new rex_select();
@@ -84,16 +83,16 @@ $homeurl_select->setAttribute('style','width:250px;');
 $homeurl_select->setSelected($REX['ADDON'][$myself]['settings']['homeurl']);
 
 // lang slug select box
-if(count($REX['CLANG']) > 1)
-{
+if (count($REX['CLANG']) > 1) {
   $hide_langslug_select = new rex_select();
   $hide_langslug_select->setSize(1);
   $hide_langslug_select->setName('hide_langslug');
   $hide_langslug_select->addOption($I18N->msg('rexseo42_settings_langslug_all'),-1);
-  foreach($REX['CLANG'] as $id => $str)
-  {
+
+  foreach($REX['CLANG'] as $id => $str) {
     $hide_langslug_select->addOption($I18N->msg('rexseo42_settings_langslug_noslug') . ' '.$str,$id);
   }
+
   $hide_langslug_select->setSelected($REX['ADDON'][$myself]['settings']['hide_langslug']);
   $hide_langslug_select = '
           <div class="rex-form-row">
@@ -102,22 +101,20 @@ if(count($REX['CLANG']) > 1)
                 '.$hide_langslug_select->get().'
                 </p>
           </div><!-- /rex-form-row -->';
-}
-else
-{
+} else {
   $hide_langslug_select = '';
 }
 
 // home lang select box
-if(count($REX['CLANG']) > 1)
-{
+if (count($REX['CLANG']) > 1) {
   $homelang_select = new rex_select();
   $homelang_select->setSize(1);
   $homelang_select->setName('homelang');
-  foreach($REX['CLANG'] as $id => $str)
-  {
+
+  foreach($REX['CLANG'] as $id => $str) {
     $homelang_select->addOption($str,$id);
   }
+
   $homelang_select->setSelected($REX['ADDON'][$myself]['settings']['homelang']);
   $homelang_select->setAttribute('style','width:70px;margin-left:20px;');
   $homelang_box = '
@@ -126,9 +123,7 @@ if(count($REX['CLANG']) > 1)
               </span>
               '.$homelang_select->get().'
               ';
-}
-else
-{
+} else {
   $homelang_box = '';
 }
 
@@ -155,10 +150,10 @@ echo '
 
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
-              <label for="url_schema" class="helptopic">' . $I18N->msg('rexseo42_settings_schema') . '</label>
+              <label for="url_schema">' . $I18N->msg('rexseo42_settings_schema') . '</label>
                 '.$url_schema_select->get().'
 
-              <span style="margin:0 4px 0 4px;display:inline-block;width:100px;text-align:right;" class="helptopic">' . $I18N->msg('rexseo42_settings_extension') . '</span>
+              <span style="margin:0 4px 0 4px;display:inline-block;width:100px;text-align:right;">' . $I18N->msg('rexseo42_settings_extension') . '</span>
                 '.$url_ending_select->get().'
             </p>
           </div><!-- /rex-form-row -->
@@ -167,7 +162,7 @@ echo '
 
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
-              <label for="homeurl" class="helptopic">' . $I18N->msg('rexseo42_settings_startpage') . '</label>
+              <label for="homeurl">' . $I18N->msg('rexseo42_settings_startpage') . '</label>
                 '.$homeurl_select->get().'
                 '.$homelang_box.'
             </p>
@@ -198,14 +193,14 @@ if (count($REX['CLANG']) > 1) {
 
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
-              <label for="robots" class="helptopic">' . $I18N->msg('rexseo42_settings_robots_additional') . '</label>
+              <label for="robots">' . $I18N->msg('rexseo42_settings_robots_additional') . '</label>
               <textarea id="rexseo_robots" name="robots" rows="2">'.stripslashes($REX['ADDON'][$myself]['settings']['robots']).'</textarea>
             </p>
           </div><!-- /rex-form-row -->
 
 		  <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
-              <label for="robots-txt" class="helptopic">' . $I18N->msg('rexseo42_settings_robots_link') . '</label>
+              <label for="robots-txt">' . $I18N->msg('rexseo42_settings_robots_link') . '</label>
               <span class="rex-form-read" id="robots-txt"><a href="' . rexseo42::getBaseUrl() . 'robots.txt" target="_blank">' . rexseo42::getBaseUrl() . 'robots.txt</a></span>
             </p>
           </div><!-- /rex-form-row -->
@@ -220,7 +215,7 @@ if (count($REX['CLANG']) > 1) {
 
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
-              <label for="xml-sitemap" class="helptopic">' . $I18N->msg('rexseo42_settings_sitemap_link') . '</label>
+              <label for="xml-sitemap">' . $I18N->msg('rexseo42_settings_sitemap_link') . '</label>
               <span class="rex-form-read" id="xml-sitemap"><a href="' . rexseo42::getBaseUrl() . 'sitemap.xml" target="_blank">' . rexseo42::getBaseUrl() . 'sitemap.xml</a></span>
             </p>
           </div><!-- /rex-form-row -->
