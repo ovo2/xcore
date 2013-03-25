@@ -1,5 +1,7 @@
 <?php
 
+$REX['ADDON']['rexseo42']['settings']['install_subdir'] = '';
+
 // if false seo database fields won't be dropped if rexseo42 will be uninstalled. perhaps someday interesting when updateing rexseo42...
 $REX['ADDON']['rexseo42']['settings']['drop_dbfields_on_uninstall'] = true; 
 

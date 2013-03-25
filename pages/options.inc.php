@@ -7,7 +7,6 @@ $config_file = $REX['INCLUDE_PATH'] . '/addons/rexseo42/settings.dyn.inc.php';
 
 // save settings
 if ($func == 'update') {
-	$_install_subdir = trim(rex_request('install_subdir', 'string'));
 	$_url_schema = trim(rex_request('url_schema', 'string'));
 	$_url_ending = trim(rex_request('url_ending', 'string'));
 	$_hide_langslug = trim(rex_request('hide_langslug', 'int'));
@@ -15,7 +14,6 @@ if ($func == 'update') {
 	$_homelang = trim(rex_request('homelang', 'int'));
 	$_robots = trim(rex_request('robots', 'string'));
 
-	$REX['ADDON']['rexseo42']['settings']['install_subdir'] = $_install_subdir;
 	$REX['ADDON']['rexseo42']['settings']['url_schema'] = $_url_schema;
 	$REX['ADDON']['rexseo42']['settings']['url_ending'] = $_url_ending;
 	$REX['ADDON']['rexseo42']['settings']['hide_langslug'] = $_hide_langslug;
@@ -24,7 +22,6 @@ if ($func == 'update') {
 	$REX['ADDON']['rexseo42']['settings']['robots'] = $_robots;
 
 	$content = '
-		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'install_subdir\'] = \'' . $_install_subdir . '\';
 		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'url_schema\'] = \'' . $_url_schema . '\';
 		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'url_ending\'] = \'' . $_url_ending . '\';
 		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'hide_langslug\'] = ' . $_hide_langslug . ';
@@ -44,11 +41,6 @@ if ($func == 'update') {
 
 if (!is_writable($config_file)) {
 	echo rex_warning($I18N->msg('rexseo42_config_file_no_perms'), $config_file);
-}
-
-// subdir chanage notify
-if($REX['ADDON'][$myself]['settings']['install_subdir'] != rexseo_subdir()) {
-  echo rex_info($I18N->msg('rexseo42_settings_subdir_change', $REX['ADDON']['name']['rexseo42']));
 }
 
 // url schema select box
@@ -147,10 +139,9 @@ echo '
   <div class="rex-form">
 
   <form action="index.php" method="post">
-    <input type="hidden" name="page"                   value="rexseo42" />
-    <input type="hidden" name="subpage"                value="" />
-    <input type="hidden" name="func"                   value="update" />
-    <input type="hidden" name="install_subdir"         value="'.rexseo_subdir().'" />
+    <input type="hidden" name="page" value="rexseo42" />
+    <input type="hidden" name="subpage" value="" />
+    <input type="hidden" name="func" value="update" />
 ';
 
 echo '

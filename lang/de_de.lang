@@ -30,7 +30,6 @@ rexseo42_tool7_desc = Ein teilweise kostenloser Site Explorer der die Anzahl der
 rexseo42_tool8 = Google SERP Snippet Optimization Tool
 rexseo42_tool8_desc = Das Google SERP Snippet Optimization Tool zeigt eine Vorschau der Snippets die Google generiert.
 
-rexseo42_settings_subdir_change = Hinweis: Das aktuelle Installationsverzeichnis von REDAXO scheint sich geändert zu haben.<br />Zum aktualisieren einmal die {0}-Einstellungen speichern und evtl. notwendige Anpassung der RewriteBase in der .htaccess beachten!
 rexseo42_settings_url_ending_without = (ohne)
 rexseo42_settings_langslug_all = Bei allen Sprachen einfügen
 rexseo42_settings_langslug_noslug = Kein lang slug für Sprache:
