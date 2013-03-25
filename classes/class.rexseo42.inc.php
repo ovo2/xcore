@@ -140,8 +140,8 @@ class rexseo42 {
 			$clangID = $REX['CUR_CLANG'];
 		}
 
-		if (isset($REX['ADDON']['rexseo42']['langcodes'][$clangID])) {
-			return $REX['ADDON']['rexseo42']['langcodes'][$clangID];
+		if (isset($REX['ADDON']['rexseo42']['settings']['langcodes'][$clangID])) {
+			return $REX['ADDON']['rexseo42']['settings']['langcodes'][$clangID];
 		} else {
 			return $REX['CLANG'][$clangID];
 		}

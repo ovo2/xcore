@@ -733,15 +733,15 @@ function rexseo_parse_article_name($name, $article_id, $clang)
   {
     global $REX, $I18N;
 
-	if (isset($REX['ADDON']['rexseo42']['special_chars'][$clang])) {
+	if (isset($REX['ADDON']['rexseo42']['settings']['special_chars'][$clang])) {
 		$specialCharsClang = $clang;
 	} else {
 		$specialCharsClang = 0;
 	}
 
     $translation = array(
-      'search'  => explode('|', $REX['ADDON']['rexseo42']['special_chars'][$specialCharsClang]),
-      'replace' => explode('|', $REX['ADDON']['rexseo42']['special_chars_rewrite'][$specialCharsClang]),
+      'search'  => explode('|', $REX['ADDON']['rexseo42']['settings']['special_chars'][$specialCharsClang]),
+      'replace' => explode('|', $REX['ADDON']['rexseo42']['settings']['special_chars_rewrite'][$specialCharsClang]),
       );
 
     // EXTENSION POINT
