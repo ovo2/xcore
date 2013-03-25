@@ -15,36 +15,6 @@ class RexseoRewrite
     $this->use_params_rewrite = $use_params_rewrite;
   }
 
-
-
-  /**
-  * LOGERROR()
-  */
-  public function logError($err_txt=false,$err_type=false,$trace=false)
-  {
-    global $REX;
-
-    if(!$err_type)
-      $err_type = 'E_USER_NOTICE';
-
-    $err_txt = 'CLASS REXSEO_REWRITE: '.$err_txt.'.';
-    trigger_error($err_txt, $err_type);
-
-    if($trace!=false)
-    {
-      $logfile = $REX['INCLUDE_PATH'].'/addons/rexseo42/rexseo.log';
-      $log_content = file_exists($logfile) ? rex_get_file_contents($logfile) : '';
-      $log_content = $log_content!='empty..' ? $log_content : '';
-
-      $new_entry = str_pad('### '.date("d.m.Y H:i").' ',80, "#").PHP_EOL.$err_txt.PHP_EOL;
-      if(is_array($trace))
-        $new_entry .= 'BACKTRACE:'.PHP_EOL.var_export($trace,true).PHP_EOL.PHP_EOL;
-
-      rex_put_file_contents($logfile,$new_entry .$log_content);
-    }
-  }
-
-
   /**
   * RESOLVE()
   *
@@ -559,7 +529,6 @@ function rexseo_generate_pathlist($params)
 
             // PREVENT FATALS IN RARE CONDITIONS WHERE DB/CACHE ARE OUT OF SYNC
             if(!is_a($ooc,'OOCategory')){
-              //self::logError('couldn\'t create OOCategory object with params id='.$p.'/clang='.$clang.'',E_USER_WARNING);
               continue;
 			} 
 
@@ -574,7 +543,6 @@ function rexseo_generate_pathlist($params)
 
         // PREVENT FATALS IN RARE CONDITIONS WHERE DB/CACHE ARE OUT OF SYNC
         if(!is_a($ooa,'OOArticle')){
-          //self::logError('couldn\'t create OOArticle object with params id='.$id.'/clang='.$clang.'',E_USER_WARNING);
           $db->next();
           continue;
         } 

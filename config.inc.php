@@ -1,5 +1,4 @@
 <?php
-
 $myself = 'rexseo42';
 $myroot = $REX['INCLUDE_PATH'] . '/addons/' . $myself;
 
