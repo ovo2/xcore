@@ -90,25 +90,34 @@ class rexseo42 {
 	public static function getImageTag($imageFile, $imageType = '', $width = 0, $height = 0) {
 		$media = OOMedia::getMediaByFileName($imageFile);
 
-		// make url
-		if ($imageType == '') {
-			$url = '/' . self::$mediaDir . '/' . $imageFile;
+		// make sure media object is valid
+		if (OOMedia::isValid($media)) {
+			$mediaWidth = $media->getWidth();
+			$mediaHeight = $media->getHeight();
 		} else {
-			$url = self::getImageManagerUrl($imageFile, $imageType);
+			$mediaWidth = '';
+			$mediaHeight = '';
 		}
 
 		// image width
 		if ($width == 0) {
-			$imgWidth = $media->getWidth();
+			$imgWidth = $mediaWidth;
 		} else {
 			$imgWidth = $width;
 		}
 
 		// image height
 		if ($height == 0) {
-			$imgHeight = $media->getHeight();
+			$imgHeight = $mediaHeight;
 		} else {
 			$imgHeight = $width;
+		}
+
+		// make url
+		if ($imageType == '') {
+			$url = '/' . self::$mediaDir . '/' . $imageFile;
+		} else {
+			$url = self::getImageManagerUrl($imageFile, $imageType);
 		}
 
 		return '<img src="' . $url . '" width="' . $imgWidth . '" height="' . $imgHeight . '" alt="' . $media->getTitle() . '" />';
