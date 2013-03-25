@@ -1,6 +1,9 @@
 <?php
 global $REX;
 
+// include website specific config file
+rexseo42_utils::includeWebsiteSpecificConfigFile();
+
 if (rex_request('rexseo_func')!='')
 {
   $path = $REX['INCLUDE_PATH'].'/addons/rexseo';
