@@ -87,16 +87,31 @@ class rexseo42 {
 		return rtrim(self::getBaseUrl(), '/') . rex_getUrl(self::$curArticle->getId());
 	}
 
-	public static function getImageTag($imageFile, $imageType = '') {
+	public static function getImageTag($imageFile, $imageType = '', $width = 0, $height = 0) {
 		$media = OOMedia::getMediaByFileName($imageFile);
 
+		// make url
 		if ($imageType == '') {
 			$url = '/' . self::$mediaDir . '/' . $imageFile;
 		} else {
 			$url = self::getImageManagerUrl($imageFile, $imageType);
 		}
 
-		return '<img src="' . $url . '" width="' . $media->getWidth() . '" height="' . $media->getHeight() . '" alt="' . $media->getTitle() . '" />';
+		// image width
+		if ($width == 0) {
+			$imgWidth = $media->getWidth();
+		} else {
+			$imgWidth = $width;
+		}
+
+		// image height
+		if ($height == 0) {
+			$imgHeight = $media->getHeight();
+		} else {
+			$imgHeight = $width;
+		}
+
+		return '<img src="' . $url . '" width="' . $imgWidth . '" height="' . $imgHeight . '" alt="' . $media->getTitle() . '" />';
 	}
 
 	public static function getImageManagerUrl($imageFile, $imageType) {
