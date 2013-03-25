@@ -376,26 +376,6 @@ class RexseoRewrite
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
-* regenerate pathlist on each extension point
-*/
-if ($REX['REDAXO'])
-{
-  $extension = 'rexseo_generate_pathlist';
-  $extensionPoints = array(
-    'CAT_ADDED',     'CAT_UPDATED',   'CAT_DELETED',
-    'ART_ADDED',     'ART_UPDATED',   'ART_DELETED', 'ART_META_FORM_SECTION',
-    'ART_TO_CAT',    'CAT_TO_ART',    'ART_TO_STARTPAGE',
-    'CLANG_ADDED',   'CLANG_UPDATED', 'CLANG_DELETED',
-    'ALL_GENERATED');
-
-  foreach($extensionPoints as $extensionPoint)
-  {
-    rex_register_extension($extensionPoint, $extension);
-  }
-}
-
-
-/**
 * REXSEO_UNSET_PATHITEM()
 *
 * delete single article from path-arrays
