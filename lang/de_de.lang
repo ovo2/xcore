@@ -104,10 +104,8 @@ rexseo42_help_codeexamples_title3 = Suchmaschinenfreundliche Image Manager Urls
 rexseo42_help_codeexamples_description3 = Über diese Methoden lassen sich suchmaschinenfreundliche Urls sowie ganze Image Tags erzeugen: 
 rexseo42_help_codeexamples_title4 = Lang Code ausgeben
 rexseo42_help_codeexamples_description4 = Geben Sie so den aktuellen Lang Code aus der momentan in der <code>settings.lang.inc.php</code> definiert werden kann:
-rexseo42_help_codeexamples_title5 = Titel Trenner ändern
-rexseo42_help_codeexamples_description5 = Der Trennstrich für den Titel kann entweder in der <code>settings.advanced.inc.php</code> oder so geändert werden:
-rexseo42_help_codeexamples_title6 = Titel Schema ändern
-rexseo42_help_codeexamples_description6 = Ein eigenes Titel Schema lässt sich momentan nur über die Überschreibung der getTitle() Methode realisieren:
+rexseo42_help_codeexamples_title5 = Titel Schema ändern
+rexseo42_help_codeexamples_description5 = Ein eigenes Titel Schema lässt sich momentan nur über die Überschreibung der getTitle() Methode realisieren:
 rexseo42_help_codeexamples_thatsallfolks = That's all folks...
 rexseo42_help_codeexamples_ex3_alt = Titel aus dem Medienpool
 rexseo42_help_codeexamples_ex6_comment1 = 1.) eigene klasse ableiten und getTitle() methode überschreiben:
@@ -126,7 +124,7 @@ rexseo42_help_faq03a = Gibts was bestimmtes zu beachten wenn ich REDAXO in einem
 rexseo42_help_faq03b = Geben Sie im {0} Setup den Unterordner mit an. Desweiteren sollten Sie Sie <code>rexseo::getHtml()</code>, <code>rex_getUrl()</code> sowie <code>rexseo42::getUrlStart()</code> (siehe Codebeispiel 2) nutzen. Anpassungen in der .htaccess sind keine mehr nötig!
 
 rexseo42_help_faq04a = Ich mag das Pipe-Zeichen nicht im Titel. Wie kann ich das umstellen?
-rexseo42_help_faq04b = Über die <code>settings.advanced.inc.php</code> oder wie im Codebeispiel 4 in der Hilfe.
+rexseo42_help_faq04b = Der zuständige Parameter heißt <code>title_delimeter</code> und ist über die <code>settings.advanced.inc.php</code> einstellbar.
 
 rexseo42_help_faq17a = Wo sind eigentlich all die restlichen Einstellungen von RexSEO abgeblieben?
 rexseo42_help_faq17b = Vorläufig wurden diese hier ausgelagert: <code>settings.advanced.inc.php</code>

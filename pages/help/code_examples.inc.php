@@ -39,12 +39,7 @@ $codeExample5 = '<?php echo rexseo42::getTitle(" - "); ?>';
 $codeExample6 = '<?php
 // ' . $I18N->msg('rexseo42_help_codeexamples_ex6_comment1') . '
 class rexseo42_ex extends rexseo42
-	public static function getTitle($titleDelimeter = "") {
-		if ($titleDelimeter == "") {
-			// use default title delimeter defined in settings.advanced.inc.php
-			$titleDelimeter = self::$defaultTitleDelimeter;
-		}
-
+	public static function getTitle() {
 		if (self::$curArticle->getValue("seo_title") == "") {
 			// use article name as title
 			$titlePart = self::getArticleName();
@@ -57,12 +52,12 @@ class rexseo42_ex extends rexseo42
 			// no prefix, just the title
 			$fullTitle = $titlePart;
 		} else { 
-			if (self::isStartPage()) {
+			if (self::isStartArticle()) {
 				// the start article shows the website name first
-				$fullTitle = self::getWebsiteName() . $titleDelimeter . $titlePart;
+				$fullTitle = self::getWebsiteName() . self::$titleDelimeter . $titlePart;
 			} else {
 				// all other articles will show title first
-				$fullTitle = $titlePart . $titleDelimeter . self::getWebsiteName();
+				$fullTitle = $titlePart . self::$titleDelimeter . self::getWebsiteName();
 			}
 		 }
 
@@ -97,10 +92,6 @@ echo rexseo42_ex::getKeywords();
 
 <h2>5) <?php echo $I18N->msg('rexseo42_help_codeexamples_title5'); ?></h2>
 <p><?php echo $I18N->msg('rexseo42_help_codeexamples_description5'); ?></p>
-<?php rex_highlight_string($codeExample5); ?>
-
-<h2>6) <?php echo $I18N->msg('rexseo42_help_codeexamples_title6'); ?></h2>
-<p><?php echo $I18N->msg('rexseo42_help_codeexamples_description6'); ?></p>
 <?php rex_highlight_string($codeExample6); ?>
 
 <p><?php echo $I18N->msg('rexseo42_help_codeexamples_thatsallfolks'); ?></p>

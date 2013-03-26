@@ -1,26 +1,23 @@
 <?php
-$myself = 'rexseo42';
-$myroot = $REX['INCLUDE_PATH'] . '/addons/' . $myself;
 
 // register addon
-$REX['ADDON']['rxid'][$myself] = '0';
-$REX['ADDON']['name'][$myself] = 'REXSEO42';
-$REX['ADDON']['version'][$myself] = '1.0.42 BETA';
-$REX['ADDON']['author'][$myself] = 'Markus Staab, Wolfgang Huttegger, Dave Holloway, Jan Kristinus, jdlx, RexDude';
-$REX['ADDON']['supportpage'][$myself] = 'forum.redaxo.de';
-$REX['ADDON']['perm'][$myself] = $myself . '[]';
+$REX['ADDON']['rxid']['rexseo42'] = '0';
+$REX['ADDON']['name']['rexseo42'] = 'REXSEO42';
+$REX['ADDON']['version']['rexseo42'] = '1.0.42 BETA';
+$REX['ADDON']['author']['rexseo42'] = 'Markus Staab, Wolfgang Huttegger, Dave Holloway, Jan Kristinus, jdlx, RexDude';
+$REX['ADDON']['supportpage']['rexseo42'] = 'forum.redaxo.de';
+$REX['ADDON']['perm']['rexseo42'] = 'rexseo42[]';
 
 // permissions
 $REX['PERM'][] = 'rexseo42[]';
 $REX['EXTPERM'][] = 'rexseo42[seopage]';
 
 // includes
-require($myroot . '/classes/class.rexseo42.inc.php');
-require($myroot . '/classes/class.rexseo42_utils.inc.php');
-
-require($myroot . '/settings.dyn.inc.php');
-require($myroot . '/settings.advanced.inc.php');
-require($myroot . '/settings.lang.inc.php');
+require($REX['INCLUDE_PATH'] . '/addons/rexseo42/classes/class.rexseo42.inc.php');
+require($REX['INCLUDE_PATH'] . '/addons/rexseo42/classes/class.rexseo42_utils.inc.php');
+require($REX['INCLUDE_PATH'] . '/addons/rexseo42/settings.dyn.inc.php');
+require($REX['INCLUDE_PATH'] . '/addons/rexseo42/settings.advanced.inc.php');
+require($REX['INCLUDE_PATH'] . '/addons/rexseo42/settings.lang.inc.php');
 
 // init
 if (!$REX['SETUP']) {
@@ -33,10 +30,10 @@ if ($REX['REDAXO']) {
 
 	// generate pathlist on each extension point
 	$extensionPoints = array(
-		'CAT_ADDED',     'CAT_UPDATED',   'CAT_DELETED',
-		'ART_ADDED',     'ART_UPDATED',   'ART_DELETED',      'ART_META_FORM_SECTION',
-		'ART_TO_CAT',    'CAT_TO_ART',    'ART_TO_STARTPAGE',
-		'CLANG_ADDED',   'CLANG_UPDATED', 'CLANG_DELETED',
+		'CAT_ADDED',     'CAT_UPDATED',     'CAT_DELETED',
+		'ART_ADDED',     'ART_UPDATED',     'ART_DELETED',        'ART_META_FORM_SECTION',
+		'ART_TO_CAT',    'CAT_TO_ART',      'ART_TO_STARTPAGE',
+		'CLANG_ADDED',   'CLANG_UPDATED',   'CLANG_DELETED',
 		'ALL_GENERATED'
 	);
 
@@ -45,7 +42,7 @@ if ($REX['REDAXO']) {
 	}
 
 	// subpages
-	$REX['ADDON'][$myself]['SUBPAGES'] = array(
+	$REX['ADDON']['rexseo42']['SUBPAGES'] = array(
 		array('', $I18N->msg('rexseo42_settings')),
 		array('tools', $I18N->msg('rexseo42_tools')),
 		array('setup', $I18N->msg('rexseo42_setup')),

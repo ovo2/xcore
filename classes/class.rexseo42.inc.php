@@ -2,16 +2,16 @@
 class rexseo42 {
 	protected static $curArticle;
 	protected static $startArticleID;
-	protected static $defaultTitleDelimeter;
+	protected static $titleDelimeter;
 	protected static $robotsFollowFlag;
 	protected static $robotsArchiveFlag;
 	protected static $mediaDir;
 	protected static $mediaAddonDir;
 	protected static $seoFriendlyImageManagerUrls;
 	protected static $fullUrls;
-
-	protected static $server;
 	protected static $serverUrl;
+	protected static $websiteName;
+	protected static $server;
 	protected static $serverProtocol;
 	protected static $serverSubdir;
 	protected static $isSubdirInstall;
@@ -23,18 +23,19 @@ class rexseo42 {
 
 		// default inits
 		self::$startArticleID = $REX['START_ARTICLE_ID'];
-		self::$defaultTitleDelimeter = $REX['ADDON']['rexseo42']['settings']['title_delimeter'];
+		self::$titleDelimeter = $REX['ADDON']['rexseo42']['settings']['title_delimeter'];
 		self::$robotsFollowFlag = $REX['ADDON']['rexseo42']['settings']['robots_follow_flag'];
 		self::$robotsArchiveFlag = $REX['ADDON']['rexseo42']['settings']['robots_archive_flag'];
 		self::$mediaDir = $REX['MEDIA_DIR'];
 		self::$mediaAddonDir = $REX['MEDIA_ADDON_DIR'];
 		self::$seoFriendlyImageManagerUrls = $REX['ADDON']['rexseo42']['settings']['seo_friendly_image_manager_urls'];
 		self::$fullUrls = $REX['ADDON']['rexseo42']['settings']['full_urls'];
+		self::$serverUrl = $REX['SERVER'];
+		self::$websiteName = $REX['SERVERNAME'];
 
 		// pull apart server url
-		$urlParts = self::getUrlParts($REX['SERVER']);
+		$urlParts = self::getUrlParts(self::$serverUrl);
 
-		self::$serverUrl = $REX['SERVER'];
 		self::$serverProtocol = $urlParts['protocol'];
 		self::$server = $urlParts['site'];
 		self::$serverSubdir = trim($urlParts['resource'], '/'); 
@@ -48,33 +49,31 @@ class rexseo42 {
 
 		// get url start 
 		if (self::$fullUrls) {
+			// full worpresslike urls
 			self::$urlStart = self::$serverUrl;
 		} else {
 			if (self::$isSubdirInstall) {
+				// url start for subdirs
 				self::$urlStart = $REX['ADDON']['rexseo42']['settings']['url_start_subdir'];
 			} else {
+				// url start for normal redaxo installations
 				self::$urlStart = $REX['ADDON']['rexseo42']['settings']['url_start'];
 			}
 		}
 	}
 
-	public static function setCurArticle() {
+	public static function setArticle($articleId) {
 		// to be called after resolve()
 		global $REX;
 
-		self::$curArticle = OOArticle::getArticleById($REX['ARTICLE_ID']);
+		self::$curArticle = OOArticle::getArticleById($articleId);
 	}
 
 	public static function getBaseUrl() {
 		return self::$serverUrl;
 	}
 
-	public static function getTitle($titleDelimeter = '') {
-		if ($titleDelimeter == '') {
-			// use default title delimeter defined in settings.advanced.inc.php
-			$titleDelimeter = self::$defaultTitleDelimeter;
-		}
-
+	public static function getTitle() {
 		if (self::$curArticle->getValue('seo_title') == '') {
 			// use article name as title
 			$titlePart = self::getArticleName();
@@ -87,12 +86,12 @@ class rexseo42 {
 			// no prefix, just the title
 			$fullTitle = $titlePart;
 		} else { 
-			if (self::isStartPage()) {
+			if (self::isStartArticle()) {
 				// the start article shows the website name first
-				$fullTitle = self::getWebsiteName() . $titleDelimeter . $titlePart;
+				$fullTitle = self::getWebsiteName() . self::$titleDelimeter . $titlePart;
 			} else {
 				// all other articles will show title first
-				$fullTitle = $titlePart . $titleDelimeter . self::getWebsiteName();
+				$fullTitle = $titlePart . self::$titleDelimeter . self::getWebsiteName();
 			}
 		 }
 
@@ -195,7 +194,7 @@ class rexseo42 {
 	}
 
 	public static function getTitleDelimiter() {
-		return self::$defaultTitleDelimeter;
+		return self::$titleDelimeter;
 	}
 
 	public static function getArticleName() {
@@ -272,7 +271,7 @@ class rexseo42 {
 		return self::$urlStart . self::$mediaAddonDir . '/';
 	}
 
-	public static function isStartPage() {
+	public static function isStartArticle() {
 		if (self::$curArticle->getId() == self::$startArticleID) {
 			return true;
 		} else {
@@ -280,11 +279,7 @@ class rexseo42 {
 		}
 	}
 
-	public static function sanitizeUrl($url) {
-		return preg_replace('@^https?://|/.*|[^\w.-]@', '', $url);
-	}
-
-	public static function getUrlParts($url) {
+	protected static function getUrlParts($url) {
 		$result = array();
 		 
 		// Get the protocol, site and resource parts of the URL

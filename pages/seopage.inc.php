@@ -15,7 +15,7 @@ if (is_object($REX['USER']) && $REX['USER']->hasPerm('editContentOnly[]')) {
 }
 
 // react on / rewrite of start article
-if ($REX['ADDON']['rexseo42']['settings']['homeurl'] == 1 && rexseo42::isStartPAge() && $REX['CUR_CLANG'] == 0) {
+if ($REX['ADDON']['rexseo42']['settings']['homeurl'] == 1 && rexseo42::isStartArticle() && $REX['CUR_CLANG'] == 0) {
 	$disableCustomUrl = 'disabled="disabled"';
 }
 
@@ -266,7 +266,7 @@ function updateTitlePreview() {
 	var customTitle = jQuery('#seo_title').val();
 	var titleDelimeter = '<?php echo rexseo42::getTitleDelimiter(); ?>';
 	var hasPrefix = !jQuery('#prefix-check').is(':checked');
-	var isStartPage = <?php if (rexseo42::isStartPage()) { echo 'true'; } else { echo 'false'; } ?>;
+	var isStartPage = <?php if (rexseo42::isStartArticle()) { echo 'true'; } else { echo 'false'; } ?>;
 	var curTitle = '';
 	var curTitlePart = '';
 

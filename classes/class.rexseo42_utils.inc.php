@@ -1,14 +1,10 @@
 <?php
 
 class rexseo42_utils {
-	static function sanitizeString($string) {
-		return trim(preg_replace("/\s\s+/", " ", $string));
-	}
-
 	static function init($params) {
 		global $REX;
 
-		if ($REX['MOD_REWRITE'] !== false) {
+		if ($REX['MOD_REWRITE']) {
 			// includes
 			require_once($REX['INCLUDE_PATH'] . '/addons/rexseo42/classes/class.rexseo_rewrite.inc.php');
 
@@ -20,7 +16,7 @@ class rexseo42_utils {
 			$rewriter->resolve();
 
 			// init 42
-			rexseo42::setCurArticle();
+			rexseo42::setArticle($REX['ARTICLE_ID']);
 
 			// rewrite ep 
 			rex_register_extension('URL_REWRITE', array ($rewriter, 'rewrite'));
@@ -100,5 +96,13 @@ class rexseo42_utils {
 		global $REX;
 
 		return $REX['GENERATED_PATH'] . '/files/rexseo_settings.php';
+	}
+
+	static function sanitizeString($string) {
+		return trim(preg_replace("/\s\s+/", " ", $string));
+	}
+
+	static function sanitizeUrl($url) {
+		return preg_replace('@^https?://|/.*|[^\w.-]@', '', $url);
 	}
 }
