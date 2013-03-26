@@ -223,7 +223,7 @@ class RexseoRewrite
     }
 
     // SUBDIR
-    $subdir = !$REX['REDAXO'] ? rexseo42::getUrlStart().$subdir  : ''; // 42
+    $subdir = rexseo42::getUrlStart().$subdir; // 42
 
     // HACK: EP URL_REWRITE WON'T ACCEPT EMPTY STRING AS RETURN
     if($subdir == '' && $url == '')

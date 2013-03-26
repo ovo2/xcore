@@ -1,12 +1,13 @@
 <?php
-$mypage  = rex_request('page',    'string');
+$mypage = rex_request('page','string');
 $subpage = rex_request('subpage', 'string');
 $chapter = rex_request('chapter', 'string');
-$func    = rex_request('func',    'string');
+$func = rex_request('func', 'string');
 
 $chapterpages = array (
 	'' => array('FAQ', 'pages/help/faq.inc.php'),
 	'codeexamples' => array('Codebeispiele', 'pages/help/code_examples.inc.php'),
+	'debug' => array('Debug', 'pages/help/debug.inc.php'),
 	'links' => array('Links', 'pages/help/links.inc.php')
 );
 

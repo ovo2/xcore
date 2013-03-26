@@ -139,9 +139,11 @@ class rexseo42 {
 		if (OOMedia::isValid($media)) {
 			$mediaWidth = $media->getWidth();
 			$mediaHeight = $media->getHeight();
+			$altAttribute = $media->getTitle();
 		} else {
 			$mediaWidth = '';
 			$mediaHeight = '';
+			$altAttribute = '';
 		}
 
 		// image width
@@ -155,7 +157,7 @@ class rexseo42 {
 		if ($height == 0) {
 			$imgHeight = $mediaHeight;
 		} else {
-			$imgHeight = $width;
+			$imgHeight = $height;
 		}
 
 		// make url
@@ -165,7 +167,7 @@ class rexseo42 {
 			$url = self::getImageManagerUrl($imageFile, $imageType);
 		}
 
-		return '<img src="' . $url . '" width="' . $imgWidth . '" height="' . $imgHeight . '" alt="' . $media->getTitle() . '" />';
+		return '<img src="' . $url . '" width="' . $imgWidth . '" height="' . $imgHeight . '" alt="' . $altAttribute . '" />';
 	}
 
 	public static function getImageManagerUrl($imageFile, $imageType) {
@@ -304,6 +306,77 @@ class rexseo42 {
 		$result['protocol'] = preg_replace('#://$#', '', $result['protocol']);
 		 
 		return $result;
+	}
+
+	public static function printDebugInfo($articleId = 0) {
+		if ($articleId != 0) {
+			self::setArticle($articleId);			
+		}
+
+		$out = '<table id="rexseo42-debug">';
+
+		$out .= self::getDebugInfoRow('rex_getUrl', array(self::$curArticle->getId()), true);
+		$out .= self::getDebugInfoRow('rexseo42::getTitle');
+		$out .= self::getDebugInfoRow('rexseo42::getDescription');
+		$out .= self::getDebugInfoRow('rexseo42::getKeywords');
+		$out .= self::getDebugInfoRow('rexseo42::getRobotRules');
+		$out .= self::getDebugInfoRow('rexseo42::getCanonicalUrl');
+		$out .= self::getDebugInfoRow('rexseo42::getArticleName');
+		$out .= self::getDebugInfoRow('rexseo42::isStartArticle');
+		$out .= self::getDebugInfoRow('rexseo42::getWebsiteName');
+		$out .= self::getDebugInfoRow('rexseo42::getLangCode', array('0'), true);
+		$out .= self::getDebugInfoRow('rexseo42::getServerProtocol');
+		$out .= self::getDebugInfoRow('rexseo42::getBaseUrl');
+		$out .= self::getDebugInfoRow('rexseo42::getServerUrl');
+		$out .= self::getDebugInfoRow('rexseo42::getServer');
+		$out .= self::getDebugInfoRow('rexseo42::getServerWithSubdir');
+		$out .= self::getDebugInfoRow('rexseo42::getServerSubdir');
+		$out .= self::getDebugInfoRow('rexseo42::isSubdirInstall');
+		$out .= self::getDebugInfoRow('rexseo42::getTitleDelimiter');
+		$out .= self::getDebugInfoRow('rexseo42::getUrlStart');
+		$out .= self::getDebugInfoRow('rexseo42::getMediaDir');
+		$out .= self::getDebugInfoRow('rexseo42::getMediaFile', array('image.png'));
+		$out .= self::getDebugInfoRow('rexseo42::getMediaAddonDir');
+		$out .= self::getDebugInfoRow('rexseo42::getHtml');
+		$out .= self::getDebugInfoRow('rexseo42::getImageTag', array('image.png', 'rex_mediapool_detail', '150', '100'));
+		$out .= self::getDebugInfoRow('rexseo42::getImageManagerUrl', array('image.png', 'rex_mediapool_detail'));
+		$out .= self::getDebugInfoRow('rexseo42::getAnswer');
+
+		$out .= '</table>';
+
+		echo $out;
+	}
+
+	protected static function getDebugInfoRow($func, $params = array(), $noString = false) {
+		$out = '';
+
+		$function = $func . '(';
+
+		for ($i = 0; $i < count($params); $i++) {
+			if (!$noString) {
+				$function .= '"';
+			}
+
+			$function .= $params[$i];
+
+			if (!$noString) {
+				$function .= '"';
+			}
+
+
+			if (isset($params[$i + 1])) {
+				$function .= ', ';
+			}
+		}
+
+		$function .= ')';
+
+		$out .= '<tr>';
+		$out .= '<td class="left"><code>' . $function . '</code></td>';
+		$out .= '<td class="right">' . htmlspecialchars(call_user_func_array($func, $params)) . '</td>';
+		$out .= '</tr>';
+
+		return $out;
 	}
 
 	public static function getAnswer() {

@@ -1,7 +1,7 @@
 <?php
 
 // if true you get full urls like wordpress has :) rexseo42::getUrlStart() and co. needs to be used consequently for all extra urls (like mediapool urls, etc.)
-$REX['ADDON']['rexseo42']['settings']['full_urls'] = true;
+$REX['ADDON']['rexseo42']['settings']['full_urls'] = false;
 
 // url start piece for all urls spit out rex_getUrl(), rexseo42::getUrlStart() and co. should to be used for all extra urls | can be "/" (recommended, no base tag needed) or "./" (base tag needed!)
 $REX['ADDON']['rexseo42']['settings']['url_start'] = '/';
@@ -47,6 +47,9 @@ $REX['ADDON']['rexseo42']['settings']['rewrite_params']  = false;
 
 // only for rewrite_params settings: start param rewrite with this string
 $REX['ADDON']['rexseo42']['settings']['params_starter']  = '++';
+
+// used to control which article should be used for debug output in help section, default is $REX['START_ARTICLE_ID']
+$REX['ADDON']['rexseo42']['settings']['debug_article_id']  = $REX['START_ARTICLE_ID'];
 
 
 
