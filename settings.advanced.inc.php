@@ -1,8 +1,5 @@
 <?php
 
-// if true user can change canonical url via seo page. please use this only if you exactly know what you are doing or know that your redaxo users and admins know what they are doing ;)
-$REX['ADDON']['rexseo42']['settings']['userdef_canonical_url'] = true;
-
 // if true you get full urls like wordpress has :) rexseo42::getUrlStart() and co. needs to be used consequently for all extra urls (like mediapool urls, etc.)
 $REX['ADDON']['rexseo42']['settings']['full_urls'] = false;
 
@@ -12,8 +9,8 @@ $REX['ADDON']['rexseo42']['settings']['url_start'] = '/';
 // url start piece for redaxo subdir installations | can be "./" (recommended, base tag needed!)
 $REX['ADDON']['rexseo42']['settings']['url_start_subdir'] = './';
 
-// if false seo database fields won't be dropped if rexseo42 will be uninstalled. perhaps someday interesting when updateing rexseo42...
-$REX['ADDON']['rexseo42']['settings']['drop_dbfields_on_uninstall'] = true; 
+// if true user can change canonical url via seo page. please use this only if you exactly know what you are doing or know that your redaxo users and admins know what they are doing ;)
+$REX['ADDON']['rexseo42']['settings']['userdef_canonical_url'] = false;
 
 // if true rexseo42::getImageManagerUrl() and rexseo42::getImageTag() will produce seo friendly urls
 $REX['ADDON']['rexseo42']['settings']['seo_friendly_image_manager_urls'] = true;
@@ -51,9 +48,9 @@ $REX['ADDON']['rexseo42']['settings']['rewrite_params']  = false;
 // only for rewrite_params settings: start param rewrite with this string
 $REX['ADDON']['rexseo42']['settings']['params_starter']  = '++';
 
+// if false seo database fields won't be dropped if rexseo42 will be uninstalled. perhaps someday interesting when updateing rexseo42...
+$REX['ADDON']['rexseo42']['settings']['drop_dbfields_on_uninstall'] = true; 
+
 // used to control which article should be used for debug output in help section, default is $REX['START_ARTICLE_ID']
 $REX['ADDON']['rexseo42']['settings']['debug_article_id']  = $REX['START_ARTICLE_ID'];
-
-
-
 

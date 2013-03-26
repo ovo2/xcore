@@ -2,7 +2,7 @@
 $articleID = rex_request('article_id');
 $clang = rex_request('clang');
 $ctype = rex_request('ctype');
-$savedURL = rex_request('saved_seo_url');
+$savedURL = rex_request('saved_seo_custom_url');
 
 $dataUpdated = false;
 $hideExtendedSection = '';
@@ -40,7 +40,7 @@ if (rex_post('saveseo', 'boolean')) {
 	$keywords = str_replace(',', ', ', rex_post('seo_keywords')); // always have a whitespace char after comma 
 	$keywords = strtolower(rexseo42_utils::sanitizeString($keywords)); // also keywords should be all lowercase
 
-	$url = rexseo42_utils::sanitizeString(rex_post('seo_url'));
+	$url = rexseo42_utils::sanitizeString(rex_post('seo_custom_url'));
 	$url = str_replace("\\\\", '/', $url); // replace backslash with forward slash
 	$url = ltrim($url, '/'); // remove first slash if there is any
 
@@ -50,7 +50,7 @@ if (rex_post('saveseo', 'boolean')) {
 	$sql->setValue('seo_title', $title);
 	$sql->setValue('seo_description', $description);
 	$sql->setValue('seo_keywords', $keywords);
-	$sql->setValue('seo_url', $url);
+	$sql->setValue('seo_custom_url', $url);
 	$sql->setValue('seo_canonical_url', $canonicalUrl);
 
 	// ignore prefix
@@ -80,7 +80,7 @@ if (rex_post('saveseo', 'boolean')) {
 		rex_generateArticle($articleID);
 
 		// generate path list if url has changed
-		if ($savedURL != rex_post('seo_url')) {
+		if ($savedURL != rex_post('seo_custom_url')) {
 			rexseo_generate_pathlist('');
 		}
 
@@ -107,7 +107,7 @@ echo '
 					<input type="hidden" name="save" value="1" />
 					<input type="hidden" name="clang" value="' . $clang . '" />
 					<input type="hidden" name="ctype" value="' . $ctype . '" />
-					<input type="hidden" name="saved_seo_url" value="' . $seoData['seo_url'] . '" />
+					<input type="hidden" name="saved_seo_custom_url" value="' . $seoData['seo_custom_url'] . '" />
 
 					<fieldset class="rex-form-col-1">
 						<legend id="seo-default">' . $I18N->msg('rexseo42_seopage_main_section') . '</legend>
@@ -153,7 +153,7 @@ echo '
 							<div class="rex-form-row">
 								<p class="rex-form-text">
 									<label for="custom-url">' . $I18N->msg('rexseo42_seopage_userdef_url') . '</label>
-									<input type="text" value="' . $seoData['seo_url'] . '" name="seo_url" id="custom-url" class="rex-form-text" ' . $disableCustomUrl . ' />
+									<input type="text" value="' . $seoData['seo_custom_url'] . '" name="seo_custom_url" id="custom-url" class="rex-form-text" ' . $disableCustomUrl . ' />
 									<span class="rex-form-notice" id="custom-url-preview">&nbsp;</span>
 								</p>
 							</div>

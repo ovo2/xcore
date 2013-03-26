@@ -32,7 +32,7 @@ class rexseo42_utils {
 	static function afterDBImport($params) {
 		global $REX, $I18N;
 
-		$sqlStatement = 'SELECT seo_title, seo_description, seo_keywords, seo_url, seo_noindex, seo_ignore_prefix FROM ' . $REX['TABLE_PREFIX'] . 'article';
+		$sqlStatement = 'SELECT seo_title, seo_description, seo_keywords, seo_custom_url, seo_canonical_url, seo_noindex, seo_ignore_prefix FROM ' . $REX['TABLE_PREFIX'] . 'article';
 		$sql = rex_sql::factory();
 		$sql->setQuery($sqlStatement);
 

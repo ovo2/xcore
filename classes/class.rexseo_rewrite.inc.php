@@ -468,8 +468,7 @@ function rexseo_generate_pathlist($params)
     $db->setQuery('UPDATE '. $REX['TABLE_PREFIX'] .'article SET revision = 0 WHERE revision IS NULL;');
     $db->setQuery('UPDATE '. $REX['TABLE_PREFIX'] .'article_slice SET revision = 0 WHERE revision IS NULL;');
 
-    //$db->setQuery('SELECT `id`, `clang`, `path`, `startpage`,`seo_url`,`seo_url_path`,`seo_url_file` FROM '. $REX['TABLE_PREFIX'] .'article WHERE '. $where.' AND revision=0 OR revision IS NULL');
-	$db->setQuery('SELECT `id`, `clang`, `path`, `startpage`,`seo_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE '. $where.' AND revision=0 OR revision IS NULL');
+	$db->setQuery('SELECT `id`, `clang`, `path`, `startpage`,`seo_custom_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE '. $where.' AND revision=0 OR revision IS NULL');
 
     // HARDCODED PATH: REDIRECT INDEX.PHP TO START-ARTICLE
     $REXSEO_URLS['index.php']  = array('id'  => $REX['START_ARTICLE_ID'], 'clang' => $REX['ADDON']['rexseo42']['settings']['homelang'], 'status' => 301);
@@ -480,11 +479,8 @@ function rexseo_generate_pathlist($params)
       $id         = $db->getValue('id');
       $clang      = $db->getValue('clang');
       $path       = $db->getValue('path');
-      $rexseo_url = $db->getValue('seo_url');
+      $rexseo_url = $db->getValue('seo_custom_url');
 	
-	  //$rexseo_url_path = $db->getValue('seo_url_path');
-	  //$rexseo_url_file = $db->getValue('seo_url_file');
-
       // FALLS REXSEO URL -> ERSETZEN
       if ($rexseo_url != '')
       {
