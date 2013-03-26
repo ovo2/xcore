@@ -4,7 +4,7 @@ require($REX['INCLUDE_PATH'] . '/addons/rexseo42/classes/class.rexseo42_tool_man
 
 $toolManager = new rexseo42_tool_manager();
 
-$tool = new rexseo42_tool($I18N->msg('rexseo42_tool1'), $I18N->msg('rexseo42_tool1_desc', rexseo42::getServer()), 'http://www.google.com/search?q=site:' . rexseo42::getServer());
+$tool = new rexseo42_tool($I18N->msg('rexseo42_tool1'), $I18N->msg('rexseo42_tool1_desc', rexseo42::getServerWithSubdir()), 'http://www.google.com/search?q=site:' . rexseo42::getServerWithSubdir());
 $toolManager->addTool($tool);
 
 $tool = new rexseo42_tool($I18N->msg('rexseo42_tool3'), $I18N->msg('rexseo42_tool3_desc'), 'http://www.google.com/webmasters/tools/');

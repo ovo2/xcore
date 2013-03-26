@@ -38,5 +38,5 @@ Credits
 * [Markus Staab](https://github.com/staabm) für das zugrundeliegende url_rewrite AddOn
 * [Jan Kristinus](http://github.com/dergel) für REDAXO und den neuen EP in REDAXO 4.5
 * [Gregor Harlan](https://github.com/gharlan) und [Thomas Blum](https://github.com/tbaddade) für Hilfe, Code und Bugmeldungen :)
-* Danke an alle die sich mit Idee und Bugmeldungen eingebracht haben :)
+* Danke an alle die sich mit Ideen und Bugmeldungen eingebracht haben :)
 
