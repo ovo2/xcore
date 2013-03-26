@@ -11,6 +11,9 @@ echo rexseo42::getUrlStart();
 ' . $I18N->msg('rexseo42_help_codeexamples_ex2_comment2') . '
 ' . $I18N->msg('rexseo42_help_codeexamples_ex2_comment3') . '
 
+echo rex_getUrl(42);
+// --> /questions/the-ultimate-answer.html
+
 echo rexseo42::getMediaDir();
 // --> /files/
 

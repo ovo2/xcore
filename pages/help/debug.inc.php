@@ -1,7 +1,7 @@
 <h1><?php echo $I18N->msg('rexseo42_help_debug'); ?></h1>
 
 <?php
-$codeExample1 = '<?php rexseo42::printDebugInfo(); ?>';
+$codeExample1 = '<?php echo rexseo42::getDebugInfo(); ?>';
 
 echo '<p>' . $I18N->msg('rexseo42_help_debug_desc') . '</p>';
 

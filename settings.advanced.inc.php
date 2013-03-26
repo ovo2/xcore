@@ -1,6 +1,6 @@
 <?php
 
-// if true you get full urls like wordpress has :) rexseo42::getUrlStart() and co. needs to be used consequently for all extra urls (like mediapool urls, etc.)
+// if true you get full urls like in wordpress :) rexseo42::getUrlStart() and co. needs to be used consequently for all extra urls (like urls to media files, etc.) | url_start / url_start_subdir options will be ignored by this
 $REX['ADDON']['rexseo42']['settings']['full_urls'] = false;
 
 // url start piece for all urls spit out rex_getUrl(), rexseo42::getUrlStart() and co. should to be used for all extra urls | can be "/" (recommended, no base tag needed) or "./" (base tag needed!)
@@ -21,7 +21,7 @@ $REX['ADDON']['rexseo42']['settings']['title_delimiter'] = ' | ';
 // if true seopage will be only visible at start article of website. also the frontend links will all point to start article and sitemap.xml will show only one url
 $REX['ADDON']['rexseo42']['settings']['one_page_mode'] = false;
 
-// if true root categories will be completly ignored and not be visible in generated urls
+// if true root categories will be completly ignored and not be visible in generated urls (experimental)
 $REX['ADDON']['rexseo42']['settings']['ignore_root_cats'] = false;
 
 // only set to true if you want't to have urls wth special chars like in chinese language etc.
@@ -39,7 +39,7 @@ $REX['ADDON']['rexseo42']['settings']['robots_follow_flag'] = 'follow';
 // default archive flag for robots meta tag, can be empty
 $REX['ADDON']['rexseo42']['settings']['robots_archive_flag'] = 'noarchive';
 
-// if true pages with similar urls will be accepted (not recommended!)
+// if true pages with similar urls will be accepted as match (not recommended!)
 $REX['ADDON']['rexseo42']['settings']['levenshtein'] = false;
 
 // if true parameters will be rewritten to ++/param1/value1/param2/value2 (not recommended!)

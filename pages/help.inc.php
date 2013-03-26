@@ -5,10 +5,10 @@ $chapter = rex_request('chapter', 'string');
 $func = rex_request('func', 'string');
 
 $chapterpages = array (
-	'' => array('FAQ', 'pages/help/faq.inc.php'),
-	'codeexamples' => array('Codebeispiele', 'pages/help/code_examples.inc.php'),
-	'debug' => array('Debug', 'pages/help/debug.inc.php'),
-	'links' => array('Links', 'pages/help/links.inc.php')
+	'' => array($I18N->msg('rexseo42_help_chapter_faq'), 'pages/help/faq.inc.php'),
+	'codeexamples' => array($I18N->msg('rexseo42_help_chapter_codeexamples'), 'pages/help/code_examples.inc.php'),
+	'debug' => array($I18N->msg('rexseo42_help_chapter_debug'), 'pages/help/debug.inc.php'),
+	'links' => array($I18N->msg('rexseo42_help_chapter_links'), 'pages/help/links.inc.php')
 );
 
 // build chapter navigation

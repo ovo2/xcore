@@ -1,31 +1,38 @@
 REXSEO42 - Changelog
 ====================
 
-### Version 1.0.42 BETA - 19. März 2013
+### Version 1.0.42 RC - 26. März 2013
 
+* Änderungen am Datenbank-Schema: `seo_canonical_url` hinzugefügt, `seo_url` in `seo_custom_url` umbenannt
+* Neues Feature: Die Canonical Url kann nun auch per Artikel gesetzt werden. Allerdings muss dies explizit in der `settings.advanced.inc.php` aktiviert werden.
+* Neues Feature: Es ist nun mögliche "volle" Urls (also inkl. Domain, wie bei WordPress) über die Option `full_urls` zu erhalten
+* Neues Feature: `ignore_root_cats` (experimentell)
+* Bei Unterordner-Installationen: Im Setup den Unterordner mit angeben, Base-Tag nur nötig wenn `full_urls` Option auf false, keine .htaccess Anpassungen mehr!
+* Bei normalen Installationen: Base-Tag kann weggelassen werden.
 * "Normale" 404-Seite des Webservers, wenn eine Datei unter `files` oder `redaxo` nicht gefunden wurde
+* Neue Debug Seite in der Hilfe
 * Neue Hilfe Unterpunkte: Codebeispiele und Links, Faq überarbeitet
-* Verzeichnis-Auflistung z.B. für files und files/addons wird per .htaccess Datei unterbunden
+* Verzeichnis-Auflistung z.B. für files und `files/addon`s wird per .htaccess Datei unterbunden
 * Neues Feature: One Page Mode, für Websites die nur über eine einzige Seite verfügen 
-* Neues Feature: SEO Tools  - eine Linksammlung zu wichtigen SEO-Tools im Netz
-* Neue Permission: rexseo42[seopage] um für Nicht-Admins die Sichtbarkeit der SEO-Page zu steuern
+* Neues Feature: SEO Tools - eine Linksammlung zu wichtigen SEO-Tools im Netz
+* Neue Permission: `rexseo42[seopage]` und `rexseo42[seopage_extended]` um für Nicht-Admins die Sichtbarkeit der SEO-Page zu steuern
 * editContentOnly[] wird nun berücksichtigt
 * Neues Feature: Checkbox zum setzen der WWW-Umleitung im Setup
-* REX['MEDIA_DIR'] wird genutzt
+* `REX['MEDIA_DIR']` wird genutzt
 * Robots noIndex Option:  Bug gefixt der bei Mehrsprachigkeit auftrat
 * Lang Codes für die Lang Slugs können nun vorläufig in der `settings.lang.inc.php` definiert werden
-* Auto DB Fix nach Db-Import wenn die DB Felder fehlen sollten
+* Auto DB Fix nach DB-Import wenn die DB Felder fehlen sollten
 * SEO-Page: Title, Description und Keywords abgesichert. Keywords werden z.B. nur kleingeschrieben übernommen.
 * SEO-Page: Html und CSS aufgeräumt und verbessert
-* rexseo42 Klasse aufgeräumt und ergänzt: getHtml(), getImageTag(), getImageManagerUrl(), etc.
+* rexseo42 Klasse aufgeräumt und ergänzt: `getHtml()`, `getImageTag()`, `getImageManagerUrl()`, etc.
 * Änderungen bis RexSEO 1.5.4 reingenommen
 * I18N Support: Alles Strings in die Lang-Datei gepackt
-* .htaccess Datei aufgeräumt und vereinfacht, redaxo/.htaccess entfernt
+* .htaccess Datei aufgeräumt und vereinfacht, `redaxo/.htaccess` entfernt
 * Weitere Einstellungen wurden in die `settings.advanced.inc.php` gepackt
 * Code wurde generell vereinfacht und aufgeräumt 
 * Lizendatei hinzugefügt
-* Installation wird bei bei diesen installierten Addons verweigert: rexseo, url_rewrite, yrewrite
-* REDAXO 4.5 Beta Versionen funktionieren nun auch mit dem AddOn
+* Installation wird bei bei diesen installierten Addons verweigert: `rexseo`, `url_rewrite`, `yrewrite`
+* Bei REDAXO 4.5 Beta Versionen wird die Installation nun nicht mehr verweigert
 * Aufruf von ADDONS_INCLUDED auf early gesetzt
 
 ### Version 1.0.1 - 17. Feburar 2013

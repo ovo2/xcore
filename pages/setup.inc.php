@@ -282,6 +282,7 @@ function updateCodeExample() {
 	var hasSubdir = false;
 	var url = jQuery('#server').val();
 	var slashPosAfterDomain = url.indexOf("/", 8); // https:// = 8
+	var hasFullUrls = <?php if ($REX['ADDON']['rexseo42']['settings']['full_urls']) { echo 'true'; } else { echo 'false'; } ?>;
 
 	if (pat.test(url) && slashPosAfterDomain !== -1) {
 		var subdir = url.substr(slashPosAfterDomain + 1);
@@ -290,7 +291,7 @@ function updateCodeExample() {
 		}
 	}
 
-	if (hasSubdir) {
+	if (hasSubdir && !hasFullUrls) {
 		jQuery('#code-example').hide();
 		jQuery('#code-example-subdir').show();
 	} else {

@@ -10,9 +10,9 @@ rexseo42_uninstall_dbfields_not_removed = Die Datenbankfelder wurden NICHT entfe
 rexseo42_config_ok = Einstellungen wurde aktualisiert.
 rexseo42_config_error = Einstellungen konnte nicht gespeichert werden!
 rexseo42_config_file_no_perms = Konfigurationsdatei "{0}" ist nicht beschreibbar!
-rexseo42_dbfields_readded = Fehlende DB-Felder des {0} AddOns wurden hinzugefügt.
-rexseo42_dbfields_readded_check_setup = WICHTIG: Bitte überprüfen Sie ob das {0} Setup (Schritt 3) erneut durchgeführt werden muss.
-rexseo42_check_lang_msg = Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.lang.inc.php" Datei von {0}.
+rexseo42_dbfields_readded = {0}: Fehlende DB-Felder des AddOns wurden hinzugefügt.
+rexseo42_dbfields_readded_check_setup = {0}: Bitte überprüfen Sie ob das Setup (Schritt 3) erneut durchgeführt werden muss.
+rexseo42_check_lang_msg = {0}: Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.lang.inc.php" Datei.
 
 rexseo42_tools_caption = SEO Tools
 rexseo42_tool1 = Google Index dieser Website anzeigen
@@ -25,8 +25,6 @@ rexseo42_tool4 = PageRank ermitteln
 rexseo42_tool4_desc = Mit diesem Tool lässt sich der PageRank Ihrer Website ermitteln.
 rexseo42_tool6 = Seitwert Quick-Analyse
 rexseo42_tool6_desc = Eine erste kostenlose Analyse Ihrer Website durch den Webdienst Seitwert.de.
-rexseo42_tool7 = Majestic Site Explorer
-rexseo42_tool7_desc = Ein teilweise kostenloser Site Explorer der die Anzahl der Backlinks einer Website anzeigt.
 rexseo42_tool8 = Google SERP Snippet Optimization Tool
 rexseo42_tool8_desc = Das Google SERP Snippet Optimization Tool zeigt eine Vorschau der Snippets die Google generiert.
 
@@ -56,7 +54,7 @@ rexseo42_setup_settings_save_failed = Speichern der Einstellungen fehlgeschlagen
 rexseo42_setup_step1 = Schritt 1: Dateien kopieren
 rexseo42_setup_step1_msg1 = Folgende Datei muss in das Hauptverzeichnis von REDAXO kopiert und korrekt umbenannt werden:
 rexseo42_setup_to = nach
-rexseo42_setup_www_redirect_checkbox = Dauerhafte Umleitung auf die WWW-Domain aktivieren
+rexseo42_setup_www_redirect_checkbox = Umleitung auf die WWW-Domain aktivieren
 rexseo42_setup_www_redirect_patch_ok = Umleitung auf die WWW-Domain wurde eingerichtet.
 rexseo42_setup_www_redirect_patch_failed = Umleitung auf die WWW-Domain konnte nicht aktiviert werden :(
 rexseo42_setup_step1_button = Datei kopieren
@@ -71,7 +69,7 @@ rexseo42_setup_step3_msg1 = Zuletzt ergänzen Sie den Head-Bereich Ihres Templat
 rexseo42_setup_url_alert = URL dieser Website muss mit "http://" beginnen und mit "/" enden.
 rexseo42_setup_mod_rewrite_alert = Die Mod-Rewrite Funktion von REDAXO muss aktiviert werden, damit {0} funktionieren kann!
 rexseo42_setup_htaccess_alert = Im Hauptverzeichnis von REDAXO existiert bereits eine .htaccess Datei.\r\nWollen Sie diese überschreiben?\r\n\r\nHinweis: Ein Backup der Datei wird in /rexseo42/backup/ gespeichert.
-rexseo42_setup_codeexamples = Hier gibt es weitere <a href="index.php?page=rexseo42&subpage=help&chapter=codeexamples">Codebeispiele</a> für ein perfektes SEO :)
+rexseo42_setup_codeexamples = Hier gibt es weitere <a href="index.php?page=rexseo42&subpage=help&chapter=codeexamples">Codebeispiele</a> für ein perfektes SEO... :)
 
 rexseo42_seopage_updated = SEO-Daten wurden aktualisiert.
 rexseo42_seopage_main_section = Allgemein
@@ -88,11 +86,16 @@ rexseo42_seopage_button_text = SEO-Daten aktualisieren
 rexseo42_seopage_canonical_url = Canonical URL
 rexseo42_seopage_canonical_alert = Die Canonical URL muss mit "http://" beginnen.
 
+rexseo42_help_chapter_faq = FAQ
+rexseo42_help_chapter_codeexamples = Codebeispiele
+rexseo42_help_chapter_debug = Debug
+rexseo42_help_chapter_links = Links
+
 rexseo42_help_links = Links
+rexseo42_help_link4 = {0} auf GitHub
 rexseo42_help_link1 = {0} Bugtracker
 rexseo42_help_link2 = RexSEO Extensions Points
 rexseo42_help_link3 = Aufbau der RexSEO Pathlist
-rexseo42_help_link4 = Anchors per JS fixen
 
 rexseo42_help_codeexamples = Codebeispiele
 rexseo42_help_codeexamples_title1 = SEO-Tags für den Head-Bereich eines Templates einbinden
@@ -125,8 +128,11 @@ rexseo42_help_faq02b = Das AddOn <a href="index.php?page=addon&addonname=rexseo4
 rexseo42_help_faq03a = Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterordner installiert habe?
 rexseo42_help_faq03b = Geben Sie im {0} Setup den Unterordner mit an. Desweiteren sollten Sie Sie <code>rexseo::getHtml()</code>, <code>rex_getUrl()</code> sowie <code>rexseo42::getUrlStart()</code> (siehe Codebeispiel 2) nutzen. Anpassungen in der .htaccess sind keine mehr nötig!
 
+rexseo42_help_faq18a = Wann genau brauche ich jetzt eigentlich nochmal den Base-Tag?
+rexseo42_help_faq18b = Der Base-Tag ist nur noch für Unterordner-Installationen nötig. Nutzt man allerdings die Option <code>full_urls</code> ist der Base-Tag auch für die Unterordner-Installationen überflüssig.
+
 rexseo42_help_faq04a = Ich mag das Pipe-Zeichen nicht im Titel. Wie kann ich das umstellen?
-rexseo42_help_faq04b = Der zuständige Parameter heißt <code>title_delimiter</code> und ist über die <code>settings.advanced.inc.php</code> einstellbar.
+rexseo42_help_faq04b = Der zuständige Parameter heißt <code>title_delimiter</code> und ist in der <code>settings.advanced.inc.php</code> einstellbar.
 
 rexseo42_help_faq17a = Wo sind eigentlich all die restlichen Einstellungen von RexSEO abgeblieben?
 rexseo42_help_faq17b = Vorläufig wurden diese hier ausgelagert: <code>settings.advanced.inc.php</code>
@@ -153,7 +159,7 @@ rexseo42_help_faq11a = Habe gehört das es SEO-technisch gut wäre wenn Bilder e
 rexseo42_help_faq11b = Dafür kann man die Methode <code>rexseo42::getImageTag()</code> nutzen, die dann einen kompletten Image-Tag inkl. Alt-Attribut ausspuckt (siehe Codebeispiel 2). Und im Medienpool wird dieser dann im Titel-Feld gesetzt.
 
 rexseo42_help_faq12a = Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?
-rexseo42_help_faq12b = Immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. <code>redaxo://13#anker</code> oder den JS Fix von der Links-Seite nutzen.
+rexseo42_help_faq12b = Immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. <code>redaxo://13#anker</code>.
 
 rexseo42_help_faq13a = Wo legt {0} die Backups für die .htaccess Dateien an?
 rexseo42_help_faq13b = Im Backup-Verzeichnis des AddOns: <code>/rexseo42/backup/</code>
@@ -161,15 +167,15 @@ rexseo42_help_faq13b = Im Backup-Verzeichnis des AddOns: <code>/rexseo42/backup/
 rexseo42_help_faq14a = Ich hab ne Frage die hier net auftaucht. Was tun?
 rexseo42_help_faq14b = Schau doch mal ins original RexSEO. Da steht noch mehr Stuff... ;)
 
-rexseo42_help_faq15a = Mir gefällt {0} nicht! Wie krieg ich das AddOn wieder entfernt?
+rexseo42_help_faq15a = Mir gefällt {0} nicht! Wie bekomme ich das AddOn wieder entfernt?
 rexseo42_help_faq15b = Kein Problem ;) Einfach das Setup von hinten nach vorne durchlaufen und das AddOn deinstallieren.
 
 rexseo42_help_faq16a = Wie lautet die Antwort auf die Frage aller Fragen nach dem Leben, dem Universum und dem ganzen Rest?
 rexseo42_help_faq16b = 42
 
 rexseo42_help_debug = Debug
-rexseo42_help_debug_desc = Mit dieser Methode kann man detaillierte Debug-Informationen abrufen:
-rexseo42_help_debug_output = Ausgabe mit Artikel-Id = {0}: (einstellbar in der <code>settings.advanced.inc.php</code>)
+rexseo42_help_debug_desc = Mit dieser Methode kann man detaillierte Debug-Informationen zum aktuellen Artikel abrufen:
+rexseo42_help_debug_output = Ausgabe mit Artikel-Id = {0}: (änderbar in der <code>settings.advanced.inc.php</code>)
 rexseo42_help_debug_article_wrong = Artikel ungültig!
 
 
