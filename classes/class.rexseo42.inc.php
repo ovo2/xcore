@@ -125,11 +125,17 @@ class rexseo42 {
 	}
 
 	public static function getCanonicalUrl() {
+		// userdef canonical url
+		if (self::$curArticle->getValue('seo_canonical_url') != '') {
+			return self::$curArticle->getValue('seo_canonical_url');
+		}
+
+		// auto canonical url
 		if (self::$fullUrls) {
 			return rex_getUrl(self::$curArticle->getId());
 		} else {
 			return self::getBaseUrl() . ltrim(rex_getUrl(self::$curArticle->getId()), "./");
-		}
+		}	
 	}
 
 	public static function getImageTag($imageFile, $imageType = '', $width = 0, $height = 0) {

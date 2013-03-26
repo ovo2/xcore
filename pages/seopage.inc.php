@@ -5,18 +5,25 @@ $ctype = rex_request('ctype');
 $savedURL = rex_request('saved_seo_url');
 
 $dataUpdated = false;
-$hideNonContentSection = '';
+$hideExtendedSection = '';
 $disableCustomUrl = '';
+$hideCanonicalUrl = '';
 
 // react on editContentOnly[]
 if (is_object($REX['USER']) && $REX['USER']->hasPerm('editContentOnly[]')) {
-	// hide userdef url and noindex option for now
-	$hideNonContentSection = 'style="display: none;"';
+	// hide extended section
+	$hideExtendedSection = 'style="display: none;"';
 }
 
 // react on / rewrite of start article
 if ($REX['ADDON']['rexseo42']['settings']['homeurl'] == 1 && rexseo42::isStartArticle() && $REX['CUR_CLANG'] == 0) {
 	$disableCustomUrl = 'disabled="disabled"';
+}
+
+// react on userdef_canonical_url in settings
+if (!$REX['ADDON']['rexseo42']['settings']['userdef_canonical_url']) {
+	// hide userdef canonical url and noindex option for now
+	$hideCanonicalUrl = 'style="display: none;"';
 }
 
 if (rex_post('saveseo', 'boolean')) {
@@ -37,11 +44,14 @@ if (rex_post('saveseo', 'boolean')) {
 	$url = str_replace("\\\\", '/', $url); // replace backslash with forward slash
 	$url = ltrim($url, '/'); // remove first slash if there is any
 
+	$canonicalUrl = rexseo42_utils::sanitizeString(rex_post('seo_canonical_url'));
+
 	// seo fields
 	$sql->setValue('seo_title', $title);
 	$sql->setValue('seo_description', $description);
 	$sql->setValue('seo_keywords', $keywords);
 	$sql->setValue('seo_url', $url);
+	$sql->setValue('seo_canonical_url', $canonicalUrl);
 
 	// ignore prefix
 	$ignorePrefix = rex_post('seo_ignore_prefix');
@@ -137,7 +147,7 @@ echo '
 							</div>
 						</div>
 					</fieldset>
-					<fieldset ' . $hideNonContentSection . ' class="rex-form-col-1">
+					<fieldset ' . $hideExtendedSection . ' class="rex-form-col-1">
 						<legend>' . $I18N->msg('rexseo42_seopage_extended_section') . '</legend>
 						<div class="rex-form-wrapper">
 							<div class="rex-form-row">
@@ -148,8 +158,15 @@ echo '
 								</p>
 							</div>
 
+							<div class="rex-form-row" ' . $hideCanonicalUrl . '>
+								<p class="rex-form-text">
+									<label for="canonical-url">' . $I18N->msg('rexseo42_seopage_canonical_url') . '</label>
+									<input type="text" value="' . $seoData['seo_canonical_url'] . '" name="seo_canonical_url" id="canonical-url" class="rex-form-text" />
+								</p>
+							</div>
+
 							<div class="rex-form-row">
-								<p class="rex-form-col-a rex-form-checkbox">
+								<p class="rex-form-col-a rex-form-checkbox more-padding">
 									<input type="checkbox" id="seo_noindex" value="';
 									if ($seoData['seo_noindex'] == '1') { echo "1"; $check = 'checked = "checked"'; } else { echo ""; $check = ""; }
 									echo '" name="seo_noindex[]" class="rex-form-checkbox" ' . $check . ' />
@@ -176,6 +193,9 @@ echo '
 ?>
 
 <style type="text/css">
+.more-padding {
+	padding-top: 3px;
+}
 #seo-page  #title-preview {
     display: block;
     overflow: hidden;
@@ -258,6 +278,19 @@ jQuery(document).ready(function() {
 	updateCustomUrlPreview();
 
 	<?php if ($dataUpdated) { ?>jQuery('.rex-navi-content li:last-child a').attr('href', '../<?php echo rex_getUrl(); ?>');<?php } ?>
+
+	jQuery('#seo-form').submit(function() {
+		var pat = /^https?:\/\//i;
+		var canonicalUrl = jQuery('#canonical-url').val();
+
+		if (canonicalUrl === '' || pat.test(canonicalUrl)) {
+			return true;
+		}
+
+		alert('<?php echo $I18N->msg('rexseo42_seopage_canonical_alert'); ?>');
+
+		return false;
+	});
 });
 
 function updateTitlePreview() {

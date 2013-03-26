@@ -1,5 +1,8 @@
 <?php
 
+// if true user can change canonical url via seo page. please use this only if you exactly know what you are doing or know that your redaxo users and admins know what they are doing ;)
+$REX['ADDON']['rexseo42']['settings']['userdef_canonical_url'] = true;
+
 // if true you get full urls like wordpress has :) rexseo42::getUrlStart() and co. needs to be used consequently for all extra urls (like mediapool urls, etc.)
 $REX['ADDON']['rexseo42']['settings']['full_urls'] = false;
 
