@@ -222,8 +222,13 @@ class RexseoRewrite
       $notfound = true;
     }
 
-    // SUBDIR
-    $subdir = rexseo42::getUrlStart().$subdir; // 42
+    // URL START
+	// 42
+    if ($REX['REDAXO'] && !(rex_request('page', 'string') == 'rexseo42' && rex_request('subpage', 'string') == 'help')) { // for rexseo42 debug page urls should look like in frontend
+		$subdir = '';
+    } else {
+		$subdir = rexseo42::getUrlStart() . $subdir;
+    }
 
     // HACK: EP URL_REWRITE WON'T ACCEPT EMPTY STRING AS RETURN
     if($subdir == '' && $url == '')
