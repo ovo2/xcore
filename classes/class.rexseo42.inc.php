@@ -305,4 +305,8 @@ class rexseo42 {
 		 
 		return $result;
 	}
+
+	public static function getAnswer() {
+		return '42';
+	}
 }
