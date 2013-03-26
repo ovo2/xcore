@@ -8,15 +8,15 @@ class rexseo42_utils {
 			// includes
 			require_once($REX['INCLUDE_PATH'] . '/addons/rexseo42/classes/class.rexseo_rewrite.inc.php');
 
-			// init 42
+			// init globals
 			rexseo42::init();
 
 			// init rewriter 
 			$rewriter = new RexseoRewrite($REX['ADDON']['rexseo42']['settings']['levenshtein'], $REX['ADDON']['rexseo42']['settings']['rewrite_params']);
 			$rewriter->resolve();
 
-			// init 42
-			rexseo42::setArticle($REX['ARTICLE_ID']);
+			// init current article
+			rexseo42::initArticle($REX['ARTICLE_ID']);
 
 			// rewrite ep 
 			rex_register_extension('URL_REWRITE', array ($rewriter, 'rewrite'));

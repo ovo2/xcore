@@ -62,7 +62,7 @@ class rexseo42 {
 		}
 	}
 
-	public static function setArticle($articleId) {
+	public static function initArticle($articleId) {
 		// to be called after resolve()
 		global $REX;
 
@@ -310,7 +310,7 @@ class rexseo42 {
 
 	public static function printDebugInfo($articleId = 0) {
 		if ($articleId != 0) {
-			self::setArticle($articleId);			
+			self::initArticle($articleId);			
 		}
 
 		$out = '<table id="rexseo42-debug">';
