@@ -11,6 +11,7 @@ $REX['ADDON']['perm']['rexseo42'] = 'rexseo42[]';
 // permissions
 $REX['PERM'][] = 'rexseo42[]';
 $REX['EXTPERM'][] = 'rexseo42[seopage]';
+$REX['EXTPERM'][] = 'rexseo42[seopage_extended]';
 
 // includes
 require($REX['INCLUDE_PATH'] . '/addons/rexseo42/classes/class.rexseo42.inc.php');
@@ -49,8 +50,8 @@ if ($REX['REDAXO']) {
 		array('help', $I18N->msg('rexseo42_help'))
 	);
 
-	// check for user permissions
-	if (isset($REX['USER']) && ($REX['USER']->isAdmin() || $REX['USER']->hasPerm('rexseo42[seopage]'))) {
+	// check for user permissions (admins will have all)
+	if (isset($REX['USER']) && ($REX['USER']->isAdmin() || $REX['USER']->hasPerm('rexseo42[seopage]') || $REX['USER']->hasPerm('rexseo42[seopage_extended]') || $REX['USER']->hasPerm('editContentOnly[]'))) {
 		// react on one_page_mode option
 		if (!$REX['ADDON']['rexseo42']['settings']['one_page_mode'] || ($REX['ADDON']['rexseo42']['settings']['one_page_mode'] && $REX['ARTICLE_ID'] == $REX['START_ARTICLE_ID'])) {
 			// add new menu item

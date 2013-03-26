@@ -9,20 +9,20 @@ $hideExtendedSection = '';
 $disableCustomUrl = '';
 $hideCanonicalUrl = '';
 
-// react on editContentOnly[]
-if (is_object($REX['USER']) && $REX['USER']->hasPerm('editContentOnly[]')) {
+// react on editContentOnly[] and rexseo42[seopage_extended] but only for non admins
+if (is_object($REX['USER']) && !$REX['USER']->isAdmin() && ($REX['USER']->hasPerm('editContentOnly[]') || !$REX['USER']->hasPerm('rexseo42[seopage_extended]'))) {
 	// hide extended section
 	$hideExtendedSection = 'style="display: none;"';
 }
 
-// react on / rewrite of start article
+// react on / rewrite of start article: don't allow url change in this case
 if ($REX['ADDON']['rexseo42']['settings']['homeurl'] == 1 && rexseo42::isStartArticle() && $REX['CUR_CLANG'] == 0) {
 	$disableCustomUrl = 'disabled="disabled"';
 }
 
-// react on userdef_canonical_url in settings
+// react on userdef_canonical_url option in settings
 if (!$REX['ADDON']['rexseo42']['settings']['userdef_canonical_url']) {
-	// hide userdef canonical url and noindex option for now
+	// hide userdef canonical url
 	$hideCanonicalUrl = 'style="display: none;"';
 }
 
