@@ -167,6 +167,6 @@ rexseo42_help_faq16b = 42
 
 rexseo42_help_debug = Debug
 rexseo42_help_debug_desc = Mit dieser Methode kann man detaillierte Debug-Informationen abrufen:
-rexseo42_help_debug_output = Ausgabe mit Artikel-Id =
+rexseo42_help_debug_output = Ausgabe mit Artikel-Id = {0}: (einstellbar in der <code>settings.advanced.inc.php</code>)
 
 

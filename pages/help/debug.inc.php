@@ -6,7 +6,7 @@ $codeExample1 = '<?php rexseo42::printDebugInfo(); ?>';
 
 <p><?php echo $I18N->msg('rexseo42_help_debug_desc'); ?></p>
 <?php rex_highlight_string($codeExample1); ?>
-<p><?php echo $I18N->msg('rexseo42_help_debug_output'); ?> <?php echo $REX['ADDON']['rexseo42']['settings']['debug_article_id']; ?>:</p>
+<p><?php echo $I18N->msg('rexseo42_help_debug_output', $REX['ADDON']['rexseo42']['settings']['debug_article_id']); ?></p>
 <?php 
 rexseo42::printDebugInfo($REX['ADDON']['rexseo42']['settings']['debug_article_id']);
 ?>

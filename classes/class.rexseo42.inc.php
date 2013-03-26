@@ -315,7 +315,7 @@ class rexseo42 {
 
 		$out = '<table id="rexseo42-debug">';
 
-		$out .= self::getDebugInfoRow('rex_getUrl', array(self::$curArticle->getId()), true);
+		$out .= self::getDebugInfoRow('rex_getUrl', array(self::$curArticle->getId()));
 		$out .= self::getDebugInfoRow('rexseo42::getTitle');
 		$out .= self::getDebugInfoRow('rexseo42::getDescription');
 		$out .= self::getDebugInfoRow('rexseo42::getKeywords');
@@ -324,7 +324,7 @@ class rexseo42 {
 		$out .= self::getDebugInfoRow('rexseo42::getArticleName');
 		$out .= self::getDebugInfoRow('rexseo42::isStartArticle');
 		$out .= self::getDebugInfoRow('rexseo42::getWebsiteName');
-		$out .= self::getDebugInfoRow('rexseo42::getLangCode', array('0'), true);
+		$out .= self::getDebugInfoRow('rexseo42::getLangCode', array('0'));
 		$out .= self::getDebugInfoRow('rexseo42::getServerProtocol');
 		$out .= self::getDebugInfoRow('rexseo42::getBaseUrl');
 		$out .= self::getDebugInfoRow('rexseo42::getServerUrl');
@@ -347,19 +347,19 @@ class rexseo42 {
 		echo $out;
 	}
 
-	protected static function getDebugInfoRow($func, $params = array(), $noString = false) {
+	protected static function getDebugInfoRow($func, $params = array()) {
 		$out = '';
 
 		$function = $func . '(';
 
 		for ($i = 0; $i < count($params); $i++) {
-			if (!$noString) {
+			if (!is_numeric($params[$i])) {
 				$function .= '"';
 			}
 
 			$function .= $params[$i];
 
-			if (!$noString) {
+			if (!is_numeric($params[$i])) {
 				$function .= '"';
 			}
 
