@@ -15,8 +15,8 @@ $REX['ADDON']['rexseo42']['settings']['drop_dbfields_on_uninstall'] = true;
 // if true rexseo42::getImageManagerUrl() and rexseo42::getImageTag() will produce seo friendly urls
 $REX['ADDON']['rexseo42']['settings']['seo_friendly_image_manager_urls'] = true;
 
-// default title delimeter (including whitespace chars) for seperating name of website and page title
-$REX['ADDON']['rexseo42']['settings']['title_delimeter'] = ' | ';
+// default title delimiter (including whitespace chars) for seperating name of website and page title
+$REX['ADDON']['rexseo42']['settings']['title_delimiter'] = ' | ';
 
 // if true seopage will be only visible at start article of website. also the frontend links will all point to start article and sitemap.xml will show only one url
 $REX['ADDON']['rexseo42']['settings']['one_page_mode'] = false;

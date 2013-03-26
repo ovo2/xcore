@@ -54,10 +54,10 @@ class rexseo42_ex extends rexseo42
 		} else { 
 			if (self::isStartArticle()) {
 				// the start article shows the website name first
-				$fullTitle = self::getWebsiteName() . self::$titleDelimeter . $titlePart;
+				$fullTitle = self::getWebsiteName() . self::$titleDelimiter . $titlePart;
 			} else {
 				// all other articles will show title first
-				$fullTitle = $titlePart . self::$titleDelimeter . self::getWebsiteName();
+				$fullTitle = $titlePart . self::$titleDelimiter . self::getWebsiteName();
 			}
 		 }
 

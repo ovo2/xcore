@@ -2,7 +2,7 @@
 class rexseo42 {
 	protected static $curArticle;
 	protected static $startArticleID;
-	protected static $titleDelimeter;
+	protected static $titleDelimiter;
 	protected static $robotsFollowFlag;
 	protected static $robotsArchiveFlag;
 	protected static $mediaDir;
@@ -23,7 +23,7 @@ class rexseo42 {
 
 		// default inits
 		self::$startArticleID = $REX['START_ARTICLE_ID'];
-		self::$titleDelimeter = $REX['ADDON']['rexseo42']['settings']['title_delimeter'];
+		self::$titleDelimiter = $REX['ADDON']['rexseo42']['settings']['title_delimiter'];
 		self::$robotsFollowFlag = $REX['ADDON']['rexseo42']['settings']['robots_follow_flag'];
 		self::$robotsArchiveFlag = $REX['ADDON']['rexseo42']['settings']['robots_archive_flag'];
 		self::$mediaDir = $REX['MEDIA_DIR'];
@@ -88,10 +88,10 @@ class rexseo42 {
 		} else { 
 			if (self::isStartArticle()) {
 				// the start article shows the website name first
-				$fullTitle = self::getWebsiteName() . self::$titleDelimeter . $titlePart;
+				$fullTitle = self::getWebsiteName() . self::$titleDelimiter . $titlePart;
 			} else {
 				// all other articles will show title first
-				$fullTitle = $titlePart . self::$titleDelimeter . self::getWebsiteName();
+				$fullTitle = $titlePart . self::$titleDelimiter . self::getWebsiteName();
 			}
 		 }
 
@@ -194,7 +194,7 @@ class rexseo42 {
 	}
 
 	public static function getTitleDelimiter() {
-		return self::$titleDelimeter;
+		return self::$titleDelimiter;
 	}
 
 	public static function getArticleName() {
