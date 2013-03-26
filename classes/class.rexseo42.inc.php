@@ -362,6 +362,7 @@ class rexseo42 {
 	protected static function getDebugInfoRow($func, $params = array()) {
 		$out = '';
 
+		// build function and params for function call
 		$function = $func . '(';
 
 		for ($i = 0; $i < count($params); $i++) {
@@ -383,9 +384,20 @@ class rexseo42 {
 
 		$function .= ')';
 
+		// convert for bool values to more human readable
+		$returnValue = call_user_func_array($func, $params);
+		
+		if (is_bool($returnValue)) {
+			if ($returnValue) {
+				$returnValue = 'true';
+			} else {
+				$returnValue = 'false';
+			}
+		}
+
 		$out .= '<tr>';
-		$out .= '<td class="left"><code>' . $function . '</code></td>';
-		$out .= '<td class="right">' . htmlspecialchars(call_user_func_array($func, $params)) . '</td>';
+		$out .= '<td class="left">' . $function . '</td>';
+		$out .= '<td class="right">' . htmlspecialchars($returnValue) . '</td>';
 		$out .= '</tr>';
 
 		return $out;
