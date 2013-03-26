@@ -308,9 +308,15 @@ class rexseo42 {
 		return $result;
 	}
 
-	public static function printDebugInfo($articleId = 0) {
+	public static function getDebugInfo($articleId = 0) {
+		global $I18N;
+
 		if ($articleId != 0) {
 			self::initArticle($articleId);			
+		}
+
+		if (!OOArticle::isValid(self::$curArticle)) {
+			return '';
 		}
 
 		$out = '<table id="rexseo42-debug">';
@@ -344,7 +350,7 @@ class rexseo42 {
 
 		$out .= '</table>';
 
-		echo $out;
+		return $out;
 	}
 
 	protected static function getDebugInfoRow($func, $params = array()) {

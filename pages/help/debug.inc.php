@@ -2,13 +2,20 @@
 
 <?php
 $codeExample1 = '<?php rexseo42::printDebugInfo(); ?>';
-?>
 
-<p><?php echo $I18N->msg('rexseo42_help_debug_desc'); ?></p>
-<?php rex_highlight_string($codeExample1); ?>
-<p><?php echo $I18N->msg('rexseo42_help_debug_output', $REX['ADDON']['rexseo42']['settings']['debug_article_id']); ?></p>
-<?php 
-rexseo42::printDebugInfo($REX['ADDON']['rexseo42']['settings']['debug_article_id']);
+echo '<p>' . $I18N->msg('rexseo42_help_debug_desc') . '</p>';
+
+rex_highlight_string($codeExample1);
+
+echo '<p>' . $I18N->msg('rexseo42_help_debug_output', $REX['ADDON']['rexseo42']['settings']['debug_article_id']) . '</p>';
+
+$debugOut = rexseo42::getDebugInfo($REX['ADDON']['rexseo42']['settings']['debug_article_id']);
+
+if ($debugOut) {
+	echo $debugOut;
+} else {
+	echo '<strong>' . $I18N->msg('rexseo42_help_debug_article_wrong') . '</strong>';
+}
 ?>
 
 <style type="text/css">
