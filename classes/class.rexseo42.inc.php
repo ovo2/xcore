@@ -125,17 +125,13 @@ class rexseo42 {
 	}
 
 	public static function getCanonicalUrl() {
-		// userdef canonical url
 		if (self::$curArticle->getValue('seo_canonical_url') != '') {
+			// userdef canonical url
 			return self::$curArticle->getValue('seo_canonical_url');
 		}
 
-		// auto canonical url
-		if (self::$fullUrls) {
-			return rex_getUrl(self::$curArticle->getId());
-		} else {
-			return self::getBaseUrl() . ltrim(rex_getUrl(self::$curArticle->getId()), "./");
-		}	
+		// automatic canonical url
+		return self::getFullUrl(self::$curArticle->getId());
 	}
 
 	public static function getImageTag($imageFile, $imageType = '', $width = 0, $height = 0) {
@@ -166,7 +162,7 @@ class rexseo42 {
 			$imgHeight = $height;
 		}
 
-		// make url
+		// get url
 		if ($imageType == '') {
 			$url = self::getMediaFile($imageFile);
 		} else {
@@ -287,6 +283,18 @@ class rexseo42 {
 		}
 	}
 
+	public static function getFullUrl($id = '', $clang = '', $params = '', $divider = '&amp;') {
+		return self::getBaseUrl() . self::getTrimmedUrl($id, $clang, $params, $divider);
+	}
+
+	public static function getTrimmedUrl($id = '', $clang = '', $params = '', $divider = '&amp;') {
+		if (self::$fullUrls) {
+			return str_replace(self::getServerUrl(), '', rex_getUrl($id, $clang, $params, $divider));
+		} else {
+			return ltrim(rex_getUrl($id, $clang, $params, $divider), "./");
+		}
+	}
+
 	protected static function getUrlParts($url) {
 		$result = array();
 		 
@@ -328,6 +336,8 @@ class rexseo42 {
 		$out = '<table id="rexseo42-debug">';
 
 		$out .= self::getDebugInfoRow('rex_getUrl', array(self::$curArticle->getId()));
+		$out .= self::getDebugInfoRow('rexseo42::getTrimmedUrl', array(self::$curArticle->getId()));
+		$out .= self::getDebugInfoRow('rexseo42::getFullUrl', array(self::$curArticle->getId()));
 		$out .= self::getDebugInfoRow('rexseo42::getTitle');
 		$out .= self::getDebugInfoRow('rexseo42::getDescription');
 		$out .= self::getDebugInfoRow('rexseo42::getKeywords');

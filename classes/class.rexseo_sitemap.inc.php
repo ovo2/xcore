@@ -1,7 +1,6 @@
 <?php
 class rexseo_sitemap
 {
-  private $host;
   private $mode;
   private $db_articles;
 
@@ -22,7 +21,7 @@ class rexseo_sitemap
             WHERE `status`=1;';
     foreach($db->getDbArray($qry) as $art)
     {
-      $db_articles[$art['id']][$art['clang']] = array('loc'        => rex_getUrl($art['id'],$art['clang']),
+      $db_articles[$art['id']][$art['clang']] = array('loc'        => rexseo42::getFullUrl($art['id'],$art['clang']),
                                                        'lastmod'    => date('Y-m-d\TH:i:s',$art['updatedate']).'+00:00',
                                                        'changefreq' => self::calc_article_changefreq($art['updatedate'], ''),
                                                        'priority'   => self::calc_article_priority($art['id'],$art['clang'],$art['path'], ''),
@@ -94,7 +93,7 @@ class rexseo_sitemap
   /**
    * BUILD SINGLE XML LOC FRAGMENT
    *
-   * @param $loc        (string) article url  [including lang, excluding host]
+   * @param $loc        (string) full article url  [including lang]
    * @param $lastmod    (string) article last modified date  [UNIX date]
    * @param $changefreq (string) change frequency  [never|yearly|monthly|weekly|daily|hourly|always]
    * @param $priority   (float)  priority  [maximum: 1.0]
@@ -104,7 +103,7 @@ class rexseo_sitemap
   private function xml_loc_fragment($loc,$lastmod,$changefreq,$priority)
   {
     $xml_loc = "\t" . '<url>'.PHP_EOL.
-    "\t\t" . '<loc>'.$this->host.$loc.'</loc>'.PHP_EOL.
+    "\t\t" . '<loc>'.$loc.'</loc>'.PHP_EOL.
     "\t\t" . '<lastmod>'.$lastmod.'</lastmod>'.PHP_EOL.
     "\t\t" . '<changefreq>'.$changefreq.'</changefreq>'.PHP_EOL.
     "\t\t" . '<priority>'.number_format($priority, 2, ".", "").'</priority>'.PHP_EOL.
@@ -123,20 +122,8 @@ class rexseo_sitemap
 
     $this->db_articles = array();
     $this->mode         = 'xml';
-    $this->host         = rtrim(rexseo42::getServerUrl(),'/');
 
     self::get_db_articles();
-  }
-
-
-  /**
-   * SET HOST
-   *
-   * @param $host  (string)  http://DOMAIN.TLD
-   */
-  public function setHost($host)
-  {
-    $this->host = rtrim($host,'/');
   }
 
 

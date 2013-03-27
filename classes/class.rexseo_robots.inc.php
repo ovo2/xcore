@@ -1,7 +1,6 @@
 <?php
 class rexseo_robots
 {
-  private $host;
   private $robots_txt;
 
 
@@ -11,19 +10,7 @@ class rexseo_robots
   public function rexseo_robots()
   {
     global $REX;
-    $this->host = rexseo42::getServerUrl();
     $this->robots_txt = '';
-  }
-
-
-  /**
-   * SET HOST
-   *
-   * @param $host  (string)  http://DOMAIN.TLD
-   */
-  public function setHost($host)
-  {
-    $this->host = rtrim($host,'/');
   }
 
 
@@ -44,7 +31,7 @@ class rexseo_robots
 		$sql->setQuery($query);
 	
 		for ($i = 1; $i <= $sql->getRows(); $i++) { 
-	  		$out .= "Disallow: " .  rex_getUrl($sql->getValue('id'), $lang) . "\r\n"; 
+	  		$out .= "Disallow: /" .  rexseo42::getTrimmedUrl($sql->getValue('id'), $lang) . "\r\n"; 
 		  	$sql->next(); 
 		}
 	}
@@ -69,7 +56,7 @@ class rexseo_robots
   public function addSitemapLink()
   {
 	$this->robots_txt = rtrim($this->robots_txt, "\r\n");
-    $this->robots_txt .= "\r\n" . PHP_EOL.'Sitemap: '.$this->host.'sitemap.xml';
+    $this->robots_txt .= "\r\n" . PHP_EOL.'Sitemap: '.rexseo42::getBaseUrl().'sitemap.xml';
   }
 
 

@@ -12,6 +12,12 @@ echo rexseo42::getUrlStart();
 echo rex_getUrl(42);
 // --> /questions/the-ultimate-answer.html
 
+echo rexseo42::getTrimmedUrl(42);
+// --> questions/the-ultimate-answer.html
+
+echo rexseo42::getFullUrl(42);
+// --> http://www.deepthought.org/questions/the-ultimate-answer.html
+
 echo rexseo42::getMediaDir();
 // --> /files/
 
