@@ -206,9 +206,7 @@ class rexseo42 {
 	}
 	
 	public static function getWebsiteName() {
-		global $REX;
-		
-		return $REX['SERVERNAME'];
+		return self::$websiteName;
 	}
 	
 	public static function getLangCode($clangID = -1) {
