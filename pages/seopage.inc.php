@@ -217,8 +217,9 @@ div.rex-form div.rex-form-row label, div.rex-form div.rex-form-row p.rex-form-la
 }
 
 div.rex-form div.rex-form-row p span.rex-form-notice {
-	 margin-left: 165px;
+	margin-left: 165px;
 	margin-top: 4px;
+	font-size: 100%;
 }
 
 #show-prefix {
