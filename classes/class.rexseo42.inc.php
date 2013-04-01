@@ -16,6 +16,7 @@ class rexseo42 {
 	protected static $serverSubdir;
 	protected static $isSubdirInstall;
 	protected static $urlStart;
+	protected static $modRewrite;
 	
 	public static function init() {
 		// to be called before resolve()
@@ -32,6 +33,7 @@ class rexseo42 {
 		self::$fullUrls = $REX['ADDON']['rexseo42']['settings']['full_urls'];
 		self::$serverUrl = $REX['SERVER'];
 		self::$websiteName = $REX['SERVERNAME'];
+		self::$modRewrite = $REX['MOD_REWRITE'];
 
 		// pull apart server url
 		$urlParts = self::getUrlParts(self::$serverUrl);
@@ -173,7 +175,7 @@ class rexseo42 {
 	}
 
 	public static function getImageManagerUrl($imageFile, $imageType) {
-		if (self::$seoFriendlyImageManagerUrls) {
+		if (self::$seoFriendlyImageManagerUrls && self::$modRewrite) {
 			return self::getMediaDir() . 'imagetypes/' . $imageType . '/' . $imageFile;
 		} else {
 			return '/index.php?rex_img_type=' . $imageType . '&amp;rex_img_file=' . $imageFile;

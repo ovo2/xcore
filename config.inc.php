@@ -29,19 +29,6 @@ if ($REX['REDAXO']) {
 	// append lang file
 	$I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/rexseo42/lang/');
 
-	// generate pathlist on each extension point
-	$extensionPoints = array(
-		'CAT_ADDED',     'CAT_UPDATED',     'CAT_DELETED',
-		'ART_ADDED',     'ART_UPDATED',     'ART_DELETED',        'ART_META_FORM_SECTION',
-		'ART_TO_CAT',    'CAT_TO_ART',      'ART_TO_STARTPAGE',
-		'CLANG_ADDED',   'CLANG_UPDATED',   'CLANG_DELETED',
-		'ALL_GENERATED'
-	);
-
-	foreach($extensionPoints as $extensionPoint) {
-		rex_register_extension($extensionPoint, 'rexseo_generate_pathlist');
-	}
-
 	// subpages
 	$REX['ADDON']['rexseo42']['SUBPAGES'] = array(
 		array('', $I18N->msg('rexseo42_settings')),

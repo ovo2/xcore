@@ -4,23 +4,38 @@ class rexseo42_utils {
 	static function init($params) {
 		global $REX;
 
+		// init globals
+		rexseo42::init();
+
 		if ($REX['MOD_REWRITE']) {
 			// includes
 			require_once($REX['INCLUDE_PATH'] . '/addons/rexseo42/classes/class.rexseo_rewrite.inc.php');
 
-			// init globals
-			rexseo42::init();
+			if ($REX['REDAXO']) { // this is only necessary for backend
+				$extensionPoints = array(
+					'CAT_ADDED',     'CAT_UPDATED',     'CAT_DELETED',
+					'ART_ADDED',     'ART_UPDATED',     'ART_DELETED',        'ART_META_FORM_SECTION',
+					'ART_TO_CAT',    'CAT_TO_ART',      'ART_TO_STARTPAGE',
+					'CLANG_ADDED',   'CLANG_UPDATED',   'CLANG_DELETED',
+					'ALL_GENERATED'
+				);
+
+				// generate pathlist on each extension point
+				foreach($extensionPoints as $extensionPoint) {
+					rex_register_extension($extensionPoint, 'rexseo_generate_pathlist');
+				}
+			}
 
 			// init rewriter 
 			$rewriter = new RexseoRewrite($REX['ADDON']['rexseo42']['settings']['levenshtein'], $REX['ADDON']['rexseo42']['settings']['rewrite_params']);
 			$rewriter->resolve();
 
-			// init current article
-			rexseo42::initArticle($REX['ARTICLE_ID']);
-
 			// rewrite ep 
 			rex_register_extension('URL_REWRITE', array ($rewriter, 'rewrite'));
 		}
+
+		// init current article
+		rexseo42::initArticle($REX['ARTICLE_ID']);
 
 		// controller
 		include($REX['INCLUDE_PATH'] . '/addons/rexseo42/controller.inc.php');
