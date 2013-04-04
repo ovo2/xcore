@@ -278,7 +278,7 @@ jQuery(document).ready(function() {
 	updateKeywordsCount();
 	updateCustomUrlPreview();
 
-	<?php if ($dataUpdated) { ?>jQuery('.rex-navi-content li:last-child a').attr('href', '../<?php echo rex_getUrl(); ?>');<?php } ?>
+	<?php if ($dataUpdated) { ?>jQuery('.rex-navi-content li:last-child a').attr('href', '<?php echo rexseo42::getFullUrl(); ?>');<?php } ?>
 
 	jQuery('#seo-form').submit(function() {
 		var pat = /^https?:\/\//i;
