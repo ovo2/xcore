@@ -13,8 +13,8 @@ class rexseo42 {
 	protected static $websiteName;
 	protected static $server;
 	protected static $serverProtocol;
-	protected static $serverSubdir;
-	protected static $isSubdirInstall;
+	protected static $serverSubDir;
+	protected static $isSubDirInstall;
 	protected static $urlStart;
 	protected static $modRewrite;
 	
@@ -40,13 +40,13 @@ class rexseo42 {
 
 		self::$serverProtocol = $urlParts['protocol'];
 		self::$server = $urlParts['site'];
-		self::$serverSubdir = trim($urlParts['resource'], '/'); 
+		self::$serverSubDir = trim($urlParts['resource'], '/'); 
 
 		// check for subdir install
-		if (self::$serverSubdir == '') {
-			self::$isSubdirInstall = false;
+		if (self::$serverSubDir == '') {
+			self::$isSubDirInstall = false;
 		} else {
-			self::$isSubdirInstall = true;
+			self::$isSubDirInstall = true;
 		}
 
 		// get url start 
@@ -54,7 +54,7 @@ class rexseo42 {
 			// full worpresslike urls
 			self::$urlStart = self::$serverUrl;
 		} else {
-			if (self::$isSubdirInstall) {
+			if (self::$isSubDirInstall) {
 				// url start for subdirs
 				self::$urlStart = $REX['ADDON']['rexseo42']['settings']['url_start_subdir'];
 			} else {
@@ -185,7 +185,7 @@ class rexseo42 {
 	public static function getHtml($indent = "\t") {
 		$out = '';
 
-		if (self::$isSubdirInstall && !self::$fullUrls) {
+		if (self::$isSubDirInstall && !self::$fullUrls) {
 			$out .= '<base href="' . self::getBaseUrl() . '" />' . PHP_EOL;
             $out .= $indent;
 		}
@@ -237,17 +237,17 @@ class rexseo42 {
 		return self::$serverProtocol;
 	}
 
-	public static function getServerSubdir() {
-		return self::$serverSubdir;
+	public static function getServerSubDir() {
+		return self::$serverSubDir;
 	}
 
-	public static function isSubdirInstall() {
-		return self::$isSubdirInstall;
+	public static function isSubDirInstall() {
+		return self::$isSubDirInstall;
 	}
 
-	public static function getServerWithSubdir() {
-		if (self::$isSubdirInstall) {
-			return self::$server . '/' . self::$serverSubdir;
+	public static function getServerWithSubDir() {
+		if (self::$isSubDirInstall) {
+			return self::$server . '/' . self::$serverSubDir;
 		} else {
 			return self::$server;
 		}
@@ -351,9 +351,9 @@ class rexseo42 {
 		$out .= self::getDebugInfoRow('rexseo42::getBaseUrl');
 		$out .= self::getDebugInfoRow('rexseo42::getServerUrl');
 		$out .= self::getDebugInfoRow('rexseo42::getServer');
-		$out .= self::getDebugInfoRow('rexseo42::getServerWithSubdir');
-		$out .= self::getDebugInfoRow('rexseo42::getServerSubdir');
-		$out .= self::getDebugInfoRow('rexseo42::isSubdirInstall');
+		$out .= self::getDebugInfoRow('rexseo42::getServerWithSubDir');
+		$out .= self::getDebugInfoRow('rexseo42::getServerSubDir');
+		$out .= self::getDebugInfoRow('rexseo42::isSubDirInstall');
 		$out .= self::getDebugInfoRow('rexseo42::getTitleDelimiter');
 		$out .= self::getDebugInfoRow('rexseo42::getUrlStart');
 		$out .= self::getDebugInfoRow('rexseo42::getMediaDir');

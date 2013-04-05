@@ -15,7 +15,7 @@ require_once($myroot.'/classes/class.rexseo_rewrite.inc.php');
 require($REX['INCLUDE_PATH'] . '/layout/top.php');
 
 // title
-rex_title($REX['ADDON']['name'][$myself] . ' <span class="version">' . $REX['ADDON']['version'][$myself] . '</span>', $REX['ADDON'][$myself]['SUBPAGES']);
+rex_title($REX['ADDON']['name'][$myself] . ' <span style="font-size:14px; color:silver;">' . $REX['ADDON']['version'][$myself] . '</span>', $REX['ADDON'][$myself]['SUBPAGES']);
 
 // subpages
 switch($subpage){
@@ -37,11 +37,6 @@ require $REX['INCLUDE_PATH'].$local_path.$subpage.'.inc.php';
 <style type="text/css">
 div.rex-addon-content p.rex-code {
     word-wrap: break-word;
-}
-
-#rex-title .version {
-	font-size:14px; 
-	color:silver;
 }
 
 #rex-page-rexseo42 a.extern {

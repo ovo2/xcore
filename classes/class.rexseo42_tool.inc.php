@@ -1,25 +1,25 @@
 <?php
 
 class rexseo42_tool {
-	var $title;
-	var $description;
-	var $link;
+	protected $title;
+	protected $description;
+	protected $link;
 
-	function __construct($title, $description, $link) {
+	public function __construct($title, $description, $link) {
 		$this->title = $title;
 		$this->description = $description;
 		$this->link = $link;
 	} 
 
-	function getTitle() {
+	public function getTitle() {
 		return $this->title;
 	} 
 
-	function getDescription() {
+	public function getDescription() {
 		return $this->description;
 	} 
 
-	function getLink() {
+	public function getLink() {
 		return $this->link;
 	} 
 }

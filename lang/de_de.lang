@@ -59,7 +59,7 @@ rexseo42_setup_www_redirect_patch_ok = Umleitung auf die WWW-Domain wurde einger
 rexseo42_setup_www_redirect_patch_failed = Umleitung auf die WWW-Domain konnte nicht aktiviert werden :(
 rexseo42_setup_step1_button = Datei kopieren
 rexseo42_setup_step2 = Schritt 2: Einstellungen vornehmen
-rexseo42_setup_step2_msg1 = Bitte die folgenden <a href="index.php?page=specials">System</a> Einstellungen vornehmen bzw. ergänzen:
+rexseo42_setup_step2_msg1 = Bitte die folgenden Einstellungen vornehmen bzw. ergänzen:
 rexseo42_setup_website_name = Name der Website
 rexseo42_setup_website_url = URL der Website
 rexseo42_setup_activate_mod_rewrite = Mod-Rewrite einschalten
@@ -98,8 +98,8 @@ rexseo42_help_link2 = RexSEO Extensions Points
 rexseo42_help_link3 = Aufbau der RexSEO Pathlist
 
 rexseo42_help_codeexamples = Codebeispiele
-rexseo42_help_codeexamples_title1 = SEO-Tags für den Head-Bereich eines Templates einbinden
-rexseo42_help_codeexamples_description1 = Neben dem Beispiel im Setup Schritt 3 kann man auch die ganzen Tags so einbinden:
+rexseo42_help_codeexamples_title1 = Alternative Einbindung der Html-Tags
+rexseo42_help_codeexamples_description1 = Neben dem Beispiel im Setup Schritt 3 kann man die ganzen Tags auch so einbinden:
 rexseo42_help_codeexamples_title2 = Einheitliche Urls
 rexseo42_help_codeexamples_description2 = Nutzen Sie diese Möglichkeiten um Ihre Urls zu vereinheitlichen und automatisch die richtigen URLs ausgeben zu lassen:
 rexseo42_help_codeexamples_ex2_comment1 = // --> /
@@ -121,8 +121,8 @@ rexseo42_help_faq = FAQ
 rexseo42_help_faq01a = Warum brauchts eigentlich noch ein weiteres RexSEO?
 rexseo42_help_faq01b = Ganz einfach: Weil RexSEO zwar sehr gefällt, aber so wie es ist in manchen Punkten (z.B. Setup) nicht den Vorstellungen vom RexDude entspricht und es ja außerdem völlig legitim ist einen Fork nach seinem eigenem Gusto zu machen.
 
-rexseo42_help_faq02a = {0} läuft nicht mehr rund. Es kommen z.B. Fehlermeldungen im HTML-Quellcode!?
-rexseo42_help_faq02b = Das AddOn <a href="index.php?page=addon&addonname=rexseo42&install=1">reinstallieren</a> und evtl. das Setup neu durchlaufen sollte das Problem beheben.
+rexseo42_help_faq02a = {0} läuft nicht mehr rund. Was tun?
+rexseo42_help_faq02b = <a href="index.php?page=specials&func=generate">Cache löschen</a>, AddOn <a href="index.php?page=addon&addonname=rexseo42&install=1">reinstallieren</a> und evtl. das <a href="index.php?page=rexseo42&subpage=setup">Setup</a> neu durchlaufen sind hier deine Freunde ;)
 
 rexseo42_help_faq03a = Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterordner installiert habe?
 rexseo42_help_faq03b = Geben Sie im {0} Setup den Unterordner mit an. Desweiteren sollten Sie Sie <code>rexseo::getHtml()</code>, <code>rex_getUrl()</code> sowie <code>rexseo42::getUrlStart()</code> (siehe Codebeispiel 2) nutzen. Anpassungen in der .htaccess sind keine mehr nötig!
@@ -145,8 +145,8 @@ rexseo42_help_faq06b = Dies wurde im nachfolgenden PDF von Google abgeguckt (sie
 rexseo42_help_faq07a = Wo bekomme ich eigentlich eine gute verständliche Einführung in das Thema "Suchmaschinenoptimierung"?
 rexseo42_help_faq07b = Zum Beispiel hier: <a href="http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf" target="_blank" class="extern">http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf</a>
 
-rexseo42_help_faq08a = Wie kann ich suchmaschinenfreundlichere URLs für Bilder aus dem Image Manager erhalten?
-rexseo42_help_faq08b = Siehe Codebeispiel Nr. 2 in der Hilfe.
+rexseo42_help_faq08a = Wie kann ich suchmaschinenfreundliche URLs für Bilder erhalten, die über den Image Manager generiert wurden?
+rexseo42_help_faq08b = Zum Beispiel über die Methode <code>rexseo42::getImageManagerUrl()</code>. Siehe dazu Codebeispiel Nr. 3 in der Hilfe.
 
 rexseo42_help_faq09a = Ich möchte nicht-www Anfragen auf die www Variante umleiten lassen. Soll doch SEO-technisch gut sein, oder?
 rexseo42_help_faq09b = Yup. In der .htaccess die entsprechenden Zeilen un-auskommentieren bzw. über Setup Schritt 1 automatisch machen lassen.
@@ -155,7 +155,7 @@ rexseo42_help_faq10a = Meine URLs haben sich geändert. Wie kann ich saubere Wei
 rexseo42_help_faq10b = In der .htaccess im Root-Ordner an oberster Stelle pro URL eine 301 Weiterleitung nach diesem Schema einrichten:<br /><code>Redirect 301 /alte-seite.html http://www.my-domain.de/neue-seite.html</code>
 
 rexseo42_help_faq11a = Habe gehört das es SEO-technisch gut wäre wenn Bilder ein Alt-Attribut zugewiesen bekommen?
-rexseo42_help_faq11b = Dafür kann man die Methode <code>rexseo42::getImageTag()</code> nutzen, die dann einen kompletten Image-Tag inkl. Alt-Attribut ausspuckt (siehe Codebeispiel 2). Und im Medienpool wird dieser dann im Titel-Feld gesetzt.
+rexseo42_help_faq11b = Dafür kann man die Methode <code>rexseo42::getImageTag()</code> nutzen, die dann einen kompletten Image-Tag inkl. Alt-Attribut ausspuckt (siehe Codebeispiel 3). Und im Medienpool wird dieser dann im Titel-Feld gesetzt.
 
 rexseo42_help_faq12a = Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?
 rexseo42_help_faq12b = Immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. <code>redaxo://13#anker</code>.

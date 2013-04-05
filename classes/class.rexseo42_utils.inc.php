@@ -1,7 +1,7 @@
 <?php
 
 class rexseo42_utils {
-	static function init($params) {
+	public static function init($params) {
 		global $REX;
 
 		// init globals
@@ -44,7 +44,7 @@ class rexseo42_utils {
 		rex_register_extension_point('REXSEO_INCLUDED');
 	}
 
-	static function afterDBImport($params) {
+	public static function afterDBImport($params) {
 		global $REX, $I18N;
 
 		$sqlStatement = 'SELECT seo_title, seo_description, seo_keywords, seo_custom_url, seo_canonical_url, seo_noindex, seo_ignore_prefix FROM ' . $REX['TABLE_PREFIX'] . 'article';
@@ -59,13 +59,13 @@ class rexseo42_utils {
 		}
 	}
 
-	static function showMsgAfterClangModified($params) {
+	public static function showMsgAfterClangModified($params) {
 		global $I18N, $REX;
 
 		echo rex_info($I18N->msg('rexseo42_check_lang_msg', $REX['ADDON']['name']['rexseo42']));
 	}
 
-	static function addSEOPageToPageContentMenu($params) {
+	public static function addSEOPageToPageContentMenu($params) {
 		global $I18N;
 			
 		$class = "";
@@ -80,7 +80,7 @@ class rexseo42_utils {
 		return $params['subject'];
 	}
 
-	static function addSEOPageToPageContentOutput($params) {
+	public static function addSEOPageToPageContentOutput($params) {
 		global $REX, $I18N;
 
 		if ($params['mode']  == 'seo') {
@@ -88,14 +88,14 @@ class rexseo42_utils {
 		}
 	}
 
-	static function modifyFrontendLinkInPageContentMenu($params) {
+	public static function modifyFrontendLinkInPageContentMenu($params) {
 		$lastElement = count($params['subject']) - 1;
 		$params['subject'][$lastElement] = preg_replace("/(?<=href=(\"|'))[^\"']+(?=(\"|'))/", '../', $params['subject'][$lastElement]);
 
 		return $params['subject'];
 	}
 
-	static function includeWebsiteSpecificConfigFile() {
+	public static function includeWebsiteSpecificConfigFile() {
 		global $REX;
 
 		$websiteSpecificConfigFile = self::getWebsiteSpecificConfigFile();
@@ -107,17 +107,17 @@ class rexseo42_utils {
 		}
 	}
 
-	static function getWebsiteSpecificConfigFile() {
+	public static function getWebsiteSpecificConfigFile() {
 		global $REX;
 
 		return $REX['GENERATED_PATH'] . '/files/rexseo_settings.php';
 	}
 
-	static function sanitizeString($string) {
+	public static function sanitizeString($string) {
 		return trim(preg_replace("/\s\s+/", " ", $string));
 	}
 
-	static function sanitizeUrl($url) {
+	public static function sanitizeUrl($url) {
 		return preg_replace('@^https?://|/.*|[^\w.-]@', '', $url);
 	}
 }

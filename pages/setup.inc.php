@@ -4,8 +4,6 @@ $subpage = rex_request('subpage', 'string');
 $chapter = rex_request('chapter', 'string');
 $func = rex_request('func', 'string');
 
-$myroot  = $REX['INCLUDE_PATH'] . '/addons/' . $page;
-
 $htaccessRoot = $REX['FRONTEND_PATH'] . '/.htaccess';
 $backupPathRoot = $REX['INCLUDE_PATH'] . '/addons/rexseo42/backup/';
 
@@ -169,7 +167,7 @@ $codeExample = '<head>
 </head>';
 
 
-$codeExampleSubdir = '<head>
+$codeExampleSubDir = '<head>
 	<base href="<?php echo rexseo42::getBaseUrl(); ?>" />
 	<title><?php echo rexseo42::getTitle(); ?></title>
 	<meta name="description" content="<?php echo rexseo42::getDescription(); ?>" />
@@ -184,7 +182,7 @@ $codeExampleSubdir = '<head>
 	<div class="rex-area-content">
 		<p class="info-msg"><?php echo $I18N->msg('rexseo42_setup_step3_msg1'); ?></p>
 		<div id="code-example"><?php rex_highlight_string($codeExample); ?></div>
-		<div id="code-example-subdir"><?php rex_highlight_string($codeExampleSubdir); ?></div>
+		<div id="code-example-subdir"><?php rex_highlight_string($codeExampleSubDir); ?></div>
 		<p class="info-msg no-bottom-margin"><?php echo $I18N->msg('rexseo42_setup_codeexamples'); ?></p>
 	</div>
 </div>
@@ -279,19 +277,19 @@ jQuery(document).ready( function() {
 
 function updateCodeExample() {
 	var pat = /^https?:\/\//i;
-	var hasSubdir = false;
+	var hasSubDir = false;
 	var url = jQuery('#server').val();
 	var slashPosAfterDomain = url.indexOf("/", 8); // https:// = 8
 	var hasFullUrls = <?php if ($REX['ADDON']['rexseo42']['settings']['full_urls']) { echo 'true'; } else { echo 'false'; } ?>;
 
 	if (pat.test(url) && slashPosAfterDomain !== -1) {
-		var subdir = url.substr(slashPosAfterDomain + 1);
-		if (subdir !== '') {
-			hasSubdir = true;
+		var subDir = url.substr(slashPosAfterDomain + 1);
+		if (subDir !== '') {
+			hasSubDir = true;
 		}
 	}
 
-	if (hasSubdir && !hasFullUrls) {
+	if (hasSubDir && !hasFullUrls) {
 		jQuery('#code-example').hide();
 		jQuery('#code-example-subdir').show();
 	} else {

@@ -39,7 +39,7 @@ class RexseoRewrite
       $notfound_id     = $REX['NOTFOUND_ARTICLE_ID'];
 
       $params_starter  = $REX['ADDON']['rexseo42']['settings']['params_starter'];
-      $install_subdir  = rexseo42::getServerSubdir(); // 42
+      $install_subdir  = rexseo42::getServerSubDir(); // 42
       $allow_articleid = $REX['ADDON']['rexseo42']['settings']['allow_articleid'];
       $homelang        = $REX['ADDON']['rexseo42']['settings']['homelang'];
 

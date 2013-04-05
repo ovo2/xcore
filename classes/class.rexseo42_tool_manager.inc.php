@@ -1,21 +1,21 @@
 <?php
 
 class rexseo42_tool_manager {
-	var $tools;
+	protected $tools;
 
-	function __construct() {
+	public function __construct() {
 		$this->tools = array();
 	}
 
-	function addTool($tool) {
+	public function addTool($tool) {
 		$this->tools[] = $tool;
 	}
 
-	function getTools() {
+	public function getTools() {
 		return $this->tools;
 	}
 
-	function printToolList($headline) {
+	public function printToolList($headline) {
 		echo '<table id="rexseo42-tools" class="rex-table">';
 		echo '<tr><th>' . $headline . '</th></tr>';
 
