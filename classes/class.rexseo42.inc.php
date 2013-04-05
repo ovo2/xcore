@@ -27,7 +27,7 @@ class rexseo42 {
 		self::$titleDelimiter = $REX['ADDON']['rexseo42']['settings']['title_delimiter'];
 		self::$robotsFollowFlag = $REX['ADDON']['rexseo42']['settings']['robots_follow_flag'];
 		self::$robotsArchiveFlag = $REX['ADDON']['rexseo42']['settings']['robots_archive_flag'];
-		self::$mediaDir = $REX['MEDIA_DIR'] . "2";
+		self::$mediaDir = $REX['MEDIA_DIR'];
 		self::$mediaAddonDir = $REX['MEDIA_ADDON_DIR'];
 		self::$seoFriendlyImageManagerUrls = $REX['ADDON']['rexseo42']['settings']['seo_friendly_image_manager_urls'];
 		self::$fullUrls = $REX['ADDON']['rexseo42']['settings']['full_urls'];
