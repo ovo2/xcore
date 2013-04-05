@@ -12,7 +12,7 @@ Features
 * Kommt ohne MetaInfos aus
 * Extra SEO-Page für jeden Artikel inkl. Titel-Vorschau
 * SEO Tools
-* und noch viel mehr...
+* und noch vieles mehr...
 
 Hinweise
 --------
@@ -20,6 +20,7 @@ Hinweise
 * Läuft nur mit REDAXO 4.5+
 * AddOn-Ordner lautet: `rexseo42`
 * RexSEO Plugins laufen mit REXSEO42 vorerst nicht.
+* Für REDAXO Unterordner-Installationen: Im Setup den Unterordner mit angeben, `RewriteBase /` in .htacces auskommentieren und Base-Tag nur nötig wenn `full_urls` Option auf false (standard).
 
 Changelog
 ---------
