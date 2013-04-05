@@ -125,7 +125,7 @@ rexseo42_help_faq02a = {0} läuft nicht mehr rund. Was tun?
 rexseo42_help_faq02b = <a href="index.php?page=specials&func=generate">Cache löschen</a>, AddOn <a href="index.php?page=addon&addonname=rexseo42&install=1">reinstallieren</a> und evtl. das <a href="index.php?page=rexseo42&subpage=setup">Setup</a> neu durchlaufen sind hier deine Freunde ;)
 
 rexseo42_help_faq03a = Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterordner installiert habe?
-rexseo42_help_faq03b = Geben Sie im {0} Setup den Unterordner mit an. Desweiteren sollten Sie Sie <code>rexseo::getHtml()</code>, <code>rex_getUrl()</code> sowie <code>rexseo42::getUrlStart()</code> (siehe Codebeispiel 2) nutzen. Anpassungen in der .htaccess sind keine mehr nötig!
+rexseo42_help_faq03b = Kommentieren Sie die Zeile <code>RewriteBase /</code> in der <code>.htaccess</code> Datei aus (# davor setzen) und geben Sie im {0} Setup den Unterordner mit an. Desweiteren sollten Sie die bereitgestellten Methoden zur URL-Erzeugung nutzen (Codebeispiel 2).
 
 rexseo42_help_faq18a = Wann genau brauche ich jetzt eigentlich nochmal den Base-Tag?
 rexseo42_help_faq18b = Der Base-Tag ist nur noch für Unterordner-Installationen nötig. Nutzt man allerdings die Option <code>full_urls</code> ist der Base-Tag auch für die Unterordner-Installationen überflüssig.
