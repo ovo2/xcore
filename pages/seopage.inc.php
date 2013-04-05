@@ -9,8 +9,8 @@ $hideExtendedSection = '';
 $disableCustomUrl = '';
 $hideCanonicalUrl = '';
 
-// react on editContentOnly[] and rexseo42[seopage_extended] but only for non admins
-if (is_object($REX['USER']) && !$REX['USER']->isAdmin() && ($REX['USER']->hasPerm('editContentOnly[]') || !$REX['USER']->hasPerm('rexseo42[seopage_extended]'))) {
+// react on editContentOnly[] and rexseo42[seo_extended] but only for non admins
+if (is_object($REX['USER']) && !$REX['USER']->isAdmin() && ($REX['USER']->hasPerm('editContentOnly[]') || !$REX['USER']->hasPerm('rexseo42[seo_extended]'))) {
 	// hide extended section
 	$hideExtendedSection = 'style="display: none;"';
 }

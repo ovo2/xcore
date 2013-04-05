@@ -15,7 +15,7 @@ REXSEO42 - Changelog
 * Verzeichnis-Auflistung z.B. für files und `files/addon`s wird per .htaccess Datei unterbunden
 * Neues Feature: One Page Mode, für Websites die nur über eine einzige Seite verfügen 
 * Neues Feature: SEO Tools - eine Linksammlung zu wichtigen SEO-Tools im Netz
-* Neue Permission: `rexseo42[seopage]` und `rexseo42[seopage_extended]` um für Nicht-Admins die Sichtbarkeit der SEO-Page zu steuern
+* Neue Permission: `rexseo42[seo_default]` und `rexseo42[seo_extended]` um für Nicht-Admins die Sichtbarkeit der SEO-Page zu steuern
 * editContentOnly[] wird nun berücksichtigt
 * Neues Feature: Checkbox zum setzen der WWW-Umleitung im Setup
 * `REX['MEDIA_DIR']` wird genutzt
