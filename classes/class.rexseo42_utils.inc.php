@@ -95,24 +95,6 @@ class rexseo42_utils {
 		return $params['subject'];
 	}
 
-	public static function includeWebsiteSpecificConfigFile() {
-		global $REX;
-
-		$websiteSpecificConfigFile = self::getWebsiteSpecificConfigFile();
-
-		if (file_exists($websiteSpecificConfigFile)) {
-			include_once($websiteSpecificConfigFile);
-		} else {
-			$REX['ADDON']['rexseo42']['settings']['robots'] = '';
-		}
-	}
-
-	public static function getWebsiteSpecificConfigFile() {
-		global $REX;
-
-		return $REX['GENERATED_PATH'] . '/files/rexseo_settings.php';
-	}
-
 	public static function sanitizeString($string) {
 		return trim(preg_replace("/\s\s+/", " ", $string));
 	}

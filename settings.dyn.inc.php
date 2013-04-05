@@ -8,5 +8,6 @@ $REX['ADDON']['rexseo42']['settings']['url_ending'] = '.html';
 $REX['ADDON']['rexseo42']['settings']['hide_langslug'] = 0;
 $REX['ADDON']['rexseo42']['settings']['homeurl'] = 1;
 $REX['ADDON']['rexseo42']['settings']['homelang'] = 0;
+$REX['ADDON']['rexseo42']['settings']['robots'] = '';
 // --- /DYN
 

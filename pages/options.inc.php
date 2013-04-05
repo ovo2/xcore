@@ -1,14 +1,10 @@
 <?php
-$myself  = rex_request('page', 'string');
+$myself = rex_request('page', 'string');
 $subpage = rex_request('subpage', 'string');
-$func    = rex_request('func', 'string');
+$func = rex_request('func', 'string');
 
-// config files
+// config file
 $config_file = $REX['INCLUDE_PATH'] . '/addons/rexseo42/settings.dyn.inc.php';
-$config_file_website_specific = rexseo42_utils::getWebsiteSpecificConfigFile();
-
-// includes
-rexseo42_utils::includeWebsiteSpecificConfigFile();
 
 // save settings
 if ($func == 'update') {
@@ -32,32 +28,12 @@ if ($func == 'update') {
 		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'hide_langslug\'] = ' . $_hide_langslug . ';
 		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'homeurl\'] = ' . $_homeurl . ';
 		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'homelang\'] = ' . $_homelang . ';
-	';
-
-	$content_website_specific = '
 		$REX[\'ADDON\'][\'rexseo42\'][\'settings\'][\'robots\'] = \'' . $_robots . '\';
 	';
 
-	// 1) write independent config file
+	// write independent config file
 	if (rex_replace_dynamic_contents($config_file, str_replace("\t", "", $content)) !== false) {
-		// 2) now write website specific config file
-		if (!file_exists($config_file_website_specific)) {
-			// create file first
-			$fileHandle = fopen($config_file_website_specific, 'w');
-
-			fwrite($fileHandle, "<?php\r\n");
-			fwrite($fileHandle, "// --- DYN\r\n");
-			fwrite($fileHandle, "// --- /DYN\r\n");
-
-			fclose($fileHandle);
-		}
-
-		// write
-		if (rex_replace_dynamic_contents($config_file_website_specific, str_replace("\t", "", $content_website_specific)) !== false) {
-			echo rex_info($I18N->msg('rexseo42_config_ok'));
-		} else {
-			echo rex_warning($I18N->msg('rexseo42_config_error'));
-		}
+		echo rex_info($I18N->msg('rexseo42_config_ok'));
 	} else {
 		echo rex_warning($I18N->msg('rexseo42_config_error'));
 	}
@@ -67,10 +43,6 @@ if ($func == 'update') {
 
 if (!is_writable($config_file)) {
 	echo rex_warning($I18N->msg('rexseo42_config_file_no_perms'), $config_file);
-}
-
-if (file_exists($config_file_website_specific) && !is_writable($config_file_website_specific)) {
-	echo rex_warning($I18N->msg('rexseo42_config_file_no_perms'), $config_file_website_specific);
 }
 
 // url schema select box
