@@ -1,7 +1,7 @@
 REXSEO42 - Changelog
 ====================
 
-### Version 1.0.42 RC - 26. März 2013
+### Version 1.0.42 RC - 05. April 2013
 
 * Änderungen am Datenbank-Schema: `seo_canonical_url` hinzugefügt, `seo_url` in `seo_custom_url` umbenannt
 * Neues Feature: Die Canonical Url kann nun auch per Artikel gesetzt werden. Allerdings muss dies explizit in der `settings.advanced.inc.php` aktiviert werden.
