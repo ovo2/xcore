@@ -49,24 +49,24 @@ $codeExample6 = '<?php
 // ' . $I18N->msg('rexseo42_help_codeexamples_ex6_comment1') . '
 class rexseo42_ex extends rexseo42
 	public static function getTitle() {
-		if (self::$curArticle->getValue("seo_title") == "") {
+		if (self::getArticleValue("seo_title") == "") {
 			// use article name as title
 			$titlePart = self::getArticleName();
 		} else {
 			// use title that user defined
-			$titlePart = self::$curArticle->getValue("seo_title");
+			$titlePart = self::getArticleValue("seo_title");
 		}
-	
-		if (self::$curArticle->getValue("seo_ignore_prefix") == "1") {
+		
+		if (self::getArticleValue("seo_ignore_prefix") == "1") {
 			// no prefix, just the title
 			$fullTitle = $titlePart;
 		} else { 
 			if (self::isStartArticle()) {
 				// the start article shows the website name first
-				$fullTitle = self::getWebsiteName() . self::$titleDelimiter . $titlePart;
+				$fullTitle = self::getWebsiteName() . self::getTitleDelimiter() . $titlePart;
 			} else {
 				// all other articles will show title first
-				$fullTitle = $titlePart . self::$titleDelimiter . self::getWebsiteName();
+				$fullTitle = $titlePart . self::getTitleDelimiter() . self::getWebsiteName();
 			}
 		 }
 
