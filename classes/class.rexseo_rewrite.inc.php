@@ -468,7 +468,13 @@ function rexseo_generate_pathlist($params)
     $db->setQuery('UPDATE '. $REX['TABLE_PREFIX'] .'article SET revision = 0 WHERE revision IS NULL;');
     $db->setQuery('UPDATE '. $REX['TABLE_PREFIX'] .'article_slice SET revision = 0 WHERE revision IS NULL;');
 
-	$db->setQuery('SELECT `id`, `clang`, `path`, `startpage`,`seo_custom_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE '. $where.' AND revision=0 OR revision IS NULL');
+	if ($REX['ADDON']['rexseo42']['settings']['ignore_root_cats']) {
+		$sqlQuery = 'SELECT `id`, `clang`, `path`, `startpage`,`seo_custom_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE '. $where.' AND re_id != 0 AND revision=0 OR revision IS NULL';
+	} else {
+		$sqlQuery = 'SELECT `id`, `clang`, `path`, `startpage`,`seo_custom_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE '. $where.' AND revision=0 OR revision IS NULL';
+	}
+
+	$db->setQuery($sqlQuery);
 
     // HARDCODED PATH: REDIRECT INDEX.PHP TO START-ARTICLE
     $REXSEO_URLS['index.php']  = array('id'  => $REX['START_ARTICLE_ID'], 'clang' => $REX['ADDON']['rexseo42']['settings']['homelang'], 'status' => 301);

@@ -16,9 +16,12 @@ class rexseo_sitemap
 
     $db_articles = array();
     $db = new rex_sql;
-    $qry = 'SELECT `id`,`clang`,`updatedate`,`path`,`seo_noindex`
-            FROM `'.$REX['TABLE_PREFIX'].'article`
-            WHERE `status`=1;';
+    $qry = 'SELECT `id`, `clang`, `updatedate`, `path`, `seo_noindex` FROM `' . $REX['TABLE_PREFIX'] . 'article` WHERE `status` = 1';
+
+	if ($REX['ADDON']['rexseo42']['settings']['ignore_root_cats']) {
+		$qry .= ' AND `re_id` != 0';
+	}
+
     foreach($db->getDbArray($qry) as $art)
     {
       $db_articles[$art['id']][$art['clang']] = array('loc'        => rexseo42::getFullUrl($art['id'],$art['clang']),
