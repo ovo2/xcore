@@ -1,7 +1,7 @@
 REXSEO42 AddOn für REDAXO 4.5+
 ==============================
 
-Ein Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzeroberfläche und noch ein paar weiteren SEO-Goodies...
+Ein intergalaktischer Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzerführung und noch weiterer SEO-Goodies...
 
 Features
 --------
@@ -12,7 +12,8 @@ Features
 * Kommt ohne MetaInfos aus
 * Extra SEO-Page für jeden Artikel inkl. Titel-Vorschau
 * SEO Tools
-* und noch vieles mehr...
+* Enhält die Antwort auf die eine Frage
+* Und noch vieles mehr...
 
 Hinweise
 --------

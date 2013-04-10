@@ -1,0 +1,24 @@
+div#rex-title h1 {
+	background: transparent url("logo.png") no-repeat left 0px;
+	padding-left: 56px;
+	padding-top: 8px;
+	margin-top: -3px;
+}
+
+div.rex-addon-content p.rex-code {
+    word-wrap: break-word;
+}
+
+#rex-page-rexseo42 a.extern {
+	background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAA8CAYAAACq76C9AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFFSURBVHjaYtTpO/CfAQcACCAmBjwAIIAY//9HaNTtP4hiCkAAMeGSAAGAAGJCl7hcaM8IYwMEEBMuCRAACCAmXBIgABBAKA5CBwABhNcrAAGEVxIggPBKAgQQXkmAAMIrCRBAeCUBAgivJEAA4ZUECCC8kgABhFcSIIDwSgIEEF5JgADCKwkQQHglAQIIryRAAOGVBAggvJIAAYRXEiCA8EoCBBBeSYAAwisJEEB4JQECiAVbNoABgADCqxMggPDmMoAAwpvLAAIIby4DCCC8uQwggPDmMoAAwpvLAAIIr1cAAgivJEAA4ZUECCC8kgABhFcSIIDwSgIEEF5JgADCKwkQQHglAQIIryRAAOGVBAggvJIAAYRXEiCA8EoCBBBeSYAAwisJEEB4JQECCK8kQADhlQQIILySAAGEVxIggPBKAgQYAARTLlfrU5G2AAAAAElFTkSuQmCC) no-repeat right 3px;
+	padding-right: 10px;
+}
+
+div.tool-icon {
+	background: transparent url("tool.png") no-repeat left top;
+	width: 45px;
+	height: 50px;
+	float: left;
+	margin-left: 6px;
+	margin-right: 10px;
+} 

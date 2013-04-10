@@ -20,7 +20,7 @@ class rexseo42_tool_manager {
 		echo '<tr><th>' . $headline . '</th></tr>';
 
 		foreach ($this->tools as $tool) {
-			echo '<tr><td>';
+			echo '<tr><td><a href="' . $tool->getLink() . '"><div class="tool-icon"></div></a>';
 			echo '<a class="extern" href="' . $tool->getLink() . '" target="_blank">' .  $tool->getTitle() . '</a>' . '<p>' . $tool->getDescription() . '</p>';
 			echo '<p class="url">' . $tool->getLink() . '</p>';
 			echo '</td></tr>';

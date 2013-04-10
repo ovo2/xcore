@@ -30,6 +30,10 @@ table.rex-table th {
 	font-size: 1.2em;
 }
 
+table.rex-table td {
+	padding: 11px 5px;
+}
+
 table.rex-table td p {
 	margin-top: 6px;
 	color: #32353A;

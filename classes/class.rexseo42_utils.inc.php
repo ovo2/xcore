@@ -1,6 +1,16 @@
 <?php
 
 class rexseo42_utils {
+	public static function appendToPageHeader($params) {
+		global $REX;
+
+		$insert = '<!-- BEGIN rexseo42 -->' . PHP_EOL;
+		$insert .= '<link rel="stylesheet" type="text/css" href="../' . $REX['MEDIA_ADDON_DIR'] . '/rexseo42/rexseo42.css" />' . PHP_EOL;
+		$insert .= '<!-- END rexseo42 -->';
+	
+		return $params['subject'] . PHP_EOL . $insert;
+	}
+
 	public static function init($params) {
 		global $REX;
 

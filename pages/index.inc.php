@@ -1,6 +1,6 @@
 <?php
 $myself = rex_request('page', 'string');
-$subpage = rex_request('subpage', 'string')!='' ? rex_request('subpage', 'string'): 'options';
+$subpage = rex_request('subpage', 'string')!='' ? rex_request('subpage', 'string'): 'welcome';
 $chapter = rex_request('chapter', 'string');
 $func = rex_request('func', 'string');
 $section_id = rex_request('section_id', 'string');
@@ -20,32 +20,20 @@ rex_title($REX['ADDON']['name'][$myself] . ' <span style="font-size:14px; color:
 // subpages
 switch($subpage){
 	case'':
-		$subpage = 'options';
+		$subpage = 'welcome';
+	case'welcome':
 	case'options':
 	case'tools':
 	case'setup':
 	case'help':
-		$local_path = '/addons/'.$myself.'/pages/';
+		$local_path = '/addons/' . $myself . '/pages/';
 		break;
 	default:
-		$local_path = '/addons/'.$myself.'/plugins/'.$subpage.'/';
+		$local_path = '/addons/' . $myself . '/plugins/' . $subpage . '/';
 }
 
-require $REX['INCLUDE_PATH'].$local_path.$subpage.'.inc.php';
-?>
+require $REX['INCLUDE_PATH'] . $local_path . $subpage . '.inc.php';
 
-<style type="text/css">
-div.rex-addon-content p.rex-code {
-    word-wrap: break-word;
-}
-
-#rex-page-rexseo42 a.extern {
-	background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAA8CAYAAACq76C9AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFFSURBVHjaYtTpO/CfAQcACCAmBjwAIIAY//9HaNTtP4hiCkAAMeGSAAGAAGJCl7hcaM8IYwMEEBMuCRAACCAmXBIgABBAKA5CBwABhNcrAAGEVxIggPBKAgQQXkmAAMIrCRBAeCUBAgivJEAA4ZUECCC8kgABhFcSIIDwSgIEEF5JgADCKwkQQHglAQIIryRAAOGVBAggvJIAAYRXEiCA8EoCBBBeSYAAwisJEEB4JQECiAVbNoABgADCqxMggPDmMoAAwpvLAAIIby4DCCC8uQwggPDmMoAAwpvLAAIIr1cAAgivJEAA4ZUECCC8kgABhFcSIIDwSgIEEF5JgADCKwkQQHglAQIIryRAAOGVBAggvJIAAYRXEiCA8EoCBBBeSYAAwisJEEB4JQECCK8kQADhlQQIILySAAGEVxIggPBKAgQYAARTLlfrU5G2AAAAAElFTkSuQmCC) no-repeat right 3px;
-	padding-right: 10px;
-}
-</style>
-
-<?php
 // layout bottom
 require $REX['INCLUDE_PATH'] . '/layout/bottom.php';
 

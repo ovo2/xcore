@@ -31,11 +31,17 @@ if ($REX['REDAXO']) {
 
 	// subpages
 	$REX['ADDON']['rexseo42']['SUBPAGES'] = array(
-		array('', $I18N->msg('rexseo42_settings')),
+		array('', $I18N->msg('rexseo42_welcome')),
+		array('options', $I18N->msg('rexseo42_settings')),
 		array('tools', $I18N->msg('rexseo42_tools')),
 		array('setup', $I18N->msg('rexseo42_setup')),
 		array('help', $I18N->msg('rexseo42_help'))
 	);
+
+	// add css/js files to page header
+	if (rex_request('page') == 'rexseo42') {
+		rex_register_extension('PAGE_HEADER', 'rexseo42_utils::appendToPageHeader');
+	}
 
 	// check for user permissions (admins will have all)
 	if (isset($REX['USER']) && ($REX['USER']->isAdmin() || $REX['USER']->hasPerm('rexseo42[seo_default]') || $REX['USER']->hasPerm('rexseo42[seo_extended]') || $REX['USER']->hasPerm('editContentOnly[]'))) {
