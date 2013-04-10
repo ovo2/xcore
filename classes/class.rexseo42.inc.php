@@ -109,7 +109,15 @@ class rexseo42 {
 	}
 
 	public static function getRobotRules() {
-		if (self::$curArticle->getValue('seo_noindex') == '1') { 
+		$startArticle = OOArticle::getArticleById(self::$startArticleID);
+
+		if (OOArticle::isValid($startArticle) && $startArticle->getValue('seo_noindex') == '1') {
+			$noIndexSite = true;
+		} else {
+			$noIndexSite = false;
+		}
+	
+		if (self::$curArticle->getValue('seo_noindex') == '1' || $noIndexSite) { 
 			$robots = "noindex";
 		} else {
 			$robots = "index";
