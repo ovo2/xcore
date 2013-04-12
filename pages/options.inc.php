@@ -137,7 +137,7 @@ echo '
 
   <form action="index.php" method="post">
     <input type="hidden" name="page" value="rexseo42" />
-    <input type="hidden" name="subpage" value="options" />
+    <input type="hidden" name="subpage" value="' . $subpage . '" />
     <input type="hidden" name="func" value="update" />
 ';
 
