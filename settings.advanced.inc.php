@@ -9,7 +9,7 @@ $REX['ADDON']['rexseo42']['settings']['url_start'] = '/';
 // url start piece for redaxo subdir installations | can be "./" (recommended, base tag needed!)
 $REX['ADDON']['rexseo42']['settings']['url_start_subdir'] = './';
 
-// if true user can change canonical url via seo page. please use this only if you exactly know what you are doing or know that your redaxo users and admins know what they are doing ;)
+// if true user can change canonical url via seo page. please use this only if you exactly know what you are doing or know that your redaxo users and admins exactly know what they are doing ;)
 $REX['ADDON']['rexseo42']['settings']['userdef_canonical_url'] = false;
 
 // if true rexseo42::getImageManagerUrl() and rexseo42::getImageTag() will produce seo friendly urls

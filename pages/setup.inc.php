@@ -109,7 +109,7 @@ if ($func == "do_copy") {
 		<p><?php echo $I18N->msg('rexseo42_setup_step1_msg1'); ?></p>
 		<form action="index.php" method="post">
 			<p class="no-bottom-margin" id="codeline">
-				<code>/redaxo/include/addons/rexseo42/install/_htaccess</code> <?php echo $I18N->msg('rexseo42_setup_to'); ?> <code>/.htaccess</code>
+				<code>/rexseo42/install/_htaccess</code> &nbsp;<?php echo $I18N->msg('rexseo42_setup_to'); ?>&nbsp; <code>/.htaccess</code>
 			</p>
 
 			<p class="rex-form-checkbox rex-form-label-right"> 
