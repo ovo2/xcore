@@ -144,7 +144,7 @@ if ($func == "do_copy") {
 			<?php if (rexseo42::getServerSubDir() != '') { ?>
 			<p class="rex-form-checkbox rex-form-label-right"> 
 				<input type="checkbox" value="1" id="modify_rewritebase" name="modify_rewritebase" checked="checked" />
-				<label for="modify_rewritebase"><?php echo $I18N->msg('rexseo42_setup_rewritebase'); ?></label>
+				<label for="modify_rewritebase"><?php echo $I18N->msg('rexseo42_setup_rewritebase', rexseo42::getServerSubDir()); ?></label>
 			</p>
 			<?php } ?>
 
@@ -237,6 +237,8 @@ $codeExample = '<head>
 </style>
 
 <script type="text/javascript">
+var rewriteBaseMsgShown = false;
+
 jQuery(document).ready( function() {
 	jQuery('#settings-form').submit(function() {
 		var pat = /^https?:\/\//i;
@@ -261,8 +263,9 @@ jQuery(document).ready( function() {
 	<?php } ?>
 
 	jQuery('#modify_rewritebase').click(function(e) {
-		if (!jQuery('#modify_rewritebase').is(':checked')) {
-			alert("Bitte nehmen Sie folgende Anpassung in der .htaccess Datei vor:\r\n\r\nRewriteBase /<?php echo rexseo42::getServerSubDir(); ?>");
+		if (!jQuery('#modify_rewritebase').is(':checked') && !rewriteBaseMsgShown) {
+			rewriteBaseMsgShown = true;
+			alert("<?php echo $I18N->msg('rexseo42_setup_rewritebase_alert'); ?>\r\n\r\nRewriteBase /<?php echo rexseo42::getServerSubDir(); ?>");
 		}
 	});
 });

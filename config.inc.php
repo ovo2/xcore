@@ -3,7 +3,7 @@
 // register addon
 $REX['ADDON']['rxid']['rexseo42'] = '0';
 $REX['ADDON']['name']['rexseo42'] = 'REXSEO42';
-$REX['ADDON']['version']['rexseo42'] = '1.1.42 RC';
+$REX['ADDON']['version']['rexseo42'] = '1.1.42 BETA';
 $REX['ADDON']['author']['rexseo42'] = 'Markus Staab, Wolfgang Huttegger, Dave Holloway, Jan Kristinus, jdlx, RexDude';
 $REX['ADDON']['supportpage']['rexseo42'] = 'forum.redaxo.de';
 $REX['ADDON']['perm']['rexseo42'] = 'rexseo42[]';
@@ -34,8 +34,8 @@ if ($REX['REDAXO']) {
 	// subpages
 	$REX['ADDON']['rexseo42']['SUBPAGES'] = array(
 		array('', $I18N->msg('rexseo42_welcome')),
-		array('options', $I18N->msg('rexseo42_settings')),
 		array('tools', $I18N->msg('rexseo42_tools')),
+		array('options', $I18N->msg('rexseo42_settings')),
 		array('setup', $I18N->msg('rexseo42_setup')),
 		array('help', $I18N->msg('rexseo42_help'))
 	);
