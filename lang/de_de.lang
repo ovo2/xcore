@@ -69,6 +69,8 @@ rexseo42_setup_step3_msg1 = Zuletzt ergänzen Sie den Head-Bereich Ihres Templat
 rexseo42_setup_url_alert = URL dieser Website muss mit "http://" beginnen und mit "/" enden.
 rexseo42_setup_htaccess_alert = Im Hauptverzeichnis von REDAXO existiert bereits eine .htaccess Datei.\r\nWollen Sie diese überschreiben?\r\n\r\nHinweis: Ein Backup der Datei wird in /rexseo42/backup/ gespeichert.
 rexseo42_setup_codeexamples = Bitte nutzen Sie außerdem die bereitgestellten Methoden aus den <a href="index.php?page=rexseo42&subpage=help&chapter=codeexamples">Codebeispielen</a>...
+rexseo42_setup_rewritebase = RewriteBase wegen Unterordner automatisch anpassen
+rexseo42_setup_subdir_hint = (Bitte Unterordner mit angeben)
 
 rexseo42_seopage_updated = SEO-Daten wurden aktualisiert.
 rexseo42_seopage_main_section = Allgemein

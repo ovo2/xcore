@@ -113,6 +113,7 @@ class rexseo42_utils {
 		return preg_replace('@^https?://|/.*|[^\w.-]@', '', $url);
 	}
 
+	// untested
 	public static function getServerUrl() {
 		$url = $_SERVER['REQUEST_URI'];
 		$parts = explode('/',$url);

@@ -119,7 +119,7 @@ if ($func == "do_copy") {
 			<p class="rex-form-col-a">
 				<label for="server"><?php echo $I18N->msg('rexseo42_setup_website_url'); ?></label>
 				<input name="server" id="server" type="text" class="rex-form-text" value="<?php echo htmlspecialchars($REX['SERVER']); ?>" />
-				<?php if (rexseo42_utils::detectSubDir()) { echo '<span style="margin-left: 165px;display:block;">(Bitte Unterordner mit angeben)</span>'; } ?>
+				<?php if (rexseo42_utils::detectSubDir()) { echo '<span class="subdir-hint">' . $I18N->msg('rexseo42_setup_subdir_hint') . '</span>'; } ?>
 			</p>
 
 			<input type="hidden" name="page" value="rexseo42" />
@@ -144,7 +144,7 @@ if ($func == "do_copy") {
 			<?php if (rexseo42::getServerSubDir() != '') { ?>
 			<p class="rex-form-checkbox rex-form-label-right"> 
 				<input type="checkbox" value="1" id="modify_rewritebase" name="modify_rewritebase" checked="checked" />
-				<label for="modify_rewritebase">RewriteBase wegen Unterordner automatisch anpassen</label>
+				<label for="modify_rewritebase"><?php echo $I18N->msg('rexseo42_setup_rewritebase'); ?></label>
 			</p>
 			<?php } ?>
 
@@ -183,6 +183,11 @@ $codeExample = '<head>
 </div>
 
 <style type="text/css">
+#rex-page-rexseo42 span.subdir-hint {
+	margin-left: 165px;
+	display: block;
+}
+
 #rex-page-rexseo42 .rex-code {
     word-wrap: break-word;
 }
