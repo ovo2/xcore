@@ -52,25 +52,23 @@ rexseo42_setup_backup_successful = Ein Backup wurde zuvor angelegt.
 rexseo42_setup_backup_failed = Backup der .htaccess Datei fehlgeschlagen. Bitte kopieren Sie die Datei manuell.
 rexseo42_setup_settings_saved = Einstellungen wurden übernommen.
 rexseo42_setup_settings_save_failed = Speichern der Einstellungen fehlgeschlagen. Bitte nehmen Sie die Einstellungen manuell auf der System-Seite vor.
-rexseo42_setup_step1 = Schritt 1: Dateien kopieren
-rexseo42_setup_step1_msg1 = Folgende Datei muss in das Hauptverzeichnis von REDAXO kopiert und korrekt umbenannt werden:
-rexseo42_setup_to = nach
-rexseo42_setup_www_redirect_checkbox = Umleitung auf die WWW-Domain aktivieren
-rexseo42_setup_www_redirect_patch_ok = Umleitung auf die WWW-Domain wurde eingerichtet.
-rexseo42_setup_www_redirect_patch_failed = Umleitung auf die WWW-Domain konnte nicht aktiviert werden :(
-rexseo42_setup_step1_button = Datei kopieren
-rexseo42_setup_step2 = Schritt 2: Einstellungen vornehmen
-rexseo42_setup_step2_msg1 = Bitte die folgenden Einstellungen vornehmen bzw. ergänzen:
+rexseo42_setup_step1 = Schritt 1: Einstellungen vornehmen
+rexseo42_setup_step1_msg1 = Bitte die folgenden Einstellungen vornehmen bzw. ergänzen:
 rexseo42_setup_website_name = Name der Website
 rexseo42_setup_website_url = URL der Website
-rexseo42_setup_activate_mod_rewrite = Mod-Rewrite einschalten
-rexseo42_setup_step2_button = Einstellungen übernehmen
+rexseo42_setup_step1_button = Einstellungen übernehmen
+rexseo42_setup_step2 = Schritt 2: Dateien kopieren
+rexseo42_setup_step2_msg1 = Folgende Datei muss in das Hauptverzeichnis von REDAXO kopiert und korrekt umbenannt werden:
+rexseo42_setup_to = nach
+rexseo42_setup_www_redirect_checkbox = Umleitung auf die WWW-Domain aktivieren
+rexseo42_setup_htaccess_patch_ok = .htaccess Anpassungen wurden vorgenommen.
+rexseo42_setup_htaccess_patch_failed = Die Anpassungen an der .htaccess Datei konnten nicht vorgenommen werden.
+rexseo42_setup_step2_button = Datei kopieren
 rexseo42_setup_step3 = Schritt 3: Template ergänzen
 rexseo42_setup_step3_msg1 = Zuletzt ergänzen Sie den Head-Bereich Ihres Templates wie folgt:
 rexseo42_setup_url_alert = URL dieser Website muss mit "http://" beginnen und mit "/" enden.
-rexseo42_setup_mod_rewrite_alert = Die Mod-Rewrite Funktion von REDAXO muss aktiviert werden, damit {0} funktionieren kann!
 rexseo42_setup_htaccess_alert = Im Hauptverzeichnis von REDAXO existiert bereits eine .htaccess Datei.\r\nWollen Sie diese überschreiben?\r\n\r\nHinweis: Ein Backup der Datei wird in /rexseo42/backup/ gespeichert.
-rexseo42_setup_codeexamples = Hier gibt es weitere <a href="index.php?page=rexseo42&subpage=help&chapter=codeexamples">Codebeispiele</a> für ein perfektes SEO... :)
+rexseo42_setup_codeexamples = Bitte nutzen Sie außerdem die bereitgestellten Methoden aus den <a href="index.php?page=rexseo42&subpage=help&chapter=codeexamples">Codebeispielen</a>...
 
 rexseo42_seopage_updated = SEO-Daten wurden aktualisiert.
 rexseo42_seopage_main_section = Allgemein
@@ -103,8 +101,6 @@ rexseo42_help_codeexamples_title1 = Alternative Einbindung der Html-Tags
 rexseo42_help_codeexamples_description1 = Neben dem Beispiel im Setup Schritt 3 kann man die ganzen Tags auch so einbinden:
 rexseo42_help_codeexamples_title2 = Einheitliche Urls
 rexseo42_help_codeexamples_description2 = Nutzen Sie diese Möglichkeiten um Ihre Urls zu vereinheitlichen und automatisch die richtigen URLs ausgeben zu lassen:
-rexseo42_help_codeexamples_ex2_comment1 = // --> /
-rexseo42_help_codeexamples_ex2_comment2 = // hinweis: je nachdem ob redaxo in einem unterordner installiert wurde oder wenn die full_urls option aktiviert ist, werden diese methoden darauf reagieren und unterschiedliche werte zurückgeben.
 rexseo42_help_codeexamples_title3 = Suchmaschinenfreundliche Image Manager Urls
 rexseo42_help_codeexamples_description3 = Über diese Methoden lassen sich suchmaschinenfreundliche Urls sowie ganze Image Tags erzeugen: 
 rexseo42_help_codeexamples_title4 = Lang Code ausgeben
@@ -126,10 +122,10 @@ rexseo42_help_faq02a = {0} läuft nicht mehr rund. Was tun?
 rexseo42_help_faq02b = <a href="index.php?page=specials&func=generate">Cache löschen</a>, AddOn <a href="index.php?page=addon&addonname=rexseo42&install=1">reinstallieren</a> und evtl. das <a href="index.php?page=rexseo42&subpage=setup">Setup</a> neu durchlaufen sind hier deine Freunde ;)
 
 rexseo42_help_faq03a = Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterordner installiert habe?
-rexseo42_help_faq03b = Kommentieren Sie die Zeile <code>RewriteBase /</code> in der <code>.htaccess</code> Datei aus (# davor setzen) und geben Sie im {0} Setup den Unterordner mit an. Desweiteren sollten Sie die bereitgestellten Methoden zur URL-Erzeugung nutzen (Codebeispiel 2).
+rexseo42_help_faq03b = Geben Sie im {0} Setup und in der .htaccess den Unterordner mit an: <code>RewriteBase /unterordner</code> Nutzen Sie unbedingt die bereitgestellten Methoden zur URL-Erzeugung wie im Codebeispiel 2 beschrieben.
 
 rexseo42_help_faq18a = Wann genau brauche ich jetzt eigentlich nochmal den Base-Tag?
-rexseo42_help_faq18b = Der Base-Tag ist nur noch für Unterordner-Installationen nötig. Nutzt man allerdings die Option <code>full_urls</code> ist der Base-Tag auch für die Unterordner-Installationen überflüssig.
+rexseo42_help_faq18b = Prinzipiell gar nicht mehr, ausser Sie schalten die Option <code>subdir_force_full_urls</code> aus ;)
 
 rexseo42_help_faq04a = Ich mag das Pipe-Zeichen nicht im Titel. Wie kann ich das umstellen?
 rexseo42_help_faq04b = Der zuständige Parameter heißt <code>title_delimiter</code> und ist in der <code>settings.advanced.inc.php</code> einstellbar.

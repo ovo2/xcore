@@ -6,28 +6,17 @@ $codeExample1 = '<head>
 </head>';
 
 $codeExample2 = '<?php
-echo rexseo42::getUrlStart(); 
-' . $I18N->msg('rexseo42_help_codeexamples_ex2_comment1') . '
-
 echo rex_getUrl(42);
-// --> /questions/the-ultimate-answer.html
+// --> ' . rexseo42::getUrlStart() . 'questions/the-ultimate-answer.html
 
-echo rexseo42::getTrimmedUrl(42);
-// --> questions/the-ultimate-answer.html
-
-echo rexseo42::getFullUrl(42);
-// --> http://www.deepthought.org/questions/the-ultimate-answer.html
+echo rexseo42::getUrlStart(); 
+// --> ' . rexseo42::getUrlStart() . '
 
 echo rexseo42::getMediaDir();
-// --> /files/
+// --> ' . rexseo42::getUrlStart() . 'files/
 
 echo rexseo42::getMediaFile("image.png");
-// --> /files/image.png
-
-echo rexseo42::getMediaAddonDir();
-// --> /files/addons/
-
-' . $I18N->msg('rexseo42_help_codeexamples_ex2_comment2') . '
+// --> ' . rexseo42::getUrlStart() . 'files/image.png
 ?>';
 
 $codeExample3 = '<?php

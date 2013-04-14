@@ -1,6 +1,14 @@
 REXSEO42 - Changelog
 ====================
 
+### Version 1.1.42 RC
+
+* REX['MOD_REWRITE'] wird automatisch aktiviert sobald AddOn aktiv
+* Unterordner Verhalten (hoffentlich) verbessert: `subdir_force_full_urls` hinzugefügt, Base Tag komplett entfernt
+* Setup für Unterordner-Installationen angepasst: u.a. Option hinzugefügt um die RewriteBase automatisch zu setzen
+* Kleine kosmetische Änderungen
+* Einstellungsseite lässt sich wieder speichern
+
 ### Version 1.0.42 - 10. April 2013
 
 * Änderungen am Datenbank-Schema: `seo_canonical_url` hinzugefügt, `seo_url` in `seo_custom_url` umbenannt

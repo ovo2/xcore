@@ -112,4 +112,24 @@ class rexseo42_utils {
 	public static function sanitizeUrl($url) {
 		return preg_replace('@^https?://|/.*|[^\w.-]@', '', $url);
 	}
+
+	public static function getServerUrl() {
+		$url = $_SERVER['REQUEST_URI'];
+		$parts = explode('/',$url);
+		$serverUrl = 'http://' . $_SERVER['SERVER_NAME'];
+
+		for ($i = 0; $i < count($parts) - 2; $i++) {
+			$serverUrl .= $parts[$i] . "/";
+		}
+
+		return $serverUrl;
+	}
+
+	public static function detectSubDir() {
+		if ($_SERVER['PHP_SELF'] == '/redaxo/index.php') {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }

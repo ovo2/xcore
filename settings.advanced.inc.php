@@ -1,13 +1,13 @@
 <?php
 
-// if true you get full urls like in wordpress :) rexseo42::getUrlStart() and co. needs to be used consequently for all extra urls (like urls to media files, etc.) | url_start / url_start_subdir options will be ignored by this
+// if true you get full urls like in wordpress :) rexseo42::getUrlStart() and co. needs to be used consequently for all extra urls (like urls to media files, etc.) | url_start option will be ignored by this
 $REX['ADDON']['rexseo42']['settings']['full_urls'] = false;
 
-// url start piece for all urls spit out rex_getUrl(), rexseo42::getUrlStart() and co. should to be used for all extra urls | can be "/" (recommended, no base tag needed) or "./" (base tag needed!)
-$REX['ADDON']['rexseo42']['settings']['url_start'] = '/';
+// if true REDAXO subdir installations will be forced to use full urls so that no base tag is needed (recommended!)
+$REX['ADDON']['rexseo42']['settings']['subdir_force_full_urls'] = true;
 
-// url start piece for redaxo subdir installations | can be "./" (recommended, base tag needed!)
-$REX['ADDON']['rexseo42']['settings']['url_start_subdir'] = './';
+// url start piece for all urls returned from rex_getUrl(), rexseo42::getUrlStart() and co.. Should to be used for all extra urls!
+$REX['ADDON']['rexseo42']['settings']['url_start'] = '/';
 
 // if true user can change canonical url via seo page. please use this only if you exactly know what you are doing or know that your redaxo users and admins exactly know what they are doing ;)
 $REX['ADDON']['rexseo42']['settings']['userdef_canonical_url'] = false;

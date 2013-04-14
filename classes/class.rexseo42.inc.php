@@ -30,7 +30,6 @@ class rexseo42 {
 		self::$mediaDir = $REX['MEDIA_DIR'];
 		self::$mediaAddonDir = $REX['MEDIA_ADDON_DIR'];
 		self::$seoFriendlyImageManagerUrls = $REX['ADDON']['rexseo42']['settings']['seo_friendly_image_manager_urls'];
-		self::$fullUrls = $REX['ADDON']['rexseo42']['settings']['full_urls'];
 		self::$serverUrl = $REX['SERVER'];
 		self::$websiteName = $REX['SERVERNAME'];
 		self::$modRewrite = $REX['MOD_REWRITE'];
@@ -49,18 +48,20 @@ class rexseo42 {
 			self::$isSubDirInstall = true;
 		}
 
-		// get url start 
+		// check for full urls option
+		if (self::$isSubDirInstall && $REX['ADDON']['rexseo42']['settings']['subdir_force_full_urls']) {
+			self::$fullUrls = true;
+		} else {
+			self::$fullUrls = $REX['ADDON']['rexseo42']['settings']['full_urls'];
+		}
+
+		// set url start 
 		if (self::$fullUrls) {
 			// full worpresslike urls
 			self::$urlStart = self::$serverUrl;
 		} else {
-			if (self::$isSubDirInstall) {
-				// url start for subdirs
-				self::$urlStart = $REX['ADDON']['rexseo42']['settings']['url_start_subdir'];
-			} else {
-				// url start for normal redaxo installations
-				self::$urlStart = $REX['ADDON']['rexseo42']['settings']['url_start'];
-			}
+			// use url start specified in settings
+			self::$urlStart = $REX['ADDON']['rexseo42']['settings']['url_start'];
 		}
 	}
 
@@ -192,11 +193,6 @@ class rexseo42 {
 
 	public static function getHtml($indent = "\t") {
 		$out = '';
-
-		if (self::$isSubDirInstall && !self::$fullUrls) {
-			$out .= '<base href="' . self::getBaseUrl() . '" />' . PHP_EOL;
-            $out .= $indent;
-		}
 
 		$out .= '<title>' . self::getTitle() . '</title>' . PHP_EOL;
 		$out .= $indent . '<meta name="description" content="' . self::getDescription() . '" />' . PHP_EOL;
