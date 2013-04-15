@@ -112,7 +112,7 @@ echo '
 					<fieldset class="rex-form-col-1">
 						<legend id="seo-default">' . $I18N->msg('rexseo42_seopage_main_section') . '</legend>
 						<div class="rex-form-wrapper">
-							<div class="rex-form-row">
+							<div class="rex-form-row prefix">
 								<p class="rex-form-text">
 									<label for="seo_title">' . $I18N->msg('rexseo42_seopage_title') . '</label>
 									<input type="text" value="' . $seoData['seo_title'] . '" name="seo_title" id="seo_title" class="rex-form-text seo-title" />
@@ -120,17 +120,16 @@ echo '
 										<span id="title-preview">&nbsp;</span>
 									</span>
 								</p>
-								<p id="show-prefix" class="rex-form-checkbox rex-form-label-right">
-									<input id="prefix-check" type="checkbox" value="';
+								<p id="show-prefix">
+									<label for="prefix-check"><input id="prefix-check" type="checkbox" value="';
 									if ($seoData['seo_ignore_prefix'] == '1') { echo "1"; $check = 'checked = "checked"'; } else { echo ""; $check = ""; }
-									echo '" name="seo_ignore_prefix[]" class="rex-form-checkbox" ' . $check . ' />
-									<label for="prefix-check">' . $I18N->msg('rexseo42_seopage_title_noprefix') . '</label>
+									echo '" name="seo_ignore_prefix[]" class="rex-form-checkbox" ' . $check . ' /> <span>' . $I18N->msg('rexseo42_seopage_title_noprefix') . '</span></label>
 								</p>
 							</div>
 							<div class="rex-form-row">
 								<p class="rex-form-textarea">
 									<label for="seo_description">' . $I18N->msg('rexseo42_seopage_description') . '</label>
-									<textarea name="seo_description" id="seo_description" rows="2" cols="50" class="rex-form-textarea">' . $seoData['seo_description'] . '</textarea>
+									<textarea name="seo_description" id="seo_description" class="rex-form-textarea">' . $seoData['seo_description'] . '</textarea>
 									<span class="rex-form-notice right">
 										<span id="description-charcount">0</span>/156 ' . $I18N->msg('rexseo42_seopage_chars') . '
 									</span>
@@ -193,9 +192,33 @@ echo '
 ?>
 
 <style type="text/css">
-.more-padding {
+#seo-page #show-prefix label {
+	display: block;
+	float: left;
+	padding-right: 10px;
+	white-space: nowrap;
+	/*padding-left: 22px;
+	text-indent: -22px;*/
+}
+
+#seo-page #show-prefix label span {
+	vertical-align: middle;
+	padding-left: 2px;
+}
+
+#seo-page #show-prefix label input[type="checkbox"] {
+	vertical-align: middle;
+}
+
+#seo-page #seo_description,
+#seo-page #seo_keywords {
+	height: 50px;
+}
+
+#seo-page .more-padding {
 	padding-top: 3px;
 }
+
 #seo-page  #title-preview {
     display: block;
     overflow: hidden;
@@ -212,40 +235,40 @@ echo '
 	font-weight: bold;
 }
 
-div.rex-form div.rex-form-row label, div.rex-form div.rex-form-row p.rex-form-label {
+#seo-page div.rex-form div.rex-form-row label, div.rex-form div.rex-form-row p.rex-form-label {
     width: 155px;
 }
 
-div.rex-form div.rex-form-row p span.rex-form-notice {
+#seo-page div.rex-form div.rex-form-row p span.rex-form-notice {
 	margin-left: 165px;
 	margin-top: 4px;
 	font-size: 100%;
 }
 
-#show-prefix {
-	margin-top: 3px;
+#seo-page div.rex-form div.rex-form-row p {
+    margin-bottom: 2px;
 }
 
-#show-prefix label {
-	width: auto !important;
+div.rex-form div.rex-form-row.prefix p {
+	width: auto;
 }
 
-#prefix-check {
-	margin-left: 475px;
-	margin-bottom: 4px;
+#seo-page #show-prefix {
+	float: right;
+	width: auto;
 }
 
-div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row div.rex-form-checkboxes-wrapper, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row div.rex-form-radios-wrapper, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-label-right label, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-read span, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-text input, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-select select, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p textarea {
+#seo-page div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row div.rex-form-checkboxes-wrapper, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row div.rex-form-radios-wrapper, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-label-right label, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-read span, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-text input, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-select select, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p textarea {
     width: 390px;
 }
 
-div.rex-form div.rex-form-row p span.rex-form-notice.right {
+#seo-page div.rex-form div.rex-form-row p span.rex-form-notice.right {
     float: right;
     margin-left: 0;
     margin-right: 184px;
 }
 
-div.rex-form div.rex-form-row p input.rex-form-submit {
+#seo-page div.rex-form div.rex-form-row p input.rex-form-submit {
 	margin-top: 8px;
     margin-left: 165px;
 }
