@@ -331,7 +331,7 @@ class rexseo42 {
 	}
 
 	public static function getDebugInfo($articleId = 0) {
-		global $I18N;
+		global $I18N, $REX;
 
 		if ($articleId != 0) {
 			self::initArticle($articleId);			
@@ -341,7 +341,12 @@ class rexseo42 {
 			return '';
 		}
 
-		$out = '<table id="rexseo42-debug">';
+		$out = '<div id="rexseo42-debug">';
+
+		$out .= '<h1>---------- REXSEO42 DEBUG BEGIN ----------<h1>';
+
+		$out .= '<h2>Class Methods</h2>';
+		$out .= '<table>';
 
 		$out .= self::getDebugInfoRow('rex_getUrl', array(self::$curArticle->getId()));
 		$out .= self::getDebugInfoRow('rexseo42::getTrimmedUrl', array(self::$curArticle->getId()));
@@ -373,6 +378,66 @@ class rexseo42 {
 		$out .= self::getDebugInfoRow('rexseo42::getAnswer');
 
 		$out .= '</table>';
+
+		$out .= '<h2>Settings</h2>';
+
+		$out .= '<pre class="rex-code">';
+		$out .= print_r($REX['ADDON']['rexseo42']['settings'], true);
+		$out .= '</pre>';
+
+		$out .= '<h2>.htaccess</h2>';
+
+		$htaccessRoot = $REX['FRONTEND_PATH'] . '/.htaccess';
+		$content = rex_get_file_contents($htaccessRoot);
+		$out .= rex_highlight_string($content, true);
+
+		$out .= '<h1>---------- REXSEO42 DEBUG END ----------</h1>';
+
+		$out .= '</div>';
+
+		$out .= '<style type="text/css">
+					#rexseo42-debug h1 {
+						font-size: 16px;
+						margin: 10px 0;
+					}
+
+					#rexseo42-debug h2 {
+						margin: 10px 0;
+						font-size: 14px;
+					}
+
+					#rexseo42-debug .rex-code {
+						border: 1px solid #F2353A;
+					}
+
+					#rexseo42-debug code,
+					#rexseo42-debug .rex-code {
+						color: #000;
+						background: #FAF9F5;
+					}
+
+					#rexseo42-debug table {
+						border-collapse: collapse;
+						border-spacing: 0;
+						background: #FAF9F5;
+					}
+
+					#rexseo42-debug table th,
+					#rexseo42-debug table thead td {
+						font-weight: bold;
+					}
+
+					#rexseo42-debug table td, 
+					#rexseo42-debug table th {
+						padding: 12px;
+						border: 1px solid #F2353A;
+						text-align: left;
+					}
+
+					#rexseo42-debug table td.left {
+						width: 280px;
+					}
+				</style>';
 
 		return $out;
 	}
@@ -414,8 +479,8 @@ class rexseo42 {
 		}
 
 		$out .= '<tr>';
-		$out .= '<td class="left">' . $function . '</td>';
-		$out .= '<td class="right">' . htmlspecialchars($returnValue) . '</td>';
+		$out .= '<td class="left"><code>' . $function . '</code></td>';
+		$out .= '<td class="right"><code>' . htmlspecialchars($returnValue) . '</code></td>';
 		$out .= '</tr>';
 
 		return $out;
