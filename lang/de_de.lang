@@ -44,6 +44,9 @@ rexseo42_settings_sitemap_link = Link zur sitemap.xml
 rexseo42_settings_submit = Einstellungen speichern
 rexseo42_settings_lang_hint = Spracheinstellungen
 rexseo42_settings_advanced_hint = Weitere Einstellungen
+rexseo42_settings_show_all = Alle Einstellungen
+rexseo42_settings_show = anzeigen
+rexseo42_settings_hide = verstecken
 
 rexseo42_setup_file_backup_failed = Datei "{0}" konnte nicht gesichert werden!
 rexseo42_setup_file_copy_successful = Kopieren der Datei erfolgreich.

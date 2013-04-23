@@ -182,6 +182,19 @@ if (count($REX['CLANG']) > 1) {
 			</p>
 		</div>
 
+		<div class="rex-form-row rex-form-element-v1">
+			<p class="rex-form-col-a rex-form-read">
+				<label for="show-settings">' . $I18N->msg('rexseo42_settings_show_all') . '</label>
+				<span class="rex-form-read"><a id="show-settings" href="#">' . $I18N->msg('rexseo42_settings_show') . '</a></span>
+			</p>
+		</div>
+
+		<div id="all-settings" style="display: none;" class="rex-form-row rex-form-element-v1">
+			<p class="rex-form-col-a rex-form-read">
+				<pre class="rex-code">' . print_r($REX['ADDON']['rexseo42']['settings'], true) . '</pre>
+			</p>
+		</div>
+
         </div>
       </fieldset>
 
@@ -242,5 +255,21 @@ if (count($REX['CLANG']) > 1) {
 ';
 
 unset($homeurl_select,$url_ending_select,$url_schema_select);
+?>
+
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$('#show-settings').toggle( 
+			function() {
+				$('#all-settings').slideDown(); 
+				$('#show-settings').html('<?php echo $I18N->msg('rexseo42_settings_hide'); ?>');
+			}, 
+			function() { 
+				$('#all-settings').slideUp(); 
+				$('#show-settings').html('<?php echo $I18N->msg('rexseo42_settings_show'); ?>');
+			} 
+		);
+	});
+</script>
 
 
