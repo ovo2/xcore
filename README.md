@@ -21,6 +21,8 @@ Hinweise
 * Läuft nur mit REDAXO 4.5+
 * AddOn-Ordner lautet: `rexseo42`
 * RexSEO Plugins laufen mit REXSEO42 vorerst nicht.
+* Geändertes Verhalten für REDAXO Unterordner-Installationen. Bitte FAQ in der Hilfe des AddOns anschauen für weitere Infos.
+* Bitte für ALLE Urls immer die PHP-Methoden aus dem Codebeispiel Nr.2 aus der Hilfe nutzen!
 
 Changelog
 ---------

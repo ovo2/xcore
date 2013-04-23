@@ -1,13 +1,14 @@
 REXSEO42 - Changelog
 ====================
 
-### Version 1.1.42 BETA - 14.April 2013
+### Version 1.1.42 23. April 2013
 
+* Neues Feature: man kann nun direkt aus dem Backend heraus sich alle Einstellungen anschauen die gerade aktiv sind
 * Verbesserte Debug Info: es werden jetzt auch alle Settings und die .htaccess Datei mit ausgegeben
 * REX['MOD_REWRITE'] wird on the fly aktiviert sobald AddOn aktiv (master.inc.php wird dafür nicht angepasst)
 * Unterordner Verhalten (hoffentlich) verbessert: `subdir_force_full_urls` hinzugefügt, Base Tag komplett entfernt
 * Setup für Unterordner-Installationen angepasst: u.a. Option hinzugefügt um die RewriteBase automatisch zu setzen
-* Kleine kosmetische Änderungen
+* Kleine kosmetische Änderungen sowie Textänderungen
 * Einstellungsseite lässt sich wieder speichern
 
 ### Version 1.0.42 - 10. April 2013
