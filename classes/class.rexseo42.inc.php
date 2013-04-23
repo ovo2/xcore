@@ -382,7 +382,7 @@ class rexseo42 {
 		$out .= '<h2>Settings</h2>';
 
 		$out .= '<pre class="rex-code">';
-		$out .= print_r($REX['ADDON']['rexseo42']['settings'], true);
+		$out .= rexseo42_utils::print_r_pretty($REX['ADDON']['rexseo42']['settings'], true);
 		$out .= '</pre>';
 
 		$out .= '<h2>.htaccess</h2>';

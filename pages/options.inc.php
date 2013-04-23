@@ -191,7 +191,7 @@ if (count($REX['CLANG']) > 1) {
 
 		<div id="all-settings" style="display: none;" class="rex-form-row rex-form-element-v1">
 			<p class="rex-form-col-a rex-form-read">
-				<pre class="rex-code">' . print_r($REX['ADDON']['rexseo42']['settings'], true) . '</pre>
+				<pre class="rex-code">' . rexseo42_utils::print_r_pretty($REX['ADDON']['rexseo42']['settings']) . '</pre>
 			</p>
 		</div>
 
