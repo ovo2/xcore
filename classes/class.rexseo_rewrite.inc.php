@@ -71,7 +71,7 @@ class RexseoRewrite
 
       if (rexseo42::isSubDirInstall()) {
         $path = substr($path, strlen($install_subdir));
-		$path = ltrim($path, '/');
+        $path = ltrim($path, '/');
       }
 
       // TRIM STANDARD PARAMS
