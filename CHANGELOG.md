@@ -3,6 +3,7 @@ REXSEO42 - Changelog
 
 ### Version 1.1.42 23. April 2013
 
+* Fixed #41: Parameter in der URL (test.html?foo=bar) führten zu einem 404 Fehler
 * Neues Feature: man kann nun direkt aus dem Backend heraus sich alle Einstellungen anschauen die gerade aktiv sind
 * Verbesserte Debug Info: es werden jetzt auch alle Settings und die .htaccess Datei mit ausgegeben
 * REX['MOD_REWRITE'] wird on the fly aktiviert sobald AddOn aktiv (master.inc.php wird dafür nicht angepasst)
