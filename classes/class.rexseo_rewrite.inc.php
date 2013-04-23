@@ -66,9 +66,13 @@ class RexseoRewrite
       }
 
 
-      // GET PATH RELATIVE TO INTALL_SUBDIR
-      $length = strlen($install_subdir);
-      $path = substr(ltrim($_SERVER['REQUEST_URI'],'/'), ($length + 1));  // + 1 for slash | 42
+      // GET PATH RELATIVE TO INTALL_SUBDIR ---------------> 42
+      $path = ltrim($_SERVER['REQUEST_URI'], '/'); 
+
+      if (rexseo42::isSubDirInstall()) {
+        $path = substr($path, strlen($install_subdir));
+		$path = ltrim($path, '/');
+      }
 
       // TRIM STANDARD PARAMS
       if(($pos = strpos($path, '?')) !== false)
