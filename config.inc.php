@@ -22,8 +22,12 @@ require($REX['INCLUDE_PATH'] . '/addons/rexseo42/settings.lang.inc.php');
 
 // init
 if (!$REX['SETUP']) {
-	$REX['MOD_REWRITE'] = true; // always on when addon is active
-
+	// auto mod rewrite
+	if (!$REX['REDAXO'] || ($REX['REDAXO'] && rex_request('page') != 'specials')) {
+		$REX['MOD_REWRITE'] = true;
+	}
+	
+	// init 42
 	rex_register_extension('ADDONS_INCLUDED','rexseo42_utils::init', '', REX_EXTENSION_EARLY);
 }
 
