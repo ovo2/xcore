@@ -110,7 +110,6 @@ rexseo42_help_codeexamples_title4 = Lang Code ausgeben
 rexseo42_help_codeexamples_description4 = Geben Sie so den aktuellen Lang Code aus der momentan in der <code>settings.lang.inc.php</code> definiert werden kann:
 rexseo42_help_codeexamples_title5 = Titel Schema ändern
 rexseo42_help_codeexamples_description5 = Ein eigenes Titel Schema lässt sich momentan nur über die Überschreibung der getTitle() Methode realisieren:
-rexseo42_help_codeexamples_thatsallfolks = That's all folks...
 rexseo42_help_codeexamples_ex3_alt = Titel aus dem Medienpool
 rexseo42_help_codeexamples_ex6_comment1 = 1.) eigene klasse ableiten und getTitle() methode überschreiben:
 rexseo42_help_codeexamples_ex6_comment2 = 2.) gesamten titel in kleinbuchstaben ausgeben:
@@ -119,7 +118,7 @@ rexseo42_help_codeexamples_ex6_comment4 = gibt nun den titel in kleinbuchstaben 
 
 rexseo42_help_faq = FAQ
 rexseo42_help_faq01a = Warum brauchts eigentlich noch ein weiteres RexSEO?
-rexseo42_help_faq01b = Ganz einfach: Weil RexSEO zwar sehr gefällt, aber so wie es ist in manchen Punkten (z.B. Setup) nicht den Vorstellungen vom RexDude entspricht und es ja außerdem völlig legitim ist einen Fork nach seinem eigenem Gusto zu machen.
+rexseo42_help_faq01b = Aus dem gleichen Grund warum es hunderte Linux Forks gibt: Geschmäcker sind halt einfach verschieden! ;)
 
 rexseo42_help_faq02a = {0} läuft nicht mehr rund. Was tun?
 rexseo42_help_faq02b = <a href="index.php?page=specials&func=generate">Cache löschen</a>, AddOn <a href="index.php?page=addon&addonname=rexseo42&install=1">reinstallieren</a> und evtl. das <a href="index.php?page=rexseo42&subpage=setup">Setup</a> neu durchlaufen sind hier deine Freunde ;)

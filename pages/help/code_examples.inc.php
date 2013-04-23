@@ -9,14 +9,14 @@ $codeExample2 = '<?php
 echo rex_getUrl(42);
 // --> ' . rexseo42::getUrlStart() . 'questions/the-ultimate-answer.html
 
-echo rexseo42::getUrlStart(); 
-// --> ' . rexseo42::getUrlStart() . '
+echo rexseo42::getUrlStart() . "js/jquery.in.js"; 
+// --> ' . rexseo42::getUrlStart() . 'js/jquery.min.js
 
 echo rexseo42::getMediaDir();
 // --> ' . rexseo42::getUrlStart() . 'files/
 
 echo rexseo42::getMediaFile("image.png");
-// --> ' . rexseo42::getUrlStart() . 'files/image.png
+// --> ' . rexseo42::getUrlStart() . 'files/foo.png
 ?>';
 
 $codeExample3 = '<?php
@@ -91,8 +91,6 @@ echo rexseo42_ex::getKeywords();
 <h2>5) <?php echo $I18N->msg('rexseo42_help_codeexamples_title5'); ?></h2>
 <p><?php echo $I18N->msg('rexseo42_help_codeexamples_description5'); ?></p>
 <?php rex_highlight_string($codeExample6); ?>
-
-<p><?php echo $I18N->msg('rexseo42_help_codeexamples_thatsallfolks'); ?></p>
 
 <style type="text/css">
 .rex-addon-content h2 {

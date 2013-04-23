@@ -3,7 +3,7 @@
 // if true you get full urls like in wordpress :) rexseo42::getUrlStart() and co. needs to be used consequently for all extra urls (like urls to media files, etc.) | url_start option will be ignored by this
 $REX['ADDON']['rexseo42']['settings']['full_urls'] = false;
 
-// if true REDAXO subdir installations will be forced to use full urls so that no base tag is needed (recommended!)
+// if true REDAXO subdir installations will be forced to use full urls so that no base tag is needed (recommended!). If you turn this off look into the faq for further instructions on this topic...
 $REX['ADDON']['rexseo42']['settings']['subdir_force_full_urls'] = true;
 
 // url start piece for all urls returned from rex_getUrl(), rexseo42::getUrlStart() and co.. Should to be used for all extra urls!
