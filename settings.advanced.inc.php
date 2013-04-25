@@ -1,5 +1,9 @@
 <?php
 
+// ****************************************************************
+// **  DELETE REDAXO CACHE AFTER YOU MADE CHANGES TO THIS FILE!  **
+// ****************************************************************
+
 // if true you get full urls like in wordpress :) rexseo42::getUrlStart() and co. needs to be used consequently for all extra urls (like urls to media files, etc.) | url_start option will be ignored by this
 $REX['ADDON']['rexseo42']['settings']['full_urls'] = false;
 
@@ -53,4 +57,8 @@ $REX['ADDON']['rexseo42']['settings']['drop_dbfields_on_uninstall'] = true;
 
 // used to control which article should be used for debug output in help section, default is $REX['START_ARTICLE_ID']
 $REX['ADDON']['rexseo42']['settings']['debug_article_id']  = $REX['START_ARTICLE_ID'];
+
+// ****************************************************************
+// **  DELETE REDAXO CACHE AFTER YOU MADE CHANGES TO THIS FILE!  **
+// ****************************************************************
 

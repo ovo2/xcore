@@ -22,7 +22,7 @@ require($REX['INCLUDE_PATH'] . '/addons/rexseo42/settings.lang.inc.php');
 
 // init
 if (!$REX['SETUP']) {
-	// auto mod rewrite
+	// auto mod rewrite, but not for redaxo system page
 	if (!$REX['REDAXO'] || ($REX['REDAXO'] && rex_request('page') != 'specials')) {
 		$REX['MOD_REWRITE'] = true;
 	}
