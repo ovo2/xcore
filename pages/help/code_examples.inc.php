@@ -9,7 +9,7 @@ $codeExample2 = '<?php
 echo rex_getUrl(42);
 // --> ' . rexseo42::getUrlStart() . 'questions/the-ultimate-answer.html
 
-echo rexseo42::getUrlStart() . "js/jquery.in.js"; 
+echo rexseo42::getUrlStart() . "js/jquery.min.js"; 
 // --> ' . rexseo42::getUrlStart() . 'js/jquery.min.js
 
 echo rexseo42::getMediaDir();
