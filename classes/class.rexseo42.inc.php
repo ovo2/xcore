@@ -35,11 +35,11 @@ class rexseo42 {
 		self::$modRewrite = $REX['MOD_REWRITE'];
 
 		// pull apart server url
-		$urlParts = self::getUrlParts(self::$serverUrl);
+		$urlParts = parse_url(self::$serverUrl);
 
-		self::$serverProtocol = $urlParts['protocol'];
-		self::$server = $urlParts['site'];
-		self::$serverSubDir = trim($urlParts['resource'], '/'); 
+		self::$serverProtocol = $urlParts['scheme'];
+		self::$server = $urlParts['host'];
+		self::$serverSubDir = trim($urlParts['path'], '/'); 
 
 		// check for subdir install
 		if (self::$serverSubDir == '') {
@@ -301,33 +301,6 @@ class rexseo42 {
 		} else {
 			return ltrim(rex_getUrl($id, $clang, $params, $divider), "./");
 		}
-	}
-
-	protected static function getUrlParts($url) {
-		$result = array();
-		 
-		// Get the protocol, site and resource parts of the URL
-		// original url = http://example.com/blog/index?name=foo
-		// protocol = http://
-		// site = example.com/
-		// resource = blog/index?name=foo
-		$regex = '#^(.*?//)*([\w\.\d]*)(:(\d+))*(/*)(.*)$#';
-		$matches = array();
-		preg_match($regex, $url, $matches);
-		 
-		// Assign the matched parts of url to the result array
-		$result['protocol'] = $matches[1];
-		$result['port'] = $matches[4];
-		$result['site'] = $matches[2];
-		$result['resource'] = $matches[6];
-		 
-		// clean up the site portion by removing the trailing /
-		$result['site'] = preg_replace('#/$#', '', $result['site']);
-		 
-		// clean up the protocol portion by removing the trailing ://
-		$result['protocol'] = preg_replace('#://$#', '', $result['protocol']);
-		 
-		return $result;
 	}
 
 	public static function getDebugInfo($articleId = 0) {
