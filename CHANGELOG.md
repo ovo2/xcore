@@ -1,6 +1,11 @@
 REXSEO42 - Changelog
 ====================
 
+### Version 1.1.42+
+
+* Fixed #49: Wenn die Url einen Trennstrich hatte, wurde fälschlicherweise ein Unterordner entdeckt
+* RewriteRules für Website Manager Addon verbessert
+
 ### Version 1.1.42 - 23. April 2013
 
 * Fixed #41: Parameter in der URL (test.html?foo=bar) führten zu einem 404 Fehler

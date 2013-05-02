@@ -3,7 +3,7 @@
 // register addon
 $REX['ADDON']['rxid']['rexseo42'] = '0';
 $REX['ADDON']['name']['rexseo42'] = 'REXSEO42';
-$REX['ADDON']['version']['rexseo42'] = '1.1.42';
+$REX['ADDON']['version']['rexseo42'] = '1.1.42+';
 $REX['ADDON']['author']['rexseo42'] = 'Markus Staab, Wolfgang Huttegger, Dave Holloway, Jan Kristinus, jdlx, RexDude';
 $REX['ADDON']['supportpage']['rexseo42'] = 'forum.redaxo.de';
 $REX['ADDON']['perm']['rexseo42'] = 'rexseo42[]';
