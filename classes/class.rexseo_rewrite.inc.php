@@ -71,7 +71,7 @@ class RexseoRewrite
 
       if (rexseo42::isSubDirInstall()) {
         $path = substr($path, strlen($install_subdir));
-        $path = ltrim($path, '/');
+		$path = ltrim($path, '/');
       }
 
       // TRIM STANDARD PARAMS
@@ -473,7 +473,7 @@ function rexseo_generate_pathlist($params)
     $db->setQuery('UPDATE '. $REX['TABLE_PREFIX'] .'article_slice SET revision = 0 WHERE revision IS NULL;');
 
 	if ($REX['ADDON']['rexseo42']['settings']['ignore_root_cats']) {
-		$sqlQuery = 'SELECT `id`, `clang`, `path`, `startpage`,`seo_custom_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE '. $where.' AND re_id != 0 AND revision=0 OR revision IS NULL';
+		$sqlQuery = 'SELECT `id`, `clang`, `path`, `startpage`,`seo_custom_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE '. $where.' AND re_id != 0 OR (re_id = 0 AND catname LIKE "") AND revision=0 OR revision IS NULL';
 	} else {
 		$sqlQuery = 'SELECT `id`, `clang`, `path`, `startpage`,`seo_custom_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE '. $where.' AND revision=0 OR revision IS NULL';
 	}
