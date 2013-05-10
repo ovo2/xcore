@@ -19,7 +19,7 @@ class rexseo_sitemap
     $qry = 'SELECT `id`, `clang`, `updatedate`, `path`, `seo_noindex` FROM `' . $REX['TABLE_PREFIX'] . 'article` WHERE `status` = 1';
 
 	if ($REX['ADDON']['rexseo42']['settings']['ignore_root_cats']) {
-		$qry .= ' AND `re_id` != 0';
+		$qry .= ' AND `re_id` != 0 OR (re_id = 0 AND catname LIKE "")';
 	}
 
     foreach($db->getDbArray($qry) as $art)
