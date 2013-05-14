@@ -15,6 +15,11 @@ Features
 * Enhält die Antwort auf die eine Frage
 * Und noch vieles mehr...
 
+Verfügbare Plugins
+------------------
+
+* `url_generate` von tbaddade: https://github.com/tbaddade/redaxo_plugin_url_generate
+
 Hinweise
 --------
 
