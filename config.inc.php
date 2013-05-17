@@ -66,7 +66,7 @@ if ($REX['REDAXO']) {
 		rex_register_extension('PAGE_CONTENT_MENU', 'rexseo42_utils::modifyFrontendLinkInPageContentMenu');
 	}
 
-	// check for missing db field after db import
+	// check for missing db fields after db import
 	if (!$REX['SETUP']) {
 		rex_register_extension('A1_AFTER_DB_IMPORT', 'rexseo42_utils::afterDBImport');
 	}

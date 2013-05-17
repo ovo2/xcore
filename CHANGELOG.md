@@ -23,7 +23,6 @@ REXSEO42 - Changelog
 * Neues Feature: Die Canonical Url kann nun auch per Artikel gesetzt werden. Allerdings muss dies explizit in der `settings.advanced.inc.php` aktiviert werden.
 * Neues Feature: Es ist nun mögliche "volle" Urls (also inkl. Domain, wie bei WordPress) über die Option `full_urls` zu erhalten
 * Neues Feature: `ignore_root_cats` (experimentell)
-* Bei Unterordner-Installationen: Im Setup den Unterordner mit angeben, `RewriteBase /` in .htacces auskommentieren und Base-Tag nur nötig wenn `full_urls` Option auf false (standard).
 * Bei normalen Installationen: Base-Tag kann weggelassen werden.
 * "Normale" 404-Seite des Webservers, wenn eine Datei unter `files` oder `redaxo` nicht gefunden wurde
 * Neue Debug Seite in der Hilfe
