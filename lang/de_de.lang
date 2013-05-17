@@ -84,6 +84,7 @@ rexseo42_seopage_title = Titel
 rexseo42_seopage_description = Beschreibung
 rexseo42_seopage_keywords = Suchbegriffe
 rexseo42_seopage_title_noprefix = Kein Prefix
+rexseo42_seopage_title_nosufix = Kein Suffix
 rexseo42_seopage_chars = Zeichen
 rexseo42_seopage_words = Begriffe
 rexseo42_seopage_extended_section = Erweitert
