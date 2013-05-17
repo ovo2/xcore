@@ -7,8 +7,8 @@ Options -Indexes
 	RewriteBase /
 
 	# REDIRECT NON-WWW TO WWW
-	#RewriteCond %{HTTP_HOST} !^www\. [NC]
-	#RewriteRule (.*) http://www.%{HTTP_HOST}/$1 [R=301,L]
+	#RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$
+	#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301]
 
 	# REDIRECT SITEMAP.XML TO REXSEO SITEMAP FUNCTION
 	RewriteRule ^sitemap\.xml$ index.php?rexseo_func=sitemap [NC,L]
