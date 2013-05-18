@@ -177,6 +177,9 @@ rexseo42_help_faq15b = Kein Problem ;) Einfach das Setup von hinten nach vorne d
 rexseo42_help_faq16a = Wie lautet die Antwort auf die Frage aller Fragen nach dem Leben, dem Universum und dem ganzen Rest?
 rexseo42_help_faq16b = 42
 
+rexseo42_help_faq19a = Mein Webserver meldet einen 500 Server Error?!
+rexseo42_help_faq19b = Vermutlich liegt es an der Zeile <code>Options -Indexes</code> in der .htaccess Datei. Einfach diese Zeile auskommentieren.
+
 rexseo42_help_debug = Debug
 rexseo42_help_debug_desc = Mit dieser Methode kann man detaillierte Debug-Informationen zum aktuellen Artikel abrufen:
 rexseo42_help_debug_output = Ausgabe mit Artikel-Id = {0}: (änderbar in der <code>settings.advanced.inc.php</code>)
