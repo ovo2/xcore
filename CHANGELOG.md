@@ -3,6 +3,7 @@ REXSEO42 - Changelog
 
 ### Version 1.2.0 - 18.Mai 2013
 
+* Neues Plugin `url_generate` von tbaddade in die README.md mit aufgenommen
 * Neuer FAQ Eintrag wegen möglichen 500 Server Error, siehe auch Hinweise in der README.md
 * Neues Recht: `rexseo42[tools_only]` für Zugriff auf die Tools-Page für Nicht-Admins (`rexseo42[]` muss mitausgewählt werden)
 * Wenn ein Artikel nicht indiziert werden soll wird zusätzl. noch ein `X-Robots Header` ausgegeben.
