@@ -1,6 +1,10 @@
 REXSEO42 - Changelog
 ====================
 
+### Version 1.2.0+
+
+* Fixed: Error wenn kein Artikel vorhanden
+
 ### Version 1.2.0 - 18. Mai 2013
 
 * Neues Plugin `url_generate` von tbaddade in die README.md mit aufgenommen
