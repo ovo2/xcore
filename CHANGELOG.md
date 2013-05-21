@@ -1,9 +1,9 @@
 REXSEO42 - Changelog
 ====================
 
-### Version 1.2.0+
+### Version 1.2.1 - 21. Mai 2013
 
-* Fixed: Error wenn kein Artikel vorhanden
+* Fixed: Es kam ein PHP-Error wenn kein Artikel vorhanden
 
 ### Version 1.2.0 - 18. Mai 2013
 
