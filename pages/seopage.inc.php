@@ -78,6 +78,9 @@ if (rex_post('saveseo', 'boolean')) {
 		$sql->setValue('seo_noindex',  '');
 	}
 
+	// update updatedate of article
+	$sql->setValue('updatedate',  time());
+
 	// do db update
 	if ($sql->update()) {
 		// info msg
