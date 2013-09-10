@@ -132,7 +132,7 @@ echo '
 								<p class="rex-form-text">
 									<label for="seo_title">' . $I18N->msg('rexseo42_seopage_title') . '</label>
 									<input type="text" value="' . $seoData['seo_title'] . '" name="seo_title" id="seo_title" class="rex-form-text seo-title" />
-									<span class="rex-form-notice"' . $enableTitlePreview . '>
+									<span class="rex-form-notice" ' . $enableTitlePreview . '>
 										<span id="title-preview">&nbsp;</span>
 									</span>
 								</p>
