@@ -21,6 +21,15 @@ require($REX['INCLUDE_PATH'] . '/addons/rexseo42/settings.dyn.inc.php');
 require($REX['INCLUDE_PATH'] . '/addons/rexseo42/settings.advanced.inc.php');
 require($REX['INCLUDE_PATH'] . '/addons/rexseo42/settings.lang.inc.php');
 
+// fix for iis webserver: set request uri manually if not available
+if (!isset($_SERVER['REQUEST_URI'])) {
+	$_SERVER['REQUEST_URI'] = substr($_SERVER['PHP_SELF'], 1);
+
+	if (isset($_SERVER['QUERY_STRING'])) {
+		$_SERVER['REQUEST_URI'] .= '?' . $_SERVER['QUERY_STRING'];
+	}
+}
+
 // init
 if (!$REX['SETUP']) {
 	// auto mod rewrite, but not for redaxo system page
