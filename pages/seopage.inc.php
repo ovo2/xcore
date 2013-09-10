@@ -8,7 +8,7 @@ $dataUpdated = false;
 $hideExtendedSection = '';
 $disableCustomUrl = '';
 $hideCanonicalUrl = '';
-$hideNoPrefixCheckbox = '';
+$enableNoPrefixCheckbox = '';
 
 // react on editContentOnly[] and rexseo42[seo_extended] but only for non admins
 if (is_object($REX['USER']) && !$REX['USER']->isAdmin() && ($REX['USER']->hasPerm('editContentOnly[]') || !$REX['USER']->hasPerm('rexseo42[seo_extended]'))) {
@@ -27,10 +27,10 @@ if (!$REX['ADDON']['rexseo42']['settings']['userdef_canonical_url']) {
 	$hideCanonicalUrl = 'style="display: none;"';
 }
 
-// react on hide_no_prefix_checkbox option in settings
-if ($REX['ADDON']['rexseo42']['settings']['hide_no_prefix_checkbox']) {
+// react on enable_no_prefix_checkbox option in settings
+if (!$REX['ADDON']['rexseo42']['settings']['enable_no_prefix_checkbox']) {
 	// hide no-prefix/suffix checkbox
-	$hideNoPrefixCheckbox = 'style="display: none;"';
+	$enableNoPrefixCheckbox = 'style="display: none;"';
 }
 
 if (rex_post('saveseo', 'boolean')) {
@@ -130,7 +130,7 @@ echo '
 										<span id="title-preview">&nbsp;</span>
 									</span>
 								</p>
-								<p id="show-prefix" ' . $hideNoPrefixCheckbox . '>
+								<p id="show-prefix" ' . $enableNoPrefixCheckbox . '>
 									<label for="prefix-check"><input id="prefix-check" type="checkbox" value="';
 									if ($seoData['seo_ignore_prefix'] == '1') { echo "1"; $check = 'checked = "checked"'; } else { echo ""; $check = ""; }
 									if (rexseo42::isStartArticle()) { $checkboxTitle = $I18N->msg('rexseo42_seopage_title_noprefix'); } else { $checkboxTitle = $I18N->msg('rexseo42_seopage_title_nosufix'); } 
