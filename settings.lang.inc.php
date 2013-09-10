@@ -19,8 +19,8 @@ $REX['ADDON']['rexseo42']['settings']['langcodes'][0] = 'de';
 $REX['ADDON']['rexseo42']['settings']['special_chars'][0] = 'ä|ö|ü|Ä|Ö|Ü|ß|&';
 $REX['ADDON']['rexseo42']['settings']['special_chars_rewrite'][0] = 'ae|oe|ue|Ae|Oe|Ue|ss|und';
 
-//$REX['ADDON']['rexseo42']['settings']['special_chars'][1] = 'ä|ö|ü|Ä|Ö|Ü|ß|&|ø';
-//$REX['ADDON']['rexseo42']['settings']['special_chars_rewrite'][1] = 'ae|oe|ue|Ae|Oe|Ue|ss|and|oe';
+//$REX['ADDON']['rexseo42']['settings']['special_chars'][1] = 'ä|ö|ü|Ä|Ö|Ü|ß|&';
+//$REX['ADDON']['rexseo42']['settings']['special_chars_rewrite'][1] = 'ae|oe|ue|Ae|Oe|Ue|ss|and';
 
 // ****************************************************************
 // **  DELETE REDAXO CACHE AFTER YOU MADE CHANGES TO THIS FILE!  **
