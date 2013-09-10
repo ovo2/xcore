@@ -78,6 +78,10 @@ class rexseo_robots
   {
     $robots = self::get();
 
+	while (ob_get_level()) {
+		ob_end_clean();
+	}
+
     header('Content-Type: text/plain; charset=utf-8');
     header('Content-Length: '.strlen($robots));
 	header('X-Robots-Tag: noindex, noarchive');
