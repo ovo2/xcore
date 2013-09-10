@@ -25,6 +25,9 @@ $REX['ADDON']['rexseo42']['settings']['title_delimiter'] = ' | ';
 // hides the no prefix/suffix checkbox in seopage if false. only necessary if a different title schema is used and therefore no prefix/suffix checkbox is needed
 $REX['ADDON']['rexseo42']['settings']['enable_no_prefix_checkbox'] = true;
 
+// hides the title preview in seopage if false. only necessary if a different title schema is used and therefore title preview is unwanted
+$REX['ADDON']['rexseo42']['settings']['enable_title_preview'] = true;
+
 // if true seopage will be only visible at start article of website. also the frontend links will all point to start article and sitemap.xml will show only one url
 $REX['ADDON']['rexseo42']['settings']['one_page_mode'] = false;
 

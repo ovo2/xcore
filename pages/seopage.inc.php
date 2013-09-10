@@ -9,6 +9,7 @@ $hideExtendedSection = '';
 $disableCustomUrl = '';
 $hideCanonicalUrl = '';
 $enableNoPrefixCheckbox = '';
+$enableTitlePreview = '';
 
 // react on editContentOnly[] and rexseo42[seo_extended] but only for non admins
 if (is_object($REX['USER']) && !$REX['USER']->isAdmin() && ($REX['USER']->hasPerm('editContentOnly[]') || !$REX['USER']->hasPerm('rexseo42[seo_extended]'))) {
@@ -31,6 +32,11 @@ if (!$REX['ADDON']['rexseo42']['settings']['userdef_canonical_url']) {
 if (!$REX['ADDON']['rexseo42']['settings']['enable_no_prefix_checkbox']) {
 	// hide no-prefix/suffix checkbox
 	$enableNoPrefixCheckbox = 'style="display: none;"';
+}
+
+// react on enable_title_preview option in settings
+if (!$REX['ADDON']['rexseo42']['settings']['enable_title_preview']) {
+	$enableTitlePreview = 'style="display: none;"';
 }
 
 if (rex_post('saveseo', 'boolean')) {
@@ -126,7 +132,7 @@ echo '
 								<p class="rex-form-text">
 									<label for="seo_title">' . $I18N->msg('rexseo42_seopage_title') . '</label>
 									<input type="text" value="' . $seoData['seo_title'] . '" name="seo_title" id="seo_title" class="rex-form-text seo-title" />
-									<span class="rex-form-notice">
+									<span class="rex-form-notice"' . $enableTitlePreview . '>
 										<span id="title-preview">&nbsp;</span>
 									</span>
 								</p>
