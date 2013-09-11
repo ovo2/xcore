@@ -20,14 +20,14 @@ if (!$REX['ADDON']['rexseo42']['settings']['custom_canonical_url']) {
 	$hideCanonicalUrl = 'style="display: none;"';
 }
 
-// react on enable_no_prefix_checkbox option in settings
-if (!$REX['ADDON']['rexseo42']['settings']['enable_no_prefix_checkbox']) {
+// react on no_prefix_checkbox option in settings
+if (!$REX['ADDON']['rexseo42']['settings']['no_prefix_checkbox']) {
 	// hide no-prefix/suffix checkbox
 	$enableNoPrefixCheckbox = 'style="display: none;"';
 }
 
-// react on enable_title_preview option in settings
-if (!$REX['ADDON']['rexseo42']['settings']['enable_title_preview']) {
+// react on title_preview option in settings
+if (!$REX['ADDON']['rexseo42']['settings']['title_preview']) {
 	$enableTitlePreview = 'style="display: none;"';
 }
 
