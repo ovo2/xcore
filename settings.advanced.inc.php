@@ -4,9 +4,6 @@
 // **  DELETE REDAXO CACHE AFTER YOU MADE CHANGES TO THIS FILE!  **
 // ****************************************************************
 
-// if true page rank checker tool will be shown in tools section. set to false if you don't want to send any data to google when tools page is shown ;)
-$REX['ADDON']['rexseo42']['settings']['enable_pagerank_checker'] = true;
-
 // hides the no prefix/suffix checkbox in seopage if false. only necessary if a different title schema is used and therefore no prefix/suffix checkbox is needed
 $REX['ADDON']['rexseo42']['settings']['no_prefix_checkbox'] = false;
 
@@ -15,6 +12,9 @@ $REX['ADDON']['rexseo42']['settings']['title_preview'] = true;
 
 // if true user can change canonical url via seo page. please use this only if you exactly know what you are doing or know that your redaxo users and admins exactly know what they are doing ;)
 $REX['ADDON']['rexseo42']['settings']['custom_canonical_url'] = false;
+
+// if true page rank checker tool will be shown in tools section. set to false if you don't want to send any data to google when tools page is shown ;)
+$REX['ADDON']['rexseo42']['settings']['pagerank_checker'] = true;
 
 // if true you get full urls like in wordpress :) rexseo42::getUrlStart() and co. needs to be used consequently for all extra urls (like urls to media files, etc.) | url_start option will be ignored by this
 $REX['ADDON']['rexseo42']['settings']['full_urls'] = false;

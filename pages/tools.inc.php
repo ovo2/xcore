@@ -1,4 +1,4 @@
-<?php if ($REX['ADDON']['rexseo42']['settings']['enable_pagerank_checker']) { ?>
+<?php if ($REX['ADDON']['rexseo42']['settings']['pagerank_checker']) { ?>
 <div class="rex-addon-output">
 	<h2 class="rex-hl2"><?php echo $I18N->msg('rexseo42_pr_tool'); ?></h2>
 	<div class="rex-area-content">
@@ -24,7 +24,7 @@ $toolManager->addTool($tool);
 $tool = new rexseo42_tool($I18N->msg('rexseo42_tool2'), $I18N->msg('rexseo42_tool2_desc'), 'http://www.google.com/webmasters/tools/submit-url');
 $toolManager->addTool($tool);
 
-if (!$REX['ADDON']['rexseo42']['settings']['enable_pagerank_checker']) {
+if (!$REX['ADDON']['rexseo42']['settings']['pagerank_checker']) {
 	$tool = new rexseo42_tool($I18N->msg('rexseo42_tool4'), $I18N->msg('rexseo42_tool4_desc'), 'http://www.gaijin.at/olsgprank.php');
 	$toolManager->addTool($tool);
 }
@@ -93,7 +93,7 @@ div.rex-area-content p.pr {
 }
 </style>
 
-<?php if ($REX['ADDON']['rexseo42']['settings']['enable_pagerank_checker']) { ?>
+<?php if ($REX['ADDON']['rexseo42']['settings']['pagerank_checker']) { ?>
 <script type="text/javascript">
 jQuery(document).ready(function($) {
 	// ajax call for pagerank checker

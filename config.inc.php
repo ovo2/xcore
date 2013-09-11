@@ -46,7 +46,7 @@ if ($REX['REDAXO']) {
 	$I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/rexseo42/lang/');
 
 	// handels ajax request for google pagerank checker in tools section
-	if ($REX['ADDON']['rexseo42']['settings']['enable_pagerank_checker'] && rex_request('function') == 'getpagerank') {
+	if ($REX['ADDON']['rexseo42']['settings']['pagerank_checker'] && rex_request('function') == 'getpagerank') {
 		require($REX['INCLUDE_PATH'] . '/addons/rexseo42/classes/class.google_pagerank_checker.inc.php');
 		echo GooglePageRankChecker::getRank(rex_request('url'));
 		exit;
