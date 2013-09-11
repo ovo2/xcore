@@ -18,7 +18,7 @@ rexseo42_dbfields_readded = {0}: Fehlende DB-Felder des AddOns wurden hinzugefü
 rexseo42_dbfields_readded_check_setup = {0}: Bitte überprüfen Sie ob das Setup (Schritt 3) erneut durchgeführt werden muss.
 rexseo42_check_lang_msg = {0}: Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.lang.inc.php" Datei.
 
-rexseo42_tools_caption = SEO Tools
+rexseo42_tools_caption = SEO Web Tools
 rexseo42_tool1 = Google Index dieser Website anzeigen
 rexseo42_tool1_desc = Überprüfen Sie wie Google Ihre Website {0} indiziert hat.
 rexseo42_tool2 = Google Submit Url
@@ -26,11 +26,15 @@ rexseo42_tool2_desc = Geben Sie Google Ihre neue Website bekannt. Registrierung 
 rexseo42_tool3 = Google Webmaster Tools
 rexseo42_tool3_desc = Die Webmaster-Tools bieten Ihnen ausführliche Berichte über die Präsenz Ihrer Seiten auf Google.
 rexseo42_tool4 = PageRank ermitteln
-rexseo42_tool4_desc = Mit diesem Tool lässt sich der PageRank Ihrer Website ermitteln.
+rexseo42_tool4_desc = Mit diesem Web Tool lässt sich der PageRank Ihrer Website ermitteln.
 rexseo42_tool6 = Seitwert Quick-Analyse
 rexseo42_tool6_desc = Eine erste kostenlose Analyse Ihrer Website durch den Webdienst Seitwert.de.
 rexseo42_tool8 = Google SERP Snippet Optimization Tool
 rexseo42_tool8_desc = Das Google SERP Snippet Optimization Tool zeigt eine Vorschau der Snippets die Google generiert.
+rexseo42_pr_tool = Google PageRank Checker
+rexseo42_pr_tool_msg = Dieses Tool ermittelt den <a href="http://suchmaschinenoptimierung.michaelsattler.de/pagerank.html" class="extern">PageRank</a> für
+rexseo42_pr_tool_pagerank = PageRank
+rexseo42_pr_tool_failure = Nicht verfügbar.
 
 rexseo42_settings_url_ending_without = (ohne)
 rexseo42_settings_langslug_all = Bei allen Sprachen einfügen

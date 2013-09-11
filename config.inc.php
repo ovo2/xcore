@@ -45,6 +45,13 @@ if ($REX['REDAXO']) {
 	// append lang file
 	$I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/rexseo42/lang/');
 
+	// handels ajax request for google pagerank checker in tools section
+	if ($REX['ADDON']['rexseo42']['settings']['enable_pagerank_checker'] && rex_request('function') == 'getpagerank') {
+		require($REX['INCLUDE_PATH'] . '/addons/rexseo42/classes/class.google_pagerank_checker.inc.php');
+		echo GooglePageRankChecker::getRank(rex_request('url'));
+		exit;
+	}
+
 	// subpages
 	if (isset($REX['USER']) && !$REX['USER']->isAdmin() && $REX['USER']->hasPerm('rexseo42[tools_only]')) {
 		// add tools page only
