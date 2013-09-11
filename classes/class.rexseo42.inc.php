@@ -374,6 +374,12 @@ class rexseo42 {
 		$out .= rexseo42_utils::print_r_pretty($REX['ADDON']['rexseo42']['settings'], true);
 		$out .= '</pre>';
 
+		$out .= '<h2>Pathlist</h2>';
+
+		$pathlistRoot = REXSEO_PATHLIST;
+		$content = rex_get_file_contents($pathlistRoot);
+		$out .= rex_highlight_string($content, true);
+
 		$out .= '<h2>.htaccess</h2>';
 
 		$htaccessRoot = $REX['FRONTEND_PATH'] . '/.htaccess';
