@@ -11,7 +11,7 @@ $REX['ADDON']['rexseo42']['settings']['enable_pagerank_checker'] = true;
 $REX['ADDON']['rexseo42']['settings']['enable_no_prefix_checkbox'] = false;
 
 // hides the title preview in seopage if false. only necessary if a different title schema is used and therefore title preview is unwanted
-$REX['ADDON']['rexseo42']['settings']['enable_title_preview'] = true;
+$REX['ADDON']['rexseo42']['settings']['title_preview'] = true;
 
 // if true user can change canonical url via seo page. please use this only if you exactly know what you are doing or know that your redaxo users and admins exactly know what they are doing ;)
 $REX['ADDON']['rexseo42']['settings']['custom_canonical_url'] = false;
