@@ -8,6 +8,7 @@ rexseo42_redirects = Redirects
 rexseo42_setup = Setup
 rexseo42_help = Hilfe
 rexseo42_seopage_linktext = SEO
+rexseo42_urlpage_linktext = URL
 rexseo42_install_rex_version = Dieses AddOn benötigt REDAXO Version 4.5.0 oder höher.
 rexseo42_install_concurrent = Bitte folgendes AddOn zuvor deinstallieren:
 rexseo42_uninstall_dbfields_not_removed = Die Datenbankfelder wurden NICHT entfernt.

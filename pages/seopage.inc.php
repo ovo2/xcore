@@ -2,11 +2,8 @@
 $articleID = rex_request('article_id');
 $clang = rex_request('clang');
 $ctype = rex_request('ctype');
-$savedURL = rex_request('saved_seo_custom_url');
 
-$dataUpdated = false;
 $hideExtendedSection = '';
-$disableCustomUrl = '';
 $hideCanonicalUrl = '';
 $enableNoPrefixCheckbox = '';
 $enableTitlePreview = '';
@@ -15,11 +12,6 @@ $enableTitlePreview = '';
 if (is_object($REX['USER']) && !$REX['USER']->isAdmin() && ($REX['USER']->hasPerm('editContentOnly[]') || !$REX['USER']->hasPerm('rexseo42[seo_extended]'))) {
 	// hide extended section
 	$hideExtendedSection = 'style="display: none;"';
-}
-
-// react on / rewrite of start article: don't allow url change in this case
-if ($REX['ADDON']['rexseo42']['settings']['homeurl'] == 1 && rexseo42::isStartArticle() && $REX['CUR_CLANG'] == 0) {
-	$disableCustomUrl = 'disabled="disabled"';
 }
 
 // react on userdef_canonical_url option in settings
@@ -52,18 +44,12 @@ if (rex_post('saveseo', 'boolean')) {
 
 	$keywords = str_replace(',', ', ', rex_post('seo_keywords')); // always have a whitespace char after comma 
 	$keywords = strtolower(rexseo42_utils::sanitizeString($keywords)); // also keywords should be all lowercase
-
-	$url = rexseo42_utils::sanitizeString(rex_post('seo_custom_url'));
-	$url = str_replace("\\\\", '/', $url); // replace backslash with forward slash
-	$url = ltrim($url, '/'); // remove first slash if there is any
-
 	$canonicalUrl = rexseo42_utils::sanitizeString(rex_post('seo_canonical_url'));
 
 	// seo fields
 	$sql->setValue('seo_title', $title);
 	$sql->setValue('seo_description', $description);
 	$sql->setValue('seo_keywords', $keywords);
-	$sql->setValue('seo_custom_url', $url);
 	$sql->setValue('seo_canonical_url', $canonicalUrl);
 
 	// ignore prefix
@@ -94,13 +80,6 @@ if (rex_post('saveseo', 'boolean')) {
 
 		// delete cached article
 		rex_generateArticle($articleID);
-
-		// generate path list if url has changed
-		if ($savedURL != rex_post('seo_custom_url')) {
-			rexseo_generate_pathlist('');
-		}
-
-		$dataUpdated = true; // this is for frontend link fix with js
 	} else {
 		// err msg
 		echo rex_warning($sql->getError());
@@ -123,7 +102,6 @@ echo '
 					<input type="hidden" name="save" value="1" />
 					<input type="hidden" name="clang" value="' . $clang . '" />
 					<input type="hidden" name="ctype" value="' . $ctype . '" />
-					<input type="hidden" name="saved_seo_custom_url" value="' . $seoData['seo_custom_url'] . '" />
 
 					<fieldset class="rex-form-col-1">
 						<legend id="seo-default">' . $I18N->msg('rexseo42_seopage_main_section') . '</legend>
@@ -166,14 +144,6 @@ echo '
 					<fieldset ' . $hideExtendedSection . ' class="rex-form-col-1">
 						<legend>' . $I18N->msg('rexseo42_seopage_extended_section') . '</legend>
 						<div class="rex-form-wrapper">
-							<div class="rex-form-row">
-								<p class="rex-form-text">
-									<label for="custom-url">' . $I18N->msg('rexseo42_seopage_userdef_url') . '</label>
-									<input type="text" value="' . $seoData['seo_custom_url'] . '" name="seo_custom_url" id="custom-url" class="rex-form-text" ' . $disableCustomUrl . ' />
-									<span class="rex-form-notice" id="custom-url-preview">&nbsp;</span>
-								</p>
-							</div>
-
 							<div class="rex-form-row" ' . $hideCanonicalUrl . '>
 								<p class="rex-form-text">
 									<label for="canonical-url">' . $I18N->msg('rexseo42_seopage_canonical_url') . '</label>
@@ -309,16 +279,9 @@ jQuery(document).ready(function() {
 		updateKeywordsCount();
 	});
 
-	jQuery('#custom-url').keyup(function() {
-		updateCustomUrlPreview();
-	});
-
 	updateTitlePreview();
 	updateDescriptionCount();
 	updateKeywordsCount();
-	updateCustomUrlPreview();
-
-	<?php if ($dataUpdated) { ?>jQuery('.rex-navi-content li:last-child a').attr('href', '<?php echo rexseo42::getFullUrl(); ?>');<?php } ?>
 
 	jQuery('#seo-form').submit(function() {
 		var pat = /^https?:\/\//i;
@@ -366,22 +329,6 @@ function updateTitlePreview() {
 function updateDescriptionCount() {
 	jQuery('#description-charcount').html(jQuery('#seo_description').val().length);
 }
-
-function updateCustomUrlPreview() {
-	var base = '<?php echo rexseo42::getBaseUrl(); ?>';
-	var autoUrl = '<?php echo rex_getUrl($REX["ARTICLE_ID"], $REX["CUR_CLANG"]); ?>';
-	var customUrl = jQuery('#custom-url').val();
-	var curUrl = '';
-
-	if (customUrl !== '') {
-		curUrl = base + ltrim(customUrl, '/');
-	} else {
-		curUrl = base + ltrim(autoUrl, '/');
-	}
-
-	jQuery('#custom-url-preview').html(curUrl);
-}
-
 function ltrim(str, chr) {
 	var rgxtrim = (!chr) ? new RegExp('^\\s+') : new RegExp('^' + chr + '+');
 	return str.replace(rgxtrim, '');

@@ -103,6 +103,29 @@ class rexseo42_utils {
 		}
 	}
 
+	public static function addURLPageToPageContentMenu($params) {
+		global $I18N;
+			
+		$class = "";
+
+		if ($params['mode']  == 'url') {
+			$class = 'class="rex-active"';
+		}
+
+		$seoLink = '<a ' . $class . ' href="index.php?page=content&amp;article_id=' . $params['article_id'] . '&amp;mode=url&amp;clang=' . $params['clang'] . '&amp;ctype=' . rex_request('ctype') . '">' . $I18N->msg('rexseo42_urlpage_linktext') . '</a>';
+		array_splice($params['subject'], '-2', '-2', $seoLink);
+
+		return $params['subject'];
+	}
+
+	public static function addURLPageToPageContentOutput($params) {
+		global $REX, $I18N;
+
+		if ($params['mode']  == 'url') {
+			include($REX['INCLUDE_PATH'] . '/addons/rexseo42/pages/urlpage.inc.php');
+		}
+	}
+
 	public static function modifyFrontendLinkInPageContentMenu($params) {
 		$lastElement = count($params['subject']) - 1;
 		$params['subject'][$lastElement] = preg_replace("/(?<=href=(\"|'))[^\"']+(?=(\"|'))/", '../', $params['subject'][$lastElement]);

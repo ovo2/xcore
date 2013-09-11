@@ -85,11 +85,17 @@ if ($REX['REDAXO']) {
 	if (isset($REX['USER']) && ($REX['USER']->isAdmin() || $REX['USER']->hasPerm('rexseo42[seo_default]') || $REX['USER']->hasPerm('rexseo42[seo_extended]') || $REX['USER']->hasPerm('editContentOnly[]'))) {
 		// react on one_page_mode option
 		if (!$REX['ADDON']['rexseo42']['settings']['one_page_mode'] || ($REX['ADDON']['rexseo42']['settings']['one_page_mode'] && $REX['ARTICLE_ID'] == $REX['START_ARTICLE_ID'])) {
-			// add new menu item
+			// seo: add new menu item
 			rex_register_extension('PAGE_CONTENT_MENU', 'rexseo42_utils::addSEOPageToPageContentMenu');
 
-			// include seo page
+			// seo: include seo page
 			rex_register_extension('PAGE_CONTENT_OUTPUT', 'rexseo42_utils::addSEOPageToPageContentOutput');
+
+			// url: add new menu item
+			rex_register_extension('PAGE_CONTENT_MENU', 'rexseo42_utils::addURLPageToPageContentMenu');
+
+			// url: include seo page
+			rex_register_extension('PAGE_CONTENT_OUTPUT', 'rexseo42_utils::addURLPageToPageContentOutput');
 		}
 	}
 
