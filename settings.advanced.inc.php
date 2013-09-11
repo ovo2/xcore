@@ -13,6 +13,9 @@ $REX['ADDON']['rexseo42']['settings']['title_preview'] = true;
 // if true user can change canonical url via seo page. please use this only if you exactly know what you are doing or know that your redaxo users and admins exactly know what they are doing ;)
 $REX['ADDON']['rexseo42']['settings']['custom_canonical_url'] = false;
 
+// if true a noindex checkbox in seopage will be shown so that user will be able to set noindex robots flag for his articles
+$REX['ADDON']['rexseo42']['settings']['noindex_checkbox'] = false;
+
 // if true page rank checker tool will be shown in tools section. set to false if you don't want to send any data to google when tools page is shown ;)
 $REX['ADDON']['rexseo42']['settings']['pagerank_checker'] = true;
 

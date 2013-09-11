@@ -5,19 +5,31 @@ $ctype = rex_request('ctype');
 
 $hideExtendedSection = '';
 $hideCanonicalUrl = '';
+$hideNoIndexCheckbox = '';
 $enableNoPrefixCheckbox = '';
 $enableTitlePreview = '';
 
 // react on editContentOnly[] and rexseo42[seo_extended] but only for non admins
-if (is_object($REX['USER']) && !$REX['USER']->isAdmin() && ($REX['USER']->hasPerm('editContentOnly[]') || !$REX['USER']->hasPerm('rexseo42[seo_extended]'))) {
-	// hide extended section
+if (!$REX['ADDON']['rexseo42']['settings']['custom_canonical_url'] && !$REX['ADDON']['rexseo42']['settings']['noindex_checkbox']) {
+	// for all users if no extended stuff is available
 	$hideExtendedSection = 'style="display: none;"';
+} else {
+	// other users
+	if (is_object($REX['USER']) && !$REX['USER']->isAdmin() && ($REX['USER']->hasPerm('editContentOnly[]') || !$REX['USER']->hasPerm('rexseo42[seo_extended]'))) {
+		$hideExtendedSection = 'style="display: none;"';
+	}
 }
 
 // react on custom_canonical_url option in settings
 if (!$REX['ADDON']['rexseo42']['settings']['custom_canonical_url']) {
 	// hide custom canonical url
 	$hideCanonicalUrl = 'style="display: none;"';
+}
+
+// react on noindex_checkbox option in settings
+if (!$REX['ADDON']['rexseo42']['settings']['noindex_checkbox']) {
+	// hide noindex checkbox
+	$hideNoIndexCheckbox = 'style="display: none;"';
 }
 
 // react on no_prefix_checkbox option in settings
@@ -151,7 +163,7 @@ echo '
 								</p>
 							</div>
 
-							<div class="rex-form-row">
+							<div class="rex-form-row" ' . $hideNoIndexCheckbox . '>
 								<p class="rex-form-col-a rex-form-checkbox more-padding">
 									<input type="checkbox" id="seo_noindex" value="';
 									if ($seoData['seo_noindex'] == '1') { echo "1"; $check = 'checked = "checked"'; } else { echo ""; $check = ""; }
