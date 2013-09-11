@@ -13,6 +13,7 @@ $REX['PERM'][] = 'rexseo42[]';
 $REX['PERM'][] = 'rexseo42[tools_only]';
 $REX['EXTPERM'][] = 'rexseo42[seo_default]';
 $REX['EXTPERM'][] = 'rexseo42[seo_extended]';
+$REX['EXTPERM'][] = 'rexseo42[url_default]';
 
 // includes
 require($REX['INCLUDE_PATH'] . '/addons/rexseo42/classes/class.rexseo42.inc.php');
@@ -81,21 +82,16 @@ if ($REX['REDAXO']) {
 		rex_register_extension('PAGE_HEADER', 'rexseo42_utils::appendToPageHeader');
 	}
 
-	// check for user permissions (admins will have all)
-	if (isset($REX['USER']) && ($REX['USER']->isAdmin() || $REX['USER']->hasPerm('rexseo42[seo_default]') || $REX['USER']->hasPerm('rexseo42[seo_extended]') || $REX['USER']->hasPerm('editContentOnly[]'))) {
-		// react on one_page_mode option
-		if (!$REX['ADDON']['rexseo42']['settings']['one_page_mode'] || ($REX['ADDON']['rexseo42']['settings']['one_page_mode'] && $REX['ARTICLE_ID'] == $REX['START_ARTICLE_ID'])) {
-			// seo: add new menu item
-			rex_register_extension('PAGE_CONTENT_MENU', 'rexseo42_utils::addSEOPageToPageContentMenu');
-
-			// seo: include seo page
-			rex_register_extension('PAGE_CONTENT_OUTPUT', 'rexseo42_utils::addSEOPageToPageContentOutput');
-
-			// url: add new menu item
-			rex_register_extension('PAGE_CONTENT_MENU', 'rexseo42_utils::addURLPageToPageContentMenu');
-
-			// url: include seo page
-			rex_register_extension('PAGE_CONTENT_OUTPUT', 'rexseo42_utils::addURLPageToPageContentOutput');
+	// check if seopage/urlpage needs to be enabled
+	if (!$REX['ADDON']['rexseo42']['settings']['one_page_mode'] || ($REX['ADDON']['rexseo42']['settings']['one_page_mode'] && $REX['ARTICLE_ID'] == $REX['START_ARTICLE_ID'])) {
+		if (isset($REX['USER']) && ($REX['USER']->isAdmin())) {
+			// admins get everything :)
+			rexseo42_utils::enableSEOPage();
+			rexseo42_utils::enableURLPage();
+		} elseif (isset($REX['USER']) && $REX['USER']->hasPerm('rexseo42[seo_default]') || $REX['USER']->hasPerm('rexseo42[seo_extended]') || $REX['USER']->hasPerm('editContentOnly[]')) {
+			rexseo42_utils::enableSEOPage();
+		} elseif (isset($REX['USER']) && $REX['USER']->hasPerm('rexseo42[url_default]')) {
+			rexseo42_utils::enableURLPage();
 		}
 	}
 

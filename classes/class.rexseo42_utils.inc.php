@@ -126,6 +126,16 @@ class rexseo42_utils {
 		}
 	}
 
+	public static function enableSEOPage() {
+		rex_register_extension('PAGE_CONTENT_MENU', 'rexseo42_utils::addSEOPageToPageContentMenu');
+		rex_register_extension('PAGE_CONTENT_OUTPUT', 'rexseo42_utils::addSEOPageToPageContentOutput');
+	}
+
+	public static function enableURLPage() {
+		rex_register_extension('PAGE_CONTENT_MENU', 'rexseo42_utils::addURLPageToPageContentMenu');
+		rex_register_extension('PAGE_CONTENT_OUTPUT', 'rexseo42_utils::addURLPageToPageContentOutput');
+	}
+
 	public static function modifyFrontendLinkInPageContentMenu($params) {
 		$lastElement = count($params['subject']) - 1;
 		$params['subject'][$lastElement] = preg_replace("/(?<=href=(\"|'))[^\"']+(?=(\"|'))/", '../', $params['subject'][$lastElement]);
