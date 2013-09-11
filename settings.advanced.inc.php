@@ -22,7 +22,7 @@ $REX['ADDON']['rexseo42']['settings']['seo_friendly_image_manager_urls'] = true;
 // default title delimiter (including whitespace chars) for seperating name of website and page title
 $REX['ADDON']['rexseo42']['settings']['title_delimiter'] = ' | ';
 
-// if true page rank checker tool will be shown in tools section. disable if you dont want to send any data to google.
+// if true page rank checker tool will be shown in tools section. set to false if you don't want to send any data to google when tools page is shown ;)
 $REX['ADDON']['rexseo42']['settings']['enable_pagerank_checker'] = true;
 
 // hides the no prefix/suffix checkbox in seopage if false. only necessary if a different title schema is used and therefore no prefix/suffix checkbox is needed

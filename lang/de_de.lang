@@ -34,7 +34,7 @@ rexseo42_tool8_desc = Das Google SERP Snippet Optimization Tool zeigt eine Vorsc
 rexseo42_pr_tool = Google PageRank Checker
 rexseo42_pr_tool_msg = Dieses Tool ermittelt den <a href="http://suchmaschinenoptimierung.michaelsattler.de/pagerank.html" class="extern">PageRank</a> für
 rexseo42_pr_tool_pagerank = PageRank
-rexseo42_pr_tool_failure = Nicht verfügbar.
+rexseo42_pr_tool_failure = Nicht verfügbar
 
 rexseo42_settings_url_ending_without = (ohne)
 rexseo42_settings_langslug_all = Bei allen Sprachen einfügen

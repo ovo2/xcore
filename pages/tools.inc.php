@@ -3,7 +3,7 @@
 	<h2 class="rex-hl2"><?php echo $I18N->msg('rexseo42_pr_tool'); ?></h2>
 	<div class="rex-area-content">
 		<div class="tool-icon"></div>
-		<p><?php echo $I18N->msg('rexseo42_pr_tool_msg') . ' ' . rexseo42::getServerWithSubdir(); ?>:</p>
+		<p><?php echo $I18N->msg('rexseo42_pr_tool_msg') . ' ' . rexseo42::getServerWithSubdir() ?>.</p>
 		<p class="pr"><?php echo $I18N->msg('rexseo42_pr_tool_pagerank'); ?>: <span id="pagerank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
 	</div>
 </div>
@@ -63,9 +63,13 @@ table.rex-table td p.url {
 
 div.rex-area-content p.pr {
 	line-height: 24px;
+	position: relative;
 }
 
 #pagerank {
+	position: absolute;
+	top: 0;
+	margin-left: 5px;
 	font-size: 17px;
 	background: transparent url("../files/addons/rexseo42/loading.gif") no-repeat left 3px;
 }
