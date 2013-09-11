@@ -4,6 +4,12 @@
 // **  DELETE REDAXO CACHE AFTER YOU MADE CHANGES TO THIS FILE!  **
 // ****************************************************************
 
+// if true seo page will be shown for articles. for non admins user right seo_default has to be given too.
+$REX['ADDON']['rexseo42']['settings']['seopage'] = true;
+
+// if true url page will be shown for articles. for non admins user right url_default has to be given too.
+$REX['ADDON']['rexseo42']['settings']['urlpage'] = true;
+
 // hides the no prefix/suffix checkbox in seopage if false. only necessary if a different title schema is used and therefore no prefix/suffix checkbox is needed
 $REX['ADDON']['rexseo42']['settings']['no_prefix_checkbox'] = false;
 

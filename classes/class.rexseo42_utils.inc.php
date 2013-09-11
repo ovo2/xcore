@@ -127,13 +127,21 @@ class rexseo42_utils {
 	}
 
 	public static function enableSEOPage() {
-		rex_register_extension('PAGE_CONTENT_MENU', 'rexseo42_utils::addSEOPageToPageContentMenu');
-		rex_register_extension('PAGE_CONTENT_OUTPUT', 'rexseo42_utils::addSEOPageToPageContentOutput');
+		global $REX;
+
+		if ($REX['ADDON']['rexseo42']['settings']['seopage']) {
+			rex_register_extension('PAGE_CONTENT_MENU', 'rexseo42_utils::addSEOPageToPageContentMenu');
+			rex_register_extension('PAGE_CONTENT_OUTPUT', 'rexseo42_utils::addSEOPageToPageContentOutput');
+		}
 	}
 
 	public static function enableURLPage() {
-		rex_register_extension('PAGE_CONTENT_MENU', 'rexseo42_utils::addURLPageToPageContentMenu');
-		rex_register_extension('PAGE_CONTENT_OUTPUT', 'rexseo42_utils::addURLPageToPageContentOutput');
+		global $REX;
+
+		if ($REX['ADDON']['rexseo42']['settings']['urlpage']) {
+			rex_register_extension('PAGE_CONTENT_MENU', 'rexseo42_utils::addURLPageToPageContentMenu');
+			rex_register_extension('PAGE_CONTENT_OUTPUT', 'rexseo42_utils::addURLPageToPageContentOutput');
+		}
 	}
 
 	public static function modifyFrontendLinkInPageContentMenu($params) {

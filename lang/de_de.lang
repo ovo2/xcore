@@ -94,9 +94,8 @@ rexseo42_seopage_title_nosufix = Kein Suffix
 rexseo42_seopage_chars = Zeichen
 rexseo42_seopage_words = Begriffe
 rexseo42_seopage_extended_section = Erweitert
-rexseo42_seopage_userdef_url = Benutzerdefinierte URL
 rexseo42_seopage_noindex = Indizierung nicht erlauben
-rexseo42_seopage_button_text = SEO-Daten aktualisieren
+rexseo42_seopage_button_text = Aktualisieren
 rexseo42_seopage_canonical_url = Canonical URL
 rexseo42_seopage_canonical_alert = Die Canonical URL muss mit "http://" beginnen.
 
