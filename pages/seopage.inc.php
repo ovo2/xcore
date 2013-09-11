@@ -14,9 +14,9 @@ if (is_object($REX['USER']) && !$REX['USER']->isAdmin() && ($REX['USER']->hasPer
 	$hideExtendedSection = 'style="display: none;"';
 }
 
-// react on userdef_canonical_url option in settings
-if (!$REX['ADDON']['rexseo42']['settings']['userdef_canonical_url']) {
-	// hide userdef canonical url
+// react on custom_canonical_url option in settings
+if (!$REX['ADDON']['rexseo42']['settings']['custom_canonical_url']) {
+	// hide custom canonical url
 	$hideCanonicalUrl = 'style="display: none;"';
 }
 

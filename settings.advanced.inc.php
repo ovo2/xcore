@@ -4,6 +4,18 @@
 // **  DELETE REDAXO CACHE AFTER YOU MADE CHANGES TO THIS FILE!  **
 // ****************************************************************
 
+// if true page rank checker tool will be shown in tools section. set to false if you don't want to send any data to google when tools page is shown ;)
+$REX['ADDON']['rexseo42']['settings']['enable_pagerank_checker'] = true;
+
+// hides the no prefix/suffix checkbox in seopage if false. only necessary if a different title schema is used and therefore no prefix/suffix checkbox is needed
+$REX['ADDON']['rexseo42']['settings']['enable_no_prefix_checkbox'] = false;
+
+// hides the title preview in seopage if false. only necessary if a different title schema is used and therefore title preview is unwanted
+$REX['ADDON']['rexseo42']['settings']['enable_title_preview'] = true;
+
+// if true user can change canonical url via seo page. please use this only if you exactly know what you are doing or know that your redaxo users and admins exactly know what they are doing ;)
+$REX['ADDON']['rexseo42']['settings']['custom_canonical_url'] = false;
+
 // if true you get full urls like in wordpress :) rexseo42::getUrlStart() and co. needs to be used consequently for all extra urls (like urls to media files, etc.) | url_start option will be ignored by this
 $REX['ADDON']['rexseo42']['settings']['full_urls'] = false;
 
@@ -13,23 +25,11 @@ $REX['ADDON']['rexseo42']['settings']['subdir_force_full_urls'] = true;
 // url start piece for all urls returned from rex_getUrl(), rexseo42::getUrlStart() and co.. Should to be used for all extra urls!
 $REX['ADDON']['rexseo42']['settings']['url_start'] = '/';
 
-// if true user can change canonical url via seo page. please use this only if you exactly know what you are doing or know that your redaxo users and admins exactly know what they are doing ;)
-$REX['ADDON']['rexseo42']['settings']['userdef_canonical_url'] = false;
-
 // if true rexseo42::getImageManagerUrl() and rexseo42::getImageTag() will produce seo friendly urls
 $REX['ADDON']['rexseo42']['settings']['seo_friendly_image_manager_urls'] = true;
 
 // default title delimiter (including whitespace chars) for seperating name of website and page title
 $REX['ADDON']['rexseo42']['settings']['title_delimiter'] = ' | ';
-
-// if true page rank checker tool will be shown in tools section. set to false if you don't want to send any data to google when tools page is shown ;)
-$REX['ADDON']['rexseo42']['settings']['enable_pagerank_checker'] = true;
-
-// hides the no prefix/suffix checkbox in seopage if false. only necessary if a different title schema is used and therefore no prefix/suffix checkbox is needed
-$REX['ADDON']['rexseo42']['settings']['enable_no_prefix_checkbox'] = false;
-
-// hides the title preview in seopage if false. only necessary if a different title schema is used and therefore title preview is unwanted
-$REX['ADDON']['rexseo42']['settings']['enable_title_preview'] = true;
 
 // if true seopage will be only visible at start article of website. also the frontend links will all point to start article and sitemap.xml will show only one url
 $REX['ADDON']['rexseo42']['settings']['one_page_mode'] = false;
