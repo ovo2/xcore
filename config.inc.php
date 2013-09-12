@@ -88,7 +88,7 @@ if ($REX['REDAXO']) {
 			// admins get everything :)
 			rexseo42_utils::enableSEOPage();
 			rexseo42_utils::enableURLPage();
-		} elseif (isset($REX['USER']) && $REX['USER']->hasPerm('rexseo42[seo_default]') || $REX['USER']->hasPerm('rexseo42[seo_extended]') || $REX['USER']->hasPerm('editContentOnly[]')) {
+		} elseif (isset($REX['USER']) && ($REX['USER']->hasPerm('rexseo42[seo_default]') || $REX['USER']->hasPerm('rexseo42[seo_extended]') || $REX['USER']->hasPerm('editContentOnly[]'))) {
 			rexseo42_utils::enableSEOPage();
 		} elseif (isset($REX['USER']) && $REX['USER']->hasPerm('rexseo42[url_default]')) {
 			rexseo42_utils::enableURLPage();
