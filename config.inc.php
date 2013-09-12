@@ -66,10 +66,14 @@ if ($REX['REDAXO']) {
 			array('tools', $I18N->msg('rexseo42_tools'))
 		);
 
-		if (OOPlugin::isAvailable('rexseo42', 'redirects')) {
-			array_push($REX['ADDON']['rexseo42']['SUBPAGES'], array('redirects', $I18N->msg('rexseo42_redirects')));
+		// plugins
+		$plugins = OOPlugin::getAvailablePlugins('rexseo42');
+
+		for ($i = 0; $i < count($plugins); $i++) {
+			array_push($REX['ADDON']['rexseo42']['SUBPAGES'], array($plugins[$i], $I18N->msg('rexseo42_' . $plugins[$i])));
 		}
 
+		// rest of sub pages
 		array_push($REX['ADDON']['rexseo42']['SUBPAGES'], 
 			array('options', $I18N->msg('rexseo42_settings')),
 			array('setup', $I18N->msg('rexseo42_setup')),
