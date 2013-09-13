@@ -129,7 +129,7 @@ seo42_help_codeexamples_ex6_comment4 = gibt nun den titel in kleinbuchstaben aus
 
 seo42_help_faq = FAQ
 seo42_help_faq01a = Warum brauchts eigentlich noch ein weiteres RexSEO?
-seo42_help_faq01b = Aus dem gleichen Grund warum es hunderte Linux Forks gibt: Geschmäcker sind halt einfach verschieden! ;)
+seo42_help_faq01b = Aus dem gleichen Grund warum es hunderte Linux Forks gibt: Geschmäcker sind halt einfach verschieden ;)
 
 seo42_help_faq02a = {0} läuft nicht mehr rund. Was tun?
 seo42_help_faq02b = <a href="index.php?page=specials&func=generate">Cache löschen</a>, AddOn <a href="index.php?page=addon&addonname=seo42&install=1">reinstallieren</a> und evtl. das <a href="index.php?page=seo42&subpage=setup">Setup</a> neu durchlaufen sind hier deine Freunde ;)
@@ -140,11 +140,11 @@ seo42_help_faq03b = Geben Sie im {0} Setup und in der .htaccess den Unterordner 
 seo42_help_faq18a = Wann genau brauche ich jetzt eigentlich nochmal den Base-Tag?
 seo42_help_faq18b = Gar nicht mehr, ausser Sie schalten die Option <code>subdir_force_full_urls</code> aus. Dann muss die <code>url_start</code> Option auf <code>"./"</code> stehen und das in den Head-Bereich Ihres Templates: <code>&lt;base href="&lt;?php echo seo42::getBaseUrl(); ?&gt;" /&gt;</code>
 
-seo42_help_faq04a = Ich mag das Pipe-Zeichen nicht im Titel. Wie kann ich das umstellen?
-seo42_help_faq04b = Der zuständige Parameter heißt <code>title_delimiter</code> und ist in der <code>settings.advanced.inc.php</code> einstellbar.
-
 seo42_help_faq17a = Wo sind eigentlich all die restlichen Einstellungen von RexSEO abgeblieben?
 seo42_help_faq17b = Vorläufig wurden diese hier ausgelagert: <code>settings.advanced.inc.php</code>
+
+seo42_help_faq04a = Ich mag das Pipe-Zeichen nicht im Titel. Wie kann ich das umstellen?
+seo42_help_faq04b = Der zuständige Parameter heißt <code>title_delimiter</code> und ist in der <code>settings.advanced.inc.php</code> einstellbar.
 
 seo42_help_faq05a = Wie kann ich den Titel sonst noch beinflussen?
 seo42_help_faq05b = Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix" wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode <code>seo42::getTitle()</code> überschreiben, siehe dazu Codebeispiel 5 in der Hilfe.
@@ -162,7 +162,7 @@ seo42_help_faq09a = Ich möchte nicht-www Anfragen auf die www Variante umleiten
 seo42_help_faq09b = Yup. In der .htaccess die entsprechenden Zeilen un-auskommentieren bzw. über Setup Schritt 1 automatisch machen lassen.
 
 seo42_help_faq10a = Meine URLs haben sich geändert. Wie kann ich saubere Weiterleitungen hinbekommen?
-seo42_help_faq10b = In der .htaccess im Root-Ordner an oberster Stelle pro URL eine 301 Weiterleitung nach diesem Schema einrichten:<br /><code>Redirect 301 /alte-seite.html http://www.my-domain.de/neue-seite.html</code>
+seo42_help_faq10b = Dafür gibt es mittlerweile das mitgelieferte Redirects Plugin. Bitte Urls immer mit einem Splash beginnen, die Ziel Url kann aber auch mit http:// beginnen.
 
 seo42_help_faq11a = Habe gehört das es SEO-technisch gut wäre wenn Bilder ein Alt-Attribut zugewiesen bekommen?
 seo42_help_faq11b = Dafür kann man die Methode <code>seo42::getImageTag()</code> nutzen, die dann einen kompletten Image-Tag inkl. Alt-Attribut ausspuckt (siehe Codebeispiel 3). Und im Medienpool wird dieser dann im Titel-Feld gesetzt.

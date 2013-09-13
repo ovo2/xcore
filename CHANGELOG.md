@@ -3,6 +3,18 @@ SEO42 - Changelog
 
 ### Version 2.0.0
 
+* AddOn wurde von REXSEO42 in SEO42 umbenannt
+* URL-Page vorbereitet...
+* Neues Recht `url_default` hinzugefügt um normalen Benutzer die URL-Page ein bzw. auszuschalten.
+* Neue Optionen `seopage` und `urlpage` um die beiden Seiten global abzuschalten, wenn nicht gebraucht.
+* Plugins werden automatisch in das SEO42-Menü eingebunden, wenn installiert und aktiviert.
+* Die NoIndex Checkbox in der SEO-Page wurde standardmäßig entfernt. Über die Option `noindex_checkbox` wieder einzuschalten.
+* Die No-Prefix/Suffix Checkbox in der SEO-Page wurde standardmäßig entfernt. Über die Option `no_prefix_checkbox` wieder einzuschalten.
+* PageRank Checker zu den Tools hinzugefügt. Lässt sich über die Option `pagerank_checker` ausschalten.
+* Auf der Debug Seite wird nun auch die Pathlist ausgegeben
+* Option `title_preview` hinzugefügt um die Titel-Vorschau abzuschalten, falls man sein eigenes Titel-Schema implementiert hat
+* Umbenennungen der Optionen: `userdef_canonical_url` -> `custom_canonical_url`, `hide_no_prefix_checkbox` -> `no_prefix_checkbox`
+* Updatedatum der Artikel werden nun automatisch aktualisiert, wenn Änderungen über die SEO-Page durchgeführt wurden.
 * Redirects Plugin hinzugefügt um 301 Weiterleitungen komfortabel über das Backend anlegen zu können. Bitte Urls immer mit einem Splash beginnen, die Ziel Url kann aber auch mit http:// beginnen. Plugin ist Website Manager kompatibel.
 
 ### Version 1.2.1 - 21. Mai 2013
