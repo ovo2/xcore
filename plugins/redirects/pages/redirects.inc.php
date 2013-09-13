@@ -88,10 +88,12 @@ if ($func == '') {
 	// source url
 	$field =& $form->addTextField('source_url'); 
 	$field->setLabel($I18N->msg('seo42_redirect_source_url'));
+	$field->setAttribute('id', 'source-url');
 
 	// target url
 	$field =& $form->addTextField('target_url'); 
 	$field->setLabel($I18N->msg('seo42_redirect_target_url'));  
+	$field->setAttribute('id', 'target-url');
 
 	if ($func == 'edit') {
 		$form->addParam('redirect_id', $redirect_id);
@@ -104,4 +106,26 @@ if ($func == '') {
 
 echo '</div>';
 ?>
+
+<script type="text/javascript">
+jQuery(document).ready( function() {
+	jQuery('form').submit(function() {
+		var pat = /^https?:\/\//i;
+		var sourceUrl = jQuery('#source-url').val();
+		var targetUrl = jQuery('#target-url').val();
+
+		if (sourceUrl.charAt(0) == '/') {
+			if (pat.test(targetUrl) || targetUrl.charAt(0) == '/') {
+				return true;
+			} else {
+				alert('<?php echo $I18N->msg('seo42_redirect_targeturl_alert'); ?>');
+			}
+		} else {
+			alert('<?php echo $I18N->msg('seo42_redirect_sourceurl_alert'); ?>');
+		}
+
+		return false;
+	});
+});
+</script>
 

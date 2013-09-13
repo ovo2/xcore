@@ -17,4 +17,6 @@ seo42_redirect = Redirect
 seo42_redirect_not_available = Redirect nicht vorhanden!
 seo42_redirect_none = <keins>
 seo42_redirect_help = Redirects Plugin für SEO42
+seo42_redirect_sourceurl_alert = Die Quell-URL muss mit "/" beginnen.
+seo42_redirect_targeturl_alert = Die Ziel-URL muss mit "http://" oder "/" beginnen.
 
