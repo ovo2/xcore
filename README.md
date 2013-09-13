@@ -1,4 +1,4 @@
-REXSEO42 AddOn für REDAXO 4.5+
+SEO42 AddOn für REDAXO 4.5+
 ==============================
 
 Ein intergalaktischer Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzerführung und noch weiterer SEO-Goodies...
@@ -25,12 +25,12 @@ Hinweise
 --------
 
 * Läuft nur mit REDAXO 4.5+
-* AddOn-Ordner lautet: `rexseo42`
+* AddOn-Ordner lautet: `seo42`
 * WICHTIG: Bitte für ALLE Urls immer die PHP-Methoden aus dem Codebeispiel Nr.2 aus der Hilfe nutzen!
-* RexSEO Plugins laufen mit REXSEO42 vorerst nicht.
+* RexSEO Plugins laufen mit SEO42 vorerst nicht.
 * Geändertes Verhalten für REDAXO Unterordner-Installationen. Bitte FAQ in der Hilfe des AddOns anschauen für weitere Infos.
 * Wenn der Webserver einen 500 Server Error meldet die Zeile `Options -Indexes` in der `.htaccess` auskommentieren.
-* `$REX["MOD_REWRITE"]` braucht nicht mehr auf `true` gesetzt werden (z.B. über die System-Page von REDAXO). Wenn REXSEO42 aktiv, wirds automatisch gesetzt. Option um den Rewriter aber trotzdem auszuschalten ist geplannt :)
+* `$REX["MOD_REWRITE"]` braucht nicht mehr auf `true` gesetzt werden (z.B. über die System-Page von REDAXO). Wenn SEO42 aktiv, wirds automatisch gesetzt. Option um den Rewriter aber trotzdem auszuschalten ist geplannt :)
 * Redirects Plugin: bitte Urls immer mit einem Splash beginnen, die Ziel Url kann aber auch mit http:// beginnen. Plugin ist Website Manager kompatibel.
 
 Changelog

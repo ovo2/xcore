@@ -1,5 +1,5 @@
 <?php
-class rexseo42 {
+class seo42 {
 	protected static $curArticle;
 	protected static $startArticleID;
 	protected static $titleDelimiter;
@@ -24,12 +24,12 @@ class rexseo42 {
 
 		// default inits
 		self::$startArticleID = $REX['START_ARTICLE_ID'];
-		self::$titleDelimiter = $REX['ADDON']['rexseo42']['settings']['title_delimiter'];
-		self::$robotsFollowFlag = $REX['ADDON']['rexseo42']['settings']['robots_follow_flag'];
-		self::$robotsArchiveFlag = $REX['ADDON']['rexseo42']['settings']['robots_archive_flag'];
+		self::$titleDelimiter = $REX['ADDON']['seo42']['settings']['title_delimiter'];
+		self::$robotsFollowFlag = $REX['ADDON']['seo42']['settings']['robots_follow_flag'];
+		self::$robotsArchiveFlag = $REX['ADDON']['seo42']['settings']['robots_archive_flag'];
 		self::$mediaDir = $REX['MEDIA_DIR'];
 		self::$mediaAddonDir = $REX['MEDIA_ADDON_DIR'];
-		self::$seoFriendlyImageManagerUrls = $REX['ADDON']['rexseo42']['settings']['seo_friendly_image_manager_urls'];
+		self::$seoFriendlyImageManagerUrls = $REX['ADDON']['seo42']['settings']['seo_friendly_image_manager_urls'];
 		self::$serverUrl = $REX['SERVER'];
 		self::$websiteName = $REX['SERVERNAME'];
 		self::$modRewrite = $REX['MOD_REWRITE'];
@@ -49,10 +49,10 @@ class rexseo42 {
 		}
 
 		// check for full urls option
-		if (self::$isSubDirInstall && $REX['ADDON']['rexseo42']['settings']['subdir_force_full_urls']) {
+		if (self::$isSubDirInstall && $REX['ADDON']['seo42']['settings']['subdir_force_full_urls']) {
 			self::$fullUrls = true;
 		} else {
-			self::$fullUrls = $REX['ADDON']['rexseo42']['settings']['full_urls'];
+			self::$fullUrls = $REX['ADDON']['seo42']['settings']['full_urls'];
 		}
 
 		// set url start 
@@ -61,7 +61,7 @@ class rexseo42 {
 			self::$urlStart = self::$serverUrl;
 		} else {
 			// use url start specified in settings
-			self::$urlStart = $REX['ADDON']['rexseo42']['settings']['url_start'];
+			self::$urlStart = $REX['ADDON']['seo42']['settings']['url_start'];
 		}
 	}
 
@@ -242,8 +242,8 @@ class rexseo42 {
 			$clangID = $REX['CUR_CLANG'];
 		}
 
-		if (isset($REX['ADDON']['rexseo42']['settings']['langcodes'][$clangID])) {
-			return $REX['ADDON']['rexseo42']['settings']['langcodes'][$clangID];
+		if (isset($REX['ADDON']['seo42']['settings']['langcodes'][$clangID])) {
+			return $REX['ADDON']['seo42']['settings']['langcodes'][$clangID];
 		} else {
 			return $REX['CLANG'][$clangID];
 		}
@@ -330,48 +330,48 @@ class rexseo42 {
 			return '';
 		}
 
-		$out = '<div id="rexseo42-debug">';
+		$out = '<div id="seo42-debug">';
 
-		$out .= '<h1>---------- REXSEO42 DEBUG BEGIN ----------<h1>';
+		$out .= '<h1>---------- SEO42 DEBUG BEGIN ----------<h1>';
 
 		$out .= '<h2>Class Methods</h2>';
 		$out .= '<table>';
 
 		$out .= self::getDebugInfoRow('rex_getUrl', array(self::$curArticle->getId()));
-		$out .= self::getDebugInfoRow('rexseo42::getTrimmedUrl', array(self::$curArticle->getId()));
-		$out .= self::getDebugInfoRow('rexseo42::getFullUrl', array(self::$curArticle->getId()));
-		$out .= self::getDebugInfoRow('rexseo42::getTitle');
-		$out .= self::getDebugInfoRow('rexseo42::getDescription');
-		$out .= self::getDebugInfoRow('rexseo42::getKeywords');
-		$out .= self::getDebugInfoRow('rexseo42::getRobotRules');
-		$out .= self::getDebugInfoRow('rexseo42::getCanonicalUrl');
-		$out .= self::getDebugInfoRow('rexseo42::getArticleName');
-		$out .= self::getDebugInfoRow('rexseo42::isStartArticle');
-		$out .= self::getDebugInfoRow('rexseo42::getWebsiteName');
-		$out .= self::getDebugInfoRow('rexseo42::getLangCode', array('0'));
-		$out .= self::getDebugInfoRow('rexseo42::getServerProtocol');
-		$out .= self::getDebugInfoRow('rexseo42::getBaseUrl');
-		$out .= self::getDebugInfoRow('rexseo42::getServerUrl');
-		$out .= self::getDebugInfoRow('rexseo42::getServer');
-		$out .= self::getDebugInfoRow('rexseo42::getServerWithSubDir');
-		$out .= self::getDebugInfoRow('rexseo42::getServerSubDir');
-		$out .= self::getDebugInfoRow('rexseo42::isSubDirInstall');
-		$out .= self::getDebugInfoRow('rexseo42::getTitleDelimiter');
-		$out .= self::getDebugInfoRow('rexseo42::getUrlStart');
-		$out .= self::getDebugInfoRow('rexseo42::getMediaDir');
-		$out .= self::getDebugInfoRow('rexseo42::getMediaFile', array('image.png'));
-		$out .= self::getDebugInfoRow('rexseo42::getMediaAddonDir');
-		$out .= self::getDebugInfoRow('rexseo42::getHtml');
-		$out .= self::getDebugInfoRow('rexseo42::getImageTag', array('image.png', 'rex_mediapool_detail', '150', '100'));
-		$out .= self::getDebugInfoRow('rexseo42::getImageManagerUrl', array('image.png', 'rex_mediapool_detail'));
-		$out .= self::getDebugInfoRow('rexseo42::getAnswer');
+		$out .= self::getDebugInfoRow('seo42::getTrimmedUrl', array(self::$curArticle->getId()));
+		$out .= self::getDebugInfoRow('seo42::getFullUrl', array(self::$curArticle->getId()));
+		$out .= self::getDebugInfoRow('seo42::getTitle');
+		$out .= self::getDebugInfoRow('seo42::getDescription');
+		$out .= self::getDebugInfoRow('seo42::getKeywords');
+		$out .= self::getDebugInfoRow('seo42::getRobotRules');
+		$out .= self::getDebugInfoRow('seo42::getCanonicalUrl');
+		$out .= self::getDebugInfoRow('seo42::getArticleName');
+		$out .= self::getDebugInfoRow('seo42::isStartArticle');
+		$out .= self::getDebugInfoRow('seo42::getWebsiteName');
+		$out .= self::getDebugInfoRow('seo42::getLangCode', array('0'));
+		$out .= self::getDebugInfoRow('seo42::getServerProtocol');
+		$out .= self::getDebugInfoRow('seo42::getBaseUrl');
+		$out .= self::getDebugInfoRow('seo42::getServerUrl');
+		$out .= self::getDebugInfoRow('seo42::getServer');
+		$out .= self::getDebugInfoRow('seo42::getServerWithSubDir');
+		$out .= self::getDebugInfoRow('seo42::getServerSubDir');
+		$out .= self::getDebugInfoRow('seo42::isSubDirInstall');
+		$out .= self::getDebugInfoRow('seo42::getTitleDelimiter');
+		$out .= self::getDebugInfoRow('seo42::getUrlStart');
+		$out .= self::getDebugInfoRow('seo42::getMediaDir');
+		$out .= self::getDebugInfoRow('seo42::getMediaFile', array('image.png'));
+		$out .= self::getDebugInfoRow('seo42::getMediaAddonDir');
+		$out .= self::getDebugInfoRow('seo42::getHtml');
+		$out .= self::getDebugInfoRow('seo42::getImageTag', array('image.png', 'rex_mediapool_detail', '150', '100'));
+		$out .= self::getDebugInfoRow('seo42::getImageManagerUrl', array('image.png', 'rex_mediapool_detail'));
+		$out .= self::getDebugInfoRow('seo42::getAnswer');
 
 		$out .= '</table>';
 
 		$out .= '<h2>Settings</h2>';
 
 		$out .= '<pre class="rex-code">';
-		$out .= rexseo42_utils::print_r_pretty($REX['ADDON']['rexseo42']['settings'], true);
+		$out .= seo42_utils::print_r_pretty($REX['ADDON']['seo42']['settings'], true);
 		$out .= '</pre>';
 
 		$out .= '<h2>Pathlist</h2>';
@@ -386,50 +386,50 @@ class rexseo42 {
 		$content = rex_get_file_contents($htaccessRoot);
 		$out .= rex_highlight_string($content, true);
 
-		$out .= '<h1>---------- REXSEO42 DEBUG END ----------</h1>';
+		$out .= '<h1>---------- SEO42 DEBUG END ----------</h1>';
 
 		$out .= '</div>';
 
 		$out .= '<style type="text/css">
-					#rexseo42-debug h1 {
+					#seo42-debug h1 {
 						font-size: 16px;
 						margin: 10px 0;
 					}
 
-					#rexseo42-debug h2 {
+					#seo42-debug h2 {
 						margin: 10px 0;
 						font-size: 14px;
 					}
 
-					#rexseo42-debug .rex-code {
+					#seo42-debug .rex-code {
 						border: 1px solid #F2353A;
 					}
 
-					#rexseo42-debug code,
-					#rexseo42-debug .rex-code {
+					#seo42-debug code,
+					#seo42-debug .rex-code {
 						color: #000;
 						background: #FAF9F5;
 					}
 
-					#rexseo42-debug table {
+					#seo42-debug table {
 						border-collapse: collapse;
 						border-spacing: 0;
 						background: #FAF9F5;
 					}
 
-					#rexseo42-debug table th,
-					#rexseo42-debug table thead td {
+					#seo42-debug table th,
+					#seo42-debug table thead td {
 						font-weight: bold;
 					}
 
-					#rexseo42-debug table td, 
-					#rexseo42-debug table th {
+					#seo42-debug table td, 
+					#seo42-debug table th {
 						padding: 12px;
 						border: 1px solid #F2353A;
 						text-align: left;
 					}
 
-					#rexseo42-debug table td.left {
+					#seo42-debug table td.left {
 						width: 280px;
 					}
 				</style>';

@@ -1,2 +1,2 @@
-<?php echo $I18N->msg('rexseo42_help_message'); ?>
+<?php echo $I18N->msg('seo42_help_message'); ?>
 <br />

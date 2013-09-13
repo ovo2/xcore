@@ -18,13 +18,13 @@ class rexseo_sitemap
     $db = new rex_sql;
     $qry = 'SELECT `id`, `clang`, `updatedate`, `path`, `seo_noindex` FROM `' . $REX['TABLE_PREFIX'] . 'article` WHERE `status` = 1';
 
-	if ($REX['ADDON']['rexseo42']['settings']['ignore_root_cats']) {
+	if ($REX['ADDON']['seo42']['settings']['ignore_root_cats']) {
 		$qry .= ' AND `re_id` != 0 OR (re_id = 0 AND catname LIKE "")';
 	}
 
     foreach($db->getDbArray($qry) as $art)
     {
-      $db_articles[$art['id']][$art['clang']] = array('loc'        => rexseo42::getFullUrl($art['id'],$art['clang']),
+      $db_articles[$art['id']][$art['clang']] = array('loc'        => seo42::getFullUrl($art['id'],$art['clang']),
                                                        'lastmod'    => date('Y-m-d\TH:i:s',$art['updatedate']).'+00:00',
                                                        'changefreq' => self::calc_article_changefreq($art['updatedate'], ''),
                                                        'priority'   => self::calc_article_priority($art['id'],$art['clang'],$art['path'], ''),
@@ -160,7 +160,7 @@ class rexseo_sitemap
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'.PHP_EOL;
 		global $REX;
 
-		if ($REX['ADDON']['rexseo42']['settings']['one_page_mode']) {
+		if ($REX['ADDON']['seo42']['settings']['one_page_mode']) {
 			$art = $this->db_articles[$REX['START_ARTICLE_ID']][0];
 
 			if ($art['noindex'] != true) {

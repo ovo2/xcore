@@ -31,7 +31,7 @@ class rexseo_robots
 		$sql->setQuery($query);
 	
 		for ($i = 1; $i <= $sql->getRows(); $i++) { 
-	  		$out .= "Disallow: /" .  rexseo42::getTrimmedUrl($sql->getValue('id'), $lang) . "\r\n"; 
+	  		$out .= "Disallow: /" .  seo42::getTrimmedUrl($sql->getValue('id'), $lang) . "\r\n"; 
 		  	$sql->next(); 
 		}
 	}
@@ -56,7 +56,7 @@ class rexseo_robots
   public function addSitemapLink()
   {
 	$this->robots_txt = rtrim($this->robots_txt, "\r\n");
-    $this->robots_txt .= "\r\n" . PHP_EOL.'Sitemap: '.rexseo42::getBaseUrl().'sitemap.xml';
+    $this->robots_txt .= "\r\n" . PHP_EOL.'Sitemap: '.seo42::getBaseUrl().'sitemap.xml';
   }
 
 

@@ -1,5 +1,5 @@
-REXSEO42 - MIT Lizenz
-=====================
+SEO42 - MIT Lizenz
+==================
 
 Copyright (c) 2013 RexDude
 

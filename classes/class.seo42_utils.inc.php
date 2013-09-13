@@ -1,12 +1,12 @@
 <?php
 
-class rexseo42_utils {
+class seo42_utils {
 	public static function appendToPageHeader($params) {
 		global $REX;
 
-		$insert = '<!-- BEGIN rexseo42 -->' . PHP_EOL;
-		$insert .= '<link rel="stylesheet" type="text/css" href="../' . $REX['MEDIA_ADDON_DIR'] . '/rexseo42/rexseo42.css" />' . PHP_EOL;
-		$insert .= '<!-- END rexseo42 -->';
+		$insert = '<!-- BEGIN seo42 -->' . PHP_EOL;
+		$insert .= '<link rel="stylesheet" type="text/css" href="../' . $REX['MEDIA_ADDON_DIR'] . '/seo42/seo42.css" />' . PHP_EOL;
+		$insert .= '<!-- END seo42 -->';
 	
 		return $params['subject'] . PHP_EOL . $insert;
 	}
@@ -15,11 +15,11 @@ class rexseo42_utils {
 		global $REX;
 
 		// init globals
-		rexseo42::init();
+		seo42::init();
 
 		if ($REX['MOD_REWRITE']) {
 			// includes
-			require_once($REX['INCLUDE_PATH'] . '/addons/rexseo42/classes/class.rexseo_rewrite.inc.php');
+			require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.rexseo_rewrite.inc.php');
 
 			if ($REX['REDAXO']) { // this is only necessary for backend
 				$extensionPoints = array(
@@ -37,7 +37,7 @@ class rexseo42_utils {
 			}
 
 			// init rewriter 
-			$rewriter = new RexseoRewrite($REX['ADDON']['rexseo42']['settings']['levenshtein'], $REX['ADDON']['rexseo42']['settings']['rewrite_params']);
+			$rewriter = new RexseoRewrite($REX['ADDON']['seo42']['settings']['levenshtein'], $REX['ADDON']['seo42']['settings']['rewrite_params']);
 			$rewriter->resolve();
 
 			// rewrite ep 
@@ -45,15 +45,15 @@ class rexseo42_utils {
 		}
 
 		// init current article
-		rexseo42::initArticle($REX['ARTICLE_ID']);
+		seo42::initArticle($REX['ARTICLE_ID']);
 
 		// set noindex header for robots if current article has noindex flag
-		if (!$REX['REDAXO'] && rexseo42::isArticleValid() && rexseo42::hasNoIndexFlag()) {
+		if (!$REX['REDAXO'] && seo42::isArticleValid() && seo42::hasNoIndexFlag()) {
 			header('X-Robots-Tag: noindex, noarchive');
 		}
 
 		// controller
-		include($REX['INCLUDE_PATH'] . '/addons/rexseo42/controller.inc.php');
+		include($REX['INCLUDE_PATH'] . '/addons/seo42/controller.inc.php');
 
 		// rexseo post init
 		rex_register_extension_point('REXSEO_INCLUDED');
@@ -68,16 +68,16 @@ class rexseo42_utils {
 
 		// check for db fields
 		if ($sql->getRows() == 0) {
-			require($REX['INCLUDE_PATH'] . '/addons/rexseo42/install.inc.php');
-			echo rex_info($I18N->msg('rexseo42_dbfields_readded', $REX['ADDON']['name']['rexseo42']));
-			echo rex_info($I18N->msg('rexseo42_dbfields_readded_check_setup', $REX['ADDON']['name']['rexseo42']));
+			require($REX['INCLUDE_PATH'] . '/addons/seo42/install.inc.php');
+			echo rex_info($I18N->msg('seo42_dbfields_readded', $REX['ADDON']['name']['seo42']));
+			echo rex_info($I18N->msg('seo42_dbfields_readded_check_setup', $REX['ADDON']['name']['seo42']));
 		}
 	}
 
 	public static function showMsgAfterClangModified($params) {
 		global $I18N, $REX;
 
-		echo rex_info($I18N->msg('rexseo42_check_lang_msg', $REX['ADDON']['name']['rexseo42']));
+		echo rex_info($I18N->msg('seo42_check_lang_msg', $REX['ADDON']['name']['seo42']));
 	}
 
 	public static function addSEOPageToPageContentMenu($params) {
@@ -89,7 +89,7 @@ class rexseo42_utils {
 			$class = 'class="rex-active"';
 		}
 
-		$seoLink = '<a '.$class.' href="index.php?page=content&amp;article_id=' . $params['article_id'] . '&amp;mode=seo&amp;clang=' . $params['clang'] . '&amp;ctype=' . rex_request('ctype') . '">' . $I18N->msg('rexseo42_seopage_linktext') . '</a>';
+		$seoLink = '<a '.$class.' href="index.php?page=content&amp;article_id=' . $params['article_id'] . '&amp;mode=seo&amp;clang=' . $params['clang'] . '&amp;ctype=' . rex_request('ctype') . '">' . $I18N->msg('seo42_seopage_linktext') . '</a>';
 		array_splice($params['subject'], '-2', '-2', $seoLink);
 
 		return $params['subject'];
@@ -99,7 +99,7 @@ class rexseo42_utils {
 		global $REX, $I18N;
 
 		if ($params['mode']  == 'seo') {
-			include($REX['INCLUDE_PATH'] . '/addons/rexseo42/pages/seopage.inc.php');
+			include($REX['INCLUDE_PATH'] . '/addons/seo42/pages/seopage.inc.php');
 		}
 	}
 
@@ -112,7 +112,7 @@ class rexseo42_utils {
 			$class = 'class="rex-active"';
 		}
 
-		$seoLink = '<a ' . $class . ' href="index.php?page=content&amp;article_id=' . $params['article_id'] . '&amp;mode=url&amp;clang=' . $params['clang'] . '&amp;ctype=' . rex_request('ctype') . '">' . $I18N->msg('rexseo42_urlpage_linktext') . '</a>';
+		$seoLink = '<a ' . $class . ' href="index.php?page=content&amp;article_id=' . $params['article_id'] . '&amp;mode=url&amp;clang=' . $params['clang'] . '&amp;ctype=' . rex_request('ctype') . '">' . $I18N->msg('seo42_urlpage_linktext') . '</a>';
 		array_splice($params['subject'], '-2', '-2', $seoLink);
 
 		return $params['subject'];
@@ -122,25 +122,25 @@ class rexseo42_utils {
 		global $REX, $I18N;
 
 		if ($params['mode']  == 'url') {
-			include($REX['INCLUDE_PATH'] . '/addons/rexseo42/pages/urlpage.inc.php');
+			include($REX['INCLUDE_PATH'] . '/addons/seo42/pages/urlpage.inc.php');
 		}
 	}
 
 	public static function enableSEOPage() {
 		global $REX;
 
-		if ($REX['ADDON']['rexseo42']['settings']['seopage']) {
-			rex_register_extension('PAGE_CONTENT_MENU', 'rexseo42_utils::addSEOPageToPageContentMenu');
-			rex_register_extension('PAGE_CONTENT_OUTPUT', 'rexseo42_utils::addSEOPageToPageContentOutput');
+		if ($REX['ADDON']['seo42']['settings']['seopage']) {
+			rex_register_extension('PAGE_CONTENT_MENU', 'seo42_utils::addSEOPageToPageContentMenu');
+			rex_register_extension('PAGE_CONTENT_OUTPUT', 'seo42_utils::addSEOPageToPageContentOutput');
 		}
 	}
 
 	public static function enableURLPage() {
 		global $REX;
 
-		if ($REX['ADDON']['rexseo42']['settings']['urlpage']) {
-			rex_register_extension('PAGE_CONTENT_MENU', 'rexseo42_utils::addURLPageToPageContentMenu');
-			rex_register_extension('PAGE_CONTENT_OUTPUT', 'rexseo42_utils::addURLPageToPageContentOutput');
+		if ($REX['ADDON']['seo42']['settings']['urlpage']) {
+			rex_register_extension('PAGE_CONTENT_MENU', 'seo42_utils::addURLPageToPageContentMenu');
+			rex_register_extension('PAGE_CONTENT_OUTPUT', 'seo42_utils::addURLPageToPageContentOutput');
 		}
 	}
 

@@ -1,6 +1,6 @@
 <?php
 
-if (isset($REX['USER']) && !$REX['USER']->isAdmin() && $REX['USER']->hasPerm('rexseo42[tools_only]')) {
+if (isset($REX['USER']) && !$REX['USER']->isAdmin() && $REX['USER']->hasPerm('seo42[tools_only]')) {
 	$startSubpage = 'tools';
 } else {
 	$startSubpage = 'welcome';

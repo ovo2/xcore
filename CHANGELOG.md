@@ -1,4 +1,4 @@
-REXSEO42 - Changelog
+SEO42 - Changelog
 ====================
 
 ### Version 2.0.0
@@ -13,7 +13,7 @@ REXSEO42 - Changelog
 
 * Neues Plugin `url_generate` von tbaddade in die README.md mit aufgenommen
 * Neuer FAQ Eintrag wegen möglichen 500 Server Error, siehe auch Hinweise in der README.md
-* Neues Recht: `rexseo42[tools_only]` für Zugriff auf die Tools-Page für Nicht-Admins (`rexseo42[]` muss mit ausgewählt werden)
+* Neues Recht: `seo42[tools_only]` für Zugriff auf die Tools-Page für Nicht-Admins (`seo42[]` muss mit ausgewählt werden)
 * Wenn ein Artikel nicht indiziert werden soll wird zusätzl. noch ein `X-Robots Header` ausgegeben.
 * Prefix/Suffix Unterscheidung für die Checkbox in der SEO-Page inkl. Option `hide_no_prefix_checkbox` um die Checkbox zu verstecken, wenn anderes Titelschema benötigt
 * Beim WWW-Redirect in der `.htaccess` Datei werden jetzt Sudomains ausgeklammert (wichtig für Website Manager AddOn)
@@ -45,7 +45,7 @@ REXSEO42 - Changelog
 * Verzeichnis-Auflistung z.B. für files und `files/addon`s wird per .htaccess Datei unterbunden
 * Neues Feature: One Page Mode, für Websites die nur über eine einzige Seite verfügen 
 * Neues Feature: SEO Tools - eine Linksammlung zu wichtigen SEO-Tools im Netz
-* Neue Permission: `rexseo42[seo_default]` und `rexseo42[seo_extended]` um für Nicht-Admins die Sichtbarkeit der SEO-Page zu steuern
+* Neue Permission: `seo42[seo_default]` und `seo42[seo_extended]` um für Nicht-Admins die Sichtbarkeit der SEO-Page zu steuern
 * editContentOnly[] wird nun berücksichtigt
 * Neues Feature: Checkbox zum setzen der WWW-Umleitung im Setup
 * `REX['MEDIA_DIR']` wird genutzt
@@ -54,7 +54,7 @@ REXSEO42 - Changelog
 * Auto DB Fix nach DB-Import wenn die DB Felder fehlen sollten
 * SEO-Page: Title, Description und Keywords abgesichert. Keywords werden z.B. nur kleingeschrieben übernommen.
 * SEO-Page: Html und CSS aufgeräumt und verbessert
-* rexseo42 Klasse aufgeräumt und ergänzt: `getHtml()`, `getImageTag()`, `getImageManagerUrl()`, etc.
+* seo42 Klasse aufgeräumt und ergänzt: `getHtml()`, `getImageTag()`, `getImageManagerUrl()`, etc.
 * Änderungen bis RexSEO 1.5.4 reingenommen
 * I18N Support: Alles Strings in die Lang-Datei gepackt
 * .htaccess Datei aufgeräumt und vereinfacht, `redaxo/.htaccess` entfernt
@@ -95,7 +95,7 @@ Erstes Release mit folgenden Änderungen/Features gegenüber dem original RexSEO
 * SEO-Page: Live Anzeige der Buchstaben/Wörter-Anzahl für Beschreibung/Suchbegriffe
 * SEO-Page: Live Vorschau der benutzerdefinierten URL
 * SEO-Page: noIndex-Option um Seiten aus dem Suchindex auszuschließen
-* Klasse `rexseo_meta` durch statische Klasse `rexseo42` ersetzt
+* Klasse `rexseo_meta` durch statische Klasse `seo42` ersetzt
 * sitemap.xml sowie robots.txt erhalten die Headeranweisung "X-Robots-tag: noindex"
 * Links zur robots.txt und sitemap.xml in der Einstellungen-Seite
 * .htaccess-Datei enthält Rewrite-Regel für suchmaschinenfreundliche Image-Manager-URLs 

@@ -26,14 +26,14 @@ class rex_redirects_utils {
 		global $REX;
 
 		$cacheContent = '';
-		$cacheFile = $REX['INCLUDE_PATH'] . '/addons/rexseo42/plugins/redirects/generated/' . self::getCacheFile();
+		$cacheFile = $REX['INCLUDE_PATH'] . '/addons/seo42/plugins/redirects/generated/' . self::getCacheFile();
 
 		if (!file_exists($cacheFile)) {
 			self::createDynFile($cacheFile);
 		}
 
 		// file content
-		$cacheContent .= '$REX[\'REXSEO42_REDIRECTS\'] = array(' . PHP_EOL;
+		$cacheContent .= '$REX[\'SEO42_REDIRECTS\'] = array(' . PHP_EOL;
 
 		$sql = rex_sql::factory();
 		//$sql->debugsql = true;
@@ -58,13 +58,13 @@ class rex_redirects_utils {
 		global $REX;
 
 		$file = rex_redirects_utils::getCacheFile();
-		$redirectsFile = $REX['INCLUDE_PATH'] . '/addons/rexseo42/plugins/redirects/generated/' . $file;
+		$redirectsFile = $REX['INCLUDE_PATH'] . '/addons/seo42/plugins/redirects/generated/' . $file;
 
 		if (file_exists($redirectsFile)) {
 			include($redirectsFile);
 
-			if (isset($REX['REXSEO42_REDIRECTS']) && count($REX['REXSEO42_REDIRECTS']) > 0 && array_key_exists($_SERVER['REQUEST_URI'], $REX['REXSEO42_REDIRECTS'])) {
-				$targetUrl = $REX['REXSEO42_REDIRECTS'][$_SERVER['REQUEST_URI']];
+			if (isset($REX['SEO42_REDIRECTS']) && count($REX['SEO42_REDIRECTS']) > 0 && array_key_exists($_SERVER['REQUEST_URI'], $REX['SEO42_REDIRECTS'])) {
+				$targetUrl = $REX['SEO42_REDIRECTS'][$_SERVER['REQUEST_URI']];
 			
 				if (strpos($targetUrl, 'http') === false) {
 					$location = 'http://' . $_SERVER['SERVER_NAME']  . $targetUrl;

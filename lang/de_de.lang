@@ -1,193 +1,193 @@
-rexseo42 = REXSEO42
+seo42 = SEO42
 
-rexseo42_help_message = Ein intergalaktischer Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzerführung und noch weiterer SEO-Goodies...
-rexseo42_welcome = Willkommen
-rexseo42_settings = Einstellungen
-rexseo42_tools = Tools
-rexseo42_redirects = Redirects
-rexseo42_setup = Setup
-rexseo42_help = Hilfe
-rexseo42_seopage_linktext = SEO
-rexseo42_urlpage_linktext = URL
-rexseo42_install_rex_version = Dieses AddOn benötigt REDAXO Version 4.5.0 oder höher.
-rexseo42_install_concurrent = Bitte folgendes AddOn zuvor deinstallieren:
-rexseo42_uninstall_dbfields_not_removed = Die Datenbankfelder wurden NICHT entfernt.
-rexseo42_config_ok = Einstellungen wurde aktualisiert.
-rexseo42_config_error = Einstellungen konnte nicht gespeichert werden!
-rexseo42_config_file_no_perms = Konfigurationsdatei "{0}" ist nicht beschreibbar!
-rexseo42_dbfields_readded = {0}: Fehlende DB-Felder des AddOns wurden hinzugefügt.
-rexseo42_dbfields_readded_check_setup = {0}: Bitte überprüfen Sie ob das Setup (Schritt 3) erneut durchgeführt werden muss.
-rexseo42_check_lang_msg = {0}: Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.lang.inc.php" Datei.
+seo42_help_message = Ein intergalaktischer Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzerführung und noch weiterer SEO-Goodies...
+seo42_welcome = Willkommen
+seo42_settings = Einstellungen
+seo42_tools = Tools
+seo42_redirects = Redirects
+seo42_setup = Setup
+seo42_help = Hilfe
+seo42_seopage_linktext = SEO
+seo42_urlpage_linktext = URL
+seo42_install_rex_version = Dieses AddOn benötigt REDAXO Version 4.5.0 oder höher.
+seo42_install_concurrent = Bitte folgendes AddOn zuvor deinstallieren:
+seo42_uninstall_dbfields_not_removed = Die Datenbankfelder wurden NICHT entfernt.
+seo42_config_ok = Einstellungen wurde aktualisiert.
+seo42_config_error = Einstellungen konnte nicht gespeichert werden!
+seo42_config_file_no_perms = Konfigurationsdatei "{0}" ist nicht beschreibbar!
+seo42_dbfields_readded = {0}: Fehlende DB-Felder des AddOns wurden hinzugefügt.
+seo42_dbfields_readded_check_setup = {0}: Bitte überprüfen Sie ob das Setup (Schritt 3) erneut durchgeführt werden muss.
+seo42_check_lang_msg = {0}: Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.lang.inc.php" Datei.
 
-rexseo42_tools_caption = SEO Web Tools
-rexseo42_tool1 = Google Index dieser Website anzeigen
-rexseo42_tool1_desc = Überprüfen Sie wie Google Ihre Website {0} indiziert hat.
-rexseo42_tool2 = Google Submit Url
-rexseo42_tool2_desc = Geben Sie Google Ihre neue Website bekannt. Registrierung bzw. Google-Konto erforderlich.
-rexseo42_tool3 = Google Webmaster Tools
-rexseo42_tool3_desc = Die Webmaster-Tools bieten Ihnen ausführliche Berichte über die Präsenz Ihrer Seiten auf Google.
-rexseo42_tool4 = PageRank ermitteln
-rexseo42_tool4_desc = Mit diesem Web Tool lässt sich der PageRank Ihrer Website ermitteln.
-rexseo42_tool6 = Seitwert Quick-Analyse
-rexseo42_tool6_desc = Eine erste kostenlose Analyse Ihrer Website durch den Webdienst Seitwert.de.
-rexseo42_tool8 = Google SERP Snippet Optimization Tool
-rexseo42_tool8_desc = Das Google SERP Snippet Optimization Tool zeigt eine Vorschau der Snippets die Google generiert.
-rexseo42_pr_tool = Google PageRank Checker
-rexseo42_pr_tool_msg = Dieses Tool ermittelt den <a href="http://suchmaschinenoptimierung.michaelsattler.de/pagerank.html" class="extern">PageRank</a> für
-rexseo42_pr_tool_pagerank = PageRank
-rexseo42_pr_tool_failure = Nicht verfügbar
+seo42_tools_caption = SEO Web Tools
+seo42_tool1 = Google Index dieser Website anzeigen
+seo42_tool1_desc = Überprüfen Sie wie Google Ihre Website {0} indiziert hat.
+seo42_tool2 = Google Submit Url
+seo42_tool2_desc = Geben Sie Google Ihre neue Website bekannt. Registrierung bzw. Google-Konto erforderlich.
+seo42_tool3 = Google Webmaster Tools
+seo42_tool3_desc = Die Webmaster-Tools bieten Ihnen ausführliche Berichte über die Präsenz Ihrer Seiten auf Google.
+seo42_tool4 = PageRank ermitteln
+seo42_tool4_desc = Mit diesem Web Tool lässt sich der PageRank Ihrer Website ermitteln.
+seo42_tool6 = Seitwert Quick-Analyse
+seo42_tool6_desc = Eine erste kostenlose Analyse Ihrer Website durch den Webdienst Seitwert.de.
+seo42_tool8 = Google SERP Snippet Optimization Tool
+seo42_tool8_desc = Das Google SERP Snippet Optimization Tool zeigt eine Vorschau der Snippets die Google generiert.
+seo42_pr_tool = Google PageRank Checker
+seo42_pr_tool_msg = Dieses Tool ermittelt den <a href="http://suchmaschinenoptimierung.michaelsattler.de/pagerank.html" class="extern">PageRank</a> für
+seo42_pr_tool_pagerank = PageRank
+seo42_pr_tool_failure = Nicht verfügbar
 
-rexseo42_settings_url_ending_without = (ohne)
-rexseo42_settings_langslug_all = Bei allen Sprachen einfügen
-rexseo42_settings_langslug_noslug = Kein lang slug für Sprache:
-rexseo42_settings_langslug = Lang slug
-rexseo42_settings_language = Sprache
-rexseo42_settings_extension = Endung
-rexseo42_settings_schema = Schema
-rexseo42_settings_startpage = Startseite
-rexseo42_settings_main_section = Allgemein
-rexseo42_settings_robots_additional = Zusätzliche Einträge
-rexseo42_settings_robots_link = Link zur robots.txt
-rexseo42_settings_sitemap_link = Link zur sitemap.xml
-rexseo42_settings_submit = Einstellungen speichern
-rexseo42_settings_lang_hint = Spracheinstellungen
-rexseo42_settings_advanced_hint = Weitere Einstellungen
-rexseo42_settings_show_all = Alle Einstellungen
-rexseo42_settings_show = anzeigen
-rexseo42_settings_hide = verstecken
+seo42_settings_url_ending_without = (ohne)
+seo42_settings_langslug_all = Bei allen Sprachen einfügen
+seo42_settings_langslug_noslug = Kein lang slug für Sprache:
+seo42_settings_langslug = Lang slug
+seo42_settings_language = Sprache
+seo42_settings_extension = Endung
+seo42_settings_schema = Schema
+seo42_settings_startpage = Startseite
+seo42_settings_main_section = Allgemein
+seo42_settings_robots_additional = Zusätzliche Einträge
+seo42_settings_robots_link = Link zur robots.txt
+seo42_settings_sitemap_link = Link zur sitemap.xml
+seo42_settings_submit = Einstellungen speichern
+seo42_settings_lang_hint = Spracheinstellungen
+seo42_settings_advanced_hint = Weitere Einstellungen
+seo42_settings_show_all = Alle Einstellungen
+seo42_settings_show = anzeigen
+seo42_settings_hide = verstecken
 
-rexseo42_setup_file_backup_failed = Datei "{0}" konnte nicht gesichert werden!
-rexseo42_setup_file_copy_successful = Kopieren der Datei erfolgreich.
-rexseo42_setup_file_copy_failed = Beim Kopieren der .htaccess Datei ist ein Fehler aufgetreten. Bitte kopieren Sie die Datei manuell.
-rexseo42_setup_backup_successful = Ein Backup wurde zuvor angelegt.
-rexseo42_setup_backup_failed = Backup der .htaccess Datei fehlgeschlagen. Bitte kopieren Sie die Datei manuell.
-rexseo42_setup_settings_saved = Einstellungen wurden übernommen.
-rexseo42_setup_settings_save_failed = Speichern der Einstellungen fehlgeschlagen. Bitte nehmen Sie die Einstellungen manuell auf der System-Seite vor.
-rexseo42_setup_step1 = Schritt 1: Einstellungen vornehmen
-rexseo42_setup_step1_msg1 = Bitte die folgenden Einstellungen vornehmen bzw. ergänzen:
-rexseo42_setup_website_name = Name der Website
-rexseo42_setup_website_url = URL der Website
-rexseo42_setup_step1_button = Einstellungen übernehmen
-rexseo42_setup_step2 = Schritt 2: .htaccess Datei kopieren
-rexseo42_setup_step2_msg1 = Folgende Datei muss in das Hauptverzeichnis von REDAXO kopiert und korrekt umbenannt werden:
-rexseo42_setup_to = nach
-rexseo42_setup_www_redirect_checkbox = Umleitung auf die WWW-Domain aktivieren
-rexseo42_setup_htaccess_patch_ok = .htaccess Anpassungen wurden vorgenommen.
-rexseo42_setup_htaccess_patch_failed = Die Anpassungen an der .htaccess Datei konnten nicht vorgenommen werden.
-rexseo42_setup_step2_button = Datei kopieren
-rexseo42_setup_step3 = Schritt 3: Template ergänzen
-rexseo42_setup_step3_msg1 = Zuletzt ergänzen Sie den Head-Bereich Ihres Templates wie folgt:
-rexseo42_setup_url_alert = URL dieser Website muss mit "http://" beginnen und mit "/" enden.
-rexseo42_setup_htaccess_alert = Im Hauptverzeichnis von REDAXO existiert bereits eine .htaccess Datei.\r\nWollen Sie diese überschreiben?\r\n\r\nHinweis: Ein Backup der Datei wird in /rexseo42/backup/ gespeichert.
-rexseo42_setup_codeexamples = Bitte nutzen Sie außerdem die bereitgestellten PHP-Methoden aus den <a href="index.php?page=rexseo42&subpage=help&chapter=codeexamples">Codebeispielen</a>...
-rexseo42_setup_rewritebase = RewriteBase automatisch anpassen: <i>RewriteBase /{0}</i>
-rexseo42_setup_subdir_hint = (Bitte Unterordner mit angeben)
-rexseo42_setup_rewritebase_alert = Bitte folgende Anpassung in der .htaccess Datei vornehmen:
+seo42_setup_file_backup_failed = Datei "{0}" konnte nicht gesichert werden!
+seo42_setup_file_copy_successful = Kopieren der Datei erfolgreich.
+seo42_setup_file_copy_failed = Beim Kopieren der .htaccess Datei ist ein Fehler aufgetreten. Bitte kopieren Sie die Datei manuell.
+seo42_setup_backup_successful = Ein Backup wurde zuvor angelegt.
+seo42_setup_backup_failed = Backup der .htaccess Datei fehlgeschlagen. Bitte kopieren Sie die Datei manuell.
+seo42_setup_settings_saved = Einstellungen wurden übernommen.
+seo42_setup_settings_save_failed = Speichern der Einstellungen fehlgeschlagen. Bitte nehmen Sie die Einstellungen manuell auf der System-Seite vor.
+seo42_setup_step1 = Schritt 1: Einstellungen vornehmen
+seo42_setup_step1_msg1 = Bitte die folgenden Einstellungen vornehmen bzw. ergänzen:
+seo42_setup_website_name = Name der Website
+seo42_setup_website_url = URL der Website
+seo42_setup_step1_button = Einstellungen übernehmen
+seo42_setup_step2 = Schritt 2: .htaccess Datei kopieren
+seo42_setup_step2_msg1 = Folgende Datei muss in das Hauptverzeichnis von REDAXO kopiert und korrekt umbenannt werden:
+seo42_setup_to = nach
+seo42_setup_www_redirect_checkbox = Umleitung auf die WWW-Domain aktivieren
+seo42_setup_htaccess_patch_ok = .htaccess Anpassungen wurden vorgenommen.
+seo42_setup_htaccess_patch_failed = Die Anpassungen an der .htaccess Datei konnten nicht vorgenommen werden.
+seo42_setup_step2_button = Datei kopieren
+seo42_setup_step3 = Schritt 3: Template ergänzen
+seo42_setup_step3_msg1 = Zuletzt ergänzen Sie den Head-Bereich Ihres Templates wie folgt:
+seo42_setup_url_alert = URL dieser Website muss mit "http://" beginnen und mit "/" enden.
+seo42_setup_htaccess_alert = Im Hauptverzeichnis von REDAXO existiert bereits eine .htaccess Datei.\r\nWollen Sie diese überschreiben?\r\n\r\nHinweis: Ein Backup der Datei wird in /seo42/backup/ gespeichert.
+seo42_setup_codeexamples = Bitte nutzen Sie außerdem die bereitgestellten PHP-Methoden aus den <a href="index.php?page=seo42&subpage=help&chapter=codeexamples">Codebeispielen</a>...
+seo42_setup_rewritebase = RewriteBase automatisch anpassen: <i>RewriteBase /{0}</i>
+seo42_setup_subdir_hint = (Bitte Unterordner mit angeben)
+seo42_setup_rewritebase_alert = Bitte folgende Anpassung in der .htaccess Datei vornehmen:
 
-rexseo42_seopage_updated = SEO-Daten wurden aktualisiert.
-rexseo42_seopage_main_section = Allgemein
-rexseo42_seopage_title = Titel
-rexseo42_seopage_description = Beschreibung
-rexseo42_seopage_keywords = Suchbegriffe
-rexseo42_seopage_title_noprefix = Kein Prefix
-rexseo42_seopage_title_nosufix = Kein Suffix
-rexseo42_seopage_chars = Zeichen
-rexseo42_seopage_words = Begriffe
-rexseo42_seopage_extended_section = Erweitert
-rexseo42_seopage_noindex = Indizierung nicht erlauben
-rexseo42_seopage_button_text = Aktualisieren
-rexseo42_seopage_canonical_url = Canonical URL
-rexseo42_seopage_canonical_alert = Die Canonical URL muss mit "http://" beginnen.
+seo42_seopage_updated = SEO-Daten wurden aktualisiert.
+seo42_seopage_main_section = Allgemein
+seo42_seopage_title = Titel
+seo42_seopage_description = Beschreibung
+seo42_seopage_keywords = Suchbegriffe
+seo42_seopage_title_noprefix = Kein Prefix
+seo42_seopage_title_nosufix = Kein Suffix
+seo42_seopage_chars = Zeichen
+seo42_seopage_words = Begriffe
+seo42_seopage_extended_section = Erweitert
+seo42_seopage_noindex = Indizierung nicht erlauben
+seo42_seopage_button_text = Aktualisieren
+seo42_seopage_canonical_url = Canonical URL
+seo42_seopage_canonical_alert = Die Canonical URL muss mit "http://" beginnen.
 
-rexseo42_help_chapter_faq = FAQ
-rexseo42_help_chapter_codeexamples = Codebeispiele
-rexseo42_help_chapter_debug = Debug
-rexseo42_help_chapter_links = Links
+seo42_help_chapter_faq = FAQ
+seo42_help_chapter_codeexamples = Codebeispiele
+seo42_help_chapter_debug = Debug
+seo42_help_chapter_links = Links
 
-rexseo42_help_links = Links
-rexseo42_help_link4 = {0} auf GitHub
-rexseo42_help_link1 = {0} Bugtracker
-rexseo42_help_link2 = RexSEO Extensions Points
-rexseo42_help_link3 = Aufbau der RexSEO Pathlist
+seo42_help_links = Links
+seo42_help_link4 = {0} auf GitHub
+seo42_help_link1 = {0} Bugtracker
+seo42_help_link2 = RexSEO Extensions Points
+seo42_help_link3 = Aufbau der RexSEO Pathlist
 
-rexseo42_help_codeexamples = Codebeispiele
-rexseo42_help_codeexamples_title1 = Alternative Einbindung der Html-Tags
-rexseo42_help_codeexamples_description1 = Neben dem Beispiel im Setup Schritt 3 kann man die ganzen Tags auch so einbinden:
-rexseo42_help_codeexamples_title2 = Einheitliche Urls
-rexseo42_help_codeexamples_description2 = Nutzen Sie diese Möglichkeiten um Ihre Urls zu vereinheitlichen und automatisch die richtigen URLs ausgeben zu lassen:
-rexseo42_help_codeexamples_title3 = Suchmaschinenfreundliche Image Manager Urls
-rexseo42_help_codeexamples_description3 = Über diese Methoden lassen sich suchmaschinenfreundliche Urls sowie ganze Image Tags erzeugen: 
-rexseo42_help_codeexamples_title4 = Lang Code ausgeben
-rexseo42_help_codeexamples_description4 = Geben Sie so den aktuellen Lang Code aus der momentan in der <code>settings.lang.inc.php</code> definiert werden kann:
-rexseo42_help_codeexamples_title5 = Titel Schema ändern
-rexseo42_help_codeexamples_description5 = Ein eigenes Titel Schema lässt sich momentan nur über die Überschreibung der getTitle() Methode realisieren:
-rexseo42_help_codeexamples_ex3_alt = Titel aus dem Medienpool
-rexseo42_help_codeexamples_ex6_comment1 = 1.) eigene klasse ableiten und getTitle() methode überschreiben:
-rexseo42_help_codeexamples_ex6_comment2 = 2.) gesamten titel in kleinbuchstaben ausgeben:
-rexseo42_help_codeexamples_ex6_comment3 = 3.) methoden aufrufe dann nur noch über diese abgeleitete klasse:
-rexseo42_help_codeexamples_ex6_comment4 = gibt nun den titel in kleinbuchstaben aus
+seo42_help_codeexamples = Codebeispiele
+seo42_help_codeexamples_title1 = Alternative Einbindung der Html-Tags
+seo42_help_codeexamples_description1 = Neben dem Beispiel im Setup Schritt 3 kann man die ganzen Tags auch so einbinden:
+seo42_help_codeexamples_title2 = Einheitliche Urls
+seo42_help_codeexamples_description2 = Nutzen Sie diese Möglichkeiten um Ihre Urls zu vereinheitlichen und automatisch die richtigen URLs ausgeben zu lassen:
+seo42_help_codeexamples_title3 = Suchmaschinenfreundliche Image Manager Urls
+seo42_help_codeexamples_description3 = Über diese Methoden lassen sich suchmaschinenfreundliche Urls sowie ganze Image Tags erzeugen: 
+seo42_help_codeexamples_title4 = Lang Code ausgeben
+seo42_help_codeexamples_description4 = Geben Sie so den aktuellen Lang Code aus der momentan in der <code>settings.lang.inc.php</code> definiert werden kann:
+seo42_help_codeexamples_title5 = Titel Schema ändern
+seo42_help_codeexamples_description5 = Ein eigenes Titel Schema lässt sich momentan nur über die Überschreibung der getTitle() Methode realisieren:
+seo42_help_codeexamples_ex3_alt = Titel aus dem Medienpool
+seo42_help_codeexamples_ex6_comment1 = 1.) eigene klasse ableiten und getTitle() methode überschreiben:
+seo42_help_codeexamples_ex6_comment2 = 2.) gesamten titel in kleinbuchstaben ausgeben:
+seo42_help_codeexamples_ex6_comment3 = 3.) methoden aufrufe dann nur noch über diese abgeleitete klasse:
+seo42_help_codeexamples_ex6_comment4 = gibt nun den titel in kleinbuchstaben aus
 
-rexseo42_help_faq = FAQ
-rexseo42_help_faq01a = Warum brauchts eigentlich noch ein weiteres RexSEO?
-rexseo42_help_faq01b = Aus dem gleichen Grund warum es hunderte Linux Forks gibt: Geschmäcker sind halt einfach verschieden! ;)
+seo42_help_faq = FAQ
+seo42_help_faq01a = Warum brauchts eigentlich noch ein weiteres RexSEO?
+seo42_help_faq01b = Aus dem gleichen Grund warum es hunderte Linux Forks gibt: Geschmäcker sind halt einfach verschieden! ;)
 
-rexseo42_help_faq02a = {0} läuft nicht mehr rund. Was tun?
-rexseo42_help_faq02b = <a href="index.php?page=specials&func=generate">Cache löschen</a>, AddOn <a href="index.php?page=addon&addonname=rexseo42&install=1">reinstallieren</a> und evtl. das <a href="index.php?page=rexseo42&subpage=setup">Setup</a> neu durchlaufen sind hier deine Freunde ;)
+seo42_help_faq02a = {0} läuft nicht mehr rund. Was tun?
+seo42_help_faq02b = <a href="index.php?page=specials&func=generate">Cache löschen</a>, AddOn <a href="index.php?page=addon&addonname=seo42&install=1">reinstallieren</a> und evtl. das <a href="index.php?page=seo42&subpage=setup">Setup</a> neu durchlaufen sind hier deine Freunde ;)
 
-rexseo42_help_faq03a = Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterordner installiert habe?
-rexseo42_help_faq03b = Geben Sie im {0} Setup und in der .htaccess den Unterordner mit an: <code>RewriteBase /unterordner</code> und nutzen Sie unbedingt die bereitgestellten Methoden zur URL-Erzeugung wie im Codebeispiel 2 beschrieben.
+seo42_help_faq03a = Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterordner installiert habe?
+seo42_help_faq03b = Geben Sie im {0} Setup und in der .htaccess den Unterordner mit an: <code>RewriteBase /unterordner</code> und nutzen Sie unbedingt die bereitgestellten Methoden zur URL-Erzeugung wie im Codebeispiel 2 beschrieben.
 
-rexseo42_help_faq18a = Wann genau brauche ich jetzt eigentlich nochmal den Base-Tag?
-rexseo42_help_faq18b = Gar nicht mehr, ausser Sie schalten die Option <code>subdir_force_full_urls</code> aus. Dann muss die <code>url_start</code> Option auf <code>"./"</code> stehen und das in den Head-Bereich Ihres Templates: <code>&lt;base href="&lt;?php echo rexseo42::getBaseUrl(); ?&gt;" /&gt;</code>
+seo42_help_faq18a = Wann genau brauche ich jetzt eigentlich nochmal den Base-Tag?
+seo42_help_faq18b = Gar nicht mehr, ausser Sie schalten die Option <code>subdir_force_full_urls</code> aus. Dann muss die <code>url_start</code> Option auf <code>"./"</code> stehen und das in den Head-Bereich Ihres Templates: <code>&lt;base href="&lt;?php echo seo42::getBaseUrl(); ?&gt;" /&gt;</code>
 
-rexseo42_help_faq04a = Ich mag das Pipe-Zeichen nicht im Titel. Wie kann ich das umstellen?
-rexseo42_help_faq04b = Der zuständige Parameter heißt <code>title_delimiter</code> und ist in der <code>settings.advanced.inc.php</code> einstellbar.
+seo42_help_faq04a = Ich mag das Pipe-Zeichen nicht im Titel. Wie kann ich das umstellen?
+seo42_help_faq04b = Der zuständige Parameter heißt <code>title_delimiter</code> und ist in der <code>settings.advanced.inc.php</code> einstellbar.
 
-rexseo42_help_faq17a = Wo sind eigentlich all die restlichen Einstellungen von RexSEO abgeblieben?
-rexseo42_help_faq17b = Vorläufig wurden diese hier ausgelagert: <code>settings.advanced.inc.php</code>
+seo42_help_faq17a = Wo sind eigentlich all die restlichen Einstellungen von RexSEO abgeblieben?
+seo42_help_faq17b = Vorläufig wurden diese hier ausgelagert: <code>settings.advanced.inc.php</code>
 
-rexseo42_help_faq05a = Wie kann ich den Titel sonst noch beinflussen?
-rexseo42_help_faq05b = Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix" wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode <code>rexseo42::getTitle()</code> überschreiben, siehe dazu Codebeispiel 5 in der Hilfe.
+seo42_help_faq05a = Wie kann ich den Titel sonst noch beinflussen?
+seo42_help_faq05b = Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix" wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode <code>seo42::getTitle()</code> überschreiben, siehe dazu Codebeispiel 5 in der Hilfe.
 
-rexseo42_help_faq06a = Warum wird der Titel für die Startseite "andersherum" ausgegeben wie für die Folgeseiten?
-rexseo42_help_faq06b = Dies wurde im nachfolgenden PDF von Google abgeguckt (siehe nächste Frage).
+seo42_help_faq06a = Warum wird der Titel für die Startseite "andersherum" ausgegeben wie für die Folgeseiten?
+seo42_help_faq06b = Dies wurde im nachfolgenden PDF von Google abgeguckt (siehe nächste Frage).
 
-rexseo42_help_faq07a = Wo bekomme ich eigentlich eine gute verständliche Einführung in das Thema "Suchmaschinenoptimierung"?
-rexseo42_help_faq07b = Zum Beispiel hier: <a href="http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf" target="_blank" class="extern">http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf</a>
+seo42_help_faq07a = Wo bekomme ich eigentlich eine gute verständliche Einführung in das Thema "Suchmaschinenoptimierung"?
+seo42_help_faq07b = Zum Beispiel hier: <a href="http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf" target="_blank" class="extern">http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf</a>
 
-rexseo42_help_faq08a = Wie kann ich suchmaschinenfreundliche URLs für Bilder erhalten, die über den Image Manager generiert wurden?
-rexseo42_help_faq08b = Zum Beispiel über die Methode <code>rexseo42::getImageManagerUrl()</code>. Siehe dazu Codebeispiel Nr. 3 in der Hilfe.
+seo42_help_faq08a = Wie kann ich suchmaschinenfreundliche URLs für Bilder erhalten, die über den Image Manager generiert wurden?
+seo42_help_faq08b = Zum Beispiel über die Methode <code>seo42::getImageManagerUrl()</code>. Siehe dazu Codebeispiel Nr. 3 in der Hilfe.
 
-rexseo42_help_faq09a = Ich möchte nicht-www Anfragen auf die www Variante umleiten lassen. Soll doch SEO-technisch gut sein, oder?
-rexseo42_help_faq09b = Yup. In der .htaccess die entsprechenden Zeilen un-auskommentieren bzw. über Setup Schritt 1 automatisch machen lassen.
+seo42_help_faq09a = Ich möchte nicht-www Anfragen auf die www Variante umleiten lassen. Soll doch SEO-technisch gut sein, oder?
+seo42_help_faq09b = Yup. In der .htaccess die entsprechenden Zeilen un-auskommentieren bzw. über Setup Schritt 1 automatisch machen lassen.
 
-rexseo42_help_faq10a = Meine URLs haben sich geändert. Wie kann ich saubere Weiterleitungen hinbekommen?
-rexseo42_help_faq10b = In der .htaccess im Root-Ordner an oberster Stelle pro URL eine 301 Weiterleitung nach diesem Schema einrichten:<br /><code>Redirect 301 /alte-seite.html http://www.my-domain.de/neue-seite.html</code>
+seo42_help_faq10a = Meine URLs haben sich geändert. Wie kann ich saubere Weiterleitungen hinbekommen?
+seo42_help_faq10b = In der .htaccess im Root-Ordner an oberster Stelle pro URL eine 301 Weiterleitung nach diesem Schema einrichten:<br /><code>Redirect 301 /alte-seite.html http://www.my-domain.de/neue-seite.html</code>
 
-rexseo42_help_faq11a = Habe gehört das es SEO-technisch gut wäre wenn Bilder ein Alt-Attribut zugewiesen bekommen?
-rexseo42_help_faq11b = Dafür kann man die Methode <code>rexseo42::getImageTag()</code> nutzen, die dann einen kompletten Image-Tag inkl. Alt-Attribut ausspuckt (siehe Codebeispiel 3). Und im Medienpool wird dieser dann im Titel-Feld gesetzt.
+seo42_help_faq11a = Habe gehört das es SEO-technisch gut wäre wenn Bilder ein Alt-Attribut zugewiesen bekommen?
+seo42_help_faq11b = Dafür kann man die Methode <code>seo42::getImageTag()</code> nutzen, die dann einen kompletten Image-Tag inkl. Alt-Attribut ausspuckt (siehe Codebeispiel 3). Und im Medienpool wird dieser dann im Titel-Feld gesetzt.
 
-rexseo42_help_faq12a = Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?
-rexseo42_help_faq12b = Immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. <code>redaxo://13#anker</code>.
+seo42_help_faq12a = Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?
+seo42_help_faq12b = Immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. <code>redaxo://13#anker</code>.
 
-rexseo42_help_faq13a = Wo legt {0} die Backups für die .htaccess Dateien an?
-rexseo42_help_faq13b = Im Backup-Verzeichnis des AddOns: <code>/rexseo42/backup/</code>
+seo42_help_faq13a = Wo legt {0} die Backups für die .htaccess Dateien an?
+seo42_help_faq13b = Im Backup-Verzeichnis des AddOns: <code>/seo42/backup/</code>
 
-rexseo42_help_faq14a = Ich hab ne Frage die hier net auftaucht. Was tun?
-rexseo42_help_faq14b = Schau doch mal ins original RexSEO. Da steht noch mehr Stuff... ;)
+seo42_help_faq14a = Ich hab ne Frage die hier net auftaucht. Was tun?
+seo42_help_faq14b = Schau doch mal ins original RexSEO. Da steht noch mehr Stuff... ;)
 
-rexseo42_help_faq15a = Mir gefällt {0} nicht! Wie bekomme ich das AddOn wieder entfernt?
-rexseo42_help_faq15b = Kein Problem ;) Einfach das Setup von hinten nach vorne durchlaufen und das AddOn deinstallieren.
+seo42_help_faq15a = Mir gefällt {0} nicht! Wie bekomme ich das AddOn wieder entfernt?
+seo42_help_faq15b = Kein Problem ;) Einfach das Setup von hinten nach vorne durchlaufen und das AddOn deinstallieren.
 
-rexseo42_help_faq16a = Wie lautet die Antwort auf die Frage aller Fragen nach dem Leben, dem Universum und dem ganzen Rest?
-rexseo42_help_faq16b = 42
+seo42_help_faq16a = Wie lautet die Antwort auf die Frage aller Fragen nach dem Leben, dem Universum und dem ganzen Rest?
+seo42_help_faq16b = 42
 
-rexseo42_help_faq19a = Mein Webserver meldet einen 500 Server Error?!
-rexseo42_help_faq19b = Vermutlich liegt es an der Zeile <code>Options -Indexes</code> in der .htaccess Datei. Einfach diese Zeile auskommentieren.
+seo42_help_faq19a = Mein Webserver meldet einen 500 Server Error?!
+seo42_help_faq19b = Vermutlich liegt es an der Zeile <code>Options -Indexes</code> in der .htaccess Datei. Einfach diese Zeile auskommentieren.
 
-rexseo42_help_debug = Debug
-rexseo42_help_debug_desc = Mit dieser Methode kann man detaillierte Debug-Informationen zum aktuellen Artikel abrufen:
-rexseo42_help_debug_output = Ausgabe mit Artikel-Id = {0}: (änderbar in der <code>settings.advanced.inc.php</code>)
-rexseo42_help_debug_article_wrong = Artikel ungültig!
+seo42_help_debug = Debug
+seo42_help_debug_desc = Mit dieser Methode kann man detaillierte Debug-Informationen zum aktuellen Artikel abrufen:
+seo42_help_debug_output = Ausgabe mit Artikel-Id = {0}: (änderbar in der <code>settings.advanced.inc.php</code>)
+seo42_help_debug_article_wrong = Artikel ungültig!
 
 

@@ -1,6 +1,6 @@
 <?php
 
-class rexseo42_tool_manager {
+class seo42_tool_manager {
 	protected $tools;
 
 	public function __construct() {
@@ -16,7 +16,7 @@ class rexseo42_tool_manager {
 	}
 
 	public function printToolList($headline) {
-		echo '<table id="rexseo42-tools" class="rex-table">';
+		echo '<table id="seo42-tools" class="rex-table">';
 		echo '<tr><th>' . $headline . '</th></tr>';
 
 		foreach ($this->tools as $tool) {

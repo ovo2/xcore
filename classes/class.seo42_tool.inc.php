@@ -1,6 +1,6 @@
 <?php
 
-class rexseo42_tool {
+class seo42_tool {
 	protected $title;
 	protected $description;
 	protected $link;

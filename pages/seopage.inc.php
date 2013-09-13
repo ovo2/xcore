@@ -9,37 +9,37 @@ $hideNoIndexCheckbox = '';
 $enableNoPrefixCheckbox = '';
 $enableTitlePreview = '';
 
-// react on editContentOnly[] and rexseo42[seo_extended] but only for non admins
-if (!$REX['ADDON']['rexseo42']['settings']['custom_canonical_url'] && !$REX['ADDON']['rexseo42']['settings']['noindex_checkbox']) {
+// react on editContentOnly[] and seo42[seo_extended] but only for non admins
+if (!$REX['ADDON']['seo42']['settings']['custom_canonical_url'] && !$REX['ADDON']['seo42']['settings']['noindex_checkbox']) {
 	// for all users if no extended stuff is available
 	$hideExtendedSection = 'style="display: none;"';
 } else {
 	// other users
-	if (is_object($REX['USER']) && !$REX['USER']->isAdmin() && ($REX['USER']->hasPerm('editContentOnly[]') || !$REX['USER']->hasPerm('rexseo42[seo_extended]'))) {
+	if (is_object($REX['USER']) && !$REX['USER']->isAdmin() && ($REX['USER']->hasPerm('editContentOnly[]') || !$REX['USER']->hasPerm('seo42[seo_extended]'))) {
 		$hideExtendedSection = 'style="display: none;"';
 	}
 }
 
 // react on custom_canonical_url option in settings
-if (!$REX['ADDON']['rexseo42']['settings']['custom_canonical_url']) {
+if (!$REX['ADDON']['seo42']['settings']['custom_canonical_url']) {
 	// hide custom canonical url
 	$hideCanonicalUrl = 'style="display: none;"';
 }
 
 // react on noindex_checkbox option in settings
-if (!$REX['ADDON']['rexseo42']['settings']['noindex_checkbox']) {
+if (!$REX['ADDON']['seo42']['settings']['noindex_checkbox']) {
 	// hide noindex checkbox
 	$hideNoIndexCheckbox = 'style="display: none;"';
 }
 
 // react on no_prefix_checkbox option in settings
-if (!$REX['ADDON']['rexseo42']['settings']['no_prefix_checkbox']) {
+if (!$REX['ADDON']['seo42']['settings']['no_prefix_checkbox']) {
 	// hide no-prefix/suffix checkbox
 	$enableNoPrefixCheckbox = 'style="display: none;"';
 }
 
 // react on title_preview option in settings
-if (!$REX['ADDON']['rexseo42']['settings']['title_preview']) {
+if (!$REX['ADDON']['seo42']['settings']['title_preview']) {
 	$enableTitlePreview = 'style="display: none;"';
 }
 
@@ -51,12 +51,12 @@ if (rex_post('saveseo', 'boolean')) {
 	$sql->setWhere("id=" . $articleID . " AND clang=" . $clang);
 
 	//sanitize
-	$title = rexseo42_utils::sanitizeString(rex_post('seo_title'));
-	$description = rexseo42_utils::sanitizeString(rex_post('seo_description'));
+	$title = seo42_utils::sanitizeString(rex_post('seo_title'));
+	$description = seo42_utils::sanitizeString(rex_post('seo_description'));
 
 	$keywords = str_replace(',', ', ', rex_post('seo_keywords')); // always have a whitespace char after comma 
-	$keywords = strtolower(rexseo42_utils::sanitizeString($keywords)); // also keywords should be all lowercase
-	$canonicalUrl = rexseo42_utils::sanitizeString(rex_post('seo_canonical_url'));
+	$keywords = strtolower(seo42_utils::sanitizeString($keywords)); // also keywords should be all lowercase
+	$canonicalUrl = seo42_utils::sanitizeString(rex_post('seo_canonical_url'));
 
 	// seo fields
 	$sql->setValue('seo_title', $title);
@@ -88,7 +88,7 @@ if (rex_post('saveseo', 'boolean')) {
 	// do db update
 	if ($sql->update()) {
 		// info msg
-		echo rex_info($I18N->msg('rexseo42_seopage_updated'));
+		echo rex_info($I18N->msg('seo42_seopage_updated'));
 
 		// delete cached article
 		rex_generateArticle($articleID);
@@ -116,11 +116,11 @@ echo '
 					<input type="hidden" name="ctype" value="' . $ctype . '" />
 
 					<fieldset class="rex-form-col-1">
-						<legend id="seo-default">' . $I18N->msg('rexseo42_seopage_main_section') . '</legend>
+						<legend id="seo-default">' . $I18N->msg('seo42_seopage_main_section') . '</legend>
 						<div class="rex-form-wrapper">
 							<div class="rex-form-row prefix">
 								<p class="rex-form-text">
-									<label for="seo_title">' . $I18N->msg('rexseo42_seopage_title') . '</label>
+									<label for="seo_title">' . $I18N->msg('seo42_seopage_title') . '</label>
 									<input type="text" value="' . $seoData['seo_title'] . '" name="seo_title" id="seo_title" class="rex-form-text seo-title" />
 									<span class="rex-form-notice" ' . $enableTitlePreview . '>
 										<span id="title-preview">&nbsp;</span>
@@ -129,36 +129,36 @@ echo '
 								<p id="show-prefix" ' . $enableNoPrefixCheckbox . '>
 									<label for="prefix-check"><input id="prefix-check" type="checkbox" value="';
 									if ($seoData['seo_ignore_prefix'] == '1') { echo "1"; $check = 'checked = "checked"'; } else { echo ""; $check = ""; }
-									if (rexseo42::isStartArticle()) { $checkboxTitle = $I18N->msg('rexseo42_seopage_title_noprefix'); } else { $checkboxTitle = $I18N->msg('rexseo42_seopage_title_nosufix'); } 
+									if (seo42::isStartArticle()) { $checkboxTitle = $I18N->msg('seo42_seopage_title_noprefix'); } else { $checkboxTitle = $I18N->msg('seo42_seopage_title_nosufix'); } 
 									echo '" name="seo_ignore_prefix[]" class="rex-form-checkbox" ' . $check . ' /> <span>' . $checkboxTitle . '</span></label>
 								</p>
 							</div>
 							<div class="rex-form-row">
 								<p class="rex-form-textarea">
-									<label for="seo_description">' . $I18N->msg('rexseo42_seopage_description') . '</label>
+									<label for="seo_description">' . $I18N->msg('seo42_seopage_description') . '</label>
 									<textarea name="seo_description" id="seo_description" class="rex-form-textarea">' . $seoData['seo_description'] . '</textarea>
 									<span class="rex-form-notice right">
-										<span id="description-charcount">0</span>/156 ' . $I18N->msg('rexseo42_seopage_chars') . '
+										<span id="description-charcount">0</span>/156 ' . $I18N->msg('seo42_seopage_chars') . '
 									</span>
 								</p>
 							</div>
 							<div class="rex-form-row">
 								<p class="rex-form-textarea">
-									<label for="seo_keywords">' . $I18N->msg('rexseo42_seopage_keywords') . '</label>
+									<label for="seo_keywords">' . $I18N->msg('seo42_seopage_keywords') . '</label>
 									<textarea name="seo_keywords" id="seo_keywords" rows="2" cols="50" class="rex-form-textarea">' . $seoData['seo_keywords'] . '</textarea>
 									<span class="rex-form-notice right">
-										<span id="keywords-wordcount">0</span>/5 ' . $I18N->msg('rexseo42_seopage_words') . '
+										<span id="keywords-wordcount">0</span>/5 ' . $I18N->msg('seo42_seopage_words') . '
 									</span>
 								</p>
 							</div>
 						</div>
 					</fieldset>
 					<fieldset ' . $hideExtendedSection . ' class="rex-form-col-1">
-						<legend>' . $I18N->msg('rexseo42_seopage_extended_section') . '</legend>
+						<legend>' . $I18N->msg('seo42_seopage_extended_section') . '</legend>
 						<div class="rex-form-wrapper">
 							<div class="rex-form-row" ' . $hideCanonicalUrl . '>
 								<p class="rex-form-text">
-									<label for="canonical-url">' . $I18N->msg('rexseo42_seopage_canonical_url') . '</label>
+									<label for="canonical-url">' . $I18N->msg('seo42_seopage_canonical_url') . '</label>
 									<input type="text" value="' . $seoData['seo_canonical_url'] . '" name="seo_canonical_url" id="canonical-url" class="rex-form-text" />
 								</p>
 							</div>
@@ -168,7 +168,7 @@ echo '
 									<input type="checkbox" id="seo_noindex" value="';
 									if ($seoData['seo_noindex'] == '1') { echo "1"; $check = 'checked = "checked"'; } else { echo ""; $check = ""; }
 									echo '" name="seo_noindex[]" class="rex-form-checkbox" ' . $check . ' />
-									<label for="seo_noindex">' . $I18N->msg('rexseo42_seopage_noindex') . '</label>
+									<label for="seo_noindex">' . $I18N->msg('seo42_seopage_noindex') . '</label>
 								</p>
 							</div>
 						</div>
@@ -177,7 +177,7 @@ echo '
 						<div class="rex-form-wrapper">
 							<div class="rex-form-row">
 								<p class="rex-form-col-a rex-form-submit">
-									<input type="submit" value="' . $I18N->msg('rexseo42_seopage_button_text') . '" name="saveseo" class="rex-form-submit" />
+									<input type="submit" value="' . $I18N->msg('seo42_seopage_button_text') . '" name="saveseo" class="rex-form-submit" />
 									<br/><br/>
 								</p>
 							</div>
@@ -303,19 +303,19 @@ jQuery(document).ready(function() {
 			return true;
 		}
 
-		alert('<?php echo $I18N->msg('rexseo42_seopage_canonical_alert'); ?>');
+		alert('<?php echo $I18N->msg('seo42_seopage_canonical_alert'); ?>');
 
 		return false;
 	});
 });
 
 function updateTitlePreview() {
-	var titlePrefix = '<?php echo rexseo42::getWebsiteName(); ?>';
-	var articleName = '<?php echo rexseo42::getArticleName(); ?>';
+	var titlePrefix = '<?php echo seo42::getWebsiteName(); ?>';
+	var articleName = '<?php echo seo42::getArticleName(); ?>';
 	var customTitle = jQuery('#seo_title').val();
-	var titleDelimiter = '<?php echo rexseo42::getTitleDelimiter(); ?>';
+	var titleDelimiter = '<?php echo seo42::getTitleDelimiter(); ?>';
 	var hasPrefix = !jQuery('#prefix-check').is(':checked');
-	var isStartPage = <?php if (rexseo42::isStartArticle()) { echo 'true'; } else { echo 'false'; } ?>;
+	var isStartPage = <?php if (seo42::isStartArticle()) { echo 'true'; } else { echo 'false'; } ?>;
 	var curTitle = '';
 	var curTitlePart = '';
 

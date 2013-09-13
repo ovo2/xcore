@@ -1,13 +1,13 @@
 <?php
 
-// don't change this manually! instead use the settings page of rexseo42...
+// don't change this manually! instead use the settings page of seo42...
 
 // --- DYN
-$REX['ADDON']['rexseo42']['settings']['url_schema'] = 'rexseo';
-$REX['ADDON']['rexseo42']['settings']['url_ending'] = '.html';
-$REX['ADDON']['rexseo42']['settings']['hide_langslug'] = 0;
-$REX['ADDON']['rexseo42']['settings']['homeurl'] = 1;
-$REX['ADDON']['rexseo42']['settings']['homelang'] = 0;
-$REX['ADDON']['rexseo42']['settings']['robots'] = '';
+$REX['ADDON']['seo42']['settings']['url_schema'] = 'rexseo';
+$REX['ADDON']['seo42']['settings']['url_ending'] = '.html';
+$REX['ADDON']['seo42']['settings']['hide_langslug'] = 0;
+$REX['ADDON']['seo42']['settings']['homeurl'] = 1;
+$REX['ADDON']['seo42']['settings']['homelang'] = 0;
+$REX['ADDON']['seo42']['settings']['robots'] = '';
 // --- /DYN
 
