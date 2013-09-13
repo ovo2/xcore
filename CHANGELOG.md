@@ -15,6 +15,7 @@ SEO42 - Changelog
 * Option `title_preview` hinzugefügt um die Titel-Vorschau abzuschalten, falls man sein eigenes Titel-Schema implementiert hat
 * Umbenennungen der Optionen: `userdef_canonical_url` -> `custom_canonical_url`, `hide_no_prefix_checkbox` -> `no_prefix_checkbox`
 * Updatedatum der Artikel werden nun automatisch aktualisiert, wenn Änderungen über die SEO-Page durchgeführt wurden.
+* Redirects Plugin wird automatisch installiert und aktiviert sobald SEO42 installiert wird.
 * Redirects Plugin hinzugefügt um 301 Weiterleitungen komfortabel über das Backend anlegen zu können. Bitte Urls immer mit einem Splash beginnen, die Ziel Url kann aber auch mit http:// beginnen. Plugin ist Website Manager kompatibel.
 
 ### Version 1.2.1 - 21. Mai 2013

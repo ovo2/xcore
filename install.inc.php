@@ -6,6 +6,9 @@ $error = array();
 // append lang file
 $I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/seo42/lang/');
 
+// includes
+require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42_utils.inc.php');
+
 // check redaxo version
 if (version_compare($REX['VERSION'] . '.' . $REX['SUBVERSION'] . '.' . $REX['MINORVERSION'], '4.4.1', '<=')) {
 	$error[] = $I18N->msg('seo42_install_rex_version');
@@ -18,6 +21,13 @@ foreach ($disable_addons as $a) {
 	if (OOAddon::isInstalled($a) || OOAddon::isAvailable($a)) {
 		$error[] = $I18N->msg('seo42_install_concurrent') . ' ' . $a;
 	}
+}
+
+// auto install plugins
+$returnmsg = seo42_utils::autoInstallPlugins('seo42', array('redirects'));
+
+if ($returnmsg != '') {
+	$error[] = $returnmsg;
 }
 
 // setup seo db fields

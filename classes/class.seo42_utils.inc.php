@@ -219,4 +219,40 @@ class seo42_utils {
 
 		return $output;
 	}
+
+	public static function autoInstallPlugins($addon, $plugins) {
+		// take from xform install routine :)
+		$msg = '';
+
+		// GET ALL ADDONS & PLUGINS
+		$all_addons = rex_read_addons_folder();
+		$all_plugins = array();
+
+		foreach ($all_addons as $_addon) {
+			$all_plugins[$_addon] = rex_read_plugins_folder($_addon);
+		}
+
+		// DO AUTOINSTALL
+		$pluginManager = new rex_pluginManager($all_plugins, $addon);
+
+		foreach ($plugins as $pluginname) {
+			if (in_array($pluginname, $all_plugins[$addon])) { // check if plugin that should be auto install really exists in addon folder
+				// INSTALL PLUGIN
+				if (($instErr = $pluginManager->install($pluginname)) !== true) {
+					$msg = $instErr;
+				}
+
+				// ACTIVATE PLUGIN
+				if ($msg == '' && ($actErr = $pluginManager->activate($pluginname)) !== true) {
+					$msg = $actErr;
+				}
+
+				if ($msg != '') {
+					break;
+				}
+			}
+		}
+
+		return $msg;
+	}
 }
