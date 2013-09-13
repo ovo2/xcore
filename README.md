@@ -10,8 +10,11 @@ Features
 * Zusätzliche Einstellungen vorerst in die `settings.advanced.inc.php` verlagert
 * Neue Setup-Routine
 * Kommt ohne MetaInfos aus
+* Titel-Schema inspiriert von Google-Empfehlung
 * Extra SEO-Page für jeden Artikel inkl. Titel-Vorschau
-* SEO Tools
+* Extra URL-Page für jeden Artikel zur Manipulierung der generierten URL
+* Suchmaschinenfreundliche Image Manager Urls durch Verwendung der verfügbaren PHP-Methoden
+* SEO Tools inkl. PageRank Checker
 * Enhält die Antwort auf die eine Frage
 * Und noch vieles mehr...
 
