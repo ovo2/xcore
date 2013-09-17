@@ -123,7 +123,7 @@ echo '
 									<label for="seo_title">' . $I18N->msg('seo42_seopage_title') . '</label>
 									<input type="text" value="' . $seoData['seo_title'] . '" name="seo_title" id="seo_title" class="rex-form-text seo-title" />
 									<span class="rex-form-notice" ' . $enableTitlePreview . '>
-										<span id="title-preview">&nbsp;</span>
+										<span id="title-preview">' . seo42::getTitle() . '</span>
 									</span>
 								</p>
 								<p id="show-prefix" ' . $enableNoPrefixCheckbox . '>
@@ -291,7 +291,7 @@ jQuery(document).ready(function() {
 		updateKeywordsCount();
 	});
 
-	updateTitlePreview();
+	//updateTitlePreview();
 	updateDescriptionCount();
 	updateKeywordsCount();
 

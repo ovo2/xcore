@@ -481,6 +481,10 @@ class seo42 {
 		return $out;
 	}
 
+	public static function getCustomUrlData($catObj) {
+		return json_decode($catObj->getValue('seo_custom_url'), true);
+	}
+
 	public static function getAnswer() {
 		return '42';
 	}

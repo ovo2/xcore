@@ -82,7 +82,7 @@ if ($REX['REDAXO']) {
 	}
 
 	// add css/js files to page header
-	if (rex_request('page') == 'seo42') {
+	if (rex_request('page') == 'seo42' || rex_request('page') == 'content') {
 		rex_register_extension('PAGE_HEADER', 'seo42_utils::appendToPageHeader');
 	}
 
@@ -112,5 +112,10 @@ if ($REX['REDAXO']) {
 	// if clang is added/deleted show message to the user that he should check his lang settings
 	rex_register_extension('CLANG_ADDED', 'seo42_utils::showMsgAfterClangModified');
 	rex_register_extension('CLANG_DELETED', 'seo42_utils::showMsgAfterClangModified');
+
+	// inform user when article hat different url type
+	if (rex_request('page') == 'content' && rex_request('mode') == 'edit' && rex_request('function') != 'add' && rex_request('function') != 'delete') {
+		rex_register_extension('ART_INIT', 'seo42_utils::showUrlTypeMsg');
+	}
 }
 

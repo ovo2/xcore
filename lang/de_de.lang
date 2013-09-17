@@ -1,7 +1,7 @@
 seo42 = SEO42
 
 seo42_help_message = Ein intergalaktischer Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzerführung und noch weiterer SEO-Goodies...
-seo42_welcome = Willkomen
+seo42_welcome = Willkommen
 seo42_settings = Einstellungen
 seo42_tools = Tools
 seo42_redirects = Redirects
@@ -98,6 +98,36 @@ seo42_seopage_noindex = Indizierung nicht erlauben
 seo42_seopage_button_text = Aktualisieren
 seo42_seopage_canonical_url = Canonical URL
 seo42_seopage_canonical_alert = Die Canonical URL muss mit "http://" beginnen.
+
+seo42_urlpage_main_section = Allgemein
+seo42_urlpage_url_type = URL-Typ
+seo42_urlpage_button_text = URL aktualisieren
+seo42_urlpage_urltype_default = Automatisch
+seo42_urlpage_urltype_userdef_intern = Interne Url
+seo42_urlpage_urltype_userdef_extern = Externe Url
+seo42_urlpage_urltype_mediapool = Medienpool Datei
+seo42_urlpage_urltype_intern_replace = Interne Ersetzung
+seo42_urlpage_urltype_intern_replace_clang = Interne Ersetzung inkl. Sprache
+seo42_urlpage_urltype_remove_root_cat = Root-Kategorie entfernen
+seo42_urlpage_urltype_call_func = PHP-Funktion aufrufen
+seo42_urlpage_urltype_langswitch = Sprachumschalter
+seo42_urlpage_urltype_none = Keine Url
+seo42_urlpage_url_clone = Für alle Sprachen anwenden
+seo42_urlpage_urltype_article = Artikel
+seo42_urlpage_urltype_clang = Sprache
+seo42_urlpage_urltype_function = Funktion
+seo42_urlpage_url_clone_no_url = Keine URL
+seo42_urlpage_updated = URL wurde aktualisiert.
+seo42_urlpage_lang_clone_hint = Hinweis
+seo42_urlpage_lang_clone_hint_msg = Einstellungen der Sprache {0} werden übernommen.
+
+seo42_urltype_intern = Verweis auf Artikel:
+seo42_urltype_intern_plus_clang = Verweis auf Artikel {0} der Sprache {1}.
+seo42_urltype_userdef = Verweis auf externe URL
+seo42_urltype_userdef_javascript = Verweist auf JavaScript-Code.
+seo42_urltype_mediapool = Verweis auf Mediepool-Datei: {0}
+seo42_urltype_langswitch = Sprachumschalter zu Sprache: {0}
+seo42_urltype_none = Die URL dieses Artikels wurde entfernt.
 
 seo42_help_chapter_faq = FAQ
 seo42_help_chapter_codeexamples = Codebeispiele

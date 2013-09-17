@@ -22,3 +22,10 @@
 	margin-left: 6px;
 	margin-right: 10px;
 } 
+
+#seo42-urltype-msg {
+	height: 20px;
+	line-height: 20px;
+	padding: 7px 7px 7px 55px;
+	font-weight: bold;
+}

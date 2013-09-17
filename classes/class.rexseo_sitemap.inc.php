@@ -12,25 +12,20 @@ class rexseo_sitemap
    */
   private function get_db_articles()
   {
-    global $REX;
+    global $REX, $REXSEO_URLS;
 
-    $db_articles = array();
-    $db = new rex_sql;
-    $qry = 'SELECT `id`, `clang`, `updatedate`, `path`, `seo_noindex` FROM `' . $REX['TABLE_PREFIX'] . 'article` WHERE `status` = 1';
+	foreach ($REXSEO_URLS as $url)  {
+		$article = OOArticle::getArticleById($url['id'], $url['clang']);
 
-	if ($REX['ADDON']['seo42']['settings']['ignore_root_cats']) {
-		$qry .= ' AND `re_id` != 0 OR (re_id = 0 AND catname LIKE "")';
+		if (OOArticle::isValid($article) && $article->isOnline() && !isset($url['status'])) {
+			$db_articles[$url['id']][$url['clang']] = array('loc'        => seo42::getFullUrl($url['id'], $url['clang']),
+								                           'lastmod'    => date('Y-m-d\TH:i:s', $article->getValue('updatedate')) . '+00:00',
+								                           'changefreq' => self::calc_article_changefreq($article->getValue('updatedate'), ''),
+								                           'priority'   => self::calc_article_priority($url['id'], $url['clang'], $article->getValue('path'), ''),
+														   'noindex'   => $article->getValue('seo_noindex')
+								                           );	
+		}
 	}
-
-    foreach($db->getDbArray($qry) as $art)
-    {
-      $db_articles[$art['id']][$art['clang']] = array('loc'        => seo42::getFullUrl($art['id'],$art['clang']),
-                                                       'lastmod'    => date('Y-m-d\TH:i:s',$art['updatedate']).'+00:00',
-                                                       'changefreq' => self::calc_article_changefreq($art['updatedate'], ''),
-                                                       'priority'   => self::calc_article_priority($art['id'],$art['clang'],$art['path'], ''),
-													   'noindex'   => $art['seo_noindex']
-                                                       );
-    }
 
     // EXTENSIONPOINT REXSEO_SITEMAP_ARRAY_CREATED
     $db_articles = rex_register_extension_point('REXSEO_SITEMAP_ARRAY_CREATED',$db_articles);

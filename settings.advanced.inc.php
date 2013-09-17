@@ -25,6 +25,9 @@ $REX['ADDON']['seo42']['settings']['noindex_checkbox'] = false;
 // if true page rank checker tool will be shown in tools section. set to false if you don't want to send any data to google when tools page is shown ;)
 $REX['ADDON']['seo42']['settings']['pagerank_checker'] = true;
 
+// if true alls available url types will be shown in select box in url page. set to false to hide url types that need to be treated in navigation code
+$REX['ADDON']['seo42']['settings']['all_url_types'] = true;
+
 // if true you get full urls like in wordpress :) seo42::getUrlStart() and co. needs to be used consequently for all extra urls (like urls to media files, etc.) | url_start option will be ignored by this
 $REX['ADDON']['seo42']['settings']['full_urls'] = false;
 

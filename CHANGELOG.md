@@ -4,7 +4,7 @@ SEO42 - Changelog
 ### Version 2.0.0
 
 * AddOn wurde von REXSEO42 in SEO42 umbenannt
-* URL-Page vorbereitet...
+* Neue URL-Page zum manipulieren von URLs
 * Neues Recht `url_default` hinzugefügt um normalen Benutzer die URL-Page ein bzw. auszuschalten.
 * Neue Optionen `seopage` und `urlpage` um die beiden Seiten global abzuschalten, wenn nicht gebraucht.
 * Plugins werden automatisch in das SEO42-Menü eingebunden, wenn installiert und aktiviert.

@@ -2,6 +2,17 @@
 
 define('REXSEO_PATHLIST', $REX['GENERATED_PATH'] . '/files/rexseo_pathlist.php'); // uses new rex var introduced in REDAXO 4.5
 
+define('SEO42_URL_TYPE_DEFAULT', 0); 
+define('SEO42_URL_TYPE_INTERN_REPLACE_CLANG', 1); 
+define('SEO42_URL_TYPE_USERDEF_INTERN', 2);
+define('SEO42_URL_TYPE_MEDIAPOOL', 3);
+define('SEO42_URL_TYPE_LANGSWITCH', 4); // should also be handled by navigation output.
+define('SEO42_URL_TYPE_NONE', 5); // should also be handled by navigation output.
+define('SEO42_URL_TYPE_REMOVE_ROOT_CAT', 6);
+define('SEO42_URL_TYPE_INTERN_REPLACE', 7);
+define('SEO42_URL_TYPE_CALL_FUNC', 8); // should also be handled by navigation output.
+define('SEO42_URL_TYPE_USERDEF_EXTERN', 9);
+
 class RexseoRewrite
 {
   private $use_levenshtein;
@@ -244,6 +255,13 @@ class RexseoRewrite
     $url = str_replace('/redaxo/','/',$subdir.$url);
 
 
+	// external urls / javascript urls etc. so we have to remove the url start string
+	$trimmedUrl = ltrim($url, seo42::getUrlStart());
+
+	if (!seo42_utils::isInternalCustomUrl($trimmedUrl)) {
+		$url = $trimmedUrl;
+	}
+
     // EP "REXSEO_POST_REWRITE"
     $ep_params = array('article_id'     => $id,
                        'clang'          => $clang,
@@ -450,6 +468,10 @@ function rexseo_generate_pathlist($params)
     case 'CAT_TO_ART':
     case 'ART_META_FORM_SECTION':
       $where = '(id='. $params['id'] .' AND clang='. $params['clang'] .') OR (path LIKE "%|'. $params['id'] .'|%" AND clang='. $params['clang'] .')';
+
+      //rex_deleteCacheArticleContent($params['id'], $REX['CUR_CLANG']);
+      //rex_generateArticle($params['id']);
+
       break;
     // ------- alles aktualisieren
     case 'CLANG_ADDED':
@@ -488,18 +510,8 @@ function rexseo_generate_pathlist($params)
       $id         = $db->getValue('id');
       $clang      = $db->getValue('clang');
       $path       = $db->getValue('path');
-      $rexseo_url = $db->getValue('seo_custom_url');
-	
-      // FALLS REXSEO URL -> ERSETZEN
-      if ($rexseo_url != '')
-      {
-        $pathname = ltrim(trim($rexseo_url),'/'); // sanitize whitespaces & leading slash
-        $pathname = urlencode($pathname);
-        $pathname = str_replace('%2F','/',$pathname); // decode slahes..
 
-      }
       // NORMALE URL ERZEUGUNG
-      else
       {
         // LANG SLUG
         if (count($REX['CLANG']) > 1 && $clang != $REX['ADDON']['seo42']['settings']['hide_langslug'])
@@ -600,6 +612,151 @@ function rexseo_generate_pathlist($params)
       $db->next();
     }
   }
+
+
+
+	// URL MANIPULATION BY SEO42
+	// -----------------------------------------------------------------------------------------------------------
+
+	// 1st run
+	$db->reset();
+
+	// get data from default lang if clone option is enabled for all other langs
+	$REX['SEO42_URL_CLONE'] = array();
+	
+	for ($i = 0; $i < $db->getRows(); $i++) {
+		$jsonData = json_decode($db->getValue('seo_custom_url'), true);
+		$articleId = $db->getValue('id');
+		$clangId = $db->getValue('clang');
+
+		if (isset($jsonData['url_clone']) && $jsonData['url_clone'] == true && $clangId == $REX['START_CLANG_ID']) {
+			$REX['SEO42_URL_CLONE'][$articleId] = $jsonData;
+		}
+
+		$db->next();
+	}
+
+	// 2nd run
+	$db->reset();
+	
+    for ($i = 0; $i < $db->getRows(); $i++) {
+		$urlField = $db->getValue('seo_custom_url');
+		$articleId = $db->getValue('id');
+		$clangId = $db->getValue('clang');
+
+		if ($urlField != '' || isset($REX['SEO42_URL_CLONE'][$articleId])) {
+			if (seo42_utils::isJson($urlField)) {
+				$urlData = $urlField;
+			} else {
+				// compat
+				$urlData = json_encode(array('url_type' => SEO42_URL_TYPE_USERDEF_INTERN, 'custom_url' => $urlField));
+			}
+
+			$jsonData = json_decode($urlData, true);
+
+			if (isset($REX['SEO42_URL_CLONE'][$articleId]) && !isset($jsonData['url_type'])) {
+				$jsonData = $REX['SEO42_URL_CLONE'][$articleId];
+			}
+
+			switch ($jsonData['url_type']) {
+				case SEO42_URL_TYPE_DEFAULT:
+					// do nothing
+					break;
+				case SEO42_URL_TYPE_USERDEF_INTERN:
+					$customUrl = $jsonData['custom_url'];
+
+					$REXSEO_URLS[$customUrl] = $REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']];
+					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]);
+
+					$REXSEO_IDS[$articleId][$clangId] = array('url' => $customUrl);
+
+					break;
+				case SEO42_URL_TYPE_USERDEF_EXTERN:
+					$customUrl = $jsonData['custom_url'];
+
+					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]);
+
+					$REXSEO_IDS[$articleId][$clangId] = array('url' => $customUrl);
+					break;
+				case SEO42_URL_TYPE_MEDIAPOOL:
+					$customUrl = $REX['MEDIA_DIR'] . '/' . $jsonData['file'];
+
+					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
+
+					$REXSEO_IDS[$articleId][$clangId] = array('url' => $customUrl);
+
+					break;
+				case SEO42_URL_TYPE_INTERN_REPLACE:
+					$customArticleId = $jsonData['article_id'];
+
+					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
+
+		  			$REXSEO_IDS[$articleId][$clangId] = array('url' => $REXSEO_IDS[$customArticleId][$clangId]['url']);
+
+					break;
+				case SEO42_URL_TYPE_INTERN_REPLACE_CLANG:
+					$customArticleId = $jsonData['article_id'];
+					$customClangId = $jsonData['clang_id'];
+
+					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
+
+		  			$REXSEO_IDS[$articleId][$clangId] = array('url' => $REXSEO_IDS[$customArticleId][$customClangId]['url']);
+
+					break;
+				case SEO42_URL_TYPE_REMOVE_ROOT_CAT:
+					$curUrl = $REXSEO_IDS[$articleId][$clangId]['url'];
+					$newUrl = '';
+										
+					if ($REX['ADDON']['seo42']['settings']['hide_langslug'] == $clangId) {
+						$pos = strpos($curUrl, '/');
+
+						if ($pos !== false) {
+							$newUrl = substr($curUrl, $pos + 1);
+						}
+					} else {
+						$pos1 = strpos($curUrl, '/');
+						$pos2 = strpos($curUrl, '/', $pos1 + 1);
+
+						if ($pos2 !== false) {
+							$langSlug = substr($curUrl, 0, $pos1 + 1);
+							$restUrl = substr($curUrl, $pos2 + 1);
+							$newUrl = $langSlug . $restUrl;
+						}
+					}
+
+					if ($newUrl != '') {
+						// same as SEO42_URL_TYPE_USERDEF_INTERN
+						$REXSEO_URLS[$newUrl] = $REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']];
+						unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
+
+						$REXSEO_IDS[$articleId][$clangId] = array('url' => $newUrl);
+					}			
+					
+					break;
+				case SEO42_URL_TYPE_CALL_FUNC:
+					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
+
+					break;
+				case SEO42_URL_TYPE_LANGSWITCH:
+					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
+
+					break;
+				case SEO42_URL_TYPE_NONE:
+					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
+
+		  			$REXSEO_IDS[$articleId][$clangId] = array('url' => '');
+					break;	
+			}
+
+			unset($jsonData);
+		}
+
+		$db->next();
+	}
+
+	// -----------------------------------------------------------------------------------------------------------
+
+
 
   // EXTENSION POINT "REXSEO_PATHLIST_CREATED"
   $subject = array('REXSEO_IDS'=>$REXSEO_IDS,'REXSEO_URLS'=>$REXSEO_URLS);
@@ -719,7 +876,7 @@ function rexseo_appendToPath($path, $name, $article_id, $clang)
 * @param $article_id (string) article id
 * @param $clang      (string) clang
 */
-function rexseo_parse_article_name($name, $article_id, $clang)
+function rexseo_parse_article_name($name, $article_id, $clang, $standaloneMode = false)
 {
   static $firstCall = true;
   static $translation;
@@ -740,15 +897,21 @@ function rexseo_parse_article_name($name, $article_id, $clang)
       );
 
     // EXTENSION POINT
-	$translation = rex_register_extension_point('REXSEO_SPECIAL_CHARS',$translation,array('article_id'=>$article_id,'clang'=>$clang));
+	if (!$standaloneMode) {
+		$translation = rex_register_extension_point('REXSEO_SPECIAL_CHARS',$translation,array('article_id'=>$article_id,'clang'=>$clang));
+	}
 
     $firstCall = false;
   }
 
   // SANITIZE STUFF
-  $name = trim($name, " \t\r\n-.");
-  $name = str_replace('/', '-', $name);
-  $name = str_replace('.', '-', $name);
+  if ($standaloneMode) {
+    $name = trim($name, " \t\r\n");
+  } else {
+    $name = trim($name, " \t\r\n-.");
+    $name = str_replace('/', '-', $name);
+    $name = str_replace('.', '-', $name);
+  }
 
   return
     // + durch - ersetzen

@@ -34,6 +34,11 @@ class seo42_utils {
 				foreach($extensionPoints as $extensionPoint) {
 					rex_register_extension($extensionPoint, 'rexseo_generate_pathlist');
 				}
+
+				// update pathlist if url changes and internal replace stuff is going on
+				rex_register_extension('ART_UPDATED', 'seo42_utils::generatePathlistOnUrlReplace');
+				rex_register_extension('CAT_UPDATED', 'seo42_utils::generatePathlistOnUrlReplace');
+				rex_register_extension('CLANG_UPDATED', 'seo42_utils::generatePathlistOnUrlReplace');
 			}
 
 			// init rewriter 
@@ -254,5 +259,147 @@ class seo42_utils {
 		}
 
 		return $msg;
+	}
+
+	public static function isJson($string) {
+		json_decode($string);
+		return (json_last_error() == JSON_ERROR_NONE);
+	}
+
+	public static function containsString($haystack, $needle) {
+		$pos = strpos($haystack, $needle);
+
+		if ($pos === false) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public static function stringStartsWith($haystack, $startString) {
+		if (strpos($haystack, $startString) === 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static function showUrlTypeMsg($params) {
+		global $REX, $I18N;
+
+		$currentArticle = OOArticle::getArticleById($REX['ARTICLE_ID']);
+		$urlField = $currentArticle->getValue('seo_custom_url');
+		$articleId = $currentArticle->getValue('id');
+		$clangId = $currentArticle->getValue('clang');
+		$msg = '';
+
+		if (seo42_utils::isJson($urlField)) {
+			$urlData = $urlField;
+		} else {
+			// compat
+			$urlData = json_encode(array('url_type' => SEO42_URL_TYPE_USERDEF_INTERN, 'custom_url' => $urlField));
+		}
+
+		$jsonData = json_decode($urlData, true);	
+
+		if ($REX['CUR_CLANG'] != $REX['START_CLANG_ID']) {
+			$currentArticleDefaultLang = OOArticle::getArticleById($REX['ARTICLE_ID'], $REX['START_CLANG_ID']);
+			$data = json_decode($currentArticleDefaultLang->getValue('seo_custom_url'), true);
+
+			if (isset($data['url_clone'])) {
+				$jsonData = $data;
+			}
+		}
+		
+		if (isset($jsonData['url_type'])) {
+			switch ($jsonData['url_type']) {
+				case SEO42_URL_TYPE_INTERN_REPLACE:
+					$customArticleId = $jsonData['article_id'];
+					$article = OOArticle::getArticleById($customArticleId);
+
+					$msg = $I18N->msg('seo42_urltype_intern') . ' <a href="index.php?page=content&article_id=' . $customArticleId . '&mode=edit&clang=' . $REX['CUR_CLANG'] . '">' . $article->getName() . '</a>';
+
+					break;
+				case SEO42_URL_TYPE_INTERN_REPLACE_CLANG:
+					$customArticleId = $jsonData['article_id'];
+					$customClangId = $jsonData['clang_id'];
+					$article = OOArticle::getArticleById($customArticleId);
+
+					$msg = $I18N->msg('seo42_urltype_intern_plus_clang', '<a href="index.php?page=content&article_id=' . $customArticleId . '&mode=edit&clang=' . $customClangId . '">' . $article->getName() . '</a>', $REX['CLANG'][$customClangId]);
+
+					break;
+				case SEO42_URL_TYPE_USERDEF_INTERN:
+					// do nothing
+					break;
+				case SEO42_URL_TYPE_USERDEF_EXTERN:
+					$customUrl = $jsonData['custom_url'];
+
+					if (seo42_utils::stringStartsWith($customUrl, 'javascript:')) {
+						$msg = $I18N->msg('seo42_urltype_userdef_javascript');
+					} else {
+						$msg = $I18N->msg('seo42_urltype_userdef') . ': <a href="' . $customUrl . '">' . $customUrl . '</a>';
+					}
+
+					break;
+				case SEO42_URL_TYPE_MEDIAPOOL:
+					$customUrl = '/' . $REX['MEDIA_DIR'] . '/' . $jsonData['file'];
+
+					$msg = $I18N->msg('seo42_urltype_mediapool', '<a href="' . $customUrl . '" target="_blank">' . $jsonData['file'] . '</a>');;
+
+					break;
+				case SEO42_URL_TYPE_LANGSWITCH:
+					$newClangId = $jsonData['clang_id'];
+
+					$msg = $I18N->msg('seo42_urltype_langswitch', $REX['CLANG'][$newClangId]);
+
+					break;
+				case SEO42_URL_TYPE_NONE:
+					$msg = $I18N->msg('seo42_urltype_none');
+
+					break;
+				case SEO42_URL_TYPE_REMOVE_ROOT_CAT:
+					// do nothing
+
+					break;
+				case SEO42_URL_TYPE_CALL_FUNC:
+					if (isset($jsonData['no_url']) && $jsonData['no_url']) {
+						$msg = $I18N->msg('seo42_urltype_none');
+					}
+
+					break;
+				default:
+				case SEO42_URL_TYPE_DEFAULT:
+					// do nothing
+
+					break;
+			}
+		}
+
+		if ($msg != '') {
+			echo '<style type=text/css>.rex-form-content-editmode, .rex-content-editmode-module-name { display: none; }</style><div class="rex-info"><p id="seo42-urltype-msg">' . $msg . '</p></div>';
+		}
+	}
+
+	public static function isInternalCustomUrl($url) {
+		$urlParts = parse_url($url);
+
+		if (isset($urlParts['scheme'])) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public static function generatePathlistOnUrlReplace($params) {
+		global $REX;
+
+		$query = 'SELECT * FROM '. $REX['TABLE_PREFIX'] .'article WHERE (seo_custom_url LIKE \'%"url_type":' . SEO42_URL_TYPE_INTERN_REPLACE . '%\' OR seo_custom_url LIKE \'%"url_type":' . SEO42_URL_TYPE_INTERN_REPLACE_CLANG . '%\') AND seo_custom_url LIKE \'%"article_id":' . $params['id'] . '%\'';
+		$sql = new rex_sql();
+		//$sql->debugsql = 1;
+		$sql->setQuery($query);
+
+		if ($sql->getRows() > 0) {
+			rexseo_generate_pathlist(array());
+		}
 	}
 }
