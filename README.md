@@ -39,6 +39,7 @@ Ein Update wird nur empfohlen, wenn die neuen Features von der 2er Version benö
 * In der `settings.advanced.inc.php` von REXSEO42 die Option `drop_dbfields_on_uninstall` auf `false` setzen.
 * REXSEO42 deinstallieren und AddOn-Ordner löschen.
 * SEO42 installieren.
+* In allen Templates den Klassennamen von `rexseo42` nach `seo42` umbenennen.
 * AddOn-Einstellungen von Hand nachprüfen und ggf. korrigieren.
 
 Weitere Hinweise

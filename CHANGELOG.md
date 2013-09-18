@@ -3,7 +3,7 @@ SEO42 - Changelog
 
 ### Version 2.0.0 - 18. September 2013
 
-* AddOn wurde von REXSEO42 in SEO42 umbenannt.
+* AddOn wurde von REXSEO42 in SEO42 umbenannt. Die Klasse `rexseo42` wurde in `seo42` umbenannt. Ein Update-Anleitung findet sich in der README.md.
 * Neue URL-Page zum manipulieren von URLs. Um alle URL-Typen. Einige Url-Typen greifen erst, wenn bei der Ausgabe der Navigation auf diese reagiert wird. Die aktualisierte Klasse `rex_navigation_ex` unterstützt diese Typen bereits: https://gist.github.com/RexDude/5354172. Zusätzliche URL-Typen sind über die Option `all_url_types` abschaltbar.
 * Neues Recht `url_default` hinzugefügt um normalen Benutzer die URL-Page ein bzw. auszuschalten.
 * Einfaches Anführungszeichen sowie das Akut-Zeichen werden direkt als "-" umgeschrieben.
