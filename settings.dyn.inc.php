@@ -1,7 +1,5 @@
 <?php
 
-// don't change this manually! instead use the settings page of seo42...
-
 // --- DYN
 $REX['ADDON']['seo42']['settings']['url_schema'] = 'rexseo';
 $REX['ADDON']['seo42']['settings']['url_ending'] = '.html';

@@ -415,4 +415,16 @@ class seo42_utils {
 			return json_encode(array('url_type' => SEO42_URL_TYPE_USERDEF_INTERN, 'custom_url' => $urlField));
 		}
 	}
+
+	public static function isAllowedDomainForPageRankChecker() {
+		global $REX;
+
+		$domains = json_decode($REX['ADDON']['seo42']['settings']['allowed_domains_for_pagerank_checker'], true);
+		
+		if ($domains != NULL && in_array(seo42::getServerWithSubDir(), $domains)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

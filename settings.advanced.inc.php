@@ -23,7 +23,7 @@ $REX['ADDON']['seo42']['settings']['custom_canonical_url'] = false;
 $REX['ADDON']['seo42']['settings']['noindex_checkbox'] = false;
 
 // ATTENTION: only set to true if your website is live and domain of website should be indexed by google! if true page rank checker tool will be shown in tools section.
-$REX['ADDON']['seo42']['settings']['pagerank_checker'] = false;
+$REX['ADDON']['seo42']['settings']['pagerank_checker'] = true;
 
 // if true alls available url types will be shown in select box in url page. set to false to hide url types that need to be treated in navigation code
 $REX['ADDON']['seo42']['settings']['all_url_types'] = true;
