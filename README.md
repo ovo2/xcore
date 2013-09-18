@@ -7,7 +7,7 @@ Features
 --------
 
 * Einstellungen-Seite auf das Wesentliche reduziert 
-* Zusätzliche Einstellungen vorerst in die `settings.advanced.inc.php` verlagert
+* Zusätzliche Einstellungen vorerst in die `settings.advanced.inc.php` und `settings.lang.inc.php` verlagert
 * Neue Setup-Routine
 * Kommt ohne MetaInfos aus
 * Titel-Schema inspiriert von Google-Empfehlung
@@ -30,9 +30,9 @@ Update von REXSEO42 1.2.x auf SEO42 2.0.0
 Ein Update wird nur empfohlen, wenn die neuen Features von der 2er Version benötigt werden.
 
 * In der `settings.advanced.inc.php` von REXSEO42 die Option `drop_dbfields_on_uninstall` auf `false` setzen.
-* REXSEO42 deinstallieren und Addon-Ordner löschen.
+* REXSEO42 deinstallieren und AddOn-Ordner löschen.
 * SEO42 installieren.
-* Einstellungen von Hand nachprüfen und ggf. korrigieren.
+* AddOn-Einstellungen von Hand nachprüfen und ggf. korrigieren.
 
 Weitere Hinweise
 ----------------

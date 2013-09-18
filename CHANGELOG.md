@@ -3,21 +3,21 @@ SEO42 - Changelog
 
 ### Version 2.0.0
 
-* AddOn wurde von REXSEO42 in SEO42 umbenannt
-* Neue URL-Page zum manipulieren von URLs
+* AddOn wurde von REXSEO42 in SEO42 umbenannt.
+* Neue URL-Page zum manipulieren von URLs.
 * Einfaches Anführungszeichen sowie das Akut-Zeichen werden direkt als "-" umgeschrieben.
 * PHP-Methode `setWebsiteName()` hinzugefügt sowie `getTitle()` um Parameter `$websiteName` erweitert. Damit lässt sich z.B. über das String Table Addon einen anderen Website-Namen (der damit dann auch sprachunabhängig sein kann) zwecks Titel-Generierung setzen.
 * Titel-Vorschau in der Seopage nach oben verschoben
 * Neues Recht `url_default` hinzugefügt um normalen Benutzer die URL-Page ein bzw. auszuschalten.
 * Neue Optionen `seopage` und `urlpage` um die beiden Seiten global abzuschalten, wenn nicht gebraucht.
-* Plugins werden automatisch in das SEO42-Menü eingebunden, wenn installiert und aktiviert.
-* Die NoIndex Checkbox in der SEO-Page wurde standardmäßig entfernt. Über die Option `noindex_checkbox` wieder einzuschalten.
-* Die No-Prefix/Suffix Checkbox in der SEO-Page wurde standardmäßig entfernt. Über die Option `no_prefix_checkbox` wieder einzuschalten.
-* PageRank Checker zu den Tools hinzugefügt. Lässt sich über die Option `pagerank_checker` ausschalten.
-* Auf der Debug Seite wird nun auch die Pathlist ausgegeben
-* Option `title_preview` hinzugefügt um die Titel-Vorschau abzuschalten, falls man sein eigenes Titel-Schema implementiert hat
-* Umbenennungen der Optionen: `userdef_canonical_url` -> `custom_canonical_url`, `hide_no_prefix_checkbox` -> `no_prefix_checkbox`
-* Updatedatum der Artikel werden nun automatisch aktualisiert, wenn Änderungen über die SEO-Page durchgeführt wurden.
+* Plugins werden automatisch in das SEO42-Menü eingebunden, wenn installiert und aktiviert (nur für Entwickler interessant).
+* Die NoIndex Checkbox in der SEO-Page wurde standardmäßig abgeschaltet. Über die Option `noindex_checkbox` wieder einzuschalten.
+* Die No-Prefix/Suffix Checkbox in der SEO-Page wurde standardmäßig abgeschaltet. Über die Option `no_prefix_checkbox` wieder einzuschalten.
+* PageRank Checker zu den Tools hinzugefügt. Lässt sich über die Option `pagerank_checker` ausschalten. Domain-Freischalt-Funktion ist Website Manager kompatibel.
+* Auf der Debug Seite wird nun auch die Pathlist ausgegeben.
+* Option `title_preview` hinzugefügt um die Titel-Vorschau abzuschalten, falls man sein eigenes Titel-Schema implementiert hat.
+* Umbenennungen der Optionen: `userdef_canonical_url` -> `custom_canonical_url`, `hide_no_prefix_checkbox` -> `no_prefix_checkbox`.
+* Updatedatum des Artikels wird nun automatisch aktualisiert, wenn Änderungen über die SEO-Page durchgeführt wurden.
 * Redirects Plugin wird automatisch installiert und aktiviert sobald SEO42 installiert wird.
 * Redirects Plugin hinzugefügt um 301 Weiterleitungen komfortabel über das Backend anlegen zu können. Bitte Urls immer mit einem Splash beginnen, die Ziel Url kann aber auch mit http:// beginnen. Plugin ist Website Manager kompatibel.
 
