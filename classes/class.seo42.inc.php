@@ -84,7 +84,12 @@ class seo42 {
 		return self::$serverUrl;
 	}
 
-	public static function getTitle() {
+	public static function getTitle($websiteName = '') {
+		if ($websiteName == '') {
+			// use default website name if user did not set different one
+			$websiteName = self::getWebsiteName();
+		}
+	
 		if (self::getArticleValue('seo_title') == '') {
 			// use article name as title
 			$titlePart = self::getArticleName();
@@ -99,10 +104,10 @@ class seo42 {
 		} else { 
 			if (self::isStartArticle()) {
 				// the start article shows the website name first
-				$fullTitle = self::getWebsiteName() . self::getTitleDelimiter() . $titlePart;
+				$fullTitle = $websiteName . self::getTitleDelimiter() . $titlePart;
 			} else {
 				// all other articles will show title first
-				$fullTitle = $titlePart . self::getTitleDelimiter() . self::getWebsiteName();
+				$fullTitle = $titlePart . self::getTitleDelimiter() . $websiteName;
 			}
 		 }
 
@@ -233,6 +238,10 @@ class seo42 {
 	
 	public static function getWebsiteName() {
 		return self::$websiteName;
+	}
+
+	public static function setWebsiteName($name) {
+		self::$websiteName = $name;
 	}
 	
 	public static function getLangCode($clangID = -1) {

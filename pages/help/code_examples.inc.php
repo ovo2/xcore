@@ -37,7 +37,12 @@ $codeExample5 = '<?php echo seo42::getTitle(" - "); ?>';
 $codeExample6 = '<?php
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment1') . '
 class seo42_ex extends seo42
-	public static function getTitle() {
+	public static function getTitle($websiteName = "") {
+		if ($websiteName == "") {
+			// use default website name if user did not set different one
+			$websiteName = self::getWebsiteName();
+		}
+
 		if (self::getArticleValue("seo_title") == "") {
 			// use article name as title
 			$titlePart = self::getArticleName();
@@ -52,10 +57,10 @@ class seo42_ex extends seo42
 		} else { 
 			if (self::isStartArticle()) {
 				// the start article shows the website name first
-				$fullTitle = self::getWebsiteName() . self::getTitleDelimiter() . $titlePart;
+				$fullTitle = $websiteName . self::getTitleDelimiter() . $titlePart;
 			} else {
 				// all other articles will show title first
-				$fullTitle = $titlePart . self::getTitleDelimiter() . self::getWebsiteName();
+				$fullTitle = $titlePart . self::getTitleDelimiter() . $websiteName;
 			}
 		 }
 
