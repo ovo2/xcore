@@ -913,6 +913,9 @@ function rexseo_parse_article_name($name, $article_id, $clang, $standaloneMode =
     $name = str_replace('.', '-', $name);
   }
 
+  $name = str_replace("'", '-', $name);
+  $name = str_replace("’", '-', $name);
+
   return
     // + durch - ersetzen
     str_replace('+','-',
