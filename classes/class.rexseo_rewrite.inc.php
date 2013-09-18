@@ -645,13 +645,7 @@ function rexseo_generate_pathlist($params)
 		$clangId = $db->getValue('clang');
 
 		if ($urlField != '' || isset($REX['SEO42_URL_CLONE'][$articleId])) {
-			if (seo42_utils::isJson($urlField)) {
-				$urlData = $urlField;
-			} else {
-				// compat
-				$urlData = json_encode(array('url_type' => SEO42_URL_TYPE_USERDEF_INTERN, 'custom_url' => $urlField));
-			}
-
+			$urlData = seo42_utils::getUrlTypeData($urlField);
 			$jsonData = json_decode($urlData, true);
 
 			if (isset($REX['SEO42_URL_CLONE'][$articleId]) && !isset($jsonData['url_type'])) {

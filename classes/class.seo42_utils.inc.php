@@ -149,9 +149,19 @@ class seo42_utils {
 		}
 	}
 
-	public static function modifyFrontendLinkInPageContentMenu($params) {
+	public static function fixArticlePreviewLink($params) {
+		global $REX;
+
 		$lastElement = count($params['subject']) - 1;
-		$params['subject'][$lastElement] = preg_replace("/(?<=href=(\"|'))[^\"']+(?=(\"|'))/", '../', $params['subject'][$lastElement]);
+
+		if ($REX['ADDON']['seo42']['settings']['one_page_mode'] && $REX['ARTICLE_ID'] != $REX['START_ARTICLE_ID']) {
+			// for one page mode link to frontend is always "../"
+			$newUrl = '../';
+		} else {
+			$newUrl = seo42::getFullUrl();
+		}
+
+		$params['subject'][$lastElement] = preg_replace("/(?<=href=(\"|'))[^\"']+(?=(\"|'))/", $newUrl, $params['subject'][$lastElement]);
 
 		return $params['subject'];
 	}
@@ -293,13 +303,7 @@ class seo42_utils {
 		$clangId = $currentArticle->getValue('clang');
 		$msg = '';
 
-		if (seo42_utils::isJson($urlField)) {
-			$urlData = $urlField;
-		} else {
-			// compat
-			$urlData = json_encode(array('url_type' => SEO42_URL_TYPE_USERDEF_INTERN, 'custom_url' => $urlField));
-		}
-
+		$urlData = seo42_utils::getUrlTypeData($urlField);
 		$jsonData = json_decode($urlData, true);	
 
 		if ($REX['CUR_CLANG'] != $REX['START_CLANG_ID']) {
@@ -400,6 +404,15 @@ class seo42_utils {
 
 		if ($sql->getRows() > 0) {
 			rexseo_generate_pathlist(array());
+		}
+	}
+
+	public static function getUrlTypeData($urlField) {
+		if (seo42_utils::isJson($urlField)) {
+			return $urlField;
+		} else {
+			// compat
+			return json_encode(array('url_type' => SEO42_URL_TYPE_USERDEF_INTERN, 'custom_url' => $urlField));
 		}
 	}
 }

@@ -3,6 +3,8 @@ $articleId = rex_request('article_id');
 $clang = rex_request('clang');
 $ctype = rex_request('ctype');
 
+$dataUpdated = false;
+
 if (rex_post('save_data', 'boolean')) {
 	$newUrlType = rex_post('url_type', 'int');
 
@@ -81,6 +83,9 @@ if (rex_post('save_data', 'boolean')) {
 		rex_deleteCacheArticleContent($articleId, $clang);
 		rex_generateArticle($articleId);
 		rexseo_generate_pathlist(array());
+
+		 // this is for frontend link fix with js
+		$dataUpdated = true;
 	} else {
 		// err msg
 		echo rex_warning($sql->getError());
@@ -96,13 +101,7 @@ $urlType = SEO42_URL_TYPE_DEFAULT;
 $cloneChecked = false;
 
 if ($urlField != '') {
-	if (seo42_utils::isJson($urlField)) {
-		$urlData = $urlField;
-	} else {
-		// compat
-		$urlData = json_encode(array('url_type' => SEO42_URL_TYPE_USERDEF_INTERN, 'custom_url' => $urlField));
-	}
-
+	$urlData = seo42_utils::getUrlTypeData($urlField);
 	$jsonData = json_decode($urlData, true);
 
 	// url type
@@ -307,7 +306,7 @@ if ($urlField != '') {
 						<div class="section" id="urltype_none" style="<?php if ($urlType == SEO42_URL_TYPE_NONE) { echo 'display: block;'; } ?>">
 						</div>	
 						
-						<?php if ($REX['START_CLANG_ID'] == $clang) { ?>
+						<?php if ($REX['START_CLANG_ID'] == $clang && count($REX['CLANG']) > 1) { ?>
 						<div class="rex-form-row" id="clone-row" style="<?php if ($urlType == SEO42_URL_TYPE_LANGSWITCH || $urlType == SEO42_URL_TYPE_USERDEF_INTERN) { echo 'display: none;'; } ?>">
 							<p class="rex-form-col-a rex-form-checkbox">
 								<input type="checkbox" id="url_clone" value="<?php if (isset($jsonData['url_clone']) && $jsonData['url_clone']) { echo "1"; $check = 'checked = "checked"'; } else { echo ""; $check = ""; } ?>" name="url_clone[]" class="rex-form-checkbox" <?php echo $check; ?> />								
@@ -324,13 +323,7 @@ if ($urlField != '') {
 						$cloneCheckedStartClang = false;
 
 						if ($urlFieldStartClang != '') {
-							if (seo42_utils::isJson($urlFieldStartClang)) {
-								$urlDataStartClang = $urlFieldStartClang;
-							} else {
-								// compat
-								$urlDataStartClang = json_encode(array('url_type' => SEO42_URL_TYPE_USERDEF_INTERN, 'custom_url' => $urlFieldStartClang));
-							}
-
+							$urlDataStartClang = seo42_utils::getUrlTypeData($urlFieldStartClang);
 							$jsonDataStartClang = json_decode($urlDataStartClang, true);
 
 							if (isset($jsonDataStartClang['url_clone']) && $jsonDataStartClang['url_clone']) {
@@ -413,6 +406,8 @@ jQuery(document).ready(function($) {
 			$('#clone-row').show();
 		}
 	});
+
+	<?php if ($dataUpdated) { ?>jQuery('.rex-navi-content li:last-child a').attr('href', '<?php echo seo42::getFullUrl(); ?>');<?php } ?>
 });
 </script>
 

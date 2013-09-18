@@ -317,7 +317,13 @@ class seo42 {
 	}
 
 	public static function getFullUrl($id = '', $clang = '', $params = '', $divider = '&amp;') {
-		return self::getBaseUrl() . self::getTrimmedUrl($id, $clang, $params, $divider);
+		$url = self::getTrimmedUrl($id, $clang, $params, $divider);
+		
+		if (seo42_utils::isInternalCustomUrl($url)) {
+			return self::getBaseUrl() . $url;
+		} else {
+			return $url;
+		}
 	}
 
 	public static function getTrimmedUrl($id = '', $clang = '', $params = '', $divider = '&amp;') {

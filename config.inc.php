@@ -99,10 +99,8 @@ if ($REX['REDAXO']) {
 		}
 	}
 
-	// for one page mode link to frontend is always "../"
-	if ($REX['ADDON']['seo42']['settings']['one_page_mode'] && $REX['ARTICLE_ID'] != $REX['START_ARTICLE_ID']) {
-		rex_register_extension('PAGE_CONTENT_MENU', 'seo42_utils::modifyFrontendLinkInPageContentMenu');
-	}
+	// fix article preview link as othewise not url types will show correct preview url
+	rex_register_extension('PAGE_CONTENT_MENU', 'seo42_utils::fixArticlePreviewLink');
 
 	// check for missing db fields after db import
 	if (!$REX['SETUP']) {
