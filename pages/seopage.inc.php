@@ -310,8 +310,8 @@ jQuery(document).ready(function() {
 });
 
 function updateTitlePreview() {
-	var titlePrefix = '<?php echo seo42::getWebsiteName(); ?>';
-	var articleName = '<?php echo seo42::getArticleName(); ?>';
+	var titlePrefix = '<?php echo str_replace("'", "&#039;", seo42::getWebsiteName()); ?>';
+	var articleName = '<?php echo str_replace("'", "&#039;", seo42::getArticleName()); ?>';
 	var customTitle = jQuery('#seo_title').val();
 	var titleDelimiter = '<?php echo seo42::getTitleDelimiter(); ?>';
 	var hasPrefix = !jQuery('#prefix-check').is(':checked');
