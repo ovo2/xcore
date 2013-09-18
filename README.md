@@ -41,6 +41,7 @@ Ein Update wird nur empfohlen, wenn die neuen Features von der 2er Version benö
 * SEO42 installieren.
 * In allen Templates den Klassennamen von `rexseo42` nach `seo42` umbenennen.
 * AddOn-Einstellungen von Hand nachprüfen und ggf. korrigieren.
+* Ggf. Cache löschen.
 
 Weitere Hinweise
 ----------------
