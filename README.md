@@ -15,14 +15,14 @@ Features
 * Extra URL-Page für jeden Artikel zur Manipulierung der generierten URL
 * Suchmaschinenfreundliche Image Manager Urls durch Verwendung der verfügbaren PHP-Methoden
 * SEO Tools inkl. PageRank Checker
-* Enhält die Antwort auf die eine Frage
+* Enthält die Antwort auf die eine Frage
 * Und noch vieles mehr...
 
 Wichtiger Hinweis vorab
 -----------------------
 
 SEO42 kommt mittlerweile ohne einen Base-Tag aus. Dafür ist es aber sehr wichtig, dass alle URLs gleich beginnen, im normalfall mit einem `/`.
-Es wird deshalb empfohlen für alle URLS immer die PHP-Methoden aus dem Codebeispiel Nr.2 aus der Hilfe nutzen.
+Es wird deshalb empfohlen für alle URLs immer die PHP-Methoden aus dem Codebeispiel Nr.2 aus der Hilfe nutzen.
 
 Alle URL-Typen aktivieren
 -------------------------
