@@ -3,7 +3,7 @@
 // register addon
 $REX['ADDON']['rxid']['seo42'] = '0';
 $REX['ADDON']['name']['seo42'] = 'SEO42';
-$REX['ADDON']['version']['seo42'] = '2.0.0 BETA';
+$REX['ADDON']['version']['seo42'] = '2.0.0';
 $REX['ADDON']['author']['seo42'] = 'Markus Staab, Wolfgang Huttegger, Dave Holloway, Jan Kristinus, jdlx, RexDude';
 $REX['ADDON']['supportpage']['seo42'] = 'forum.redaxo.de';
 $REX['ADDON']['perm']['seo42'] = 'seo42[]';
@@ -92,10 +92,14 @@ if ($REX['REDAXO']) {
 			// admins get everything :)
 			seo42_utils::enableSEOPage();
 			seo42_utils::enableURLPage();
-		} elseif (isset($REX['USER']) && ($REX['USER']->hasPerm('seo42[seo_default]') || $REX['USER']->hasPerm('seo42[seo_extended]') || $REX['USER']->hasPerm('editContentOnly[]'))) {
-			seo42_utils::enableSEOPage();
-		} elseif (isset($REX['USER']) && $REX['USER']->hasPerm('seo42[url_default]')) {
-			seo42_utils::enableURLPage();
+		} else {
+			if (isset($REX['USER']) && ($REX['USER']->hasPerm('seo42[seo_default]') || $REX['USER']->hasPerm('seo42[seo_extended]') || $REX['USER']->hasPerm('editContentOnly[]'))) {
+				seo42_utils::enableSEOPage();
+			}
+
+			if (isset($REX['USER']) && $REX['USER']->hasPerm('seo42[url_default]')) {
+				seo42_utils::enableURLPage();
+			}
 		}
 	}
 

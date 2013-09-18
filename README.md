@@ -24,6 +24,13 @@ Wichtiger Hinweis vorab
 SEO42 kommt mittlerweile ohne einen Base-Tag aus. Dafür ist es aber sehr wichtig, dass alle URLs gleich beginnen, im normalfall mit einem `/`.
 Es wird deshalb empfohlen für alle URLS immer die PHP-Methoden aus dem Codebeispiel Nr.2 aus der Hilfe nutzen.
 
+Alle URL-Typen aktivieren
+-------------------------
+
+* Einige Url-Typen greifen erst, wenn bei der Ausgabe der Navigation auf diese reagiert wird.
+* Die aktualisierte Klasse `rex_navigation_ex` unterstützt diese Typen bereits: https://gist.github.com/RexDude/5354172
+* Über die Option `all_url_types` können diese bei Bedarf aber auch deaktiviert werden.
+
 Update von REXSEO42 1.2.x auf SEO42 2.0.0
 -----------------------------------------
 

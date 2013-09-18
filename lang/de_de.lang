@@ -37,7 +37,7 @@ seo42_pr_tool_msg = Dieses Tool ermittelt den <a href="http://suchmaschinenoptim
 seo42_pr_tool_pagerank = PageRank
 seo42_pr_tool_failure = Nicht verfügbar
 seo42_pr_tool_domain_not_unlocked = Domain nicht freigeschaltet
-seo42_pr_tool_domain_unlock_msg = Sind Sie sicher, dass Sie die Domain "{0}" freischalten möchten?\n\nHinweis: Diese Domain wird damit wahrscheinlich von Google indiziert werden,\nwas unter bestimmten Umständen nicht erwünscht ist.
+seo42_pr_tool_domain_unlock_msg = Sind Sie sicher, dass Sie die Domain "{0}" freischalten möchten?\n\nHinweis: Diese Domain wird damit wahrscheinlich von Google indiziert werden,\nwas unter bestimmten Umständen nicht erwünscht sein kann.
 seo42_pr_tool_domain_unlock_button = Domain freischalten
 
 seo42_configfile_update = Konfiguration wurde aktualisiert!
@@ -131,7 +131,7 @@ seo42_urlpage_lang_clone_hint_msg = Einstellungen der Sprache {0} werden überno
 seo42_urltype_intern = Verweis auf Artikel:
 seo42_urltype_intern_plus_clang = Verweis auf Artikel {0} der Sprache {1}.
 seo42_urltype_userdef = Verweis auf externe URL
-seo42_urltype_userdef_javascript = Verweist auf JavaScript-Code.
+seo42_urltype_userdef_javascript = Verweis auf JavaScript-Code.
 seo42_urltype_mediapool = Verweis auf Mediepool-Datei: {0}
 seo42_urltype_langswitch = Sprachumschalter zu Sprache: {0}
 seo42_urltype_none = Die URL dieses Artikels wurde entfernt.

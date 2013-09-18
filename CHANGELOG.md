@@ -1,14 +1,14 @@
 SEO42 - Changelog
 ====================
 
-### Version 2.0.0
+### Version 2.0.0 - 18. September 2013
 
 * AddOn wurde von REXSEO42 in SEO42 umbenannt.
-* Neue URL-Page zum manipulieren von URLs.
+* Neue URL-Page zum manipulieren von URLs. Um alle URL-Typen. Einige Url-Typen greifen erst, wenn bei der Ausgabe der Navigation auf diese reagiert wird. Die aktualisierte Klasse `rex_navigation_ex` unterstützt diese Typen bereits: https://gist.github.com/RexDude/5354172. Zusätzliche URL-Typen sind über die Option `all_url_types` abschaltbar.
+* Neues Recht `url_default` hinzugefügt um normalen Benutzer die URL-Page ein bzw. auszuschalten.
 * Einfaches Anführungszeichen sowie das Akut-Zeichen werden direkt als "-" umgeschrieben.
 * PHP-Methode `setWebsiteName()` hinzugefügt sowie `getTitle()` um Parameter `$websiteName` erweitert. Damit lässt sich z.B. über das String Table Addon einen anderen Website-Namen (der damit dann auch sprachunabhängig sein kann) zwecks Titel-Generierung setzen.
 * Titel-Vorschau in der Seopage nach oben verschoben
-* Neues Recht `url_default` hinzugefügt um normalen Benutzer die URL-Page ein bzw. auszuschalten.
 * Neue Optionen `seopage` und `urlpage` um die beiden Seiten global abzuschalten, wenn nicht gebraucht.
 * Plugins werden automatisch in das SEO42-Menü eingebunden, wenn installiert und aktiviert (nur für Entwickler interessant).
 * Die NoIndex Checkbox in der SEO-Page wurde standardmäßig abgeschaltet. Über die Option `noindex_checkbox` wieder einzuschalten.

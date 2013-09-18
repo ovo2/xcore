@@ -310,7 +310,7 @@ class seo42_utils {
 			$currentArticleDefaultLang = OOArticle::getArticleById($REX['ARTICLE_ID'], $REX['START_CLANG_ID']);
 			$data = json_decode($currentArticleDefaultLang->getValue('seo_custom_url'), true);
 
-			if (isset($data['url_clone'])) {
+			if (isset($data['url_clone']) && $data['url_clone'] == true) {
 				$jsonData = $data;
 			}
 		}
