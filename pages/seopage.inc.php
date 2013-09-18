@@ -103,6 +103,12 @@ $sql = rex_sql::factory();
 $seoData = $sql->getArray('SELECT * FROM '. $REX['TABLE_PREFIX'] .'article WHERE id=' . $articleID . ' AND clang=' . $clang);
 $seoData = $seoData[0];
 
+if ($REX['ADDON']['seo42']['settings']['title_preview']) {
+	$titleBoxClass = '';
+} else {
+	$titleBoxClass = 'no-title-preview';
+}
+
 echo '
 	<div class="rex-content-body" id="seo-page">
 		<div class="rex-content-body-2">
@@ -118,11 +124,11 @@ echo '
 					<fieldset class="rex-form-col-1">
 						<legend id="seo-default">' . $I18N->msg('seo42_seopage_main_section') . '</legend>
 						<div class="rex-form-wrapper">
-							<div class="rex-form-row prefix">
-								<p class="rex-form-text">
+							<div class="rex-form-row prefix ' . $titleBoxClass . '">
+								<p class="rex-form-text" id="title-box">
 									<label for="seo_title">' . $I18N->msg('seo42_seopage_title') . '</label>
 									<input type="text" value="' . $seoData['seo_title'] . '" name="seo_title" id="seo_title" class="rex-form-text seo-title" />
-									<span class="rex-form-notice" ' . $enableTitlePreview . '>
+									<span id="before-title-preview" class="rex-form-notice" ' . $enableTitlePreview . '>
 										<span id="title-preview">' . seo42::getTitle() . '</span>
 									</span>
 								</p>
@@ -196,8 +202,30 @@ echo '
 	float: left;
 	padding-right: 10px;
 	white-space: nowrap;
-	/*padding-left: 22px;
-	text-indent: -22px;*/
+}
+
+#seo-page #title-box {
+	position: relative; 
+	height: 52px;
+}
+
+#seo-page .no-title-preview #title-box {
+	height: auto;
+}
+
+#seo-page #before-title-preview {
+	position: absolute; 
+	top: -8px;
+}
+
+#seo-page #title-box #seo_title {
+	position: absolute;
+	top: 26px;
+}
+
+#seo-page .no-title-preview #title-box #seo_title {
+	position: relative;
+	top: auto;
 }
 
 #seo-page #show-prefix label span {
@@ -255,6 +283,12 @@ div.rex-form div.rex-form-row.prefix p {
 #seo-page #show-prefix {
 	float: right;
 	width: auto;
+	position: relative;
+    top: 23px;
+}
+
+#seo-page .no-title-preview #show-prefix {
+	top: 0;
 }
 
 #seo-page div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row div.rex-form-checkboxes-wrapper, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row div.rex-form-radios-wrapper, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-label-right label, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-read span, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-text input, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-select select, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p textarea {
