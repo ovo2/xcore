@@ -5,6 +5,9 @@ SEO42 - Changelog
 
 * AddOn wurde von REXSEO42 in SEO42 umbenannt
 * Neue URL-Page zum manipulieren von URLs
+* Einfaches Anführungszeichen sowie das Akut-Zeichen werden direkt als "-" umgeschrieben.
+* PHP-Methode `setWebsiteName()` hinzugefügt sowie `getTitle()` um Parameter `$websiteName` erweitert. Damit lässt sich z.B. über das String Table Addon einen anderen Website-Namen (der damit dann auch sprachunabhängig sein kann) zwecks Titel-Generierung setzen.
+* Titel-Vorschau in der Seopage nach oben verschoben
 * Neues Recht `url_default` hinzugefügt um normalen Benutzer die URL-Page ein bzw. auszuschalten.
 * Neue Optionen `seopage` und `urlpage` um die beiden Seiten global abzuschalten, wenn nicht gebraucht.
 * Plugins werden automatisch in das SEO42-Menü eingebunden, wenn installiert und aktiviert.

@@ -18,11 +18,21 @@ Features
 * Enhält die Antwort auf die eine Frage
 * Und noch vieles mehr...
 
-Wichtiger Hinweis
------------------
+Wichtiger Hinweis vorab
+-----------------------
 
 SEO42 kommt mittlerweile ohne einen Base-Tag aus. Dafür ist es aber sehr wichtig, dass alle URLs gleich beginnen, im normalfall mit einem `/`.
 Es wird deshalb empfohlen für alle URLS immer die PHP-Methoden aus dem Codebeispiel Nr.2 aus der Hilfe nutzen.
+
+Update von REXSEO42 1.2.x auf SEO42 2.0.0
+-----------------------------------------
+
+Ein Update wird nur empfohlen, wenn die neuen Features von der 2er Version benötigt werden.
+
+* In der `settings.advanced.inc.php` von REXSEO42 die Option `drop_dbfields_on_uninstall` auf `false` setzen.
+* REXSEO42 deinstallieren und Addon-Ordner löschen.
+* SEO42 installieren.
+* Einstellungen von Hand nachprüfen und ggf. korrigieren.
 
 Weitere Hinweise
 ----------------
@@ -35,6 +45,7 @@ Weitere Hinweise
 * Geändertes Verhalten für REDAXO Unterordner-Installationen. Bitte FAQ in der Hilfe des AddOns anschauen für weitere Infos.
 * Implementiert man sein eigenes Titel-Schema, ist es vielleicht sinnvoll die Optionen `title_preview` und `no_prefix_checkbox` auf `false` zu setzen.
 * `$REX["MOD_REWRITE"]` braucht nicht mehr auf `true` gesetzt werden (z.B. über die System-Page von REDAXO). Wenn SEO42 aktiv, wird es automatisch gesetzt.
+* Eine hilfreiche Sprach-Sonderzeichen-Tabelle für die `settings.lang.inc.php` findet man hier: http://unicode.e-workers.de/
 
 Hinweise zum Redirects Plugin
 -----------------------------
