@@ -22,8 +22,8 @@ $REX['ADDON']['seo42']['settings']['custom_canonical_url'] = false;
 // if true a noindex checkbox in seopage will be shown so that user will be able to set noindex robots flag for his articles
 $REX['ADDON']['seo42']['settings']['noindex_checkbox'] = false;
 
-// if true page rank checker tool will be shown in tools section. set to false if you don't want to send any data to google when tools page is shown ;)
-$REX['ADDON']['seo42']['settings']['pagerank_checker'] = true;
+// ATTENTION: only set to true if your website is live and domain of website should be indexed by google! if true page rank checker tool will be shown in tools section.
+$REX['ADDON']['seo42']['settings']['pagerank_checker'] = false;
 
 // if true alls available url types will be shown in select box in url page. set to false to hide url types that need to be treated in navigation code
 $REX['ADDON']['seo42']['settings']['all_url_types'] = true;
