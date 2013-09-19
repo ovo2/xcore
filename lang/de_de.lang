@@ -33,7 +33,7 @@ seo42_tool6_desc = Eine erste kostenlose Analyse Ihrer Website durch den Webdien
 seo42_tool8 = Google SERP Snippet Optimization Tool
 seo42_tool8_desc = Das Google SERP Snippet Optimization Tool zeigt eine Vorschau der Snippets die Google generiert.
 seo42_pr_tool = Google PageRank Checker
-seo42_pr_tool_msg = Dieses Tool ermittelt den <a href="http://suchmaschinenoptimierung.michaelsattler.de/pagerank.html" class="extern">PageRank</a> für
+seo42_pr_tool_msg = Dieses Tool ermittelt den <a href="http://suchmaschinenoptimierung.michaelsattler.de/pagerank.html" class="extern" target="_blank">PageRank</a> für
 seo42_pr_tool_pagerank = PageRank
 seo42_pr_tool_failure = Nicht verfügbar
 seo42_pr_tool_domain_not_unlocked = Domain nicht freigeschaltet

@@ -116,7 +116,7 @@ if ($REX['REDAXO']) {
 	rex_register_extension('CLANG_DELETED', 'seo42_utils::showMsgAfterClangModified');
 
 	// inform user when article hat different url type
-	if (rex_request('page') == 'content' && rex_request('mode') == 'edit' && rex_request('function') != 'add' && rex_request('function') != 'delete') {
+	if (rex_request('page') == 'content' && rex_request('mode') == 'edit' && rex_request('function') != 'add' && rex_request('function') != 'delete' && rex_request('save', 'int') != 1) {
 		rex_register_extension('ART_INIT', 'seo42_utils::showUrlTypeMsg');
 	}
 }

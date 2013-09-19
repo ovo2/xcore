@@ -870,7 +870,7 @@ function rexseo_appendToPath($path, $name, $article_id, $clang)
 * @param $article_id (string) article id
 * @param $clang      (string) clang
 */
-function rexseo_parse_article_name($name, $article_id, $clang, $standaloneMode = false)
+function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
 {
   static $firstCall = true;
   static $translation;
@@ -891,7 +891,7 @@ function rexseo_parse_article_name($name, $article_id, $clang, $standaloneMode =
       );
 
     // EXTENSION POINT
-	if (!$standaloneMode) {
+	if (!$isUrl) {
 		$translation = rex_register_extension_point('REXSEO_SPECIAL_CHARS',$translation,array('article_id'=>$article_id,'clang'=>$clang));
 	}
 
@@ -899,7 +899,7 @@ function rexseo_parse_article_name($name, $article_id, $clang, $standaloneMode =
   }
 
   // SANITIZE STUFF
-  if ($standaloneMode) {
+  if ($isUrl) {
     $name = trim($name, " \t\r\n");
   } else {
     $name = trim($name, " \t\r\n-.");
