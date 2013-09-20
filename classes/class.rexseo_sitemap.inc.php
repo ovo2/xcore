@@ -57,7 +57,7 @@ class rexseo_sitemap
     if($article_id==$REX['START_ARTICLE_ID'] && $clang==$REX['START_CLANG_ID'])
       return 1.0;
 
-    return pow(0.8,count(explode('|',$path))-1);
+	return 1.0 - (0.1 * (count(explode('|',$path))-1));
   }
 
 
@@ -104,7 +104,7 @@ class rexseo_sitemap
     "\t\t" . '<loc>'.$loc.'</loc>'.PHP_EOL.
     "\t\t" . '<lastmod>'.$lastmod.'</lastmod>'.PHP_EOL.
     "\t\t" . '<changefreq>'.$changefreq.'</changefreq>'.PHP_EOL.
-    "\t\t" . '<priority>'.number_format($priority, 2, ".", "").'</priority>'.PHP_EOL.
+    "\t\t" . '<priority>'.number_format($priority, 1, ".", "").'</priority>'.PHP_EOL.
     "\t" . '</url>'.PHP_EOL;
 
     return $xml_loc;
