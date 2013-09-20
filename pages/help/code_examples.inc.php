@@ -32,10 +32,10 @@ echo seo42::getImageTag("image.png", "rex_mediapool_detail", 150, 100);
 
 $codeExample4 = '<html lang="<?php echo seo42::getLangCode(); ?>">';
 
-$codeExample5 = '<?php echo seo42::getTitle(" - "); ?>';
+$codeExample5 = '<?php echo seo42::getTitle(rex_string_table::getString("website_name")); ?>';
 
 $codeExample6 = '<?php
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment1') . '
+// --> ' . strtoupper($I18N->msg('seo42_help_codeexamples_ex6_comment1')) . '
 class seo42_ex extends seo42
 	public static function getTitle($websiteName = "") {
 		if ($websiteName == "") {
@@ -64,12 +64,12 @@ class seo42_ex extends seo42
 			}
 		 }
 
-		// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment2') . '
+		// --> ' . strtoupper($I18N->msg('seo42_help_codeexamples_ex6_comment2')) . '
 		return strtolower(htmlspecialchars($fullTitle));
 	}
 }
 
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment3') . '
+// --> ' . strtoupper($I18N->msg('seo42_help_codeexamples_ex6_comment3')) . '
 echo seo42_ex::getTitle(); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment4') . '
 echo seo42_ex::getDescription();
 echo seo42_ex::getKeywords();
@@ -95,6 +95,10 @@ echo seo42_ex::getKeywords();
 
 <h2>5) <?php echo $I18N->msg('seo42_help_codeexamples_title5'); ?></h2>
 <p><?php echo $I18N->msg('seo42_help_codeexamples_description5'); ?></p>
+<?php rex_highlight_string($codeExample5); ?>
+
+<h2>6) <?php echo $I18N->msg('seo42_help_codeexamples_title6'); ?></h2>
+<p><?php echo $I18N->msg('seo42_help_codeexamples_description6'); ?></p>
 <?php rex_highlight_string($codeExample6); ?>
 
 <style type="text/css">

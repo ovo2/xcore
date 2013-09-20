@@ -4,6 +4,7 @@ SEO42 - Changelog
 ### Version 2.1.0 ALPHA
 
 * Fixed #59: Es kam eine leere Seite bei Block speichern/übernehmen
+* Neues Codebeispiel für: Sprachunabhängiger Website-Name im Titel
 * Umleitungsvariante "WWW -> Nicht-WWW" hinzugefügt. Über die neuen Option `non_www_to_www` ist es möglich zu steuern welche Art von WWW-Umleitung man im Setup haben möchte.
 * Bei einem 404 Fehler sollte der Fehlerartikel sollte nun in der richtigen Sprache erscheinen
 * Es wird geprüft ob die URL schon existiert bei URL-Typen "Interne URL" sowie "Root-Katagorie entfernen"
