@@ -904,15 +904,15 @@ function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
       );
 
     // EXTENSION POINT
-	if (!$isUrl) {
-		$translation = rex_register_extension_point('REXSEO_SPECIAL_CHARS',$translation,array('article_id'=>$article_id,'clang'=>$clang));
-	}
+	$translation = rex_register_extension_point('REXSEO_SPECIAL_CHARS',$translation,array('article_id'=>$article_id,'clang'=>$clang));
 
     $firstCall = false;
   }
 
   // SANITIZE STUFF
   if ($isUrl) {
+	$htmlEndingPos = strpos($name, '.html'); // used for restoring url ending after going throught all the parsing stuff
+
     $name = trim($name, " \t\r\n");
   } else {
     $name = trim($name, " \t\r\n-.");
@@ -923,7 +923,7 @@ function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
   $name = str_replace("'", '-', $name);
   $name = str_replace("’", '-', $name);
 
-  return
+  $parsedName =
     // + durch - ersetzen
     str_replace('+','-',
         // ggf uebrige zeichen url-codieren
@@ -938,4 +938,12 @@ function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
           )
         )
     );
+
+    if ($isUrl) {
+      if ($htmlEndingPos !== false) {
+        $parsedName = substr($parsedName, 0, strlen($parsedName) - 4) . '.html';
+	  }
+    }
+
+    return $parsedName;
 }

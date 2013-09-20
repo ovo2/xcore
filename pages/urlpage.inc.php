@@ -15,8 +15,8 @@ if (rex_post('save_data', 'boolean')) {
 			// do nothing
 			break;
 		case SEO42_URL_TYPE_USERDEF_INTERN:
-			$sanitizedUrl = seo42_utils::sanitizeString(rex_post('userdef_intern'));
-			$sanitizedUrl = ltrim($sanitizedUrl, './');
+			$sanitizedUrl = ltrim(rex_post('userdef_intern'), './');
+			$sanitizedUrl = rexseo_parse_article_name($sanitizedUrl, $REX['ARTICLE_ID'], $REX['CUR_CLANG'], true);
 
 			$newUrlData['custom_url'] = $sanitizedUrl;
 			break;
