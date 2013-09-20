@@ -127,6 +127,7 @@ seo42_urlpage_url_clone_no_url = Keine URL
 seo42_urlpage_updated = URL wurde aktualisiert.
 seo42_urlpage_lang_clone_hint = Hinweis
 seo42_urlpage_lang_clone_hint_msg = Einstellungen der Sprache {0} werden übernommen.
+seo42_urlpage_url_already_exists = Die URL "{0}" existiert bereits.
 
 seo42_urltype_intern = Verweis auf Artikel:
 seo42_urltype_intern_plus_clang = Verweis auf Artikel {0} der Sprache {1}.

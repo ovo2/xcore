@@ -427,4 +427,29 @@ class seo42_utils {
 			return false;
 		}
 	}
+
+	public static function removeRootCatFromUrl($curUrl, $clangId) {
+		global $REX;
+
+		$newUrl = '';
+
+		if ($REX['ADDON']['seo42']['settings']['hide_langslug'] == $clangId) {
+			$pos = strpos($curUrl, '/');
+
+			if ($pos !== false) {
+				$newUrl = substr($curUrl, $pos + 1);
+			}
+		} else {
+			$pos1 = strpos($curUrl, '/');
+			$pos2 = strpos($curUrl, '/', $pos1 + 1);
+
+			if ($pos2 !== false) {
+				$langSlug = substr($curUrl, 0, $pos1 + 1);
+				$restUrl = substr($curUrl, $pos2 + 1);
+				$newUrl = $langSlug . $restUrl;
+			}
+		}
+		
+		return $newUrl;
+	}	
 }

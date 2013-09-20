@@ -3,6 +3,7 @@ $articleId = rex_request('article_id');
 $clang = rex_request('clang');
 $ctype = rex_request('ctype');
 
+$doDataUpdate = true;
 $dataUpdated = false;
 
 if (rex_post('save_data', 'boolean')) {
@@ -15,10 +16,19 @@ if (rex_post('save_data', 'boolean')) {
 			// do nothing
 			break;
 		case SEO42_URL_TYPE_USERDEF_INTERN:
+			global $REXSEO_URLS;
+
 			$sanitizedUrl = ltrim(rex_post('userdef_intern'), './');
 			$sanitizedUrl = rexseo_parse_article_name($sanitizedUrl, $REX['ARTICLE_ID'], $REX['CUR_CLANG'], true);
 
-			$newUrlData['custom_url'] = $sanitizedUrl;
+			// check if url already exists
+			if (isset($REXSEO_URLS[$sanitizedUrl])) { // url already exists
+				$doDataUpdate = false;
+				echo rex_warning($I18N->msg('seo42_urlpage_url_already_exists', $sanitizedUrl));
+			} else {
+				$newUrlData['custom_url'] = $sanitizedUrl;
+			}
+
 			break;
 		case SEO42_URL_TYPE_USERDEF_EXTERN:
 			$newUrlData['custom_url'] = rex_post('userdef_extern');
@@ -34,7 +44,16 @@ if (rex_post('save_data', 'boolean')) {
 			$newUrlData['clang_id'] = rex_post('intern_replace_clang_clang_id', 'int');
 			break;
 		case SEO42_URL_TYPE_REMOVE_ROOT_CAT:
-			// do nothing
+			global $REXSEO_URLS;
+
+			$newUrl = seo42_utils::removeRootCatFromUrl(rex_getUrl($REX['ARTICLE_ID'], $REX['CUR_CLANG']), $REX['CUR_CLANG']);
+
+			// check if url already exists
+			if (isset($REXSEO_URLS[$newUrl])) { // url already exists
+				$doDataUpdate = false;
+				echo rex_warning($I18N->msg('seo42_urlpage_url_already_exists', $newUrl));
+			}
+
 			break;
 		case SEO42_URL_TYPE_CALL_FUNC:
 			$newUrlData['func'] = rex_post('call_func');
@@ -75,7 +94,7 @@ if (rex_post('save_data', 'boolean')) {
 	$sql->setValue('updatedate',  time());
 
 	// do db update
-	if ($sql->update()) {
+	if ($doDataUpdate && $sql->update()) {
 		// info msg
 		echo rex_info($I18N->msg('seo42_urlpage_updated'));
 
@@ -88,7 +107,9 @@ if (rex_post('save_data', 'boolean')) {
 		$dataUpdated = true;
 	} else {
 		// err msg
-		echo rex_warning($sql->getError());
+		if ($sql->getError() != '') {
+			echo rex_warning($sql->getError());
+		}
 	}
 }
 
@@ -408,6 +429,9 @@ jQuery(document).ready(function($) {
 	});
 
 	<?php if ($dataUpdated) { ?>jQuery('.rex-navi-content li:last-child a').attr('href', '<?php echo seo42::getFullUrl(); ?>');<?php } ?>
+
+	<?php if (!$doDataUpdate) { ?>$('#url_type').val(<?php echo rex_request('url_type', 'int'); ?>); $('#url_type').change();<?php } ?>
+
 });
 </script>
 

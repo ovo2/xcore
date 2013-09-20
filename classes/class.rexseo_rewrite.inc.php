@@ -712,24 +712,7 @@ function rexseo_generate_pathlist($params)
 					break;
 				case SEO42_URL_TYPE_REMOVE_ROOT_CAT:
 					$curUrl = $REXSEO_IDS[$articleId][$clangId]['url'];
-					$newUrl = '';
-										
-					if ($REX['ADDON']['seo42']['settings']['hide_langslug'] == $clangId) {
-						$pos = strpos($curUrl, '/');
-
-						if ($pos !== false) {
-							$newUrl = substr($curUrl, $pos + 1);
-						}
-					} else {
-						$pos1 = strpos($curUrl, '/');
-						$pos2 = strpos($curUrl, '/', $pos1 + 1);
-
-						if ($pos2 !== false) {
-							$langSlug = substr($curUrl, 0, $pos1 + 1);
-							$restUrl = substr($curUrl, $pos2 + 1);
-							$newUrl = $langSlug . $restUrl;
-						}
-					}
+					$newUrl = seo42_utils::removeRootCatFromUrl($curUrl, $clangId);
 
 					if ($newUrl != '') {
 						// same as SEO42_URL_TYPE_USERDEF_INTERN
