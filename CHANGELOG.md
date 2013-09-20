@@ -5,6 +5,7 @@ SEO42 - Changelog
 
 * Fixed #59: Es kam eine leere Seite bei Block speichern/übernehmen
 * Fixed: Die Startseite entiehlt einen Lang Slug, auch wenn unter die Option `Starseite` -> `http://domain.de/lang-slug/` ausgewählt war.
+* Option `Starseite` standardmäßig auf `http://domain.de/lang-slug/` gesetzt. Greift nur bei mehrsprachigen Websites. Hier wird dann z.B. `/en/home.html` direkt in `/en/` umgeschrieben.
 * Neue Optionen `global_special_chars` und `global_special_chars_rewrite` in die `settings.lang.inc.php` hinzugefügt (für URL-Umschreibung). Damit lassen sich Sonderzeichen definieren die für alle Sprachen gültig sind.
 * Neues Codebeispiel für: Sprachunabhängiger Website-Name im Titel
 * Umleitungsvariante "WWW -> Nicht-WWW" hinzugefügt. Über die neuen Option `non_www_to_www` ist es möglich zu steuern welche Art von WWW-Umleitung man im Setup haben möchte.
