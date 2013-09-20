@@ -881,9 +881,15 @@ function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
 		$specialCharsClang = 0;
 	}
 
+	$globalSpecialChars = explode('|', $REX['ADDON']['seo42']['settings']['global_special_chars']);
+	$globalSpecialCharsRewrite = explode('|', $REX['ADDON']['seo42']['settings']['global_special_chars_rewrite']);
+
+	$specialChars = explode('|', $REX['ADDON']['seo42']['settings']['special_chars'][$specialCharsClang]);
+	$specialCharsRewrite = explode('|', $REX['ADDON']['seo42']['settings']['special_chars_rewrite'][$specialCharsClang]);
+
     $translation = array(
-      'search'  => explode('|', $REX['ADDON']['seo42']['settings']['special_chars'][$specialCharsClang]),
-      'replace' => explode('|', $REX['ADDON']['seo42']['settings']['special_chars_rewrite'][$specialCharsClang]),
+      'search'  => array_merge($globalSpecialChars, $specialChars),
+      'replace' => array_merge($globalSpecialCharsRewrite, $specialCharsRewrite)
       );
 
     // EXTENSION POINT
@@ -925,6 +931,7 @@ function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
     );
 
     if ($isUrl) {
+      // bad things are happening in here ;)
 	  $parsedName = str_replace('seo42slash', '/', $parsedName);
       $parsedName = str_replace('seo42dash', '-', $parsedName);
 

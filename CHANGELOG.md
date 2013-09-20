@@ -4,6 +4,7 @@ SEO42 - Changelog
 ### Version 2.1.0 ALPHA
 
 * Fixed #59: Es kam eine leere Seite bei Block speichern/übernehmen
+* Neue Optionen `global_special_chars` und `global_special_chars_rewrite` in die `settings.lang.inc.php` hinzugefügt (für URL-Umschreibung). Damit lassen sich Sonderzeichen definieren die für alle Sprachen gültig sind.
 * Neues Codebeispiel für: Sprachunabhängiger Website-Name im Titel
 * Umleitungsvariante "WWW -> Nicht-WWW" hinzugefügt. Über die neuen Option `non_www_to_www` ist es möglich zu steuern welche Art von WWW-Umleitung man im Setup haben möchte.
 * Bei einem 404 Fehler sollte der Fehlerartikel sollte nun in der richtigen Sprache erscheinen
