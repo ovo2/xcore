@@ -1,6 +1,14 @@
 SEO42 - Changelog
 ====================
 
+### Version 2.1.0 ALPHA
+
+* Fixed #59: Es kam eine leere Seite bei Block speichern/übernehmen
+* Umleitungsvariante "WWW -> Nicht-WWW" hinzugefügt. Über die neuen Option `non_www_to_www` ist es möglich zu steuern welche Art von WWW-Umleitung man im Setup haben möchte.
+* Bei einem 404 Fehler sollte der Fehlerartikel sollte nun in der richtigen Sprache erscheinen
+* Es wird geprüft ob die URL schon existiert bei URL-Typen "Interne URL" sowie "Root-Katagorie entfernen"
+* Beim URL-Typ "Interne URL" wird beim Setzen einer neuen URL diese korrekt umgeschrieben falls z.B. Sonderzeichen vorkommen
+
 ### Version 2.0.0 - 18. September 2013
 
 * AddOn wurde von REXSEO42 in SEO42 umbenannt. Die Klasse `rexseo42` wurde in `seo42` umbenannt. Ein Update-Anleitung findet sich in der README.md.
