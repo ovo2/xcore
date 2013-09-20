@@ -243,6 +243,10 @@ class RexseoRewrite
 	  $base_url = '';
 
 	  if (!empty($REXSEO_IDS)) {
+          if (!isset($REXSEO_IDS[$notfound_id][$clang]['url'])) {
+            $clang = $REX['START_CLANG_ID'];
+          }
+
 	      $url = $base_url = $REXSEO_IDS[$notfound_id][$clang]['url'];
 	  }
 
