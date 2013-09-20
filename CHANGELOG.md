@@ -6,6 +6,7 @@ SEO42 - Changelog
 * Fixed #59: Es kam eine leere Seite bei Block speichern/übernehmen
 * Fixed: Die Startseite enthielt einen Lang Slug, auch wenn unter der Option `Starseite` -> `http://domain.de/lang-slug/` ausgewählt war.
 * Fixed: Bei einem 404 Fehler sollte der Fehlerartikel nun in der richtigen Sprache erscheinen
+* Klasse `rex_navigation42` (ehemals `rex_navigation_ex`) inkl. Codebeispiele zu SEO42 hinzugefügt.
 * Option `Starseite` standardmäßig auf `http://domain.de/lang-slug/` gesetzt. Greift nur bei mehrsprachigen Websites. Hier wird dann z.B. `/en/home.html` direkt in `/en/` umgeschrieben.
 * Neue Optionen `global_special_chars` und `global_special_chars_rewrite` in die `settings.lang.inc.php` hinzugefügt (für URL-Umschreibung). Damit lassen sich Sonderzeichen definieren die für alle Sprachen gültig sind.
 * Neues Codebeispiel für: Sprachunabhängiger Website-Name im Titel

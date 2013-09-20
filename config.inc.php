@@ -18,6 +18,7 @@ $REX['EXTPERM'][] = 'seo42[url_default]';
 // includes
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42_utils.inc.php');
+require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class_rex_navigation42.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/settings.dyn.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/settings.advanced.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/settings.lang.inc.php');
