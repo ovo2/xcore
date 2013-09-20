@@ -893,16 +893,18 @@ function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
   }
 
   // SANITIZE STUFF
+  $name = trim($name, " \t\r\n-.");
+
   if ($isUrl) {
+	// bad things are happening in here ;)
 	$htmlEndingPos = strpos($name, '.html'); // used for restoring url ending after going throught all the parsing stuff
 
-    $name = trim($name, " \t\r\n");
-  } else {
-    $name = trim($name, " \t\r\n-.");
-    $name = str_replace('/', '-', $name);
-    $name = str_replace('.', '-', $name);
+	$name = str_replace('/', 'seo42slash', $name);
+    $name = str_replace('-', 'seo42dash', $name);
   }
 
+  $name = str_replace('/', '-', $name);
+  $name = str_replace('.', '-', $name);
   $name = str_replace("'", '-', $name);
   $name = str_replace("’", '-', $name);
 
@@ -923,8 +925,11 @@ function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
     );
 
     if ($isUrl) {
+	  $parsedName = str_replace('seo42slash', '/', $parsedName);
+      $parsedName = str_replace('seo42dash', '-', $parsedName);
+
       if ($htmlEndingPos !== false) {
-        $parsedName = substr($parsedName, 0, strlen($parsedName) - 4) . '.html';
+        $parsedName = substr($parsedName, 0, strlen($parsedName) - 5) . '.html';
 	  }
     }
 
