@@ -1,7 +1,7 @@
 SEO42 - Changelog
 ====================
 
-### Version 2.1.0 ALPHA
+### Version 2.1.0 BETA
 
 * Fixed #59: Es kam eine leere Seite bei Block speichern/übernehmen
 * Fixed: Die Startseite enthielt einen Lang Slug, auch wenn unter der Option `Starseite` -> `http://domain.de/lang-slug/` ausgewählt war.

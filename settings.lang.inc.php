@@ -7,6 +7,7 @@
 // GLOBAL SPECIAL CHAR REWRITE
 // used for rewriting special chars that are language dependent. valid for all languages
 // separate values by | (pipe) symbol
+// special chars language tables: http://unicode.e-workers.de/
 
 $REX['ADDON']['seo42']['settings']['global_special_chars'] = 'ä|ö|ü|Ä|Ö|Ü|ß';
 $REX['ADDON']['seo42']['settings']['global_special_chars_rewrite'] = 'ae|oe|ue|Ae|Oe|Ue|ss';
@@ -22,6 +23,7 @@ $REX['ADDON']['seo42']['settings']['langcodes'][0] = 'de';
 // used for rewriting special chars that are language dependent
 // if no additional languages are defined in this array, array with clang = 0 will be used
 // separate values by | (pipe) symbol
+// special chars language tables: http://unicode.e-workers.de/
 
 $REX['ADDON']['seo42']['settings']['special_chars'][0] = '&';
 $REX['ADDON']['seo42']['settings']['special_chars_rewrite'][0] = 'und';

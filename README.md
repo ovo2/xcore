@@ -55,6 +55,7 @@ Weitere Hinweise
 * Implementiert man sein eigenes Titel-Schema, ist es vielleicht sinnvoll die Optionen `title_preview` und `no_prefix_checkbox` auf `false` zu setzen.
 * `$REX["MOD_REWRITE"]` braucht nicht mehr auf `true` gesetzt werden (z.B. über die System-Page von REDAXO). Wenn SEO42 aktiv, wird es automatisch gesetzt.
 * Eine hilfreiche Sprach-Sonderzeichen-Tabelle für die `settings.lang.inc.php` findet man hier: http://unicode.e-workers.de/
+* Momentan muss man von Hand benötigte Einstellungen vornehmen in den Dateien `settings.advanced.inc.php` und `settings.lang.inc.php`.
 
 Hinweise zum Redirects Plugin
 -----------------------------
@@ -65,7 +66,7 @@ Verfügbare Plugins
 ------------------
 
 * `redirects` von RexDude (ist beigelegt, siehe auch Hinweise)
-* `url_generate` von tbaddade: https://github.com/tbaddade/redaxo_plugin_url_generate
+* `url_control` von tbaddade: https://github.com/tbaddade/redaxo_plugin_url_control
 
 Changelog
 ---------
