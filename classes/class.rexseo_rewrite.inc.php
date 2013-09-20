@@ -597,9 +597,10 @@ function rexseo_generate_pathlist($params)
         $pathname = substr($pathname,0,strlen($pathname)-1).$REX['ADDON']['seo42']['settings']['url_ending'];
 
         // STARTSEITEN URL FORMAT
-        if($db->getValue('id')    == $REX['START_ARTICLE_ID'] &&
-           $db->getValue('clang') == $REX['ADDON']['seo42']['settings']['homelang'] &&
-           $REX['ADDON']['seo42']['settings']['homeurl'] == 1)
+        if($db->getValue('id')    == $REX['START_ARTICLE_ID'] && 
+           $db->getValue('clang') == $REX['ADDON']['seo42']['settings']['homelang'] && 
+           ($REX['ADDON']['seo42']['settings']['homeurl'] == 1 ||
+           $REX['ADDON']['seo42']['settings']['homeurl'] == 2))
         {
           $pathname = '';
         }
