@@ -45,6 +45,7 @@ class RexseoRewrite
     if(!$REX['REDAXO'])
     {
       $article_id      = -1;
+
       $clang           = $REX['CUR_CLANG'];
       $start_id        = $REX['START_ARTICLE_ID'];
       $notfound_id     = $REX['NOTFOUND_ARTICLE_ID'];
@@ -139,6 +140,18 @@ class RexseoRewrite
         $best = explode('#', array_shift($levenshtein));
 
         return self::setArticleId($best[0], $best[1]);
+      }
+
+      // check for possible lang slug to load up correct language for 404 article
+      $firstSlashPos = strpos($path, '/');
+
+      if ($firstSlashPos !== false) {
+        $possibleLangSlug = substr($path, 0, $firstSlashPos);
+        $clangId = array_search($possibleLangSlug, $REX['ADDON']['seo42']['settings']['langcodes']);
+
+        if ($clangId !== false) {
+          $clang = $clangId;
+        }
       }
 
       // STILL NO MATCH -> 404
