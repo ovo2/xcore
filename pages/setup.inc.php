@@ -50,11 +50,19 @@ if ($func == "do_copy") {
 
 		// this is for non-ww to www redirect
 		if (rex_request('www_redirect', 'int') == 1) {
-			$wwwRedirect1 = '#RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$';
-			$wwwRedirect2 = '#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301]';
+			if ($REX['ADDON']['seo42']['settings']['non_www_to_www']) {
+				$wwwRedirect1 = '#RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$';
+				$wwwRedirect2 = '#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301]';
 	
-			$content = str_replace($wwwRedirect1, ltrim($wwwRedirect1, '#'), $content);
-			$content = str_replace($wwwRedirect2, ltrim($wwwRedirect2, '#'), $content);
+				$content = str_replace($wwwRedirect1, ltrim($wwwRedirect1, '#'), $content);
+				$content = str_replace($wwwRedirect2, ltrim($wwwRedirect2, '#'), $content);
+			} else {
+				$wwwRedirect1 = '#RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]';
+				$wwwRedirect2 = '#RewriteRule ^(.*)$ http://%1/$1 [R=301,L]';
+	
+				$content = str_replace($wwwRedirect1, ltrim($wwwRedirect1, '#'), $content);
+				$content = str_replace($wwwRedirect2, ltrim($wwwRedirect2, '#'), $content);
+			}
 		}
 
 		// this is for subdir installations  
@@ -150,7 +158,7 @@ if ($func == "do_copy") {
 
 			<p class="rex-form-checkbox rex-form-label-right"> 
 				<input type="checkbox" value="1" id="www_redirect" name="www_redirect" />
-				<label for="www_redirect"><?php echo $I18N->msg('seo42_setup_www_redirect_checkbox'); ?></label>
+				<label for="www_redirect"><?php if ($REX['ADDON']['seo42']['settings']['non_www_to_www']) { echo $I18N->msg('seo42_setup_www_redirect_checkbox'); } else { echo $I18N->msg('seo42_setup_non_www_redirect_checkbox'); } ?></label>
 			</p>
 
 			<input type="hidden" name="page" value="seo42" />

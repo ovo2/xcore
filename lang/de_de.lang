@@ -79,6 +79,7 @@ seo42_setup_step2 = Schritt 2: .htaccess Datei kopieren
 seo42_setup_step2_msg1 = Folgende Datei muss in das Hauptverzeichnis von REDAXO kopiert und korrekt umbenannt werden:
 seo42_setup_to = nach
 seo42_setup_www_redirect_checkbox = Umleitung auf die WWW-Domain aktivieren
+seo42_setup_non_www_redirect_checkbox = Umleitung auf die Domain ohne WWW aktivieren
 seo42_setup_htaccess_patch_ok = .htaccess Anpassungen wurden vorgenommen.
 seo42_setup_htaccess_patch_failed = Die Anpassungen an der .htaccess Datei konnten nicht vorgenommen werden.
 seo42_setup_step2_button = Datei kopieren

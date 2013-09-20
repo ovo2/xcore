@@ -4,6 +4,9 @@
 // **  DELETE REDAXO CACHE AFTER YOU MADE CHANGES TO THIS FILE!  **
 // ****************************************************************
 
+// if true setup step 2 will show "non-www -> www" checkbox. otherwise "www -> non-www".
+$REX['ADDON']['seo42']['settings']['non_www_to_www'] = true;
+
 // if true seo page will be shown for articles. for non admins user right seo_default has to be given too.
 $REX['ADDON']['seo42']['settings']['seopage'] = true;
 

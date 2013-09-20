@@ -10,6 +10,10 @@ Options -Indexes
 	#RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$
 	#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301]
 
+	# REDIRECT WWW TO NON-WWW
+	#RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+	#RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
 	# REDIRECT SITEMAP.XML TO REXSEO SITEMAP FUNCTION
 	RewriteRule ^sitemap\.xml$ index.php?rexseo_func=sitemap [NC,L]
 
