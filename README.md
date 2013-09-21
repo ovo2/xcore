@@ -16,7 +16,7 @@ Features
 * Benötigt keine MetaInfos mehr
 * Automatische Titel-Generierung
 * Titel-Schema inspiriert von Google-Empfehlung
-* Option um volle URLs wie bei WordPress zu erzeugen
+* Option um vollständige URLs wie bei WordPress zu erzeugen
 * One Page Mode für Websites die nur über eine Seite verfügen (z.B. Paralax-Websites etc.)
 * Suchmaschinenfreundliche Image Manager Urls durch Verwendung der verfügbaren PHP-Methoden
 * SEO Tools inkl. Live PageRank Checker

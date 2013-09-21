@@ -9,14 +9,14 @@ $codeExample2 = '<?php
 echo rex_getUrl(42);
 // --> ' . seo42::getUrlStart() . 'questions/the-ultimate-answer.html
 
-echo seo42::getUrlStart() . "js/jquery.min.js"; 
-// --> ' . seo42::getUrlStart() . 'js/jquery.min.js
+echo seo42::getMediaFile("image.png");
+// --> ' . seo42::getUrlStart() . 'files/foo.png
 
 echo seo42::getMediaDir();
 // --> ' . seo42::getUrlStart() . 'files/
 
-echo seo42::getMediaFile("image.png");
-// --> ' . seo42::getUrlStart() . 'files/foo.png
+echo seo42::getUrlStart() . "js/jquery.min.js"; 
+// --> ' . seo42::getUrlStart() . 'js/jquery.min.js
 ?>';
 
 $codeExample3 = '<?php
