@@ -6,7 +6,7 @@ Ein intergalaktischer Fork des original RexSEO AddOns für REDAXO mit alternativ
 Features
 --------
 
-* Generierung von sprechenden, suchmaschinenfreundliche URLs (Webserver benötigt Modul mod_rewrite)
+* Generierung von suchmaschinenfreundlichen URLs (Webserver benötigt Modul mod_rewrite)
 * Automatische sitemap.xml und robots.txt Generierung
 * Neue vereinfachte Setup-Routine
 * Kommt ohne MetaInfos aus
