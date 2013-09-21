@@ -341,7 +341,7 @@ class seo42_utils {
 					if (seo42_utils::stringStartsWith($customUrl, 'javascript:')) {
 						$msg = $I18N->msg('seo42_urltype_userdef_javascript');
 					} else {
-						$msg = $I18N->msg('seo42_urltype_userdef') . ': <a href="' . $customUrl . '">' . $customUrl . '</a>';
+						$msg = $I18N->msg('seo42_urltype_userdef') . ': <a href="' . $customUrl . '" target="_blank">' . $customUrl . '</a>';
 					}
 
 					break;
@@ -380,7 +380,22 @@ class seo42_utils {
 		}
 
 		if ($msg != '') {
-			echo '<style type=text/css>.rex-form-content-editmode, .rex-content-editmode-module-name { display: none; }</style><div class="rex-info"><p id="seo42-urltype-msg">' . $msg . '</p></div>';
+			echo '	<style type=text/css>
+						.rex-form-content-editmode, 
+						.rex-content-editmode-module-name { 
+							display: none; 
+						} 
+
+						div.rex-content-editmode-slice-output { 
+							border-bottom-width: 0; 
+						} 
+
+						.rex-info p { 
+							padding: 3px 0 1px 0; 
+						}
+					</style>';
+
+			echo rex_info($msg);
 		}
 	}
 
