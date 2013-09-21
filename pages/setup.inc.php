@@ -128,6 +128,7 @@ if ($func == "do_copy") {
 				<label for="server"><?php echo $I18N->msg('seo42_setup_website_url'); ?></label>
 				<input name="server" id="server" type="text" class="rex-form-text" value="<?php echo htmlspecialchars($REX['SERVER']); ?>" />
 				<?php if (seo42_utils::detectSubDir()) { echo '<span class="subdir-hint">' . $I18N->msg('seo42_setup_subdir_hint') . '</span>'; } ?>
+				<span class="url-hint"><?php echo $I18N->msg('seo42_setup_url_alert'); ?></span>
 			</p>
 
 			<input type="hidden" name="page" value="seo42" />
@@ -191,9 +192,14 @@ $codeExample = '<head>
 </div>
 
 <style type="text/css">
-#rex-page-seo42 span.subdir-hint {
+#rex-page-seo42 span.subdir-hint,
+#rex-page-seo42 span.url-hint {
 	margin-left: 165px;
 	display: block;
+}
+#rex-page-seo42 span.url-hint {
+	color: red;
+	display: none;
 }
 
 #rex-page-seo42 .rex-code {
@@ -247,19 +253,30 @@ $codeExample = '<head>
 <script type="text/javascript">
 var rewriteBaseMsgShown = false;
 
-jQuery(document).ready( function() {
-	jQuery('#settings-form').submit(function() {
-		var pat = /^https?:\/\//i;
-		var serverString = jQuery('#server').val();
-		var slashPosAfterDomain = serverString.indexOf("/", 8); // https:// = 8
+function isCompleteWebsiteUrl() {
+	var pat = /^https?:\/\//i;
+	var serverString = jQuery('#server').val();
+	var slashPosAfterDomain = serverString.indexOf("/", 8); // https:// = 8
 
-		if (pat.test(serverString) && slashPosAfterDomain !== -1 && (serverString.charAt(serverString.length - 1) == '/')) {
-			return true;
+	if (pat.test(serverString) && slashPosAfterDomain !== -1 && (serverString.charAt(serverString.length - 1) == '/')) {
+		return true;
+	}
+
+	return false;
+}
+
+jQuery(document).ready( function() {
+	if (!isCompleteWebsiteUrl()) {
+		jQuery('span.url-hint').css('display', 'block');
+	}
+
+	jQuery('#settings-form').submit(function() {
+		if (!isCompleteWebsiteUrl()) {
+			alert('<?php echo $I18N->msg('seo42_setup_url_alert'); ?>');
+			return false;
 		}
 
-		alert('<?php echo $I18N->msg('seo42_setup_url_alert'); ?>');
-
-		return false;
+		return true;
 	});
 
 	<?php if (file_exists($htaccessRoot)) { ?>

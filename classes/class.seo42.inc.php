@@ -37,9 +37,23 @@ class seo42 {
 		// pull apart server url
 		$urlParts = parse_url(self::$serverUrl);
 
-		self::$serverProtocol = $urlParts['scheme'];
-		self::$server = $urlParts['host'];
-		self::$serverSubDir = trim($urlParts['path'], '/'); 
+		if (isset($urlParts['scheme'])) {
+			self::$serverProtocol = $urlParts['scheme'];
+		} else {
+			self::$serverProtocol = 'http';
+		}
+
+		if (isset($urlParts['host'])) {
+			self::$server = $urlParts['host'];
+		} else {
+			self::$server = self::$serverUrl;
+		}
+
+		if (isset($urlParts['path'])) {
+			self::$serverSubDir = trim($urlParts['path'], '/'); 
+		} else {
+			self::$serverSubDir = '';
+		}
 
 		// check for subdir install
 		if (self::$serverSubDir == '') {
