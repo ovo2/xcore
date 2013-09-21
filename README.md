@@ -13,7 +13,7 @@ Features
 * Extra URL-Page für jeden Artikel zur Manipulierung der generierten URL
 * Automatische `sitemap.xml` und `robots.txt` Generierung
 * Neue vereinfachte Setup-Routine
-* Kommt ohne MetaInfos aus
+* Benötigt keine MetaInfos mehr
 * Automatische Titel-Generierung
 * Titel-Schema inspiriert von Google-Empfehlung
 * Option um volle URLs wie bei WordPress zu erzeugen
@@ -21,10 +21,10 @@ Features
 * Suchmaschinenfreundliche Image Manager Urls durch Verwendung der verfügbaren PHP-Methoden
 * SEO Tools inkl. Live PageRank Checker
 * Klasse `rex_navigation42` die auf alle URL-Typen reagiert
-* Einrichtung von 301 Umleitungen
+* Einrichtung von 301 Umleitungen über das Redirects-Plugin
 * Spezielle sprachabhängige sowie sprachunabhängige Sonderzeichen-Umschreibungen einstellbar
-* Weitere Einstellungen vorerst in der `settings.advanced.inc.php` und `settings.lang.inc.php`
-* Lang Slug können unabhängig vom REDAXO Sprachnamen gesetzt werden
+* Lang Slugs (de, en) können unabhängig vom REDAXO Sprachnamen gesetzt werden
+* Weitere Einstellungen (vorerst) in der `settings.advanced.inc.php` und `settings.lang.inc.php`
 * Kompatibel zum Website Manager AddOn
 * Enthält die Antwort auf die eine Frage ;)
 
