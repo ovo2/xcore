@@ -7,7 +7,7 @@ Features
 --------
 
 * Generierung von suchmaschinenfreundlichen URLs (Webserver benötigt Modul mod_rewrite)
-* Automatische Umschreibung der Startseite der Website in `/` (gilt für alle Sprachen)
+* Automatische Umschreibung der Startseite der Website in `/` (für alle Sprachen möglich)
 * Verschiedene URL-Schemas verfügbar (z.B. `.html`)
 * Extra SEO-Page für jeden Artikel inkl. Titel-Vorschau
 * Extra URL-Page für jeden Artikel zur Manipulierung der generierten URL
@@ -20,7 +20,7 @@ Features
 * One Page Mode für Websites die nur über eine Seite verfügen (z.B. Paralax-Websites etc.)
 * Suchmaschinenfreundliche Image Manager Urls durch Verwendung der verfügbaren PHP-Methoden
 * SEO Tools inkl. Live PageRank Checker
-* Klasse `rex_navigation42` die auf alle URL-Typen reagiert
+* Klasse `rex_navigation42` zum Bauen von Navigationen. Alle URL-Typen werden berücksichtigt.
 * Einrichtung von 301 Umleitungen über das Redirects-Plugin
 * Spezielle sprachabhängige sowie sprachunabhängige Sonderzeichen-Umschreibungen einstellbar
 * Lang Slugs (de, en) können unabhängig vom REDAXO Sprachnamen gesetzt werden
