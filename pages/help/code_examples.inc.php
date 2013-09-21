@@ -34,8 +34,19 @@ $codeExample4 = '<html lang="<?php echo seo42::getLangCode(); ?>">';
 
 $codeExample5 = '<?php echo seo42::getTitle(rex_string_table::getString("website_name")); ?>';
 
-$codeExample6 = '<?php
-// --> ' . strtoupper($I18N->msg('seo42_help_codeexamples_ex6_comment1')) . '
+$codeExample6 = '<?php 
+// ausgabe des 1. navigationslevels
+echo rex_navigation42::getNavigationByLevel(0, 1);
+
+// ausgabe des 2. und 3. navigationslevels
+echo rex_navigation42::getNavigationByLevel(1, 3);
+
+// ausgabe der navigation mit startkategorie id = 42, 2 level tief
+echo rex_navigation42::getNavigationByCategory(42, 2);
+?>';
+
+$codeExample7 = '<?php
+// --> ' . strtoupper($I18N->msg('seo42_help_codeexamples_ex7_comment1')) . '
 class seo42_ex extends seo42
 	public static function getTitle($websiteName = "") {
 		if ($websiteName == "") {
@@ -64,13 +75,13 @@ class seo42_ex extends seo42
 			}
 		 }
 
-		// --> ' . strtoupper($I18N->msg('seo42_help_codeexamples_ex6_comment2')) . '
+		// --> ' . strtoupper($I18N->msg('seo42_help_codeexamples_ex7_comment2')) . '
 		return strtolower(htmlspecialchars($fullTitle));
 	}
 }
 
-// --> ' . strtoupper($I18N->msg('seo42_help_codeexamples_ex6_comment3')) . '
-echo seo42_ex::getTitle(); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment4') . '
+// --> ' . strtoupper($I18N->msg('seo42_help_codeexamples_ex7_comment3')) . '
+echo seo42_ex::getTitle(); // ' . $I18N->msg('seo42_help_codeexamples_ex7_comment4') . '
 echo seo42_ex::getDescription();
 echo seo42_ex::getKeywords();
 ?>';
@@ -100,6 +111,10 @@ echo seo42_ex::getKeywords();
 <h2>6) <?php echo $I18N->msg('seo42_help_codeexamples_title6'); ?></h2>
 <p><?php echo $I18N->msg('seo42_help_codeexamples_description6'); ?></p>
 <?php rex_highlight_string($codeExample6); ?>
+
+<h2>7) <?php echo $I18N->msg('seo42_help_codeexamples_title7'); ?></h2>
+<p><?php echo $I18N->msg('seo42_help_codeexamples_description7'); ?></p>
+<?php rex_highlight_string($codeExample7); ?>
 
 <style type="text/css">
 .rex-addon-content h2 {

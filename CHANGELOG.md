@@ -7,7 +7,7 @@ SEO42 - Changelog
 * Fixed: Die Startseite enthielt einen Lang Slug, auch wenn Option `Starseite` -> `http://domain.de/lang-slug/` mit Option `Lang Slug` -> `Kein Lang Slug für Sprache: xy` aktiv war.
 * Fixed: Bei einem 404 Fehler sollte der Fehlerartikel nun in der richtigen Sprache erscheinen
 * Wurde bereits vor Installation des Addons eine unvollständige URL unter System eingegeben (z.B. www.redaxo.org), erscheint im Setup direkt eine entsprechende Meldung.
-* Klasse `rex_navigation42` (ehemals `rex_navigation_ex`) inkl. Codebeispiele zu SEO42 hinzugefügt.
+* Klasse `rex_navigation42` (ehemals `rex_navigation_ex`) inkl. Codebeispiele zu SEO42 hinzugefügt. Methode `getMenuByLevel()` in `getNavigationByLevel()` und `getMenuByCategory()` in `getNavigationByCategory()` umbenannt.
 * Option `Starseite` standardmäßig auf `http://domain.de/lang-slug/` gesetzt. Greift nur bei mehrsprachigen Websites. Hier wird dann z.B. `/en/home.html` direkt in `/en/` umgeschrieben.
 * Neue Optionen `global_special_chars` und `global_special_chars_rewrite` in die `settings.lang.inc.php` hinzugefügt (für URL-Umschreibung). Damit lassen sich Sonderzeichen definieren die für alle Sprachen gültig sind.
 * Neues Codebeispiel für: Sprachunabhängiger Website-Name im Titel
@@ -18,7 +18,7 @@ SEO42 - Changelog
 ### Version 2.0.0 - 18. September 2013
 
 * AddOn wurde von REXSEO42 in SEO42 umbenannt. Die Klasse `rexseo42` wurde in `seo42` umbenannt. Ein Update-Anleitung findet sich in der README.md.
-* Neue URL-Page zum manipulieren von URLs. Einige Url-Typen greifen erst, wenn bei der Ausgabe der Navigation auf diese reagiert wird. Die aktualisierte Klasse `rex_navigation_ex` unterstützt diese Typen bereits: https://gist.github.com/RexDude/5354172. Zusätzliche URL-Typen sind über die Option `all_url_types` abschaltbar.
+* Neue URL-Page zum manipulieren von URLs. Einige Url-Typen greifen erst, wenn bei der Ausgabe der Navigation auf diese reagiert wird. Die Klasse `rex_navigation42` (ehemals `rex_navigation_ex`) unterstützt diese Typen bereits (ab 2.1.0 in SEO42 beigelegt). Zusätzliche URL-Typen sind über die Option `all_url_types` abschaltbar.
 * Neues Recht `url_default` hinzugefügt um normalen Benutzer die URL-Page ein bzw. auszuschalten.
 * Einfaches Anführungszeichen sowie das Akut-Zeichen werden direkt als "-" umgeschrieben.
 * PHP-Methode `setWebsiteName()` hinzugefügt sowie `getTitle()` um Parameter `$websiteName` erweitert. Damit lässt sich z.B. über das String Table Addon einen anderen Website-Namen (der damit dann auch sprachunabhängig sein kann) zwecks Titel-Generierung setzen.

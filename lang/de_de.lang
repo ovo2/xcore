@@ -148,6 +148,7 @@ seo42_help_link4 = {0} auf GitHub
 seo42_help_link1 = {0} Bugtracker
 seo42_help_link2 = RexSEO Extensions Points
 seo42_help_link3 = Aufbau der RexSEO Pathlist
+seo42_help_link5 = Klasse rex_navigation42
 
 seo42_help_codeexamples = Codebeispiele
 seo42_help_codeexamples_title1 = Alternative Einbindung der Html-Tags
@@ -160,13 +161,18 @@ seo42_help_codeexamples_title4 = Lang Code ausgeben
 seo42_help_codeexamples_description4 = Geben Sie so den aktuellen Lang Code aus der momentan in der <code>settings.lang.inc.php</code> definiert werden kann:
 seo42_help_codeexamples_title5 = Sprachunabhängiger Website-Name im Titel
 seo42_help_codeexamples_description5 = Einen sprachunabhängigen Titel erhält man so (Website-Name wird hier aus dem String Table AddOn geholt):
-seo42_help_codeexamples_title6 = Titel Schema ändern
-seo42_help_codeexamples_description6 = Ein eigenes Titel Schema lässt sich momentan nur über die Überschreibung der getTitle() Methode realisieren:
+seo42_help_codeexamples_title6 = Ausgabe einer Navigation unter Berücksichtigung aller URL-Typen
+seo42_help_codeexamples_description6 = Hier ein paar Beispiele wie man die mitgelieferte Klasse <code>rex_navigation42</code> einsetzt:
+seo42_help_codeexamples_title7 = Titel Schema ändern
+seo42_help_codeexamples_description7 = Ein eigenes Titel Schema lässt sich momentan nur über die Überschreibung der getTitle() Methode realisieren:
 seo42_help_codeexamples_ex3_alt = Titel aus dem Medienpool
-seo42_help_codeexamples_ex6_comment1 = eigene klasse ableiten und getTitle() methode überschreiben
-seo42_help_codeexamples_ex6_comment2 = gesamten titel in kleinbuchstaben ausgeben (als beispiel)
-seo42_help_codeexamples_ex6_comment3 = methoden aufrufe dann nur noch über diese abgeleitete klasse
-seo42_help_codeexamples_ex6_comment4 = gibt nun den titel in kleinbuchstaben aus
+seo42_help_codeexamples_ex6_comment1 = ausgabe des 1. navigationslevels
+seo42_help_codeexamples_ex6_comment2 = ausgabe des 2. und 3. navigationslevels
+seo42_help_codeexamples_ex6_comment3 = ausgabe der navigation mit startkategorie id = 42, 2 level tief
+seo42_help_codeexamples_ex7_comment1 = eigene klasse ableiten und getTitle() methode überschreiben
+seo42_help_codeexamples_ex7_comment2 = gesamten titel in kleinbuchstaben ausgeben (als beispiel)
+seo42_help_codeexamples_ex7_comment3 = methoden aufrufe dann nur noch über diese abgeleitete klasse
+seo42_help_codeexamples_ex7_comment4 = gibt nun den titel in kleinbuchstaben aus
 
 seo42_help_faq = FAQ
 seo42_help_faq01a = Warum brauchts eigentlich noch ein weiteres RexSEO?

@@ -9,7 +9,7 @@ Features
 * Generierung von suchmaschinenfreundlichen URLs (Webserver benötigt Modul mod_rewrite)
 * Automatische Umschreibung der Startseite der Website in `/` (für alle Sprachen möglich)
 * Verschiedene URL-Schemas verfügbar (z.B. `.html`)
-* Extra SEO-Page für jeden Artikel inkl. Titel-Vorschau
+* Extra SEO-Page für jeden Artikel inkl. Titel-Vorschau und Zeichen/Wörter Zähler
 * Extra URL-Page für jeden Artikel zur Manipulierung der generierten URL
 * Automatische `sitemap.xml` und `robots.txt` Generierung
 * Neue vereinfachte Setup-Routine, benötigt keine MetaInfos mehr
@@ -38,7 +38,7 @@ Alle URL-Typen aktivieren
 -------------------------
 
 * Einige Url-Typen greifen erst, wenn bei der Ausgabe der Navigation auf diese reagiert wird.
-* Die aktualisierte Klasse `rex_navigation_ex` unterstützt diese Typen bereits: https://gist.github.com/RexDude/5354172
+* Die Klasse `rex_navigation42` (ehemals `rex_navigation_ex`) unterstützt diese Typen bereits (ab 2.1.0 in SEO42 beigelegt).
 * Über die Option `all_url_types` können diese bei Bedarf aber auch deaktiviert werden.
 
 Update von REXSEO42 1.1/1.2 auf SEO42 2.x

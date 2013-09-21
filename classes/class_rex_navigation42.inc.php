@@ -1,7 +1,7 @@
 <?php
 
 class rex_navigation42 extends rex_navigation {
-	static function getMenuByLevel($levelStart = 0, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideStartArticle = false) {
+	static function getNavigationByLevel($levelStart = 0, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideStartArticle = false) {
 		global $REX;
 		
 		$nav = self::factory();
@@ -10,7 +10,7 @@ class rex_navigation42 extends rex_navigation {
 		return $nav->get($path[$levelStart], $levelDepth, $showAll, $ignoreOfflines, $hideStartArticle);
 	}
 
-	static function getMenuByCategory($categoryId, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideStartArticle = false) {
+	static function getNavigationByCategory($categoryId, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideStartArticle = false) {
 		$nav = self::factory();
 
 		return $nav->get($categoryId, $levelDepth, $showAll, $ignoreOfflines, $hideStartArticle);
