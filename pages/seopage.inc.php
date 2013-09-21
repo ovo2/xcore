@@ -112,7 +112,7 @@ if ($REX['ADDON']['seo42']['settings']['title_preview']) {
 echo '
 	<div class="rex-content-body" id="seo-page">
 		<div class="rex-content-body-2">
-			<div class="rex-form" id="rex-form-content-metamode">
+			<div class="rex-form" id="rex-form-content-seomode">
 				<form action="index.php" method="post" id="seo-form" name="seo-form">
 					<input type="hidden" name="page" value="content" />
 					<input type="hidden" name="article_id" value="' . $articleID . '" />
@@ -291,7 +291,7 @@ div.rex-form div.rex-form-row.prefix p {
 	top: 0;
 }
 
-#seo-page div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row div.rex-form-checkboxes-wrapper, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row div.rex-form-radios-wrapper, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-label-right label, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-read span, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-text input, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-select select, div#rex-form-content-metamode fieldset.rex-form-col-1 div.rex-form-row p textarea {
+#seo-page div#rex-form-content-seomode fieldset.rex-form-col-1 div.rex-form-row div.rex-form-checkboxes-wrapper, div#rex-form-content-seomode fieldset.rex-form-col-1 div.rex-form-row div.rex-form-radios-wrapper, div#rex-form-content-seomode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-label-right label, div#rex-form-content-seomode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-read span, div#rex-form-content-seomode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-text input, div#rex-form-content-seomode fieldset.rex-form-col-1 div.rex-form-row p.rex-form-select select, div#rex-form-content-seomode fieldset.rex-form-col-1 div.rex-form-row p textarea {
     width: 390px;
 }
 

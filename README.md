@@ -38,7 +38,7 @@ Alle URL-Typen aktivieren
 -------------------------
 
 * Einige Url-Typen greifen erst, wenn bei der Ausgabe der Navigation auf diese reagiert wird.
-* Die Klasse `rex_navigation42` (ehemals `rex_navigation_ex`) unterstützt diese Typen bereits (ab 2.1.0 in SEO42 beigelegt).
+* Die Klasse `rex_navigation42` (ehemals `rex_navigation_ex`) unterstützt diese Typen bereits (ab 2.1.0 SEO42 beigelegt).
 * Über die Option `all_url_types` können diese bei Bedarf aber auch deaktiviert werden.
 
 Update von REXSEO42 1.1/1.2 auf SEO42 2.x
