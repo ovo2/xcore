@@ -391,7 +391,7 @@ class seo42_utils {
 						} 
 
 						.rex-info p { 
-							padding: 3px 0 1px 0; 
+							padding: 4px 0 2px 0; 
 						}
 					</style>';
 
