@@ -87,7 +87,7 @@ seo42_setup_step3 = Schritt 3: Template ergänzen
 seo42_setup_step3_msg1 = Zuletzt ergänzen Sie den Head-Bereich Ihres Templates wie folgt:
 seo42_setup_url_alert = URL dieser Website muss mit "http://" beginnen und mit "/" enden.
 seo42_setup_htaccess_alert = Im Hauptverzeichnis von REDAXO existiert bereits eine .htaccess Datei.\r\nWollen Sie diese überschreiben?\r\n\r\nHinweis: Ein Backup der Datei wird automatisch in /seo42/backup/ gespeichert.
-seo42_setup_codeexamples = Bitte nutzen Sie außerdem die bereitgestellten PHP-Methoden aus den <a href="index.php?page=seo42&subpage=help&chapter=codeexamples">Codebeispielen</a>...
+seo42_setup_codeexamples = Bitte nutzen Sie außerdem die bereitgestellten PHP-Methoden aus den <a href="index.php?page=seo42&subpage=help&chapter=codeexamples">Codebeispielen</a> (insbesondere Nr.2).
 seo42_setup_rewritebase = RewriteBase automatisch anpassen: <i>RewriteBase /{0}</i>
 seo42_setup_subdir_hint = (Bitte Unterordner mit angeben)
 seo42_setup_rewritebase_alert = Bitte folgende Anpassung in der .htaccess Datei vornehmen:

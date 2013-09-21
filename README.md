@@ -6,17 +6,22 @@ Ein intergalaktischer Fork des original RexSEO AddOns für REDAXO mit alternativ
 Features
 --------
 
-* Neue Setup-Routine
+* Generierung von sprechenden, suchmaschinenfreundliche URLs (Webserver benötigt Modul mod_rewrite)
+* Automatische sitemap.xml und robots.txt Generierung
+* Neue vereinfachte Setup-Routine
 * Kommt ohne MetaInfos aus
+* Automatische Titel-Generierung
 * Titel-Schema inspiriert von Google-Empfehlung
 * Extra SEO-Page für jeden Artikel inkl. Titel-Vorschau
 * Extra URL-Page für jeden Artikel zur Manipulierung der generierten URL
 * Suchmaschinenfreundliche Image Manager Urls durch Verwendung der verfügbaren PHP-Methoden
 * SEO Tools inkl. PageRank Checker
-* Klasse `rex_navigation42` die auf alle URl-Typen reagiert
-* Einstellungen vorerst in die `settings.advanced.inc.php` und `settings.lang.inc.php` verlagert
+* Klasse `rex_navigation42` die auf alle URL-Typen reagiert
+* Einrichtung von 301 Umleitungen
+* Spezielle sprachabhängige sowie sprachunabhängige Sonderzeichen-Umschreibungen einstellbar
+* Weitere Einstellungen vorerst in der `settings.advanced.inc.php` und `settings.lang.inc.php`
+* Kompatibel zum Website Manager AddOn
 * Enthält die Antwort auf die eine Frage ;)
-* Und noch vieles mehr...
 
 Wichtiger Hinweis vorab
 -----------------------
