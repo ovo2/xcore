@@ -146,9 +146,9 @@ if ($func == "do_copy") {
 		<p><?php echo $I18N->msg('seo42_setup_step2_msg1'); ?></p>
 		<form action="index.php" method="post">
 			<p class="no-bottom-margin" id="codeline">
-				<code>/seo42/install/_htaccess</code> &nbsp;<?php echo $I18N->msg('seo42_setup_to'); ?>&nbsp; <code>/.htaccess</code>
+				<code>/redaxo/include/addons/seo42/install/_htaccess</code> &nbsp;<?php echo $I18N->msg('seo42_setup_to'); ?>&nbsp; <code>/.htaccess</code>
 			</p>
-			
+
 			<?php if (seo42::getServerSubDir() != '') { ?>
 			<p class="rex-form-checkbox rex-form-label-right"> 
 				<input type="checkbox" value="1" id="modify_rewritebase" name="modify_rewritebase" checked="checked" />
