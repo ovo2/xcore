@@ -6,8 +6,6 @@ Ein intergalaktischer Fork des original RexSEO AddOns für REDAXO mit alternativ
 Features
 --------
 
-* Einstellungen-Seite auf das Wesentliche reduziert 
-* Zusätzliche Einstellungen vorerst in die `settings.advanced.inc.php` und `settings.lang.inc.php` verlagert
 * Neue Setup-Routine
 * Kommt ohne MetaInfos aus
 * Titel-Schema inspiriert von Google-Empfehlung
@@ -15,7 +13,9 @@ Features
 * Extra URL-Page für jeden Artikel zur Manipulierung der generierten URL
 * Suchmaschinenfreundliche Image Manager Urls durch Verwendung der verfügbaren PHP-Methoden
 * SEO Tools inkl. PageRank Checker
-* Enthält die Antwort auf die eine Frage
+* Klasse `rex_navigation42` die auf alle URl-Typen reagiert
+* Einstellungen vorerst in die `settings.advanced.inc.php` und `settings.lang.inc.php` verlagert
+* Enthält die Antwort auf die eine Frage ;)
 * Und noch vieles mehr...
 
 Wichtiger Hinweis vorab
@@ -31,7 +31,7 @@ Alle URL-Typen aktivieren
 * Die aktualisierte Klasse `rex_navigation_ex` unterstützt diese Typen bereits: https://gist.github.com/RexDude/5354172
 * Über die Option `all_url_types` können diese bei Bedarf aber auch deaktiviert werden.
 
-Update von REXSEO42 1.2.x auf SEO42 2.0.0
+Update von REXSEO42 1.1/1.2 auf SEO42 2.x
 -----------------------------------------
 
 Ein Update wird nur empfohlen, wenn die neuen Features von der 2er Version benötigt werden.
@@ -55,7 +55,7 @@ Weitere Hinweise
 * Implementiert man sein eigenes Titel-Schema, ist es vielleicht sinnvoll die Optionen `title_preview` und `no_prefix_checkbox` auf `false` zu setzen.
 * `$REX["MOD_REWRITE"]` braucht nicht mehr auf `true` gesetzt werden (z.B. über die System-Page von REDAXO). Wenn SEO42 aktiv, wird es automatisch gesetzt.
 * Eine hilfreiche Sprach-Sonderzeichen-Tabelle für die `settings.lang.inc.php` findet man hier: http://unicode.e-workers.de/
-* Momentan muss man von Hand benötigte Einstellungen vornehmen in den Dateien `settings.advanced.inc.php` und `settings.lang.inc.php`.
+* Momentan muss man noch von Hand benötigte Einstellungen in den Dateien `settings.advanced.inc.php` und `settings.lang.inc.php` vornehmen. Danach sollte der Cache gelöscht werden.
 
 Hinweise zum Redirects Plugin
 -----------------------------
@@ -65,7 +65,7 @@ Hinweise zum Redirects Plugin
 Verfügbare Plugins
 ------------------
 
-* `redirects` von RexDude (ist beigelegt, siehe auch Hinweise)
+* `redirects` von RexDude (ist beigelegt)
 * `url_control` von tbaddade: https://github.com/tbaddade/redaxo_plugin_url_control
 
 Changelog
