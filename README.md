@@ -12,8 +12,7 @@ Features
 * Extra SEO-Page für jeden Artikel inkl. Titel-Vorschau
 * Extra URL-Page für jeden Artikel zur Manipulierung der generierten URL
 * Automatische `sitemap.xml` und `robots.txt` Generierung
-* Neue vereinfachte Setup-Routine
-* Benötigt keine MetaInfos mehr
+* Neue vereinfachte Setup-Routine, benötigt keine MetaInfos mehr
 * Automatische Titel-Generierung
 * Titel-Schema inspiriert von Google-Empfehlung
 * Option um vollständige URLs wie bei WordPress zu erzeugen
@@ -24,6 +23,7 @@ Features
 * Einrichtung von 301 Umleitungen über das Redirects-Plugin
 * Spezielle sprachabhängige sowie sprachunabhängige Sonderzeichen-Umschreibungen einstellbar
 * Lang Slugs (de, en) können unabhängig vom REDAXO Sprachnamen gesetzt werden
+* Option um die Indizierung von Seiten durch Suchmaschinen zu verhindern
 * Weitere Einstellungen (vorerst) in der `settings.advanced.inc.php` und `settings.lang.inc.php`
 * Kompatibel zum Website Manager AddOn
 * Enthält die Antwort auf die eine Frage ;)
