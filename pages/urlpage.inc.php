@@ -385,6 +385,10 @@ if ($urlField != '') {
 #url-page .section {
 	display: none;
 }
+
+#url-page div.rex-form div.rex-form-row p input.rex-form-submit {
+    margin-top: 8px;
+}
 </style>
 
 <script type="text/javascript">
