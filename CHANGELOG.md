@@ -1,7 +1,7 @@
 SEO42 - Changelog
 ====================
 
-### Version 2.1.0 BETA
+### Version 2.1.0 - 22. September 2013
 
 * Fixed #59: Es kam eine leere Seite bei Block speichern/übernehmen oder nach Cache löschen tauchte ein PHP-Memory Problem auf.
 * Fixed: Die Startseite enthielt einen Lang Slug, auch wenn Option `Starseite` -> `http://domain.de/lang-slug/` mit Option `Lang Slug` -> `Kein Lang Slug für Sprache: xy` aktiv war.
