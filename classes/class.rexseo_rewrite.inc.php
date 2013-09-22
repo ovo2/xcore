@@ -874,34 +874,32 @@ function rexseo_appendToPath($path, $name, $article_id, $clang)
 function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
 {
   static $firstCall = true;
-  static $translation;
+  static $translation = array();
 
-  if($firstCall)
-  {
-    global $REX, $I18N;
+	if($firstCall) {
+		global $REX, $I18N;
 
-	if (isset($REX['ADDON']['seo42']['settings']['special_chars'][$clang])) {
-		$specialCharsClang = $clang;
-	} else {
-		$specialCharsClang = 0;
+		$globalSpecialChars = explode('|', $REX['ADDON']['seo42']['settings']['global_special_chars']);
+		$globalSpecialCharsRewrite = explode('|', $REX['ADDON']['seo42']['settings']['global_special_chars_rewrite']);
+
+		foreach ($REX['CLANG'] as $clangId => $clangName) {
+			if (isset($REX['ADDON']['seo42']['settings']['special_chars'][$clangId])) {
+				$specialCharsClang = $clangId;
+			} else {
+				$specialCharsClang = 0;
+			}
+
+			$specialChars = explode('|', $REX['ADDON']['seo42']['settings']['special_chars'][$specialCharsClang]);
+			$specialCharsRewrite = explode('|', $REX['ADDON']['seo42']['settings']['special_chars_rewrite'][$specialCharsClang]);
+
+			$translation[$clangId] = array(
+				'search'  => array_merge($specialChars, $globalSpecialChars),
+				'replace' => array_merge($specialCharsRewrite, $globalSpecialCharsRewrite)
+			);
+		}
+
+		$firstCall = false;
 	}
-
-	$globalSpecialChars = explode('|', $REX['ADDON']['seo42']['settings']['global_special_chars']);
-	$globalSpecialCharsRewrite = explode('|', $REX['ADDON']['seo42']['settings']['global_special_chars_rewrite']);
-
-	$specialChars = explode('|', $REX['ADDON']['seo42']['settings']['special_chars'][$specialCharsClang]);
-	$specialCharsRewrite = explode('|', $REX['ADDON']['seo42']['settings']['special_chars_rewrite'][$specialCharsClang]);
-
-    $translation = array(
-      'search'  => array_merge($globalSpecialChars, $specialChars),
-      'replace' => array_merge($globalSpecialCharsRewrite, $specialCharsRewrite)
-      );
-
-    // EXTENSION POINT
-	$translation = rex_register_extension_point('REXSEO_SPECIAL_CHARS',$translation,array('article_id'=>$article_id,'clang'=>$clang));
-
-    $firstCall = false;
-  }
 
   // SANITIZE STUFF
   $name = trim($name, " \t\r\n-.");
@@ -929,7 +927,7 @@ function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
             // alle sonderzeichen raus
             preg_replace('/[^a-zA-Z_\-0-9 ]/', '',
               // sprachspezifische zeichen umschreiben
-              str_replace($translation['search'], $translation['replace'], $name)
+              str_replace($translation[$clang]['search'], $translation[$clang]['replace'], $name)
             )
           )
         )
