@@ -24,7 +24,7 @@ Features
 * Lang Slugs (de, en) können unabhängig von den REDAXO Sprachnamen gesetzt werden
 * Option um die Indizierung von Seiten durch Suchmaschinen zu verhindern
 * Automatische wie individuelle Canonical URLs
-* Nicht-WWW zu WWW Umleitungen (und umgekehrt). Lässt sich auch über das Setup aktivieren.
+* Nicht-WWW zu WWW Umleitung (und umgekehrt). Lässt sich auch über das Setup aktivieren.
 * Weitere Einstellungen (vorerst) in der `settings.advanced.inc.php` und `settings.lang.inc.php`
 * Kompatibel zum Website Manager AddOn
 * Enthält die Antwort auf die eine Frage ;)
