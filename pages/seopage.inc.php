@@ -200,7 +200,7 @@ echo '
 #seo-page #show-prefix label {
 	display: block;
 	float: left;
-	padding-right: 10px;
+	padding-right: 30px;
 	white-space: nowrap;
 }
 
@@ -263,11 +263,11 @@ echo '
 }
 
 #seo-page div.rex-form div.rex-form-row label, div.rex-form div.rex-form-row p.rex-form-label {
-    width: 155px;
+    width: 145px;
 }
 
 #seo-page div.rex-form div.rex-form-row p span.rex-form-notice {
-	margin-left: 165px;
+	margin-left: 155px;
 	margin-top: 4px;
 	font-size: 100%;
 }
@@ -298,12 +298,12 @@ div.rex-form div.rex-form-row.prefix p {
 #seo-page div.rex-form div.rex-form-row p span.rex-form-notice.right {
     float: right;
     margin-left: 0;
-    margin-right: 184px;
+    margin-right: 194px;
 }
 
 #seo-page div.rex-form div.rex-form-row p input.rex-form-submit {
 	margin-top: 8px;
-    margin-left: 165px;
+    margin-left: 155px;
 }
 </style>
 
