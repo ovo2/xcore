@@ -914,8 +914,6 @@ function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
 
   $name = str_replace('/', '-', $name);
   $name = str_replace('.', '-', $name);
-  $name = str_replace("'", '-', $name);
-  $name = str_replace("’", '-', $name);
 
   $parsedName =
     // + durch - ersetzen

@@ -134,7 +134,7 @@ seo42_urltype_intern = Verweis auf Artikel:
 seo42_urltype_intern_plus_clang = Verweis auf Artikel {0} der Sprache {1}.
 seo42_urltype_userdef = Verweis auf externe URL
 seo42_urltype_userdef_javascript = Verweis auf JavaScript-Code.
-seo42_urltype_mediapool = Verweis auf Mediepool-Datei: {0}
+seo42_urltype_mediapool = Verweis auf Medienpool-Datei: {0}
 seo42_urltype_langswitch = Sprachumschalter zu Sprache: {0}
 seo42_urltype_none = Die URL dieses Artikels wurde entfernt.
 
