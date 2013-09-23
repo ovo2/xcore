@@ -629,7 +629,7 @@ function rexseo_generate_pathlist($params)
 
       $db->next();
     }
-  }
+
 
 
 
@@ -751,7 +751,7 @@ function rexseo_generate_pathlist($params)
 
 	// -----------------------------------------------------------------------------------------------------------
 
-
+  }
 
   // EXTENSION POINT "REXSEO_PATHLIST_CREATED"
   $subject = array('REXSEO_IDS'=>$REXSEO_IDS,'REXSEO_URLS'=>$REXSEO_URLS);
