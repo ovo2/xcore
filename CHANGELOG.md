@@ -1,6 +1,11 @@
 SEO42 - Changelog
 ====================
 
+### Version 2.1.1 - 23. September 2013
+
+* Fixed: Beim Löschen einer Kategorie oder eines Artikels kam ein PHP-Fehler
+* Kleine optische Verbesserungen
+
 ### Version 2.1.0 - 22. September 2013
 
 * Fixed #59: Es kam eine leere Seite bei Block speichern/übernehmen oder nach Cache löschen tauchte ein PHP-Memory Problem auf.
