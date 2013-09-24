@@ -297,6 +297,7 @@ class seo42_utils {
 		$articleId = $currentArticle->getValue('id');
 		$clangId = $currentArticle->getValue('clang');
 		$msg = '';
+		$isError = false;
 
 		$urlData = seo42_utils::getUrlTypeData($urlField);
 		$jsonData = json_decode($urlData, true);	
@@ -316,7 +317,12 @@ class seo42_utils {
 					$customArticleId = $jsonData['article_id'];
 					$article = OOArticle::getArticleById($customArticleId);
 
-					$msg = $I18N->msg('seo42_urltype_intern') . ' <a href="index.php?page=content&article_id=' . $customArticleId . '&mode=edit&clang=' . $REX['CUR_CLANG'] . '">' . $article->getName() . '</a>';
+					if (OOArticle::isValid($article)) {
+						$msg = $I18N->msg('seo42_urltype_intern') . ' <a href="index.php?page=content&article_id=' . $customArticleId . '&mode=edit&clang=' . $REX['CUR_CLANG'] . '">' . $article->getName() . '</a>';
+					} else {
+						$msg = $I18N->msg('seo42_urltype_error');
+						$isError = true;
+					}
 
 					break;
 				case SEO42_URL_TYPE_INTERN_REPLACE_CLANG:
@@ -324,7 +330,12 @@ class seo42_utils {
 					$customClangId = $jsonData['clang_id'];
 					$article = OOArticle::getArticleById($customArticleId);
 
-					$msg = $I18N->msg('seo42_urltype_intern_plus_clang', '<a href="index.php?page=content&article_id=' . $customArticleId . '&mode=edit&clang=' . $customClangId . '">' . $article->getName() . '</a>', $REX['CLANG'][$customClangId]);
+					if (OOArticle::isValid($article)) {
+						$msg = $I18N->msg('seo42_urltype_intern_plus_clang', '<a href="index.php?page=content&article_id=' . $customArticleId . '&mode=edit&clang=' . $customClangId . '">' . $article->getName() . '</a>', $REX['CLANG'][$customClangId]);
+					} else {
+						$msg = $I18N->msg('seo42_urltype_error');
+						$isError = true;
+					}
 
 					break;
 				case SEO42_URL_TYPE_USERDEF_INTERN:
@@ -385,12 +396,17 @@ class seo42_utils {
 							border-bottom-width: 0; 
 						} 
 
-						.rex-info p { 
+						.rex-info p,
+						.rex-warning p { 
 							padding: 4px 0 2px 0; 
 						}
 					</style>';
 
-			echo rex_info($msg);
+			if ($isError) {
+				echo rex_warning($msg);
+			} else {
+				echo rex_info($msg);
+			}
 		}
 	}
 

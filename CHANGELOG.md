@@ -3,6 +3,7 @@ SEO42 - Changelog
 
 ### Version 2.1.2 BETA
 
+* Fixed: Notices and bestimmte PHP-Fehler wenn z.B. ein Artikel entfernt wurde, auf den bereits per URL-Typ verwiesen war.
 * Fixed: Problem mit der Pathlist wenn ein Artikel/Kategorie geändert wurde etc.
 
 ### Version 2.1.1 - 23. September 2013

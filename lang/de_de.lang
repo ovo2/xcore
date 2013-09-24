@@ -137,6 +137,7 @@ seo42_urltype_userdef_javascript = Verweis auf JavaScript-Code.
 seo42_urltype_mediapool = Verweis auf Medienpool-Datei: {0}
 seo42_urltype_langswitch = Sprachumschalter zu Sprache: {0}
 seo42_urltype_none = Die URL dieses Artikels wurde entfernt.
+seo42_urltype_error = Der URL-Typ dieses Artikels ist ungültig!
 
 seo42_help_chapter_faq = FAQ
 seo42_help_chapter_codeexamples = Codebeispiele

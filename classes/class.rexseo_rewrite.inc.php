@@ -656,7 +656,11 @@ function rexseo_generate_pathlist($params)
 
 					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
 
-		  			$REXSEO_IDS[$articleId][$clangId] = array('url' => $REXSEO_IDS[$customArticleId][$clangId]['url']);
+					if (isset($REXSEO_IDS[$customArticleId][$clangId]['url'])) {
+			  			$REXSEO_IDS[$articleId][$clangId] = array('url' => $REXSEO_IDS[$customArticleId][$clangId]['url']);
+					} else {
+						$REXSEO_IDS[$articleId][$clangId] = array('url' => '');
+					}
 
 					break;
 				case SEO42_URL_TYPE_INTERN_REPLACE_CLANG:
@@ -665,7 +669,11 @@ function rexseo_generate_pathlist($params)
 
 					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
 
-		  			$REXSEO_IDS[$articleId][$clangId] = array('url' => $REXSEO_IDS[$customArticleId][$customClangId]['url']);
+					if (isset($REXSEO_IDS[$customArticleId][$customClangId]['url'])) {
+			  			$REXSEO_IDS[$articleId][$clangId] = array('url' => $REXSEO_IDS[$customArticleId][$customClangId]['url']);
+					} else {
+						$REXSEO_IDS[$articleId][$clangId] = array('url' => '');
+					}
 
 					break;
 				case SEO42_URL_TYPE_REMOVE_ROOT_CAT:
