@@ -34,11 +34,6 @@ class seo42_utils {
 				foreach($extensionPoints as $extensionPoint) {
 					rex_register_extension($extensionPoint, 'rexseo_generate_pathlist');
 				}
-
-				// update pathlist if url changes and internal replace stuff is going on
-				rex_register_extension('ART_UPDATED', 'seo42_utils::generatePathlistOnUrlReplace');
-				rex_register_extension('CAT_UPDATED', 'seo42_utils::generatePathlistOnUrlReplace');
-				rex_register_extension('CLANG_UPDATED', 'seo42_utils::generatePathlistOnUrlReplace');
 			}
 
 			// init rewriter 
@@ -406,19 +401,6 @@ class seo42_utils {
 			return false;
 		} else {
 			return true;
-		}
-	}
-
-	public static function generatePathlistOnUrlReplace($params) {
-		global $REX;
-
-		$query = 'SELECT * FROM '. $REX['TABLE_PREFIX'] .'article WHERE (seo_custom_url LIKE \'%"url_type":' . SEO42_URL_TYPE_INTERN_REPLACE . '%\' OR seo_custom_url LIKE \'%"url_type":' . SEO42_URL_TYPE_INTERN_REPLACE_CLANG . '%\') AND seo_custom_url LIKE \'%"article_id":' . $params['id'] . '%\'';
-		$sql = new rex_sql();
-		//$sql->debugsql = 1;
-		$sql->setQuery($query);
-
-		if ($sql->getRows() > 0) {
-			rexseo_generate_pathlist(array());
 		}
 	}
 

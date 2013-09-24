@@ -466,44 +466,9 @@ function rexseo_generate_pathlist($params)
   $REXSEO_IDS  = !isset($REXSEO_IDS)  ? array() : $REXSEO_IDS;
   $REXSEO_URLS = !isset($REXSEO_URLS) ? array() : $REXSEO_URLS;
 
-  if(!isset($params['extension_point']))
-    $params['extension_point'] = '';
+  $REXSEO_IDS = $REXSEO_URLS = array();
+  $REX['SEO42_URL_CLONE'] = array();
 
-  $where = '';
-  switch($params['extension_point'])
-  {
-    // ------- sprachabhängig, einen artikel aktualisieren
-    case 'CAT_DELETED':
-    case 'ART_DELETED':
-      rexseo_unset_pathitem($params['id']);
-      break;
-    case 'CAT_ADDED':
-    case 'CAT_UPDATED':
-    case 'ART_ADDED':
-    case 'ART_UPDATED':
-    case 'ART_TO_CAT':
-    case 'CAT_TO_ART':
-    case 'ART_META_FORM_SECTION':
-      $where = '(id='. $params['id'] .' AND clang='. $params['clang'] .') OR (path LIKE "%|'. $params['id'] .'|%" AND clang='. $params['clang'] .')';
-
-      //rex_deleteCacheArticleContent($params['id'], $REX['CUR_CLANG']);
-      //rex_generateArticle($params['id']);
-
-      break;
-    // ------- alles aktualisieren
-    case 'CLANG_ADDED':
-    case 'CLANG_UPDATED':
-    case 'CLANG_DELETED':
-    case 'ART_TO_STARTPAGE':
-    case 'ALL_GENERATED':
-    default:
-      $REXSEO_IDS = $REXSEO_URLS = array();
-      $where = '1=1';
-      break;
-  }
-
-  if($where != '')
-  {
     $db = new rex_sql();
 
      // REVISION FIX
@@ -511,9 +476,9 @@ function rexseo_generate_pathlist($params)
     $db->setQuery('UPDATE '. $REX['TABLE_PREFIX'] .'article_slice SET revision = 0 WHERE revision IS NULL;');
 
 	if ($REX['ADDON']['seo42']['settings']['ignore_root_cats']) {
-		$sqlQuery = 'SELECT `id`, `clang`, `path`, `startpage`,`seo_custom_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE '. $where.' AND re_id != 0 OR (re_id = 0 AND catname LIKE "") AND revision=0 OR revision IS NULL';
+		$sqlQuery = 'SELECT `id`, `clang`, `path`, `startpage`,`seo_custom_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE re_id != 0 OR (re_id = 0 AND catname LIKE "") AND revision=0 OR revision IS NULL';
 	} else {
-		$sqlQuery = 'SELECT `id`, `clang`, `path`, `startpage`,`seo_custom_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE '. $where.' AND revision=0 OR revision IS NULL';
+		$sqlQuery = 'SELECT `id`, `clang`, `path`, `startpage`,`seo_custom_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE revision=0 OR revision IS NULL';
 	}
 
 	$db->setQuery($sqlQuery);
@@ -627,6 +592,15 @@ function rexseo_generate_pathlist($params)
       $REXSEO_IDS[$id][$clang] = array('url' => $pathname);
       $REXSEO_URLS[$pathname]  = array('id'  => (int) $id, 'clang' => (int) $clang);
 
+      // get data from default lang if clone option is enabled for all other langs
+      $jsonData = json_decode($db->getValue('seo_custom_url'), true);
+      $articleId = $db->getValue('id');
+      $clangId = $db->getValue('clang');
+
+      if (isset($jsonData['url_clone']) && $jsonData['url_clone'] == true && $clangId == $REX['START_CLANG_ID']) {
+        $REX['SEO42_URL_CLONE'][$articleId] = $jsonData;
+      }
+
       $db->next();
     }
 
@@ -636,25 +610,6 @@ function rexseo_generate_pathlist($params)
 	// URL MANIPULATION BY SEO42
 	// -----------------------------------------------------------------------------------------------------------
 
-	// 1st run
-	$db->reset();
-
-	// get data from default lang if clone option is enabled for all other langs
-	$REX['SEO42_URL_CLONE'] = array();
-	
-	for ($i = 0; $i < $db->getRows(); $i++) {
-		$jsonData = json_decode($db->getValue('seo_custom_url'), true);
-		$articleId = $db->getValue('id');
-		$clangId = $db->getValue('clang');
-
-		if (isset($jsonData['url_clone']) && $jsonData['url_clone'] == true && $clangId == $REX['START_CLANG_ID']) {
-			$REX['SEO42_URL_CLONE'][$articleId] = $jsonData;
-		}
-
-		$db->next();
-	}
-
-	// 2nd run
 	$db->reset();
 	
     for ($i = 0; $i < $db->getRows(); $i++) {
@@ -751,7 +706,6 @@ function rexseo_generate_pathlist($params)
 
 	// -----------------------------------------------------------------------------------------------------------
 
-  }
 
   // EXTENSION POINT "REXSEO_PATHLIST_CREATED"
   $subject = array('REXSEO_IDS'=>$REXSEO_IDS,'REXSEO_URLS'=>$REXSEO_URLS);
