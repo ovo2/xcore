@@ -1,6 +1,10 @@
 SEO42 - Changelog
 ====================
 
+### Version 2.1.2 BETA
+
+* Fixed: Problem mit der Pathlist wenn ein Artikel/Kategorie geändert wurde etc.
+
 ### Version 2.1.1 - 23. September 2013
 
 * Fixed: Beim Löschen einer Kategorie oder eines Artikels kam ein PHP-Fehler
