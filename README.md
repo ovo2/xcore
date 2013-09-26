@@ -45,7 +45,7 @@ Alle URL-Typen aktivieren
 Update von REXSEO42 1.1/1.2 auf SEO42 2.x
 -----------------------------------------
 
-Ein Update wird nur empfohlen, wenn die neuen Features von der 2er Version benötigt werden. Bitte gleich auf die 2.1.0 aktualisieren.
+Ein Update wird nur empfohlen, wenn die neuen Features von der 2er Version benötigt werden. Bitte gleich auf die neuste 2.1.2 aktualisieren.
 
 * In der `settings.advanced.inc.php` von REXSEO42 die Option `drop_dbfields_on_uninstall` auf `false` setzen.
 * REXSEO42 deinstallieren und AddOn-Ordner löschen.
