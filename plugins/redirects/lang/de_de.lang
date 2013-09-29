@@ -11,12 +11,12 @@ seo42_redirect_redirect_edit = Redirect bearbeiten
 seo42_redirect_redirect_add = Redirect anlegen
 seo42_redirect_redirect_exists = Eine Redirect mit dieser ID existiert bereits!
 seo42_redirect_name = Name 
-seo42_redirect_source_url = Quell-Url
-seo42_redirect_target_url = Ziel-Url
+seo42_redirect_source_url = Alte URL
+seo42_redirect_target_url = Neue URL
 seo42_redirect = Redirect
 seo42_redirect_not_available = Redirect nicht vorhanden!
 seo42_redirect_none = <keins>
 seo42_redirect_help = Redirects Plugin für SEO42
-seo42_redirect_sourceurl_alert = Die Quell-URL muss mit "/" beginnen.
-seo42_redirect_targeturl_alert = Die Ziel-URL muss mit "http://" oder "/" beginnen.
+seo42_redirect_sourceurl_alert = Die alte URL muss mit "/" beginnen.
+seo42_redirect_targeturl_alert = Die neue URL muss mit "http://" oder "/" beginnen.
 

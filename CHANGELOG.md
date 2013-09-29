@@ -3,6 +3,7 @@ SEO42 - Changelog
 
 ### Version 2.2.0 ALPHA
 
+* Textkorrekture, Feintuning, Codebeispiele erweitert, FAQ verbessert
 * Base-Tag wieder eingeführt ;) Option `subdir_force_full_urls` enfernt. Option `url_start_subdir` hinzugefügt.
 
 ### Version 2.1.2 - 25. September 2013

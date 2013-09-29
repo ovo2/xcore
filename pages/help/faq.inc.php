@@ -3,6 +3,9 @@
 <h2><?php echo $I18N->msg('seo42_help_faq19a'); ?></h2>
 <p><?php echo $I18N->msg('seo42_help_faq19b'); ?></p>
 
+<h2><?php echo $I18N->msg('seo42_help_faq01a'); ?></h2>
+<p><?php echo $I18N->msg('seo42_help_faq01b'); ?></p>
+
 <h2><?php echo $I18N->msg('seo42_help_faq03a'); ?></h2>
 <p><?php echo $I18N->msg('seo42_help_faq03b', $REX['ADDON']['name']['seo42']); ?></p>
 
@@ -50,9 +53,6 @@
 
 <h2><?php echo $I18N->msg('seo42_help_faq15a',  $REX['ADDON']['name']['seo42']); ?></h2>
 <p><?php echo $I18N->msg('seo42_help_faq15b'); ?></p>
-
-<h2><?php echo $I18N->msg('seo42_help_faq01a'); ?></h2>
-<p><?php echo $I18N->msg('seo42_help_faq01b'); ?></p>
 
 <h2><?php echo $I18N->msg('seo42_help_faq16a'); ?></h2>
 <p><?php echo $I18N->msg('seo42_help_faq16b'); ?></p>

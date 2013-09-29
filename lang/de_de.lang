@@ -75,7 +75,7 @@ seo42_setup_step1_msg1 = Bitte die folgenden Einstellungen vornehmen bzw. ergän
 seo42_setup_website_name = Name der Website
 seo42_setup_website_url = URL der Website
 seo42_setup_step1_button = Einstellungen übernehmen
-seo42_setup_step2 = Schritt 2: .htaccess Datei kopieren
+seo42_setup_step2 = Schritt 2: Datei kopieren
 seo42_setup_step2_msg1 = Folgende Datei muss in das Hauptverzeichnis von REDAXO kopiert und korrekt umbenannt werden:
 seo42_setup_to = nach
 seo42_setup_www_redirect_checkbox = Umleitung auf die WWW-Domain aktivieren
@@ -83,11 +83,11 @@ seo42_setup_non_www_redirect_checkbox = Umleitung auf die Domain ohne WWW aktivi
 seo42_setup_htaccess_patch_ok = .htaccess Anpassungen wurden vorgenommen.
 seo42_setup_htaccess_patch_failed = Die Anpassungen an der .htaccess Datei konnten nicht vorgenommen werden.
 seo42_setup_step2_button = Datei kopieren
-seo42_setup_step3 = Schritt 3: Template ergänzen
-seo42_setup_step3_msg1 = Zuletzt ergänzen Sie den Head-Bereich Ihres Templates wie folgt:
+seo42_setup_step3 = Schritt 3: Template anpassen
+seo42_setup_step3_msg1 = Zuletzt passen Sie den Head-Bereich Ihres Templates wie folgt an:
 seo42_setup_url_alert = URL dieser Website muss mit "http://" beginnen und mit "/" enden.
 seo42_setup_htaccess_alert = Im Hauptverzeichnis von REDAXO existiert bereits eine .htaccess Datei.\r\nWollen Sie diese überschreiben?\r\n\r\nHinweis: Ein Backup der Datei wird automatisch in /seo42/backup/ gespeichert.
-seo42_setup_codeexamples = Bitte nutzen Sie außerdem die bereitgestellten PHP-Methoden aus den <a href="index.php?page=seo42&subpage=help&chapter=codeexamples">Codebeispielen</a>...
+seo42_setup_codeexamples = Bitte nutzen Sie außerdem die bereitgestellten PHP-Methoden aus den <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=codeexamples">Codebeispielen</a>...
 seo42_setup_rewritebase = RewriteBase automatisch anpassen: <i>RewriteBase /{0}</i>
 seo42_setup_subdir_hint = (Bitte Unterordner mit angeben)
 seo42_setup_rewritebase_alert = Bitte folgende Anpassung in der .htaccess Datei vornehmen:
@@ -177,11 +177,11 @@ seo42_help_codeexamples_ex7_comment3 = methoden aufrufe dann nur noch über dies
 seo42_help_codeexamples_ex7_comment4 = gibt nun den titel in kleinbuchstaben aus
 
 seo42_help_faq = FAQ
-seo42_help_faq01a = Warum brauchts eigentlich noch ein weiteres RexSEO?
-seo42_help_faq01b = Aus dem gleichen Grund warum es hunderte Linux Forks gibt: Geschmäcker sind halt einfach verschieden ;)
+seo42_help_faq01a = Wie muss die URL der Website im Setup genau angegeben werden?
+seo42_help_faq01b = Die URL der Website muss mit <code>http://</code> beginnen und mit einem <code>/</code> enden.
 
 seo42_help_faq02a = {0} läuft nicht mehr rund. Was tun?
-seo42_help_faq02b = <a href="index.php?page=specials&func=generate">Cache löschen</a>, AddOn <a href="index.php?page=addon&addonname=seo42&install=1">reinstallieren</a> und evtl. das <a href="index.php?page=seo42&subpage=setup">Setup</a> neu durchlaufen sind hier zuerstmal deine Freunde ;)
+seo42_help_faq02b = <a href="index.php?page=specials&amp;func=generate">Cache löschen</a>, AddOn <a href="index.php?page=addon&amp;addonname=seo42&amp;install=1">reinstallieren</a> und evtl. das <a href="index.php?page=seo42&amp;subpage=setup">Setup</a> neu durchlaufen sind hier zuerstmal deine Freunde ;)
 
 seo42_help_faq03a = Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterordner installiert habe?
 seo42_help_faq03b = Im {0} Setup (URL der Website) und in der .htaccess den Unterordner mit angeben: <code>RewriteBase /unterordner</code><br />Desweiteren sollten Ihre URLs nicht mit <code>/</code> beginnen. Nutzen Sie die PHP-Methoden aus Codebeispiel Nr.2!

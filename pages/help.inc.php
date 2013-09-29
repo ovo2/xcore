@@ -16,9 +16,9 @@ $chapternav = '';
 
 foreach ($chapterpages as $chapterparam => $chapterprops) {
   if ($chapter != $chapterparam) {
-    $chapternav .= ' | <a href="?page='.$mypage.'&subpage='.$subpage.'&chapter='.$chapterparam.'" class="chapter '.$chapterparam.'">'.$chapterprops[0].'</a>';
+    $chapternav .= ' | <a href="?page=' . $mypage . '&amp;subpage=' . $subpage . '&amp;chapter=' . $chapterparam . '">' . $chapterprops[0] . '</a>';
   } else {
-    $chapternav .= ' | <a class="rex-active" href="?page='.$mypage.'&subpage='.$subpage.'&chapter='.$chapterparam.'" class="chapter '.$chapterparam.'">'.$chapterprops[0].'</a>';
+    $chapternav .= ' | <a class="rex-active" href="?page=' . $mypage . '&amp;subpage=' . $subpage . '&amp;chapter=' . $chapterparam . '">' . $chapterprops[0] . '</a>';
   }
 }
 $chapternav = ltrim($chapternav, " | ");

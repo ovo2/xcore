@@ -17,13 +17,13 @@ Features
 * Option um vollständige URLs inkl. Domainname wie bei WordPress zu erzeugen
 * One Page Mode für Websites die nur über eine Seite verfügen (z.B. Paralax-Websites etc.)
 * Suchmaschinenfreundliche Image Manager Urls durch Verwendung der verfügbaren PHP-Methoden
-* SEO Tools inkl. Live PageRank Checker und Anzeige des Google Index der aktuellen Website
+* SEO Tools inkl. Live PageRank Checker sowie Anzeige des Google Index der aktuellen Website
 * Klasse `rex_navigation42` zum Bauen von Navigationen. Alle URL-Typen werden berücksichtigt.
 * Einrichtung von 301 Umleitungen über das Redirects-Plugin
 * Spezielle sprachabhängige sowie sprachunabhängige Sonderzeichen-Umschreibungen einstellbar
 * Lang Slugs (de, en) können unabhängig von den REDAXO Sprachnamen gesetzt werden
 * Option um die Indizierung von Seiten durch Suchmaschinen zu verhindern
-* Automatische wie individuelle Canonical URLs
+* Automatische sowie individuelle Canonical URLs
 * Nicht-WWW zu WWW Umleitung (und umgekehrt). Lässt sich auch über das Setup aktivieren.
 * Weitere Einstellungen (vorerst) in der `settings.advanced.inc.php` und `settings.lang.inc.php`
 * Kompatibel zum Website Manager AddOn
