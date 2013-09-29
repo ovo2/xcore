@@ -35,13 +35,16 @@ $codeExample4 = '<html lang="<?php echo seo42::getLangCode(); ?>">';
 $codeExample5 = '<?php echo seo42::getTitle(rex_string_table::getString("website_name")); ?>';
 
 $codeExample6 = '<?php 
-// ausgabe des 1. navigationslevels
+// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment1') . '
 echo rex_navigation42::getNavigationByLevel(0, 1);
 
-// ausgabe des 2. und 3. navigationslevels
+// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment2') . '
 echo rex_navigation42::getNavigationByLevel(1, 3);
 
-// ausgabe der navigation mit startkategorie id = 42, 2 level tief
+// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment3') . '
+echo rex_navigation42::getNavigationByLevel(0, 2, true, true, true);
+
+// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment4') . '
 echo rex_navigation42::getNavigationByCategory(42, 2);
 ?>';
 

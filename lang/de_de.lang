@@ -169,7 +169,8 @@ seo42_help_codeexamples_description7 = Ein eigenes Titel Schema lässt sich mome
 seo42_help_codeexamples_ex3_alt = Titel aus dem Medienpool
 seo42_help_codeexamples_ex6_comment1 = ausgabe des 1. navigationslevels
 seo42_help_codeexamples_ex6_comment2 = ausgabe des 2. und 3. navigationslevels
-seo42_help_codeexamples_ex6_comment3 = ausgabe der navigation mit startkategorie id = 42, 2 level tief
+seo42_help_codeexamples_ex6_comment3 = ausgabe des 1. und 2. navigationslevels, alle unterebenen werden angezeigt, auch offline-artikel sind enthalten, startartikel der website wird ausgeblendet
+seo42_help_codeexamples_ex6_comment4 = ausgabe der navigation mit startkategorie id = 42, 2 level tief
 seo42_help_codeexamples_ex7_comment1 = eigene klasse ableiten und getTitle() methode überschreiben
 seo42_help_codeexamples_ex7_comment2 = gesamten titel in kleinbuchstaben ausgeben (als beispiel)
 seo42_help_codeexamples_ex7_comment3 = methoden aufrufe dann nur noch über diese abgeleitete klasse
