@@ -174,6 +174,7 @@ if ($func == "do_copy") {
 
 <?php
 $codeExample = '<head>
+	<base href="<?php echo seo42::getBaseUrl(); ?>" />
 	<title><?php echo seo42::getTitle(); ?></title>
 	<meta name="description" content="<?php echo seo42::getDescription(); ?>" />
 	<meta name="keywords" content="<?php echo seo42::getKeywords(); ?>" />

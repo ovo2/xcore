@@ -1,6 +1,10 @@
 SEO42 - Changelog
 ====================
 
+### Version 2.2.0 ALPHA
+
+* Base-Tag wieder eingeführt ;) Option `subdir_force_full_urls` enfernt. Option `url_start_subdir` hinzugefügt.
+
 ### Version 2.1.2 - 25. September 2013
 
 * Fixed: Notices and bestimmte PHP-Fehler wenn z.B. ein Artikel entfernt wurde, auf den bereits per URL-Typ verwiesen war.

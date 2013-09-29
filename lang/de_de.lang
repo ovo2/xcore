@@ -180,18 +180,18 @@ seo42_help_faq01a = Warum brauchts eigentlich noch ein weiteres RexSEO?
 seo42_help_faq01b = Aus dem gleichen Grund warum es hunderte Linux Forks gibt: Geschmäcker sind halt einfach verschieden ;)
 
 seo42_help_faq02a = {0} läuft nicht mehr rund. Was tun?
-seo42_help_faq02b = <a href="index.php?page=specials&func=generate">Cache löschen</a>, AddOn <a href="index.php?page=addon&addonname=seo42&install=1">reinstallieren</a> und evtl. das <a href="index.php?page=seo42&subpage=setup">Setup</a> neu durchlaufen sind hier deine Freunde ;)
+seo42_help_faq02b = <a href="index.php?page=specials&func=generate">Cache löschen</a>, AddOn <a href="index.php?page=addon&addonname=seo42&install=1">reinstallieren</a> und evtl. das <a href="index.php?page=seo42&subpage=setup">Setup</a> neu durchlaufen sind hier zuerstmal deine Freunde ;)
 
 seo42_help_faq03a = Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterordner installiert habe?
-seo42_help_faq03b = Geben Sie im {0} Setup und in der .htaccess den Unterordner mit an: <code>RewriteBase /unterordner</code> und nutzen Sie unbedingt die bereitgestellten Methoden zur URL-Erzeugung wie im Codebeispiel 2 beschrieben.
+seo42_help_faq03b = Im {0} Setup (URL der Website) und in der .htaccess den Unterordner mit angeben: <code>RewriteBase /unterordner</code><br />Desweiteren sollten Ihre URLs nicht mit <code>/</code> beginnen. Nutzen Sie die PHP-Methoden aus Codebeispiel Nr.2!
 
-seo42_help_faq18a = Wann genau brauche ich jetzt eigentlich nochmal den Base-Tag?
-seo42_help_faq18b = Gar nicht mehr, ausser Sie schalten die Option <code>subdir_force_full_urls</code> aus. Dann muss die <code>url_start</code> Option auf <code>"./"</code> stehen und das in den Head-Bereich Ihres Templates: <code>&lt;base href="&lt;?php echo seo42::getBaseUrl(); ?&gt;" /&gt;</code>
+seo42_help_faq18a = Kann ich den Base-Tag auch weglassen?
+seo42_help_faq18b = Ja, wenn Sie alle Ihre URLs anhand der PHP-Methoden aus Codebeispiel Nr.2 generieren lassen. Dies gilt insbesondere für REDAXO-Unterordner-Installationen.
 
 seo42_help_faq17a = Wo sind eigentlich all die restlichen Einstellungen von RexSEO abgeblieben?
 seo42_help_faq17b = Vorläufig wurden diese hier ausgelagert: <code>settings.advanced.inc.php</code>
 
-seo42_help_faq04a = Ich mag das Pipe-Zeichen nicht im Titel. Wie kann ich das umstellen?
+seo42_help_faq04a = Ich möchte das Pipe-Zeichen im Titel umstellen. Wo kann ich das machen?
 seo42_help_faq04b = Der zuständige Parameter heißt <code>title_delimiter</code> und ist in der <code>settings.advanced.inc.php</code> einstellbar.
 
 seo42_help_faq05a = Wie kann ich den Titel sonst noch beinflussen?
@@ -216,7 +216,7 @@ seo42_help_faq11a = Habe gehört das es SEO-technisch gut wäre wenn Bilder ein 
 seo42_help_faq11b = Dafür kann man die Methode <code>seo42::getImageTag()</code> nutzen, die dann einen kompletten Image-Tag inkl. Alt-Attribut ausspuckt (siehe Codebeispiel 3). Und im Medienpool wird dieser dann im Titel-Feld gesetzt.
 
 seo42_help_faq12a = Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?
-seo42_help_faq12b = Immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. <code>redaxo://13#anker</code>.
+seo42_help_faq12b = Dann immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. <code>redaxo://13#anker</code>.
 
 seo42_help_faq13a = Wo legt {0} die Backups für die .htaccess Dateien an?
 seo42_help_faq13b = Im Backup-Verzeichnis des AddOns: <code>/seo42/backup/</code>

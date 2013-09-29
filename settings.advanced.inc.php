@@ -34,11 +34,11 @@ $REX['ADDON']['seo42']['settings']['all_url_types'] = true;
 // if true you get full urls like in wordpress :) seo42::getUrlStart() and co. needs to be used consequently for all extra urls (like urls to media files, etc.) | url_start option will be ignored by this
 $REX['ADDON']['seo42']['settings']['full_urls'] = false;
 
-// if true REDAXO subdir installations will be forced to use full urls so that no base tag is needed (recommended!). If you turn this off look into the faq for further instructions on this topic...
-$REX['ADDON']['seo42']['settings']['subdir_force_full_urls'] = true;
-
-// url start piece for all urls returned from rex_getUrl(), seo42::getUrlStart() and co.. Should to be used for all extra urls!
+// url start piece for all urls returned from rex_getUrl(), seo42::getUrlStart() and co.
 $REX['ADDON']['seo42']['settings']['url_start'] = '/';
+
+// for redaxo subdir installations: url start piece for all urls returned from rex_getUrl(), seo42::getUrlStart() and co.
+$REX['ADDON']['seo42']['settings']['url_start_subdir'] = './';
 
 // if true seo42::getImageManagerUrl() and seo42::getImageTag() will produce seo friendly urls
 $REX['ADDON']['seo42']['settings']['seo_friendly_image_manager_urls'] = true;

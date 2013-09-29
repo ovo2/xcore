@@ -33,6 +33,7 @@ class seo42 {
 		self::$serverUrl = $REX['SERVER'];
 		self::$websiteName = $REX['SERVERNAME'];
 		self::$modRewrite = $REX['MOD_REWRITE'];
+		self::$fullUrls = $REX['ADDON']['seo42']['settings']['full_urls'];
 
 		// pull apart server url
 		$urlParts = parse_url(self::$serverUrl);
@@ -62,20 +63,19 @@ class seo42 {
 			self::$isSubDirInstall = true;
 		}
 
-		// check for full urls option
-		if (self::$isSubDirInstall && $REX['ADDON']['seo42']['settings']['subdir_force_full_urls']) {
-			self::$fullUrls = true;
-		} else {
-			self::$fullUrls = $REX['ADDON']['seo42']['settings']['full_urls'];
-		}
-
 		// set url start 
 		if (self::$fullUrls) {
 			// full worpresslike urls
 			self::$urlStart = self::$serverUrl;
 		} else {
 			// use url start specified in settings
-			self::$urlStart = $REX['ADDON']['seo42']['settings']['url_start'];
+			if (self::$isSubDirInstall) {
+				// url start for subdirs
+				self::$urlStart = $REX['ADDON']['seo42']['settings']['url_start_subdir'];
+			} else {
+				// url start for normal redaxo installations
+				self::$urlStart = $REX['ADDON']['seo42']['settings']['url_start'];
+			}
 		}
 	}
 
@@ -229,7 +229,8 @@ class seo42 {
 	public static function getHtml($indent = "\t") {
 		$out = '';
 
-		$out .= '<title>' . self::getTitle() . '</title>' . PHP_EOL;
+		$out .= '<base href="' . self::getBaseUrl() . '" />' . PHP_EOL;
+		$out .= $indent . '<title>' . self::getTitle() . '</title>' . PHP_EOL;
 		$out .= $indent . '<meta name="description" content="' . self::getDescription() . '" />' . PHP_EOL;
 		$out .= $indent . '<meta name="keywords" content="' . self::getKeywords() . '" />' . PHP_EOL;
 		$out .= $indent . '<meta name="robots" content="' . self::getRobotRules() . '" />' . PHP_EOL;

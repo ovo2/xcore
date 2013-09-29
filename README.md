@@ -29,12 +29,6 @@ Features
 * Kompatibel zum Website Manager AddOn
 * Enthält die Antwort auf die eine Frage ;)
 
-Wichtiger Hinweis vorab
------------------------
-
-SEO42 kommt mittlerweile ohne einen Base-Tag aus. Dafür ist es aber sehr wichtig, dass alle URLs gleich beginnen, im normalfall mit einem `/`.
-Es wird deshalb empfohlen für alle URLs immer die PHP-Methoden aus dem Codebeispiel Nr.2 aus der Hilfe nutzen.
-
 Alle URL-Typen aktivieren
 -------------------------
 
@@ -60,7 +54,6 @@ Weitere Hinweise
 * Läuft nur mit REDAXO 4.5+
 * AddOn-Ordner lautet: `seo42`
 * AddOn wurde seit Version 2.0.0 von REXSEO42 in SEO42 umbenannt.
-* RexSEO Plugins laufen mit SEO42 vorerst nicht.
 * Wenn der Webserver einen 500 Server Error meldet die Zeile `Options -Indexes` in der `.htaccess` auskommentieren.
 * Geändertes Verhalten für REDAXO Unterordner-Installationen. Bitte FAQ in der Hilfe des AddOns anschauen für weitere Infos.
 * Implementiert man sein eigenes Titel-Schema, ist es vielleicht sinnvoll die Optionen `title_preview` und `no_prefix_checkbox` auf `false` zu setzen.
