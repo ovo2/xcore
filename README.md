@@ -29,12 +29,25 @@ Features
 * Kompatibel zum Website Manager AddOn
 * Enthält die Antwort auf die eine Frage ;)
 
+Webserver meldet 500 Server Error
+---------------------------------
+
+Wenn der Webserver einen 500 Server Error meldet die Zeile `Options -Indexes` in der `.htaccess` auskommentieren.
+
 Alle URL-Typen aktivieren
 -------------------------
 
 * Einige Url-Typen greifen erst, wenn bei der Ausgabe der Navigation auf diese reagiert wird.
 * Die Klasse `rex_navigation42` (ehemals `rex_navigation_ex`) unterstützt diese Typen bereits (ab Version 2.1.0 dem AddOn beigelegt).
 * Über die Option `all_url_types` können diese bei Bedarf aber auch deaktiviert werden.
+
+Anpassungen für das Community Addon
+-----------------------------------
+
+Diese Anpassungen sind nur nötig, wenn man die `rex_navigation42` Klasse verwenden will:
+
+* Diese Zeile auskommentieren: https://github.com/dergel/redaxo4_community/blob/master/plugins/auth/config.inc.php#L19
+* Diese Zeile https://github.com/RexDude/seo42/blob/master/classes/class_rex_navigation42.inc.php#L3 umschreiben in `class rex_navigation42 extends rex_com_navigation`
 
 Update von REXSEO42 1.1/1.2 auf SEO42 2.x
 -----------------------------------------
@@ -54,7 +67,6 @@ Weitere Hinweise
 * Läuft nur mit REDAXO 4.5+
 * AddOn-Ordner lautet: `seo42`
 * AddOn wurde seit Version 2.0.0 von REXSEO42 in SEO42 umbenannt.
-* Wenn der Webserver einen 500 Server Error meldet die Zeile `Options -Indexes` in der `.htaccess` auskommentieren.
 * Geändertes Verhalten für REDAXO Unterordner-Installationen. Bitte FAQ in der Hilfe des AddOns anschauen für weitere Infos.
 * Implementiert man sein eigenes Titel-Schema, ist es vielleicht sinnvoll die Optionen `title_preview` und `no_prefix_checkbox` auf `false` zu setzen.
 * `$REX["MOD_REWRITE"]` braucht nicht mehr auf `true` gesetzt werden (z.B. über die System-Page von REDAXO). Wenn SEO42 aktiv, wird es automatisch gesetzt.

@@ -454,6 +454,12 @@ function rexseo_generate_pathlist($params)
 {
   global $REX, $REXSEO_IDS, $REXSEO_URLS;
 
+  // temporary community install workaround
+  if (!isset($REX['ADDON']['seo42'])) {
+    return;
+  }
+
+  // include pathlist file
   if(file_exists(REXSEO_PATHLIST))
   {
     require_once (REXSEO_PATHLIST);
