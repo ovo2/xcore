@@ -67,6 +67,9 @@ $REX['ADDON']['seo42']['settings']['robots_follow_flag'] = 'follow';
 // default archive flag for robots meta tag, can be empty
 $REX['ADDON']['seo42']['settings']['robots_archive_flag'] = 'noarchive';
 
+// if true website startarticle will have 1.0, all other articles will have 0.8 priority. if false priority gets calculated by category level.
+$REX['ADDON']['seo42']['settings']['static_sitemap_priority'] = true;
+
 // if true pages with similar urls will be accepted as match (not recommended!)
 $REX['ADDON']['seo42']['settings']['levenshtein'] = false;
 

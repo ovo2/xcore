@@ -7,6 +7,8 @@ SEO42 - Changelog
 * Fixed #62: Notices bei Installation des Community Addons beseitigt. Nötige Anpassungen in Zusammenhang mit der Klasse `rex_navigation42` zur Readme hinzugefügt.
 * Middle dot • wird nun ausgeklammert aus der URL-Umschreibung
 * Redirects Plugin wird bei Installation des Addons nicht mehr automatisch mitinstalliert
+* Sitemap.xml: Sortierung der Einträge anhand der Artikel-IDs
+* Sitemap.xml: Neue Option `static_sitemap_priority` um die Priorität auf die festgelegten Werte 1.0 und 0.8 zu setzen. Sonst autom. Berechnung anhand des Kategorie-Levels.
 * Textkorrekture, Feintuning, Codebeispiele erweitert, FAQ verbessert
 
 ### Version 2.1.2 - 25. September 2013

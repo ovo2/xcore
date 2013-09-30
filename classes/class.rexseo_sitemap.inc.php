@@ -14,6 +14,8 @@ class rexseo_sitemap
   {
     global $REX, $REXSEO_URLS;
 
+	array_multisort($REXSEO_URLS);
+
 	foreach ($REXSEO_URLS as $url)  {
 		$article = OOArticle::getArticleById($url['id'], $url['clang']);
 
@@ -51,13 +53,24 @@ class rexseo_sitemap
   {
     global $REX;
 
-    if($seo_priority!='')
+    if ($seo_priority != '')
       return $seo_priority;
 
-    if($article_id==$REX['START_ARTICLE_ID'] && $clang==$REX['START_CLANG_ID'])
+    if ($article_id == $REX['START_ARTICLE_ID'] && $clang == $REX['START_CLANG_ID']) {
       return 1.0;
+    }
 
-	return 1.0 - (0.1 * (count(explode('|',$path))-1));
+    if (isset($REX['ADDON']['seo42']['settings']['static_sitemap_priority']) && $REX['ADDON']['seo42']['settings']['static_sitemap_priority']) {
+      return 0.8;
+    }
+
+	$prio = 1.0 - (0.1 * (count(explode('|',$path))-1));
+
+    if ($prio >= 0) {
+      return $prio;
+    } else {
+      return 0.0;
+    }
   }
 
 
