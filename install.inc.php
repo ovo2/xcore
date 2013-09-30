@@ -24,7 +24,7 @@ foreach ($disable_addons as $a) {
 }
 
 // auto install plugins
-$returnmsg = seo42_utils::autoInstallPlugins('seo42', array('redirects'));
+$returnmsg = seo42_utils::autoInstallPlugins('seo42', array());
 
 if ($returnmsg != '') {
 	$error[] = $returnmsg;
