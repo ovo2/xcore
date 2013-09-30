@@ -29,8 +29,8 @@ Features
 * Kompatibel zum Website Manager AddOn
 * Enthält die Antwort auf die eine Frage ;)
 
-Webserver meldet 500 Server Error
----------------------------------
+500 Server Error
+----------------
 
 Wenn der Webserver einen 500 Server Error meldet die Zeile `Options -Indexes` in der `.htaccess` auskommentieren.
 
@@ -47,7 +47,7 @@ Anpassungen für das Community Addon
 Diese Anpassungen sind nur nötig, wenn man die `rex_navigation42` Klasse verwenden will:
 
 * Diese Zeile auskommentieren: https://github.com/dergel/redaxo4_community/blob/master/plugins/auth/config.inc.php#L19
-* Diese Zeile https://github.com/RexDude/seo42/blob/master/classes/class_rex_navigation42.inc.php#L3 umschreiben in `class rex_navigation42 extends rex_com_navigation`
+* Diese Zeile https://github.com/RexDude/seo42/blob/master/classes/class.rex_navigation42.inc.php#L3 umschreiben in `class rex_navigation42 extends rex_com_navigation`
 
 Update von REXSEO42 1.1/1.2 auf SEO42 2.x
 -----------------------------------------
