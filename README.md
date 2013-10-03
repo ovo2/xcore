@@ -1,5 +1,5 @@
 SEO42 AddOn für REDAXO 4.5+
-==============================
+===========================
 
 Ein intergalaktischer Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzerführung und noch weiteren SEO-Goodies...
 
@@ -103,6 +103,7 @@ Credits
 * [Gregor Harlan](https://github.com/gharlan) und [Thomas Blum](https://github.com/tbaddade) für Hilfe, Code und Bugmeldungen :)
 * Danke ausserdem an alle die sich mit Ideen, Tests und Bugmeldungen eingebracht haben :)
 * David Walsh and Jamie Scott für die Google PageRank Checker Klasse
+* PHP Markdown Lib by Michel Fortin
 
-Macht’s gut und danke für den Fisch :)
+Macht’s gut und danke für den Fisch ;)
 

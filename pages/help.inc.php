@@ -1,12 +1,17 @@
 <?php
+require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.markdown.inc.php');
+
 $mypage = rex_request('page','string');
 $subpage = rex_request('subpage', 'string');
 $chapter = rex_request('chapter', 'string');
 $func = rex_request('func', 'string');
 
 $chapterpages = array (
-	'' => array($I18N->msg('seo42_help_chapter_faq'), 'pages/help/faq.inc.php'),
+	'' => array($I18N->msg('seo42_help_chapter_readme'), 'pages/help/readme.inc.php'),
 	'codeexamples' => array($I18N->msg('seo42_help_chapter_codeexamples'), 'pages/help/code_examples.inc.php'),
+	'faq' => array($I18N->msg('seo42_help_chapter_faq'), 'pages/help/faq.inc.php'),
+	'changelog' => array($I18N->msg('seo42_help_chapter_changelog'), 'pages/help/changelog.inc.php'),
+	'license' => array($I18N->msg('seo42_help_chapter_license'), 'pages/help/license.inc.php'),
 	'debug' => array($I18N->msg('seo42_help_chapter_debug'), 'pages/help/debug.inc.php'),
 	'links' => array($I18N->msg('seo42_help_chapter_links'), 'pages/help/links.inc.php')
 );
@@ -56,6 +61,10 @@ div.rex-addon-content p.rex-code {
 
 #subpage-help a.rex-active {
     color: #14568A;
+}
+
+#subpage-help .rex-addon-content ul {
+	margin-top: 0;
 }
 </style>
 

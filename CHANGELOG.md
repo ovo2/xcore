@@ -1,11 +1,12 @@
 SEO42 - Changelog
 ====================
 
-### Version 2.2.0 BETA
+### Version 2.5.0 ALPHA
 
 * Base-Tag wieder eingeführt ;) Option `subdir_force_full_urls` enfernt. Option `url_start_subdir` hinzugefügt.
 * Fixed #62: Notices bei Installation des Community Addons beseitigt. Nötige Anpassungen in Zusammenhang mit der Klasse `rex_navigation42` zur Readme hinzugefügt.
 * Für mehrsprachige Websites steht jetzt die PHP-Methode `seo42::getLangTags()` zur Verfügung um im Head-Bereich SEO-relevante Sprach-Tags hinzuzufügen.
+* Hilfesystem verbessert. Markdown Parser wird nun genutzt.
 * Middle dot • wird nun ausgeklammert aus der URL-Umschreibung
 * Redirects Plugin wird bei Installation des Addons nicht mehr automatisch mitinstalliert
 * Sitemap.xml: Sortierung der Einträge anhand der Artikel-IDs

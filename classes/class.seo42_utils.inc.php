@@ -464,5 +464,10 @@ class seo42_utils {
 		}
 		
 		return $newUrl;
-	}	
+	}
+
+	public static function getHtmlfromMarkdown($md) {
+		$parser = new Michelf\Markdown;
+		return $parser->transform($md);
+	}
 }

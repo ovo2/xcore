@@ -140,6 +140,9 @@ seo42_urltype_langswitch = Sprachumschalter zu Sprache: {0}
 seo42_urltype_none = Die URL dieses Artikels wurde entfernt.
 seo42_urltype_error = Der URL-Typ dieses Artikels ist ungültig!
 
+seo42_help_chapter_readme = Readme
+seo42_help_chapter_changelog = Changelog
+seo42_help_chapter_license = Lizenz
 seo42_help_chapter_faq = FAQ
 seo42_help_chapter_codeexamples = Codebeispiele
 seo42_help_chapter_debug = Debug
@@ -176,64 +179,6 @@ seo42_help_codeexamples_ex7_comment1 = eigene klasse ableiten und getTitle() met
 seo42_help_codeexamples_ex7_comment2 = gesamten titel in kleinbuchstaben ausgeben (als beispiel)
 seo42_help_codeexamples_ex7_comment3 = methoden aufrufe dann nur noch über diese abgeleitete klasse
 seo42_help_codeexamples_ex7_comment4 = gibt nun den titel in kleinbuchstaben aus
-
-seo42_help_faq = FAQ
-seo42_help_faq01a = Wie muss die URL der Website im Setup genau angegeben werden?
-seo42_help_faq01b = Die URL der Website muss mit <code>http://</code> beginnen und mit einem <code>/</code> enden.
-
-seo42_help_faq02a = {0} läuft nicht mehr rund. Was tun?
-seo42_help_faq02b = <a href="index.php?page=specials&amp;func=generate">Cache löschen</a>, AddOn <a href="index.php?page=addon&amp;addonname=seo42&amp;install=1">reinstallieren</a> und evtl. das <a href="index.php?page=seo42&amp;subpage=setup">Setup</a> neu durchlaufen sind hier zuerstmal deine Freunde ;)
-
-seo42_help_faq03a = Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterordner installiert habe?
-seo42_help_faq03b = Im {0} Setup (URL der Website) und in der .htaccess den Unterordner mit angeben: <code>RewriteBase /unterordner</code><br />Desweiteren sollten Ihre URLs nicht mit <code>/</code> beginnen. Nutzen Sie die PHP-Methoden aus Codebeispiel Nr.2!
-
-seo42_help_faq18a = Kann ich den Base-Tag auch weglassen?
-seo42_help_faq18b = Ja, wenn Sie alle Ihre URLs anhand der PHP-Methoden aus Codebeispiel Nr.2 generieren lassen. Dies gilt insbesondere für REDAXO-Unterordner-Installationen.
-
-seo42_help_faq17a = Wo sind eigentlich all die restlichen Einstellungen von RexSEO abgeblieben?
-seo42_help_faq17b = Vorläufig wurden diese hier ausgelagert: <code>settings.advanced.inc.php</code>
-
-seo42_help_faq04a = Ich möchte das Pipe-Zeichen im Titel umstellen. Wo kann ich das machen?
-seo42_help_faq04b = Der zuständige Parameter heißt <code>title_delimiter</code> und ist in der <code>settings.advanced.inc.php</code> einstellbar.
-
-seo42_help_faq05a = Wie kann ich den Titel sonst noch beinflussen?
-seo42_help_faq05b = Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix" wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode <code>seo42::getTitle()</code> überschreiben, siehe dazu Codebeispiel 5 in der Hilfe.
-
-seo42_help_faq06a = Warum wird der Titel für die Startseite "andersherum" ausgegeben wie für die Folgeseiten?
-seo42_help_faq06b = Dies wurde im nachfolgenden PDF von Google abgeguckt (siehe nächste Frage).
-
-seo42_help_faq07a = Wo bekomme ich eigentlich eine gute verständliche Einführung in das Thema "Suchmaschinenoptimierung"?
-seo42_help_faq07b = Zum Beispiel hier: <a href="http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf" target="_blank" class="extern">http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf</a>
-
-seo42_help_faq08a = Wie kann ich suchmaschinenfreundliche URLs für Bilder erhalten, die über den Image Manager generiert wurden?
-seo42_help_faq08b = Zum Beispiel über die Methode <code>seo42::getImageManagerUrl()</code>. Siehe dazu Codebeispiel Nr. 3 in der Hilfe.
-
-seo42_help_faq09a = Ich möchte nicht-www Anfragen auf die www Variante umleiten lassen. Soll doch SEO-technisch gut sein, oder?
-seo42_help_faq09b = Yup. In der .htaccess die entsprechenden Zeilen un-auskommentieren bzw. über Setup Schritt 1 automatisch machen lassen.
-
-seo42_help_faq10a = Meine URLs haben sich geändert. Wie kann ich saubere Weiterleitungen hinbekommen?
-seo42_help_faq10b = Dafür gibt es mittlerweile das mitgelieferte Redirects Plugin. Bitte Urls immer mit einem Splash beginnen, die Ziel Url kann aber auch mit http:// beginnen.
-
-seo42_help_faq11a = Habe gehört das es SEO-technisch gut wäre wenn Bilder ein Alt-Attribut zugewiesen bekommen?
-seo42_help_faq11b = Dafür kann man die Methode <code>seo42::getImageTag()</code> nutzen, die dann einen kompletten Image-Tag inkl. Alt-Attribut ausspuckt (siehe Codebeispiel 3). Und im Medienpool wird dieser dann im Titel-Feld gesetzt.
-
-seo42_help_faq12a = Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?
-seo42_help_faq12b = Dann immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. <code>redaxo://13#anker</code>.
-
-seo42_help_faq13a = Wo legt {0} die Backups für die .htaccess Dateien an?
-seo42_help_faq13b = Im Backup-Verzeichnis des AddOns: <code>/seo42/backup/</code>
-
-seo42_help_faq14a = Ich hab ne Frage die hier net auftaucht. Was tun?
-seo42_help_faq14b = Schau doch mal ins original RexSEO. Da steht noch mehr Stuff... ;)
-
-seo42_help_faq15a = Mir gefällt {0} nicht! Wie bekomme ich das AddOn wieder entfernt?
-seo42_help_faq15b = Kein Problem ;) Einfach das Setup von hinten nach vorne durchlaufen und das AddOn deinstallieren.
-
-seo42_help_faq16a = Wie lautet die Antwort auf die Frage aller Fragen nach dem Leben, dem Universum und dem ganzen Rest?
-seo42_help_faq16b = 42
-
-seo42_help_faq19a = Mein Webserver meldet einen 500 Server Error?!
-seo42_help_faq19b = Vermutlich liegt es an der Zeile <code>Options -Indexes</code> in der .htaccess Datei. Einfach diese Zeile auskommentieren.
 
 seo42_help_debug = Debug
 seo42_help_debug_desc = Mit dieser Methode kann man detaillierte Debug-Informationen zum aktuellen Artikel abrufen:
