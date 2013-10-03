@@ -173,7 +173,7 @@ if ($func == "do_copy") {
 </div>
 
 <?php
-$codeExample = '<head>
+$codeExample1 = '<head>
 	<base href="<?php echo seo42::getBaseUrl(); ?>" />
 	<title><?php echo seo42::getTitle(); ?></title>
 	<meta name="description" content="<?php echo seo42::getDescription(); ?>" />
@@ -181,14 +181,24 @@ $codeExample = '<head>
 	<meta name="robots" content="<?php echo seo42::getRobotRules();?>" />
 	<link rel="canonical" href="<?php echo seo42::getCanonicalUrl(); ?>" />
 </head>';
+
+$codeExample2 = '<head>
+	<?php echo seo42::getLangTags(); ?>" />
+</head>';
 ?>
 
 <div class="rex-addon-output">
 	<h2 class="rex-hl2"><?php echo $I18N->msg('seo42_setup_step3'); ?></h2>
 	<div class="rex-area-content">
 		<p class="info-msg"><?php echo $I18N->msg('seo42_setup_step3_msg1'); ?></p>
-		<div id="code-example"><?php rex_highlight_string($codeExample); ?></div>
-		<p class="info-msg no-bottom-margin"><?php echo $I18N->msg('seo42_setup_codeexamples'); ?></p>
+		<div id="code-example1"><?php rex_highlight_string($codeExample1); ?></div>
+
+		<div class="spacer"></div>
+		
+		<p class="info-msg"><?php echo $I18N->msg('seo42_setup_step3_msg2'); ?></p>
+		<div id="code-example2"><?php rex_highlight_string($codeExample2); ?></div>
+
+		<p class="info-msg last-msg"><?php echo $I18N->msg('seo42_setup_codeexamples'); ?></p>
 	</div>
 </div>
 
@@ -207,14 +217,24 @@ $codeExample = '<head>
     word-wrap: break-word;
 }
 
+#rex-page-seo42 .spacer {
+	height: 10px;
+}
+
 #rex-page-seo42 .info-msg {
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 }
 
 #rex-page-seo42 .no-bottom-margin {
 	margin-bottom: 0px;
 	margin-top: 7px;
 }
+
+#rex-page-seo42 .last-msg {
+	margin-bottom: 0px;
+	margin-top: 12px;
+}
+
 
 #rex-page-seo42 .button {
 	float: right; 

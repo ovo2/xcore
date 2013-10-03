@@ -180,6 +180,45 @@ class seo42 {
 		return self::getFullUrl(self::$curArticle->getId());
 	}
 
+	public static function getLangTags($indent = "\t") {
+		global $REX;
+
+		$out = '';
+		//$onlineArticleCount = 0;
+
+		foreach ($REX['CLANG'] as $clangId => $clangName) {
+			$article = OOArticle::getArticleById(self::$curArticle->getId(), $clangId);
+
+			if ($article->isOnline() || $REX['CUR_CLANG'] == $clangId) {
+				//$onlineArticleCount++;
+
+				$out .= $indent . '<link rel="alternate" href="' . self::getFullUrl(self::$curArticle->getId(), $clangId) . '" hreflang="' . $clangName . '" />' . PHP_EOL;
+			}
+		}
+
+		/*if ($onlineArticleCount > 1) {
+			return $out;
+		} else {
+			return '';
+		}*/
+
+		return $out;
+	}
+
+	public static function getLangCount() {
+		global $REX;
+
+		return count($REX['CLANG']);
+	}
+
+	public static function isMultiLangInstall() {
+		if (self::getLangCount() > 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public static function getImageTag($imageFile, $imageType = '', $width = 0, $height = 0) {
 		$media = OOMedia::getMediaByFileName($imageFile);
 
@@ -235,6 +274,10 @@ class seo42 {
 		$out .= $indent . '<meta name="keywords" content="' . self::getKeywords() . '" />' . PHP_EOL;
 		$out .= $indent . '<meta name="robots" content="' . self::getRobotRules() . '" />' . PHP_EOL;
 		$out .= $indent . '<link rel="canonical" href="' . self::getCanonicalUrl() . '" />' . PHP_EOL;
+
+		if (self::isMultiLangInstall()) {
+			$out .= self::getLangTags($indent);
+		}
 
 		return $out;
 	}
@@ -386,11 +429,14 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::getServerWithSubDir');
 		$out .= self::getDebugInfoRow('seo42::getServerSubDir');
 		$out .= self::getDebugInfoRow('seo42::isSubDirInstall');
+		$out .= self::getDebugInfoRow('seo42::isMultiLangInstall');
+		$out .= self::getDebugInfoRow('seo42::getLangCount');
 		$out .= self::getDebugInfoRow('seo42::getTitleDelimiter');
 		$out .= self::getDebugInfoRow('seo42::getUrlStart');
 		$out .= self::getDebugInfoRow('seo42::getMediaDir');
 		$out .= self::getDebugInfoRow('seo42::getMediaFile', array('image.png'));
 		$out .= self::getDebugInfoRow('seo42::getMediaAddonDir');
+		$out .= self::getDebugInfoRow('seo42::getLangTags');
 		$out .= self::getDebugInfoRow('seo42::getHtml');
 		$out .= self::getDebugInfoRow('seo42::getImageTag', array('image.png', 'rex_mediapool_detail', '150', '100'));
 		$out .= self::getDebugInfoRow('seo42::getImageManagerUrl', array('image.png', 'rex_mediapool_detail'));
