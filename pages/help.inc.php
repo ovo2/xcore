@@ -14,7 +14,7 @@ $chapterpages = array (
 	'codeexamples' => array($I18N->msg('seo42_help_chapter_codeexamples'), 'pages/help/code_examples.inc.php'),
 	'faq' => array($I18N->msg('seo42_help_chapter_faq'), 'pages/help/faq.inc.php'),
 	'changelog' => array($I18N->msg('seo42_help_chapter_changelog'), 'pages/help/changelog.inc.php'),
-	/* 'license' => array($I18N->msg('seo42_help_chapter_license'), 'pages/help/license.inc.php'), */
+	'license' => array('', 'pages/help/license.inc.php'),
 	'links' => array($I18N->msg('seo42_help_chapter_links'), 'pages/help/links.inc.php'),
 	'debug' => array($I18N->msg('seo42_help_chapter_debug'), 'pages/help/debug.inc.php')
 );
@@ -23,11 +23,13 @@ $chapterpages = array (
 $chapternav = '';
 
 foreach ($chapterpages as $chapterparam => $chapterprops) {
-  if ($chapter != $chapterparam) {
-    $chapternav .= ' | <a href="?page=' . $mypage . '&amp;subpage=' . $subpage . '&amp;chapter=' . $chapterparam . '">' . $chapterprops[0] . '</a>';
-  } else {
-    $chapternav .= ' | <a class="rex-active" href="?page=' . $mypage . '&amp;subpage=' . $subpage . '&amp;chapter=' . $chapterparam . '">' . $chapterprops[0] . '</a>';
-  }
+	if ($chapterprops[0] != '') {
+		if ($chapter != $chapterparam) {
+			$chapternav .= ' | <a href="?page=' . $mypage . '&amp;subpage=' . $subpage . '&amp;chapter=' . $chapterparam . '">' . $chapterprops[0] . '</a>';
+		} else {
+			$chapternav .= ' | <a class="rex-active" href="?page=' . $mypage . '&amp;subpage=' . $subpage . '&amp;chapter=' . $chapterparam . '">' . $chapterprops[0] . '</a>';
+		}
+	}
 }
 $chapternav = ltrim($chapternav, " | ");
 
