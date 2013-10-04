@@ -35,10 +35,16 @@ if (!isset($_SERVER['REQUEST_URI'])) {
 // init
 if (!$REX['SETUP']) {
 	// auto mod rewrite, but not for redaxo system page
-	if (!$REX['REDAXO'] || ($REX['REDAXO'] && rex_request('page') != 'specials')) {
-		$REX['MOD_REWRITE'] = true;
+	if ($REX['REDAXO'] && rex_request('page') == 'specials') {
+		// don't touch mod rewrite var
+	} else {
+		if ($REX['ADDON']['seo42']['settings']['rewriter'] && !$REX['REDAXO']) {
+			$REX['MOD_REWRITE'] = true;
+		} else {
+			$REX['MOD_REWRITE'] = false;
+		}
 	}
-	
+
 	// init 42
 	rex_register_extension('ADDONS_INCLUDED','seo42_utils::init', '', REX_EXTENSION_EARLY);
 }

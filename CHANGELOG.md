@@ -6,6 +6,7 @@ SEO42 - Changelog
 * Base-Tag wieder eingeführt ;) Option `subdir_force_full_urls` enfernt. Option `url_start_subdir` hinzugefügt.
 * Fixed #62: Notices bei Installation des Community Addons beseitigt. Nötige Anpassungen in Zusammenhang mit der Klasse `rex_navigation42` zur Readme hinzugefügt.
 * Für mehrsprachige Websites steht jetzt die PHP-Methode `seo42::getLangTags()` zur Verfügung um im Head-Bereich SEO-relevante Sprach-Tags hinzuzufügen.
+* Neue Option `rewriter` um die URL-Umschreibung ein und auszuschalten, da dies über `REX['MOD_REWRITE']` ja nicht mehr geht.
 * Hilfesystem verbessert. Markdown Parser wird nun genutzt.
 * Middle dot • wird nun ausgeklammert aus der URL-Umschreibung
 * Redirects Plugin wird bei Installation des Addons nicht mehr automatisch mitinstalliert
@@ -78,7 +79,7 @@ SEO42 - Changelog
 * Fixed #41: Parameter in der URL (test.html?foo=bar) führten zu einem 404 Fehler
 * Neues Feature: man kann nun direkt aus dem Backend heraus sich alle Einstellungen anschauen die gerade aktiv sind
 * Verbesserte Debug Info: es werden jetzt auch alle Settings und die .htaccess Datei mit ausgegeben
-* REX['MOD_REWRITE'] wird on the fly aktiviert sobald AddOn aktiv (master.inc.php wird dafür nicht angepasst)
+* `REX['MOD_REWRITE']` wird on the fly aktiviert sobald AddOn aktiv (master.inc.php wird dafür nicht angepasst)
 * Unterordner Verhalten (hoffentlich) verbessert: `subdir_force_full_urls` hinzugefügt, Base Tag komplett entfernt
 * Setup für Unterordner-Installationen angepasst: u.a. Option hinzugefügt um die RewriteBase automatisch zu setzen
 * Kleine kosmetische Änderungen sowie Textänderungen

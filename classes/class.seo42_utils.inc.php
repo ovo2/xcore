@@ -1,5 +1,16 @@
 <?php
 
+define('SEO42_URL_TYPE_DEFAULT', 0); 
+define('SEO42_URL_TYPE_INTERN_REPLACE_CLANG', 1); 
+define('SEO42_URL_TYPE_USERDEF_INTERN', 2);
+define('SEO42_URL_TYPE_MEDIAPOOL', 3);
+define('SEO42_URL_TYPE_LANGSWITCH', 4); // should also be handled by navigation output.
+define('SEO42_URL_TYPE_NONE', 5); // should also be handled by navigation output.
+define('SEO42_URL_TYPE_REMOVE_ROOT_CAT', 6);
+define('SEO42_URL_TYPE_INTERN_REPLACE', 7);
+define('SEO42_URL_TYPE_CALL_FUNC', 8); // should also be handled by navigation output.
+define('SEO42_URL_TYPE_USERDEF_EXTERN', 9);
+
 class seo42_utils {
 	public static function appendToPageHeader($params) {
 		global $REX;
@@ -138,7 +149,7 @@ class seo42_utils {
 	public static function enableURLPage() {
 		global $REX;
 
-		if ($REX['ADDON']['seo42']['settings']['urlpage']) {
+		if ($REX['ADDON']['seo42']['settings']['urlpage'] && $REX['ADDON']['seo42']['settings']['rewriter']) {
 			rex_register_extension('PAGE_CONTENT_MENU', 'seo42_utils::addURLPageToPageContentMenu');
 			rex_register_extension('PAGE_CONTENT_OUTPUT', 'seo42_utils::addURLPageToPageContentOutput');
 		}

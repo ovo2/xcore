@@ -1,4 +1,5 @@
 <?php
+
 class rexseo_sitemap
 {
   private $mode;
@@ -14,18 +15,39 @@ class rexseo_sitemap
   {
     global $REX, $REXSEO_URLS;
 
-	array_multisort($REXSEO_URLS);
+	if ($REX['ADDON']['seo42']['settings']['rewriter']) {
+		// use rexseo pathlist
+		array_multisort($REXSEO_URLS);
 
-	foreach ($REXSEO_URLS as $url)  {
-		$article = OOArticle::getArticleById($url['id'], $url['clang']);
+		foreach ($REXSEO_URLS as $url)  {
+			$article = OOArticle::getArticleById($url['id'], $url['clang']);
 
-		if (OOArticle::isValid($article) && $article->isOnline() && !isset($url['status'])) {
-			$db_articles[$url['id']][$url['clang']] = array('loc'        => seo42::getFullUrl($url['id'], $url['clang']),
-								                           'lastmod'    => date('Y-m-d\TH:i:s', $article->getValue('updatedate')) . '+00:00',
-								                           'changefreq' => self::calc_article_changefreq($article->getValue('updatedate'), ''),
-								                           'priority'   => self::calc_article_priority($url['id'], $url['clang'], $article->getValue('path'), ''),
-														   'noindex'   => $article->getValue('seo_noindex')
-								                           );	
+			if (OOArticle::isValid($article) && $article->isOnline() && !isset($url['status'])) {
+				$db_articles[$url['id']][$url['clang']] = array('loc'        => seo42::getFullUrl($url['id'], $url['clang']),
+										                       'lastmod'    => date('Y-m-d\TH:i:s', $article->getValue('updatedate')) . '+00:00',
+										                       'changefreq' => self::calc_article_changefreq($article->getValue('updatedate'), ''),
+										                       'priority'   => self::calc_article_priority($url['id'], $url['clang'], $article->getValue('path'), ''),
+															   'noindex'   => $article->getValue('seo_noindex')
+										                       );	
+			}
+		}
+	} else {
+		// use db articles
+		$db_articles = array();
+		$db = new rex_sql;
+		$qry = 'SELECT `id`, `clang`, `updatedate`, `path`, `seo_noindex` FROM `' . $REX['TABLE_PREFIX'] . 'article` WHERE `status` = 1';
+
+		if ($REX['ADDON']['rexseo42']['settings']['ignore_root_cats']) {
+			$qry .= ' AND `re_id` != 0 OR (re_id = 0 AND catname LIKE "")';
+		}
+
+		foreach($db->getDbArray($qry) as $art) {
+			$db_articles[$art['id']][$art['clang']] = array('loc'        => seo42::getTrimmedUrl($art['id'],$art['clang']),
+						                                   'lastmod'    => date('Y-m-d\TH:i:s',$art['updatedate']).'+00:00',
+						                                   'changefreq' => self::calc_article_changefreq($art['updatedate'], ''),
+						                                   'priority'   => self::calc_article_priority($art['id'],$art['clang'],$art['path'], ''),
+														   'noindex'   => $art['seo_noindex']
+						                                   );
 		}
 	}
 
