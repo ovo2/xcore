@@ -409,6 +409,7 @@ class seo42 {
 
 		$out .= '<h1>---------- SEO42 DEBUG BEGIN ----------<h1>';
 
+		// methods
 		$out .= '<h2>Class Methods</h2>';
 		$out .= '<table>';
 
@@ -446,18 +447,30 @@ class seo42 {
 
 		$out .= '</table>';
 
+		// settings
 		$out .= '<h2>Settings</h2>';
 
 		$out .= '<pre class="rex-code">';
 		$out .= seo42_utils::print_r_pretty($REX['ADDON']['seo42']['settings'], true);
 		$out .= '</pre>';
 
+		// pathlist
 		$out .= '<h2>Pathlist</h2>';
 
 		$pathlistRoot = REXSEO_PATHLIST;
 		$content = rex_get_file_contents($pathlistRoot);
 		$out .= rex_highlight_string($content, true);
 
+		// redirects
+		$redirectsRoot = $REX['INCLUDE_PATH'] . '/addons/seo42/plugins/redirects/generated/redirects.inc.php';
+
+		if (file_exists($redirectsRoot)) {
+			$out .= '<h2>Redirects</h2>';
+			$content = rex_get_file_contents($redirectsRoot);
+			$out .= rex_highlight_string($content, true);
+		}
+
+		// .htaccess
 		$out .= '<h2>.htaccess</h2>';
 
 		$htaccessRoot = $REX['FRONTEND_PATH'] . '/.htaccess';
