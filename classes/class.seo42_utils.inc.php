@@ -339,7 +339,7 @@ class seo42_utils {
 				case SEO42_URL_TYPE_INTERN_REPLACE_CLANG:
 					$customArticleId = $jsonData['article_id'];
 					$customClangId = $jsonData['clang_id'];
-					$article = OOArticle::getArticleById($customArticleId);
+					$article = OOArticle::getArticleById($customArticleId, $customClangId);
 
 					if (OOArticle::isValid($article)) {
 						$msg = $I18N->msg('seo42_urltype_intern_plus_clang', '<a href="index.php?page=content&article_id=' . $customArticleId . '&mode=edit&clang=' . $customClangId . '">' . $article->getName() . '</a>', $REX['CLANG'][$customClangId]);

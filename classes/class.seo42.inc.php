@@ -184,6 +184,7 @@ class seo42 {
 		global $REX;
 
 		$out = '';
+		$i = 0;
 
 		foreach ($REX['CLANG'] as $clangId => $clangName) {
 			$article = OOArticle::getArticleById(self::$curArticle->getId(), $clangId);
@@ -193,7 +194,13 @@ class seo42 {
 					$clangName = $REX['ADDON']['seo42']['settings']['langcodes'][$clangId];
 				}
 
-				$out .= $indent . '<link rel="alternate" href="' . self::getFullUrl(self::$curArticle->getId(), $clangId) . '" hreflang="' . $clangName . '" />' . PHP_EOL;
+				if ($i > 0) {
+					$out .= $indent;
+				}
+
+				$out .= '<link rel="alternate" href="' . self::getFullUrl(self::$curArticle->getId(), $clangId) . '" hreflang="' . $clangName . '" />' . PHP_EOL;
+
+				$i++;
 			}
 		}
 
@@ -271,7 +278,7 @@ class seo42 {
 		$out .= $indent . '<link rel="canonical" href="' . self::getCanonicalUrl() . '" />' . PHP_EOL;
 
 		if (self::isMultiLangInstall()) {
-			$out .= self::getLangTags($indent);
+			$out .= $indent . self::getLangTags($indent);
 		}
 
 		return $out;

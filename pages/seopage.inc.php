@@ -92,6 +92,9 @@ if (rex_post('saveseo', 'boolean')) {
 
 		// delete cached article
 		rex_generateArticle($articleID);
+
+		// reinit article to get correct values after possible update
+		seo42::initArticle($REX['ARTICLE_ID']);
 	} else {
 		// err msg
 		echo rex_warning($sql->getError());
@@ -325,7 +328,6 @@ jQuery(document).ready(function() {
 		updateKeywordsCount();
 	});
 
-	//updateTitlePreview();
 	updateDescriptionCount();
 	updateKeywordsCount();
 

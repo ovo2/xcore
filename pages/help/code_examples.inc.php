@@ -42,7 +42,7 @@ echo rex_navigation42::getNavigationByLevel(0, 1);
 echo rex_navigation42::getNavigationByLevel(1, 3);
 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment3') . '
-echo rex_navigation42::getNavigationByLevel(0, 2, true, true, true);
+echo rex_navigation42::getNavigationByLevel(0, 2, true, false, true);
 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment4') . '
 echo rex_navigation42::getNavigationByCategory(42, 2);

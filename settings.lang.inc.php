@@ -24,6 +24,7 @@ $REX['ADDON']['seo42']['settings']['langcodes'][0] = 'de';
 // if no additional languages are defined in this array, array with clang = 0 will be used
 // separate values by | (pipe) symbol
 // special chars language tables: http://unicode.e-workers.de/
+// collection of language presets: https://github.com/RexDude/seo42/issues/61
 
 $REX['ADDON']['seo42']['settings']['special_chars'][0] = '&';
 $REX['ADDON']['seo42']['settings']['special_chars_rewrite'][0] = 'und';

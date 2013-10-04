@@ -100,6 +100,12 @@ class rex_navigation42 extends rex_navigation {
 									$newArticleId = $REX['START_ARTICLE_ID'];
 								}
 
+								// select li that is current language
+								if ($REX['CUR_CLANG'] == $newClangId) {
+									$return = substr($return, 0, strlen($return) - strlen('<li>'));
+									$return .= '<li class="selected">';
+								}
+
 								$return .= '<a href="' . rex_getUrl($newArticleId, $newClangId) . '">' . htmlspecialchars($nav->getName()) . '</a>';
 								break;
 							case 8: // SEO42_URL_TYPE_CALL_FUNC
