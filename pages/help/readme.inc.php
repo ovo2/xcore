@@ -5,6 +5,7 @@ $html = seo42_utils::getHtmlfromMarkdown($md);
 
 $html = str_replace('href="CHANGELOG.md"', 'href="index.php?page=seo42&subpage=help&chapter=changelog"', $html);
 $html = str_replace('href="LICENSE.md"', 'href="index.php?page=seo42&subpage=help&chapter=license"', $html);
+$html = str_replace('href="FAQ.md"', 'href="index.php?page=seo42&subpage=help&chapter=faq"', $html);
 
 echo $html;
 ?>

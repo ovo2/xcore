@@ -84,6 +84,11 @@ Verfügbare Plugins
 * `redirects` von RexDude (ist beigelegt)
 * `url_control` von tbaddade: https://github.com/tbaddade/redaxo_plugin_url_control
 
+FAQ
+---
+
+siehe [FAQ.md](FAQ.md)
+
 Changelog
 ---------
 
