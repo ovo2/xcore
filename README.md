@@ -29,11 +29,6 @@ Features
 * Kompatibel zum Website Manager AddOn
 * Enthält die Antwort auf die eine Frage ;)
 
-500 Server Error
-----------------
-
-Wenn der Webserver einen 500 Server Error meldet die Zeile `Options -Indexes` in der `.htaccess` auskommentieren.
-
 Alle URL-Typen aktivieren
 -------------------------
 
@@ -67,6 +62,7 @@ Weitere Hinweise
 * Läuft nur mit REDAXO 4.5+
 * AddOn-Ordner lautet: `seo42`
 * AddOn wurde seit Version 2.0.0 von REXSEO42 in SEO42 umbenannt.
+* Wenn der Webserver einen 500 Server Error meldet, die Zeile `Options -Indexes` in der `.htaccess` auskommentieren.
 * Geändertes Verhalten für REDAXO Unterordner-Installationen. Bitte FAQ in der Hilfe des AddOns anschauen für weitere Infos.
 * Implementiert man sein eigenes Titel-Schema, ist es vielleicht sinnvoll die Optionen `title_preview` und `no_prefix_checkbox` auf `false` zu setzen.
 * `$REX["MOD_REWRITE"]` braucht nicht mehr auf `true` gesetzt werden (z.B. über die System-Page von REDAXO). Wenn SEO42 aktiv, wird es automatisch gesetzt.

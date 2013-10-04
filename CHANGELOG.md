@@ -3,10 +3,12 @@ SEO42 - Changelog
 
 ### Version 2.5.0 ALPHA
 
-* Base-Tag wieder eingeführt ;) Option `subdir_force_full_urls` enfernt. Option `url_start_subdir` hinzugefügt.
-* Fixed #62: Notices bei Installation des Community Addons beseitigt. Nötige Anpassungen in Zusammenhang mit der Klasse `rex_navigation42` zur Readme hinzugefügt.
+* Base-Tag wieder eingeführt ;) Damit ist es nun prinzipiell egal, wie die URLs beginnen, ausser bei REDAXO-Unterordnerinstallation. Dort dürfen Sie nicht mit `/` anfangen. Einfach trotzdem Codebeispiele 2 nutzen :P
 * Für mehrsprachige Websites steht jetzt die PHP-Methode `seo42::getLangTags()` zur Verfügung um im Head-Bereich SEO-relevante Sprach-Tags hinzuzufügen.
+* Fixed #62: Notices bei Installation des Community Addons beseitigt. Nötige Anpassungen in Zusammenhang mit der Klasse `rex_navigation42` zur Readme hinzugefügt.
+* Option `subdir_force_full_urls` enfernt. Option `url_start_subdir` hinzugefügt.
 * Neue Option `rewriter` um die URL-Umschreibung ein und auszuschalten, da dies über `REX['MOD_REWRITE']` ja nicht mehr geht.
+* `Options -Indexes` (zum Abschalten des Directory Listings des Webservers) wird nur noch gesetzt, wenn im Setup angegeben. Inkl. Meldung wegen möglichem 500 Servererror.
 * Hilfesystem verbessert. Markdown Parser wird nun genutzt.
 * Middle dot • wird nun ausgeklammert aus der URL-Umschreibung
 * Redirects Plugin wird bei Installation des Addons nicht mehr automatisch mitinstalliert

@@ -45,7 +45,7 @@ if ($func == "do_copy") {
 		echo rex_warning($I18N->msg('seo42_setup_backup_failed'));
 	}
 
-	if ($copySuccessful && (rex_request('www_redirect', 'int') == 1 || rex_request('modify_rewritebase', 'int') == 1)) {
+	if ($copySuccessful && (rex_request('www_redirect', 'int') == 1 || rex_request('modify_rewritebase', 'int') == 1 || rex_request('directory_listing', 'int') == 1)) {
 		$content = rex_get_file_contents($htaccessRoot);
 
 		// this is for non-ww to www redirect
@@ -70,6 +70,13 @@ if ($func == "do_copy") {
 			$rewriteBase = 'RewriteBase /';
 
 			$content = str_replace($rewriteBase,$rewriteBase . seo42::getServerSubDir(), $content);
+		}
+
+		// this is for misconfigured webservers to turn of directory listing
+		if (rex_request('directory_listing', 'int') == 1) {
+			$optionsIndexes = '#Options -Indexes';
+
+			$content = str_replace($optionsIndexes, ltrim($optionsIndexes, '#'), $content);
 		}
 
 		if (rex_put_file_contents($htaccessRoot, $content) > 0) {
@@ -153,13 +160,18 @@ if ($func == "do_copy") {
 			<?php if (seo42::getServerSubDir() != '') { ?>
 			<p class="rex-form-checkbox rex-form-label-right"> 
 				<input type="checkbox" value="1" id="modify_rewritebase" name="modify_rewritebase" checked="checked" />
-				<label for="modify_rewritebase"><?php echo $I18N->msg('seo42_setup_rewritebase', seo42::getServerSubDir()); ?></label>
+				<label for="modify_rewritebase"><?php echo $I18N->msg('seo42_setup_rewritebase', seo42::getServerSubDir()). ' <span>' . $I18N->msg('seo42_setup_important') . '</span>'; ?></label>
 			</p>
 			<?php } ?>
 
 			<p class="rex-form-checkbox rex-form-label-right"> 
 				<input type="checkbox" value="1" id="www_redirect" name="www_redirect" />
-				<label for="www_redirect"><?php if ($REX['ADDON']['seo42']['settings']['non_www_to_www']) { echo $I18N->msg('seo42_setup_www_redirect_checkbox'); } else { echo $I18N->msg('seo42_setup_non_www_redirect_checkbox'); } ?></label>
+				<label for="www_redirect"><?php if ($REX['ADDON']['seo42']['settings']['non_www_to_www']) { echo $I18N->msg('seo42_setup_www_redirect_checkbox'); } else { echo $I18N->msg('seo42_setup_non_www_redirect_checkbox'); } echo  ' <span>' . $I18N->msg('seo42_setup_recommended') . '</span>'; ?></label>
+			</p>
+
+			<p class="rex-form-checkbox rex-form-label-right"> 
+				<input type="checkbox" value="1" id="directory_listing" name="directory_listing" />
+				<label for="directory_listing"><?php echo $I18N->msg('seo42_setup_directory_listing_checkbox') . ' <span>' . $I18N->msg('seo42_setup_recommended') . '</span>'; ?></label>
 			</p>
 
 			<input type="hidden" name="page" value="seo42" />
@@ -269,10 +281,19 @@ $codeExample2 = '<head>
 #rex-page-seo42 #www_redirect {
     margin-top: 8px;
 }
+
+#rex-page-seo42 #directory_listing {
+    margin-top: 8px;
+}
+
+.rex-form-checkbox label span {
+	font-size: 10px;
+}
 </style>
 
 <script type="text/javascript">
 var rewriteBaseMsgShown = false;
+var directoryListingMsgShown = false;
 
 function isCompleteWebsiteUrl() {
 	var pat = /^https?:\/\//i;
@@ -312,6 +333,13 @@ jQuery(document).ready( function() {
 		if (!jQuery('#modify_rewritebase').is(':checked') && !rewriteBaseMsgShown) {
 			rewriteBaseMsgShown = true;
 			alert("<?php echo $I18N->msg('seo42_setup_rewritebase_alert'); ?>\r\n\r\nRewriteBase /<?php echo seo42::getServerSubDir(); ?>");
+		}
+	});
+
+	jQuery('#directory_listing').click(function(e) {
+		if (jQuery('#directory_listing').is(':checked') && !directoryListingMsgShown) {
+			directoryListingMsgShown = true;
+			alert("<?php echo $I18N->msg('seo42_setup_directory_listing_alert'); ?>");
 		}
 	});
 });
