@@ -12,8 +12,8 @@ $chapterpages = array (
 	'faq' => array($I18N->msg('seo42_help_chapter_faq'), 'pages/help/faq.inc.php'),
 	'changelog' => array($I18N->msg('seo42_help_chapter_changelog'), 'pages/help/changelog.inc.php'),
 	'license' => array($I18N->msg('seo42_help_chapter_license'), 'pages/help/license.inc.php'),
-	'debug' => array($I18N->msg('seo42_help_chapter_debug'), 'pages/help/debug.inc.php'),
-	'links' => array($I18N->msg('seo42_help_chapter_links'), 'pages/help/links.inc.php')
+	'links' => array($I18N->msg('seo42_help_chapter_links'), 'pages/help/links.inc.php'),
+	'debug' => array($I18N->msg('seo42_help_chapter_debug'), 'pages/help/debug.inc.php')
 );
 
 // build chapter navigation

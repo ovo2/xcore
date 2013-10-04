@@ -1,5 +1,5 @@
-FAQ
-===
+SEO42 - FAQ
+===========
 
 Mein Webserver meldet einen 500 Server Error?!
 ----------------------------------------------

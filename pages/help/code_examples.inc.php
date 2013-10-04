@@ -119,10 +119,5 @@ echo seo42_ex::getKeywords();
 <p><?php echo $I18N->msg('seo42_help_codeexamples_description7'); ?></p>
 <?php rex_highlight_string($codeExample7); ?>
 
-<style type="text/css">
-.rex-addon-content h2 {
-	font-size: 14px;
-}
-</style>
 
 
