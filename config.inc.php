@@ -38,7 +38,7 @@ if (!$REX['SETUP']) {
 	if ($REX['REDAXO'] && rex_request('page') == 'specials') {
 		// don't touch mod rewrite var
 	} else {
-		if ($REX['ADDON']['seo42']['settings']['rewriter'] && !$REX['REDAXO']) {
+		if ($REX['ADDON']['seo42']['settings']['rewriter']) {
 			$REX['MOD_REWRITE'] = true;
 		} else {
 			$REX['MOD_REWRITE'] = false;

@@ -184,23 +184,18 @@ class seo42 {
 		global $REX;
 
 		$out = '';
-		//$onlineArticleCount = 0;
 
 		foreach ($REX['CLANG'] as $clangId => $clangName) {
 			$article = OOArticle::getArticleById(self::$curArticle->getId(), $clangId);
 
 			if ($article->isOnline() || $REX['CUR_CLANG'] == $clangId) {
-				//$onlineArticleCount++;
+				if (isset($REX['ADDON']['seo42']['settings']['langcodes'][$clangId])) {
+					$clangName = $REX['ADDON']['seo42']['settings']['langcodes'][$clangId];
+				}
 
 				$out .= $indent . '<link rel="alternate" href="' . self::getFullUrl(self::$curArticle->getId(), $clangId) . '" hreflang="' . $clangName . '" />' . PHP_EOL;
 			}
 		}
-
-		/*if ($onlineArticleCount > 1) {
-			return $out;
-		} else {
-			return '';
-		}*/
 
 		return $out;
 	}

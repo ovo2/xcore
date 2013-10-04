@@ -1,5 +1,8 @@
 <?php
-require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.markdown.inc.php');
+
+if (!class_exists("Michelf\Markdown")) {
+	require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.markdown.inc.php');
+}
 
 $mypage = rex_request('page','string');
 $subpage = rex_request('subpage', 'string');
@@ -11,7 +14,7 @@ $chapterpages = array (
 	'codeexamples' => array($I18N->msg('seo42_help_chapter_codeexamples'), 'pages/help/code_examples.inc.php'),
 	'faq' => array($I18N->msg('seo42_help_chapter_faq'), 'pages/help/faq.inc.php'),
 	'changelog' => array($I18N->msg('seo42_help_chapter_changelog'), 'pages/help/changelog.inc.php'),
-	'license' => array($I18N->msg('seo42_help_chapter_license'), 'pages/help/license.inc.php'),
+	/* 'license' => array($I18N->msg('seo42_help_chapter_license'), 'pages/help/license.inc.php'), */
 	'links' => array($I18N->msg('seo42_help_chapter_links'), 'pages/help/links.inc.php'),
 	'debug' => array($I18N->msg('seo42_help_chapter_debug'), 'pages/help/debug.inc.php')
 );
