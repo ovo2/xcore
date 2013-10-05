@@ -195,7 +195,7 @@ $codeExample1 = '<head>
 </head>';
 
 $codeExample2 = '<head>
-	<?php echo seo42::getLangTags(); ?>" />
+	<?php echo seo42::getLangTags(); ?>
 </head>';
 ?>
 

@@ -10,10 +10,7 @@ echo rex_getUrl(42);
 // --> ' . seo42::getUrlStart() . 'questions/the-ultimate-answer.html
 
 echo seo42::getMediaFile("image.png");
-// --> ' . seo42::getUrlStart() . 'files/foo.png
-
-echo seo42::getMediaDir();
-// --> ' . seo42::getUrlStart() . 'files/
+// --> ' . seo42::getUrlStart() . 'files/image.png
 
 echo seo42::getUrlStart() . "js/jquery.min.js"; 
 // --> ' . seo42::getUrlStart() . 'js/jquery.min.js
@@ -33,7 +30,7 @@ echo seo42::getImageTag("image.png", "rex_mediapool_detail", 150, 100);
 $codeExample4 = '<!DOCTYPE html>
 <html lang="<?php echo seo42::getLangCode(); ?>">';
 
-$codeExample5 = '<?php echo seo42::getTitle(rex_string_table::getString("website_name")); ?>';
+$codeExample5 = '<title><?php echo seo42::getTitle(rex_string_table::getString("website_name")); ?></title>';
 
 $codeExample6 = '<?php 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment1') . '
