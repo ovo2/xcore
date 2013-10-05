@@ -1,7 +1,7 @@
 SEO42 - Changelog
 =================
 
-### Version 2.5.0 BETA
+### Version 2.5.0 RC1 - 05. Oktober 2013
 
 * Base-Tag wieder eingeführt ;) Damit ist es nun prinzipiell egal, wie die URLs beginnen, ausser bei REDAXO-Unterordnerinstallation. Dort dürfen Sie nicht mit `/` anfangen. Einfach trotzdem Codebeispiele 2 nutzen :P
 * Für mehrsprachige Websites steht jetzt die PHP-Methode `seo42::getLangTags()` zur Verfügung um im Head-Bereich SEO-relevante `rel="alternate"` Tags hinzuzufügen.
