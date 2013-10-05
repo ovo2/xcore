@@ -1,7 +1,7 @@
 SEO42 AddOn für REDAXO 4.5+
 ===========================
 
-Ein intergalaktischer Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzerführung und noch weiteren SEO-Goodies...
+Ein intergalaktischer Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzerführung und noch ein paar weiteren SEO-Goodies...
 
 Features
 --------

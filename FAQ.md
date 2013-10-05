@@ -35,7 +35,7 @@ Im Backup-Verzeichnis des AddOns: `/seo42/backup/`
 SEO42 läuft nicht mehr rund. Was tun?
 -------------------------------------
 
-Cache löschen, AddOn reinstallieren und evtl. das Setup neu durchlaufen sind hier zuerstmal deine Freunde ;)
+Cache löschen, AddOn reinstallieren und evtl. das Setup neu durchlaufen sind hier zuerstmal Ihre Freunde ;)
 
 
 Ich möchte das Pipe-Zeichen im Titel umstellen. Wo kann ich das machen?
@@ -47,7 +47,7 @@ Der zuständige Parameter heißt `title_delimiter` und ist in der `settings.adva
 Wie kann ich den Titel sonst noch beinflussen?
 ----------------------------------------------
 
-Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix" wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode `seo42::getTitle()` überschreiben, siehe dazu Codebeispiel 5 in der Hilfe.
+Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix" (wenn aktiv) wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode `seo42::getTitle()` überschreiben, siehe dazu Codebeispiel Nr.7.
 
 
 Warum wird der Titel für die Startseite "andersherum" ausgegeben wie für die Folgeseiten?
