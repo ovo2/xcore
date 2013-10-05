@@ -42,7 +42,7 @@ class rexseo_sitemap
 		}
 
 		foreach($db->getDbArray($qry) as $art) {
-			$db_articles[$art['id']][$art['clang']] = array('loc'        => seo42::getTrimmedUrl($art['id'],$art['clang']),
+			$db_articles[$art['id']][$art['clang']] = array('loc'        => seo42::getFullUrl($art['id'],$art['clang']),
 						                                   'lastmod'    => date('Y-m-d\TH:i:s',$art['updatedate']).'+00:00',
 						                                   'changefreq' => self::calc_article_changefreq($art['updatedate'], ''),
 						                                   'priority'   => self::calc_article_priority($art['id'],$art['clang'],$art['path'], ''),
