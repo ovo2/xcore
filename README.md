@@ -105,8 +105,7 @@ Credits
 * [Jan Kristinus](http://github.com/dergel) für REDAXO und den neuen EP in REDAXO 4.5
 * [Gregor Harlan](https://github.com/gharlan) und [Thomas Blum](https://github.com/tbaddade) für Hilfe, Code und Bugmeldungen :)
 * Danke ausserdem an alle die sich mit Ideen, Tests und Bugmeldungen eingebracht haben :)
-* David Walsh and Jamie Scott für die Google PageRank Checker Klasse
+* Google PageRank Checker Class by David Walsh and Jamie Scott
 * PHP Markdown Lib by Michel Fortin
-
-Macht’s gut und danke für den Fisch ;)
+* Macht’s gut und danke für den Fisch ;)
 

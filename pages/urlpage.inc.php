@@ -328,7 +328,7 @@ if ($urlField != '') {
 						</div>	
 						
 						<?php if ($REX['START_CLANG_ID'] == $clang && count($REX['CLANG']) > 1) { ?>
-						<div class="rex-form-row" id="clone-row" style="<?php if ($urlType == SEO42_URL_TYPE_LANGSWITCH || $urlType == SEO42_URL_TYPE_USERDEF_INTERN) { echo 'display: none;'; } ?>">
+						<div class="rex-form-row" id="clone-row" style="<?php if ($urlType == SEO42_URL_TYPE_USERDEF_INTERN) { echo 'display: none;'; } ?>">
 							<p class="rex-form-col-a rex-form-checkbox">
 								<input type="checkbox" id="url_clone" value="<?php if (isset($jsonData['url_clone']) && $jsonData['url_clone']) { echo "1"; $check = 'checked = "checked"'; } else { echo ""; $check = ""; } ?>" name="url_clone[]" class="rex-form-checkbox" <?php echo $check; ?> />								
 								<label for="url_clone"><?php echo $I18N->msg('seo42_urlpage_url_clone') ?></label>
