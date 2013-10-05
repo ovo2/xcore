@@ -194,9 +194,7 @@ $codeExample1 = '<head>
 	<link rel="canonical" href="<?php echo seo42::getCanonicalUrl(); ?>" />
 </head>';
 
-$codeExample2 = '<head>
-	<?php echo seo42::getLangTags(); ?>
-</head>';
+$codeExample2 = '<?php echo seo42::getLangTags(); ?>';
 ?>
 
 <div class="rex-addon-output">

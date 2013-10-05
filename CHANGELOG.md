@@ -4,8 +4,9 @@ SEO42 - Changelog
 ### Version 2.5.0 BETA
 
 * Base-Tag wieder eingeführt ;) Damit ist es nun prinzipiell egal, wie die URLs beginnen, ausser bei REDAXO-Unterordnerinstallation. Dort dürfen Sie nicht mit `/` anfangen. Einfach trotzdem Codebeispiele 2 nutzen :P
-* Für mehrsprachige Websites steht jetzt die PHP-Methode `seo42::getLangTags()` zur Verfügung um im Head-Bereich SEO-relevante Sprach-Tags hinzuzufügen.
+* Für mehrsprachige Websites steht jetzt die PHP-Methode `seo42::getLangTags()` zur Verfügung um im Head-Bereich SEO-relevante `rel="alternate"` Tags hinzuzufügen.
 * Fixed #62: Notices bei Installation des Community Addons beseitigt. Nötige Anpassungen in Zusammenhang mit der Klasse `rex_navigation42` zur Readme hinzugefügt.
+* Fixed: Verschwundene Image Manager Bilder im Medienpool
 * Automatische Weitereitung von `/langslug` nach `/langslug/`. 
 * Option `subdir_force_full_urls` enfernt. Option `url_start_subdir` hinzugefügt.
 * Neue Option `rewriter` um die URL-Umschreibung ein/auszuschalten, da dies über `REX['MOD_REWRITE']` ja nicht mehr geht.
@@ -16,7 +17,7 @@ SEO42 - Changelog
 * Sitemap.xml: Sortierung der Einträge anhand der Artikel-IDs
 * Sitemap.xml: Neue Option `static_sitemap_priority` um die Priorität auf die festgelegten Werte 1.0 und 0.8 zu setzen. Sonst autom. Berechnung anhand des Kategorie-Levels.
 * Redirects in die Debug-Ausgabe mit aufgenommen (wenn verfügbar) 
-* Textkorrekture, Feintuning, Codebeispiele erweitert, FAQ verbessert
+* Textkorrekturen, Feintuning, Codebeispiele erweitert, FAQ verbessert
 
 ### Version 2.1.2 - 25. September 2013
 

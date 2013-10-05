@@ -15,7 +15,7 @@ if (version_compare($REX['VERSION'] . '.' . $REX['SUBVERSION'] . '.' . $REX['MIN
 }
 
 // check for concurrent addons
-$disable_addons = array('url_rewrite', 'yrewrite', 'rexseo');
+$disable_addons = array('url_rewrite', 'yrewrite', 'rexseo', 'rexseo42');
 
 foreach ($disable_addons as $a) {
 	if (OOAddon::isInstalled($a) || OOAddon::isAvailable($a)) {
