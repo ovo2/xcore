@@ -9,11 +9,11 @@ Features
 * Generierung von suchmaschinenfreundlichen URLs (Webserver benötigt Modul `mod_rewrite`)
 * Automatische Umschreibung der Startseite der Website in `/` (für alle Sprachen möglich)
 * Verschiedene URL-Schemas verfügbar (z.B. `.html`, `/`)
+* Automatische Titel-Generierung, mitgeliefertes Titel-Schema inspiriert von Google-Empfehlung
 * Extra SEO-Page für jeden Artikel inkl. Titel-Vorschau und Zeichen/Wörter Zähler
 * Extra URL-Page für jeden Artikel inkl 10 URL-Typen zur Manipulierung der generierten URL
 * Automatische `sitemap.xml` und `robots.txt` Generierung
 * Neue vereinfachte Setup-Routine, benötigt keine MetaInfos mehr
-* Automatische Titel-Generierung, mitgeliefertes Titel-Schema inspiriert von Google-Empfehlung
 * Option um vollständige URLs inkl. Domainname wie bei WordPress zu erzeugen
 * One Page Mode für Websites die nur über eine Seite verfügen (z.B. Paralax-Websites etc.)
 * Suchmaschinenfreundliche Image Manager Urls durch Verwendung der verfügbaren PHP-Methoden
@@ -22,6 +22,7 @@ Features
 * Einrichtung von 301 Umleitungen über das Redirects-Plugin
 * Spezielle sprachabhängige sowie sprachunabhängige Sonderzeichen-Umschreibungen einstellbar
 * Lang Slugs (de, en) können unabhängig von den REDAXO Sprachnamen gesetzt werden
+* Automatische Alternate-Tags für mehrsprachige Websites
 * Option um die Indizierung von Seiten durch Suchmaschinen zu verhindern
 * Automatische sowie individuelle Canonical URLs
 * Nicht-WWW zu WWW Umleitung (und umgekehrt). Lässt sich auch über das Setup aktivieren.

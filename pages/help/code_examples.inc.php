@@ -30,7 +30,8 @@ echo seo42::getImageTag("image.png", "rex_mediapool_detail", 150, 100);
 // --> <img src="/files/imagestypes/rex_mediapool_detail/image.png" width="150" height="100" alt="' . $I18N->msg('seo42_help_codeexamples_ex3_alt') . '" />;
 ?>';
 
-$codeExample4 = '<html lang="<?php echo seo42::getLangCode(); ?>">';
+$codeExample4 = '<!DOCTYPE html>
+<html lang="<?php echo seo42::getLangCode(); ?>">';
 
 $codeExample5 = '<?php echo seo42::getTitle(rex_string_table::getString("website_name")); ?>';
 

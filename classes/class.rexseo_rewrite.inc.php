@@ -479,6 +479,19 @@ function rexseo_generate_pathlist($params)
     // HARDCODED PATH: REDIRECT INDEX.PHP TO START-ARTICLE
     $REXSEO_URLS['index.php']  = array('id'  => $REX['START_ARTICLE_ID'], 'clang' => $REX['ADDON']['seo42']['settings']['homelang'], 'status' => 301);
 
+	// redirects start articles withou slash: /xx to /xx/
+	if (count($REX['CLANG']) > 1 && $REX['ADDON']['seo42']['settings']['url_ending'] != '') {
+		foreach ($REX['CLANG'] as $clangId => $clangName) {
+			if (isset($REX['ADDON']['seo42']['settings']['langcodes'][$clangId])) {
+				$clangName = $REX['ADDON']['seo42']['settings']['langcodes'][$clangId];
+			}
+
+			if ($REX['ADDON']['seo42']['settings']['homelang'] != $clangId) {
+				$REXSEO_URLS[$clangName]  = array ('id' => $REX['START_ARTICLE_ID'],'clang' => $clangId, 'status' => 301);
+			}
+		}
+	}
+
     while($db->hasNext())
     {
       $pathname   = '';
