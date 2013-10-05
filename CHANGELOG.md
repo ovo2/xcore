@@ -11,7 +11,7 @@ SEO42 - Changelog
 * Neue Option `rewriter` um die URL-Umschreibung ein und auszuschalten, da dies über `REX['MOD_REWRITE']` ja nicht mehr geht.
 * `Options -Indexes` (zum Abschalten des Directory Listings des Webservers) wird nur noch gesetzt, wenn im Setup angegeben. Inkl. Hinweis wegen möglichem 500 Servererror.
 * Hilfesystem verbessert. Markdown Parser wird nun genutzt.
-* Middle dot • wird nun ausgeklammert aus der URL-Umschreibung
+* Sonderzeichen wie z.B. der Middle dot `•` zu Anfang im Artikelnamen werden nun ausgeklammert aus der URL-Umschreibung. Davor wurde diese als `-` umgeschrieben.
 * Redirects Plugin wird bei Installation des Addons nicht mehr automatisch mitinstalliert
 * Sitemap.xml: Sortierung der Einträge anhand der Artikel-IDs
 * Sitemap.xml: Neue Option `static_sitemap_priority` um die Priorität auf die festgelegten Werte 1.0 und 0.8 zu setzen. Sonst autom. Berechnung anhand des Kategorie-Levels.

@@ -870,7 +870,7 @@ function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
 	}
 
   // SANITIZE STUFF
-  $name = trim($name, " \t\r\n-.•");
+  $name = trim($name, " \t\r\n-.");
 
   if ($isUrl) {
 	// bad things are happening in here ;)
@@ -898,6 +898,8 @@ function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
           )
         )
     );
+
+	$parsedName = trim($parsedName, "-"); // "• articlename" was "-articlename"
 
     if ($isUrl) {
       // bad things are happening in here ;)
