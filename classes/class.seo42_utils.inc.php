@@ -212,11 +212,21 @@ class seo42_utils {
 		    switch (gettype($val))
 		    {
 		        case "array":
-		            $output .= $tabsign."[".htmlspecialchars($key)."] => <br>".$tabsign."(<br>";
+					if (empty($val)) {
+			            $output .= $tabsign."[".htmlspecialchars($key)."] => ".$tabsign."";
+					} else {
+			            $output .= $tabsign."[".htmlspecialchars($key)."] => <br>".$tabsign."(<br>";
+					}
+
 		            $tab++;
 		            $output .= self::print_r_pretty($val,false,$tab);
 		            $tab--;
-		            $output .= $tabsign.")<br>";
+
+					if (empty($val)) {
+			            $output .= $tabsign."<br>";
+					} else {
+			            $output .= $tabsign.")<br>";
+					}
 		        break;
 		        case "boolean":
 		            $output .= $tabsign."[".htmlspecialchars($key)."] => ".($val?"true":"false")."<br>";
@@ -502,5 +512,15 @@ class seo42_utils {
 
 	public static function makeHeadlinePretty($md) {
 		return str_replace('SEO42 - ', '', $md);
+	}
+
+	public static function strposa($haystack, $needle, $offset = 0) {
+		if (!is_array($needle)) $needle = array($needle);
+
+		foreach ($needle as $query) {
+		    if (strpos($haystack, $query, $offset) !== false) return true; // stop on first true result
+		}
+
+		return false;
 	}
 }

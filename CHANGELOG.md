@@ -7,8 +7,8 @@ SEO42 - Changelog
 * Für mehrsprachige Websites steht jetzt die PHP-Methode `seo42::getLangTags()` zur Verfügung um im Head-Bereich SEO-relevante `rel="alternate"` Tags hinzuzufügen.
 * Fixed #62: Notices bei Installation des Community Addons beseitigt. Nötige Anpassungen in Zusammenhang mit der Klasse `rex_navigation42` zur Readme hinzugefügt.
 * Fixed: Verschwundene Image Manager Bilder im Medienpool
+* Automatische Canonical URL übernimmt jetzt mögliche Query Strings (z.B. seite=1, seite=2). Option `canonical_params` hinzugefügt damit man Parameter (foo, foo=bar) angeben kann, die eine eindeutige (kanonische) URL andeuten (z.B. seite=1).
 * Automatische Weitereitung von `/langslug` nach `/langslug/`. 
-* Option `subdir_force_full_urls` enfernt. Option `url_start_subdir` hinzugefügt.
 * Neue Option `rewriter` um die URL-Umschreibung ein/auszuschalten, da dies über `REX['MOD_REWRITE']` ja nicht mehr geht.
 * `Options -Indexes` (zum Abschalten des Directory Listings des Webservers) wird nur noch gesetzt, wenn im Setup angegeben. Inkl. Hinweis wegen möglichem 500 Servererror.
 * Hilfesystem verbessert. Markdown Parser wird nun genutzt.
@@ -16,6 +16,7 @@ SEO42 - Changelog
 * Redirects Plugin wird bei Installation des Addons nicht mehr automatisch mitinstalliert
 * Sitemap.xml: Sortierung der Einträge anhand der Artikel-IDs
 * Sitemap.xml: Neue Option `static_sitemap_priority` um die Priorität auf die festgelegten Werte 1.0 und 0.8 zu setzen. Sonst autom. Berechnung anhand des Kategorie-Levels.
+* Option `subdir_force_full_urls` enfernt. Option `url_start_subdir` hinzugefügt.
 * Redirects in die Debug-Ausgabe mit aufgenommen (wenn verfügbar) 
 * Textkorrekturen, Feintuning, Codebeispiele erweitert, FAQ verbessert
 

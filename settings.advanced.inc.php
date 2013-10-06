@@ -4,6 +4,12 @@
 // **  DELETE REDAXO CACHE AFTER YOU MADE CHANGES TO THIS FILE!  **
 // ****************************************************************
 
+// array with query params that indicate a canonical url. possible notation: foo, foo=bar
+$REX['ADDON']['seo42']['settings']['canonical_params'] = array();
+
+// default title delimiter (including whitespace chars) for seperating name of website and page title
+$REX['ADDON']['seo42']['settings']['title_delimiter'] = ' | ';
+
 // if true url rewriter for pretty, seo friendly urls will be active (recommended!).
 $REX['ADDON']['seo42']['settings']['rewriter'] = true;
 
@@ -45,9 +51,6 @@ $REX['ADDON']['seo42']['settings']['url_start_subdir'] = './';
 
 // if true seo42::getImageManagerUrl() and seo42::getImageTag() will produce seo friendly urls
 $REX['ADDON']['seo42']['settings']['seo_friendly_image_manager_urls'] = true;
-
-// default title delimiter (including whitespace chars) for seperating name of website and page title
-$REX['ADDON']['seo42']['settings']['title_delimiter'] = ' | ';
 
 // if true seopage will be only visible at start article of website. also the frontend links will all point to start article and sitemap.xml will show only one url
 $REX['ADDON']['seo42']['settings']['one_page_mode'] = false;
