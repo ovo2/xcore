@@ -17,7 +17,6 @@ class seo42 {
 	protected static $isSubDirInstall;
 	protected static $urlStart;
 	protected static $modRewrite;
-	protected static $canonicalParams;
 	
 	public static function init() {
 		// to be called before resolve()
@@ -35,7 +34,6 @@ class seo42 {
 		self::$websiteName = $REX['SERVERNAME'];
 		self::$modRewrite = $REX['MOD_REWRITE'];
 		self::$fullUrls = $REX['ADDON']['seo42']['settings']['full_urls'];
-		self::$canonicalParams = $REX['ADDON']['seo42']['settings']['canonical_params'];
 
 		// pull apart server url
 		$urlParts = parse_url(self::$serverUrl);
@@ -172,7 +170,7 @@ class seo42 {
 		return $robots;
 	}
 
-	public static function getCanonicalUrl() {
+	public static function getCanonicalUrl($ignoreQueryParams = array()) {
 		$queryString = '';
 
 		if (self::$curArticle->getValue('seo_canonical_url') != '') {
@@ -181,7 +179,7 @@ class seo42 {
 		}
 
 		// check if query string exists and parameters that shoud be ignored are not in params array
-		if (isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' && seo42_utils::strposa($_SERVER['QUERY_STRING'], self::$canonicalParams) === false) {
+		if (isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' && seo42_utils::strposa($_SERVER['QUERY_STRING'], $ignoreQueryParams) === false) {
 			$queryString = '?' . htmlspecialchars($_SERVER['QUERY_STRING']);
 		}
 

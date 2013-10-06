@@ -30,6 +30,12 @@ Features
 * Kompatibel zum Website Manager AddOn
 * Enthält die Antwort auf die eine Frage ;)
 
+Verfügbare Plugins
+------------------
+
+* `redirects` von RexDude (ist beigelegt)
+* `url_control` von tbaddade: <https://github.com/tbaddade/redaxo_plugin_url_control>
+
 Alle URL-Typen aktivieren
 -------------------------
 
@@ -56,12 +62,6 @@ Ein Update wird nur empfohlen, wenn die neuen Features von der 2er Version benö
 * In allen Templates den Klassennamen von `rexseo42` nach `seo42` umbenennen.
 * AddOn-Einstellungen von Hand nachprüfen und ggf. korrigieren.
 * Ggf. Cache löschen.
-
-Verfügbare Plugins
-------------------
-
-* `redirects` von RexDude (ist beigelegt)
-* `url_control` von tbaddade: <https://github.com/tbaddade/redaxo_plugin_url_control>
 
 Hinweise
 --------

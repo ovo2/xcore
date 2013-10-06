@@ -4,12 +4,6 @@
 // **  DELETE REDAXO CACHE AFTER YOU MADE CHANGES TO THIS FILE!  **
 // ****************************************************************
 
-// array with query params that indicate a canonical url. possible notation: foo, foo=bar
-$REX['ADDON']['seo42']['settings']['canonical_params'] = array();
-
-// default title delimiter (including whitespace chars) for seperating name of website and page title
-$REX['ADDON']['seo42']['settings']['title_delimiter'] = ' | ';
-
 // if true url rewriter for pretty, seo friendly urls will be active (recommended!).
 $REX['ADDON']['seo42']['settings']['rewriter'] = true;
 
@@ -42,6 +36,9 @@ $REX['ADDON']['seo42']['settings']['non_www_to_www'] = true;
 
 // if true you get full urls like in wordpress :) seo42::getUrlStart() and co. needs to be used consequently for all extra urls (like urls to media files, etc.) | url_start option will be ignored by this
 $REX['ADDON']['seo42']['settings']['full_urls'] = false;
+
+// default title delimiter (including whitespace chars) for seperating name of website and page title
+$REX['ADDON']['seo42']['settings']['title_delimiter'] = ' | ';
 
 // url start piece for all urls returned from rex_getUrl(), seo42::getUrlStart() and co.
 $REX['ADDON']['seo42']['settings']['url_start'] = '/';
