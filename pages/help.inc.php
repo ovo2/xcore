@@ -68,7 +68,11 @@ div.rex-addon-content p.rex-code {
     color: #14568A;
 }
 
-#subpage-help .rex-addon-content ul {
+#subpage-help div.rex-addon-content {
+    padding: 10px 12px;
+}
+
+#subpage-help div.rex-addon-content ul {
 	margin-top: 0;
 }
 </style>

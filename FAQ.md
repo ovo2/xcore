@@ -59,7 +59,7 @@ Dies wurde im nachfolgenden PDF von Google abgeguckt (siehe nächste Frage).
 Wo bekomme ich eigentlich eine gute verständliche Einführung in das Thema "Suchmaschinenoptimierung"?
 -----------------------------------------------------------------------------------------------------
 
-Zum Beispiel hier: [http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf](http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf)
+Zum Beispiel hier: <http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf>
 
 
 Wo sind eigentlich all die restlichen Einstellungen von RexSEO abgeblieben?

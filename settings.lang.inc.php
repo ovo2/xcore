@@ -8,9 +8,10 @@
 // used for rewriting special chars that are language dependent. valid for all languages
 // separate values by | (pipe) symbol
 // special chars language tables: http://unicode.e-workers.de/
+// collection of language presets: https://github.com/RexDude/seo42/issues/61
 
-$REX['ADDON']['seo42']['settings']['global_special_chars'] = 'ä|ö|ü|Ä|Ö|Ü|ß';
-$REX['ADDON']['seo42']['settings']['global_special_chars_rewrite'] = 'ae|oe|ue|Ae|Oe|Ue|ss';
+$REX['ADDON']['seo42']['settings']['global_special_chars'] = 'Ä|ä|Ö|ö|Ü|ü|ß';
+$REX['ADDON']['seo42']['settings']['global_special_chars_rewrite'] = 'Ae|ae|Oe|oe|Ue|ue|ss';
 
 // LANG CODES
 // used to determine the lang slugs of the url, like /de/foo.html
