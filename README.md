@@ -54,7 +54,7 @@ Diese Anpassungen sind nur nötig, wenn man die `rex_navigation42` Klasse verwen
 Update von REXSEO42 1.1/1.2 auf SEO42 2.x
 -----------------------------------------
 
-Ein Update wird nur empfohlen, wenn die neuen Features von der 2er Version benötigt werden. Bitte gleich auf die neuste 2.1.2 aktualisieren.
+Ein Update wird nur empfohlen, wenn die neuen Features von der 2er Version benötigt werden. 
 
 * In der `settings.advanced.inc.php` von REXSEO42 die Option `drop_dbfields_on_uninstall` auf `false` setzen.
 * REXSEO42 deinstallieren und AddOn-Ordner löschen.
