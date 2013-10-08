@@ -1,6 +1,10 @@
 SEO42 - Changelog
 =================
 
+### Version 2.5.1
+
+* Methoden `rex_navigation42::getNavigationByLevel()` und `rex_navigation42::getNavigationByCategory()` um folgende Parameter erweitert: `$firstUlId = '', $fisrtUlClass = '', $selectedClass = 'selected'`.
+
 ### Version 2.5.0 - 07. Oktober 2013
 
 * Base-Tag wieder eingeführt ;) Damit ist es nun prinzipiell egal, wie die URLs beginnen, ausser bei REDAXO-Unterordnerinstallation. Dort dürfen Sie nicht mit `/` anfangen. Einfach trotzdem Codebeispiele 2 nutzen :P

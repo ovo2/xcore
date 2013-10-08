@@ -1,23 +1,23 @@
 <?php
 
 class rex_navigation42 extends rex_navigation {
-	static function getNavigationByLevel($levelStart = 0, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideStartArticle = false) {
+	static function getNavigationByLevel($levelStart = 0, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $firstUlId = '', $firstUlClass = '', $selectedClass = 'selected') {
 		global $REX;
 		
 		$nav = self::factory();
 		$path = explode('|', ('0' . $REX['ART'][$REX['ARTICLE_ID']]['path'][$REX['CUR_CLANG']] . $REX['ARTICLE_ID'] . '|'));
 
-		return $nav->get($path[$levelStart], $levelDepth, $showAll, $ignoreOfflines, $hideStartArticle);
+		return $nav->get($path[$levelStart], $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $firstUlId, $firstUlClass, $selectedClass);
 	}
 
-	static function getNavigationByCategory($categoryId, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideStartArticle = false) {
+	static function getNavigationByCategory($categoryId, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $firstUlId = '', $firstUlClass = '', $selectedClass = 'selected') {
 		$nav = self::factory();
 
-		return $nav->get($categoryId, $levelDepth, $showAll, $ignoreOfflines, $hideStartArticle);
+		return $nav->get($categoryId, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $firstUlId, $firstUlClass, $selectedClass);
 	}
 
 	// overwritten method (depends on factory() and get() methods)
-	function _getNavigation($categoryId, $ignoreOfflines = true, $hideStartArticle = false) { 
+	function _getNavigation($categoryId, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $firstUlId = '', $firstUlClass = '', $selectedClass = 'selected') { 
 		global $REX;
 
 		static $depth = 0;
@@ -29,9 +29,22 @@ class rex_navigation42 extends rex_navigation {
 		}
 
 		$return = '';
+		$ulIdAttribute = '';
+		$ulClassAttribute = '';
 
 		if (count($navObj) > 0) {
-			$return .= '<ul>';
+			if ($depth == 0) {
+				// this is first ul
+				if ($firstUlId != '') {
+					$ulIdAttribute = ' id="' . $firstUlId . '"';
+				}
+
+				if ($firstUlClass != '') {
+					$ulClassAttribute = ' class="' . $firstUlClass . '"';
+				}
+			}
+
+			$return .= '<ul' . $ulIdAttribute . $ulClassAttribute . '>';
 		}
 			
 		foreach ($navObj as $nav) {
@@ -42,10 +55,10 @@ class rex_navigation42 extends rex_navigation {
 
 			if ($nav->getId() == $this->current_category_id) {
 				// current menuitem
-				$cssClasses[] = 'selected';
+				$cssClasses[] = $selectedClass;
 			} elseif (in_array($nav->getId(), $this->path)) {
 				// active menuitem in path
-				$cssClasses[] = 'selected';
+				$cssClasses[] = $selectedClass;
 			} else {
 				// do nothing
 			}
@@ -57,7 +70,7 @@ class rex_navigation42 extends rex_navigation {
 				$classAttribute = '';
 			}
 
-			if ($hideStartArticle && ($nav->getId() == $REX['START_ARTICLE_ID'])) {
+			if ($hideWebsiteStartArticle && ($nav->getId() == $REX['START_ARTICLE_ID'])) {
 				// do nothing
 			} else {
 				$depth++;
@@ -103,7 +116,7 @@ class rex_navigation42 extends rex_navigation {
 								// select li that is current language
 								if ($REX['CUR_CLANG'] == $newClangId) {
 									$return = substr($return, 0, strlen($return) - strlen('<li>'));
-									$return .= '<li class="selected">';
+									$return .= '<li class="' . $selectedClass . '">';
 								}
 
 								$return .= '<a href="' . rex_getUrl($newArticleId, $newClangId) . '">' . htmlspecialchars($nav->getName()) . '</a>';
@@ -121,7 +134,7 @@ class rex_navigation42 extends rex_navigation {
 				} 
 				
 				if (($this->open || $nav->getId() == $this->current_category_id || in_array($nav->getId(), $this->path)) && ($this->depth > $depth || $this->depth < 0)) {
-					$return .= $this->_getNavigation($nav->getId(), $ignoreOfflines);
+					$return .= $this->_getNavigation($nav->getId(), $ignoreOfflines, $hideWebsiteStartArticle, $firstUlId, $firstUlClass, $selectedClass);
 				}
 				
 				$depth--;
@@ -149,7 +162,7 @@ class rex_navigation42 extends rex_navigation {
 	}
 
 	// when overwriting _getNavigation() this needs to be overwritten too at the moment
-	function get($categoryId = 0, $depth = 3, $open = false, $ignoreOfflines = true, $hideStartArticle = false) { 
+	function get($categoryId = 0, $depth = 3, $open = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $firstUlId = '', $firstUlClass = '', $selectedClass = 'selected') { 
 		if (!$this->_setActivePath()) {
 			return false;
 		}
@@ -158,7 +171,7 @@ class rex_navigation42 extends rex_navigation {
 		$this->open = $open;
 		$this->ignore_offlines = $ignoreOfflines;
 		
-		return $this->_getNavigation($categoryId, $this->ignore_offlines, $hideStartArticle);
+		return $this->_getNavigation($categoryId, $this->ignore_offlines, $hideWebsiteStartArticle, $firstUlId, $firstUlClass, $selectedClass);
 	}
 }
 
