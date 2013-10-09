@@ -9,7 +9,7 @@ Features
 * Generierung von suchmaschinenfreundlichen URLs (Webserver benötigt Modul `mod_rewrite`)
 * Automatische Umschreibung der Startseite der Website in `/` (für alle Sprachen möglich)
 * Verschiedene URL-Schemas verfügbar (z.B. `.html`)
-* Automatische Titel-Generierung, mitgeliefertes Titel-Schema inspiriert von Google-Empfehlung
+* Automatische Titel-Generierung, mitgeliefertes Titel-Schema inspiriert von Google-Vorschlag
 * Extra SEO-Page für jeden Artikel inkl. Titel-Vorschau und Zeichen/Wörter Zähler
 * Extra URL-Page für jeden Artikel inkl 10 URL-Typen zur Manipulierung der generierten URL
 * Automatische `sitemap.xml` und `robots.txt` Generierung
@@ -27,7 +27,7 @@ Features
 * Automatische sowie individuelle Canonical URLs
 * Nicht-WWW zu WWW Umleitung (und umgekehrt). Lässt sich auch über das Setup aktivieren.
 * Weitere Einstellungen (vorerst) in der `settings.advanced.inc.php` und `settings.lang.inc.php`
-* Kompatibel zum Website Manager AddOn
+* Kompatibel zum [Website Manager](https://github.com/RexDude/website_manager) AddOn
 * Enthält die Antwort auf die eine Frage ;)
 
 Verfügbare Plugins
