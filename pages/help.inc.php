@@ -77,3 +77,17 @@ div.rex-addon-content p.rex-code {
 }
 </style>
 
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("#subpage-help").delegate("a", "click", function(event) {
+		var host = new RegExp("/" + window.location.host + "/");
+
+		if (!host.test(this.href)) {
+			event.preventDefault();
+			event.stopPropagation();
+
+			window.open(this.href, "_blank");
+		}
+	});
+});
+</script>
