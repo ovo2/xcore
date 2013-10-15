@@ -34,16 +34,16 @@ $codeExample5 = '<title><?php echo seo42::getTitle(rex_string_table::getString("
 
 $codeExample6 = '<?php 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment1') . '
-echo rex_navigation42::getNavigationByLevel(0, 1);
+echo nav42::getNavigationByLevel(0, 1);
 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment2') . '
-echo rex_navigation42::getNavigationByLevel(1, 3);
+echo nav42::getNavigationByLevel(1, 3);
 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment3') . '
-echo rex_navigation42::getNavigationByLevel(0, 2, true, false, true);
+echo nav42::getNavigationByLevel(0, 2, true, false, true);
 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment4') . '
-echo rex_navigation42::getNavigationByCategory(42, 2);
+echo nav42::getNavigationByCategory(42, 2);
 ?>';
 
 $codeExample7 = '<?php

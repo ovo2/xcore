@@ -18,7 +18,7 @@ Features
 * One Page Mode für Websites die nur über eine Seite verfügen (z.B. Parallax-Websites etc.)
 * Suchmaschinenfreundliche Image Manager Urls durch Verwendung der verfügbaren PHP-Methoden
 * SEO Tools inkl. Live PageRank Checker sowie Anzeige des Google Index der aktuellen Website
-* Klasse `rex_navigation42` zum Bauen von Navigationen. Alle URL-Typen werden berücksichtigt.
+* Klasse `nav42` zum Bauen von Navigationen. Alle URL-Typen werden hierbei berücksichtigt.
 * Einrichtung von 301 Umleitungen über das Redirects-Plugin
 * Spezielle sprachabhängige sowie sprachunabhängige Sonderzeichen-Umschreibungen einstellbar
 * Lang Slugs (de, en) können unabhängig von den REDAXO Sprachnamen gesetzt werden
@@ -40,16 +40,16 @@ Alle URL-Typen aktivieren
 -------------------------
 
 * Einige Url-Typen greifen erst, wenn bei der Ausgabe der Navigation auf diese reagiert wird.
-* Die Klasse `rex_navigation42` (ehemals `rex_navigation_ex`) unterstützt diese Typen bereits (ab Version 2.1.0 dem AddOn beigelegt).
+* Die Klasse `nav42` (ehemals `rex_navigation42`) unterstützt diese Typen bereits (ab Version 2.1.0 dem AddOn beigelegt).
 * Über die Option `all_url_types` können diese bei Bedarf aber auch deaktiviert werden.
 
 Anpassungen für das Community Addon
 -----------------------------------
 
-Diese Anpassungen sind nur nötig, wenn man die `rex_navigation42` Klasse verwenden will:
+Diese Anpassungen sind nur nötig, wenn man die `nav42` Klasse verwenden will:
 
 * [Diese Zeile](https://github.com/dergel/redaxo4_community/blob/master/plugins/auth/config.inc.php#L19) auskommentieren
-* Und [diese Zeile](https://github.com/RexDude/seo42/blob/master/classes/class.rex_navigation42.inc.php#L3) umschreiben in `class rex_navigation42 extends rex_com_navigation`
+* Und [diese Zeile](https://github.com/RexDude/seo42/blob/master/classes/class.nav42.inc.php#L3) umschreiben in `class nav42 extends rex_com_navigation`
 
 Update von REXSEO42 1.1/1.2 auf SEO42 2.x
 -----------------------------------------

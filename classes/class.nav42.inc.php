@@ -1,6 +1,6 @@
 <?php
 
-class rex_navigation42 extends rex_navigation {
+class nav42 extends rex_navigation {
 	static function getNavigationByLevel($levelStart = 0, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') {
 		global $REX;
 		
@@ -168,7 +168,7 @@ class rex_navigation42 extends rex_navigation {
 		static $class = null;
 
 		if (!$class) {
-			$class = rex_register_extension_point('REX_NAVI_CLASSNAME', 'rex_navigation42');
+			$class = rex_register_extension_point('REX_NAVI_CLASSNAME', 'nav42');
 		}
 	
 		return new $class();

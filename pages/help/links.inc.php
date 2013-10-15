@@ -7,7 +7,7 @@
 <p><a class="extern" href="https://github.com/RexDude/seo42/issues" target="_blank">https://github.com/RexDude/seo42/issues</a></p>
 
 <h2><?php echo $I18N->msg('seo42_help_link5'); ?></h2>
-<p><a class="extern" href="https://github.com/RexDude/seo42/blob/master/classes/class.rex_navigation42.inc.php" target="_blank">https://github.com/RexDude/seo42/blob/master/classes/class.rex_navigation42.inc.php</a></p>
+<p><a class="extern" href="https://github.com/RexDude/seo42/blob/master/classes/class.nav42.inc.php" target="_blank">https://github.com/RexDude/seo42/blob/master/classes/class.nav42.inc.php</a></p>
 
 <h2><?php echo $I18N->msg('seo42_help_link2'); ?></h2>
 <p><a class="extern" href="https://github.com/gn2netwerk/rexseo/wiki/RexSEO-Extension-Points" target="_blank">https://github.com/gn2netwerk/rexseo/wiki/RexSEO-Extension-Points</a></p>

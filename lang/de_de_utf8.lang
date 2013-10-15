@@ -158,7 +158,7 @@ seo42_help_link4 = {0} auf GitHub
 seo42_help_link1 = {0} Bugtracker
 seo42_help_link2 = RexSEO Extensions Points
 seo42_help_link3 = Aufbau der RexSEO Pathlist
-seo42_help_link5 = Klasse rex_navigation42
+seo42_help_link5 = Klasse nav42
 
 seo42_help_codeexamples = Codebeispiele
 seo42_help_codeexamples_title1 = Alternative Einbindung der Html-Tags
@@ -172,7 +172,7 @@ seo42_help_codeexamples_description4 = Geben Sie so den aktuellen Lang Code aus 
 seo42_help_codeexamples_title5 = Sprachunabhängiger Website-Name im Titel
 seo42_help_codeexamples_description5 = Einen sprachunabhängigen Titel erhält man so (Website-Name wird hier aus dem String Table AddOn geholt):
 seo42_help_codeexamples_title6 = Ausgabe einer Navigation unter Berücksichtigung aller URL-Typen
-seo42_help_codeexamples_description6 = Hier ein paar Beispiele wie man die mitgelieferte Klasse <code>rex_navigation42</code> einsetzt:
+seo42_help_codeexamples_description6 = Hier ein paar Beispiele wie man die mitgelieferte Klasse <code>nav42</code> einsetzt:
 seo42_help_codeexamples_title7 = Titel Schema ändern
 seo42_help_codeexamples_description7 = Ein eigenes Titel Schema lässt sich momentan nur über die Überschreibung der getTitle() Methode realisieren:
 seo42_help_codeexamples_ex3_alt = Titel aus dem Medienpool
