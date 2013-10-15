@@ -44,6 +44,15 @@ echo nav42::getNavigationByLevel(0, 2, true, false, true);
 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment4') . '
 echo nav42::getNavigationByCategory(42, 2);
+
+// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5') . '
+echo nav42::getNavigationByCategory(42, 2, false, true, false, "current", "nav", "sf-menu", "cat_css_id", "cat_css_class", function($nav, $depth) {
+	if ($depth == 1) {
+		return htmlspecialchars($nav->getName());
+	} else {
+		return \'<a href="\' . $nav->getUrl() . \'">\' . htmlspecialchars($nav->getName()) . \'</a>\';
+	}
+});
 ?>';
 
 $codeExample7 = '<?php

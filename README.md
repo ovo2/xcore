@@ -30,8 +30,23 @@ Features
 * Kompatibel zum [Website Manager](https://github.com/RexDude/website_manager) AddOn
 * Enthält die Antwort auf die eine Frage ;)
 
-Verfügbare Plugins
-------------------
+Features der Klasse nav42
+-------------------------
+
+* Klasse `nav42` ist eine abgeleitete `rex_navigation` mit Zusatzfeatures
+* Ausgabe der Navigation von einer Katagorie aus oder über Kategorie-Levels
+* Es wird zuerst eine nackte UL-Liste ohne Klassen oder Ids ausgegeben
+* Startartikel der Website (z.B. Home) kann ausgeblendet werden
+* Einstellen der CSS-Klasse für selektierte Menüpunkte (z.B. `current`)
+* Die erste UL kann eine Klasse und/oder ID zugewiesen bekommen (Suckerfish/Superfish)
+* Angabe von MetaInfo Felder aus denen Klassen und IDs für die LI's herausgezogen werden
+* Angabe einer benutzerdef. PHP-Funktion die den Inhalt des LI's zurückgibt
+* Unterstützung für alle URL-Typen von SEO42
+* Vollständige Codebeispiele in der Hilfe von SEO42
+
+
+Verfügbare Plugins für SEO42
+----------------------------
 
 * `redirects` von RexDude (ist beigelegt)
 * `url_control` von tbaddade: <https://github.com/tbaddade/redaxo_plugin_url_control>
@@ -40,7 +55,7 @@ Alle URL-Typen aktivieren
 -------------------------
 
 * Einige Url-Typen greifen erst, wenn bei der Ausgabe der Navigation auf diese reagiert wird.
-* Die Klasse `nav42` (ehemals `rex_navigation42`) unterstützt diese Typen bereits (ab Version 2.1.0 dem AddOn beigelegt).
+* Die Klasse `nav42` (ehemals `rex_navigation42`) unterstützt diese Typen bereits.
 * Über die Option `all_url_types` können diese bei Bedarf aber auch deaktiviert werden.
 
 Anpassungen für das Community Addon
