@@ -37,7 +37,7 @@ seo42_pr_tool_msg = Dieses Tool ermittelt den <a href="http://suchmaschinenoptim
 seo42_pr_tool_pagerank = PageRank
 seo42_pr_tool_failure = Nicht verfügbar
 seo42_pr_tool_domain_not_unlocked = Domain nicht freigeschaltet
-seo42_pr_tool_domain_unlock_msg = Sind Sie sicher, dass Sie die Domain "{0}" freischalten möchten?\n\nHinweis: Diese Domain wird damit wahrscheinlich von Google indiziert werden,\nwas unter bestimmten Umständen nicht erwünscht sein kann.
+seo42_pr_tool_domain_unlock_msg = Sind Sie sicher, dass Sie die Domain "{0}" freischalten möchten?\n\nHinweis: Diese Domain wird damit wahrscheinlich von Google indiziert werden,\nwas evtl. unter bestimmten Umständen nicht erwünscht sein soll.
 seo42_pr_tool_domain_unlock_button = Domain freischalten
 
 seo42_configfile_update = Konfiguration wurde aktualisiert!
@@ -89,7 +89,7 @@ seo42_setup_htaccess_patch_failed = Die Anpassungen an der .htaccess Datei konnt
 seo42_setup_step2_button = Datei kopieren
 seo42_setup_step3 = Schritt 3: Template anpassen
 seo42_setup_step3_msg1 = Zuletzt passen Sie den Head-Bereich Ihres Templates wie folgt an:
-seo42_setup_step3_msg2 = Für mehrsprachige Websites fügen Sie zusätzlich diese Zeile hinzu:
+seo42_setup_step3_msg2 = Für eine mehrsprachige Website fügen Sie zusätzlich diese Zeile hinzu:
 seo42_setup_url_alert = URL dieser Website muss mit "http://" beginnen und mit "/" enden.
 seo42_setup_htaccess_alert = Im Hauptverzeichnis von REDAXO existiert bereits eine .htaccess Datei.\r\nWollen Sie diese überschreiben?\r\n\r\nHinweis: Ein Backup der Datei wird automatisch in /seo42/backup/ gespeichert.
 seo42_setup_codeexamples = Für ein optimales SEO nutzen Sie außerdem die PHP-Methoden aus den <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=codeexamples">Codebeispielen</a>...
@@ -180,7 +180,7 @@ seo42_help_codeexamples_ex6_comment1 = ausgabe des 1. navigationslevels
 seo42_help_codeexamples_ex6_comment2 = ausgabe des 2. und 3. navigationslevels
 seo42_help_codeexamples_ex6_comment3 = ausgabe des 1. und 2. navigationslevels, alle unterebenen werden angezeigt, auch offline-artikel sind enthalten, startartikel der website wird ausgeblendet
 seo42_help_codeexamples_ex6_comment4 = ausgabe der navigation mit startkategorie id = 42, 2 level tief
-seo42_help_codeexamples_ex6_comment5 = ausgabe der navigation mit startkategorie id = 42, 2 level tief, unterebenen werden nicht angezeigt, offline artikel werden nicht angezeigt, startartikel der website wird nicht ausgeblendet, li klasse für selektierte menüpunkte: "current", erste ul id: "nav", erste ul klasse "sf-menu", li id aus metainfo feld: "cat_css_id", li klasse aus metainfo feld: "cat_css_class", aufruf einer php funktion die den link zurückgibt (hier: erste ebene ohne verlinkung)
+seo42_help_codeexamples_ex6_comment5 = ausgabe der navigation mit startkategorie id = 42, 2 level tief, alle unterebenen werden angezeigt, offline artikel werden nicht angezeigt, startartikel der website wird nicht ausgeblendet, li klasse für selektierte menüpunkte: "current", erste ul id: "nav", erste ul klasse "sf-menu", li id aus metainfo feld: "cat_css_id", li klasse aus metainfo feld: "cat_css_class", aufruf einer php funktion die den link zurückgibt (hier: erste ebene ohne verlinkung)
 seo42_help_codeexamples_ex7_comment1 = eigene klasse ableiten und getTitle() methode überschreiben
 seo42_help_codeexamples_ex7_comment2 = gesamten titel in kleinbuchstaben ausgeben (als beispiel)
 seo42_help_codeexamples_ex7_comment3 = methoden aufrufe dann nur noch über diese abgeleitete klasse

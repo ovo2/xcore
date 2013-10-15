@@ -19,7 +19,7 @@ Features
 * Suchmaschinenfreundliche Image Manager Urls durch Verwendung der verfügbaren PHP-Methoden
 * SEO Tools inkl. Live PageRank Checker sowie Anzeige des Google Index der aktuellen Website
 * Klasse `nav42` zum Bauen von Navigationen. Alle URL-Typen werden hierbei berücksichtigt.
-* Einrichtung von 301 Umleitungen über das Redirects-Plugin
+* Einrichtung von 301 Umleitungen über das Redirects-Plugin. Parameter in den URLs sind möglich.
 * Spezielle sprachabhängige sowie sprachunabhängige Sonderzeichen-Umschreibungen einstellbar
 * Lang Slugs (de, en) können unabhängig von den REDAXO Sprachnamen gesetzt werden
 * Automatische `rel="alternate"` Tags für mehrsprachige Websites
@@ -40,7 +40,7 @@ Features der Klasse nav42
 * Einstellen der CSS-Klasse für selektierte Menüpunkte (z.B. `current`)
 * Die erste UL kann eine Klasse und/oder ID zugewiesen bekommen (Suckerfish/Superfish)
 * Angabe von MetaInfo Felder aus denen Klassen und IDs für die LI's herausgezogen werden
-* Angabe einer benutzerdef. PHP-Funktion die den Inhalt des LI's zurückgibt
+* Aufruf einer benutzerdef. PHP-Funktion möglich, die den Inhalt der LI's zurückgibt
 * Unterstützung für alle URL-Typen von SEO42
 * Vollständige Codebeispiele in der Hilfe von SEO42
 

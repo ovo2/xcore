@@ -46,7 +46,7 @@ echo nav42::getNavigationByLevel(0, 2, true, false, true);
 echo nav42::getNavigationByCategory(42, 2);
 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5') . '
-echo nav42::getNavigationByCategory(42, 2, false, true, false, "current", "nav", "sf-menu", "cat_css_id", "cat_css_class", function($nav, $depth) {
+echo nav42::getNavigationByCategory(42, 2, true, true, false, "current", "nav", "sf-menu", "cat_css_id", "cat_css_class", function($nav, $depth) {
 	if ($depth == 1) {
 		return htmlspecialchars($nav->getName());
 	} else {
@@ -92,8 +92,6 @@ class seo42_ex extends seo42
 
 // --> ' . strtoupper($I18N->msg('seo42_help_codeexamples_ex7_comment3')) . '
 echo seo42_ex::getTitle(); // ' . $I18N->msg('seo42_help_codeexamples_ex7_comment4') . '
-echo seo42_ex::getDescription();
-echo seo42_ex::getKeywords();
 ?>';
 
 ?>
