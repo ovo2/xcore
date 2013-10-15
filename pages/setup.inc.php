@@ -7,6 +7,14 @@ $func = rex_request('func', 'string');
 $htaccessRoot = $REX['FRONTEND_PATH'] . '/.htaccess';
 $backupPathRoot = $REX['INCLUDE_PATH'] . '/addons/seo42/backup/';
 
+if (isset($REX['WEBSITE_MANAGER'])) {
+	$wmDisabled = ' disabled="disabled"';
+	$step1Msg = $I18N->msg('seo42_setup_step1_msg1_wm', 'index.php?page=website_manager');
+} else {
+	$wmDisabled = '';
+	$step1Msg = $I18N->msg('seo42_setup_step1_msg1');
+}
+
 if ($func == "do_copy") {
 	// first backup files
 	$htaccessBackupFile = '_htaccess_' . date('Ymd_His');
@@ -124,16 +132,16 @@ if ($func == "do_copy") {
 <div class="rex-addon-output">
 	<h2 class="rex-hl2"><?php echo $I18N->msg('seo42_setup_step1'); ?></h2>
 	<div class="rex-area-content">
-		<p class="info-msg"><?php echo $I18N->msg('seo42_setup_step1_msg1'); ?></p>
+		<p class="info-msg"><?php echo $step1Msg; ?></p>
 		<form action="index.php" method="post" id="settings-form">
 			<p class="rex-form-col-a first-textfield">
 				<label for="servername"><?php echo $I18N->msg('seo42_setup_website_name'); ?></label>
-				<input name="servername" id="servername" type="text" class="rex-form-text" value="<?php echo htmlspecialchars($REX['SERVERNAME']); ?>" />
+				<input <?php echo $wmDisabled; ?> name="servername" id="servername" type="text" class="rex-form-text" value="<?php echo htmlspecialchars($REX['SERVERNAME']); ?>" />
 			</p>
 
 			<p class="rex-form-col-a">
 				<label for="server"><?php echo $I18N->msg('seo42_setup_website_url'); ?></label>
-				<input name="server" id="server" type="text" class="rex-form-text" value="<?php echo htmlspecialchars($REX['SERVER']); ?>" />
+				<input <?php echo $wmDisabled; ?> name="server" id="server" type="text" class="rex-form-text" value="<?php echo htmlspecialchars($REX['SERVER']); ?>" />
 				<?php if (seo42_utils::detectSubDir()) { echo '<span class="subdir-hint">' . $I18N->msg('seo42_setup_subdir_hint') . '</span>'; } ?>
 				<span class="url-hint"><?php echo $I18N->msg('seo42_setup_url_alert'); ?></span>
 			</p>
@@ -142,7 +150,7 @@ if ($func == "do_copy") {
 			<input type="hidden" name="subpage" value="setup" />
 			<input type="hidden" name="func" value="apply_settings" />
 			<div class="rex-form-row">
-				<p class="button"><input type="submit" class="rex-form-submit" name="sendit" value="<?php echo $I18N->msg('seo42_setup_step1_button'); ?>" /></p>
+				<p class="button"><input <?php echo $wmDisabled; ?> type="submit" class="rex-form-submit" name="sendit" value="<?php echo $I18N->msg('seo42_setup_step1_button'); ?>" /></p>
 			</div>
 		</form>
 	</div>

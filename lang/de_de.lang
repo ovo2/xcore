@@ -72,6 +72,7 @@ seo42_setup_settings_saved = Einstellungen wurden übernommen.
 seo42_setup_settings_save_failed = Speichern der Einstellungen fehlgeschlagen. Bitte nehmen Sie die Einstellungen manuell auf der System-Seite vor.
 seo42_setup_step1 = Schritt 1: Einstellungen vornehmen
 seo42_setup_step1_msg1 = Bitte die folgenden Einstellungen vornehmen bzw. ergänzen:
+seo42_setup_step1_msg1_wm = Bitte diese Einstellungen über den <a href="{0}">Website Manager</a> vornehmen.
 seo42_setup_website_name = Name der Website
 seo42_setup_website_url = URL der Website
 seo42_setup_step1_button = Einstellungen übernehmen
