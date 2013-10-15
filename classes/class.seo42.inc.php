@@ -50,7 +50,7 @@ class seo42 {
 			self::$server = self::$serverUrl;
 		}
 
-		if (isset($urlParts['path'])) {
+		if (isset($urlParts['path']) && isset($urlParts['scheme'])) { // if scheme is empty don't count on path as possible subdir 
 			self::$serverSubDir = trim($urlParts['path'], '/'); 
 		} else {
 			self::$serverSubDir = '';
