@@ -226,6 +226,11 @@ echo '
 	top: 26px;
 }
 
+/* simplerex skin */ #seo-page #title-box .cnt #seo_title {
+	position: relative;
+	top: 0px;
+}
+
 #seo-page .no-title-preview #title-box #seo_title {
 	position: relative;
 	top: auto;
@@ -265,10 +270,6 @@ echo '
 	font-weight: bold;
 }
 
-#seo-page div.rex-form div.rex-form-row label, div.rex-form div.rex-form-row p.rex-form-label {
-    width: 145px;
-}
-
 #seo-page div.rex-form div.rex-form-row p span.rex-form-notice {
 	margin-left: 155px;
 	margin-top: 4px;
@@ -298,7 +299,7 @@ div.rex-form div.rex-form-row.prefix p {
     width: 390px;
 }
 
-#seo-page div.rex-form div.rex-form-row p span.rex-form-notice.right {
+.be-style-agk-skin #seo-page div.rex-form div.rex-form-row p span.rex-form-notice.right {
     float: right;
     margin-left: 0;
     margin-right: 194px;
