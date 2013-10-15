@@ -1,23 +1,23 @@
 <?php
 
 class rex_navigation42 extends rex_navigation {
-	static function getNavigationByLevel($levelStart = 0, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $firstUlId = '', $firstUlClass = '', $selectedClass = 'selected') {
+	static function getNavigationByLevel($levelStart = 0, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') {
 		global $REX;
 		
 		$nav = self::factory();
 		$path = explode('|', ('0' . $REX['ART'][$REX['ARTICLE_ID']]['path'][$REX['CUR_CLANG']] . $REX['ARTICLE_ID'] . '|'));
 
-		return $nav->get($path[$levelStart], $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $firstUlId, $firstUlClass, $selectedClass);
+		return $nav->get($path[$levelStart], $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
 	}
 
-	static function getNavigationByCategory($categoryId, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $firstUlId = '', $firstUlClass = '', $selectedClass = 'selected') {
+	static function getNavigationByCategory($categoryId, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') {
 		$nav = self::factory();
 
-		return $nav->get($categoryId, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $firstUlId, $firstUlClass, $selectedClass);
+		return $nav->get($categoryId, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
 	}
 
 	// overwritten method (depends on factory() and get() methods)
-	function _getNavigation($categoryId, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $firstUlId = '', $firstUlClass = '', $selectedClass = 'selected') { 
+	function _getNavigation($categoryId, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') { 
 		global $REX;
 
 		static $depth = 0;
@@ -48,24 +48,33 @@ class rex_navigation42 extends rex_navigation {
 		}
 			
 		foreach ($navObj as $nav) {
-			$cssClasses = array();
+			$cssClasses = '';
+			$idAttribute = '';
 
-			// website specific
-			//$cssClasses[] = $nav->getValue('cat_css_class');
+			// li class from meta infos
+			if ($liClassFromMetaField != '' && $nav->getValue($liClassFromMetaField) != '') {
+				$cssClasses .= ' ' . $nav->getValue($liClassFromMetaField);
+			}
 
+			// li id from meta infos
+			if ($liIdFromMetaField != '' && $nav->getValue($liIdFromMetaField) != '') {
+				$idAttribute = ' id="' . $nav->getValue($liIdFromMetaField) . '"';
+			}
+
+			// selected class
 			if ($nav->getId() == $this->current_category_id) {
 				// current menuitem
-				$cssClasses[] = $selectedClass;
+				$cssClasses .= ' ' . $currentClass;
 			} elseif (in_array($nav->getId(), $this->path)) {
 				// active menuitem in path
-				$cssClasses[] = $selectedClass;
+				$cssClasses .= ' ' . $currentClass;
 			} else {
 				// do nothing
 			}
 
 			// build class attribute
-			if (count($cssClasses) > 0) {
-				$classAttribute = ' class="' . trim(implode(' ', $cssClasses)) . '"';
+			if ($cssClasses != '') {
+				$classAttribute = ' class="' . trim($cssClasses) . '"';
 			} else {
 				$classAttribute = '';
 			}
@@ -76,9 +85,13 @@ class rex_navigation42 extends rex_navigation {
 				$depth++;
 				$urlType = 0; // default
 
-				$return .= '<li' . $classAttribute . '>';
+				$return .= '<li' . $idAttribute . $classAttribute . '>';
 
-				$defaultLink = '<a href="' . $nav->getUrl() . '">' . htmlspecialchars($nav->getName()) . '</a>';
+				if ($linkFromUserFunc != '') {
+					$defaultLink = call_user_func($linkFromUserFunc, $nav, $depth);
+				} else {
+					$defaultLink = '<a href="' . $nav->getUrl() . '">' . htmlspecialchars($nav->getName()) . '</a>';
+				}
 
 				if (!class_exists('seo42')) {
 					// normal behaviour
@@ -116,7 +129,7 @@ class rex_navigation42 extends rex_navigation {
 								// select li that is current language
 								if ($REX['CUR_CLANG'] == $newClangId) {
 									$return = substr($return, 0, strlen($return) - strlen('<li>'));
-									$return .= '<li class="' . $selectedClass . '">';
+									$return .= '<li class="' . $currentClass . '">';
 								}
 
 								$return .= '<a href="' . rex_getUrl($newArticleId, $newClangId) . '">' . htmlspecialchars($nav->getName()) . '</a>';
@@ -134,7 +147,7 @@ class rex_navigation42 extends rex_navigation {
 				} 
 				
 				if (($this->open || $nav->getId() == $this->current_category_id || in_array($nav->getId(), $this->path)) && ($this->depth > $depth || $this->depth < 0)) {
-					$return .= $this->_getNavigation($nav->getId(), $ignoreOfflines, $hideWebsiteStartArticle, $firstUlId, $firstUlClass, $selectedClass);
+					$return .= $this->_getNavigation($nav->getId(), $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
 				}
 				
 				$depth--;
@@ -162,7 +175,7 @@ class rex_navigation42 extends rex_navigation {
 	}
 
 	// when overwriting _getNavigation() this needs to be overwritten too at the moment
-	function get($categoryId = 0, $depth = 3, $open = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $firstUlId = '', $firstUlClass = '', $selectedClass = 'selected') { 
+	function get($categoryId = 0, $depth = 3, $open = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') { 
 		if (!$this->_setActivePath()) {
 			return false;
 		}
@@ -171,7 +184,7 @@ class rex_navigation42 extends rex_navigation {
 		$this->open = $open;
 		$this->ignore_offlines = $ignoreOfflines;
 		
-		return $this->_getNavigation($categoryId, $this->ignore_offlines, $hideWebsiteStartArticle, $firstUlId, $firstUlClass, $selectedClass);
+		return $this->_getNavigation($categoryId, $this->ignore_offlines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
 	}
 }
 
