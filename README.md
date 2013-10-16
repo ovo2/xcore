@@ -91,6 +91,7 @@ Hinweise
 * Eine hilfreiche Sprach-Sonderzeichen-Tabelle für die Ermittlung der Sonderzeichen-Umschreibungen für die `settings.lang.inc.php` findet man hier: <http://unicode.e-workers.de/>
 * Vorläufige Sammlung der Lang-Presets hier: <https://github.com/RexDude/seo42/issues/61>
 * Momentan muss man noch von Hand benötigte Einstellungen in den Dateien `settings.advanced.inc.php` und `settings.lang.inc.php` vornehmen. Danach sollte der Cache gelöscht werden. Ab Version 3.0.0 sollten diese Dateien dann der Vergangenheit angehören ;)
+* Getestete Skins: `agk_skin` von REDAXO und `ppx_skin` von [polarpixel](https://github.com/polarpixel).
 
 Hinweise zum Redirects Plugin
 -----------------------------
