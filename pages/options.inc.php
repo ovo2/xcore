@@ -37,7 +37,9 @@ if ($func == 'update') {
 	}
 
 	// update robots file
-	if ($_robots != '') {
+	if ($REX['ADDON']['seo42']['settings']['robots'] == '' && $_robots == '') {
+		// do nothing
+	} else {
 		seo42_utils::updateRobotsFile($_robots);
 		seo42_utils::includeRobotsSettings();
 	}
