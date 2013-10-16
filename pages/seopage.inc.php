@@ -54,7 +54,9 @@ if (rex_post('saveseo', 'boolean')) {
 	$title = seo42_utils::sanitizeString(rex_post('seo_title'));
 	$description = seo42_utils::sanitizeString(rex_post('seo_description'));
 
-	$keywords = str_replace(',', ', ', rex_post('seo_keywords')); // always have a whitespace char after comma 
+	$keywords = str_replace(' , ', ',', rex_post('seo_keywords'));
+	$keywords = str_replace(',', ', ', $keywords); // always have a whitespace char after comma
+	$keywords = trim($keywords, " ,"); 
 	$keywords = strtolower(seo42_utils::sanitizeString($keywords)); // also keywords should be all lowercase
 	$canonicalUrl = seo42_utils::sanitizeString(rex_post('seo_canonical_url'));
 
@@ -325,7 +327,7 @@ jQuery(document).ready(function() {
 		updateDescriptionCount();
 	});
 
-	jQuery('#seo_keywords').keypress(function() {
+	jQuery('#seo_keywords').keyup(function() {
 		updateKeywordsCount();
 	});
 
