@@ -10,7 +10,7 @@ class rex_redirects_utils {
 		fclose($fileHandle);
 	}
 
-	public static function getCacheFile() {
+	public static function getRedirectsFile() {
 		global $REX;
 
 		if (isset($REX['WEBSITE_MANAGER']) && $REX['WEBSITE_MANAGER']->getCurrentWebsiteId() != 1) {
@@ -19,46 +19,45 @@ class rex_redirects_utils {
 			$file = 'redirects.inc.php';
 		}
 
-		return $file;
+		return $REX['INCLUDE_PATH'] . '/addons/seo42/generated/' . $file;
 	}
 
-	public static function updateCacheFile() {
+	public static function updateRedirectsFile() {
 		global $REX;
 
-		$cacheContent = '';
-		$cacheFile = $REX['INCLUDE_PATH'] . '/addons/seo42/generated/' . self::getCacheFile();
+		$redirectsContent = '';
+		$redirectsFile = self::getRedirectsFile();
 
-		if (!file_exists($cacheFile)) {
-			self::createDynFile($cacheFile);
+		if (!file_exists($redirectsFile)) {
+			self::createDynFile($redirectsFile);
 		}
 
 		// file content
-		$cacheContent .= '$REX[\'SEO42_REDIRECTS\'] = array(' . PHP_EOL;
+		$redirectsContent .= '$REX[\'SEO42_REDIRECTS\'] = array(' . PHP_EOL;
 
 		$sql = rex_sql::factory();
 		//$sql->debugsql = true;
 		$sql->setQuery('SELECT * FROM ' . $REX['TABLE_PREFIX'] . 'redirects');
 
 		for ($i = 0; $i < $sql->getRows(); $i++) {
-			$cacheContent .= "\t" . '"' . $sql->getValue('source_url') . '" => "' . $sql->getValue('target_url') . '"';
+			$redirectsContent .= "\t" . '"' . $sql->getValue('source_url') . '" => "' . $sql->getValue('target_url') . '"';
 		
 			if ($i < $sql->getRows() - 1) {
-				$cacheContent .= ', ' . PHP_EOL;
+				$redirectsContent .= ', ' . PHP_EOL;
 			}
 
 			$sql->next();
 		}
 
-		$cacheContent .= PHP_EOL . ');' . PHP_EOL;
+		$redirectsContent .= PHP_EOL . ');' . PHP_EOL;
 
-	  	rex_replace_dynamic_contents($cacheFile, $cacheContent);
+	  	rex_replace_dynamic_contents($redirectsFile, $redirectsContent);
 	}
 
 	public static function redirect() {
 		global $REX;
 
-		$file = rex_redirects_utils::getCacheFile();
-		$redirectsFile = $REX['INCLUDE_PATH'] . '/addons/seo42/generated/' . $file;
+		$redirectsFile = self::getRedirectsFile();
 
 		if (file_exists($redirectsFile)) {
 			include($redirectsFile);

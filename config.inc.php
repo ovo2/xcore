@@ -23,6 +23,9 @@ require_once($REX['INCLUDE_PATH'] . '/addons/seo42/settings.dyn.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/settings.advanced.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/settings.lang.inc.php');
 
+// robots settings (can be diffrent when website manager is installed)
+seo42_utils::includeRobotsSettings();
+
 // fix for iis webserver: set request uri manually if not available
 if (!isset($_SERVER['REQUEST_URI'])) {
 	$_SERVER['REQUEST_URI'] = substr($_SERVER['PHP_SELF'], 1);

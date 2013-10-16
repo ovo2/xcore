@@ -15,7 +15,7 @@ if($func == 'delete' && $redirect_id > 0) {
 		echo rex_warning($sql->getErrro());
 	}
 
-	rex_redirects_utils::updateCacheFile();
+	rex_redirects_utils::updateRedirectsFile();
 	
 	$func = '';
 }
@@ -24,7 +24,7 @@ if($func == 'delete' && $redirect_id > 0) {
 rex_register_extension('REX_FORM_SAVED', function ($params) {
 	global $REX;
 
-	rex_redirects_utils::updateCacheFile();
+	rex_redirects_utils::updateRedirectsFile();
 	
 	// use exit statement, if you want to debug
 	return true;
@@ -34,7 +34,7 @@ rex_register_extension('REX_FORM_SAVED', function ($params) {
 rex_register_extension('REX_FORM_DELETED', function ($params) {
 	global $REX;
 
-	rex_redirects_utils::updateCacheFile();
+	rex_redirects_utils::updateRedirectsFile();
 
 	// use exit statement, if you want to debug
 	return true;
@@ -109,7 +109,7 @@ echo '</div>';
 
 <script type="text/javascript">
 jQuery(document).ready( function() {
-	jQuery('form').submit(function() {
+	jQuery('#rex-addon-editmode form').submit(function() {
 		var pat = /^https?:\/\//i;
 		var sourceUrl = jQuery('#source-url').val();
 		var targetUrl = jQuery('#target-url').val();

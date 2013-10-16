@@ -20,7 +20,6 @@ if ($func == 'update') {
 	$REX['ADDON']['seo42']['settings']['hide_langslug'] = $_hide_langslug;
 	$REX['ADDON']['seo42']['settings']['homeurl'] = $_homeurl;
 	$REX['ADDON']['seo42']['settings']['homelang'] = $_homelang;
-	$REX['ADDON']['seo42']['settings']['robots'] = $_robots;
 
 	$content = '
 		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'url_schema\'] = \'' . $_url_schema . '\';
@@ -28,7 +27,6 @@ if ($func == 'update') {
 		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'hide_langslug\'] = ' . $_hide_langslug . ';
 		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'homeurl\'] = ' . $_homeurl . ';
 		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'homelang\'] = ' . $_homelang . ';
-		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'robots\'] = \'' . $_robots . '\';
 	';
 
 	// write independent config file
@@ -36,6 +34,12 @@ if ($func == 'update') {
 		echo rex_info($I18N->msg('seo42_config_ok'));
 	} else {
 		echo rex_warning($I18N->msg('seo42_config_error'));
+	}
+
+	// update robots file
+	if ($_robots != '') {
+		seo42_utils::updateRobotsFile($_robots);
+		seo42_utils::includeRobotsSettings();
 	}
 	
 	rexseo_generate_pathlist('');

@@ -523,4 +523,54 @@ class seo42_utils {
 
 		return false;
 	}
+
+	public static function createDynFile($file) {
+		$fileHandle = fopen($file, 'w');
+
+		fwrite($fileHandle, "<?php\r\n");
+		fwrite($fileHandle, "// --- DYN\r\n");
+		fwrite($fileHandle, "// --- /DYN\r\n");
+
+		fclose($fileHandle);
+	}
+
+	public static function getRobotsFile() {
+		global $REX;
+
+		if (isset($REX['WEBSITE_MANAGER']) && $REX['WEBSITE_MANAGER']->getCurrentWebsiteId() != 1) {
+			$file = 'robots' . $REX['WEBSITE_MANAGER']->getCurrentWebsiteId() . '.inc.php';
+		} else {
+			$file = 'robots.inc.php';
+		}
+
+		return $REX['INCLUDE_PATH'] . '/addons/seo42/generated/' . $file;
+	}
+
+	public static function updateRobotsFile($content) {
+		global $REX;
+
+		$robotsContent = '';
+		$robotsFile = self::getRobotsFile();
+
+		if (!file_exists($robotsFile)) {
+			self::createDynFile($robotsFile);
+		}
+
+		// file content
+		$robotsContent .= '$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'robots\'] = \'' . $content . '\';' . PHP_EOL;
+
+	  	rex_replace_dynamic_contents($robotsFile, $robotsContent);
+	}
+
+	public static function includeRobotsSettings() {
+		global $REX;
+
+		$robotsFile = self::getRobotsFile();
+
+		if (file_exists($robotsFile)) {
+			include($robotsFile);
+		} else {
+			$REX['ADDON']['seo42']['settings']['robots'] = '';
+		}
+	}
 }
