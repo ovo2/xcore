@@ -105,7 +105,7 @@ class nav42 extends rex_navigation {
 						$defaultLangCat = OOCategory::getCategoryById($nav->getId(), $REX['START_CLANG_ID']);
 						$urlDataDefaultLang = seo42::getCustomUrlData($defaultLangCat);
 				
-						if (isset($urlDataDefaultLang['url_clone'])) {
+						if (isset($urlDataDefaultLang['url_clone']) && $urlDataDefaultLang['url_clone']) {
 							// clone url data from default language to current language
 							$urlData = $urlDataDefaultLang;
 						}
