@@ -26,7 +26,7 @@ class rex_redirects_utils {
 		global $REX;
 
 		$cacheContent = '';
-		$cacheFile = $REX['INCLUDE_PATH'] . '/addons/seo42/plugins/redirects/generated/' . self::getCacheFile();
+		$cacheFile = $REX['INCLUDE_PATH'] . '/addons/seo42/generated/' . self::getCacheFile();
 
 		if (!file_exists($cacheFile)) {
 			self::createDynFile($cacheFile);
@@ -58,7 +58,7 @@ class rex_redirects_utils {
 		global $REX;
 
 		$file = rex_redirects_utils::getCacheFile();
-		$redirectsFile = $REX['INCLUDE_PATH'] . '/addons/seo42/plugins/redirects/generated/' . $file;
+		$redirectsFile = $REX['INCLUDE_PATH'] . '/addons/seo42/generated/' . $file;
 
 		if (file_exists($redirectsFile)) {
 			include($redirectsFile);

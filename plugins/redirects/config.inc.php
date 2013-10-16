@@ -6,7 +6,6 @@ $REX['ADDON']['author']['themes'] = 'RexDude';
 $REX['ADDON']['supportpage']['themes'] = 'forum.redaxo.de';
 
 // includes
-//require($REX['INCLUDE_PATH'] . '/addons/seo42/plugins/redirects/settings.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/plugins/redirects/classes/class.rex_redirects_utils.inc.php');
 
 if ($REX['REDAXO']) {
