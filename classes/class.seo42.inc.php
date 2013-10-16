@@ -171,6 +171,8 @@ class seo42 {
 	}
 
 	public static function getCanonicalUrl($ignoreQueryParams = array()) {
+		global $REX;
+
 		$queryString = '';
 
 		if (self::$curArticle->getValue('seo_canonical_url') != '') {
@@ -179,7 +181,7 @@ class seo42 {
 		}
 
 		// check if query string exists and parameters that shoud be ignored are not in params array
-		if (isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' && seo42_utils::strposa($_SERVER['QUERY_STRING'], $ignoreQueryParams) === false) {
+		if (!$REX['REDAXO'] && isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' && seo42_utils::strposa($_SERVER['QUERY_STRING'], $ignoreQueryParams) === false) {
 			$queryString = '?' . htmlspecialchars($_SERVER['QUERY_STRING']);
 		}
 
