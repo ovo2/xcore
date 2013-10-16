@@ -698,7 +698,9 @@ function rexseo_generate_pathlist($params)
 					
 					break;
 				case SEO42_URL_TYPE_CALL_FUNC:
-					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
+					if ($jsonData['no_url']) {
+						unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
+					}
 
 					break;
 				case SEO42_URL_TYPE_LANGSWITCH:
