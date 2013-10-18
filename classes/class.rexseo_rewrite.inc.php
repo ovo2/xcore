@@ -144,6 +144,9 @@ class RexseoRewrite
       }
 
       // STILL NO MATCH -> 404
+      $REX['HTTP_RESPONSE_CODE'] = 404; // this is for seo42 class
+      header("HTTP/1.0 404 Not Found"); // if this is not set here too, http_response_code() won't return 404 code
+
       self::setArticleId($notfound_id,$clang);
     }
   }

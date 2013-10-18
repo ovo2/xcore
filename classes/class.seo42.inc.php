@@ -175,6 +175,10 @@ class seo42 {
 
 		$queryString = '';
 
+		if (isset($REX['HTTP_RESPONSE_CODE']) && $REX['HTTP_RESPONSE_CODE'] == 404) {
+			return '';
+		}
+
 		if (self::$curArticle->getValue('seo_canonical_url') != '') {
 			// userdef canonical url
 			return self::$curArticle->getValue('seo_canonical_url');
@@ -194,6 +198,10 @@ class seo42 {
 
 		$out = '';
 		$i = 0;
+
+		if (isset($REX['HTTP_RESPONSE_CODE']) && $REX['HTTP_RESPONSE_CODE'] == 404) {
+			return '';
+		}
 
 		foreach ($REX['CLANG'] as $clangId => $clangName) {
 			$article = OOArticle::getArticleById(self::$curArticle->getId(), $clangId);
