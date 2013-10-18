@@ -450,10 +450,10 @@ class seo42_utils {
 		}
 	}
 
-	public static function isAllowedDomainForPageRankChecker() {
+	public static function isAllowedDomain() {
 		global $REX;
 
-		$domains = json_decode($REX['ADDON']['seo42']['settings']['allowed_domains_for_pagerank_checker'], true);
+		$domains = json_decode($REX['ADDON']['seo42']['settings']['allowed_domains'], true);
 		
 		if ($domains != NULL && in_array(seo42::getServerWithSubDir(), $domains)) {
 			return true;

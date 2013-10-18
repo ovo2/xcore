@@ -27,6 +27,7 @@ Features
 * Automatische sowie individuelle Canonical URLs
 * Nicht-WWW zu WWW Umleitung (und umgekehrt). Lässt sich auch über das Setup aktivieren.
 * Weitere Einstellungen (vorerst) in der `settings.advanced.inc.php` und `settings.lang.inc.php`
+* Keine Abhängigkeiten zu weiteren Addons wie Textile oder XForm
 * Kompatibel zum [Website Manager](https://github.com/RexDude/website_manager) AddOn
 * Enthält die Antwort auf die eine Frage ;)
 

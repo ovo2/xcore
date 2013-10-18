@@ -20,8 +20,6 @@ seo42_dbfields_readded_check_setup = {0}: Bitte überprüfen Sie ob das Setup (Sch
 seo42_check_lang_msg = {0}: Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.lang.inc.php" Datei.
 
 seo42_tools_caption = SEO Web Tools
-seo42_tool1 = Google Index dieser Website anzeigen
-seo42_tool1_desc = Überprüfen Sie wie Google Ihre Website {0} indiziert hat.
 seo42_tool2 = Google Submit Url
 seo42_tool2_desc = Geben Sie Google Ihre neue Website bekannt. Registrierung bzw. Google-Konto erforderlich.
 seo42_tool3 = Google Webmaster Tools
@@ -36,9 +34,14 @@ seo42_pr_tool = Google PageRank Checker
 seo42_pr_tool_msg = Dieses Tool ermittelt den <a href="http://suchmaschinenoptimierung.michaelsattler.de/pagerank.html" class="extern" target="_blank">PageRank</a> für
 seo42_pr_tool_pagerank = PageRank
 seo42_pr_tool_failure = Nicht verfügbar
-seo42_pr_tool_domain_not_unlocked = Domain nicht freigeschaltet
-seo42_pr_tool_domain_unlock_msg = Sind Sie sicher, dass Sie die Domain "{0}" freischalten möchten?\n\nHinweis: Diese Domain wird damit wahrscheinlich von Google indiziert werden,\nwas evtl. unter bestimmten Umständen nicht erwünscht sein soll.
-seo42_pr_tool_domain_unlock_button = Domain freischalten
+seo42_pr_tool_pagerank_ready = Bereit
+seo42_pr_tool_button = PageRank anzeigen
+seo42_tool_domain_not_unlocked = Domain nicht freigeschaltet
+seo42_tool_domain_unlock_msg = Sind Sie sicher, dass Sie die Domain "{0}" freischalten möchten?\n\nHinweis: Diese Domain wird damit wahrscheinlich von Google indiziert werden,\nwas evtl. unter bestimmten Umständen nicht erwünscht sein soll.
+seo42_tool_domain_unlock_button = Domain freischalten
+seo42_show_index_tool = Google Index anzeigen
+seo42_show_index_tool_msg = Überprüfen Sie wie Google Ihre Website {0} indiziert hat.
+seo42_show_index_tool_button = Google Index anzeigen
 
 seo42_configfile_update = Konfiguration wurde aktualisiert!
 seo42_configfile_nosave = Konfiguration konnte nicht gespeichert werden!

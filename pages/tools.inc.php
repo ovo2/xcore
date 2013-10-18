@@ -1,5 +1,5 @@
 <?php
-$config_file = $REX['INCLUDE_PATH'] . '/addons/seo42/settings.pagerank_checker.inc.php';
+$config_file = $REX['INCLUDE_PATH'] . '/addons/seo42/settings.domains.inc.php';
 
 require($config_file);
 require($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42_tool.inc.php');
@@ -8,7 +8,7 @@ require($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42_tool_manager.i
 $func = rex_request('func', 'string');
 
 if ($func == 'add_domain') {
-	$domains = json_decode($REX['ADDON']['seo42']['settings']['allowed_domains_for_pagerank_checker'], true);
+	$domains = json_decode($REX['ADDON']['seo42']['settings']['allowed_domains'], true);
 
 	if ($domains == NULL) {
 		$domains = array();
@@ -20,10 +20,10 @@ if ($func == 'add_domain') {
 
 	$json = json_encode($domains);
 
-	$REX['ADDON']['seo42']['settings']['allowed_domains_for_pagerank_checker'] = $json;
+	$REX['ADDON']['seo42']['settings']['allowed_domains'] = $json;
 
 	$content = '
-		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'allowed_domains_for_pagerank_checker\'] = \'' . $json . '\';
+		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'allowed_domains\'] = \'' . $json . '\';
 	';
 
 	if (rex_replace_dynamic_contents($config_file, str_replace("\t", "", $content)) !== false) {
@@ -37,7 +37,8 @@ if (!is_writable($config_file)) {
 	echo rex_warning($I18N->msg('seo42_configfile_nowrite'), $config_file);
 }
 
-$isAllowedDomainForPageRankChecker = seo42_utils::isAllowedDomainForPageRankChecker();
+$isAllowedDomain = seo42_utils::isAllowedDomain();
+$googleIndexLink = 'http://www.google.com/search?q=site:' . seo42::getServerWithSubDir();;
 ?>
 
 <?php if ($REX['ADDON']['seo42']['settings']['pagerank_checker']) { ?>
@@ -46,12 +47,16 @@ $isAllowedDomainForPageRankChecker = seo42_utils::isAllowedDomainForPageRankChec
 	<div class="rex-area-content">
 		<div class="tool-icon"></div>
 		<p><?php echo $I18N->msg('seo42_pr_tool_msg') . ' ' . seo42::getServerWithSubdir() ?>.</p>
-		<p class="pr"><?php echo $I18N->msg('seo42_pr_tool_pagerank'); ?>: <span id="pagerank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+		<p class="pr"><?php echo $I18N->msg('seo42_pr_tool_pagerank'); ?>: <span id="pagerank" class="info"><?php if ($isAllowedDomain) { echo $I18N->msg('seo42_pr_tool_pagerank_ready'); } else { echo $I18N->msg('seo42_tool_domain_not_unlocked'); } ?></span></p>
 		
-		<?php if (!$isAllowedDomainForPageRankChecker) { ?>
-		<form action="index.php" method="post" id="domain-unlock-form">		
+		<?php if ($isAllowedDomain) { ?>
+		<p>
+			<input id="pr-check" type="button" class="rex-form-submit" value="<?php echo $I18N->msg('seo42_pr_tool_button'); ?>" />
+		</p>
+		<?php } else { ?>
+		<form action="index.php" method="post" class="domain-unlock-form">		
 			<p id="domain-unlock">
-				<input type="submit" class="rex-form-submit" name="sendit" value="<?php echo $I18N->msg('seo42_pr_tool_domain_unlock_button'); ?>" />
+				<input type="submit" class="rex-form-submit" name="sendit" value="<?php echo $I18N->msg('seo42_tool_domain_unlock_button'); ?>" />
 			</p>
 			<input type="hidden" name="page" value="seo42" />
 			<input type="hidden" name="subpage" value="tools" />
@@ -62,11 +67,32 @@ $isAllowedDomainForPageRankChecker = seo42_utils::isAllowedDomainForPageRankChec
 </div>
 <?php } ?>
 
+<div class="rex-addon-output">
+	<h2 class="rex-hl2"><?php echo $I18N->msg('seo42_show_index_tool'); ?></h2>
+	<div class="rex-area-content">
+		<div class="tool-icon"></div>
+		<p><?php echo $I18N->msg('seo42_show_index_tool_msg', seo42::getServerWithSubdir()); ?></p>
+		<p class="url"><?php echo $googleIndexLink; ?></p>
+
+		<?php if ($isAllowedDomain) { ?>
+		<p>
+			<input id="show-index" type="button" class="rex-form-submit" value="<?php echo $I18N->msg('seo42_show_index_tool_button'); ?>" />
+		</p>
+		<?php } else { ?>
+		<form action="index.php" method="post" class="domain-unlock-form">		
+			<p id="domain-unlock">
+				<input type="submit" class="rex-form-submit" name="sendit" value="<?php echo $I18N->msg('seo42_tool_domain_unlock_button'); ?>" />
+			</p>
+			<input type="hidden" name="page" value="seo42" />
+			<input type="hidden" name="subpage" value="tools" />
+			<input type="hidden" name="func" value="add_domain" />
+		</form>
+		<?php } ?>
+	</div>
+</div>
+
 <?php
 $toolManager = new seo42_tool_manager();
-
-$tool = new seo42_tool($I18N->msg('seo42_tool1'), $I18N->msg('seo42_tool1_desc', seo42::getServerWithSubDir()), 'http://www.google.com/search?q=site:' . seo42::getServerWithSubDir());
-$toolManager->addTool($tool);
 
 $tool = new seo42_tool($I18N->msg('seo42_tool3'), $I18N->msg('seo42_tool3_desc'), 'http://www.google.com/webmasters/tools/');
 $toolManager->addTool($tool);
@@ -102,7 +128,7 @@ table.rex-table td p {
 	color: #32353A;
 }
 
-table.rex-table td p.url {
+p.url {
 	color: grey;
 }
 
@@ -121,11 +147,14 @@ div.rex-area-content p.pr {
 	top: 0;
 	margin-left: 5px;
 	font-size: 17px;
+}
+
+#pagerank.loading {
 	background: transparent url("../files/addons/seo42/loading.gif") no-repeat left 3px;
 }
 
 #pagerank.success,
-#pagerank.failure {
+#pagerank.info {
 	background: transparent;
 }
 
@@ -133,7 +162,7 @@ div.rex-area-content p.pr {
 	font-weight: bold;
 }
 
-#pagerank.failure {
+#pagerank.info {
 	font-style: italic;
 	font-size: 100%;
 }
@@ -142,7 +171,9 @@ div.rex-area-content p.pr {
 	font-size: 1.2em;
 }
 
-#domain-unlock {
+#domain-unlock,
+#pr-check,
+#show-index {
 	float: right;
 	margin-bottom: 10px;
 	margin-right: 5px;
@@ -151,37 +182,48 @@ div.rex-area-content p.pr {
 
 <script type="text/javascript">
 jQuery(document).ready(function($) {
-<?php if ($REX['ADDON']['seo42']['settings']['pagerank_checker'] && $isAllowedDomainForPageRankChecker) { ?>
-	// ajax call for pagerank checker
-	$.ajax({
-		url: window.location.pathname + '?function=getpagerank&url=<?php echo seo42::getServerWithSubdir(); ?>',
-		type : 'POST',
-		success : function (result) {
-			if (result === '') {
-				$('#pagerank').addClass('failure');
+	jQuery('#show-index').click(function() {
+		newWindow('show_index', '<?php echo $googleIndexLink; ?>', 1000, 800, ',status=yes,resizable=yes');
+        return false;
+	});
+
+	jQuery('#pr-check').click(function() {
+		$('#pagerank').removeClass('info');
+		$('#pagerank').addClass('loading');
+		$('#pagerank').html('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+
+		// ajax call for pagerank checker
+		$.ajax({
+			url: window.location.pathname + '?function=getpagerank&url=<?php echo seo42::getServerWithSubdir(); ?>',
+			type : 'POST',
+			success : function (result) {
+				$('#pagerank').removeClass('loading');
+
+				if (result === '') {
+					$('#pagerank').addClass('info');
+					$('#pagerank').html('<?php echo $I18N->msg('seo42_pr_tool_failure'); ?>');
+				} else {
+					$('#pagerank').addClass('success');
+					$('#pagerank').html(result);
+				}
+			},
+			error : function () {
+				$('#pagerank').removeClass('loading');
+				$('#pagerank').addClass('info');
 				$('#pagerank').html('<?php echo $I18N->msg('seo42_pr_tool_failure'); ?>');
-			} else {
-				$('#pagerank').addClass('success');
-				$('#pagerank').html(result);
 			}
-		},
-		error : function () {
-			$('#pagerank').addClass('failure');
-			$('#pagerank').html('<?php echo $I18N->msg('seo42_pr_tool_failure'); ?>');
-		}
+		});
 	});
-<?php } else { ?>
-	$('#pagerank').addClass('failure');
-	$('#pagerank').html('<?php echo $I18N->msg('seo42_pr_tool_domain_not_unlocked'); ?>');
 
-	jQuery('#domain-unlock-form').submit(function() {
-		if (confirm('<?php echo $I18N->msg('seo42_pr_tool_domain_unlock_msg', seo42::getServerWithSubDir()); ?>')) {
-			return true;
-		}
+	<?php if (!$isAllowedDomain) { ?>
+		jQuery('.domain-unlock-form').submit(function() {
+			if (confirm('<?php echo $I18N->msg('seo42_tool_domain_unlock_msg', seo42::getServerWithSubDir()); ?>')) {
+				return true;
+			}
 
-		return false;
-	});
-<?php } ?>
+			return false;
+		});
+	<?php } ?>
 });
 </script>
 
