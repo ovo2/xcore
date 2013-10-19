@@ -30,6 +30,7 @@ switch($subpage){
 		$subpage = $startSubpage;
 	case 'welcome':
 	case 'options':
+	case 'redirects':
 	case 'tools':
 	case 'setup':
 	case 'help':

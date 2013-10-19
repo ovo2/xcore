@@ -35,6 +35,11 @@ if (!isset($_SERVER['REQUEST_URI'])) {
 	}
 }
 
+// redirect if necessary
+if (!$REX['REDAXO']) {
+	seo42_utils::redirect();
+}
+
 // init
 if (!$REX['SETUP']) {
 	// auto mod rewrite, but not for redaxo system page
@@ -73,7 +78,8 @@ if ($REX['REDAXO']) {
 		// add subpages
 		$REX['ADDON']['seo42']['SUBPAGES'] = array(
 			array('', $I18N->msg('seo42_welcome')),
-			array('tools', $I18N->msg('seo42_tools'))
+			array('tools', $I18N->msg('seo42_tools')),
+			array('redirects', $I18N->msg('seo42_redirects'))
 		);
 
 		// plugins

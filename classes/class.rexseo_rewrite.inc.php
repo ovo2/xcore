@@ -310,8 +310,13 @@ class RexseoRewrite
       ob_end_clean();
     }
 
-    header('HTTP/1.1 '.$status);
-    header('Location:'.$location);
+	if ($status == 301) {
+		header('HTTP/1.1 301 Moved Permanently');
+	} else {
+	    header('HTTP/1.1 ' . $status);		
+	}
+
+    header('Location:' . $location);
     exit();
   }
 

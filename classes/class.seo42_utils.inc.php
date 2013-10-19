@@ -534,18 +534,6 @@ class seo42_utils {
 		fclose($fileHandle);
 	}
 
-	public static function getRobotsFile() {
-		global $REX;
-
-		if (isset($REX['WEBSITE_MANAGER']) && $REX['WEBSITE_MANAGER']->getCurrentWebsiteId() != 1) {
-			$file = 'robots' . $REX['WEBSITE_MANAGER']->getCurrentWebsiteId() . '.inc.php';
-		} else {
-			$file = 'robots.inc.php';
-		}
-
-		return $REX['INCLUDE_PATH'] . '/addons/seo42/generated/' . $file;
-	}
-
 	public static function updateRobotsFile($content) {
 		global $REX;
 
@@ -572,5 +560,82 @@ class seo42_utils {
 		} else {
 			$REX['ADDON']['seo42']['settings']['robots'] = '';
 		}
+	}
+
+	public static function updateRedirectsFile() {
+		global $REX;
+
+		$redirectsContent = '';
+		$redirectsFile = self::getRedirectsFile();
+
+		if (!file_exists($redirectsFile)) {
+			self::createDynFile($redirectsFile);
+		}
+
+		// file content
+		$redirectsContent .= '$REX[\'SEO42_REDIRECTS\'] = array(' . PHP_EOL;
+
+		$sql = rex_sql::factory();
+		//$sql->debugsql = true;
+		$sql->setQuery('SELECT * FROM ' . $REX['TABLE_PREFIX'] . 'redirects');
+
+		for ($i = 0; $i < $sql->getRows(); $i++) {
+			$redirectsContent .= "\t" . '"' . $sql->getValue('source_url') . '" => "' . $sql->getValue('target_url') . '"';
+		
+			if ($i < $sql->getRows() - 1) {
+				$redirectsContent .= ', ' . PHP_EOL;
+			}
+
+			$sql->next();
+		}
+
+		$redirectsContent .= PHP_EOL . ');' . PHP_EOL;
+
+	  	rex_replace_dynamic_contents($redirectsFile, $redirectsContent);
+	}
+
+	public static function redirect() {
+		global $REX;
+
+		$redirectsFile = self::getRedirectsFile();
+
+		if (file_exists($redirectsFile)) {
+			include($redirectsFile);
+
+			if (isset($REX['SEO42_REDIRECTS']) && count($REX['SEO42_REDIRECTS']) > 0 && array_key_exists($_SERVER['REQUEST_URI'], $REX['SEO42_REDIRECTS'])) {
+				$targetUrl = $REX['SEO42_REDIRECTS'][$_SERVER['REQUEST_URI']];
+			
+				if (strpos($targetUrl, 'http') === false) {
+					$location = 'http://' . $_SERVER['SERVER_NAME']  . $targetUrl;
+				} else {
+					$location = $targetUrl;
+				}
+		
+				header('HTTP/1.1 301 Moved Permanently');
+			 	header('Location: ' . $location);
+
+				exit;
+			}
+		}
+	}
+
+	public static function getCacheFile($cacheFile) {
+		global $REX;
+
+		if (isset($REX['WEBSITE_MANAGER']) && $REX['WEBSITE_MANAGER']->getCurrentWebsiteId() != 1) {
+			$file = $cacheFile . $REX['WEBSITE_MANAGER']->getCurrentWebsiteId() . '.inc.php';
+		} else {
+			$file = $cacheFile . '.inc.php';
+		}
+
+		return $REX['INCLUDE_PATH'] . '/addons/seo42/generated/' . $file;
+	}
+
+	public static function getRedirectsFile() {
+		return self::getCacheFile('redirects');
+	}
+
+	public static function getRobotsFile() {
+		return self::getCacheFile('robots');
 	}
 }

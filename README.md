@@ -19,7 +19,7 @@ Features
 * Suchmaschinenfreundliche Image Manager Urls durch Verwendung der verfügbaren PHP-Methoden
 * SEO Tools inkl. Live PageRank Checker sowie Anzeige des Google Index der aktuellen Website
 * Klasse `nav42` zum Bauen von Navigationen. Alle URL-Typen werden hierbei berücksichtigt.
-* Einrichtung von 301 Umleitungen über das Redirects-Plugin. Parameter in den URLs sind möglich.
+* Einrichtung von 301 Weiterleitungen. Parameter in der alten URL sind ohne Probleme möglich.
 * Spezielle sprachabhängige sowie sprachunabhängige Sonderzeichen-Umschreibungen einstellbar
 * Lang Slugs (de, en) können unabhängig von den REDAXO Sprachnamen gesetzt werden
 * Automatische `rel="alternate"` Tags für mehrsprachige Websites
@@ -45,11 +45,9 @@ Features der Klasse nav42
 * Unterstützung für alle URL-Typen von SEO42
 * Vollständige Codebeispiele in der Hilfe von SEO42
 
-
 Verfügbare Plugins für SEO42
 ----------------------------
 
-* `redirects` von RexDude (ist beigelegt)
 * `url_control` von tbaddade: <https://github.com/tbaddade/redaxo_plugin_url_control>
 
 Alle URL-Typen aktivieren
@@ -93,11 +91,6 @@ Hinweise
 * Vorläufige Sammlung der Lang-Presets hier: <https://github.com/RexDude/seo42/issues/61>
 * Momentan muss man noch von Hand benötigte Einstellungen in den Dateien `settings.advanced.inc.php` und `settings.lang.inc.php` vornehmen. Danach sollte der Cache gelöscht werden. Ab Version 3.0.0 sollten diese Dateien dann der Vergangenheit angehören ;)
 * Getestete Skins: `agk_skin` von REDAXO und `ppx_skin` von [polarpixel](https://github.com/polarpixel).
-
-Hinweise zum Redirects Plugin
------------------------------
-
-* Bitte Urls immer mit einem Splash beginnen, die Ziel Url kann aber auch mit `http://` beginnen. Plugin ist Website Manager kompatibel.
 
 FAQ
 ---

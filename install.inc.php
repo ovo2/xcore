@@ -24,7 +24,7 @@ foreach ($disable_addons as $a) {
 }
 
 // auto install plugins
-$returnmsg = seo42_utils::autoInstallPlugins('seo42', array());
+$returnmsg = seo42_utils::autoInstallPlugins('seo42', array()); // no plugins yet to auto install
 
 if ($returnmsg != '') {
 	$error[] = $returnmsg;
@@ -34,9 +34,18 @@ if ($returnmsg != '') {
 if (count($error) == 0) {
 	$sql = new rex_sql();
 	//$sql->debugsql = true;
+
+	// IMPORTANT: if adding/removing db fields here, check also for uninstall.inc.php and seo42_utils::afterDBImport()
 	$sql->setQuery('ALTER TABLE `' . $REX['TABLE_PREFIX'] . 'article` ADD `seo_title` TEXT, ADD `seo_description` TEXT, ADD `seo_keywords` TEXT, ADD `seo_custom_url` TEXT, ADD `seo_canonical_url` TEXT, ADD `seo_noindex` VARCHAR(1), ADD `seo_ignore_prefix` VARCHAR(1)');
 
-	// if adding/removing db fields here, check also for uninstall.inc.php and seo42_utils::afterDBImport()
+	// redirects
+	$sql->setQuery("
+		CREATE TABLE IF NOT EXISTS `" . $REX['TABLE_PREFIX'] . "redirects` (
+		`id` int(11) NOT NULL AUTO_INCREMENT,
+		`source_url` varchar(255) NOT NULL,
+		`target_url` varchar(255) NOT NULL,
+		PRIMARY KEY (`id`)
+	);");
 
 	// delete cache
 	rex_generateAll();
@@ -44,7 +53,7 @@ if (count($error) == 0) {
 	// done!
 	$REX['ADDON']['install'][$myself] = 1;
 } else {
-	$REX['ADDON']['installmsg'][$myself] = '<br />'.implode($error,'<br />');
+	$REX['ADDON']['installmsg'][$myself] = '<br />' . implode($error, '<br />');
 	$REX['ADDON']['install'][$myself] = 0;
 }
 

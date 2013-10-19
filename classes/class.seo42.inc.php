@@ -479,7 +479,7 @@ class seo42 {
 		$out .= rex_highlight_string($content, true);
 
 		// redirects
-		$redirectsRoot = $REX['INCLUDE_PATH'] . '/addons/seo42/plugins/redirects/generated/redirects.inc.php';
+		$redirectsRoot = seo42_utils::getRedirectsFile();
 
 		if (file_exists($redirectsRoot)) {
 			$out .= '<h2>Redirects</h2>';

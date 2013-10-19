@@ -88,7 +88,7 @@ Yup. In der .htaccess die entsprechenden Zeilen un-auskommentieren bzw. über Se
 Meine URLs haben sich geändert. Wie kann ich saubere Weiterleitungen hinbekommen?
 ---------------------------------------------------------------------------------
 
-Dafür gibt es mittlerweile das mitgelieferte Redirects Plugin. Bitte Urls immer mit einem Splash beginnen, die Ziel Url kann aber auch mit http:// beginnen.
+Dies ist mittlerweile über die Redirects-Seite möglich. Bitte Urls immer mit einem Splash beginnen, die Ziel Url kann aber auch mit http:// beginnen.
 
 
 Habe gehört das es SEO-technisch gut wäre wenn Bilder ein Alt-Attribut zugewiesen bekommen?
