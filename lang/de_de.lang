@@ -181,9 +181,23 @@ seo42_help_codeexamples_description7 = Ein eigenes Titel Schema lässt sich momen
 seo42_help_codeexamples_ex3_alt = Titel aus dem Medienpool
 seo42_help_codeexamples_ex6_comment1 = ausgabe des 1. navigationslevels
 seo42_help_codeexamples_ex6_comment2 = ausgabe des 2. und 3. navigationslevels
-seo42_help_codeexamples_ex6_comment3 = ausgabe des 1. und 2. navigationslevels, alle unterebenen werden angezeigt, auch offline-artikel sind enthalten, startartikel der website wird ausgeblendet
-seo42_help_codeexamples_ex6_comment4 = ausgabe der navigation mit startkategorie id = 42, 2 level tief
-seo42_help_codeexamples_ex6_comment5 = ausgabe der navigation mit startkategorie id = 42, 2 level tief, alle unterebenen werden angezeigt, offline artikel werden nicht angezeigt, startartikel der website wird nicht ausgeblendet, li klasse für selektierte menüpunkte: "current", erste ul id: "nav", erste ul klasse "sf-menu", li id aus metainfo feld: "cat_css_id", li klasse aus metainfo feld: "cat_css_class", aufruf einer php funktion die den link zurückgibt (hier: erste ebene ohne verlinkung)
+seo42_help_codeexamples_ex6_comment3_1 = ausgabe des 1. und 2. navigationslevels,
+seo42_help_codeexamples_ex6_comment3_2 = alle unterebenen werden angezeigt
+seo42_help_codeexamples_ex6_comment3_3 = auch offline-artikel sind enthalten
+seo42_help_codeexamples_ex6_comment3_4 = startartikel der website wird ausgeblendet
+seo42_help_codeexamples_ex6_comment4_1 = ausgabe der navigation mit startkategorie id = 42
+seo42_help_codeexamples_ex6_comment4_2 = 2 level tief
+seo42_help_codeexamples_ex6_comment5_1 = ausgabe der navigation mit startkategorie id = 42
+seo42_help_codeexamples_ex6_comment5_2 = 2 level tief
+seo42_help_codeexamples_ex6_comment5_3 = alle unterebenen werden angezeigt
+seo42_help_codeexamples_ex6_comment5_4 = offline artikel werden nicht angezeigt
+seo42_help_codeexamples_ex6_comment5_5 = startartikel der website wird nicht ausgeblendet
+seo42_help_codeexamples_ex6_comment5_6 = li klasse für selektierte menüpunkte: "current"
+seo42_help_codeexamples_ex6_comment5_7 = erste ul id: "nav"
+seo42_help_codeexamples_ex6_comment5_8 = erste ul klasse "sf-menu"
+seo42_help_codeexamples_ex6_comment5_9 = li id aus metainfo feld: "cat_css_id"
+seo42_help_codeexamples_ex6_comment5_10 = li klasse aus metainfo feld: "cat_css_class"
+seo42_help_codeexamples_ex6_comment5_11 = php funktion die den link zurückgibt (hier als beispiel: erste ebene ohne verlinkung)
 seo42_help_codeexamples_ex7_comment1 = eigene klasse ableiten und getTitle() methode überschreiben
 seo42_help_codeexamples_ex7_comment2 = gesamten titel in kleinbuchstaben ausgeben (als beispiel)
 seo42_help_codeexamples_ex7_comment3 = methoden aufrufe dann nur noch über diese abgeleitete klasse

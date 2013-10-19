@@ -128,6 +128,7 @@ table.rex-table td p {
 	color: #32353A;
 }
 
+table.rex-table td p.url,
 p.url {
 	color: grey;
 }
