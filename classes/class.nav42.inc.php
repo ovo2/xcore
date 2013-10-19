@@ -23,16 +23,16 @@ class nav42 extends rex_navigation {
 		static $depth = 0;
 		
 		if ($categoryId < 1) {
-			$navObj = OOCategory::getRootCategories($ignoreOfflines);
+			$cats = OOCategory::getRootCategories($ignoreOfflines);
 		} else {
-			$navObj = OOCategory::getChildrenById($categoryId, $ignoreOfflines);
+			$cats = OOCategory::getChildrenById($categoryId, $ignoreOfflines);
 		}
 
 		$return = '';
 		$ulIdAttribute = '';
 		$ulClassAttribute = '';
 
-		if (count($navObj) > 0) {
+		if (count($cats) > 0) {
 			if ($depth == 0) {
 				// this is first ul
 				if ($firstUlId != '') {
@@ -47,25 +47,25 @@ class nav42 extends rex_navigation {
 			$return .= '<ul' . $ulIdAttribute . $ulClassAttribute . '>';
 		}
 			
-		foreach ($navObj as $nav) {
+		foreach ($cats as $cat) {
 			$cssClasses = '';
 			$idAttribute = '';
 
 			// li class from meta infos
-			if ($liClassFromMetaField != '' && $nav->getValue($liClassFromMetaField) != '') {
-				$cssClasses .= ' ' . $nav->getValue($liClassFromMetaField);
+			if ($liClassFromMetaField != '' && $cat->getValue($liClassFromMetaField) != '') {
+				$cssClasses .= ' ' . $cat->getValue($liClassFromMetaField);
 			}
 
 			// li id from meta infos
-			if ($liIdFromMetaField != '' && $nav->getValue($liIdFromMetaField) != '') {
-				$idAttribute = ' id="' . $nav->getValue($liIdFromMetaField) . '"';
+			if ($liIdFromMetaField != '' && $cat->getValue($liIdFromMetaField) != '') {
+				$idAttribute = ' id="' . $cat->getValue($liIdFromMetaField) . '"';
 			}
 
 			// selected class
-			if ($nav->getId() == $this->current_category_id) {
+			if ($cat->getId() == $this->current_category_id) {
 				// current menuitem
 				$cssClasses .= ' ' . $currentClass;
-			} elseif (in_array($nav->getId(), $this->path)) {
+			} elseif (in_array($cat->getId(), $this->path)) {
 				// active menuitem in path
 				$cssClasses .= ' ' . $currentClass;
 			} else {
@@ -79,7 +79,7 @@ class nav42 extends rex_navigation {
 				$classAttribute = '';
 			}
 
-			if ($hideWebsiteStartArticle && ($nav->getId() == $REX['START_ARTICLE_ID'])) {
+			if ($hideWebsiteStartArticle && ($cat->getId() == $REX['START_ARTICLE_ID'])) {
 				// do nothing
 			} else {
 				$depth++;
@@ -88,9 +88,9 @@ class nav42 extends rex_navigation {
 				$return .= '<li' . $idAttribute . $classAttribute . '>';
 
 				if ($linkFromUserFunc != '') {
-					$defaultLink = call_user_func($linkFromUserFunc, $nav, $depth);
+					$defaultLink = call_user_func($linkFromUserFunc, $cat, $depth);
 				} else {
-					$defaultLink = '<a href="' . $nav->getUrl() . '">' . htmlspecialchars($nav->getName()) . '</a>';
+					$defaultLink = '<a href="' . $cat->getUrl() . '">' . htmlspecialchars($cat->getName()) . '</a>';
 				}
 
 				if (!class_exists('seo42')) {
@@ -98,11 +98,11 @@ class nav42 extends rex_navigation {
 					$return .= $defaultLink;
 				} else {
 					// only with seo42 2.0.0+
-					$urlData = seo42::getCustomUrlData($nav);
+					$urlData = seo42::getCustomUrlData($cat);
 
 					// check if default lang has url clone option (but only if current categoy has no url data set)
 					if (count($REX['CLANG']) > 1 && !isset($urlData['url_type'])) {
-						$defaultLangCat = OOCategory::getCategoryById($nav->getId(), $REX['START_CLANG_ID']);
+						$defaultLangCat = OOCategory::getCategoryById($cat->getId(), $REX['START_CLANG_ID']);
 						$urlDataDefaultLang = seo42::getCustomUrlData($defaultLangCat);
 				
 						if (isset($urlDataDefaultLang['url_clone']) && $urlDataDefaultLang['url_clone']) {
@@ -114,7 +114,7 @@ class nav42 extends rex_navigation {
 					if (isset($urlData['url_type'])) {
 						switch ($urlData['url_type']) { 
 							case 5: // SEO42_URL_TYPE_NONE
-								$return .= htmlspecialchars($nav->getName());
+								$return .= htmlspecialchars($cat->getName());
 								break;
 							case 4: // SEO42_URL_TYPE_LANGSWITCH
 								$newClangId = $urlData['clang_id'];
@@ -132,10 +132,10 @@ class nav42 extends rex_navigation {
 									$return .= '<li class="' . $currentClass . '">';
 								}
 
-								$return .= '<a href="' . rex_getUrl($newArticleId, $newClangId) . '">' . htmlspecialchars($nav->getName()) . '</a>';
+								$return .= '<a href="' . rex_getUrl($newArticleId, $newClangId) . '">' . htmlspecialchars($cat->getName()) . '</a>';
 								break;
 							case 8: // SEO42_URL_TYPE_CALL_FUNC
-								$return .= call_user_func($urlData['func'], $nav);
+								$return .= call_user_func($urlData['func'], $cat);
 								break;
 							default:
 								$return .= $defaultLink;
@@ -146,8 +146,8 @@ class nav42 extends rex_navigation {
 					}
 				} 
 				
-				if (($this->open || $nav->getId() == $this->current_category_id || in_array($nav->getId(), $this->path)) && ($this->depth > $depth || $this->depth < 0)) {
-					$return .= $this->_getNavigation($nav->getId(), $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
+				if (($this->open || $cat->getId() == $this->current_category_id || in_array($cat->getId(), $this->path)) && ($this->depth > $depth || $this->depth < 0)) {
+					$return .= $this->_getNavigation($cat->getId(), $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
 				}
 				
 				$depth--;
@@ -156,7 +156,7 @@ class nav42 extends rex_navigation {
 			}
 		}
 
-		if (count($navObj) > 0) {
+		if (count($cats) > 0) {
 			$return .= '</ul>';
 		}
 

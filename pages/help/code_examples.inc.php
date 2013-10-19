@@ -60,11 +60,11 @@ echo nav42::getNavigationByCategory(42, 2);
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_9') . '
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_10') . '
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_11') . '
-echo nav42::getNavigationByCategory(42, 2, true, true, false, "current", "nav", "sf-menu", "cat_css_id", "cat_css_class", function($nav, $depth) {
+echo nav42::getNavigationByCategory(42, 2, true, true, false, "current", "nav", "sf-menu", "cat_css_id", "cat_css_class", function($cat, $depth) {
 	if ($depth == 1) {
-		return htmlspecialchars($nav->getName());
+		return htmlspecialchars($cat->getName());
 	} else {
-		return \'<a href="\' . $nav->getUrl() . \'">\' . htmlspecialchars($nav->getName()) . \'</a>\';
+		return \'<a href="\' . $cat->getUrl() . \'">\' . htmlspecialchars($cat->getName()) . \'</a>\';
 	}
 });
 ?>';

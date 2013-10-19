@@ -280,7 +280,7 @@ class seo42 {
 		if (self::$seoFriendlyImageManagerUrls && self::$modRewrite) {
 			return self::getMediaDir() . 'imagetypes/' . $imageType . '/' . $imageFile;
 		} else {
-			return '/index.php?rex_img_type=' . $imageType . '&amp;rex_img_file=' . $imageFile;
+			return self::getUrlStart() . 'index.php?rex_img_type=' . $imageType . '&amp;rex_img_file=' . $imageFile;
 		}
 	}
 
