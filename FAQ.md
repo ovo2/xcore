@@ -32,6 +32,11 @@ Wo legt SEO42 die Backups für die .htaccess Dateien an?
 Im Backup-Verzeichnis des AddOns: `/seo42/backup/`
 
 
+Warum kann kann man keine globalen Descriptions und Keywords eintragen, die dann für alle Seiten gültig sind?
+------------------------------------------------------------------------------------------------------------
+
+Weil doppelte Descriptions und Keywords von den Google Webmaster Tools als Problem dargestellt werden. Es ist also kein gutes SEO. Entweder man lässt die Felder leer oder füllt diese von Hand aus (für alle oder auch nur einige Seiten).
+
 SEO42 läuft nicht mehr rund. Was tun?
 -------------------------------------
 
