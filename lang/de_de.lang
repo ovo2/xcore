@@ -138,6 +138,12 @@ seo42_urlpage_updated = URL wurde aktualisiert.
 seo42_urlpage_lang_clone_hint = Hinweis
 seo42_urlpage_lang_clone_hint_msg = Einstellungen der Sprache {0} werden übernommen.
 seo42_urlpage_url_already_exists = Die URL "{0}" existiert bereits.
+seo42_urlpage_url_not_empty = Die URL darf nicht leer sein.
+seo42_urlpage_url_start_with_langslug = Die URL sollte mit dem LangSlug "{0}" beginnen.
+seo42_urlpage_url_end_with_html = Die URL sollte mit ".html" enden.
+seo42_urlpage_url_end_with_slash = Die URL sollte mit "/" enden.
+seo42_urlpage_url_end_with_empty = Die URL sollte nicht mit ".html" oder "/" enden.
+seo42_urlpage_url_proceed = Trotzdem fortfahren?
 
 seo42_urltype_intern = Verweis auf Artikel:
 seo42_urltype_intern_plus_clang = Verweis auf Artikel {0} der Sprache {1}.
