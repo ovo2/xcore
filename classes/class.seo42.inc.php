@@ -349,6 +349,10 @@ class seo42 {
 		return self::$is404Response;
 	}
 
+	public static function hasFullUrlFlag() {
+		return self::$fullUrls;
+	}
+
 	public static function getServer() {
 		return self::$server;
 	}
@@ -467,6 +471,8 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::getLangCount');
 		$out .= self::getDebugInfoRow('seo42::getTitleDelimiter');
 		$out .= self::getDebugInfoRow('seo42::getUrlStart');
+		$out .= self::getDebugInfoRow('seo42::hasFullUrlFlag');
+		$out .= self::getDebugInfoRow('seo42::has404ResponseFlag');
 		$out .= self::getDebugInfoRow('seo42::getMediaDir');
 		$out .= self::getDebugInfoRow('seo42::getMediaFile', array('image.png'));
 		$out .= self::getDebugInfoRow('seo42::getMediaAddonDir');

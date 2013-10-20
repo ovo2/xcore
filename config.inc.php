@@ -29,7 +29,7 @@ seo42_utils::includeRobotsSettings();
 // fix for iis webserver: set request uri manually if not available
 seo42_utils::requestUriFix();
 
-// redirect if necessary
+// do redirect for frontend if necessary
 if (!$REX['REDAXO']) {
 	seo42_utils::redirect();
 }
