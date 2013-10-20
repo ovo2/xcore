@@ -1,6 +1,31 @@
 SEO42 - Changelog
 =================
 
+### Version 2.6.0 BETA
+
+* Fixed: Bug bei Option `full_urls` in Kombination mit externen URLs 
+* Fixed: Ist der Fehlerartikel gleichzeitig der Startartikel wird auch hier nun ein 404 Header ausgegeben
+* Fixed: Redirects funktionieren jetzt auch mit REDAXO Unterordner Installationen
+* Fixed: bei `allow_articleid` = 0 und einer `article_id` URL wird jetzt ein 404 Fehler ausgegeben anstelle eines Redirects auf die Startseite
+* Fixed: Autom. Canonical URL und Rel Alternate Tags werden bei einem 404 Fehler nicht mehr gesetzt
+* Fixed: Website Manager Umschalter funktionierte nicht mehr, wenn man auf der Redirects Page war
+* Fixed: Wenn `URL der Website` = `www.redaxo.org` wurde ein Unterordner entdeckt
+* Klasse `rex_navigation42` in `nav42` umbenannt. 
+* Weitere Optionen für `nav42` hinzugefügt: `currentClass`, `firstUlId`, `firstUlClass`, `liIdFromMetaField`, `liClassFromMetaField`, `linkFromUserFunc`. Codebeispiele ergänzt und angepasst.
+* Das Redirects Plugin wurde direkt in SEO42 integriert
+* Redirects werden nun im `generated` Ordner von SEO42 gespeichert
+* Google Index Tool in seperatem Container und inkl. Domainfreischaltung
+* Wenn Website Manager installiert, wird Schritt 1 im Setup deaktiviert
+* Extra Robots Einträge werden nun im `generated` Ordner von SEO42 angelegt. Website Manager Kompatibilität hergestellt.
+* No-Caching Header für robots.txt und sitemap.xml hinzugefügt
+* Skin Tuning für `simplerex` und `ppx_skin`
+* ISO Lang-Datei hinzugefügt, damit Fehlermeldungen bei Install unter älteren REDAXO Versionen angezeigt werden
+* `getLangTags()` berücksichtigt jetzt auch evtl. Query Params in der URL. Lässt sich über die neue Option `include_query_params` abschalten.
+* Optionen `include_query_params` und `ignore_query_params` hinzugefügt
+* Datei `settings.pagerank_checker.inc.php` umbenannt in `settings.domains.inc.php`
+* Neuer FAQ Eintrag: `Warum kann kann man keine globalen Descriptions und Keywords eintragen, die dann für alle Seiten gültig sind?`
+* Finetuning, Codeoptimierungen, etc.
+
 ### Version 2.5.0 - 07. Oktober 2013
 
 * Base-Tag wieder eingeführt ;) Damit ist es nun prinzipiell egal, wie die URLs beginnen, ausser bei REDAXO-Unterordnerinstallation. Dort dürfen Sie nicht mit `/` anfangen. Einfach trotzdem Codebeispiele 2 nutzen :P
