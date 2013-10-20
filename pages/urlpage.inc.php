@@ -79,7 +79,7 @@ if (rex_post('save_data', 'boolean')) {
 		$newUrlData['url_clone'] = false;
 	}
 
-	if ($newUrlType == SEO42_URL_TYPE_DEFAULT) {
+	if ($newUrlType == SEO42_URL_TYPE_DEFAULT && !$newUrlData['url_clone']) {
 		$updateData = '';
 	} else {
 		$updateData = json_encode($newUrlData);

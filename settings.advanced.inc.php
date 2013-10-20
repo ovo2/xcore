@@ -25,6 +25,9 @@ $REX['ADDON']['seo42']['settings']['custom_canonical_url'] = false;
 // if true a noindex checkbox in seopage will be shown so that user will be able to set noindex robots flag for his articles
 $REX['ADDON']['seo42']['settings']['noindex_checkbox'] = false;
 
+// if true user will not be able to enter duplicate titles/keywords/descriptions in seopage
+$REX['ADDON']['seo42']['settings']['disallow_duplicate_seo_data'] = true;
+
 // ATTENTION: only set to true if your website is live and domain of website should be indexed by google! if true page rank checker tool will be shown in tools section.
 $REX['ADDON']['seo42']['settings']['pagerank_checker'] = true;
 
