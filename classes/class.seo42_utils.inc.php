@@ -602,19 +602,35 @@ class seo42_utils {
 		if (file_exists($redirectsFile)) {
 			include($redirectsFile);
 
-			if (isset($REX['SEO42_REDIRECTS']) && count($REX['SEO42_REDIRECTS']) > 0 && array_key_exists($_SERVER['REQUEST_URI'], $REX['SEO42_REDIRECTS'])) {
-				$targetUrl = $REX['SEO42_REDIRECTS'][$_SERVER['REQUEST_URI']];
-			
-				if (strpos($targetUrl, 'http') === false) {
-					$location = 'http://' . $_SERVER['SERVER_NAME']  . $targetUrl;
-				} else {
-					$location = $targetUrl;
-				}
-		
-				header('HTTP/1.1 301 Moved Permanently');
-			 	header('Location: ' . $location);
+			if (isset($REX['SEO42_REDIRECTS']) && count($REX['SEO42_REDIRECTS']) > 0) {
+				seo42::init(); 
 
-				exit;
+				if (seo42::isSubDirInstall()) {
+					// remove subdir from request uri
+					$requestUri = '/' . ltrim($_SERVER['REQUEST_URI'], '/' . seo42::getServerSubDir());
+				} else {
+					$requestUri = $_SERVER['REQUEST_URI'];
+				}
+
+				if (array_key_exists($requestUri, $REX['SEO42_REDIRECTS'])) {
+					if (seo42::isSubDirInstall()) {
+						// add subdir to target url
+						$targetUrl = '/' . seo42::getServerSubDir() . $REX['SEO42_REDIRECTS'][$requestUri];
+					} else {
+						$targetUrl = $REX['SEO42_REDIRECTS'][$requestUri];
+					}
+
+					if (strpos($targetUrl, 'http') === false) {
+						$location = 'http://' . $_SERVER['SERVER_NAME']  . $targetUrl;
+					} else {
+						$location = $targetUrl;
+					}
+		
+					header('HTTP/1.1 301 Moved Permanently');
+				 	header('Location: ' . $location);
+
+					exit;
+				}
 			}
 		}
 	}
@@ -637,5 +653,15 @@ class seo42_utils {
 
 	public static function getRobotsFile() {
 		return self::getCacheFile('robots');
+	}
+
+	public static function requestUriFix() { // for iis only
+		if (!isset($_SERVER['REQUEST_URI'])) {
+			$_SERVER['REQUEST_URI'] = substr($_SERVER['PHP_SELF'], 1);
+
+			if (isset($_SERVER['QUERY_STRING'])) {
+				$_SERVER['REQUEST_URI'] .= '?' . $_SERVER['QUERY_STRING'];
+			}
+		}
 	}
 }
