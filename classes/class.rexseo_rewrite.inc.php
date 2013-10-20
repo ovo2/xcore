@@ -146,11 +146,6 @@ class RexseoRewrite
       // STILL NO MATCH -> 404
       seo42::set404ResponseFlag();
 
-      // redaxo fix: start article of website should also have 404 header (but not for sitemap/robots file)
-      if (rex_request('rexseo_func') == '' && $notfound_id == $REX['START_ARTICLE_ID']) {
-        header("HTTP/1.0 404 Not Found"); 
-      }
-
       self::setArticleId($notfound_id,$clang);
     }
   }

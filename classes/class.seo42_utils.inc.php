@@ -66,6 +66,11 @@ class seo42_utils {
 		// controller
 		include($REX['INCLUDE_PATH'] . '/addons/seo42/controller.inc.php');
 
+		// redaxo fix: start article of website should also have 404 header
+		if (seo42::has404ResponseFlag() && $REX['START_ARTICLE_ID'] == $REX['NOTFOUND_ARTICLE_ID']) {
+        	header("HTTP/1.0 404 Not Found");
+		}
+
 		// rexseo post init
 		rex_register_extension_point('REXSEO_INCLUDED');
 	}
