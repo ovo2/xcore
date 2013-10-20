@@ -17,6 +17,7 @@ class seo42 {
 	protected static $isSubDirInstall;
 	protected static $urlStart;
 	protected static $modRewrite;
+	protected static $is404Response;
 	
 	public static function init() {
 		// to be called before resolve()
@@ -34,6 +35,7 @@ class seo42 {
 		self::$websiteName = $REX['SERVERNAME'];
 		self::$modRewrite = $REX['MOD_REWRITE'];
 		self::$fullUrls = $REX['ADDON']['seo42']['settings']['full_urls'];
+		self::$is404Response = false; // will be set from outside by set404ResponseFlag()
 
 		// pull apart server url
 		$urlParts = parse_url(self::$serverUrl);
@@ -152,7 +154,11 @@ class seo42 {
 		}
 	}
 
-	public static function getRobotRules() {
+	public static function getRobotRules() { 
+		if (self::has404ResponseFlag()) {
+			return 'noindex, nofollow, noarchive';
+		}
+
 		if (self::hasNoIndexFlag()) { 
 			$robots = "noindex";
 		} else {
@@ -175,7 +181,7 @@ class seo42 {
 
 		$queryString = '';
 
-		if (isset($REX['HTTP_RESPONSE_CODE']) && $REX['HTTP_RESPONSE_CODE'] == 404) {
+		if (self::has404ResponseFlag()) {
 			return '';
 		}
 
@@ -199,7 +205,7 @@ class seo42 {
 		$out = '';
 		$i = 0;
 
-		if (isset($REX['HTTP_RESPONSE_CODE']) && $REX['HTTP_RESPONSE_CODE'] == 404) {
+		if (self::has404ResponseFlag()) {
 			return '';
 		}
 
@@ -333,6 +339,14 @@ class seo42 {
 		} else {
 			return $REX['CLANG'][$clangID];
 		}
+	}
+
+	public static function set404ResponseFlag($enabled = true) {
+		self::$is404Response = $enabled;
+	}
+
+	public static function has404ResponseFlag() {
+		return self::$is404Response;
 	}
 
 	public static function getServer() {
