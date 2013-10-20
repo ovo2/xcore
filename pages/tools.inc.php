@@ -27,7 +27,7 @@ if ($func == 'add_domain') {
 	';
 
 	if (rex_replace_dynamic_contents($config_file, str_replace("\t", "", $content)) !== false) {
-		//echo rex_info($I18N->msg('seo42_configfile_update'));
+		echo rex_info($I18N->msg('seo42_tool_domain_unlocked'));
 	} else {
 		echo rex_warning($I18N->msg('seo42_configfile_nosave'));
 	}
@@ -184,12 +184,14 @@ div.rex-area-content p.pr {
 <script type="text/javascript">
 jQuery(document).ready(function($) {
 	jQuery('#show-index').click(function() {
-		newWindow('show_index', '<?php echo $googleIndexLink; ?>', 1000, 800, ',status=yes,resizable=yes');
+		newWindow('show_index', '<?php echo $googleIndexLink; ?>', 1000, 700, ',status=yes,resizable=yes');
         return false;
 	});
 
 	jQuery('#pr-check').click(function() {
 		$('#pagerank').removeClass('info');
+		$('#pagerank').removeClass('success');
+
 		$('#pagerank').addClass('loading');
 		$('#pagerank').html('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
 

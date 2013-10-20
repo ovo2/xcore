@@ -477,7 +477,6 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::getLangCount');
 		$out .= self::getDebugInfoRow('seo42::getTitleDelimiter');
 		$out .= self::getDebugInfoRow('seo42::getUrlStart');
-		$out .= self::getDebugInfoRow('seo42::hasFullUrlFlag');
 		$out .= self::getDebugInfoRow('seo42::has404ResponseFlag');
 		$out .= self::getDebugInfoRow('seo42::getQueryString');
 		$out .= self::getDebugInfoRow('seo42::getMediaDir');
