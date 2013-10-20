@@ -145,7 +145,10 @@ class RexseoRewrite
 
       // STILL NO MATCH -> 404
       $REX['HTTP_RESPONSE_CODE'] = 404; // this is for seo42 class
-      header("HTTP/1.0 404 Not Found"); // if this is not set here too, http_response_code() won't return 404 code
+
+      if (rex_request('rexseo_func') == '' /* not for sitemap/robots file */ && $notfound_id == $REX['START_ARTICLE_ID']) { // redaxo fix: start article of website should also have 404 header
+        header("HTTP/1.0 404 Not Found"); 
+      }
 
       self::setArticleId($notfound_id,$clang);
     }
