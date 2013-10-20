@@ -3,7 +3,6 @@ $articleID = rex_request('article_id');
 $clang = rex_request('clang');
 $ctype = rex_request('ctype');
 
-$doUpdate = true;
 $hideExtendedSection = '';
 $hideCanonicalUrl = '';
 $hideNoIndexCheckbox = '';
@@ -67,43 +66,6 @@ if (rex_post('saveseo', 'boolean')) {
 	$sql->setValue('seo_keywords', $keywords);
 	$sql->setValue('seo_canonical_url', $canonicalUrl);
 
-	if ($REX['ADDON']['seo42']['settings']['disallow_duplicate_seo_data']) {
-		$msg = '';
-		$sql2 = rex_sql::factory();
-		//$sql2->debugsql = true;
-
-		if ($title != '') {	
-			$sql2->setQuery('SELECT * FROM '. $REX['TABLE_PREFIX'] .'article WHERE NOT (id = ' . $articleID . ' AND clang = ' . $clang . ') AND seo_title LIKE "' . $title . '"');
-
-			if ($sql2->getRows() > 0) {
-				$msg = 'Doppelte Titel sind nicht erlaubt! Siehe Artikel: <a href="index.php?page=content&article_id=' . $sql2->getValue('id') . '&mode=seo&clang=' . $clang . '">' . $sql2->getValue('name') . '</a>';
-				$doUpdate = false;
-			}
-		}
-
-		if ($description != '') {	
-			$sql2->setQuery('SELECT * FROM '. $REX['TABLE_PREFIX'] .'article WHERE NOT (id = ' . $articleID . ' AND clang = ' . $clang . ') AND seo_description LIKE "' . $description . '"');
-
-			if ($sql2->getRows() > 0) {
-				$msq = '...';
-				$doUpdate = false;
-			}
-		}
-
-		if ($keywords != '') {	
-			$sql2->setQuery('SELECT * FROM '. $REX['TABLE_PREFIX'] .'article WHERE NOT (id = ' . $articleID . ' AND clang = ' . $clang . ') AND seo_keywords LIKE "' . $keywords . '"');
-
-			if ($sql2->getRows() > 0) {
-				$msq = '...';
-				$doUpdate = false;
-			}
-		}
-
-		if (!$doUpdate) {
-			echo rex_warning($msg);
-		}
-	}
-
 	// ignore prefix
 	$ignorePrefix = rex_post('seo_ignore_prefix');
 
@@ -126,20 +88,18 @@ if (rex_post('saveseo', 'boolean')) {
 	$sql->setValue('updatedate',  time());
 
 	// do db update
-	if ($doUpdate) {
-		if ($sql->update()) {
-			// info msg
-			echo rex_info($I18N->msg('seo42_seopage_updated'));
+	if ($sql->update()) {
+		// info msg
+		echo rex_info($I18N->msg('seo42_seopage_updated'));
 
-			// delete cached article
-			rex_generateArticle($articleID);
+		// delete cached article
+		rex_generateArticle($articleID);
 
-			// reinit article to get correct values after possible update
-			seo42::initArticle($REX['ARTICLE_ID']);
-		} else {
-			// err msg
-			echo rex_warning($sql->getError());
-		}
+		// reinit article to get correct values after possible update
+		seo42::initArticle($REX['ARTICLE_ID']);
+	} else {
+		// err msg
+		echo rex_warning($sql->getError());
 	}
 }
 

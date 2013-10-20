@@ -435,58 +435,6 @@ jQuery(document).ready(function($) {
 	<?php if ($dataUpdated) { ?>jQuery('.rex-navi-content li:last-child a').attr('href', '<?php echo seo42::getFullUrl(); ?>');<?php } ?>
 
 	<?php if (!$doDataUpdate) { ?>$('#url_type').val(<?php echo rex_request('url_type', 'int'); ?>); $('#url_type').change();<?php } ?>
-	
-	$('#url-form').submit(function() {
-		if ($('#url_type').val() == <?php echo SEO42_URL_TYPE_USERDEF_INTERN; ?>) {
-			internalUrl = $('#userdef_intern').val();
-			urlEnding = '<?php echo $REX['ADDON']['seo42']['settings']['url_ending']; ?>';
-			homeUrl = <?php echo $REX['ADDON']['seo42']['settings']['homeurl']; ?>;
-			hideLangSlug = <?php echo $REX['ADDON']['seo42']['settings']['hide_langslug']; ?>;
-			curClang = <?php echo $REX['CUR_CLANG']; ?>;
-			langCode = '<?php echo seo42::getLangCode(); ?>';
-			confirmMsg = '';
-
-			if (internalUrl === '') {
-				alert('<?php echo $I18N->msg('seo42_urlpage_url_not_empty'); ?>');
-				return false;
-			}
-
-			if (homeUrl == 2 && hideLangSlug != curClang && internalUrl.indexOf(langCode + '/') != 0 && internalUrl.indexOf('/' + langCode + '/') != 0) {
-				confirmMsg = '<?php echo $I18N->msg('seo42_urlpage_url_start_with_langslug', seo42::getLangCode()); ?>';
-			}
-
-			if ((urlEnding === '.html') && (internalUrl.lastIndexOf('.html') == -1) && (internalUrl.lastIndexOf('.html') != internalUrl.length - 5)) {
-				if (confirmMsg !== '') {
-					confirmMsg += "\r\n";
-				}
-
-				confirmMsg += '<?php echo $I18N->msg('seo42_urlpage_url_end_with_html'); ?>';
-			} else if ((urlEnding === '/') && (internalUrl.lastIndexOf('/') != (internalUrl.length - 1))) {
-				if (confirmMsg !== '') {
-					confirmMsg += "\r\n";
-				}
-
-				confirmMsg += '<?php echo $I18N->msg('seo42_urlpage_url_end_with_slash'); ?>';
-			} else if ((urlEnding.length == 0) && ((internalUrl.indexOf('.html') != -1) || (internalUrl.lastIndexOf('/') == (internalUrl.length - 1)))) {
-				if (confirmMsg !== '') {
-					confirmMsg += "\r\n";
-				}
-
-				confirmMsg += '<?php echo $I18N->msg('seo42_urlpage_url_end_with_empty'); ?>';
-			}
-
-			if (confirmMsg !== '') {
-				confirmMsg += "\r\n";
-				confirmMsg += '<?php echo $I18N->msg('seo42_urlpage_url_proceed'); ?>';
-
-				return confirm(confirmMsg);
-			}
-
-			return true;
-		} else {
-			return true;
-		}
-	});	
 });
 </script>
 
