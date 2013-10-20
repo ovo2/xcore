@@ -4,7 +4,6 @@ SEO42 - Changelog
 ### Version 2.6.0 BETA
 
 * Fixed: Bug bei Option `full_urls` in Kombination mit externen URLs 
-* Fixed: Ist der Fehlerartikel gleichzeitig der Startartikel wird auch hier nun ein 404 Header ausgegeben
 * Fixed: Redirects funktionieren jetzt auch mit REDAXO Unterordner Installationen
 * Fixed: bei `allow_articleid` = 0 und einer `article_id` URL wird jetzt ein 404 Fehler ausgegeben anstelle eines Redirects auf die Startseite
 * Fixed: Autom. Canonical URL und Rel Alternate Tags werden bei einem 404 Fehler nicht mehr gesetzt
