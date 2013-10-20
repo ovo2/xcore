@@ -84,8 +84,17 @@ class rexseo_robots
 
     header('Content-Type: text/plain; charset=utf-8');
     header('Content-Length: '.strlen($robots));
+	
+	// no indexing
 	header('X-Robots-Tag: noindex, noarchive');
+
+	// no caching
+	header('Cache-Control: must-revalidate, proxy-revalidate, post-check=0, pre-check=0, private'); 
+    header('Pragma: no-cache');
+    header('Expires: -1');
+
     echo $robots;
+
     die();
   }
 

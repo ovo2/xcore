@@ -248,10 +248,20 @@ class rexseo_sitemap
       break;
       default:
     }
+
+	// content length
     header('Content-Length: '.strlen($map));
+
+	// no indexing
 	header('X-Robots-Tag: noindex, noarchive');
 
+	// no caching
+	header('Cache-Control: must-revalidate, proxy-revalidate, post-check=0, pre-check=0, private'); 
+    header('Pragma: no-cache');
+    header('Expires: -1');
+
     echo $map;
+
     die();
   }
 
