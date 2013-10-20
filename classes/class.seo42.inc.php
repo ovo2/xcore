@@ -18,6 +18,7 @@ class seo42 {
 	protected static $urlStart;
 	protected static $modRewrite;
 	protected static $is404Response;
+	protected static $ignoreQueryParams;
 	
 	public static function init() {
 		// to be called before resolve()
@@ -36,6 +37,7 @@ class seo42 {
 		self::$modRewrite = $REX['MOD_REWRITE'];
 		self::$fullUrls = $REX['ADDON']['seo42']['settings']['full_urls'];
 		self::$is404Response = false; // will be set from outside by set404ResponseFlag()
+		self::$ignoreQueryParams = $REX['ADDON']['seo42']['settings']['ignore_query_params'];
 
 		// pull apart server url
 		$urlParts = parse_url(self::$serverUrl);
@@ -176,10 +178,8 @@ class seo42 {
 		return $robots;
 	}
 
-	public static function getCanonicalUrl($ignoreQueryParams = array()) {
+	public static function getCanonicalUrl() {
 		global $REX;
-
-		$queryString = '';
 
 		if (self::has404ResponseFlag()) {
 			return '';
@@ -190,14 +190,20 @@ class seo42 {
 			return self::$curArticle->getValue('seo_canonical_url');
 		}
 
-		// check if query string exists and parameters that shoud be ignored are not in params array
-		if (!$REX['REDAXO'] && isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' && seo42_utils::strposa($_SERVER['QUERY_STRING'], $ignoreQueryParams) === false) {
-			$queryString = '?' . htmlspecialchars($_SERVER['QUERY_STRING']);
-		}
-
 		// automatic canonical url
-		return self::getFullUrl(self::$curArticle->getId()) . $queryString;
+		return self::getFullUrl(self::$curArticle->getId()) . self::getQueryString();
 	}
+
+	public static function getQueryString() {
+		global $REX;
+
+		// check if query string exists and parameters that shoud be ignored are not in params array
+		if (!$REX['REDAXO'] && $REX['ADDON']['seo42']['settings']['include_query_params'] && isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' && seo42_utils::strposa($_SERVER['QUERY_STRING'], self::$ignoreQueryParams) === false) {
+			return '?' . htmlspecialchars($_SERVER['QUERY_STRING']);
+		} else {
+			return '';
+		}
+	}  
 
 	public static function getLangTags($indent = "\t") {
 		global $REX;
@@ -221,7 +227,7 @@ class seo42 {
 					$out .= $indent;
 				}
 
-				$out .= '<link rel="alternate" href="' . self::getFullUrl(self::$curArticle->getId(), $clangId) . '" hreflang="' . $clangName . '" />' . PHP_EOL;
+				$out .= '<link rel="alternate" href="' . self::getFullUrl(self::$curArticle->getId(), $clangId)  . self::getQueryString() . '" hreflang="' . $clangName . '" />' . PHP_EOL;
 
 				$i++;
 			}
@@ -473,6 +479,7 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::getUrlStart');
 		$out .= self::getDebugInfoRow('seo42::hasFullUrlFlag');
 		$out .= self::getDebugInfoRow('seo42::has404ResponseFlag');
+		$out .= self::getDebugInfoRow('seo42::getQueryString');
 		$out .= self::getDebugInfoRow('seo42::getMediaDir');
 		$out .= self::getDebugInfoRow('seo42::getMediaFile', array('image.png'));
 		$out .= self::getDebugInfoRow('seo42::getMediaAddonDir');
