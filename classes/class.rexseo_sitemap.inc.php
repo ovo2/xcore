@@ -241,10 +241,10 @@ class rexseo_sitemap
     switch($this->mode)
     {
       case'json':
-        header('Content-Type: application/json');
+        header('Content-Type: application/json; charset=utf-8');
       break;
       case'xml':
-        header('Content-Type: application/xml');
+        header('Content-Type: application/xml; charset=utf-8');
       break;
       default:
     }
