@@ -16,7 +16,7 @@ class seo42 {
 	protected static $serverSubDir;
 	protected static $isSubDirInstall;
 	protected static $urlStart;
-	protected static $modRewrite;
+	protected static $rewriterEnabled;
 	protected static $is404Response;
 	protected static $ignoreQueryParams;
 	
@@ -34,7 +34,7 @@ class seo42 {
 		self::$seoFriendlyImageManagerUrls = $REX['ADDON']['seo42']['settings']['seo_friendly_image_manager_urls'];
 		self::$serverUrl = $REX['SERVER'];
 		self::$websiteName = $REX['SERVERNAME'];
-		self::$modRewrite = $REX['MOD_REWRITE'];
+		self::$rewriterEnabled = $REX['ADDON']['seo42']['settings']['rewriter'];
 		self::$fullUrls = $REX['ADDON']['seo42']['settings']['full_urls'];
 		self::$is404Response = false; // will be set from outside by set404ResponseFlag()
 		self::$ignoreQueryParams = $REX['ADDON']['seo42']['settings']['ignore_query_params'];
@@ -198,7 +198,7 @@ class seo42 {
 		global $REX;
 
 		// check if query string exists and parameters that shoud be ignored are not in params array
-		if (!$REX['REDAXO'] && $REX['ADDON']['seo42']['settings']['include_query_params'] && isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' && seo42_utils::strposa($_SERVER['QUERY_STRING'], self::$ignoreQueryParams) === false) {
+		if ($REX['ADDON']['seo42']['settings']['include_query_params'] && isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' && seo42_utils::strposa($_SERVER['QUERY_STRING'], self::$ignoreQueryParams) === false) {
 			return '?' . htmlspecialchars($_SERVER['QUERY_STRING']);
 		} else {
 			return '';
@@ -289,10 +289,17 @@ class seo42 {
 	}
 
 	public static function getImageManagerUrl($imageFile, $imageType) {
-		if (self::$seoFriendlyImageManagerUrls && self::$modRewrite) {
-			return self::getMediaDir() . 'imagetypes/' . $imageType . '/' . $imageFile;
+		global $REX;
+	
+		if ($REX['REDAXO']) {
+			// important for website manager: run image manager through backend index.php
+			return $REX['HTDOCS_PATH'] . 'redaxo/index.php?rex_img_type=' . $imageType . '&amp;rex_img_file=' . $imageFile;
 		} else {
-			return self::getUrlStart() . 'index.php?rex_img_type=' . $imageType . '&amp;rex_img_file=' . $imageFile;
+			if (self::$seoFriendlyImageManagerUrls && self::$rewriterEnabled) {
+				return self::getUrlStart() . self::$mediaDir . '/imagetypes/' . $imageType . '/' . $imageFile;
+			} else {
+				return self::getUrlStart() . 'index.php?rex_img_type=' . $imageType . '&amp;rex_img_file=' . $imageFile;
+			}
 		}
 	}
 
@@ -396,7 +403,13 @@ class seo42 {
 	}
 
 	public static function getMediaDir() {
-		return self::$urlStart . self::$mediaDir . '/';
+		global $REX;
+
+		if ($REX['REDAXO']) {
+			return $REX['HTDOCS_PATH'] . self::$mediaDir . '/';
+		} else {
+			return self::getUrlStart() . self::$mediaDir . '/';
+		}
 	}
 
 	public static function getMediaFile($file) {
@@ -428,12 +441,16 @@ class seo42 {
 	}
 
 	public static function getTrimmedUrl($id = '', $clang = '', $params = '', $divider = '&amp;') {
-		if (self::$fullUrls) {
-			return str_replace(self::getServerUrl(), '', rex_getUrl($id, $clang, $params, $divider));
-		} else {
-			return ltrim(rex_getUrl($id, $clang, $params, $divider), "./");
-		}
+		return self::trimUrl(rex_getUrl($id, $clang, $params, $divider));
 	}
+
+	public static function trimUrl($url) {
+		if (self::$fullUrls) {
+			return str_replace(self::getServerUrl(), '', $url);
+		} else {
+			return ltrim($url, "./");
+		}
+	} 
 
 	public static function getDebugInfo($articleId = 0) {
 		global $I18N, $REX;

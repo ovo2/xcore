@@ -263,11 +263,7 @@ class RexseoRewrite
     $url = str_replace('/redaxo/','/',$subdir.$url);
 
 	// retrieve trimmend url
-	if (seo42::hasFullUrlFlag()) {
-		$trimmedUrl = str_replace(seo42::getServerUrl(), '', $url);
-	} else {
-		$trimmedUrl = ltrim($url, seo42::getUrlStart());
-	}
+	$trimmedUrl = seo42::trimUrl($url);
 
 	// external urls / javascript urls etc. so we have to remove the url start string
 	if (!seo42_utils::isInternalCustomUrl($trimmedUrl)) {

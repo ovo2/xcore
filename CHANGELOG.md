@@ -15,6 +15,7 @@ SEO42 - Changelog
 * Redirects werden nun im `generated` Ordner von SEO42 gespeichert
 * Google Index Tool in seperatem Container und inkl. Domainfreischaltung
 * Wenn Website Manager installiert, wird Schritt 1 im Setup deaktiviert
+* Generelle Optimierungen für den Website Manager durchgeführt (z.B. `getImageManagerUrl()` verbessert)
 * Extra Robots Einträge werden nun im `generated` Ordner von SEO42 angelegt. Website Manager Kompatibilität hergestellt.
 * No-Caching Header für robots.txt und sitemap.xml hinzugefügt
 * Skin Tuning für `simplerex` und `ppx_skin`

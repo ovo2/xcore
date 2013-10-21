@@ -206,7 +206,7 @@ seo42_help_codeexamples_ex7_comment4 = gibt nun den titel in kleinbuchstaben aus
 
 seo42_help_debug = Debug
 seo42_help_debug_desc = Mit dieser Methode kann man detaillierte Debug-Informationen zum aktuellen Artikel abrufen:
-seo42_help_debug_output = Ausgabe mit Artikel-Id = {0}: (änderbar in der <code>settings.advanced.inc.php</code>)
+seo42_help_debug_output = Ausgabe wie im Frontend mit Artikel-Id = {0}:
 seo42_help_debug_article_wrong = Artikel ungültig!
 
 seo42_redirect_id = ID
