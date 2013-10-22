@@ -61,7 +61,7 @@ $REX['ADDON']['seo42']['settings']['one_page_mode'] = false;
 // if true root categories will be completly ignored and not be visible in generated urls (experimental)
 $REX['ADDON']['seo42']['settings']['ignore_root_cats'] = false;
 
-// only set to true if you want't to have urls wth special chars like in chinese language etc.
+// only set to true if you globally want't to have urls with special chars like in chinese language etc.. urlencode can also be activated in settings.lang.inc.php for specific languages also!
 $REX['ADDON']['seo42']['settings']['urlencode'] = false; 
 
 // 0 = don't allow article_id urls, show 404 error article | 1 = allow and 301 redirect to non-article_id urls | 2 = just allow both (not recommended!)

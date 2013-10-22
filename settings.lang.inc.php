@@ -1,8 +1,8 @@
 <?php
 
-/*****************************************************************
- **  DELETE REDAXO CACHE AFTER YOU MADE CHANGES TO THIS FILE!  **
- ****************************************************************/
+// ****************************************************************
+// **  DELETE REDAXO CACHE AFTER YOU MADE CHANGES TO THIS FILE!  **
+// ****************************************************************
 
 // GLOBAL SPECIAL CHAR REWRITE
 // used for rewriting special chars that are language dependent. valid for all languages
@@ -39,9 +39,9 @@ $REX['ADDON']['seo42']['settings']['lang'][0]['special_chars_rewrite'] = 'Ae|ae|
 //$REX['ADDON']['seo42']['settings']['lang'][3]['rewrite_mode'] = SEO42_REWRITEMODE_INHERIT;
 //$REX['ADDON']['seo42']['settings']['lang'][3]['inherit_from_clang'] = 1;
 
-/*****************************************************************
- **  DELETE REDAXO CACHE AFTER YOU MADE CHANGES TO THIS FILE!  **
- ****************************************************************/
+// ****************************************************************
+// **  DELETE REDAXO CACHE AFTER YOU MADE CHANGES TO THIS FILE!  **
+// ****************************************************************
 
 
 
