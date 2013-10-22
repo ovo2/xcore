@@ -219,8 +219,8 @@ class seo42 {
 			$article = OOArticle::getArticleById(self::$curArticle->getId(), $clangId);
 
 			if ($article->isOnline() || $REX['CUR_CLANG'] == $clangId) {
-				if (isset($REX['ADDON']['seo42']['settings']['langcodes'][$clangId])) {
-					$clangName = $REX['ADDON']['seo42']['settings']['langcodes'][$clangId];
+				if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['code'])) {
+					$clangName = $REX['ADDON']['seo42']['settings']['lang'][$clangId]['code'];
 				}
 
 				if ($i > 0) {
@@ -340,17 +340,41 @@ class seo42 {
 		self::$websiteName = $name;
 	}
 	
-	public static function getLangCode($clangID = -1) {
+	public static function getLangCode($clangId = -1) {
 		global $REX;
 
-		if ($clangID == -1) {
-			$clangID = $REX['CUR_CLANG'];
+		if ($clangId == -1) {
+			$clangId = $REX['CUR_CLANG'];
 		}
 
-		if (isset($REX['ADDON']['seo42']['settings']['langcodes'][$clangID])) {
-			return $REX['ADDON']['seo42']['settings']['langcodes'][$clangID];
+		if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['code'])) {
+			return $REX['ADDON']['seo42']['settings']['lang'][$clangId]['code'];
 		} else {
-			return $REX['CLANG'][$clangID];
+			return $REX['CLANG'][$clangId];
+		}
+	}
+
+	public static function getLangName($clangId = -1) {
+		global $REX;
+
+		if ($clangId == -1) {
+			$clangId = $REX['CUR_CLANG'];
+		}
+
+		return $REX['CLANG'][$clangId];
+	}
+
+	public static function getOriginalLangName($clangId = -1) {
+		global $REX;
+
+		if ($clangId == -1) {
+			$clangId = $REX['CUR_CLANG'];
+		}
+
+		if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['original_name'])) {
+			return $REX['ADDON']['seo42']['settings']['lang'][$clangId]['original_name'];
+		} else {
+			return $REX['CLANG'][$clangId];
 		}
 	}
 
@@ -483,6 +507,8 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::isStartArticle');
 		$out .= self::getDebugInfoRow('seo42::getWebsiteName');
 		$out .= self::getDebugInfoRow('seo42::getLangCode', array('0'));
+		$out .= self::getDebugInfoRow('seo42::getLangName', array('0'));
+		$out .= self::getDebugInfoRow('seo42::getOriginalLangName', array('0'));
 		$out .= self::getDebugInfoRow('seo42::getServerProtocol');
 		$out .= self::getDebugInfoRow('seo42::getBaseUrl');
 		$out .= self::getDebugInfoRow('seo42::getServerUrl');

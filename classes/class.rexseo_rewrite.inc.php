@@ -136,7 +136,13 @@ class RexseoRewrite
 
       if ($firstSlashPos !== false) {
         $possibleLangSlug = substr($path, 0, $firstSlashPos);
-        $clangId = array_search($possibleLangSlug, $REX['ADDON']['seo42']['settings']['langcodes']);
+		$langSlugs = array();
+
+		foreach ($REX['CLANG'] as $clangId => $clangName) {
+			$langSlugs[] = seo42::getLangCode($clangId);
+		}
+
+        $clangId = array_search($possibleLangSlug, $langSlugs);
 
         if ($clangId !== false) {
           $clang = $clangId;
@@ -486,8 +492,8 @@ function rexseo_generate_pathlist($params)
 	// redirects start articles withou slash: /xx to /xx/
 	if (count($REX['CLANG']) > 1 && $REX['ADDON']['seo42']['settings']['url_ending'] != '') {
 		foreach ($REX['CLANG'] as $clangId => $clangName) {
-			if (isset($REX['ADDON']['seo42']['settings']['langcodes'][$clangId])) {
-				$clangName = $REX['ADDON']['seo42']['settings']['langcodes'][$clangId];
+			if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['code'])) {
+				$clangName = $REX['ADDON']['seo42']['settings']['lang'][$clangId]['code'];
 			}
 
 			if ($REX['ADDON']['seo42']['settings']['homelang'] != $clangId) {
@@ -519,7 +525,7 @@ function rexseo_generate_pathlist($params)
           $path = explode('|', $path);
           foreach ($path as $p)
           {
-            $ooc = OOCategory::getCategoryById($p, $clang);
+            $ooc = OOCategory::getCategoryById($p, seo42_utils::getInheritedClang($clang));
 
             // PREVENT FATALS IN RARE CONDITIONS WHERE DB/CACHE ARE OUT OF SYNC
             if(!is_a($ooc,'OOCategory')){
@@ -538,7 +544,7 @@ function rexseo_generate_pathlist($params)
           }
         }
 
-        $ooa = OOArticle::getArticleById($id, $clang);
+		$ooa = OOArticle::getArticleById($id, seo42_utils::getInheritedClang($clang));
 
         // PREVENT FATALS IN RARE CONDITIONS WHERE DB/CACHE ARE OUT OF SYNC
         if(!is_a($ooa,'OOArticle')){
@@ -817,7 +823,7 @@ function rexseo_appendToPath($path, $name, $article_id, $clang)
 
   if ($name != '')
   {
-    if ($REX['ADDON']['seo42']['settings']['urlencode'])
+    if ($REX['ADDON']['seo42']['settings']['urlencode'] || (isset($REX['ADDON']['seo42']['settings']['lang'][$clang]['rewrite_mode']) && $REX['ADDON']['seo42']['settings']['lang'][$clang]['rewrite_mode'] == SEO42_REWRITEMODE_URLENCODE))
     {
       $name = str_replace('/','-',$name);
       $name = rawurlencode($name);
@@ -857,14 +863,15 @@ function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
 		$globalSpecialCharsRewrite = explode('|', $REX['ADDON']['seo42']['settings']['global_special_chars_rewrite']);
 
 		foreach ($REX['CLANG'] as $clangId => $clangName) {
-			if (isset($REX['ADDON']['seo42']['settings']['special_chars'][$clangId])) {
-				$specialCharsClang = $clangId;
-			} else {
-				$specialCharsClang = 0;
-			}
+			$inheritedClangId = seo42_utils::getInheritedClang($clangId);
 
-			$specialChars = explode('|', $REX['ADDON']['seo42']['settings']['special_chars'][$specialCharsClang]);
-			$specialCharsRewrite = explode('|', $REX['ADDON']['seo42']['settings']['special_chars_rewrite'][$specialCharsClang]);
+			if (isset($REX['ADDON']['seo42']['settings']['lang'][$inheritedClangId]['special_chars']) && isset($REX['ADDON']['seo42']['settings']['lang'][$inheritedClangId]['special_chars_rewrite'])) {
+				$specialChars = explode('|', $REX['ADDON']['seo42']['settings']['lang'][$inheritedClangId]['special_chars']);
+				$specialCharsRewrite = explode('|', $REX['ADDON']['seo42']['settings']['lang'][$inheritedClangId]['special_chars_rewrite']);
+			} else {
+				$specialChars = array();
+				$specialCharsRewrite = array();
+			}
 
 			$translation[$clangId] = array(
 				'search'  => array_merge($specialChars, $globalSpecialChars),

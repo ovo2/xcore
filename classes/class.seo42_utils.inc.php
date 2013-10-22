@@ -11,6 +11,10 @@ define('SEO42_URL_TYPE_INTERN_REPLACE', 7);
 define('SEO42_URL_TYPE_CALL_FUNC', 8); // should also be handled by navigation output.
 define('SEO42_URL_TYPE_USERDEF_EXTERN', 9);
 
+define('SEO42_REWRITEMODE_SPECIAL_CHARS', 0);
+define('SEO42_REWRITEMODE_URLENCODE', 1);
+define('SEO42_REWRITEMODE_INHERIT', 2);
+
 class seo42_utils {
 	public static function appendToPageHeader($params) {
 		global $REX;
@@ -662,6 +666,16 @@ class seo42_utils {
 			if (isset($_SERVER['QUERY_STRING'])) {
 				$_SERVER['REQUEST_URI'] .= '?' . $_SERVER['QUERY_STRING'];
 			}
+		}
+	}
+
+	public static function getInheritedClang($clang) {
+		global $REX;
+
+		if (isset($REX['ADDON']['seo42']['settings']['lang'][$clang]['rewrite_mode']) && isset($REX['ADDON']['seo42']['settings']['lang'][$clang]['inherit_from_clang']) && $REX['ADDON']['seo42']['settings']['lang'][$clang]['rewrite_mode'] == SEO42_REWRITEMODE_INHERIT) {
+			return $REX['ADDON']['seo42']['settings']['lang'][$clang]['inherit_from_clang'];
+		} else {
+			return $clang;
 		}
 	}
 }
