@@ -826,6 +826,7 @@ function rexseo_appendToPath($path, $name, $article_id, $clang)
     if ($REX['ADDON']['seo42']['settings']['urlencode'] || (isset($REX['ADDON']['seo42']['settings']['lang'][$clang]['rewrite_mode']) && $REX['ADDON']['seo42']['settings']['lang'][$clang]['rewrite_mode'] == SEO42_REWRITEMODE_URLENCODE))
     {
       $name = str_replace('/','-',$name);
+      $name = mb_strtolower($name, 'UTF-8');
       $name = rawurlencode($name);
     }
     else
