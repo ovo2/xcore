@@ -368,9 +368,9 @@ function updateTitlePreview() {
 		curTitle = curTitlePart;
 	} else {
 		if (isStartPage) {
-			curTitle = titlePrefix + titleDelimiter + curTitlePart;
+			curTitle = titlePrefix + ' ' + titleDelimiter + ' ' + curTitlePart;
 		} else {
-			curTitle = curTitlePart + titleDelimiter + titlePrefix;
+			curTitle = curTitlePart + ' ' + titleDelimiter + ' ' + titlePrefix;
 		}
 	}
 

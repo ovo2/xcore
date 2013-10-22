@@ -38,7 +38,7 @@ $REX['ADDON']['seo42']['settings']['non_www_to_www'] = true;
 $REX['ADDON']['seo42']['settings']['full_urls'] = false;
 
 // default title delimiter (including whitespace chars) for seperating name of website and page title
-$REX['ADDON']['seo42']['settings']['title_delimiter'] = ' | ';
+$REX['ADDON']['seo42']['settings']['title_delimiter'] = '-';
 
 // if true query params will be added to canonical url and rel alternate tags, but only if certain params not in ignore_query_params array
 $REX['ADDON']['seo42']['settings']['include_query_params'] = true;

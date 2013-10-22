@@ -13,6 +13,7 @@ SEO42 - Changelog
 * Weitere Optionen für `nav42` hinzugefügt: `currentClass`, `firstUlId`, `firstUlClass`, `liIdFromMetaField`, `liClassFromMetaField`, `linkFromUserFunc`. Codebeispiele ergänzt und angepasst.
 * Das Redirects Plugin wurde direkt in SEO42 integriert
 * Redirects werden nun im `generated` Ordner von SEO42 gespeichert
+* `title_delimiter` auf Standardwert "-" gesetzt da Google anscheined gerne mal die Titles nachträglich abändert in den Suchergebnissen und dabei auch "|" in "-" konvertiert.
 * Google Index Tool in seperatem Container und inkl. Domainfreischaltung
 * Wenn Website Manager installiert, wird Schritt 1 im Setup deaktiviert
 * Generelle Optimierungen für den Website Manager durchgeführt (z.B. `getImageManagerUrl()` verbessert)

@@ -92,10 +92,10 @@ class seo42_ex extends seo42
 		} else { 
 			if (self::isStartArticle()) {
 				// the start article shows the website name first
-				$fullTitle = $websiteName . self::getTitleDelimiter() . $titlePart;
+				$fullTitle = $websiteName . " " . self::getTitleDelimiter() . " " . $titlePart;
 			} else {
 				// all other articles will show title first
-				$fullTitle = $titlePart . self::getTitleDelimiter() . $websiteName;
+				$fullTitle = $titlePart . " " . self::getTitleDelimiter() . " " . $websiteName;
 			}
 		 }
 
