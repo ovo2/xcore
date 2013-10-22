@@ -21,6 +21,7 @@ Features
 * Klasse `nav42` zum Bauen von Navigationen. Alle URL-Typen werden hierbei berücksichtigt.
 * Einrichtung von 301 Weiterleitungen. Parameter in der alten URL sind ohne Probleme möglich.
 * Spezielle sprachabhängige sowie sprachunabhängige Sonderzeichen-Umschreibungen einstellbar
+* Pro Sprache kann Urlencode genutzt oder auch die URLs einer anderen Sprache übernommen werden
 * Lang Slugs (de, en) können unabhängig von den REDAXO Sprachnamen gesetzt werden
 * Automatische `rel="alternate"` Tags für mehrsprachige Websites
 * Option um die Indizierung von Seiten durch Suchmaschinen zu verhindern
