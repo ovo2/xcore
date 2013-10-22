@@ -101,7 +101,6 @@ seo42_setup_rewritebase = RewriteBase automatisch anpassen: <i>RewriteBase /{0}<
 seo42_setup_subdir_hint = (Bitte Unterordner mit angeben)
 seo42_setup_rewritebase_alert = Bitte folgende Anpassung in der .htaccess Datei vornehmen:
 seo42_setup_directory_listing_alert = Falls Ihr Webserver ein 500 Error melden sollte, dann bitte die Zeile \r\n\"Options -Indexes\" in der .htaccess Datei wieder entfernen.
-seo42_setup_notfound_article_hint = Der Fehlerartikel sollte nicht gleich dem Startartikel der Website sein. Bitte unter <a href="index.php?page=specials">System</a> korrigieren.
 
 seo42_seopage_updated = SEO-Daten wurden aktualisiert.
 seo42_seopage_main_section = Allgemein
