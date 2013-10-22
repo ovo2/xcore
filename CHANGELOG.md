@@ -9,6 +9,7 @@ SEO42 - Changelog
 * Fixed: Autom. Canonical URL und Rel Alternate Tags werden bei einem 404 Fehler nicht mehr gesetzt
 * Fixed: Website Manager Umschalter funktionierte nicht mehr, wenn man auf der Redirects Page war
 * Fixed: Wenn `URL der Website` = `www.redaxo.org` wurde ein Unterordner entdeckt
+* Teilweise Übersetzung in englisch (SEO- und URL-Page).
 * Klasse `rex_navigation42` in `nav42` umbenannt. 
 * Weitere Optionen für `nav42` hinzugefügt: `currentClass`, `firstUlId`, `firstUlClass`, `liIdFromMetaField`, `liClassFromMetaField`, `linkFromUserFunc`. Codebeispiele ergänzt und angepasst.
 * Das Redirects Plugin wurde direkt in SEO42 integriert
