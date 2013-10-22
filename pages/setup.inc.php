@@ -10,9 +10,11 @@ $backupPathRoot = $REX['INCLUDE_PATH'] . '/addons/seo42/backup/';
 if (isset($REX['WEBSITE_MANAGER'])) {
 	$wmDisabled = ' disabled="disabled"';
 	$step1Msg = $I18N->msg('seo42_setup_step1_msg1_wm', 'index.php?page=website_manager');
+	$notFoundArticleHint = $I18N->msg('seo42_setup_notfound_article_hint') . ' ' . $I18N->msg('seo42_setup_notfound_article_hint2_wm');
 } else {
 	$wmDisabled = '';
 	$step1Msg = $I18N->msg('seo42_setup_step1_msg1');
+	$notFoundArticleHint = $I18N->msg('seo42_setup_notfound_article_hint') . ' ' . $I18N->msg('seo42_setup_notfound_article_hint2');
 }
 
 if ($func == "do_copy") {
@@ -155,6 +157,12 @@ if ($func == "do_copy") {
 		</form>
 	</div>
 </div>
+
+<?php
+if ($REX['START_ARTICLE_ID'] == $REX['NOTFOUND_ARTICLE_ID']) {
+	echo rex_warning($notFoundArticleHint);
+}
+?>
 
 <div class="rex-addon-output">
 	<h2 class="rex-hl2"><?php echo $I18N->msg('seo42_setup_step2'); ?></h2>
