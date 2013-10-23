@@ -276,12 +276,6 @@ class RexseoRewrite
 		$url = $trimmedUrl;
 	}
 
-	if (isset($REX['ADDON']['seo42']['settings']['lang'][$clang]['rewrite_mode']) && $REX['ADDON']['seo42']['settings']['lang'][$clang]['rewrite_mode'] == SEO42_REWRITEMODE_URLENCODE) {
-		$urlencode = true;
-	} else {
-		$urlencode = false;
-	}
-
     // EP "REXSEO_POST_REWRITE"
     $ep_params = array('article_id'     => $id,
                        'clang'          => $clang,
@@ -290,9 +284,7 @@ class RexseoRewrite
                        'subdir'         => $subdir,
                        'urlparams'      => $urlparams,
                        'params'         => $params['params'],
-                       'divider'        => $params['divider'],
-                       'params_starter' => $REX['ADDON']['seo42']['settings']['params_starter'],
-                       'urlencode'      => $urlencode,
+                       'divider'        => $params['divider']
                        );
     $url = rex_register_extension_point('REXSEO_POST_REWRITE', $url, $ep_params);
 
