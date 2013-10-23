@@ -44,6 +44,9 @@ rex_register_extension('REX_FORM_DELETED', function ($params) {
 echo '<div class="rex-addon-output-v2">';
 
 if ($func == '') {
+	// redirects file check
+	seo42_utils::checkForRedirectsFile();
+
 	// rex list
 	$query = 'SELECT * FROM ' . $REX['TABLE_PREFIX'] . 'redirects ORDER BY id';
 

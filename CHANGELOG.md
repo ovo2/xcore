@@ -3,7 +3,7 @@ SEO42 - Changelog
 
 ### Version 2.6.0 BETA
 
-**Updatehinweise:** Bitte [Updateanleitung](https://github.com/RexDude/seo42#update-von-rexseo42-1112-auf-seo42-2x) beachten, auch für die 2er Versionen! Wenn die Redirects nicht mehr funktionieren, bitte auf der Redirects Seite ein Redirect öffnen und wieder speichern. Außerdem hat sich das Format der `settings.lang.inc.php` geändert, bitte auf das neue Format umstellen. Klasse `rex_navigation42` in `nav42` umbenannt. 
+**Updatehinweise:** Bitte [Updateanleitung](https://github.com/RexDude/seo42#update-von-rexseo42-1112-auf-seo42-2x) beachten, auch für die 2er Versionen! Wenn die Redirects nicht mehr funktionieren, bitte einmal die Redirects Seite aufrufen. Außerdem hat sich das Format der `settings.lang.inc.php` geändert, bitte auf das neue Format umstellen. Und: Klasse `rex_navigation42` wurde in `nav42` umbenannt. 
 
 * Fixed: Bug bei Option `full_urls` in Kombination mit externen URLs 
 * Fixed: Redirects funktionieren jetzt auch mit REDAXO Unterordner Installationen

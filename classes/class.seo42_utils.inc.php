@@ -595,7 +595,11 @@ class seo42_utils {
 
 		$redirectsContent .= PHP_EOL . ');' . PHP_EOL;
 
-	  	rex_replace_dynamic_contents($redirectsFile, $redirectsContent);
+	  	if (rex_replace_dynamic_contents($redirectsFile, $redirectsContent)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public static function redirect() {
@@ -678,4 +682,22 @@ class seo42_utils {
 			return $clang;
 		}
 	}
+
+	public static function checkForRedirectsFile() {
+		global $REX, $I18N;
+
+		$sql = rex_sql::factory();
+		//$sql->debugsql = true;
+		$sql->setQuery('SELECT * FROM ' . $REX['TABLE_PREFIX'] . 'redirects');
+
+		if ($sql->getRows() > 0 && !file_exists(self::getRedirectsFile())) {
+			if (self::updateRedirectsFile()) {
+				echo rex_info($I18N->msg('seo42_redirect_restore_cachefile_ok', '/seo42/generated/' . basename(self::getRedirectsFile())));
+			} else {
+				echo rex_warning($I18N->msg('seo42_redirect_restore_cachefile_fail', '/seo42/generated/' . basename(self::getRedirectsFile())));
+			}
+		}
+	}
+
+
 }
