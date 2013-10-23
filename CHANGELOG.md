@@ -3,6 +3,8 @@ SEO42 - Changelog
 
 ### Version 2.6.0 BETA
 
+Bitte [Updateanleitung](https://github.com/RexDude/seo42#update-von-rexseo42-1112-auf-seo42-2x) beachten, auch für die 2.5er Version! Wenn die Redirects nicht mehr funktionieren, bitte auf der Redirects Seite ein Redirect öffnen und wieder speichern.
+
 * Fixed: Bug bei Option `full_urls` in Kombination mit externen URLs 
 * Fixed: Redirects funktionieren jetzt auch mit REDAXO Unterordner Installationen
 * Fixed: bei `allow_articleid` = 0 und einer `article_id` URL wird jetzt ein 404 Fehler ausgegeben anstelle eines Redirects auf die Startseite
