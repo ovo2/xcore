@@ -558,22 +558,13 @@ function rexseo_generate_pathlist($params)
           $pathname = rexseo_appendToPath($pathname, $catname, $id, $clang);
         }
 
-        if($REX['ADDON']['seo42']['settings']['url_schema'] == 'rexseo')
+        // url_schema: rexseo
+        if(!$ooa->isStartArticle())
         {
-          if(!$ooa->isStartArticle())
-          {
-          // eigentlicher artikel anhängen
-          $name = $ooa->getName();
-          unset($ooa);
-          $pathname = rexseo_appendToPath($pathname, $name, $id, $clang);
-          }
-        }
-        else
-        {
-          // eigentlicher artikel anhängen
-          $name = $ooa->getName();
-          unset($ooa);
-          $pathname = rexseo_appendToPath($pathname, $name, $id, $clang);
+        // eigentlicher artikel anhängen
+        $name = $ooa->getName();
+        unset($ooa);
+        $pathname = rexseo_appendToPath($pathname, $name, $id, $clang);
         }
 
         // ALLGEMEINE URL ENDUNG
