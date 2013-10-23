@@ -5,15 +5,18 @@
 // ****************************************************************
 
 // GLOBAL SPECIAL CHAR REWRITE
-// used for rewriting special chars that are language dependent. valid for all languages
+// used for rewriting special chars that are language dependent. valid for all languages.
 // separate values by | (pipe) symbol
 
 $REX['ADDON']['seo42']['settings']['global_special_chars'] = '';
 $REX['ADDON']['seo42']['settings']['global_special_chars_rewrite'] = '';
 
 // LANGUAGE SPECIFIC SETTINGS
-// if no additional languages are defined in this array
-// rewrite modes: SEO42_REWRITEMODE_SPECIAL_CHARS, SEO42_REWRITEMODE_URLENCODE, SEO42_REWRITEMODE_INHERIT
+// if no additional languages are defined in this array, redaxo language settings will be taken
+// rewrite modes: 
+//   * SEO42_REWRITEMODE_SPECIAL_CHARS (specify also: special_chars, special_chars_rewrite)
+//   * SEO42_REWRITEMODE_INHERIT (specify also: inherit_from_clang)
+//   * SEO42_REWRITEMODE_URLENCODE
 // separate special_chars values by | (pipe) symbol
 // special chars language tables: http://unicode.e-workers.de/
 // collection of language presets: https://github.com/RexDude/seo42/issues/61
