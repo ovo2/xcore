@@ -825,8 +825,18 @@ function rexseo_appendToPath($path, $name, $article_id, $clang)
   {
     if ($REX['ADDON']['seo42']['settings']['urlencode'] || (isset($REX['ADDON']['seo42']['settings']['lang'][$clang]['rewrite_mode']) && $REX['ADDON']['seo42']['settings']['lang'][$clang]['rewrite_mode'] == SEO42_REWRITEMODE_URLENCODE))
     {
-      $name = str_replace('/','-',$name);
-      $name = mb_strtolower($name, 'UTF-8');
+      // trim stuff
+      $name = trim($name, " \t\r\n.");
+      $name = preg_replace('/ {2,}/', ' ', $name); // convert multiple spaces to one
+      $name = str_replace(' ', $REX['ADDON']['seo42']['settings']['urlencode_whitespace_replace'], $name); // spaces
+      $name = str_replace('/', '-', $name); // dashes
+
+      // lowercase conversion
+      if ($REX['ADDON']['seo42']['settings']['urlencode_lowercase']) {
+        $name = mb_strtolower($name, 'UTF-8');
+      }
+
+      // finally do url encode
       $name = rawurlencode($name);
     }
     else

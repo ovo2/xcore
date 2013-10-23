@@ -27,20 +27,22 @@ $REX['ADDON']['seo42']['settings']['lang'][0]['rewrite_mode'] = SEO42_REWRITEMOD
 $REX['ADDON']['seo42']['settings']['lang'][0]['special_chars'] = 'Ä|ä|Ö|ö|Ü|ü|ß|&';
 $REX['ADDON']['seo42']['settings']['lang'][0]['special_chars_rewrite'] = 'Ae|ae|Oe|oe|Ue|ue|ss|und';
 
-//$REX['ADDON']['seo42']['settings']['lang'][1]['code'] = 'en';
-//$REX['ADDON']['seo42']['settings']['lang'][1]['original_name'] = 'english';
-//$REX['ADDON']['seo42']['settings']['lang'][1]['rewrite_mode'] = SEO42_REWRITEMODE_SPECIAL_CHARS;
-//$REX['ADDON']['seo42']['settings']['lang'][1]['special_chars'] = '&';
-//$REX['ADDON']['seo42']['settings']['lang'][1]['special_chars_rewrite'] = 'and';
+/*
+$REX['ADDON']['seo42']['settings']['lang'][1]['code'] = 'en';
+$REX['ADDON']['seo42']['settings']['lang'][1]['original_name'] = 'english';
+$REX['ADDON']['seo42']['settings']['lang'][1]['rewrite_mode'] = SEO42_REWRITEMODE_SPECIAL_CHARS;
+$REX['ADDON']['seo42']['settings']['lang'][1]['special_chars'] = '&';
+$REX['ADDON']['seo42']['settings']['lang'][1]['special_chars_rewrite'] = 'and';
 
-//$REX['ADDON']['seo42']['settings']['lang'][2]['code'] = 'el';
-//$REX['ADDON']['seo42']['settings']['lang'][2]['original_name'] = 'ελληνικά';
-//$REX['ADDON']['seo42']['settings']['lang'][2]['rewrite_mode'] = SEO42_REWRITEMODE_URLENCODE;
+$REX['ADDON']['seo42']['settings']['lang'][2]['code'] = 'el';
+$REX['ADDON']['seo42']['settings']['lang'][2]['original_name'] = 'ελληνικά';
+$REX['ADDON']['seo42']['settings']['lang'][2]['rewrite_mode'] = SEO42_REWRITEMODE_URLENCODE;
 
-//$REX['ADDON']['seo42']['settings']['lang'][3]['code'] = 'zh';
-//$REX['ADDON']['seo42']['settings']['lang'][3]['original_name'] = '中国的';
-//$REX['ADDON']['seo42']['settings']['lang'][3]['rewrite_mode'] = SEO42_REWRITEMODE_INHERIT;
-//$REX['ADDON']['seo42']['settings']['lang'][3]['inherit_from_clang'] = 1;
+$REX['ADDON']['seo42']['settings']['lang'][3]['code'] = 'zh';
+$REX['ADDON']['seo42']['settings']['lang'][3]['original_name'] = '中国的';
+$REX['ADDON']['seo42']['settings']['lang'][3]['rewrite_mode'] = SEO42_REWRITEMODE_INHERIT;
+$REX['ADDON']['seo42']['settings']['lang'][3]['inherit_from_clang'] = 1;
+*/
 
 // ****************************************************************
 // **  DELETE REDAXO CACHE AFTER YOU MADE CHANGES TO THIS FILE!  **

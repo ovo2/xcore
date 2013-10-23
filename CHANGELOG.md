@@ -14,6 +14,7 @@ SEO42 - Changelog
 * Weitere Optionen für `nav42` hinzugefügt: `currentClass`, `firstUlId`, `firstUlClass`, `liIdFromMetaField`, `liClassFromMetaField`, `linkFromUserFunc`. Codebeispiele ergänzt und angepasst.
 * Das Redirects Plugin wurde direkt in SEO42 integriert
 * 3 RewriteModes für Sprachen hinzugefügt: `SEO42_REWRITEMODE_SPECIAL_CHARS`, `SEO42_REWRITEMODE_URLENCODE`, `SEO42_REWRITEMODE_INHERIT` (jeweils pro Sprache einstellbar)
+* Optionen `urlencode_lowercase` und `urlencode_whitespace_replace` hinzugefügt
 * Methoden `getLangName()` und `getOriginalLangName()` hinzugefügt
 * Redirects werden nun im `generated` Ordner von SEO42 gespeichert
 * `title_delimiter` auf Standardwert "-" gesetzt da Google anscheined gerne mal die Titles nachträglich abändert in den Suchergebnissen und dabei auch "|" in "-" konvertiert.
