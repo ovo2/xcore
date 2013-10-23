@@ -229,6 +229,6 @@ seo42_redirect_none = <keins>
 seo42_redirect_help = Redirects Plugin für SEO42
 seo42_redirect_sourceurl_alert = Die alte URL muss mit "/" beginnen.
 seo42_redirect_targeturl_alert = Die neue URL muss mit "http://" oder "/" beginnen.
-seo42_redirect_restore_cachefile_ok = Fehlende Cache-Datei "{0}" wurde wieder hergestellt.
+seo42_redirect_restore_cachefile_ok = Fehlende Cache-Datei "{0}" wurde wiederhergestellt.
 seo42_redirect_restore_cachefile_fail = Cache-Datei "{0}" konnte nicht gespeichert werden!
 
