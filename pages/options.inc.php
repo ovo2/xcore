@@ -8,21 +8,18 @@ $config_file = $REX['INCLUDE_PATH'] . '/addons/seo42/settings.dyn.inc.php';
 
 // save settings
 if ($func == 'update') {
-	$_url_schema = trim(rex_request('url_schema', 'string'));
 	$_url_ending = trim(rex_request('url_ending', 'string'));
 	$_hide_langslug = trim(rex_request('hide_langslug', 'int'));
 	$_homeurl = trim(rex_request('homeurl', 'int'));
 	$_homelang = trim(rex_request('homelang', 'int'));
 	$_robots = trim(rex_request('robots', 'string'));
 
-	$REX['ADDON']['seo42']['settings']['url_schema'] = $_url_schema;
 	$REX['ADDON']['seo42']['settings']['url_ending'] = $_url_ending;
 	$REX['ADDON']['seo42']['settings']['hide_langslug'] = $_hide_langslug;
 	$REX['ADDON']['seo42']['settings']['homeurl'] = $_homeurl;
 	$REX['ADDON']['seo42']['settings']['homelang'] = $_homelang;
 
 	$content = '
-		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'url_schema\'] = \'' . $_url_schema . '\';
 		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'url_ending\'] = \'' . $_url_ending . '\';
 		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'hide_langslug\'] = ' . $_hide_langslug . ';
 		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'homeurl\'] = ' . $_homeurl . ';
@@ -51,15 +48,6 @@ if (!is_writable($config_file)) {
 	echo rex_warning($I18N->msg('seo42_config_file_no_perms'), $config_file);
 }
 
-// url schema select box
-$url_schema_select = new rex_select();
-$url_schema_select->setSize(1);
-$url_schema_select->setName('url_schema');
-$url_schema_select->addOption('rexseo','rexseo');
-$url_schema_select->addOption('url_rewrite','url_rewrite');
-$url_schema_select->setAttribute('style','width:250px');
-$url_schema_select->setSelected($REX['ADDON'][$myself]['settings']['url_schema']);
-
 // url ending select box
 $url_ending_select = new rex_select();
 $url_ending_select->setSize(1);
@@ -67,7 +55,7 @@ $url_ending_select->setName('url_ending');
 $url_ending_select->addOption('.html','.html');
 $url_ending_select->addOption('/','/');
 $url_ending_select->addOption($I18N->msg('seo42_settings_url_ending_without'), '');
-$url_ending_select->setAttribute('style','width:70px;margin-left:20px;');
+$url_ending_select->setAttribute('style','width:70px;');
 $url_ending_select->setSelected($REX['ADDON'][$myself]['settings']['url_ending']);
 
 // home url select box
@@ -155,10 +143,7 @@ echo '
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
               <label for="url_schema">' . $I18N->msg('seo42_settings_schema') . '</label>
-                '.$url_schema_select->get().'
-
-              <span style="margin:0 4px 0 4px;display:inline-block;width:100px;text-align:right;">' . $I18N->msg('seo42_settings_extension') . '</span>
-                '.$url_ending_select->get().'
+               '.$url_ending_select->get().'
             </p>
           </div>
 

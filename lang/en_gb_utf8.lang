@@ -53,7 +53,6 @@ seo42_settings_langslug_all = Bei allen Sprachen einfügen
 seo42_settings_langslug_noslug = Kein lang slug für Sprache:
 seo42_settings_langslug = Lang slug
 seo42_settings_language = Sprache
-seo42_settings_extension = Endung
 seo42_settings_schema = Schema
 seo42_settings_startpage = Startseite
 seo42_settings_main_section = Allgemein
