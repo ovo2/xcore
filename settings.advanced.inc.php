@@ -61,17 +61,8 @@ $REX['ADDON']['seo42']['settings']['one_page_mode'] = false;
 // if true root categories will be completly ignored and not be visible in generated urls (experimental)
 $REX['ADDON']['seo42']['settings']['ignore_root_cats'] = false;
 
-// only set to true if you globally want't to have urls with special chars like in chinese language etc.. urlencode can also be activated in settings.lang.inc.php for specific languages also!
-$REX['ADDON']['seo42']['settings']['urlencode'] = false;
-
-// if true and urlencode is used, urls will be converted to lowercase
-$REX['ADDON']['seo42']['settings']['urlencode_lowercase'] = false;
-
-// for urlencode only: character to replace whitespaces with in urls
-$REX['ADDON']['seo42']['settings']['urlencode_whitespace_replace']  = '_';
-
-// 0 = don't allow article_id urls, show 404 error article | 1 = allow and 301 redirect to non-article_id urls | 2 = just allow both (not recommended!)
-$REX['ADDON']['seo42']['settings']['allow_articleid'] = 0;
+// SEO42_ARTICLEID_DISALLOW = don't allow article_id urls, show 404 error article | SEO42_ARTICLEID_REDIRECT = allow and 301 redirect to real urls 
+$REX['ADDON']['seo42']['settings']['allow_articleid'] = SEO42_ARTICLEID_DISALLOW;
 
 // character to replace whitespaces with in urls
 $REX['ADDON']['seo42']['settings']['url_whitespace_replace']  = '-';

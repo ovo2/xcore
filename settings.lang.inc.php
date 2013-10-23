@@ -11,11 +11,17 @@
 $REX['ADDON']['seo42']['settings']['global_special_chars'] = '';
 $REX['ADDON']['seo42']['settings']['global_special_chars_rewrite'] = '';
 
+// URLENCODE SETTINGS
+// only used when lang settings are set to SEO42_REWRITEMODE_URLENCODE
+
+$REX['ADDON']['seo42']['settings']['urlencode_lowercase'] = false;
+$REX['ADDON']['seo42']['settings']['urlencode_whitespace_replace']  = '_';
+
 // LANGUAGE SPECIFIC SETTINGS
 // if no additional languages are defined in this array, redaxo language settings will be taken
 // rewrite modes: 
-//   * SEO42_REWRITEMODE_SPECIAL_CHARS (specify also: special_chars, special_chars_rewrite)
-//   * SEO42_REWRITEMODE_INHERIT (specify also: inherit_from_clang)
+//   * SEO42_REWRITEMODE_SPECIAL_CHARS --> specify also: special_chars, special_chars_rewrite
+//   * SEO42_REWRITEMODE_INHERIT --> specify also: inherit_from_clang
 //   * SEO42_REWRITEMODE_URLENCODE
 // separate special_chars values by | (pipe) symbol
 // special chars language tables: http://unicode.e-workers.de/
@@ -47,7 +53,4 @@ $REX['ADDON']['seo42']['settings']['lang'][3]['inherit_from_clang'] = 1;
 // ****************************************************************
 // **  DELETE REDAXO CACHE AFTER YOU MADE CHANGES TO THIS FILE!  **
 // ****************************************************************
-
-
-
 
