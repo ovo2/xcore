@@ -262,7 +262,6 @@ echo '
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 399px; /* 512px; */
-	font-family: arial,sans-serif;
 	font-size: normal; /* medium */
 	line-height: 16px;
 	font-weight: normal;
@@ -273,7 +272,6 @@ echo '
 }
 
 #seo-page div.rex-form div.rex-form-row p span.rex-form-notice {
-	margin-left: 155px;
 	margin-top: 4px;
 	font-size: 100%;
 }
@@ -309,7 +307,6 @@ div.rex-form div.rex-form-row.prefix p {
 
 #seo-page div.rex-form div.rex-form-row p input.rex-form-submit {
 	margin-top: 8px;
-    margin-left: 155px;
 }
 </style>
 
