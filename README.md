@@ -54,7 +54,6 @@ Verfügbare Plugins für SEO42
 Update von SEO42 2.x auf SEO42 2.6 und höher
 --------------------------------------------
 
-* In der `settings.advanced.inc.php` von SEO42 die Option `drop_dbfields_on_uninstall` auf `false` setzen.
 * AddOn-Ordner der alten Version löschen (vorher sichern!).
 * AddOn-Ordner der neuen Version einspielen.
 * REDAXO AddOn-Seite besuchen und SEO42 reinstallieren.
