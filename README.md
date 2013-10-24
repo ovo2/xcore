@@ -56,7 +56,7 @@ Update von SEO42 2.x auf SEO42 2.6 und höher
 
 * AddOn-Ordner der alten Version löschen (vorher sichern!).
 * AddOn-Ordner der neuen Version einspielen.
-* REDAXO AddOn-Seite besuchen und SEO42 reinstallieren.
+* SEO42 über die AddOn-Verwaltung von REDAXO reinstallieren.
 * AddOn-Einstellungen von Hand nachprüfen und ggf. korrigieren (`settings.lang.inc.php` hat ein neues Format!).
 * Evtl. Klasse `rex_navigation42` in `nav42` umbenennen. 
 * Ggf. Cache löschen.
