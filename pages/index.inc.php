@@ -24,6 +24,11 @@ require($REX['INCLUDE_PATH'] . '/layout/top.php');
 // title
 rex_title($REX['ADDON']['name'][$myself] . ' <span style="font-size:14px; color:silver;">' . $REX['ADDON']['version'][$myself] . '</span>', $REX['ADDON'][$myself]['SUBPAGES']);
 
+// warning because of old lang settings format
+if (isset($REX['ADDON']['seo42']['settings']['langcodes'])) {
+	echo rex_warning($I18N->msg('seo42_warning_old_settings_file'));
+}
+
 // subpages
 switch($subpage){
 	case '':

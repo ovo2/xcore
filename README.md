@@ -8,7 +8,7 @@ Features
 
 * Generierung von suchmaschinenfreundlichen URLs (Webserver benötigt Modul `mod_rewrite`)
 * Automatische Umschreibung der Startseite der Website in `/` (für alle Sprachen möglich)
-* Verschiedene URL-Schemas verfügbar (z.B. Endung `.html` oder `/`)
+* Verschiedene URL-Endungen einstellbar (z.B. Endung `.html` oder `/`)
 * Automatische Titel-Generierung. Mitgeliefertes Titel-Schema aus [Google-PDF](http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf) entnommen.
 * Extra SEO-Page für jeden Artikel inkl. Titel-Vorschau und Zeichen/Wörter Zähler
 * Extra URL-Page für jeden Artikel inkl 10 URL-Typen zur Manipulierung der generierten URL

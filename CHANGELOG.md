@@ -31,6 +31,7 @@ SEO42 - Changelog
 * Optionen `include_query_params` und `ignore_query_params` hinzugefügt
 * Datei `settings.pagerank_checker.inc.php` umbenannt in `settings.domains.inc.php`
 * Neuer FAQ Eintrag: `Warum kann kann man keine globalen Descriptions und Keywords eintragen, die dann für alle Seiten gültig sind?`
+* URL Schema `url_rewrite` entfernt
 * Finetuning, Codeoptimierungen, etc.
 
 ### Version 2.5.0 - 07. Oktober 2013

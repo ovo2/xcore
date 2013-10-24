@@ -142,7 +142,7 @@ echo '
 
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
-              <label for="url_ending">' . $I18N->msg('seo42_settings_schema') . '</label>
+              <label for="url_ending">' . $I18N->msg('seo42_settings_url_ending') . '</label>
                '.$url_ending_select->get().'
             </p>
           </div>
