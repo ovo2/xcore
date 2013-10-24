@@ -3,7 +3,7 @@ SEO42 - Changelog
 
 ### Version 2.6.0 BETA
 
-Bitte wichtige [Updatehinweise](https://github.com/RexDude/seo42#update-von-seo42-2x-auf-seo42-26-und-hoeher) beachten!
+Bitte wichtige [Updatehinweise](https://github.com/RexDude/seo42#update-von-seo42-2x-auf-seo42-26-und-h%C3%B6her) beachten!
 
 * Fixed: Bug bei Option `full_urls` in Kombination mit externen URLs 
 * Fixed: Redirects funktionieren jetzt auch mit REDAXO Unterordner Installationen
