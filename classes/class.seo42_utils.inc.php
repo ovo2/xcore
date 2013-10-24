@@ -108,7 +108,7 @@ class seo42_utils {
 		}
 
 		$seoLink = '<a '.$class.' href="index.php?page=content&amp;article_id=' . $params['article_id'] . '&amp;mode=seo&amp;clang=' . $params['clang'] . '&amp;ctype=' . rex_request('ctype') . '">' . $I18N->msg('seo42_seopage_linktext') . '</a>';
-		array_splice($params['subject'], '-2', '-2', $seoLink);
+		array_splice($params['subject'], '1', '0', $seoLink);
 
 		return $params['subject'];
 	}
@@ -131,7 +131,7 @@ class seo42_utils {
 		}
 
 		$seoLink = '<a ' . $class . ' href="index.php?page=content&amp;article_id=' . $params['article_id'] . '&amp;mode=url&amp;clang=' . $params['clang'] . '&amp;ctype=' . rex_request('ctype') . '">' . $I18N->msg('seo42_urlpage_linktext') . '</a>';
-		array_splice($params['subject'], '-2', '-2', $seoLink);
+		array_splice($params['subject'], '1', '0', $seoLink);
 
 		return $params['subject'];
 	}

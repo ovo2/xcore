@@ -100,15 +100,15 @@ if ($REX['REDAXO']) {
 	if (!$REX['ADDON']['seo42']['settings']['one_page_mode'] || ($REX['ADDON']['seo42']['settings']['one_page_mode'] && $REX['ARTICLE_ID'] == $REX['START_ARTICLE_ID'])) {
 		if (isset($REX['USER']) && ($REX['USER']->isAdmin())) {
 			// admins get everything :)
+			seo42_utils::enableURLPage(); // injection order is important
 			seo42_utils::enableSEOPage();
-			seo42_utils::enableURLPage();
 		} else {
-			if (isset($REX['USER']) && ($REX['USER']->hasPerm('seo42[seo_default]') || $REX['USER']->hasPerm('seo42[seo_extended]') || $REX['USER']->hasPerm('editContentOnly[]'))) {
-				seo42_utils::enableSEOPage();
-			}
-
 			if (isset($REX['USER']) && $REX['USER']->hasPerm('seo42[url_default]')) {
 				seo42_utils::enableURLPage();
+			}
+
+			if (isset($REX['USER']) && ($REX['USER']->hasPerm('seo42[seo_default]') || $REX['USER']->hasPerm('seo42[seo_extended]') || $REX['USER']->hasPerm('editContentOnly[]'))) {
+				seo42_utils::enableSEOPage();
 			}
 		}
 	}
