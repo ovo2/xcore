@@ -49,7 +49,28 @@ Features der Klasse nav42
 Verfügbare Plugins für SEO42
 ----------------------------
 
-* `url_control` von tbaddade: <https://github.com/tbaddade/redaxo_plugin_url_control>
+* [url_control](https://github.com/tbaddade/redaxo_plugin_url_control) - Plugin zur URL-Generierung für eigene AddOns
+
+Update von SEO42 2.x auf SEO42 2.6 und höher
+--------------------------------------------
+
+* In der `settings.advanced.inc.php` von SEO42 die Option `drop_dbfields_on_uninstall` auf `false` setzen.
+* AddOn-Ordner der alten Version löschen (vorher sichern!).
+* AddOn-Ordner der neuen Version einspielen.
+* REDAXO AddOn-Seite besuchen und SEO42 reinstallieren.
+* AddOn-Einstellungen von Hand nachprüfen und ggf. korrigieren (`settings.lang.inc.php` hat ein neues Format!).
+* Evtl. Klasse `rex_navigation42` in `nav42` umbenennen. 
+* Ggf. Cache löschen.
+
+Update von REXSEO42 1.1/1.2 auf SEO42 2.x
+-----------------------------------------
+
+* In der `settings.advanced.inc.php` von REXSEO42 die Option `drop_dbfields_on_uninstall` auf `false` setzen.
+* REXSEO42 deinstallieren und AddOn-Ordner löschen.
+* SEO42 installieren.
+* In allen Templates den Klassennamen von `rexseo42` nach `seo42` umbenennen.
+* AddOn-Einstellungen von Hand nachprüfen und ggf. korrigieren (ab 2.6.0 hat die `settings.lang.inc.php` ein neues Format!).
+* Ggf. Cache löschen.
 
 Alle URL-Typen aktivieren
 -------------------------
@@ -65,18 +86,6 @@ Diese Anpassungen sind nur nötig, wenn man die `nav42` Klasse verwenden will:
 
 * [Diese Zeile](https://github.com/dergel/redaxo4_community/blob/master/plugins/auth/config.inc.php#L19) auskommentieren
 * Und [diese Zeile](https://github.com/RexDude/seo42/blob/master/classes/class.nav42.inc.php#L3) umschreiben in `class nav42 extends rex_com_navigation`
-
-Update von REXSEO42 1.1/1.2 auf SEO42 2.x
------------------------------------------
-
-Ein Update wird nur empfohlen, wenn die neuen Features von der 2er Version benötigt werden. 
-
-* In der `settings.advanced.inc.php` von REXSEO42 die Option `drop_dbfields_on_uninstall` auf `false` setzen.
-* REXSEO42 deinstallieren und AddOn-Ordner löschen.
-* SEO42 installieren.
-* In allen Templates den Klassennamen von `rexseo42` nach `seo42` umbenennen.
-* AddOn-Einstellungen von Hand nachprüfen und ggf. korrigieren.
-* Ggf. Cache löschen.
 
 Hinweise
 --------
