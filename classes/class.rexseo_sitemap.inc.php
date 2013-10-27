@@ -21,8 +21,15 @@ class rexseo_sitemap
 
 		foreach ($REXSEO_URLS as $url)  {
 			$article = OOArticle::getArticleById($url['id'], $url['clang']);
+			$hasPermission = true;
 
-			if (OOArticle::isValid($article) && $article->isOnline() && !isset($url['status'])) {
+			// community addon
+			if (class_exists('rex_com_auth') && !rex_com_auth::checkPerm($article)) {
+				$hasPermission = false;
+			}
+
+			// add url block
+			if (OOArticle::isValid($article) && $article->isOnline() && !isset($url['status']) && $hasPermission) {
 				$db_articles[$url['id']][$url['clang']] = array('loc'        => seo42::getFullUrl($url['id'], $url['clang']),
 										                       'lastmod'    => date('Y-m-d\TH:i:s', $article->getValue('updatedate')) . '+00:00',
 										                       'changefreq' => self::calc_article_changefreq($article->getValue('updatedate'), ''),

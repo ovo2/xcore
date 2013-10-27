@@ -1,9 +1,13 @@
 SEO42 - Changelog
 =================
 
-### Version 2.6.0 - 24. Oktober 2013
+**Updatehinweis:** Von SEO42 2.x auf SEO42 2.6 und höher bitte [Updateanleitung](https://github.com/RexDude/seo42#update-von-seo42-2x-auf-seo42-26-und-h%C3%B6her) beachten!
 
-Bitte [Updateanleitung](https://github.com/RexDude/seo42#update-von-seo42-2x-auf-seo42-26-und-h%C3%B6her) beachten!
+### Version 2.6.1 DEV
+
+* `Sitemap.xml` reagiert nun auf gesperrte Artikel des Community Addons
+
+### Version 2.6.0 - 24. Oktober 2013
 
 * Fixed: Bug bei Option `full_urls` in Kombination mit externen URLs 
 * Fixed: Redirects funktionieren jetzt auch mit REDAXO Unterordner Installationen
