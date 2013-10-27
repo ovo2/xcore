@@ -23,19 +23,21 @@ class rexseo_sitemap
 			$article = OOArticle::getArticleById($url['id'], $url['clang']);
 			$hasPermission = true;
 
-			// community addon
-			if (class_exists('rex_com_auth') && !rex_com_auth::checkPerm($article)) {
-				$hasPermission = false;
-			}
+			if (OOArticle::isValid($article)) {
+				// community addon
+				if (class_exists('rex_com_auth') && !rex_com_auth::checkPerm($article)) {
+					$hasPermission = false;
+				}
 
-			// add url block
-			if (OOArticle::isValid($article) && $article->isOnline() && !isset($url['status']) && $hasPermission) {
-				$db_articles[$url['id']][$url['clang']] = array('loc'        => seo42::getFullUrl($url['id'], $url['clang']),
-										                       'lastmod'    => date('Y-m-d\TH:i:s', $article->getValue('updatedate')) . '+00:00',
-										                       'changefreq' => self::calc_article_changefreq($article->getValue('updatedate'), ''),
-										                       'priority'   => self::calc_article_priority($url['id'], $url['clang'], $article->getValue('path'), ''),
-															   'noindex'   => $article->getValue('seo_noindex')
-										                       );	
+				// add sitemap block
+				if ($article->isOnline() && !isset($url['status']) && $hasPermission) {
+					$db_articles[$url['id']][$url['clang']] = array('loc'        => seo42::getFullUrl($url['id'], $url['clang']),
+												                   'lastmod'    => date('Y-m-d\TH:i:s', $article->getValue('updatedate')) . '+00:00',
+												                   'changefreq' => self::calc_article_changefreq($article->getValue('updatedate'), ''),
+												                   'priority'   => self::calc_article_priority($url['id'], $url['clang'], $article->getValue('path'), ''),
+																   'noindex'   => $article->getValue('seo_noindex')
+												                   );	
+				}
 			}
 		}
 	} else {
