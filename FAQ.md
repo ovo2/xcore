@@ -43,7 +43,7 @@ SEO42 läuft nicht mehr rund. Was tun?
 Cache löschen, AddOn reinstallieren und evtl. das Setup neu durchlaufen sind hier zuerstmal Ihre Freunde ;)
 
 
-Ich möchte das Pipe-Zeichen im Titel umstellen. Wo kann ich das machen?
+Ich möchte das Trennzeichen im Titel umstellen. Wo kann ich das machen?
 -----------------------------------------------------------------------
 
 Der zuständige Parameter heißt `title_delimiter` und ist in der `settings.advanced.inc.php` einstellbar.
