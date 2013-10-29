@@ -60,16 +60,20 @@ if ($func == "do_copy") {
 		if (rex_request('www_redirect', 'int') == 1) {
 			if ($REX['ADDON']['seo42']['settings']['non_www_to_www']) {
 				$wwwRedirect1 = '#RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$';
-				$wwwRedirect2 = '#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301]';
+				$wwwRedirect2 = '#RewriteCond %{REQUEST_URI} !/redaxo';
+				$wwwRedirect3 = '#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301]';
 	
 				$content = str_replace($wwwRedirect1, ltrim($wwwRedirect1, '#'), $content);
-				$content = str_replace($wwwRedirect2, ltrim($wwwRedirect2, '#'), $content);
+				$content = seo42_utils::str_replace_first($wwwRedirect2, ltrim($wwwRedirect2, '#'), $content);
+				$content = str_replace($wwwRedirect3, ltrim($wwwRedirect3, '#'), $content);
 			} else {
 				$wwwRedirect1 = '#RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]';
-				$wwwRedirect2 = '#RewriteRule ^(.*)$ http://%1/$1 [R=301,L]';
+				$wwwRedirect2 = '#RewriteCond %{REQUEST_URI} !/redaxo';
+				$wwwRedirect3 = '#RewriteRule ^(.*)$ http://%1/$1 [R=301,L]';
 	
 				$content = str_replace($wwwRedirect1, ltrim($wwwRedirect1, '#'), $content);
-				$content = str_replace($wwwRedirect2, ltrim($wwwRedirect2, '#'), $content);
+				$content = seo42_utils::str_replace_last($wwwRedirect2, ltrim($wwwRedirect2, '#'), $content);
+				$content = str_replace($wwwRedirect3, ltrim($wwwRedirect3, '#'), $content);
 			}
 		}
 

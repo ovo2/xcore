@@ -5,6 +5,7 @@ SEO42 - Changelog
 
 ### Version 2.6.1 DEV
 
+* Fixed #65: WWW-Weiterleitung gilt nur noch für das Frontend. Dadurch wird ein versehentliches aussperren aus dem Backend vermieden.
 * Fixed #64: Bei einem LangCode `en-US` lautet der LangSlug jetzt korrekt `en`. `seo42::getLangSlug()` hinzugefügt.
 * Verbessert: Community Addon Unterstützung. `Sitemap.xml` reagiert nun auf gesperrte Artikel des Community Addons.
 
