@@ -139,7 +139,7 @@ class RexseoRewrite
 		$langSlugs = array();
 
 		foreach ($REX['CLANG'] as $clangId => $clangName) {
-			$langSlugs[] = seo42::getLangCode($clangId);
+			$langSlugs[] = seo42::getLangSlug($clangId);
 		}
 
         $clangId = array_search($possibleLangSlug, $langSlugs);
@@ -490,12 +490,10 @@ function rexseo_generate_pathlist($params)
 	// redirects start articles withou slash: /xx to /xx/
 	if (count($REX['CLANG']) > 1 && $REX['ADDON']['seo42']['settings']['url_ending'] != '') {
 		foreach ($REX['CLANG'] as $clangId => $clangName) {
-			if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['code'])) {
-				$clangName = $REX['ADDON']['seo42']['settings']['lang'][$clangId]['code'];
-			}
+			$langSlug = seo42::getLangSlug($clangId);
 
 			if ($REX['ADDON']['seo42']['settings']['homelang'] != $clangId) {
-				$REXSEO_URLS[$clangName]  = array ('id' => $REX['START_ARTICLE_ID'],'clang' => $clangId, 'status' => 301);
+				$REXSEO_URLS[$langSlug]  = array ('id' => $REX['START_ARTICLE_ID'],'clang' => $clangId, 'status' => 301);
 			}
 		}
 	}
@@ -513,7 +511,7 @@ function rexseo_generate_pathlist($params)
         if (count($REX['CLANG']) > 1 && $clang != $REX['ADDON']['seo42']['settings']['hide_langslug'])
         {
           $pathname = '';
-          $pathname = rexseo_appendToPath($pathname, seo42::getLangCode($clang), $id, $clang); 
+          $pathname = rexseo_appendToPath($pathname, seo42::getLangSlug($clang), $id, $clang); 
         }
 
         // pfad über kategorien bauen
@@ -582,7 +580,7 @@ function rexseo_generate_pathlist($params)
                $db->getValue('id') == $REX['START_ARTICLE_ID'] &&
                count($REX['CLANG']) > 1)
         {
-          $pathname = seo42::getLangCode($clang).'/';
+          $pathname = seo42::getLangSlug($clang).'/';
         }
 
       }

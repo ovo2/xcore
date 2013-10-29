@@ -5,7 +5,8 @@ SEO42 - Changelog
 
 ### Version 2.6.1 DEV
 
-* `Sitemap.xml` reagiert nun auf gesperrte Artikel des Community Addons
+* Fixed #64: Bei einem LangCode `en-US` lautet der LangSlug jetzt korrekt `en`. `seo42::getLangSlug()` hinzugefügt.
+* Verbessert: Community Addon Unterstützung. `Sitemap.xml` reagiert nun auf gesperrte Artikel des Community Addons.
 
 ### Version 2.6.0 - 24. Oktober 2013
 

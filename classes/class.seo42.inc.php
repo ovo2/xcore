@@ -354,6 +354,16 @@ class seo42 {
 		}
 	}
 
+	public static function getLangSlug($clangId) {
+		$langSlug = self::getLangCode($clangId);
+
+		if (strlen($langSlug) > 2) {
+			$langSlug = substr($langSlug, 0, 2);
+		}
+
+		return strtolower($langSlug);
+	}
+
 	public static function getLangName($clangId = -1) {
 		global $REX;
 
@@ -507,6 +517,7 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::isStartArticle');
 		$out .= self::getDebugInfoRow('seo42::getWebsiteName');
 		$out .= self::getDebugInfoRow('seo42::getLangCode', array('0'));
+		$out .= self::getDebugInfoRow('seo42::getLangSlug', array('0'));
 		$out .= self::getDebugInfoRow('seo42::getLangName', array('0'));
 		$out .= self::getDebugInfoRow('seo42::getOriginalLangName', array('0'));
 		$out .= self::getDebugInfoRow('seo42::getServerProtocol');
