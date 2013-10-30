@@ -198,6 +198,7 @@ seo42_help_codeexamples_ex6_comment5_8 = erste ul klasse "sf-menu"
 seo42_help_codeexamples_ex6_comment5_9 = li id aus metainfo feld: "cat_css_id"
 seo42_help_codeexamples_ex6_comment5_10 = li klasse aus metainfo feld: "cat_css_class"
 seo42_help_codeexamples_ex6_comment5_11 = php funktion die den link zurückgibt (hier als beispiel: erste ebene ohne verlinkung)
+seo42_help_codeexamples_ex6_comment6_1 = ausgabe einer einfachen sprachnavigation
 seo42_help_codeexamples_ex7_comment1 = eigene klasse ableiten und getTitle() methode überschreiben
 seo42_help_codeexamples_ex7_comment2 = gesamten titel in kleinbuchstaben ausgeben (als beispiel)
 seo42_help_codeexamples_ex7_comment3 = methoden aufrufe dann nur noch über diese abgeleitete klasse

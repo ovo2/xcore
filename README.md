@@ -29,7 +29,7 @@ Features
 * Nicht-WWW zu WWW Umleitung (und umgekehrt). Lässt sich auch über das Setup aktivieren.
 * Weitere Einstellungen (vorerst) in der `settings.advanced.inc.php` und `settings.lang.inc.php`
 * Keine Abhängigkeiten zu weiteren Addons wie Textile oder XForm
-* Kompatibel zum [Website Manager](https://github.com/RexDude/website_manager) AddOn
+* Kompatibel zum [Website Manager](https://github.com/RexDude/website_manager) sowie [Community](https://github.com/dergel/redaxo4_community) AddOn
 * Enthält die Antwort auf die eine Frage ;)
 
 Features der Klasse nav42
@@ -44,6 +44,7 @@ Features der Klasse nav42
 * Angabe von MetaInfo Felder aus denen Klassen und IDs für die LI's herausgezogen werden
 * Aufruf einer benutzerdef. PHP-Funktion möglich, die den Inhalt der LI's zurückgibt
 * Unterstützung für alle URL-Typen von SEO42
+* Ausgabe einer einfachen Sprachnavigation möglich
 * Vollständige Codebeispiele in der Hilfe von SEO42
 
 Verfügbare Plugins für SEO42

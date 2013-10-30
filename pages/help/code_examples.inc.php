@@ -67,6 +67,9 @@ echo nav42::getNavigationByCategory(42, 2, true, true, false, "current", "nav", 
 		return \'<a href="\' . $cat->getUrl() . \'">\' . htmlspecialchars($cat->getName()) . \'</a>\';
 	}
 });
+
+// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_1') . '
+echo nav42::getLangNavigation();
 ?>';
 
 $codeExample7 = '<?php

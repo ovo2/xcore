@@ -16,6 +16,36 @@ class nav42 extends rex_navigation {
 		return $nav->get($categoryId, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
 	}
 
+	static function getLangNavigation() {
+		global $REX;
+
+		$out = '<ul>';
+
+		foreach ($REX['CLANG'] as $clangId => $clangName) {
+			$article = OOArticle::getArticleById($REX['ARTICLE_ID'], $clangId);
+
+			// new article id
+			if (OOArticle::isValid($article) && $article->isOnline()) {
+				$newArticleId = $article->getId();
+			} else {
+				$newArticleId = $REX['START_ARTICLE_ID'];
+			}
+
+			// link text
+			if (class_exists('seo42')) {
+				$linkText = seo42::getOriginalLangName($clangId);
+			} else {
+				$linkText = $clangName;
+			}
+
+			$out .= '<li><a href="' . rex_getUrl($newArticleId, $clangId) . '">' . $linkText . '</a></li>';
+		}
+
+		$out .= '</ul>';
+
+		return $out;
+	}
+
 	// overwritten method (depends on factory() and get() methods)
 	function _getNavigation($categoryId, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') { 
 		global $REX;
