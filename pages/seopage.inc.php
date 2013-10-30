@@ -276,6 +276,10 @@ echo '
 	font-size: 100%;
 }
 
+#seo-page div.rex-form div.rex-form-row p span.rex-form-notice.right {
+	margin-top: 1px;
+}
+
 #seo-page div.rex-form div.rex-form-row p {
     margin-bottom: 2px;
 }

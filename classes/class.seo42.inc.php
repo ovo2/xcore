@@ -355,10 +355,16 @@ class seo42 {
 	}
 
 	public static function getLangSlug($clangId) {
-		$langSlug = self::getLangCode($clangId);
+		global $REX;
 
-		if (strlen($langSlug) > 2) {
-			$langSlug = substr($langSlug, 0, 2);
+		if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['code'])) {
+			$langSlug = self::getLangCode($clangId);
+	
+			if (strlen($langSlug) > 2) {
+				$langSlug = substr($langSlug, 0, 2);
+			}
+		} else {
+			$langSlug = self::getLangName($clangId);
 		}
 
 		return strtolower($langSlug);

@@ -201,7 +201,7 @@ echo '
 		  <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
               <label for="robots-txt">' . $I18N->msg('seo42_settings_robots_link') . '</label>
-              <span class="rex-form-read" id="robots-txt"><a href="' . seo42::getBaseUrl() . 'robots.txt" target="_blank">' . seo42::getBaseUrl() . 'robots.txt</a></span>
+              <span class="rex-form-read" id="robots-txt"><a href="' . seo42::getBaseUrl() . 'robots.txt" target="_blank" class="extern">' . seo42::getBaseUrl() . 'robots.txt</a></span>
             </p>
           </div>
 
@@ -216,7 +216,7 @@ echo '
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
               <label for="xml-sitemap">' . $I18N->msg('seo42_settings_sitemap_link') . '</label>
-              <span class="rex-form-read" id="xml-sitemap"><a href="' . seo42::getBaseUrl() . 'sitemap.xml" target="_blank">' . seo42::getBaseUrl() . 'sitemap.xml</a></span>
+              <span class="rex-form-read" id="xml-sitemap"><a href="' . seo42::getBaseUrl() . 'sitemap.xml" target="_blank" class="extern">' . seo42::getBaseUrl() . 'sitemap.xml</a></span>
             </p>
           </div>
 

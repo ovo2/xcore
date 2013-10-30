@@ -21,9 +21,10 @@ class rexseo_sitemap
 
 		foreach ($REXSEO_URLS as $url)  {
 			$article = OOArticle::getArticleById($url['id'], $url['clang']);
-			$hasPermission = true;
 
 			if (OOArticle::isValid($article)) {
+				$hasPermission = true;
+
 				// community addon
 				if (class_exists('rex_com_auth') && !rex_com_auth::checkPerm($article)) {
 					$hasPermission = false;
@@ -44,19 +45,33 @@ class rexseo_sitemap
 		// use db articles
 		$db_articles = array();
 		$db = new rex_sql;
-		$qry = 'SELECT `id`, `clang`, `updatedate`, `path`, `seo_noindex` FROM `' . $REX['TABLE_PREFIX'] . 'article` WHERE `status` = 1';
+		$qry = 'SELECT `id`, `clang`, `updatedate`, `path`, `seo_noindex` FROM `' . $REX['TABLE_PREFIX'] . 'article`';
 
 		if ($REX['ADDON']['rexseo42']['settings']['ignore_root_cats']) {
-			$qry .= ' AND `re_id` != 0 OR (re_id = 0 AND catname LIKE "")';
+			$qry .= ' WHERE `re_id` != 0 OR (re_id = 0 AND catname LIKE "")';
 		}
 
 		foreach($db->getDbArray($qry) as $art) {
-			$db_articles[$art['id']][$art['clang']] = array('loc'        => seo42::getFullUrl($art['id'],$art['clang']),
-						                                   'lastmod'    => date('Y-m-d\TH:i:s',$art['updatedate']).'+00:00',
-						                                   'changefreq' => self::calc_article_changefreq($art['updatedate'], ''),
-						                                   'priority'   => self::calc_article_priority($art['id'],$art['clang'],$art['path'], ''),
-														   'noindex'   => $art['seo_noindex']
-						                                   );
+			$article = OOArticle::getArticleById($art['id'], $art['clang']);
+
+			if (OOArticle::isValid($article)) {
+				$hasPermission = true;
+
+				// community addon
+				if (class_exists('rex_com_auth') && !rex_com_auth::checkPerm($article)) {
+					$hasPermission = false;
+				}
+
+				// add sitemap block
+				if ($article->isOnline() && $hasPermission) {
+					$db_articles[$art['id']][$art['clang']] = array('loc'        => seo42::getFullUrl($art['id'],$art['clang']),
+										                           'lastmod'    => date('Y-m-d\TH:i:s',$art['updatedate']).'+00:00',
+										                           'changefreq' => self::calc_article_changefreq($art['updatedate'], ''),
+										                           'priority'   => self::calc_article_priority($art['id'],$art['clang'],$art['path'], ''),
+																   'noindex'   => $art['seo_noindex']
+										                           );
+				}
+			}
 		}
 	}
 
