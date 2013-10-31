@@ -230,6 +230,7 @@ seo42_redirect_sourceurl_alert = Die alte URL muss mit "/" beginnen.
 seo42_redirect_targeturl_alert = Die neue URL muss mit "http://" oder "/" beginnen.
 seo42_redirect_restore_cachefile_ok = Fehlende Cache-Datei "{0}" wurde wiederhergestellt.
 seo42_redirect_restore_cachefile_fail = Cache-Datei "{0}" konnte nicht gespeichert werden!
+seo42_redirect_test = testen
 
 seo42_warning_old_settings_file = SEO42: Ihre "settings.lang.inc.php" scheint noch das alte Format zu haben. Bitte korrigieren!
 

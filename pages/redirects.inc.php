@@ -54,7 +54,7 @@ if ($func == '') {
 	$list->setNoRowsMessage($I18N->msg('seo42_redirect_no_sytles_available'));
 	$list->setCaption($I18N->msg('seo42_redirect_list_of_redirects'));
 	$list->addTableAttribute('summary', $I18N->msg('seo42_redirect_list_of_redirects'));
-	$list->addTableColumnGroup(array(40, 40, 300, 300, 80, 80));
+	$list->addTableColumnGroup(array(40, 40, 300, 300, 80, 80, 80));
 
 	$list->setColumnLabel('id', $I18N->msg('seo42_redirect_id'));
 	$list->setColumnLabel('source_url', $I18N->msg('seo42_redirect_source_url'));
@@ -68,8 +68,29 @@ if ($func == '') {
 
 	// functions column spans 2 data-columns
 	$funcs = $I18N->msg('seo42_redirect_functions');
-	$list->addColumn($funcs, $I18N->msg('seo42_redirect_edit'), -1, array('<th colspan="2">###VALUE###</th>','<td>###VALUE###</td>'));
-	$list->setColumnParams($funcs, array('func' => 'edit', 'redirect_id' => $redirect_id, 'redirect_id' => '###id###'));
+	$list->addColumn($funcs, $I18N->msg('seo42_redirect_test'), -1, array('<th colspan="3">###VALUE###</th>','<td>###VALUE###</td>'));
+	$list->setColumnFormat($funcs, 'custom', create_function(
+		'$params',
+		'global $REX, $I18N;
+
+		$list = $params["list"];
+
+		$query = \'SELECT source_url FROM \' . $REX[\'TABLE_PREFIX\'] . \'redirects WHERE id=\' . $list->getValue("id");
+		$sql = new sql();
+		$sql->setQuery($query);
+
+		if ($sql->getRows() == 0) {
+			$link = "#";
+		} else {
+			$link = seo42::getServerProtocol() . "://" . seo42::getServerWithSubDir() . "/" . ltrim($sql->getValue(\'source_url\'), \'/\');
+		}
+
+		return "<a href=\"$link\" target=\"_blank\">" . $I18N->msg(\'seo42_redirect_test\') . "</a>";'	
+	));
+
+	$edit = 'editCol';
+	$list->addColumn($edit, $I18N->msg('seo42_redirect_edit'), -1, array('','<td>###VALUE###</td>'));
+	$list->setColumnParams($edit, array('func' => 'edit', 'redirect_id' => $redirect_id, 'redirect_id' => '###id###'));
 
 	$delete = 'deleteCol';
 	$list->addColumn($delete, $I18N->msg('seo42_redirect_delete'), -1, array('','<td>###VALUE###</td>'));
