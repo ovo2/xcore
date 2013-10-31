@@ -3,7 +3,7 @@ SEO42 - Changelog
 
 **Updatehinweis:** Von SEO42 2.x auf SEO42 2.6 und höher bitte [Updateanleitung](https://github.com/RexDude/seo42#update-von-seo42-2x-auf-seo42-26-und-h%C3%B6her) beachten!
 
-### Version 2.6.1 DEV
+### Version 2.6.1 BETA
 
 * Fixed #65: WWW-Weiterleitung gilt nur noch für das Frontend. Dadurch wird bei manchen ein versehentliches Aussperren aus dem Backend vermieden.
 * Fixed #64: Bei einem LangCode `en-US` lautet der LangSlug jetzt korrekt `en`. `seo42::getLangSlug()` hinzugefügt.
