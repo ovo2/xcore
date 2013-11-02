@@ -507,6 +507,14 @@ class seo42 {
 
 		$out .= '<h1>---------- SEO42 DEBUG BEGIN ----------<h1>';
 
+		// general information
+		$out .= '<h2>General Information</h2>';
+		$out .= '<table>';
+		$out .= '<tr><td class="left">REDAXO Version</td><td class="right">' . $REX['VERSION'] . '.' . $REX['SUBVERSION'] . '.' . $REX['MINORVERSION'] . '</td></tr>';
+		$out .= '<tr><td class="left">SEO42 Version</td><td class="right">' . $REX['ADDON']['version']['seo42'] . '</td></tr>';
+		$out .= '<tr><td class="left">PHP Version</td><td class="right">' . phpversion() . '</td></tr>';
+		$out .= '</table>';
+
 		// methods
 		$out .= '<h2>Class Methods</h2>';
 		$out .= '<table>';
@@ -527,6 +535,7 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::getLangName', array('0'));
 		$out .= self::getDebugInfoRow('seo42::getOriginalLangName', array('0'));
 		$out .= self::getDebugInfoRow('seo42::getServerProtocol');
+		$out .= self::getDebugInfoRow('seo42::hasTemplateBaseTag');
 		$out .= self::getDebugInfoRow('seo42::getBaseUrl');
 		$out .= self::getDebugInfoRow('seo42::getServerUrl');
 		$out .= self::getDebugInfoRow('seo42::getServer');
@@ -591,7 +600,7 @@ class seo42 {
 					}
 
 					#seo42-debug h2 {
-						margin: 10px 0;
+						margin: 15px 0;
 						font-size: 14px;
 					}
 
@@ -606,6 +615,7 @@ class seo42 {
 					}
 
 					#seo42-debug table {
+						width: 100%;
 						border-collapse: collapse;
 						border-spacing: 0;
 						background: #FAF9F5;
@@ -677,6 +687,21 @@ class seo42 {
 
 	public static function getCustomUrlData($catObj) {
 		return json_decode($catObj->getValue('seo_custom_url'), true);
+	}
+
+	public static function hasTemplateBaseTag() {
+		global $REX;
+
+		$sqlStatement = 'SELECT * FROM ' . $REX['TABLE_PREFIX'] . 'template WHERE `content` LIKE "%seo42::getBaseUrl()%" OR `content` LIKE "%seo42::getHtml()%"';
+		$sql = rex_sql::factory();
+		//$sql->debugsql = true;
+		$sql->setQuery($sqlStatement);
+
+		if ($sql->getRows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public static function getAnswer() {
