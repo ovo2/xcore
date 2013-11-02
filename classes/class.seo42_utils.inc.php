@@ -721,4 +721,8 @@ class seo42_utils {
 
 		return $subject;
 	}
+
+	public static function getCustomUrl($urlWithoutSlash) {
+		return '/' . $urlWithoutSlash;
+	}
 }

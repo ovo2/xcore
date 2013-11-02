@@ -24,7 +24,7 @@ if (rex_post('save_data', 'boolean')) {
 			// check if url already exists
 			if (isset($REXSEO_URLS[$sanitizedUrl])) { // url already exists
 				$doDataUpdate = false;
-				echo rex_warning($I18N->msg('seo42_urlpage_url_already_exists', $sanitizedUrl));
+				echo rex_warning($I18N->msg('seo42_urlpage_url_already_exists', seo42_utils::getCustomUrl($sanitizedUrl)));
 			} else {
 				$newUrlData['custom_url'] = $sanitizedUrl;
 			}
@@ -51,7 +51,7 @@ if (rex_post('save_data', 'boolean')) {
 			// check if url already exists
 			if (isset($REXSEO_URLS[$newUrl])) { // url already exists
 				$doDataUpdate = false;
-				echo rex_warning($I18N->msg('seo42_urlpage_url_already_exists', $newUrl));
+				echo rex_warning($I18N->msg('seo42_urlpage_url_already_exists', seo42_utils::getCustomUrl($newUrl)));
 			}
 
 			break;
@@ -178,7 +178,7 @@ if ($urlField != '') {
 							<div class="rex-form-row">
 								<p class="rex-form-text">
 									<label for="userdef_intern"><?php echo $I18N->msg('seo42_urlpage_urltype_userdef_intern'); ?></label>
-									<input type="text" value="<?php if ($urlType == SEO42_URL_TYPE_USERDEF_INTERN) { echo $jsonData['custom_url']; } ?>" name="userdef_intern" id="userdef_intern" class="rex-form-text" />
+									<input type="text" value="<?php if ($urlType == SEO42_URL_TYPE_USERDEF_INTERN) { echo seo42_utils::getCustomUrl($jsonData['custom_url']); } ?>" name="userdef_intern" id="userdef_intern" class="rex-form-text" />
 								</p>
 							</div>
 						</div>
