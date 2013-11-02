@@ -137,5 +137,6 @@ Credits
 * Google PageRank Checker Class by David Walsh and Jamie Scott
 * PHP Markdown Lib by Michel Fortin
 * Hitchhiker's Guide to the Galaxy Icons by [Iconshock](http://www.iconarchive.com/artist/iconshock.html)
+* Status Icons from [FamFamFam Silk Icons](http://www.famfamfam.com/lab/icons/silk/)
 * Macht’s gut und danke für den Fisch ;)
 

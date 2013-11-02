@@ -7,7 +7,7 @@ SEO42 - Changelog
 
 * Neu: Marvin, der Roboter ist nun in der Hilfe zu finden und gibt dort wertvolle Lebensweisheiten von sich ;)
 * Neu: FAQ-Eintrag: `Meine CSS Dateien werden nicht geladen?!`
-* Verbessert: Im Setup Schritt 1 wird der Hinweis auf die `settings.lang.inc.php` gegeben, wo man aktuell noch die Spracheinstellungen vornehmen muss.
+* Verbessert: Im Setup Schritt 1 wird der Hinweis auf die `settings.lang.inc.php` gegeben, wo man aktuell noch die Spracheinstellungen vornehmen muss. Zusätzlich wird ein Status-Icon angezeigt falls die Anzahl der Sprachen mit den REDAXO Sprachen nicht übereinstimmt.
 * Verbessert: Optionale Parameter `ulId`, `showLiClasses` und `hideLiIfOfflineArticle` für `seo42::getLangNavigation()` hinzugefügt
 * Verbessert: Nach Wechsel von REDAXO Unterordner-Installation auf normale Installation wird im Setup die RewriteBase Checkbox weiterhin angezeigt bis `.htaccess` Datei neu kopiert
 * Verbessert: Debug-Output inkl. REDAXO, SEO42 und PHP Versionen-Anzeige, `seo42::hasTemplateBaseTag()` hinzugefügt

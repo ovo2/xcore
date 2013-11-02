@@ -760,4 +760,17 @@ class seo42_utils {
 
 		return -1;
 	}
+
+	public static function getLangSettingsFile() {
+		global $REX, $I18N;
+
+		if (seo42::getLangCount() != count($REX['ADDON']['seo42']['settings']['lang'])) {
+			$class = 'exclamation';
+			$msg = $I18N->msg('seo42_setup_langfile_exclamation');
+		} else {
+			$class = 'success';
+			$msg = $I18N->msg('seo42_setup_langfile_success');
+		}
+		return '<span class="rex-form-read" id="lang_hint"><code>/seo42/settings.lang.inc.php</code></span><span onclick="javascript:alert(\'' . $msg . '\');" class="status ' . $class . '">&nbsp;</span>';
+	}
 }

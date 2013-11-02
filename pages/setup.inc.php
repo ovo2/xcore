@@ -152,7 +152,7 @@ if ($func == "do_copy") {
 			
 			<p class="rex-form-col-a rex-form-read">
 				<label for="lang_hint"><?php echo $I18N->msg('seo42_settings_lang_hint'); ?></label>
-				<span class="rex-form-read" id="lang_hint"><code>/seo42/settings.lang.inc.php</code></span>
+				<?php echo seo42_utils::getLangSettingsFile(); ?>
 			</p>
 
 			<input type="hidden" name="page" value="seo42" />

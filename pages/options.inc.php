@@ -160,7 +160,7 @@ echo '
 	echo '<div class="rex-form-row rex-form-element-v1">
 			<p class="rex-form-col-a rex-form-read">
 				<label for="lang_hint">' . $I18N->msg('seo42_settings_lang_hint') . '</label>
-				<span class="rex-form-read" id="lang_hint"><code>/seo42/settings.lang.inc.php</code></span>
+				' . seo42_utils::getLangSettingsFile() . '
 			</p>
 		</div>';
 

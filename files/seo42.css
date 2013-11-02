@@ -25,3 +25,32 @@
 	margin-left: 6px;
 	margin-right: 10px;
 } 
+
+span.status {
+	background: transparent url("status_icons.png") no-repeat;
+	width: 16px !important;
+	height: 16px;
+	display: inline-block;
+	cursor: pointer;
+	margin-left: 5px;
+}
+
+span.status.success {
+	background-position: left top;	
+}
+
+span.status.error {
+	background-position: left -20px;	
+}
+
+span.status.exclamation {
+	background-position: left -40px;	
+}
+
+#lang_hint {
+	width: auto;
+}
+
+#lang_hint code {
+	vertical-align: top;
+}
