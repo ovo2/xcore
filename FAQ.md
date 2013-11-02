@@ -7,10 +7,10 @@ Mein Webserver meldet einen 500 Server Error?!
 Vermutlich liegt es an der Zeile `Options -Indexes` in der .htaccess Datei. Einfach diese Zeile auskommentieren.
 
 
-Wie muss die URL der Website im Setup genau angegeben werden?
--------------------------------------------------------------
+Meine CSS Dateien werden nicht geladen?!
+----------------------------------------
 
-Die URL der Website muss mit `http://` beginnen und mit einem `/` enden.
+Stellen Sie sicher, dass der Base-Tag sich an oberster Stelle in Head-Bereich Ihrer Website befindet. Bei REDAXO-Unterordner-Installationen zusätzlich drauf achten, die URLs nicht mit / zu beginnen bzw. einfach Codebeispiele 2 nutzen!
 
 
 Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterordner installiert habe?
@@ -18,6 +18,12 @@ Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterordner installier
 
 Im SEO42 Setup (URL der Website) und in der .htaccess den Unterordner mit angeben: `RewriteBase /unterordner`
 Desweiteren sollten Ihre URLs nicht mit / beginnen. Nutzen Sie die PHP-Methoden aus Codebeispiel Nr.2!
+
+
+Wie muss die URL der Website im Setup genau angegeben werden?
+-------------------------------------------------------------
+
+Die URL der Website muss mit `http://` beginnen und mit einem `/` enden.
 
 
 Kann ich den Base-Tag auch weglassen?
