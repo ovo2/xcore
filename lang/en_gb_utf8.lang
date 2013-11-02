@@ -100,8 +100,7 @@ seo42_setup_rewritebase = RewriteBase automatisch anpassen: <i>RewriteBase /{0}<
 seo42_setup_subdir_hint = (Bitte Unterordner mit angeben)
 seo42_setup_rewritebase_alert = Bitte folgende Anpassung in der .htaccess Datei vornehmen:
 seo42_setup_directory_listing_alert = Falls Ihr Webserver ein 500 Error melden sollte, dann bitte die Zeile \r\n\"Options -Indexes\" in der .htaccess Datei wieder entfernen.
-seo42_setup_langfile_exclamation = Die Anzahl definierter Sprachen in der settings.lang.inc.php Datei\r\nstimmt momentan mit der Anzahl der REDAXO-Sprachen nicht überein!
-seo42_setup_langfile_success = Keine Fehler in der settings.lang.inc.php Datei entdeckt.\r\nÜberprüfen Sie aber bitte trotzdem die Einstellungen in der Datei.
+seo42_setup_langfile_error = Die Anzahl definierter Sprachen in der settings.lang.inc.php Datei\r\nstimmt momentan mit der Anzahl der REDAXO-Sprachen nicht überein!
 
 seo42_seopage_updated = SEO-Data updated.
 seo42_seopage_main_section = General
