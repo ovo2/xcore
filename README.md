@@ -103,6 +103,13 @@ Hinweise
 * Momentan muss man noch von Hand benötigte Einstellungen in den Dateien `settings.advanced.inc.php` und `settings.lang.inc.php` vornehmen. Danach sollte der Cache gelöscht werden. Ab Version 3.0.0 sollten diese Dateien dann der Vergangenheit angehören ;)
 * Getestete Skins: `agk_skin` von REDAXO und `ppx_skin` von [polarpixel](https://github.com/polarpixel).
 
+Links
+-----
+
+* BugTracker: <https://github.com/RexDude/seo42/issues>
+* Klasse nav42: <https://github.com/RexDude/seo42/blob/master/classes/class.nav42.inc.php>
+
+
 FAQ
 ---
 
@@ -125,9 +132,10 @@ Credits
 * [Markus Staab](https://github.com/staabm) für das zugrundeliegende url_rewrite AddOn
 * [Jan Kristinus](http://github.com/dergel) für REDAXO und den neuen EP in REDAXO 4.5
 * [Gregor Harlan](https://github.com/gharlan) und [Thomas Blum](https://github.com/tbaddade) für Hilfe, Code und Bugmeldungen :)
-* [Peter Bickel](https://github.com/polarpixel) für die Hilfe bei der englischen Übersetzung
+* [Peter Bickel](https://github.com/polarpixel) für generelle Unterstützung und die Hilfe bei der englischen Übersetzung
 * Danke ausserdem an alle die sich mit Ideen, Tests und Bugmeldungen eingebracht haben :)
 * Google PageRank Checker Class by David Walsh and Jamie Scott
 * PHP Markdown Lib by Michel Fortin
+* Hitchhiker's Guide to the Galaxy Icons by [Iconshock](http://www.iconarchive.com/artist/iconshock.html)
 * Macht’s gut und danke für den Fisch ;)
 
