@@ -219,15 +219,13 @@ class seo42 {
 			$article = OOArticle::getArticleById(self::$curArticle->getId(), $clangId);
 
 			if ($article->isOnline() || $REX['CUR_CLANG'] == $clangId) {
-				if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['code'])) {
-					$clangName = $REX['ADDON']['seo42']['settings']['lang'][$clangId]['code'];
-				}
+				$hreflang = self::getLangCode($clangId);
 
 				if ($i > 0) {
 					$out .= $indent;
 				}
 
-				$out .= '<link rel="alternate" href="' . self::getFullUrl(self::$curArticle->getId(), $clangId)  . self::getQueryString() . '" hreflang="' . $clangName . '" />' . PHP_EOL;
+				$out .= '<link rel="alternate" href="' . self::getFullUrl(self::$curArticle->getId(), $clangId)  . self::getQueryString() . '" hreflang="' . $hreflang . '" />' . PHP_EOL;
 
 				$i++;
 			}
@@ -510,9 +508,9 @@ class seo42 {
 		// general information
 		$out .= '<h2>General Information</h2>';
 		$out .= '<table>';
-		$out .= '<tr><td class="left">REDAXO Version</td><td class="right">' . $REX['VERSION'] . '.' . $REX['SUBVERSION'] . '.' . $REX['MINORVERSION'] . '</td></tr>';
-		$out .= '<tr><td class="left">SEO42 Version</td><td class="right">' . $REX['ADDON']['version']['seo42'] . '</td></tr>';
-		$out .= '<tr><td class="left">PHP Version</td><td class="right">' . phpversion() . '</td></tr>';
+		$out .= '<tr><td class="left"><code>REDAXO Version</code></td><td class="right"><code>' . $REX['VERSION'] . '.' . $REX['SUBVERSION'] . '.' . $REX['MINORVERSION'] . '</code></td></tr>';
+		$out .= '<tr><td class="left"><code>SEO42 Version</code></td><td class="right"><code>' . $REX['ADDON']['version']['seo42'] . '</code></td></tr>';
+		$out .= '<tr><td class="left"><code>PHP Version</code></td><td class="right"><code>' . phpversion() . '</code></td></tr>';
 		$out .= '</table>';
 
 		// methods
