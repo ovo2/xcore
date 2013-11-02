@@ -48,6 +48,18 @@ $REX['ADDON']['seo42']['settings']['lang'][3]['code'] = 'zh';
 $REX['ADDON']['seo42']['settings']['lang'][3]['original_name'] = '中国的';
 $REX['ADDON']['seo42']['settings']['lang'][3]['rewrite_mode'] = SEO42_REWRITEMODE_INHERIT;
 $REX['ADDON']['seo42']['settings']['lang'][3]['inherit_from_clang'] = 1;
+
+$REX['ADDON']['seo42']['settings']['lang'][4]['code'] = 'es';
+$REX['ADDON']['seo42']['settings']['lang'][4]['original_name'] = 'español';
+$REX['ADDON']['seo42']['settings']['lang'][4]['rewrite_mode'] = SEO42_REWRITEMODE_SPECIAL_CHARS;
+$REX['ADDON']['seo42']['settings']['lang'][4]['special_chars'] = 'Á|á|ç|É|é|Í|í|Ñ|ñ|Ó|ó|Ú|ú|ü|&';
+$REX['ADDON']['seo42']['settings']['lang'][4]['special_chars_rewrite'] = 'A|a|c|E|e|I|i|N|n|O|o|U|u|u|y';
+
+$REX['ADDON']['seo42']['settings']['lang'][5]['code'] = 'it';
+$REX['ADDON']['seo42']['settings']['lang'][5]['original_name'] = 'italiano';
+$REX['ADDON']['seo42']['settings']['lang'][5]['rewrite_mode'] = SEO42_REWRITEMODE_SPECIAL_CHARS;
+$REX['ADDON']['seo42']['settings']['lang'][5]['special_chars'] = ' À|à|È|è|É|é|Ì|ì|Í|í|Ï|ï|Ò|ò|Ó|ó|Ù|ù|Ú|ú|&';
+$REX['ADDON']['seo42']['settings']['lang'][5]['special_chars_rewrite'] = ' A|a|E|e|E|e|I|i|I|i|I|i|O|o|O|o|U|u|U|u|e';
 */
 
 // ****************************************************************

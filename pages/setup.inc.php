@@ -149,6 +149,11 @@ if ($func == "do_copy") {
 				<?php if (seo42_utils::detectSubDir()) { echo '<span class="subdir-hint">' . $I18N->msg('seo42_setup_subdir_hint') . '</span>'; } ?>
 				<span class="url-hint"><?php echo $I18N->msg('seo42_setup_url_alert'); ?></span>
 			</p>
+			
+			<p class="rex-form-col-a rex-form-read">
+				<label for="lang_hint"><?php echo $I18N->msg('seo42_settings_lang_hint'); ?></label>
+				<span class="rex-form-read" id="lang_hint"><code>/seo42/settings.lang.inc.php</code></span>
+			</p>
 
 			<input type="hidden" name="page" value="seo42" />
 			<input type="hidden" name="subpage" value="setup" />
@@ -229,6 +234,8 @@ $codeExample2 = '<?php echo seo42::getLangTags(); ?>';
 #rex-page-seo42 span.url-hint {
 	margin-left: 165px;
 	display: block;
+	margin-bottom: 5px;
+    margin-top: -5px;
 }
 #rex-page-seo42 span.url-hint {
 	color: red;

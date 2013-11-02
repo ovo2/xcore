@@ -93,7 +93,7 @@ seo42_setup_step2_button = Datei kopieren
 seo42_setup_step3 = Schritt 3: Template anpassen
 seo42_setup_step3_msg1 = Zuletzt passen Sie den Head-Bereich Ihres Templates wie folgt an:
 seo42_setup_step3_msg2 = Für eine mehrsprachige Website fügen Sie zusätzlich diese Zeile hinzu:
-seo42_setup_url_alert = URL dieser Website muss mit "http://" beginnen und mit "/" enden.
+seo42_setup_url_alert = URL der Website muss mit "http://" beginnen und mit "/" enden.
 seo42_setup_htaccess_alert = Im Hauptverzeichnis von REDAXO existiert bereits eine .htaccess Datei.\r\nWollen Sie diese überschreiben?\r\n\r\nHinweis: Ein Backup der Datei wird automatisch in /seo42/backup/ gespeichert.
 seo42_setup_codeexamples = Für ein optimales SEO nutzen Sie außerdem die PHP-Methoden aus den <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=codeexamples">Codebeispielen</a>...
 seo42_setup_rewritebase = RewriteBase automatisch anpassen: <i>RewriteBase /{0}</i>
