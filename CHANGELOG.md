@@ -3,6 +3,15 @@ SEO42 - Changelog
 
 **Updatehinweis:** Von SEO42 2.x auf SEO42 2.6 und höher bitte [Updateanleitung](https://github.com/RexDude/seo42#update-von-seo42-2x-auf-seo42-26-und-h%C3%B6her) beachten!
 
+### Version 2.7.0 - 02. November 2013
+
+* Neu: Marvin, der Roboter ist nun in der Hilfe zu finden und gibt dort wertvolle Lebensweisheiten von sich ;)
+* Neu: FAQ-Eintrag: `Meine CSS Dateien werden nicht geladen?!`
+* Verbessert: Im Setup Schritt 1 wird der Hinweis auf die `settings.lang.inc.php` gegeben, wo man aktuell noch die Spracheinstellungen vornehmen muss.
+* Verbessert: Optionale Parameter `ulId`, `showLiClasses` und `hideLiIfOfflineArticle` für `seo42::getLangNavigation()` hinzugefügt
+* Verbessert: Nach Wechsel von REDAXO Unterordner-Installation auf normale Installation wird im Setup die RewriteBase Checkbox weiterhin angezeigt bis `.htaccess` Datei neu kopiert
+* Verbessert: Debug-Output inkl. REDAXO, SEO42 und PHP Versionen-Anzeige, `seo42::hasTemplateBaseTag()` hinzugefügt
+
 ### Version 2.6.1 - 31. Oktober 2013
 
 * Fixed #65: WWW-Weiterleitung gilt nur noch für das Frontend. Dadurch wird bei manchen ein versehentliches Aussperren aus dem Backend vermieden.

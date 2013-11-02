@@ -16,7 +16,7 @@ class nav42 extends rex_navigation {
 		return $nav->get($categoryId, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
 	}
 
-	static function getLangNavigation($ulId = '', $showLiClasses = false, $hideLiOnOfflineArticle = false) {
+	static function getLangNavigation($ulId = '', $showLiClasses = false, $hideLiIfOfflineArticle = false) {
 		global $REX;
 
 		// ul id
@@ -40,7 +40,7 @@ class nav42 extends rex_navigation {
 				$articleStatus = false;
 			}
 
-			if (!$articleStatus && $hideLiOnOfflineArticle) {
+			if (!$articleStatus && $hideLiIfOfflineArticle) {
 				// do nothing
 			} else {
 				// link text
