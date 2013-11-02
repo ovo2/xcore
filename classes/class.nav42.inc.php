@@ -16,10 +16,17 @@ class nav42 extends rex_navigation {
 		return $nav->get($categoryId, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
 	}
 
-	static function getLangNavigation() {
+	static function getLangNavigation($ulId = '', $showLiClasses = false, $hideLiOnOfflineArticle = false) {
 		global $REX;
 
-		$out = '<ul>';
+		// ul id
+		if ($ulId == '') {
+			$ulIdAttribute = '';
+		} else {
+			$ulIdAttribute = ' id="' . $ulId . '"';
+		}
+
+		$out = '<ul' . $ulIdAttribute . '>';
 
 		foreach ($REX['CLANG'] as $clangId => $clangName) {
 			$article = OOArticle::getArticleById($REX['ARTICLE_ID'], $clangId);
@@ -27,18 +34,32 @@ class nav42 extends rex_navigation {
 			// new article id
 			if (OOArticle::isValid($article) && $article->isOnline()) {
 				$newArticleId = $article->getId();
+				$articleStatus = true;
 			} else {
 				$newArticleId = $REX['START_ARTICLE_ID'];
+				$articleStatus = false;
 			}
 
-			// link text
-			if (class_exists('seo42')) {
-				$linkText = seo42::getOriginalLangName($clangId);
+			if (!$articleStatus && $hideLiOnOfflineArticle) {
+				// do nothing
 			} else {
-				$linkText = $clangName;
-			}
+				// link text
+				if (class_exists('seo42')) {
+					$linkText = seo42::getOriginalLangName($clangId);
+				} else {
+					$linkText = $clangName;
+				}
 
-			$out .= '<li><a href="' . rex_getUrl($newArticleId, $clangId) . '">' . $linkText . '</a></li>';
+				// li class
+				if ($showLiClasses) {
+					$liClassAttribute = ' class="' . seo42::getLangSlug($clangId) . '"';
+				} else {
+					$liClassAttribute = '';
+				}
+				
+				// li out
+				$out .= '<li' . $liClassAttribute . '><a href="' . rex_getUrl($newArticleId, $clangId) . '">' . $linkText . '</a></li>';
+			}
 		}
 
 		$out .= '</ul>';
