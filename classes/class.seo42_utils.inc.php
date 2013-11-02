@@ -725,4 +725,39 @@ class seo42_utils {
 	public static function getCustomUrl($urlWithoutSlash) {
 		return '/' . $urlWithoutSlash;
 	}
+
+	public static function hasHtaccessSubDirRewriteBase() {
+		global $REX;
+
+		$rewriteBaseWithoutSubDir = 'RewriteBase /';
+		$rewriteBaseStartString = 'RewriteBase';
+		$htaccessRoot = $REX['FRONTEND_PATH'] . '/.htaccess';
+
+		if (file_exists($htaccessRoot)) {
+			$line = self::getLineWithString($htaccessRoot, $rewriteBaseStartString);
+
+			if ($line != -1) {
+				$htaccessRewriteBase = trim($line, " \t\r\n");
+				$commentPos = strpos($htaccessRewriteBase, '#');
+
+				if ($commentPos === false && $rewriteBaseWithoutSubDir != $htaccessRewriteBase) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	public static function getLineWithString($fileName, $str) {
+		$lines = file($fileName);
+
+		foreach ($lines as $lineNumber => $line) {
+		    if (strpos($line, $str) !== false) {
+		        return $line;
+		    }
+		}
+
+		return -1;
+	}
 }

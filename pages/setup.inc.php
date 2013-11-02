@@ -169,7 +169,7 @@ if ($func == "do_copy") {
 				<code>/redaxo/include/addons/seo42/install/_htaccess</code> &nbsp;<?php echo $I18N->msg('seo42_setup_to'); ?>&nbsp; <code>/.htaccess</code>
 			</p>
 
-			<?php if (seo42::getServerSubDir() != '') { ?>
+			<?php if (seo42::getServerSubDir() != '' || seo42_utils::hasHtaccessSubDirRewriteBase()) { ?>
 			<p class="rex-form-checkbox rex-form-label-right"> 
 				<input type="checkbox" value="1" id="modify_rewritebase" name="modify_rewritebase" checked="checked" />
 				<label for="modify_rewritebase"><?php echo $I18N->msg('seo42_setup_rewritebase', seo42::getServerSubDir()). ' <span>' . $I18N->msg('seo42_setup_important') . '</span>'; ?></label>
