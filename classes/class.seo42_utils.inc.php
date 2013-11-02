@@ -764,7 +764,7 @@ class seo42_utils {
 	public static function getLangSettingsFile() {
 		global $REX, $I18N;
 
-		if (seo42::getLangCount() != count($REX['ADDON']['seo42']['settings']['lang'])) {
+		if (!isset($REX['ADDON']['seo42']['settings']['lang']) || seo42::getLangCount() != count($REX['ADDON']['seo42']['settings']['lang'])) {
 			$icon = '<span onclick="javascript:alert(\'' . $I18N->msg('seo42_setup_langfile_error') . '\');" class="status exclamation">&nbsp;</span>';
 		} else {
 			$icon = '';
