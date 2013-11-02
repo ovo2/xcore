@@ -533,12 +533,12 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::getLangName', array('0'));
 		$out .= self::getDebugInfoRow('seo42::getOriginalLangName', array('0'));
 		$out .= self::getDebugInfoRow('seo42::getServerProtocol');
-		$out .= self::getDebugInfoRow('seo42::hasTemplateBaseTag');
 		$out .= self::getDebugInfoRow('seo42::getBaseUrl');
 		$out .= self::getDebugInfoRow('seo42::getServerUrl');
 		$out .= self::getDebugInfoRow('seo42::getServer');
 		$out .= self::getDebugInfoRow('seo42::getServerWithSubDir');
 		$out .= self::getDebugInfoRow('seo42::getServerSubDir');
+		$out .= self::getDebugInfoRow('seo42::hasTemplateBaseTag');
 		$out .= self::getDebugInfoRow('seo42::isSubDirInstall');
 		$out .= self::getDebugInfoRow('seo42::isMultiLangInstall');
 		$out .= self::getDebugInfoRow('seo42::getLangCount');
