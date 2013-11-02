@@ -568,8 +568,13 @@ class seo42 {
 		$out .= '<h2>Pathlist</h2>';
 
 		$pathlistRoot = REXSEO_PATHLIST;
-		$content = rex_get_file_contents($pathlistRoot);
-		$out .= rex_highlight_string($content, true);
+
+		if (file_exists($pathlistRoot)) {
+			$content = rex_get_file_contents($pathlistRoot);
+			$out .= rex_highlight_string($content, true);
+		} else {
+			$out .= 'File not found: ' . $pathlistRoot;
+		}
 
 		// redirects
 		$redirectsRoot = seo42_utils::getRedirectsFile();
@@ -584,8 +589,13 @@ class seo42 {
 		$out .= '<h2>.htaccess</h2>';
 
 		$htaccessRoot = $REX['FRONTEND_PATH'] . '/.htaccess';
-		$content = rex_get_file_contents($htaccessRoot);
-		$out .= rex_highlight_string($content, true);
+
+		if (file_exists($htaccessRoot)) {
+			$content = rex_get_file_contents($htaccessRoot);
+			$out .= rex_highlight_string($content, true);
+		} else {
+			$out .= 'File not found: ' . $htaccessRoot;
+		}
 
 		$out .= '<h1>---------- SEO42 DEBUG END ----------</h1>';
 
