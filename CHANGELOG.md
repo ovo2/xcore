@@ -5,7 +5,7 @@ SEO42 - Changelog
 
 ### Version 2.7.0 - 02. November 2013
 
-* Fixed: Redirects gingen manchmal auf die nicht-WWW Adresse, dadurch entstanden 2 Redirects
+* Fixed: Redirects gingen manchmal auf die nicht-WWW Adresse, dadurch entstanden dann 2 Redirects
 * Neu: Marvin, der Roboter ist nun in der Hilfe zu finden und gibt dort wertvolle Lebensweisheiten von sich ;)
 * Neu: Es wird nun ein 404 Header gesendet wenn Fehlerartikel = Startartikel der Website ist. Standardverhalten von REDAXO ist hier nämlich sonst kein 404 zu senden was schlecht fürs SEO ist.
 * Neu: FAQ-Eintrag: `Meine CSS Dateien werden nicht geladen?!`
