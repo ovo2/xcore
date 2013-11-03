@@ -6,6 +6,7 @@ SEO42 - Changelog
 ### Version 2.7.0 - 02. November 2013
 
 * Neu: Marvin, der Roboter ist nun in der Hilfe zu finden und gibt dort wertvolle Lebensweisheiten von sich ;)
+* Neu: Es wird nun ein 404 Header gesendet wenn Fehlerartikel = Startartikel der Website ist. Standardverhalten von REDAXO ist hier nämlich sonst kein 404 zu senden was schlecht fürs SEO ist.
 * Neu: FAQ-Eintrag: `Meine CSS Dateien werden nicht geladen?!`
 * Verbessert: Im Setup Schritt 1 wird der Hinweis auf die `settings.lang.inc.php` gegeben, wo man aktuell noch die Spracheinstellungen vornehmen muss. Zusätzlich wird ein Status-Icon angezeigt falls die Anzahl der Sprachen mit den REDAXO Sprachen nicht übereinstimmt.
 * Verbessert: Optionale Parameter `ulId`, `showLiClasses` und `hideLiIfOfflineArticle` für `seo42::getLangNavigation()` hinzugefügt
