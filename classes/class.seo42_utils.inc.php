@@ -644,7 +644,7 @@ class seo42_utils {
 					}
 
 					if (strpos($targetUrl, 'http') === false) {
-						$location = 'http://' . $_SERVER['SERVER_NAME']  . $targetUrl;
+						$location = seo42::getServerUrl()  . ltrim($targetUrl, '/');
 					} else {
 						$location = $targetUrl;
 					}
