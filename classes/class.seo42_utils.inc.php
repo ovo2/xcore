@@ -65,16 +65,28 @@ class seo42_utils {
 		// init current article
 		seo42::initArticle($REX['ARTICLE_ID']);
 
-		// set noindex header for robots if current article has noindex flag
-		if (!$REX['REDAXO'] && seo42::isArticleValid() && seo42::hasNoIndexFlag()) {
-			header('X-Robots-Tag: noindex, noarchive');
-		}
-
 		// controller
 		include($REX['INCLUDE_PATH'] . '/addons/seo42/controller.inc.php');
 
 		// rexseo post init
 		rex_register_extension_point('REXSEO_INCLUDED');
+	}
+
+	public static function sendHeaders() {
+		global $REX;
+
+		// frontend
+		if (!$REX['REDAXO']) {
+			// set noindex header for robots if current article has noindex flag
+			if (seo42::isArticleValid() && seo42::hasNoIndexFlag()) {
+				header('X-Robots-Tag: noindex, noarchive');
+			}
+
+			// try fixing redaxo's errorarticle behaviour
+			if (seo42::has404ResponseFlag() && $REX['START_ARTICLE_ID'] == $REX['NOTFOUND_ARTICLE_ID']) {
+				header("HTTP/1.0 404 Not Found");
+			}
+		}
 	}
 
 	public static function afterDBImport($params) {

@@ -251,7 +251,7 @@ $codeExample2 = '<?php echo seo42::getLangTags(); ?>';
 }
 
 #rex-page-seo42 .info-msg {
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 }
 
 #rex-page-seo42 .no-bottom-margin {

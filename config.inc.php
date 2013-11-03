@@ -48,7 +48,10 @@ if (!$REX['SETUP']) {
 	}
 
 	// init 42
-	rex_register_extension('ADDONS_INCLUDED','seo42_utils::init', '', REX_EXTENSION_EARLY);
+	rex_register_extension('ADDONS_INCLUDED', 'seo42_utils::init', '', REX_EXTENSION_EARLY);
+
+	// send additional headers if necessary
+	rex_register_extension('OUTPUT_FILTER_CACHE', 'seo42_utils::sendHeaders');
 }
 
 if ($REX['REDAXO']) {
