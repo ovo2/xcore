@@ -47,7 +47,7 @@ Weil doppelte Descriptions und Keywords von den Google Webmaster Tools als Probl
 Wie kann ich zwecks SEO die Ladegeschwindigkeit meiner Seite verbessern?
 ------------------------------------------------------------------------
 
-Man sollte einen Blick auf die HTML5 Boilerplate [.htaccess Datei](https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess) wegen Caching und Kompressionseinstellungen werfen oder aber einfach das [Resource Includer](https://github.com/RexDude/resource_includer) AddOn nutzen :)
+Man sollte einen Blick auf die HTML5 Boilerplate [.htaccess Datei](https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess) wegen Caching und Kompressionseinstellungen werfen oder aber einfach das [Resource Includer](https://github.com/RexDude/resource_includer) AddOn für REDAXO nutzen :)
 
 
 SEO42 läuft nicht mehr rund. Was tun?
