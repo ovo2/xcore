@@ -114,6 +114,8 @@ class seo42_ex extends seo42
 echo seo42_ex::getTitle(); // ' . $I18N->msg('seo42_help_codeexamples_ex7_comment4') . '
 ?>';
 
+$codeExample8 = '<?php echo seo42::getDebugInfo(); ?>';
+
 ?>
 
 <h2>1) <?php echo $I18N->msg('seo42_help_codeexamples_title1'); ?></h2>
@@ -143,6 +145,10 @@ echo seo42_ex::getTitle(); // ' . $I18N->msg('seo42_help_codeexamples_ex7_commen
 <h2>7) <?php echo $I18N->msg('seo42_help_codeexamples_title7'); ?></h2>
 <p><?php echo $I18N->msg('seo42_help_codeexamples_description7'); ?></p>
 <?php rex_highlight_string($codeExample7); ?>
+
+<h2>8) <?php echo $I18N->msg('seo42_help_codeexamples_title8'); ?></h2>
+<p><?php echo $I18N->msg('seo42_help_codeexamples_description8'); ?></p>
+<?php rex_highlight_string($codeExample8); ?>
 
 
 

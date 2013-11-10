@@ -182,6 +182,8 @@ seo42_help_codeexamples_title6 = Ausgabe einer Navigation unter Berücksichtigun
 seo42_help_codeexamples_description6 = Hier ein paar Beispiele wie man die mitgelieferte Klasse <code>nav42</code> einsetzt:
 seo42_help_codeexamples_title7 = Titel Schema ändern
 seo42_help_codeexamples_description7 = Ein eigenes Titel Schema lässt sich momentan nur über die Überschreibung der getTitle() Methode realisieren:
+seo42_help_codeexamples_title8 = Debug Ausgabe
+seo42_help_codeexamples_description8 = Mit dieser Methode kann man detaillierte Debug-Informationen zum aktuellen Artikel abrufen:
 seo42_help_codeexamples_ex3_alt = Titel aus dem Medienpool
 seo42_help_codeexamples_ex6_comment1 = ausgabe des 1. navigationslevels
 seo42_help_codeexamples_ex6_comment2 = ausgabe des 2. und 3. navigationslevels
@@ -211,9 +213,6 @@ seo42_help_codeexamples_ex7_comment2 = gesamten titel in kleinbuchstaben ausgebe
 seo42_help_codeexamples_ex7_comment3 = methoden aufrufe dann nur noch über diese abgeleitete klasse
 seo42_help_codeexamples_ex7_comment4 = gibt nun den titel in kleinbuchstaben aus
 
-seo42_help_debug = Debug
-seo42_help_debug_desc = Mit dieser Methode kann man detaillierte Debug-Informationen zum aktuellen Artikel abrufen:
-seo42_help_debug_output = Ausgabe wie im Frontend mit Artikel-Id = {0}:
 seo42_help_debug_article_wrong = Artikel ungültig!
 
 seo42_redirect_id = ID
