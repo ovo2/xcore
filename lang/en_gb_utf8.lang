@@ -19,6 +19,8 @@ seo42_dbfields_readded = {0}: Fehlende DB-Felder des AddOns wurden hinzugefügt.
 seo42_dbfields_readded_check_setup = {0}: Bitte überprüfen Sie ob das Setup (Schritt 3) erneut durchgeführt werden muss.
 seo42_check_lang_msg = {0}: Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.lang.inc.php" Datei.
 
+seo42_welcome_headline = Willkommen zu SEO42
+
 seo42_tools_caption = SEO Web Tools
 seo42_tool2 = Google Submit Url
 seo42_tool2_desc = Geben Sie Google Ihre neue Website bekannt. Registrierung bzw. Google-Konto erforderlich.
