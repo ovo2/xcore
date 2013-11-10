@@ -128,6 +128,7 @@ if ($REX['REDAXO']) {
 	// if clang is added/deleted show message to the user that he should check his lang settings
 	rex_register_extension('CLANG_ADDED', 'seo42_utils::showMsgAfterClangModified');
 	rex_register_extension('CLANG_DELETED', 'seo42_utils::showMsgAfterClangModified');
+	rex_register_extension('CLANG_UPDATED', 'seo42_utils::showMsgAfterClangModified');
 
 	// inform user when article hat different url type
 	if (rex_request('page') == 'content' && rex_request('mode') == 'edit' && rex_request('function') == '') {
