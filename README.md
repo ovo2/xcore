@@ -87,6 +87,12 @@ Diese Anpassungen sind nur nötig, wenn man die `nav42` Klasse verwenden will:
 * [Diese Zeile](https://github.com/dergel/redaxo4_community/blob/master/plugins/auth/config.inc.php#L19) auskommentieren
 * Und [diese Zeile](https://github.com/RexDude/seo42/blob/master/classes/class.nav42.inc.php#L3) umschreiben in `class nav42 extends rex_com_navigation`
 
+Entiwcklung von Plugins für SEO42
+---------------------------------
+
+* SEO42 kümmert sich automatisch darum das installierte und aktvierte Plugins automatisch in das Addon-Menü aufgenommen werden.
+* Es wird ausserdem automatisch die Sprachdatei des Plugins eingebunden. Im Plugin selbst ist das also nicht nötig.
+
 Hinweise
 --------
 

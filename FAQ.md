@@ -43,6 +43,13 @@ Warum kann kann man keine globalen Descriptions und Keywords eintragen, die dann
 
 Weil doppelte Descriptions und Keywords von den Google Webmaster Tools als Problem dargestellt werden. Es ist also kein gutes SEO. Entweder man lässt die Felder leer oder füllt diese von Hand aus (für alle oder auch nur einige Seiten).
 
+
+Wie kann ich zwecks SEO die Ladegeschwindigkeit meiner Seite verbessern?
+------------------------------------------------------------------------
+
+Man sollte einen Blick auf die HTML5 Boilerplate [.htaccess Datei](https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess) wegen Caching und Kompressionseinstellungen werfen oder aber einfach das [Resource Includer](https://github.com/RexDude/resource_includer) AddOn nutzen :)
+
+
 SEO42 läuft nicht mehr rund. Was tun?
 -------------------------------------
 
@@ -106,13 +113,7 @@ Dafür kann man die Methode `seo42::getImageTag()` nutzen, die dann einen komple
 Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?
 ---------------------------------------------------------------------
 
-Dann immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. `redaxo://13#anker`.
-
-
-Ich hab ne Frage die hier net auftaucht. Was tun?
--------------------------------------------------
-
-Schau doch mal ins original RexSEO. Da steht noch mehr Stuff... ;)
+Dann immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. `redaxo://13#anker`. Oder Base-Tag und auf einheitliche URLs achten, siehe Codebeispiele #2.
 
 
 Mir gefällt SEO42 nicht! Wie bekomme ich das AddOn wieder entfernt?

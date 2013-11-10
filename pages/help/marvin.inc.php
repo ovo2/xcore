@@ -9,6 +9,7 @@ $marvinMsgs[] = $I18N->msg('seo42_help_marvin_msg7');
 $marvinMsgs[] = $I18N->msg('seo42_help_marvin_msg8');
 $marvinMsgs[] = $I18N->msg('seo42_help_marvin_msg9');
 $marvinMsgs[] = $I18N->msg('seo42_help_marvin_msg10');
+$marvinMsgs[] = $I18N->msg('seo42_help_marvin_msg11');
 ?>
 
 <p id="marvin"><a href="index.php?page=seo42&amp;subpage=<?php echo rex_request('subpage'); ?>&amp;chapter=<?php echo rex_request('chapter'); ?>"><img width="256" height="256" src="../<?php echo $REX['MEDIA_ADDON_DIR']; ?>/seo42/marvin.png" alt="" /></a></p>
