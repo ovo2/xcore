@@ -84,7 +84,6 @@ seo42_setup_step2_msg1 = Folgende Datei muss in das Hauptverzeichnis von REDAXO 
 seo42_setup_to = nach
 seo42_setup_www_redirect_checkbox = Umleitung auf die WWW-Domain aktivieren
 seo42_setup_non_www_redirect_checkbox = Umleitung auf die Domain ohne WWW aktivieren
-seo42_setup_directory_listing_checkbox = Directory Listing abschalten
 seo42_setup_recommended = (empfohlen)
 seo42_setup_required = (benötigt)
 seo42_setup_htaccess_patch_ok = .htaccess Anpassungen wurden vorgenommen.
@@ -99,7 +98,6 @@ seo42_setup_codeexamples = Für ein optimales SEO nutzen Sie außerdem die PHP-M
 seo42_setup_rewritebase = RewriteBase automatisch anpassen: <i>RewriteBase /{0}</i>
 seo42_setup_subdir_hint = (Bitte Unterordner mit angeben)
 seo42_setup_rewritebase_alert = Bitte folgende Anpassung in der .htaccess Datei vornehmen:
-seo42_setup_directory_listing_alert = Falls Ihr Webserver ein 500 Error melden sollte, dann bitte die Zeile \r\n\"Options -Indexes\" in der .htaccess Datei wieder entfernen.
 seo42_setup_langfile_error = Die Anzahl definierter Sprachen in der settings.lang.inc.php Datei\r\nstimmt momentan mit der Anzahl der REDAXO-Sprachen nicht überein!
 
 seo42_seopage_updated = SEO-Daten wurden aktualisiert.

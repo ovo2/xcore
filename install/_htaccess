@@ -1,6 +1,9 @@
-# PREVENT DIRECTORY LISTING (COMMENT OUT IF YOU GET SERVER ERROR 500)
-#Options -Indexes
+# PREVENT DIRECTORY LISTING
+<IfModule mod_autoindex.c>
+	Options -Indexes
+</IfModule>
 
+# REWRITING
 <IfModule mod_rewrite.c>
 	# ENABLE REWRITING
 	RewriteEngine On

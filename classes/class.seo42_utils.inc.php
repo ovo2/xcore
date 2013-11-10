@@ -55,7 +55,7 @@ class seo42_utils {
 			}
 
 			// init rewriter 
-			$rewriter = new RexseoRewrite($REX['ADDON']['seo42']['settings']['levenshtein'], $REX['ADDON']['seo42']['settings']['rewrite_params']);
+			$rewriter = new RexseoRewrite();
 			$rewriter->resolve();
 
 			// rewrite ep 

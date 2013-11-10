@@ -3,6 +3,13 @@ SEO42 - Changelog
 
 **Updatehinweis:** Von SEO42 2.x auf SEO42 2.6 und höher bitte [Updateanleitung](https://github.com/RexDude/seo42#update-von-seo42-2x-auf-seo42-26-und-h%C3%B6her) beachten!
 
+### Version 3.0.0 DEV
+
+* Neu: FAQ Eintrag: `Wie kann ich zwecks SEO die Ladegeschwindigkeit meiner Seite verbessern?`
+* Verbessert: `.htaccess` Anweisung für die Deaktivierung der Verzeichnisauflistung optimiert. `Directory Listing abschalten` Checkbox aus Setup entfernt.
+* Verbessert: Neben der automatischen Einbindung der aktivierten Plugins für SEO42 werden nun auch die Language-Files der Plugins automatisch mit eingebunden
+* Entfernt: Einstellungen `levenshtein` und `rewrite_params` komplett entfernt
+
 ### Version 2.7.0 - 02. November 2013
 
 * Fixed: Redirects gingen manchmal auf die nicht-WWW Adresse, dadurch entstanden dann 2 Redirects

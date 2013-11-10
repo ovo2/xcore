@@ -76,15 +76,6 @@ $REX['ADDON']['seo42']['settings']['robots_archive_flag'] = 'noarchive';
 // if true website startarticle will have 1.0, all other articles will have 0.8 priority. if false priority gets calculated by category level.
 $REX['ADDON']['seo42']['settings']['static_sitemap_priority'] = true;
 
-// if true pages with similar urls will be accepted as match (not recommended!)
-$REX['ADDON']['seo42']['settings']['levenshtein'] = false;
-
-// if true parameters will be rewritten to ++/param1/value1/param2/value2 (not recommended!)
-$REX['ADDON']['seo42']['settings']['rewrite_params']  = false;
-
-// only for rewrite_params settings: start param rewrite with this string
-$REX['ADDON']['seo42']['settings']['params_starter']  = '++';
-
 // if false seo database fields won't be dropped if seo42 will be uninstalled. perhaps someday interesting when updateing seo42...
 $REX['ADDON']['seo42']['settings']['drop_dbfields_on_uninstall'] = true; 
 

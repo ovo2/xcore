@@ -4,15 +4,10 @@ define('REXSEO_PATHLIST', $REX['GENERATED_PATH'] . '/files/rexseo_pathlist.php')
 
 class RexseoRewrite
 {
-  private $use_levenshtein;
-  private $use_params_rewrite;
-
-
+  
   /* constructor */
-  function RexseoRewrite($use_levenshtein = false, $use_params_rewrite = false)
-  {
-    $this->use_levenshtein = $use_levenshtein;
-    $this->use_params_rewrite = $use_params_rewrite;
+  function RexseoRewrite() {
+    // do nothing
   }
 
   /**
@@ -39,7 +34,6 @@ class RexseoRewrite
       $start_id        = $REX['START_ARTICLE_ID'];
       $notfound_id     = $REX['NOTFOUND_ARTICLE_ID'];
 
-      $params_starter  = $REX['ADDON']['seo42']['settings']['params_starter'];
       $install_subdir  = seo42::getServerSubDir(); // 42
       $allow_articleid = $REX['ADDON']['seo42']['settings']['allow_articleid'];
       $homelang        = $REX['ADDON']['seo42']['settings']['homelang'];
@@ -88,16 +82,6 @@ class RexseoRewrite
       }
 
 
-      // RESOLVE REWRITTEN PARAMS -> POPULATE GET/REQUEST GLOBALS
-      if($this->use_params_rewrite && strstr($path,$params_starter.'/'))
-      {
-        $tmp = explode($params_starter.'/',$path);
-        $path = $tmp[0];
-        $vars = explode('/',$tmp[1]);
-        self::populateGlobals($vars);
-      }
-
-
       // RETRY RESOLVE VIA PATHLIST
       if(self::resolve_from_pathlist($path)) 
       {
@@ -116,20 +100,6 @@ class RexseoRewrite
         return self::setArticleId($ep['article_id'],$clang);
       }
 
-
-      // CHECK CLOSEST URL MATCH VIA LEVENSHTEIN
-      if($this->use_levenshtein)
-      {
-        foreach ($REXSEO_URLS as $url => $params)
-        {
-          $levenshtein[levenshtein($path, $url)] = $params['id'].'#'.$params['clang'];
-        }
-
-        ksort($levenshtein);
-        $best = explode('#', array_shift($levenshtein));
-
-        return self::setArticleId($best[0], $best[1]);
-      }
 
       // check for possible lang slug to load up correct language for 404 article
       $firstSlashPos = strpos($path, '/');
@@ -353,21 +323,11 @@ class RexseoRewrite
     global $REX;
     $divider        = $EPparams['divider'];
     $urlparams      = $EPparams['params'];
-    $params_starter = $REX['ADDON']['seo42']['settings']['params_starter'];
 
-    if($this->use_params_rewrite)
-    {
-      // REWRITE PARAMS
-      $urlparams = str_replace(array($divider,'='),'/',$urlparams);
-      $urlparams = str_replace(array('%5B','%5D'),array('(',')'),$urlparams); /* pseudo array: brackets "[]" not allowed by RFC1738, replace with "()", */
-      $urlparams = $urlparams == '' ? '' : $params_starter.$urlparams.'/';
-    }
-    else
-    {
-      // STANDARD PARAMS STRING
-      $urlparams = $urlparams == '' ? '' : '?'.$urlparams;
-    }
+    // STANDARD PARAMS STRING
+    $urlparams = $urlparams == '' ? '' : '?'.$urlparams;
     $urlparams = str_replace(array('/amp;','?&amp;'),array('/','?'),$urlparams);
+
     return $urlparams;
   }
 
