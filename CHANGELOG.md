@@ -5,8 +5,8 @@ SEO42 - Changelog
 
 ### Version 3.0.0 DEV
 
-* Neu: FAQ Eintrag: `Wie kann ich zwecks SEO die Ladegeschwindigkeit meiner Seite verbessern?`
-* Verbessert: `.htaccess` Anweisung für die Deaktivierung der Verzeichnisauflistung optimiert. `Directory Listing abschalten` Checkbox aus Setup entfernt.
+* Neu: Hinweis in der Readme.md und in der FAQ auf [HTML5 Boilerplate](http://html5boilerplate.com/) bzw. [Resource Includer](https://github.com/RexDude/resource_includer) als Maßnahme zur Verbesserung der Ladezeit der Website.
+* Verbessert: `.htaccess` Anweisung für die Deaktivierung der Verzeichnisauflistung optimiert. "Directory Listing abschalten" Checkbox aus Setup entfernt.
 * Verbessert: Neben der automatischen Einbindung der aktivierten Plugins für SEO42 werden nun auch die Language-Files der Plugins automatisch mit eingebunden
 * Entfernt: Einstellungen `levenshtein` und `rewrite_params` komplett entfernt
 

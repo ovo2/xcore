@@ -52,6 +52,11 @@ Verfügbare Plugins für SEO42
 
 * [url_control](https://github.com/tbaddade/redaxo_plugin_url_control) - Plugin zur URL-Generierung für eigene AddOns
 
+Ladezeit Ihrer Website verbessern
+---------------------------------
+
+Da eine schnelle Ladezeit der Website sich auch positiv auf das SEO auswirkt, wird empfohlen sowas wie das [HTML5 Boilerplate](http://html5boilerplate.com/) oder aber das [Resource Includer](https://github.com/RexDude/resource_includer) AddOn für REDAXO zu nutzen.
+
 Update von SEO42 2.x auf SEO42 2.6 und höher
 --------------------------------------------
 
@@ -87,11 +92,11 @@ Diese Anpassungen sind nur nötig, wenn man die `nav42` Klasse verwenden will:
 * [Diese Zeile](https://github.com/dergel/redaxo4_community/blob/master/plugins/auth/config.inc.php#L19) auskommentieren
 * Und [diese Zeile](https://github.com/RexDude/seo42/blob/master/classes/class.nav42.inc.php#L3) umschreiben in `class nav42 extends rex_com_navigation`
 
-Entiwcklung von Plugins für SEO42
+Entwicklung von Plugins für SEO42
 ---------------------------------
 
-* SEO42 kümmert sich automatisch darum das installierte und aktvierte Plugins automatisch in das Addon-Menü aufgenommen werden.
-* Es wird ausserdem automatisch die Sprachdatei des Plugins eingebunden. Im Plugin selbst ist das also nicht nötig.
+* SEO42 bindet automatisch sein einstallierten und aktvierten Plugins in das Addon-Menü ein.
+* Es wird ausserdem automatisch die Sprachdatei des Plugins eingebunden. Im Plugin selbst muss man also nichts weiter tun.
 
 Hinweise
 --------
