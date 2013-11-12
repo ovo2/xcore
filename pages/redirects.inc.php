@@ -133,6 +133,11 @@ echo '</div>';
 
 <script type="text/javascript">
 jQuery(document).ready( function() {
+	// focus
+	if (jQuery('#source-url').val() === '') {
+		jQuery('#source-url').focus();
+	}
+
 	jQuery('#rex-addon-editmode form').submit(function() {
 		var pat = /^https?:\/\//i;
 		var sourceUrl = jQuery('#source-url').val();
