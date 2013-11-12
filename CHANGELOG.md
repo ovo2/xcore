@@ -5,6 +5,7 @@ SEO42 - Changelog
 
 ### Version 3.0.0 DEV
 
+* Neu: Option `smart_redirects` hinzugefügt (per Defaulteinstellungen zuerst mal deaktiviert da es noch ausgiebig getestet werden muss!): Leitet den Benutzer der in der Adressleiste Urls von Hand verkürzt (z.B. `domain.de/foo/bar/` -> `domain.de/foo/bar.html`) auf die korrekte Url um, wenn vorhanden.
 * Neu: Recht `seo42[redirects_only]` hinzugefügt um für normale Benutzer nur die Redirects Seite anzuzeigen. Muss mit Recht `seo42[]` gesetzt werden.
 * Neu: Sortiermöglichkeiten für die Redirects Liste hinzugefügt
 * Neu: Hinweis in der Readme.md und in der FAQ auf [HTML5 Boilerplate](http://html5boilerplate.com/) bzw. [Resource Includer](https://github.com/RexDude/resource_includer) als SEO-Maßnahme zur Verbesserung der Ladezeit der Website.

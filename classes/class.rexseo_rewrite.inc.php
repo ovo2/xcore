@@ -101,6 +101,20 @@ class RexseoRewrite
       }
 
 
+		// smart redirects option
+		if ($REX['ADDON']['seo42']['settings']['smart_redirects']) {
+			$requestUriWithCorrectUrlEnding = trim($_SERVER['REQUEST_URI'], '/') . $REX['ADDON']['seo42']['settings']['url_ending'];
+				 
+			if (isset($REXSEO_URLS[$requestUriWithCorrectUrlEnding])) {
+				$redirect = array('id' =>$REXSEO_URLS[$requestUriWithCorrectUrlEnding]['id'],
+	                              'clang' =>$REXSEO_URLS[$requestUriWithCorrectUrlEnding]['clang'],
+	                              'status'=>301);
+
+				return self::redirect($redirect);
+			}
+		}
+
+
       // check for possible lang slug to load up correct language for 404 article
       $firstSlashPos = strpos($path, '/');
 
