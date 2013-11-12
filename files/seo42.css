@@ -50,3 +50,9 @@ span.status.exclamation {
 #lang_hint {
 	width: auto;
 }
+
+@media print { 
+	#rex-page-seo42.be-style-agk-skin div#rex-title h1 {
+		padding-left: 0 !important;
+	}
+}
