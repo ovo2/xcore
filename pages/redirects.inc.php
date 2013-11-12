@@ -60,6 +60,10 @@ if ($func == '') {
 	$list->setColumnLabel('source_url', $I18N->msg('seo42_redirect_source_url'));
 	$list->setColumnLabel('target_url', $I18N->msg('seo42_redirect_target_url'));
 
+	$list->setColumnSortable('id', 'desc');
+	$list->setColumnSortable('source_url', 'asc');
+	$list->setColumnSortable('target_url', 'asc');
+
 	// icon column
 	$thIcon = '<a class="rex-i-element rex-i-generic-add" href="'. $list->getUrl(array('func' => 'add')) .'"><span class="rex-i-element-text">' . $I18N->msg('seo42_redirect_create') . '</span></a>';
 	$tdIcon = '<span class="rex-i-element rex-i-generic"><span class="rex-i-element-text">###name###</span></span>';
@@ -123,6 +127,15 @@ if ($func == '') {
 		$form->addParam('redirect_id', $redirect_id);
 	} elseif ($func == 'add') {
 		// do nothing
+	}
+
+	// sort params to keep sort settings of user in list mode
+	if (rex_request('sort') != '') {
+		$form->addParam('sort', rex_request('sort'));
+	}
+
+	if (rex_request('sorttype') != '') {
+		$form->addParam('sorttype', rex_request('sorttype'));
 	}
 
 	$form->show();
