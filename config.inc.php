@@ -11,6 +11,7 @@ $REX['ADDON']['perm']['seo42'] = 'seo42[]';
 // permissions
 $REX['PERM'][] = 'seo42[]';
 $REX['PERM'][] = 'seo42[tools_only]';
+$REX['PERM'][] = 'seo42[redirects_only]';
 $REX['EXTPERM'][] = 'seo42[seo_default]';
 $REX['EXTPERM'][] = 'seo42[seo_extended]';
 $REX['EXTPERM'][] = 'seo42[url_default]';
@@ -66,11 +67,19 @@ if ($REX['REDAXO']) {
 	}
 
 	// subpages
-	if (isset($REX['USER']) && !$REX['USER']->isAdmin() && $REX['USER']->hasPerm('seo42[tools_only]')) {
-		// add tools page only
-		$REX['ADDON']['seo42']['SUBPAGES'] = array(
-			array('', $I18N->msg('seo42_tools'))
-		);
+	if (isset($REX['USER']) && !$REX['USER']->isAdmin() && ($REX['USER']->hasPerm('seo42[tools_only]') || $REX['USER']->hasPerm('seo42[redirects_only]'))) {
+		// add subpages for non admin users
+		if ($REX['USER']->hasPerm('seo42[tools_only]')) {
+			// add tools page only
+			$REX['ADDON']['seo42']['SUBPAGES'][] = array('tools', $I18N->msg('seo42_tools'));
+		}
+
+		if ($REX['USER']->hasPerm('seo42[redirects_only]')) {
+			// add redirects page only
+			$REX['ADDON']['seo42']['SUBPAGES'][] = array('redirects', $I18N->msg('seo42_redirects'));
+		}
+
+		$REX['ADDON']['seo42']['SUBPAGES'][0][0] = '';
 	} else {
 		// add subpages
 		$REX['ADDON']['seo42']['SUBPAGES'] = array(
