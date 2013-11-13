@@ -29,7 +29,7 @@
 span.status {
 	background: transparent url("status_icons.png") no-repeat;
 	width: 16px !important;
-	height: 18px;
+	height: 20px;
 	display: inline-block;
 	cursor: pointer;
 	margin-left: 5px;
@@ -44,7 +44,7 @@ span.status.error {
 }
 
 span.status.exclamation {
-	background-position: left -38px;	
+	background-position: left -78px;	
 }
 
 #lang_hint {
