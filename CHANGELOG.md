@@ -9,7 +9,7 @@ SEO42 - Changelog
 * Neu: Recht `seo42[redirects_only]` hinzugefügt um für normale Benutzer nur die Redirects Seite anzuzeigen. Muss mit Recht `seo42[]` gesetzt werden.
 * Neu: Sortiermöglichkeiten für die Redirects Liste hinzugefügt
 * Neu: Hinweis in der Readme.md und in der FAQ auf [HTML5 Boilerplate](http://html5boilerplate.com/) bzw. [Resource Includer](https://github.com/RexDude/resource_includer) als SEO-Maßnahme zur Verbesserung der Ladezeit der Website.
-* Verbessert: `.htaccess` Anweisung für die Deaktivierung der Verzeichnisauflistung optimiert. "Directory Listing abschalten" Checkbox aus Setup entfernt da nun nicht mehr gebraucht.
+* Verbessert: `.htaccess` Anweisung für die Deaktivierung der Verzeichnisauflistung optimiert. Es erscheint nun ein Hinweis-Icon (wegen 500 Server Error Möglichkeit) wenn man die Checkbox selektiert.
 * Verbessert: Neben der automatischen Einbindung der aktivierten Plugins für SEO42 werden nun auch die Language-Files der Plugins automatisch mit eingebunden
 * Entfernt: Einstellungen `levenshtein` und `rewrite_params` komplett entfernt
 

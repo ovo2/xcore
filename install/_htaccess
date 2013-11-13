@@ -1,6 +1,6 @@
 # PREVENT DIRECTORY LISTING
 <IfModule mod_autoindex.c>
-	Options -Indexes
+	#Options -Indexes
 </IfModule>
 
 # REWRITING
