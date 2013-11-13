@@ -24,6 +24,8 @@ class seo42_utils {
 
 		$insert = '<!-- BEGIN seo42 -->' . PHP_EOL;
 		$insert .= '<link rel="stylesheet" type="text/css" href="../' . $REX['MEDIA_ADDON_DIR'] . '/seo42/seo42.css" />' . PHP_EOL;
+		$insert .= '<link rel="stylesheet" type="text/css" href="../' . $REX['MEDIA_ADDON_DIR'] . '/seo42/qtip.css" />' . PHP_EOL;
+		$insert .= '<script type="text/javascript" src="../' . $REX['MEDIA_ADDON_DIR'] . '/seo42/jquery.qtip.min.js"></script>' . PHP_EOL;
 		$insert .= '<!-- END seo42 -->';
 	
 		return $params['subject'] . PHP_EOL . $insert;
@@ -777,7 +779,7 @@ class seo42_utils {
 		global $REX, $I18N;
 
 		if (!isset($REX['ADDON']['seo42']['settings']['lang']) || seo42::getLangCount() != count($REX['ADDON']['seo42']['settings']['lang'])) {
-			$icon = '<span onclick="javascript:alert(\'' . $I18N->msg('seo42_setup_langfile_error') . '\');" class="status exclamation">&nbsp;</span>';
+			$icon = '<span title="' . $I18N->msg('seo42_setup_langfile_error') . '" class="seo42-tooltip status exclamation">&nbsp;</span>';
 		} else {
 			$icon = '';
 		}

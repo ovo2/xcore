@@ -48,7 +48,22 @@ switch($subpage){
 }
 
 require $REX['INCLUDE_PATH'] . $local_path . $subpage . '.inc.php';
+?>
 
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $('.seo42-tooltip[title]').qtip({
+		style: {
+			classes: 'qtip-default qtip-rounded qtip-shadow'
+		},
+		content: {
+			title: '<?php echo $I18N->msg('seo42_tooltip_headline'); ?>'
+		}
+	});
+});
+</script>
+
+<?php
 // layout bottom
 require $REX['INCLUDE_PATH'] . '/layout/bottom.php';
 

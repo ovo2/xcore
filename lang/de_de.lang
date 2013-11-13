@@ -19,6 +19,9 @@ seo42_dbfields_readded = {0}: Fehlende DB-Felder des AddOns wurden hinzugefügt.
 seo42_dbfields_readded_check_setup = {0}: Bitte überprüfen Sie ob das Setup (Schritt 3) erneut durchgeführt werden muss.
 seo42_check_lang_msg = {0}: Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.lang.inc.php" Datei.
 
+seo42_tooltip_headline = Hinweis
+seo42_tooltip_close = Schließen
+
 seo42_welcome_headline = Willkommen zu SEO42
 
 seo42_tools_caption = SEO Web Tools
@@ -101,8 +104,8 @@ seo42_setup_codeexamples = Für ein optimales SEO nutzen Sie außerdem die PHP-Met
 seo42_setup_rewritebase = RewriteBase automatisch anpassen: <i>RewriteBase /{0}</i>
 seo42_setup_subdir_hint = (Bitte Unterordner mit angeben)
 seo42_setup_rewritebase_alert = Bitte folgende Anpassung in der .htaccess Datei vornehmen:
-seo42_setup_directory_listing_alert = Falls Ihr Webserver ein 500 Error melden sollte, dann bitte die Zeile \r\n\"Options -Indexes\" in der .htaccess Datei wieder entfernen.
-seo42_setup_langfile_error = Die Anzahl definierter Sprachen in der settings.lang.inc.php Datei\r\nstimmt momentan mit der Anzahl der REDAXO-Sprachen nicht überein!
+seo42_setup_directory_listing_alert = Falls Ihr Webserver ein 500 Error melden sollte, dann bitte die Zeile <strong>Options -Indexes</strong> in der .htaccess Datei wieder entfernen.
+seo42_setup_langfile_error = Die Anzahl definierter Sprachen in der <strong>settings.lang.inc.php</strong> Datei stimmt momentan mit der Anzahl der REDAXO-Sprachen nicht überein!
 
 seo42_seopage_updated = SEO-Daten wurden aktualisiert.
 seo42_seopage_main_section = Allgemein

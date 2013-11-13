@@ -189,6 +189,7 @@ if ($func == "do_copy") {
 			<p class="rex-form-checkbox rex-form-label-right"> 
 				<input type="checkbox" value="1" id="directory_listing" name="directory_listing" />
 				<label for="directory_listing"><?php echo $I18N->msg('seo42_setup_directory_listing_checkbox') . ' <span>' . $I18N->msg('seo42_setup_recommended') . '</span>'; ?></label>
+				<span id="directory_listing_hint" title="<?php echo $I18N->msg('seo42_setup_directory_listing_alert'); ?>" class="seo42-tooltip status exclamation">&nbsp;</span>
 			</p>
 
 			<input type="hidden" name="page" value="seo42" />
@@ -303,6 +304,11 @@ $codeExample2 = '<?php echo seo42::getLangTags(); ?>';
     margin-top: 8px;
 }
 
+#rex-page-seo42 #directory_listing_hint {
+	vertical-align: bottom;
+	display: none;
+}
+
 .rex-form-checkbox label span {
 	font-size: 10px;
 }
@@ -310,7 +316,6 @@ $codeExample2 = '<?php echo seo42::getLangTags(); ?>';
 
 <script type="text/javascript">
 var rewriteBaseMsgShown = false;
-var directoryListingMsgShown = false;
 
 function isCompleteWebsiteUrl() {
 	var pat = /^https?:\/\//i;
@@ -354,9 +359,10 @@ jQuery(document).ready( function() {
 	});
 
 	jQuery('#directory_listing').click(function(e) {
-		if (jQuery('#directory_listing').is(':checked') && !directoryListingMsgShown) {
-			directoryListingMsgShown = true;
-			alert("<?php echo $I18N->msg('seo42_setup_directory_listing_alert'); ?>");
+		if (jQuery('#directory_listing').is(':checked')) {
+			jQuery('#directory_listing_hint').css('display', 'inline-block');
+		} else {
+			jQuery('#directory_listing_hint').hide();
 		}
 	});
 });

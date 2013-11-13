@@ -246,6 +246,12 @@ echo '
 unset($homeurl_select,$url_ending_select);
 ?>
 
+<style type="text/css">
+#lang_hint {
+	width: auto;
+}
+</style>
+
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$('#show-settings').toggle( 

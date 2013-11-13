@@ -105,7 +105,7 @@ if ($REX['REDAXO']) {
 	}
 
 	// add css/js files to page header
-	if (rex_request('page') == 'seo42' || rex_request('page') == 'content') {
+	if (rex_request('page') == 'seo42') {
 		rex_register_extension('PAGE_HEADER', 'seo42_utils::appendToPageHeader');
 	}
 
