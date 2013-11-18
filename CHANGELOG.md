@@ -3,6 +3,11 @@ SEO42 - Changelog
 
 **Updatehinweis:** Von SEO42 2.x auf SEO42 2.6 und höher bitte [Updateanleitung](https://github.com/RexDude/seo42#update-von-seo42-2x-auf-seo42-26-und-h%C3%B6her) beachten!
 
+### Version 2.8.1 DEV
+
+* Fixed #85: `REXSEO_SITEMAP_ARRAY_CREATED` jetzt wieder ohne vorangestellte ServerUrl
+* Fixed #84: Bessere Datumsausgabe für die `sitemap.xml`
+
 ### Version 2.8.0 - 13. November 2013
 
 * Neu: Option `smart_redirects` hinzugefügt (per Defaulteinstellungen zuerst mal deaktiviert): Leitet den Benutzer der in der Adressleiste Urls von Hand verkürzt auf die korrekte Url um, wenn vorhanden (z.B. `domain.de/foo/bar/` > `domain.de/foo/bar.html`).
