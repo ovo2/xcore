@@ -33,7 +33,7 @@ class rexseo_sitemap
 				// add sitemap block
 				if ($article->isOnline() && !isset($url['status']) && $hasPermission) {
 					$db_articles[$url['id']][$url['clang']] = array('loc'        => seo42::getFullUrl($url['id'], $url['clang']),
-												                   'lastmod'    => date('Y-m-d\TH:i:s', $article->getValue('updatedate')) . '+00:00',
+												                   'lastmod'    => date('c', $article->getValue('updatedate')),
 												                   'changefreq' => self::calc_article_changefreq($article->getValue('updatedate'), ''),
 												                   'priority'   => self::calc_article_priority($url['id'], $url['clang'], $article->getValue('path'), ''),
 																   'noindex'   => $article->getValue('seo_noindex')
@@ -65,7 +65,7 @@ class rexseo_sitemap
 				// add sitemap block
 				if ($article->isOnline() && $hasPermission) {
 					$db_articles[$art['id']][$art['clang']] = array('loc'        => seo42::getFullUrl($art['id'],$art['clang']),
-										                           'lastmod'    => date('Y-m-d\TH:i:s',$art['updatedate']).'+00:00',
+										                           'lastmod'    => date('c',$art['updatedate']),
 										                           'changefreq' => self::calc_article_changefreq($art['updatedate'], ''),
 										                           'priority'   => self::calc_article_priority($art['id'],$art['clang'],$art['path'], ''),
 																   'noindex'   => $art['seo_noindex']
