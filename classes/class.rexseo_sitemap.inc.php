@@ -32,7 +32,7 @@ class rexseo_sitemap
 
 				// add sitemap block
 				if ($article->isOnline() && !isset($url['status']) && $hasPermission) {
-					$db_articles[$url['id']][$url['clang']] = array('loc'        => seo42::getFullUrl($url['id'], $url['clang']),
+					$db_articles[$url['id']][$url['clang']] = array('loc'        => rex_getUrl($url['id'], $url['clang']),
 												                   'lastmod'    => date('c', $article->getValue('updatedate')),
 												                   'changefreq' => self::calc_article_changefreq($article->getValue('updatedate'), ''),
 												                   'priority'   => self::calc_article_priority($url['id'], $url['clang'], $article->getValue('path'), ''),
@@ -64,7 +64,7 @@ class rexseo_sitemap
 
 				// add sitemap block
 				if ($article->isOnline() && $hasPermission) {
-					$db_articles[$art['id']][$art['clang']] = array('loc'        => seo42::getFullUrl($art['id'],$art['clang']),
+					$db_articles[$art['id']][$art['clang']] = array('loc'        => rex_getUrl($art['id'], $art['clang']),
 										                           'lastmod'    => date('c',$art['updatedate']),
 										                           'changefreq' => self::calc_article_changefreq($art['updatedate'], ''),
 										                           'priority'   => self::calc_article_priority($art['id'],$art['clang'],$art['path'], ''),
@@ -160,7 +160,7 @@ class rexseo_sitemap
   private function xml_loc_fragment($loc,$lastmod,$changefreq,$priority)
   {
     $xml_loc = "\t" . '<url>'.PHP_EOL.
-    "\t\t" . '<loc>'.$loc.'</loc>'.PHP_EOL.
+    "\t\t" . '<loc>'.seo42::getServerUrl().seo42::trimUrl($loc).'</loc>'.PHP_EOL.
     "\t\t" . '<lastmod>'.$lastmod.'</lastmod>'.PHP_EOL.
     "\t\t" . '<changefreq>'.$changefreq.'</changefreq>'.PHP_EOL.
     "\t\t" . '<priority>'.number_format($priority, 1, ".", "").'</priority>'.PHP_EOL.
