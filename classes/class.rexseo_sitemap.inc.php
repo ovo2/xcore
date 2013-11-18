@@ -47,7 +47,7 @@ class rexseo_sitemap
 		$db = new rex_sql;
 		$qry = 'SELECT `id`, `clang`, `updatedate`, `path`, `seo_noindex` FROM `' . $REX['TABLE_PREFIX'] . 'article`';
 
-		if ($REX['ADDON']['rexseo42']['settings']['ignore_root_cats']) {
+		if ($REX['ADDON']['seo42']['settings']['ignore_root_cats']) {
 			$qry .= ' WHERE `re_id` != 0 OR (re_id = 0 AND catname LIKE "")';
 		}
 
