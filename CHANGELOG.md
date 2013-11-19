@@ -7,6 +7,7 @@ SEO42 - Changelog
 
 * Fixed #85: `REXSEO_SITEMAP_ARRAY_CREATED` jetzt wieder ohne vorangestellte ServerUrl
 * Fixed #84: Bessere Datumsausgabe für die `sitemap.xml`
+* Verbessert: OnePageMode auf Mehrsprachigkeit hin optimiert (betrifft `Sitemap.xml` und Anzeigen-Link für Artikel)
 
 ### Version 2.8.0 - 13. November 2013
 

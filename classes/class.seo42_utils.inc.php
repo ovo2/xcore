@@ -182,8 +182,8 @@ class seo42_utils {
 		$lastElement = count($params['subject']) - 1;
 
 		if ($REX['ADDON']['seo42']['settings']['one_page_mode'] && $REX['ARTICLE_ID'] != $REX['START_ARTICLE_ID']) {
-			// for one page mode link to frontend is always "../"
-			$newUrl = '../';
+			// one page mode link to frontend
+			$newUrl = seo42::getFullUrl($REX['START_ARTICLE_ID']);
 		} else {
 			$newUrl = seo42::getFullUrl();
 		}

@@ -215,11 +215,13 @@ class rexseo_sitemap
 		global $REX;
 
 		if ($REX['ADDON']['seo42']['settings']['one_page_mode']) {
-			$art = $this->db_articles[$REX['START_ARTICLE_ID']][0];
+			foreach($REX['CLANG'] as $clangId => $clangName) {
+				$art = $this->db_articles[$REX['START_ARTICLE_ID']][$clangId];
 
-			if ($art['noindex'] != true) {
-			   	$xml_sitemap .= self::xml_loc_fragment($art['loc'],$art['lastmod'],$art['changefreq'],$art['priority']);
-			}		
+				if ($art['noindex'] != true) {
+				   	$xml_sitemap .= self::xml_loc_fragment($art['loc'],$art['lastmod'],$art['changefreq'],$art['priority']);
+				}
+			}	
 		} else {
 			if ($this->db_articles[$REX['START_ARTICLE_ID']][$REX['START_CLANG_ID']]['noindex'] != true) { // RexDude: Do not add Articles to Sitemap if Start Article has NoIndex Flag set.
 				foreach($this->db_articles as $id=>$clangs)
