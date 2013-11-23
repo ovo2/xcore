@@ -20,6 +20,12 @@ Im SEO42 Setup (URL der Website) und in der .htaccess den Unterordner mit angebe
 Desweiteren sollten Ihre URLs nicht mit / beginnen. Nutzen Sie die PHP-Methoden aus Codebeispiel Nr.2!
 
 
+Wie kann ich zwecks SEO die Ladegeschwindigkeit meiner Seite verbessern?
+------------------------------------------------------------------------
+
+Man sollte einen Blick auf die HTML5 Boilerplate [.htaccess Datei](https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess) wegen Caching und Kompressionseinstellungen werfen oder aber einfach das [Resource Includer](https://github.com/RexDude/resource_includer) AddOn für REDAXO nutzen :)
+
+
 Wie muss die URL der Website im Setup genau angegeben werden?
 -------------------------------------------------------------
 
@@ -42,12 +48,6 @@ Warum kann kann man keine globalen Descriptions und Keywords eintragen, die dann
 ------------------------------------------------------------------------------------------------------------
 
 Weil doppelte Descriptions und Keywords von den Google Webmaster Tools als Problem dargestellt werden. Es ist also kein gutes SEO. Entweder man lässt die Felder leer oder füllt diese von Hand aus (für alle oder auch nur einige Seiten).
-
-
-Wie kann ich zwecks SEO die Ladegeschwindigkeit meiner Seite verbessern?
-------------------------------------------------------------------------
-
-Man sollte einen Blick auf die HTML5 Boilerplate [.htaccess Datei](https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess) wegen Caching und Kompressionseinstellungen werfen oder aber einfach das [Resource Includer](https://github.com/RexDude/resource_includer) AddOn für REDAXO nutzen :)
 
 
 SEO42 läuft nicht mehr rund. Was tun?
@@ -89,7 +89,7 @@ Vorläufig wurden diese hier ausgelagert: `settings.advanced.inc.php`
 Wie kann ich suchmaschinenfreundliche URLs für Bilder erhalten, die über den Image Manager generiert wurden?
 ------------------------------------------------------------------------------------------------------------
 
-Zum Beispiel über die Methode `seo42::getImageManagerUrl()`. Siehe dazu Codebeispiel Nr. 3 in der Hilfe.
+Zum Beispiel über die Methode `seo42::getImageManagerUrl()`. Siehe dazu Codebeispiel Nr.3 in der Hilfe.
 
 
 Ich möchte nicht-www Anfragen auf die www Variante umleiten lassen. Soll doch SEO-technisch gut sein, oder?
@@ -113,7 +113,7 @@ Dafür kann man die Methode `seo42::getImageTag()` nutzen, die dann einen komple
 Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?
 ---------------------------------------------------------------------
 
-Dann immer vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. `redaxo://13#anker`. Oder Base-Tag und auf einheitliche URLs achten, siehe Codebeispiele #2.
+Entweder vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. `redaxo://13#anker`. Oder Base-Tag (der eigentliche Grund warum die Anker nicht mehr funktionieren) weglassen und auf einheitliche URLs achten, siehe Codebeispiel Nr.2.
 
 
 Mir gefällt SEO42 nicht! Wie bekomme ich das AddOn wieder entfernt?

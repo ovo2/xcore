@@ -27,7 +27,7 @@ Features
 * Option um die Indizierung von Seiten durch Suchmaschinen zu verhindern
 * Automatische sowie individuelle Canonical URLs
 * Nicht-WWW zu WWW Umleitung (und umgekehrt). Lässt sich auch über das Setup aktivieren.
-* Smart Redirects: Umleitungen für falsch eingegebene Urls z.B. von `/` nach `.html`
+* Smart Redirects: Automatische Umleitungen für falsch eingegebene Urls z.B. von `/` nach `.html`
 * Weitere Einstellungen (vorerst) in der `settings.advanced.inc.php` und `settings.lang.inc.php`
 * Keine Abhängigkeiten zu weiteren Addons wie Textile oder XForm
 * Kompatibel zum [Website Manager](https://github.com/RexDude/website_manager) sowie [Community](https://github.com/dergel/redaxo4_community) AddOn
@@ -48,15 +48,15 @@ Features der Klasse nav42
 * Ausgabe einer einfachen Sprachnavigation möglich
 * Vollständige Codebeispiele in der Hilfe von SEO42
 
-Verfügbare Plugins für SEO42
-----------------------------
-
-* [url_control](https://github.com/tbaddade/redaxo_plugin_url_control) - Plugin zur URL-Generierung für eigene AddOns
-
 Ladezeit Ihrer Website verbessern
 ---------------------------------
 
 Da eine schnelle Ladezeit der Website sich auch positiv auf das SEO auswirkt, wird empfohlen sowas wie das [HTML5 Boilerplate](http://html5boilerplate.com/) oder aber das [Resource Includer](https://github.com/RexDude/resource_includer) AddOn für REDAXO zu nutzen.
+
+Verfügbare Plugins für SEO42
+----------------------------
+
+* [url_control](https://github.com/tbaddade/redaxo_plugin_url_control) - Plugin zur URL-Generierung für eigene AddOns
 
 Update von SEO42 2.x auf SEO42 2.6 und höher
 --------------------------------------------
@@ -148,6 +148,7 @@ Credits
 * Danke ausserdem an alle die sich mit Ideen, Tests und Bugmeldungen eingebracht haben :)
 * Google PageRank Checker Class by David Walsh and Jamie Scott
 * PHP Markdown Lib by Michel Fortin
+* [QTip2](http://qtip2.com/) by Craig Thompson
 * Hitchhiker's Guide to the Galaxy Icons by [Iconshock](http://www.iconarchive.com/artist/iconshock.html)
 * Status Icons from [FamFamFam Silk Icons](http://www.famfamfam.com/lab/icons/silk/) and [Oxygen Icons](http://www.oxygen-icons.org/)
 * Macht’s gut und danke für den Fisch ;)
