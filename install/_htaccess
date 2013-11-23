@@ -11,12 +11,10 @@
 
 	# REDIRECT NON-WWW TO WWW (SUBDOMAINS WON'T BE AFFECTED)
 	#RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$
-	#RewriteCond %{REQUEST_URI} !/redaxo
 	#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301]
 
 	# REDIRECT WWW TO NON-WWW
 	#RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-	#RewriteCond %{REQUEST_URI} !/redaxo
 	#RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
 	# REDIRECT SITEMAP.XML TO REXSEO SITEMAP FUNCTION
