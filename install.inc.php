@@ -35,7 +35,7 @@ if (count($error) == 0) {
 	$sql = new rex_sql();
 	//$sql->debugsql = true;
 
-	// IMPORTANT: if adding/removing db fields here, check also for uninstall.inc.php and seo42_utils::afterDBImport()
+	// IMPORTANT: if adding/removing db fields here, check also for uninstall.inc.php and seo42_utils::afterDBImport() and seo42::emptySEODataAfterClangAdded()
 	$sql->setQuery('ALTER TABLE `' . $REX['TABLE_PREFIX'] . 'article` ADD `seo_title` TEXT, ADD `seo_description` TEXT, ADD `seo_keywords` TEXT, ADD `seo_custom_url` TEXT, ADD `seo_canonical_url` TEXT, ADD `seo_noindex` VARCHAR(1), ADD `seo_ignore_prefix` VARCHAR(1)');
 
 	// redirects

@@ -72,7 +72,8 @@ echo nav42::getNavigationByCategory(42, 2, true, true, false, "current", "nav", 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_2') . '
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_3') . '
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_4') . '
-echo nav42::getLangNavigation("lang-nav", true, false);
+// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_5') . '
+echo nav42::getLangNavigation("lang-nav", "current", true, false);
 ?>';
 
 $codeExample7 = '<?php

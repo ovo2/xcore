@@ -786,4 +786,14 @@ class seo42_utils {
 
 		return '<span class="rex-form-read" id="lang_hint"><code>/seo42/settings.lang.inc.php</code></span>' . $icon;
 	}
+
+	public static function emptySEODataAfterClangAdded($params) {
+		global $REX;
+
+		$newClangId = $params['id'];
+		
+		$sql = rex_sql::factory();
+		//$sql->debugsql = true;
+		$sql->setQuery('UPDATE ' . $REX['TABLE_PREFIX'] . 'article SET seo_title = "", seo_description = "", seo_keywords = "", seo_custom_url = "", seo_canonical_url = "", seo_noindex = "", seo_ignore_prefix = "" WHERE clang = ' . $newClangId);
+	}
 }

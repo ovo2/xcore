@@ -16,7 +16,7 @@ class nav42 extends rex_navigation {
 		return $nav->get($categoryId, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
 	}
 
-	static function getLangNavigation($ulId = '', $showLiClasses = false, $hideLiIfOfflineArticle = false) {
+	static function getLangNavigation($ulId = '', $currentClass = 'selected', $showLiClasses = false, $hideLiIfOfflineArticle = false) {
 		global $REX;
 
 		// ul id
@@ -50,9 +50,23 @@ class nav42 extends rex_navigation {
 					$linkText = $clangName;
 				}
 
-				// li class
+				$cssClasses = '';
+
+				// li classes
 				if ($showLiClasses) {
-					$liClassAttribute = ' class="' . seo42::getLangSlug($clangId) . '"';
+					$cssClasses .= ' ' . seo42::getLangSlug($clangId);
+				}
+
+				// current class
+				if ($REX['CUR_CLANG'] == $clangId) {
+					$cssClasses .= ' ' . $currentClass;
+				}
+
+				$trimmedCssClasses = trim($cssClasses);
+
+				// build class attribute
+				if ($trimmedCssClasses != '') {
+					$liClassAttribute = ' class="' . $trimmedCssClasses . '"';
 				} else {
 					$liClassAttribute = '';
 				}
@@ -123,9 +137,11 @@ class nav42 extends rex_navigation {
 				// do nothing
 			}
 
+			$trimmedCssClasses = trim($cssClasses);
+
 			// build class attribute
-			if ($cssClasses != '') {
-				$classAttribute = ' class="' . trim($cssClasses) . '"';
+			if ($trimmedCssClasses != '') {
+				$classAttribute = ' class="' . $trimmedCssClasses . '"';
 			} else {
 				$classAttribute = '';
 			}
