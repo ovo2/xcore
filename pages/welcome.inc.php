@@ -8,8 +8,8 @@
 <style type="text/css">
 #rex-page-seo42 p.welcome {
 	text-align: center;
-	margin-top: 20px;
-	margin-bottom: 7px;
+	margin-top: 35px;
+	margin-bottom: 22px;
 }
 </style>
 

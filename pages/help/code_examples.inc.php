@@ -19,12 +19,6 @@ echo seo42::getUrlStart() . "js/jquery.min.js";
 $codeExample3 = '<?php
 echo seo42::getImageManagerUrl("image.png", "rex_mediapool_detail"); 
 // --> ' . seo42::getUrlStart() . 'files/imagestypes/rex_mediapool_detail/image.png
-
-echo seo42::getImageTag("image.png");
-// --> <img src="' . seo42::getUrlStart() . 'files/image.png" width="300" height="200" alt="' . $I18N->msg('seo42_help_codeexamples_ex3_alt') . '" />
-
-echo seo42::getImageTag("image.png", "rex_mediapool_detail", 150, 100);
-// --> <img src="' . seo42::getUrlStart() . 'files/imagestypes/rex_mediapool_detail/image.png" width="150" height="100" alt="' . $I18N->msg('seo42_help_codeexamples_ex3_alt') . '" />;
 ?>';
 
 $codeExample4 = '<!DOCTYPE html>
