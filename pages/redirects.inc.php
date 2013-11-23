@@ -50,7 +50,7 @@ if ($func == '') {
 	// rex list
 	$query = 'SELECT * FROM ' . $REX['TABLE_PREFIX'] . 'redirects ORDER BY id';
 
-	$list = rex_list::factory($query);
+	$list = rex_list::factory($query, 9999);
 	$list->setNoRowsMessage($I18N->msg('seo42_redirect_no_sytles_available'));
 	$list->setCaption($I18N->msg('seo42_redirect_list_of_redirects'));
 	$list->addTableAttribute('summary', $I18N->msg('seo42_redirect_list_of_redirects'));
@@ -60,7 +60,12 @@ if ($func == '') {
 	$list->setColumnLabel('source_url', $I18N->msg('seo42_redirect_source_url'));
 	$list->setColumnLabel('target_url', $I18N->msg('seo42_redirect_target_url'));
 
-	$list->setColumnSortable('id', 'desc');
+	if (rex_request('sort') == '') {
+		$list->setColumnSortable('id', 'desc');
+	} else {
+		$list->setColumnSortable('id', 'asc');
+	}
+
 	$list->setColumnSortable('source_url', 'asc');
 	$list->setColumnSortable('target_url', 'asc');
 
