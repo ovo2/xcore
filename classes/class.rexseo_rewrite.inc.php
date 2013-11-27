@@ -35,7 +35,6 @@ class RexseoRewrite
       $notfound_id     = $REX['NOTFOUND_ARTICLE_ID'];
 
       $install_subdir  = seo42::getServerSubDir(); // 42
-      $allow_articleid = $REX['ADDON']['seo42']['settings']['allow_articleid'];
       $homelang        = $REX['ADDON']['seo42']['settings']['homelang'];
 
       // TRY IMMEDIATE MATCH OF REQUEST_URI AGAINST PATHLIST..
@@ -45,18 +44,14 @@ class RexseoRewrite
       } 
 
       // IF NON_REWRITTEN URLS ALLOWED -> USE ARTICLE_ID FROM REQUEST
-      if ($allow_articleid != 0 && rex_get('article_id', 'int') > 0)
+      if ($REX['ADDON']['seo42']['settings']['auto_redirects'] != 0 && rex_get('article_id', 'int') > 0)
       {
-        if($allow_articleid == 1)
+        if ($REX['ADDON']['seo42']['settings']['auto_redirects'] == 1)
         {
           $redirect = array('id'    =>rex_request('article_id','int'),
                             'clang' =>rex_request('clang','int',$clang),
                             'status'=>301);
           return self::redirect($redirect); /*todo: include params*/
-        }
-        else
-        {
-          return self::setArticleId(rex_request('article_id','int'), rex_request('clang','int',$clang));
         }
       }
 
@@ -106,9 +101,23 @@ class RexseoRewrite
 			$requestUriWithCorrectUrlEnding = trim($_SERVER['REQUEST_URI'], '/') . $REX['ADDON']['seo42']['settings']['url_ending'];
 				 
 			if (isset($REXSEO_URLS[$requestUriWithCorrectUrlEnding])) {
-				$redirect = array('id' =>$REXSEO_URLS[$requestUriWithCorrectUrlEnding]['id'],
-	                              'clang' =>$REXSEO_URLS[$requestUriWithCorrectUrlEnding]['clang'],
-	                              'status'=>301);
+				$redirect = array('id' => $REXSEO_URLS[$requestUriWithCorrectUrlEnding]['id'],
+	                              'clang' => $REXSEO_URLS[$requestUriWithCorrectUrlEnding]['clang'],
+	                              'status' => 301);
+
+				return self::redirect($redirect);
+			}
+		}
+
+		// auto redirects 
+		if ($REX['ADDON']['seo42']['settings']['auto_redirects'] == 2) {
+			// smart redirects for old fashioned standard redaxo rewrite methods
+			preg_match('/\/(.*(\.))?((?P<id>[0-9]+)\-(?P<clang>[0-9]+))((\-|\.).*)/', $_SERVER['REQUEST_URI'], $url_params);
+
+			if ($url_params !== false && isset($url_params['id']) && isset($url_params['clang'])) {
+				$redirect = array('id' => $url_params['id'],
+								  'clang' => $url_params['clang'],
+								  'status' => 301);
 
 				return self::redirect($redirect);
 			}

@@ -15,9 +15,6 @@ define('SEO42_REWRITEMODE_SPECIAL_CHARS', 0);
 define('SEO42_REWRITEMODE_URLENCODE', 1);
 define('SEO42_REWRITEMODE_INHERIT', 2);
 
-define('SEO42_ARTICLEID_DISALLOW', 0);
-define('SEO42_ARTICLEID_REDIRECT', 1);
-
 class seo42_utils {
 	public static function appendToPageHeader($params) {
 		global $REX;

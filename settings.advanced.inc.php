@@ -64,11 +64,11 @@ $REX['ADDON']['seo42']['settings']['one_page_mode'] = false;
 // if true root categories will be completly ignored and not be visible in generated urls (experimental)
 $REX['ADDON']['seo42']['settings']['ignore_root_cats'] = false;
 
-// SEO42_ARTICLEID_DISALLOW = don't allow article_id urls, show 404 error article | SEO42_ARTICLEID_REDIRECT = allow and 301 redirect to real urls 
-$REX['ADDON']['seo42']['settings']['allow_articleid'] = SEO42_ARTICLEID_DISALLOW;
-
 // character to replace whitespaces with in urls
 $REX['ADDON']['seo42']['settings']['url_whitespace_replace']  = '-';
+
+// 0 = off, 1 = auto redirect from "index.php?article_id=1" schema, 2 = auto redirect from "1-0-ArticleName.html" schema
+$REX['ADDON']['seo42']['settings']['auto_redirects'] = 0;
 
 // default follow flag for robots meta tag, can be empty
 $REX['ADDON']['seo42']['settings']['robots_follow_flag'] = 'follow';
