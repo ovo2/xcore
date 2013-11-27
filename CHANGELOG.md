@@ -3,6 +3,11 @@ SEO42 - Changelog
 
 **Updatehinweis:** Von SEO42 2.x auf SEO42 2.6 und höher bitte [Updateanleitung](https://github.com/RexDude/seo42#update-von-seo42-2x-auf-seo42-26-und-h%C3%B6her) beachten!
 
+### Version 2.8.2 DEV
+
+* Neu: 'auto_redirects' Option um alte REDAXO Urls automatisch weiterzuleiten auf die neuen. 0 = aus, 1 = Schema `index.php?article_id=1` weiterleiten, 2 = Schema `1-0-ArticleName.html` weiterleiten
+* Entfernt: `allow_article_id` Option (ist nun `auto_redirects` = 1)
+
 ### Version 2.8.1 - 23. November 2013
 
 * Fixed #85: `REXSEO_SITEMAP_ARRAY_CREATED` jetzt wieder ohne vorangestellte ServerUrl
