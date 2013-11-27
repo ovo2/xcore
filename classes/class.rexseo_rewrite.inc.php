@@ -48,10 +48,16 @@ class RexseoRewrite
       {
         if ($REX['ADDON']['seo42']['settings']['auto_redirects'] == 1)
         {
-          $redirect = array('id'    =>rex_request('article_id','int'),
-                            'clang' =>rex_request('clang','int',$clang),
-                            'status'=>301);
-          return self::redirect($redirect); /*todo: include params*/
+          $artId = rex_request('article_id','int');
+          $clangId = rex_request('clang','int',$clang);
+          $article = OOArticle::getArticleById($artId, $clangId);
+
+          if (OOArticle::isValid($article)) {
+            $redirect = array('id'    =>$artId,
+                              'clang' =>$clangId,
+                              'status'=>301);
+            return self::redirect($redirect); /*todo: include params*/
+          }
         }
       }
 
@@ -115,11 +121,15 @@ class RexseoRewrite
 			preg_match('/\/(.*(\.))?((?P<id>[0-9]+)\-(?P<clang>[0-9]+))((\-|\.).*)/', $_SERVER['REQUEST_URI'], $url_params);
 
 			if ($url_params !== false && isset($url_params['id']) && isset($url_params['clang'])) {
-				$redirect = array('id' => $url_params['id'],
-								  'clang' => $url_params['clang'],
-								  'status' => 301);
+				$article = OOArticle::getArticleById($url_params['id'], $url_params['clang']);
 
-				return self::redirect($redirect);
+				if (OOArticle::isValid($article)) {
+					$redirect = array('id' => $url_params['id'],
+									  'clang' => $url_params['clang'],
+									  'status' => 301);
+
+					return self::redirect($redirect);
+				}
 			}
 		}
 
