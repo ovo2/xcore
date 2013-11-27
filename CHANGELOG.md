@@ -5,7 +5,7 @@ SEO42 - Changelog
 
 ### Version 2.8.2 DEV
 
-* Neu: 'auto_redirects' Option um alte REDAXO Urls automatisch weiterzuleiten auf die neuen. 0 = aus, 1 = Schema `index.php?article_id=1` weiterleiten, 2 = Schema `1-0-ArticleName.html` weiterleiten
+* Neu: `auto_redirects` Option um alte REDAXO Urls automatisch weiterzuleiten auf die Neuen. 0 = aus, 1 = Schema `index.php?article_id=1` weiterleiten, 2 = Schema `1-0-ArticleName.html` weiterleiten
 * Entfernt: `allow_article_id` Option (ist nun `auto_redirects` = 1)
 
 ### Version 2.8.1 - 23. November 2013
