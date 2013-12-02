@@ -96,7 +96,7 @@ Diese Anpassungen sind nur nötig, wenn man die `nav42` Klasse verwenden will:
 Entwicklung von Plugins für SEO42
 ---------------------------------
 
-* SEO42 bindet automatisch seine einstallierten und aktvierten Plugins in das Addon-Menü ein.
+* SEO42 bindet automatisch seine installierten und aktvierten Plugins in das Addon-Menü ein.
 * Es wird ausserdem automatisch die Sprachdatei des Plugins eingebunden. Im Plugin selbst muss man also nichts weiter tun.
 
 Hinweise
