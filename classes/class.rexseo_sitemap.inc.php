@@ -42,37 +42,7 @@ class rexseo_sitemap
 			}
 		}
 	} else {
-		// use db articles
-		$db_articles = array();
-		$db = new rex_sql;
-		$qry = 'SELECT `id`, `clang`, `updatedate`, `path`, `seo_noindex` FROM `' . $REX['TABLE_PREFIX'] . 'article`';
-
-		if ($REX['ADDON']['seo42']['settings']['ignore_root_cats']) {
-			$qry .= ' WHERE `re_id` != 0 OR (re_id = 0 AND catname LIKE "")';
-		}
-
-		foreach($db->getDbArray($qry) as $art) {
-			$article = OOArticle::getArticleById($art['id'], $art['clang']);
-
-			if (OOArticle::isValid($article)) {
-				$hasPermission = true;
-
-				// community addon
-				if (class_exists('rex_com_auth') && !rex_com_auth::checkPerm($article)) {
-					$hasPermission = false;
-				}
-
-				// add sitemap block
-				if ($article->isOnline() && $hasPermission) {
-					$db_articles[$art['id']][$art['clang']] = array('loc'        => rex_getUrl($art['id'], $art['clang']),
-										                           'lastmod'    => date('c',$art['updatedate']),
-										                           'changefreq' => self::calc_article_changefreq($art['updatedate'], ''),
-										                           'priority'   => self::calc_article_priority($art['id'],$art['clang'],$art['path'], ''),
-																   'noindex'   => $art['seo_noindex']
-										                           );
-				}
-			}
-		}
+		// at the moment: no sitemap urls if rewriter is turned off
 	}
 
     // EXTENSIONPOINT REXSEO_SITEMAP_ARRAY_CREATED

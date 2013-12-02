@@ -22,7 +22,7 @@ seo42_check_lang_msg = {0}: Bitte überprüfen und aktualisieren Sie ggf. auch die
 seo42_tooltip_headline = Hinweis
 seo42_tooltip_close = Schließen
 
-seo42_welcome_headline = Willkommen zu SEO42
+seo42_welcome_headline = SEO42 for REDAXO
 
 seo42_tools_caption = SEO Web Tools
 seo42_tool2 = Google Submit Url
