@@ -841,7 +841,7 @@ function rexseo_appendToPath($path, $name, $article_id, $clang)
 * @param $article_id (string) article id
 * @param $clang      (string) clang
 */
-function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
+function rexseo_parse_article_name($name, $article_id, $clang)
 {
   global $REX, $I18N;
 
@@ -874,15 +874,6 @@ function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
 
   // SANITIZE STUFF
   $name = trim($name, " \t\r\n-.");
-
-  if ($isUrl) {
-	// bad things are happening in here ;)
-	$htmlEndingPos = strpos($name, '.html'); // used for restoring url ending after going throught all the parsing stuff
-
-	$name = str_replace('/', 'seo42slash', $name);
-    $name = str_replace('-', 'seo42dash', $name);
-  }
-
   $name = str_replace('/', '-', $name);
   $name = str_replace('.', '-', $name);
 
@@ -906,16 +897,6 @@ function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
 
 	// SANITIZE MULTIPLE "-" IN PATHNAME
 	$parsedName = preg_replace('/[-]{1,}/', $REX['ADDON']['seo42']['settings']['url_whitespace_replace'], $parsedName);
-
-    if ($isUrl) {
-      // bad things are happening in here ;)
-	  $parsedName = str_replace('seo42slash', '/', $parsedName);
-      $parsedName = str_replace('seo42dash', '-', $parsedName);
-
-      if ($htmlEndingPos !== false) {
-        $parsedName = substr($parsedName, 0, strlen($parsedName) - 5) . '.html';
-	  }
-    }
 
     return $parsedName;
 }
