@@ -18,7 +18,7 @@ if (rex_post('save_data', 'boolean')) {
 		case SEO42_URL_TYPE_USERDEF_INTERN:
 			global $REXSEO_URLS;
 
-			$sanitizedUrl = seo42_utils::parseUrl(rex_post('userdef_intern'));
+			$sanitizedUrl = seo42_utils::parseInternalUrl(rex_post('userdef_intern'));
 
 			// check if url already exists
 			if (isset($REXSEO_URLS[$sanitizedUrl])) { // url already exists

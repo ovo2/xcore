@@ -794,10 +794,10 @@ class seo42_utils {
 		$sql->setQuery('UPDATE ' . $REX['TABLE_PREFIX'] . 'article SET seo_title = "", seo_description = "", seo_keywords = "", seo_custom_url = "", seo_canonical_url = "", seo_noindex = "", seo_ignore_prefix = "" WHERE clang = ' . $newClangId);
 	}
 
-	public static function parseUrl($url) {
+	public static function parseInternalUrl($url) {
 		global $REX;
 
-		$sanitizedUrl = ltrim(rex_post('userdef_intern'), './');
+		$sanitizedUrl = ltrim($url, './');
 		$sanitizedUrlParts = explode('/', $sanitizedUrl);
 
 		for ($i = 0; $i < count($sanitizedUrlParts); $i++) {
