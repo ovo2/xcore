@@ -578,9 +578,6 @@ function rexseo_generate_pathlist($params)
 
       }
 
-      // SANITIZE MULTIPLE "-" IN PATHNAME
-      $pathname = preg_replace('/[-]{1,}/', '-', $pathname);
-
       // UNSET OLD URL FROM $REXSEO_URLS
       if(isset($REXSEO_IDS[$id][$clang]['url']) && isset($REXSEO_URLS[$REXSEO_IDS[$id][$clang]['url']]))
         unset($REXSEO_URLS[$REXSEO_IDS[$id][$clang]['url']]);
@@ -809,7 +806,9 @@ function rexseo_appendToPath($path, $name, $article_id, $clang)
       $name = trim($name, " \t\r\n.");
       $name = preg_replace('/ {2,}/', ' ', $name); // convert multiple spaces to one
       $name = str_replace(' ', $REX['ADDON']['seo42']['settings']['urlencode_whitespace_replace'], $name); // spaces
-      $name = str_replace('/', '-', $name); // dashes
+      $name = str_replace('/', $REX['ADDON']['seo42']['settings']['urlencode_whitespace_replace'], $name); // slashes
+      $name = str_replace('-', $REX['ADDON']['seo42']['settings']['urlencode_whitespace_replace'], $name); // dashes
+      $name = preg_replace('/'. $REX['ADDON']['seo42']['settings']['urlencode_whitespace_replace']. '{2,}/', $REX['ADDON']['seo42']['settings']['urlencode_whitespace_replace'], $name); // convert multiple whitespaces replacments to one
 
       // lowercase conversion
       if ($REX['ADDON']['seo42']['settings']['urlencode_lowercase']) {
@@ -844,12 +843,12 @@ function rexseo_appendToPath($path, $name, $article_id, $clang)
 */
 function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
 {
+  global $REX, $I18N;
+
   static $firstCall = true;
   static $translation = array();
 
 	if($firstCall) {
-		global $REX, $I18N;
-
 		$globalSpecialChars = explode('|', $REX['ADDON']['seo42']['settings']['global_special_chars']);
 		$globalSpecialCharsRewrite = explode('|', $REX['ADDON']['seo42']['settings']['global_special_chars_rewrite']);
 
@@ -904,6 +903,9 @@ function rexseo_parse_article_name($name, $article_id, $clang, $isUrl = false)
     );
 
 	$parsedName = trim($parsedName, "-"); // "• articlename" was "-articlename"
+
+	// SANITIZE MULTIPLE "-" IN PATHNAME
+	$parsedName = preg_replace('/[-]{1,}/', $REX['ADDON']['seo42']['settings']['url_whitespace_replace'], $parsedName);
 
     if ($isUrl) {
       // bad things are happening in here ;)
