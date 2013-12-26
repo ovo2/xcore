@@ -99,7 +99,7 @@ Entwicklung von Plugins für SEO42
 * SEO42 bindet automatisch seine installierten und aktvierten Plugins in das Addon-Menü ein.
 * Es wird ausserdem automatisch die Sprachdatei des Plugins eingebunden. Im Plugin selbst muss man also nichts weiter tun.
 * Plugins sollten die SEO42 API verwendet. Aktuell gibt ein Übersicht der PHP-Methoden unter Hilfe > Debug.
-* Möchte man z.B. Titel, Beschreibung, usw. für einen bestimmten Artikel bekommen, so ruft von vor dem jeweiligen Methoden-Aufruf die Methode `seo42::initArticle($articleId)` auf. Zum Schluss sollte man wieder den aktuell Artikel zurücksetzen mit `seo42::initArticle($REX['ARTICLE_ID'])` (aber eigentlich nur fürs Frontend nötig).
+* Möchte man z.B. Titel, Beschreibung, usw. für einen bestimmten Artikel bekommen, so ruft von vor dem jeweiligen Methoden-Aufruf die Methode `seo42::initArticle($articleId)` auf. Zum Schluss sollte man wieder den aktuellen Artikel zurücksetzen mit `seo42::initArticle($REX['ARTICLE_ID'])` (aber eigentlich nur fürs Frontend nötig).
 
 Hinweise
 --------
