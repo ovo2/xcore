@@ -473,9 +473,9 @@ function rexseo_generate_pathlist($params)
     $db->setQuery('UPDATE '. $REX['TABLE_PREFIX'] .'article_slice SET revision = 0 WHERE revision IS NULL;');
 
 	if ($REX['ADDON']['seo42']['settings']['ignore_root_cats']) {
-		$sqlQuery = 'SELECT `id`, `clang`, `path`, `startpage`,`seo_custom_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE re_id != 0 OR (re_id = 0 AND catname LIKE "") AND revision=0 OR revision IS NULL';
+		$sqlQuery = 'SELECT `id`, `clang`, `path`, `startpage`,`seo_custom_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE re_id != 0 OR (re_id = 0 AND catname LIKE "") AND revision=0 OR revision IS NULL ORDER BY id';
 	} else {
-		$sqlQuery = 'SELECT `id`, `clang`, `path`, `startpage`,`seo_custom_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE revision=0 OR revision IS NULL';
+		$sqlQuery = 'SELECT `id`, `clang`, `path`, `startpage`,`seo_custom_url` FROM '. $REX['TABLE_PREFIX'] .'article WHERE revision=0 OR revision IS NULL ORDER BY id';
 	}
 
 	$db->setQuery($sqlQuery);

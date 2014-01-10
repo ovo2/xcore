@@ -3,9 +3,12 @@ SEO42 - Changelog
 
 **Updatehinweis:** Von SEO42 2.x auf SEO42 2.6 und höher bitte [Updateanleitung](https://github.com/RexDude/seo42#update-von-seo42-2x-auf-seo42-26-und-h%C3%B6her) beachten!
 
-### Version 2.9.0 DEV
+### Version 2.8.3 DEV
 
 * Fixed #86: Bei RewriteMode = Urlencode und Standalone-Benutzung von `rexseo_parse_article_name` werden mehrfach vorkommende `-` auf eins reduziert.
+* Verbessert: Debug Ausgabe zeigt Community Version wenn vorhanden
+* Verbessert: Weitere Hinweise zur SEO42 Plugin Entwicklung in die Readme audgenommen
+* Finetuning
 
 ### Version 2.8.2 - 02. Dezember 2013
 

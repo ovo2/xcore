@@ -27,7 +27,7 @@ Features
 * Option um die Indizierung von Seiten durch Suchmaschinen zu verhindern
 * Automatische sowie individuelle Canonical URLs
 * Nicht-WWW zu WWW Umleitung (und umgekehrt). Lässt sich auch über das Setup aktivieren.
-* Smart Redirects: Automatische Umleitungen für falsch eingegebene Urls z.B. von `/` nach `.html`
+* Smart Redirects: Automatische Umleitungen für falsch eingegebene Urls z.B. von Url-Endung `/` nach `.html`
 * Weitere Einstellungen (vorerst) in der `settings.advanced.inc.php` und `settings.lang.inc.php`
 * Keine Abhängigkeiten zu weiteren Addons wie Textile oder XForm
 * Kompatibel zum [Website Manager](https://github.com/RexDude/website_manager) sowie [Community](https://github.com/dergel/redaxo4_community) AddOn

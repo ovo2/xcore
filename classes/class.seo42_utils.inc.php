@@ -426,15 +426,6 @@ class seo42_utils {
 
 		if ($msg != '') {
 			echo '	<style type=text/css>
-						.rex-form-content-editmode, 
-						.rex-content-editmode-module-name { 
-							display: none; 
-						} 
-
-						div.rex-content-editmode-slice-output { 
-							border-bottom-width: 0; 
-						} 
-
 						.rex-info p,
 						.rex-warning p { 
 							padding: 4px 0 2px 0; 

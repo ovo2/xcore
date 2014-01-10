@@ -14,6 +14,9 @@ echo seo42::getMediaFile("image.png");
 
 echo seo42::getUrlStart() . "js/jquery.min.js"; 
 // --> ' . seo42::getUrlStart() . 'js/jquery.min.js
+
+echo seo42::getFullUrl(42);
+// --> ' . seo42::getServerUrl() . 'questions/the-ultimate-answer.html
 ?>';
 
 $codeExample3 = '<?php

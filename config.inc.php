@@ -3,7 +3,7 @@
 // register addon
 $REX['ADDON']['rxid']['seo42'] = '0';
 $REX['ADDON']['name']['seo42'] = 'SEO42';
-$REX['ADDON']['version']['seo42'] = '2.9.0 DEV';
+$REX['ADDON']['version']['seo42'] = '2.8.3 DEV';
 $REX['ADDON']['author']['seo42'] = 'Markus Staab, Wolfgang Huttegger, Dave Holloway, Jan Kristinus, jdlx, RexDude';
 $REX['ADDON']['supportpage']['seo42'] = 'forum.redaxo.de';
 $REX['ADDON']['perm']['seo42'] = 'seo42[]';
@@ -113,7 +113,11 @@ if ($REX['REDAXO']) {
 	if (!$REX['ADDON']['seo42']['settings']['one_page_mode'] || ($REX['ADDON']['seo42']['settings']['one_page_mode'] && $REX['ARTICLE_ID'] == $REX['START_ARTICLE_ID'])) {
 		if (isset($REX['USER']) && ($REX['USER']->isAdmin())) {
 			// admins get everything :)
-			seo42_utils::enableURLPage(); // injection order is important
+
+			if (!$REX['ADDON']['seo42']['settings']['one_page_mode']) { // url page not needed when in one page mode
+				seo42_utils::enableURLPage(); // injection order is important
+			}
+
 			seo42_utils::enableSEOPage();
 		} else {
 			if (isset($REX['USER']) && $REX['USER']->hasPerm('seo42[url_default]')) {
