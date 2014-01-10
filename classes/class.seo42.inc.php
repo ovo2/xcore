@@ -511,6 +511,11 @@ class seo42 {
 		$out .= '<tr><td class="left"><code>REDAXO Version</code></td><td class="right"><code>' . $REX['VERSION'] . '.' . $REX['SUBVERSION'] . '.' . $REX['MINORVERSION'] . '</code></td></tr>';
 		$out .= '<tr><td class="left"><code>SEO42 Version</code></td><td class="right"><code>' . $REX['ADDON']['version']['seo42'] . '</code></td></tr>';
 		$out .= '<tr><td class="left"><code>PHP Version</code></td><td class="right"><code>' . phpversion() . '</code></td></tr>';
+
+		if (isset($REX['ADDON']['version']['community'])) {
+			$out .= '<tr><td class="left"><code>Community Version</code></td><td class="right"><code>' . $REX['ADDON']['version']['community'] . '</code></td></tr>';
+		}
+
 		$out .= '</table>';
 
 		// methods
