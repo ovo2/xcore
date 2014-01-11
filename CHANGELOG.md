@@ -5,9 +5,10 @@ SEO42 - Changelog
 
 ### Version 2.8.3 DEV
 
-* Fixed #86: Bei RewriteMode = Urlencode und Standalone-Benutzung von `rexseo_parse_article_name` werden mehrfach vorkommende `-` auf eins reduziert.
-* Fixed: Die automatische Canonical Url funktioniert jetzt auch korrekt mit manuell hinzugefügten Urls (TvsBlog, url_control).
+* Fixed #86: Bei RewriteMode = Urlencode und Standalone-Benutzung von `rexseo_parse_article_name` werden mehrfach vorkommende `-` auf eins reduziert
+* Fixed: Die automatische Canonical Url funktioniert jetzt auch korrekt mit manuell hinzugefügten Urls (TvsBlog, url_control)
 * Verbessert: Debug Ausgabe zeigt Community Version wenn vorhanden
+* Verbessert: Neue Parameter `$useLangCodeAsLinkText` und `$upperCaseLinkText` zu `nav42::getLangNavigation()` hinzugefügt
 * Verbessert: Weitere Hinweise zur SEO42 Plugin Entwicklung in die Readme audgenommen
 * Finetuning
 

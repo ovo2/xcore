@@ -16,7 +16,7 @@ class nav42 extends rex_navigation {
 		return $nav->get($categoryId, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
 	}
 
-	static function getLangNavigation($ulId = '', $currentClass = 'selected', $showLiClasses = false, $hideLiIfOfflineArticle = false) {
+	static function getLangNavigation($ulId = '', $currentClass = 'selected', $showLiClasses = false, $hideLiIfOfflineArticle = false, $useLangCodeAsLinkText = false, $upperCaseLinkText = false) {
 		global $REX;
 
 		// ul id
@@ -45,9 +45,17 @@ class nav42 extends rex_navigation {
 			} else {
 				// link text
 				if (class_exists('seo42')) {
-					$linkText = seo42::getOriginalLangName($clangId);
+					if ($useLangCodeAsLinkText) {
+						$linkText = seo42::getLangCode($clangId);
+					} else {
+						$linkText = seo42::getOriginalLangName($clangId);
+					}
 				} else {
 					$linkText = $clangName;
+				}
+
+				if ($upperCaseLinkText) {
+					$linkText = strtoupper($linkText);
 				}
 
 				$cssClasses = '';
