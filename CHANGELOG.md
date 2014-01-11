@@ -3,7 +3,7 @@ SEO42 - Changelog
 
 **Updatehinweis:** Von SEO42 2.x auf SEO42 2.6 und höher bitte [Updateanleitung](https://github.com/RexDude/seo42#update-von-seo42-2x-auf-seo42-26-und-h%C3%B6her) beachten!
 
-### Version 2.8.3 DEV
+### Version 2.8.3 - 11. Januar 2014
 
 * Fixed #86: Bei RewriteMode = Urlencode und Standalone-Benutzung von `rexseo_parse_article_name` werden mehrfach vorkommende `-` auf eins reduziert
 * Fixed: Die automatische Canonical Url funktioniert jetzt auch korrekt mit manuell hinzugefügten Urls (TvsBlog, url_control)
