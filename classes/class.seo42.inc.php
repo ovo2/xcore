@@ -191,7 +191,7 @@ class seo42 {
 		}
 
 		// automatic canonical url
-		return self::getFullUrl(self::$curArticle->getId()) . self::getQueryString();
+		return self::getServerUrl() . self::getRequestUriWithoutQueryString() . self::getQueryString();
 	}
 
 	public static function getQueryString() {
@@ -203,7 +203,11 @@ class seo42 {
 		} else {
 			return '';
 		}
-	}  
+	}
+
+	public static function getRequestUriWithoutQueryString() {
+		return ltrim(strtok($_SERVER['REQUEST_URI'], '?'), '/');
+	}
 
 	public static function getLangTags($indent = "\t") {
 		global $REX;
