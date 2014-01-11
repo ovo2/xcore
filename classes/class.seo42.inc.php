@@ -547,6 +547,7 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::getServer');
 		$out .= self::getDebugInfoRow('seo42::getServerWithSubDir');
 		$out .= self::getDebugInfoRow('seo42::getServerSubDir');
+		$out .= self::getDebugInfoRow('seo42::isWwwServerUrl');
 		$out .= self::getDebugInfoRow('seo42::hasTemplateBaseTag');
 		$out .= self::getDebugInfoRow('seo42::isSubDirInstall');
 		$out .= self::getDebugInfoRow('seo42::isMultiLangInstall');
@@ -719,6 +720,12 @@ class seo42 {
 		} else {
 			return false;
 		}
+	}
+
+	public static function isWwwServerUrl() {
+		$parsedServerUrl = parse_url(self::getServerUrl());
+
+		return strpos($parsedServerUrl['host'], "www.") === 0;
 	}
 
 	public static function getAnswer() {

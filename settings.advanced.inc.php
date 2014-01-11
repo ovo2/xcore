@@ -31,9 +31,6 @@ $REX['ADDON']['seo42']['settings']['pagerank_checker'] = true;
 // if true alls available url types will be shown in select box in url page. set to false to hide url types that need to be treated in navigation code
 $REX['ADDON']['seo42']['settings']['all_url_types'] = true;
 
-// if true setup step 2 will show "non-www -> www" checkbox. otherwise "www -> non-www".
-$REX['ADDON']['seo42']['settings']['non_www_to_www'] = true;
-
 // if true you get full urls like in wordpress :) seo42::getUrlStart() and co. needs to be used consequently for all extra urls (like urls to media files, etc.) | url_start option will be ignored by this
 $REX['ADDON']['seo42']['settings']['full_urls'] = false;
 
