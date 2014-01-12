@@ -99,13 +99,14 @@ Entwicklung von Plugins für SEO42
 * SEO42 bindet automatisch seine installierten und aktvierten Plugins in das Addon-Menü ein.
 * Es wird ausserdem automatisch die Sprachdatei des Plugins eingebunden. Im Plugin selbst muss man also nichts weiter tun.
 * Plugins sollten die SEO42 API verwendet. Aktuell gibt ein Übersicht der PHP-Methoden unter Hilfe > Debug.
-* Möchte man z.B. Titel, Beschreibung, usw. für einen bestimmten Artikel bekommen, so ruft von vor dem jeweiligen Methoden-Aufruf die Methode `seo42::initArticle($articleId)` auf. Zum Schluss sollte man wieder den aktuellen Artikel zurücksetzen mit `seo42::initArticle($REX['ARTICLE_ID'])` (aber eigentlich nur fürs Frontend nötig).
+* Möchte man z.B. Titel, Beschreibung, usw. für einen bestimmten Artikel bekommen, so ruft man vor dem jeweiligen Methoden-Aufruf die Methode `seo42::initArticle($articleId)` auf. Zum Schluss sollte man wieder den aktuellen Artikel zurücksetzen mit `seo42::initArticle($REX['ARTICLE_ID'])` (aber eigentlich nur fürs Frontend nötig).
 
 Hinweise
 --------
 
 * Läuft nur mit REDAXO 4.5+
 * AddOn-Ordner lautet: `seo42`
+* Getestete und unterstützte Skins: `agk_skin` von REDAXO und `ppx_skin` von [polarpixel](https://github.com/polarpixel).
 * AddOn wurde seit Version 2.0.0 von REXSEO42 in SEO42 umbenannt.
 * Wenn der Webserver einen 500 Server Error meldet, die Zeile `Options -Indexes` in der `.htaccess` auskommentieren.
 * Geändertes Verhalten für REDAXO Unterordner-Installationen. Bitte FAQ in der Hilfe des AddOns anschauen für weitere Infos.
@@ -115,7 +116,6 @@ Hinweise
 * Eine hilfreiche Sprach-Sonderzeichen-Tabelle für die Ermittlung der Sonderzeichen-Umschreibungen für die `settings.lang.inc.php` findet man hier: <http://unicode.e-workers.de/>
 * Vorläufige Sammlung der Lang-Presets hier: <https://github.com/RexDude/seo42/issues/61>
 * Momentan muss man noch von Hand benötigte Einstellungen in den Dateien `settings.advanced.inc.php` und `settings.lang.inc.php` vornehmen. Danach sollte der Cache gelöscht werden. Ab Version 3.0.0 sollten diese Dateien dann der Vergangenheit angehören ;)
-* Getestete Skins: `agk_skin` von REDAXO und `ppx_skin` von [polarpixel](https://github.com/polarpixel).
 
 Links
 -----
