@@ -147,6 +147,7 @@ Credits
 * [Jan Kristinus](http://github.com/dergel) für REDAXO und den neuen EP in REDAXO 4.5
 * [Gregor Harlan](https://github.com/gharlan) und [Thomas Blum](https://github.com/tbaddade) für Hilfe, Code und Bugmeldungen :)
 * [Peter Bickel](https://github.com/polarpixel) für generelle Unterstützung und die Hilfe bei der englischen Übersetzung
+* Péter Kalmár für die Logo-Optimierung 
 * Danke ausserdem an alle die sich mit Ideen, Tests und Bugmeldungen eingebracht haben :)
 * Google PageRank Checker Class by David Walsh and Jamie Scott
 * PHP Markdown Lib by Michel Fortin
