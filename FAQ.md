@@ -38,6 +38,12 @@ Kann ich den Base-Tag auch weglassen?
 Ja, wenn Sie alle Ihre URLs anhand der PHP-Methoden aus Codebeispiel Nr.2 generieren lassen. Dies gilt insbesondere für REDAXO-Unterordner-Installationen.
 
 
+Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?
+---------------------------------------------------------------------
+
+Entweder vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. `redaxo://13#anker`. Oder Base-Tag (der eigentliche Grund warum die Anker nicht mehr funktionieren) weglassen und auf einheitliche URLs achten, siehe Codebeispiel Nr.2.
+
+
 Wo legt SEO42 die Backups für die .htaccess Dateien an?
 -------------------------------------------------------
 
@@ -108,12 +114,6 @@ Habe gehört das es SEO-technisch gut wäre wenn Bilder ein Alt-Attribut zugewie
 -------------------------------------------------------------------------------------------
 
 Dafür kann man die Methode `seo42::getImageTag()` nutzen, die dann einen kompletten Image-Tag inkl. Alt-Attribut ausspuckt (siehe Codebeispiel 3). Und im Medienpool wird dieser dann im Titel-Feld gesetzt.
-
-
-Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?
----------------------------------------------------------------------
-
-Entweder vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. `redaxo://13#anker`. Oder Base-Tag (der eigentliche Grund warum die Anker nicht mehr funktionieren) weglassen und auf einheitliche URLs achten, siehe Codebeispiel Nr.2.
 
 
 Mir gefällt SEO42 nicht! Wie bekomme ich das AddOn wieder entfernt?
