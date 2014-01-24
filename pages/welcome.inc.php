@@ -9,7 +9,7 @@
 #rex-page-seo42 p.welcome {
 	text-align: center;
 	margin-top: 35px;
-	margin-bottom: 22px;
+	margin-bottom: 18px;
 }
 </style>
 
