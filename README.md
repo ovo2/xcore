@@ -18,7 +18,7 @@ Features
 * One Page Mode für Websites die nur über eine Seite verfügen (z.B. Parallax-Websites etc.)
 * Suchmaschinenfreundliche Image Manager Urls durch Verwendung der verfügbaren PHP-Methoden
 * SEO Tools inkl. Live PageRank Checker sowie Anzeige des Google Index der aktuellen Website
-* Klasse `nav42` zum Bauen von Navigationen. Alle URL-Typen werden hierbei berücksichtigt.
+* Eingebaute Navigationsfunktionen. Alle URL-Typen werden hierbei berücksichtigt.
 * Einrichtung von 301 Weiterleitungen. Parameter in der alten URL sind ohne Probleme möglich.
 * Spezielle sprachabhängige sowie sprachunabhängige Sonderzeichen-Umschreibungen einstellbar
 * Pro Sprache kann Urlencode genutzt oder auch die URLs einer anderen Sprache übernommen werden
@@ -33,10 +33,9 @@ Features
 * Kompatibel zum [Website Manager](https://github.com/RexDude/website_manager) sowie [Community](https://github.com/dergel/redaxo4_community) AddOn
 * Enthält die Antwort auf die eine Frage ;)
 
-Features der Klasse nav42
--------------------------
+Navigationsfeatures
+-------------------
 
-* `nav42` ist mittlerweile eine eigenständige Navigationsklasse ähnlich `rex_navigation`
 * Ausgabe der Navigation von einer Katagorie aus oder über Kategorie-Levels
 * Es wird zuerst eine nackte UL-Liste ohne Klassen oder Ids ausgegeben
 * Startartikel der Website (z.B. Home) kann ausgeblendet werden
@@ -66,7 +65,6 @@ Update von SEO42 2.x auf SEO42 2.6 und höher
 * AddOn-Ordner der neuen Version einspielen.
 * SEO42 über die AddOn-Verwaltung von REDAXO reinstallieren.
 * AddOn-Einstellungen von Hand nachprüfen und ggf. korrigieren (`settings.lang.inc.php` hat ein neues Format!).
-* Evtl. Klasse `rex_navigation42` in `nav42` umbenennen. 
 * Ggf. Cache löschen.
 
 Update von REXSEO42 1.1/1.2 auf SEO42 2.x
@@ -83,7 +81,7 @@ Alle URL-Typen aktivieren
 -------------------------
 
 * Einige Url-Typen greifen erst, wenn bei der Ausgabe der Navigation auf diese reagiert wird.
-* Die Klasse `nav42` unterstützt diese Typen bereits.
+* Die Navigationsfunktionen von SEO42 unterstützt diese Typen bereits (siehe Hilfe > Codebeispiele).
 * Über die Option `all_url_types` können diese bei Bedarf aber auch deaktiviert werden.
 
 Entwicklung von Plugins für SEO42
