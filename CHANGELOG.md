@@ -6,7 +6,6 @@ SEO42 - Changelog
 * Verbessert: `smart_redirects` jetzt standardmäßig eingeschaltet
 * Neu: Das AddOn Resource Includer inkl. `.htaccess` Datei wurde direkt in SEO42 integriert. Da nun die Cachingdauer von CSS/JS Dateien auf 4 Wochen eingestellt ist sollte unbedingt entweder die Methoden `seo42::getCSSFile()` / `seo42::getJSFile()` genutzt werden oder man reduziert in der `.htaccess` Datei die Cachingdauer (z.B. auf 1 Woche).
 * Neu: `seo42` Klasse: Wrapper Methoden `seo42::getNavigationByLevel()`, `seo42::getNavigationByCategory()`, `seo42::getLangNavigation()` hinzugefügt, `seo42::setNavigationClass()` (default auf `nav42`) hinzugefügt
-* Neu: `seo42` Klasse: `seo42::getArticle()` hinzugefügt
 * Verbessert: `nav42` Klasse: Ein Patchen des Community AddOns ist jetzt nicht mehr nötig (entsprechenden Readme-Eintrag entfernt)
 * Verbessert: `nav42` Klasse: Abhängigkeit zu `rex_navigation` entfernt
 
