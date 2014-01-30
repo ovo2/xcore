@@ -3,7 +3,7 @@
 // register addon
 $REX['ADDON']['rxid']['seo42'] = '0';
 $REX['ADDON']['name']['seo42'] = 'SEO42';
-$REX['ADDON']['version']['seo42'] = '2.8.3';
+$REX['ADDON']['version']['seo42'] = '3.0.0 DEV';
 $REX['ADDON']['author']['seo42'] = 'Markus Staab, Wolfgang Huttegger, Dave Holloway, Jan Kristinus, jdlx, RexDude';
 $REX['ADDON']['supportpage']['seo42'] = 'forum.redaxo.de';
 $REX['ADDON']['perm']['seo42'] = 'seo42[]';
@@ -17,9 +17,9 @@ $REX['EXTPERM'][] = 'seo42[seo_extended]';
 $REX['EXTPERM'][] = 'seo42[url_default]';
 
 // includes
+require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.nav42.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42_utils.inc.php');
-require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.nav42.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/settings.dyn.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/settings.advanced.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/settings.lang.inc.php');

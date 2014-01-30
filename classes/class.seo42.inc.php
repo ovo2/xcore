@@ -19,6 +19,7 @@ class seo42 {
 	protected static $rewriterEnabled;
 	protected static $is404Response;
 	protected static $ignoreQueryParams;
+	protected static $navigationClass;
 	
 	public static function init() {
 		// to be called before resolve()
@@ -38,6 +39,7 @@ class seo42 {
 		self::$fullUrls = $REX['ADDON']['seo42']['settings']['full_urls'];
 		self::$is404Response = false; // will be set from outside by set404ResponseFlag()
 		self::$ignoreQueryParams = $REX['ADDON']['seo42']['settings']['ignore_query_params'];
+		self::$navigationClass = 'nav42';
 
 		// pull apart server url
 		$urlParts = parse_url(self::$serverUrl);
@@ -726,6 +728,22 @@ class seo42 {
 		$parsedServerUrl = parse_url(self::getServerUrl());
 
 		return strpos($parsedServerUrl['host'], "www.") === 0;
+	}
+
+	public static function setNavigationClass($class) {
+		self::$navigationClass = $class;
+	}
+
+	public static function getNavigationByLevel($levelStart = 0, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') {
+		return call_user_func(self::$navigationClass . '::getNavigationByLevel', $levelStart, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);		
+	}
+
+	public static function getNavigationByCategory($categoryId, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') {
+		return call_user_func(self::$navigationClass . '::getNavigationByCategory', $categoryId, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
+	}
+
+	public static function getLangNavigation($ulId = '', $currentClass = 'selected', $showLiClasses = false, $hideLiIfOfflineArticle = false, $useLangCodeAsLinkText = false, $upperCaseLinkText = false) {
+		return call_user_func(self::$navigationClass . '::getLangNavigation', $ulId, $currentClass, $showLiClasses, $hideLiIfOfflineArticle, $useLangCodeAsLinkText, $upperCaseLinkText);
 	}
 
 	public static function getAnswer() {

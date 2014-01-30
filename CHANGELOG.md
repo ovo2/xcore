@@ -1,7 +1,11 @@
 SEO42 - Changelog
 =================
 
-**Updatehinweis:** Von SEO42 2.x auf SEO42 2.6 und höher bitte [Updateanleitung](https://github.com/RexDude/seo42#update-von-seo42-2x-auf-seo42-26-und-h%C3%B6her) beachten!
+### Version 3.0.0 DEV
+
+* Neu: `seo42` Klasse: Wrapper Methoden `seo42::getNavigationByLevel()`, `seo42::getNavigationByCategory()`, `seo42::getLangNavigation()` hinzugefügt, `seo42::setNavigationClass()` (default auf `nav42`) hinzugefügt
+* Verbessert: `nav42` Klasse: Ein Patchen des Community AddOns ist jetzt nicht mehr nötig (Readme-Eintrag ebenfalls entfernt)
+* Verbessert: `nav42` Klasse: Abhängigkeit zu `rex_navigation` entfernt
 
 ### Version 2.8.3 - 11. Januar 2014
 

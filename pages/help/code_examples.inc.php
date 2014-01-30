@@ -31,20 +31,20 @@ $codeExample5 = '<title><?php echo seo42::getTitle(rex_string_table::getString("
 
 $codeExample6 = '<?php 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment1') . '
-echo nav42::getNavigationByLevel(0, 1);
+echo seo42::getNavigationByLevel(0, 1);
 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment2') . '
-echo nav42::getNavigationByLevel(1, 3);
+echo seo42::getNavigationByLevel(1, 3);
 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment3_1') . '
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment3_2') . '
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment3_3') . '
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment3_4') . '
-echo nav42::getNavigationByLevel(0, 2, true, false, true);
+echo seo42::getNavigationByLevel(0, 2, true, false, true);
 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment4_1') . '
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment4_2') . '
-echo nav42::getNavigationByCategory(42, 2);
+echo seo42::getNavigationByCategory(42, 2);
 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_1') . '
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_2') . '
@@ -57,7 +57,7 @@ echo nav42::getNavigationByCategory(42, 2);
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_9') . '
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_10') . '
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_11') . '
-echo nav42::getNavigationByCategory(42, 2, true, true, false, "current", "nav", "sf-menu", "cat_css_id", "cat_css_class", function($cat, $depth) {
+echo seo42::getNavigationByCategory(42, 2, true, true, false, "current", "nav", "sf-menu", "cat_css_id", "cat_css_class", function($cat, $depth) {
 	if ($depth == 1) {
 		return htmlspecialchars($cat->getName());
 	} else {
@@ -70,7 +70,7 @@ echo nav42::getNavigationByCategory(42, 2, true, true, false, "current", "nav", 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_3') . '
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_4') . '
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_5') . '
-echo nav42::getLangNavigation("lang-nav", "current", true, false);
+echo seo42::getLangNavigation("lang-nav", "current", true, false);
 ?>';
 
 $codeExample7 = '<?php

@@ -36,7 +36,7 @@ Features
 Features der Klasse nav42
 -------------------------
 
-* Klasse `nav42` ist eine abgeleitete `rex_navigation` mit Zusatzfeatures
+* `nav42` ist mittlerweile eine eigenständige Navigationsklasse ähnlich `rex_navigation`
 * Ausgabe der Navigation von einer Katagorie aus oder über Kategorie-Levels
 * Es wird zuerst eine nackte UL-Liste ohne Klassen oder Ids ausgegeben
 * Startartikel der Website (z.B. Home) kann ausgeblendet werden
@@ -45,6 +45,7 @@ Features der Klasse nav42
 * Angabe von MetaInfo Felder aus denen Klassen und IDs für die LI's herausgezogen werden
 * Aufruf einer benutzerdef. PHP-Funktion möglich, die den Inhalt der LI's zurückgibt
 * Unterstützung für alle URL-Typen von SEO42
+* Reagiert automatisch auf gesperrte Artikel etc. bei installiertem Community AddOn
 * Ausgabe einer einfachen Sprachnavigation möglich
 * Vollständige Codebeispiele in der Hilfe von SEO42
 
@@ -82,16 +83,8 @@ Alle URL-Typen aktivieren
 -------------------------
 
 * Einige Url-Typen greifen erst, wenn bei der Ausgabe der Navigation auf diese reagiert wird.
-* Die Klasse `nav42` (ehemals `rex_navigation42`) unterstützt diese Typen bereits.
+* Die Klasse `nav42` unterstützt diese Typen bereits.
 * Über die Option `all_url_types` können diese bei Bedarf aber auch deaktiviert werden.
-
-Anpassungen für das Community Addon
------------------------------------
-
-Diese Anpassungen sind nur nötig, wenn man die `nav42` Klasse verwenden will:
-
-* [Diese Zeile](https://github.com/dergel/redaxo4_community/blob/master/plugins/auth/config.inc.php#L19) auskommentieren
-* Und [diese Zeile](https://github.com/RexDude/seo42/blob/master/classes/class.nav42.inc.php#L3) umschreiben in `class nav42 extends rex_com_navigation`
 
 Entwicklung von Plugins für SEO42
 ---------------------------------
