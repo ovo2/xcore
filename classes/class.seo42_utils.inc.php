@@ -801,4 +801,12 @@ class seo42_utils {
 
 		return $sanitizedUrl;
 	}
+
+	public static function sendHeadersForArticleOnly() {
+		global $REX;
+
+		if ($REX['ADDON']['seo42']['settings']['send_header_x_ua_compatible'] == 1) {
+			header('X-UA-Compatible: IE=Edge');
+		}
+	}
 }

@@ -82,6 +82,12 @@ $REX['ADDON']['seo42']['settings']['drop_dbfields_on_uninstall'] = true;
 // used to control which article should be used for debug output in help section, default is $REX['START_ARTICLE_ID']
 $REX['ADDON']['seo42']['settings']['debug_article_id']  = $REX['START_ARTICLE_ID'];
 
+// built in resource includer settings
+$REX['ADDON']['seo42']['settings']['css_dir'] = "/resources/css/";
+$REX['ADDON']['seo42']['settings']['js_dir'] = "/resources/js/";
+$REX['ADDON']['seo42']['settings']['images_dir'] = "/resources/images/";
+$REX['ADDON']['seo42']['settings']['send_header_x_ua_compatible'] = "1";
+
 // ****************************************************************
 // **  DELETE REDAXO CACHE AFTER YOU MADE CHANGES TO THIS FILE!  **
 // ****************************************************************

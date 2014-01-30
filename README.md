@@ -6,7 +6,8 @@ Ein intergalaktischer Fork des original RexSEO AddOns für REDAXO mit alternativ
 Features
 --------
 
-* Generierung von suchmaschinenfreundlichen URLs (Webserver benötigt Modul `mod_rewrite`)
+* Generierung von suchmaschinenfreundlichen URLs (Apache Webserver benötigt Modul `mod_rewrite`)
+* Sauber eingestelltes Caching und GZipping von Resourcen wie Bildern, Fonts, CSS und JS Dateien (.htaccess)
 * Automatische Umschreibung der Startseite der Website in `/` (für alle Sprachen möglich)
 * Verschiedene URL-Endungen einstellbar (z.B. Endung `.html` oder `/`)
 * Automatische Titel-Generierung. Mitgeliefertes Titel-Schema aus [Google-PDF](http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf) entnommen.
@@ -33,8 +34,18 @@ Features
 * Kompatibel zum [Website Manager](https://github.com/RexDude/website_manager) sowie [Community](https://github.com/dergel/redaxo4_community) AddOn
 * Enthält die Antwort auf die eine Frage ;)
 
-Navigationsfeatures
--------------------
+Features Resourceneinbindung
+----------------------------
+
+* Kombinieren von mehreren JS/CSS Dateien zu einer einzigen Datei um HTTP Request zu minimieren
+* Versions-String Mechanismus damit trotz Caching immer die neuste Version einer JS/CSS Datei heruntergeladen wird
+* Integrierte LESS sowie SCSS (SASS) Compiler
+* Automatische Neukompilierung sowie Neukombinierung der Dateien bei Änderungen der Quell-Dateien
+* Überführung von Variablenwerten von PHP nach LESS möglich. Mehr Infos in den Codebeispielen und [hier](http://leafo.net/lessphp/docs/#setting_variables_from_php)
+* Einbindung von JavaScript Code aus einem REDAXO Template (oder einer Datei) heraus inkl. PHP Interpretierung
+
+Features Navigationsausgabe
+---------------------------
 
 * Ausgabe der Navigation von einer Katagorie aus oder über Kategorie-Levels
 * Es wird zuerst eine nackte UL-Liste ohne Klassen oder Ids ausgegeben
@@ -47,11 +58,6 @@ Navigationsfeatures
 * Reagiert automatisch auf gesperrte Artikel etc. bei installiertem Community AddOn
 * Ausgabe einer einfachen Sprachnavigation möglich
 * Vollständige Codebeispiele in der Hilfe von SEO42
-
-Ladezeit Ihrer Website verbessern
----------------------------------
-
-Da eine schnelle Ladezeit der Website sich auch positiv auf das SEO auswirkt, wird empfohlen sowas wie das [HTML5 Boilerplate](http://html5boilerplate.com/) oder aber das [Resource Includer](https://github.com/RexDude/resource_includer) AddOn für REDAXO zu nutzen.
 
 Verfügbare Plugins für SEO42
 ----------------------------
@@ -97,9 +103,8 @@ Hinweise
 
 * Läuft nur mit REDAXO 4.5+
 * AddOn-Ordner lautet: `seo42`
-* Getestete und unterstützte Skins: `agk_skin` von REDAXO und `ppx_skin` von [polarpixel](https://github.com/polarpixel).
-* AddOn wurde seit Version 2.0.0 von REXSEO42 in SEO42 umbenannt.
 * Wenn der Webserver einen 500 Server Error meldet, die Zeile `Options -Indexes` in der `.htaccess` auskommentieren.
+* Getestete und unterstützte Skins: `agk_skin` von REDAXO und `ppx_skin` von [polarpixel](https://github.com/polarpixel).
 * Geändertes Verhalten für REDAXO Unterordner-Installationen. Bitte FAQ in der Hilfe des AddOns anschauen für weitere Infos.
 * Der Fehlerartikel unter REDAXO > System sollte nicht gleich dem Startartikel der Website entsprechen. Es sollte aufjedenfall ein eigener Fehlerartikel angelegt werden.
 * Implementiert man sein eigenes Titel-Schema, ist es vielleicht sinnvoll die Optionen `title_preview` und `no_prefix_checkbox` auf `false` zu setzen.
@@ -108,11 +113,22 @@ Hinweise
 * Vorläufige Sammlung der Lang-Presets hier: <https://github.com/RexDude/seo42/issues/61>
 * Momentan muss man noch von Hand benötigte Einstellungen in den Dateien `settings.advanced.inc.php` und `settings.lang.inc.php` vornehmen. Danach sollte der Cache gelöscht werden. Ab Version 3.0.0 sollten diese Dateien dann der Vergangenheit angehören ;)
 
+
+Hinweise Resourceneinbindung
+----------------------------
+
+* Nutzt man NICHT die PHP-Methoden `seo42::getCSSFile()` / `seo42::getJSFile()` so sollte man unbedingt in der `.htaccess` Datei die Cachingdauer für CSS/JS Dateien von 4 Wochen auf 1 Woche oder weniger einstellen.
+* Aktuell wird keine JavaScript Kompression (minify) durchgeführt. Es sollten immer die `min.js` Dateien angegeben werden. 
+* Variable von PHP nach LESS: <http://leafo.net/lessphp/docs/#setting_variables_from_php>
+* Warum `foo.1234567.css`? <http://stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring>
+
 Links
 -----
 
 * BugTracker: <https://github.com/RexDude/seo42/issues>
+* Klasse res42: <https://github.com/RexDude/seo42/blob/master/classes/class.res42.inc.php>
 * Klasse nav42: <https://github.com/RexDude/seo42/blob/master/classes/class.nav42.inc.php>
+* Online JavaScript/CSS Compression Using YUI Compressor: <http://refresh-sf.com/yui/>
 
 
 FAQ
@@ -141,7 +157,9 @@ Credits
 * Péter Kalmár für die Logo-Optimierung 
 * Danke ausserdem an alle die sich mit Ideen, Tests und Bugmeldungen eingebracht haben :)
 * Google PageRank Checker Class by David Walsh and Jamie Scott
-* PHP Markdown Lib by Michel Fortin
+* [Parsedown](http://parsedown.org/) Class by Emanuil Rusev
+* SEO42 nutzt die [scssphp](https://github.com/leafo/scssphp/) PHP-Klasse
+* SEO42 nutzt die [lessphp](https://github.com/leafo/lessphp/) PHP-klasse
 * [QTip2](http://qtip2.com/) by Craig Thompson
 * Hitchhiker's Guide to the Galaxy Icons by [Iconshock](http://www.iconarchive.com/artist/iconshock.html)
 * Status Icons from [FamFamFam Silk Icons](http://www.famfamfam.com/lab/icons/silk/) and [Oxygen Icons](http://www.oxygen-icons.org/)

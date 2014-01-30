@@ -730,6 +730,16 @@ class seo42 {
 		return strpos($parsedServerUrl['host'], "www.") === 0;
 	}
 
+	public static function getArticle($articleId = 0, $ctypeId = 1) {
+		if ($articleId == 0) {
+			$articleId = self::$curArticle->getId();
+		}
+
+		$article = new article($articleId);
+		
+		return $article->getArticle($ctypeId); 
+	}
+
 	public static function setNavigationClass($class) {
 		self::$navigationClass = $class;
 	}
@@ -744,6 +754,34 @@ class seo42 {
 
 	public static function getLangNavigation($ulId = '', $currentClass = 'selected', $showLiClasses = false, $hideLiIfOfflineArticle = false, $useLangCodeAsLinkText = false, $upperCaseLinkText = false) {
 		return call_user_func(self::$navigationClass . '::getLangNavigation', $ulId, $currentClass, $showLiClasses, $hideLiIfOfflineArticle, $useLangCodeAsLinkText, $upperCaseLinkText);
+	}
+
+	public static function getCSSFile($file, $vars = array()) {
+		return res42::getCSSFile($file, $vars);
+	}
+
+	public static function getJSFile($file) {
+		return res42::getJSFile($file);
+	}
+
+	public static function getImageFile($file) {
+		return res42::getImageFile($file);
+	}
+
+	public static function getCombinedCSSFile($combinedFile, $sourceFiles) {
+		return res42::getCombinedCSSFile($combinedFile, $sourceFiles);
+	}
+
+	public static function getCombinedJSFile($combinedFile, $sourceFiles) {
+		 return res42::getCombinedJSFile($combinedFile, $sourceFiles);
+	}
+
+	public static function getJSCodeFromTemplate($templateId, $simpleMinify = true) {
+		return res42::getJSCodeFromTemplate($templateId, $simpleMinify);
+	}
+
+	public static function getJSCodeFromFile($file, $simpleMinify = true) {
+		return res42::getJSCodeFromFile($file, $simpleMinify);
 	}
 
 	public static function getAnswer() {

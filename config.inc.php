@@ -17,6 +17,7 @@ $REX['EXTPERM'][] = 'seo42[seo_extended]';
 $REX['EXTPERM'][] = 'seo42[url_default]';
 
 // includes
+require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.res42.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.nav42.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42_utils.inc.php');
@@ -48,7 +49,7 @@ if (!$REX['SETUP']) {
 		}
 	}
 
-	// init 42
+	// init seo42
 	rex_register_extension('ADDONS_INCLUDED', 'seo42_utils::init', '', REX_EXTENSION_EARLY);
 
 	// send additional headers if necessary
@@ -150,5 +151,11 @@ if ($REX['REDAXO']) {
 	if (rex_request('page') == 'content' && rex_request('mode') == 'edit' && rex_request('function') == '') {
 		rex_register_extension('PAGE_CONTENT_OUTPUT', 'seo42_utils::showUrlTypeMsg');
 	}
+} else {
+	// init res42 class
+	rex_register_extension('ADDONS_INCLUDED', 'res42::init');
+
+	// send additional headers for article if necessary
+	rex_register_extension('OUTPUT_FILTER_CACHE', 'seo42_utils::sendHeadersForArticleOnly');
 }
 
