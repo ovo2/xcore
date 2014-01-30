@@ -161,6 +161,7 @@ Credits
 * SEO42 nutzt die [scssphp](https://github.com/leafo/scssphp/) PHP-Klasse
 * SEO42 nutzt die [lessphp](https://github.com/leafo/lessphp/) PHP-klasse
 * [QTip2](http://qtip2.com/) by Craig Thompson
+* jQuery UI: http://jqueryui.com/
 * Hitchhiker's Guide to the Galaxy Icons by [Iconshock](http://www.iconarchive.com/artist/iconshock.html)
 * Status Icons from [FamFamFam Silk Icons](http://www.famfamfam.com/lab/icons/silk/) and [Oxygen Icons](http://www.oxygen-icons.org/)
 * Macht’s gut und danke für den Fisch ;)

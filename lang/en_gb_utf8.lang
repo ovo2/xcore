@@ -1,7 +1,7 @@
 seo42 = SEO42
 
 seo42_help_message = Ein intergalaktischer Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzerführung und noch ein paar weiteren SEO-Goodies...
-seo42_welcome = Start
+seo42_start = Start
 seo42_settings = Settings
 seo42_tools = Tools
 seo42_redirects = Redirects
@@ -22,7 +22,7 @@ seo42_check_lang_msg = {0}: Bitte überprüfen und aktualisieren Sie ggf. auch d
 seo42_tooltip_headline = Hinweis
 seo42_tooltip_close = Schließen
 
-seo42_welcome_headline = SEO42 for REDAXO
+seo42_start_headline = SEO42 for REDAXO
 
 seo42_tools_caption = SEO Web Tools
 seo42_tool2 = Google Submit Url

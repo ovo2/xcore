@@ -84,7 +84,7 @@ if ($REX['REDAXO']) {
 	} else {
 		// add subpages
 		$REX['ADDON']['seo42']['SUBPAGES'] = array(
-			array('', $I18N->msg('seo42_welcome')),
+			array('', $I18N->msg('seo42_start')),
 			array('tools', $I18N->msg('seo42_tools')),
 			array('redirects', $I18N->msg('seo42_redirects'))
 		);
@@ -99,7 +99,7 @@ if ($REX['REDAXO']) {
 
 		// rest of sub pages
 		array_push($REX['ADDON']['seo42']['SUBPAGES'], 
-			array('options', $I18N->msg('seo42_settings')),
+			array('settings', $I18N->msg('seo42_settings')),
 			array('setup', $I18N->msg('seo42_setup')),
 			array('help', $I18N->msg('seo42_help'))
 		);
