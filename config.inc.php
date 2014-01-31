@@ -151,6 +151,12 @@ if ($REX['REDAXO']) {
 	if (rex_request('page') == 'content' && rex_request('mode') == 'edit' && rex_request('function') == '') {
 		rex_register_extension('PAGE_CONTENT_OUTPUT', 'seo42_utils::showUrlTypeMsg');
 	}
+
+	// handle remove_root_cats_for_categories option
+	if (count($REX['ADDON']['seo42']['settings']['remove_root_cats_for_categories']) > 0) {
+		rex_register_extension('ART_ADDED', 'seo42_utils::addRemoveRootCatUrlType');
+		rex_register_extension('CAT_ADDED', 'seo42_utils::addRemoveRootCatUrlType');
+	}
 } else {
 	// init res42 class
 	rex_register_extension('ADDONS_INCLUDED', 'res42::init');

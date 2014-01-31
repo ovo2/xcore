@@ -37,6 +37,9 @@ $REX['ADDON']['seo42']['settings']['full_urls'] = false;
 // if true smart redirects like domain.de/foo/bar/ -> domain.de/foo/bar.html etc. will be enabled. default is false at it is still a experimental feature
 $REX['ADDON']['seo42']['settings']['smart_redirects'] = true;
 
+// array with category ids. all articles in this categoryies will get urltype "remove root cat". but only for articles added after setting was made.
+$REX['ADDON']['seo42']['settings']['remove_root_cats_for_categories'] = array();
+
 // default title delimiter (including whitespace chars) for seperating name of website and page title
 $REX['ADDON']['seo42']['settings']['title_delimiter'] = '-';
 

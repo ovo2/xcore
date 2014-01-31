@@ -808,4 +808,31 @@ class seo42_utils {
 			header('X-UA-Compatible: IE=Edge');
 		}
 	}
+
+	public static function addRemoveRootCatUrlType($params) {
+		global $REX;
+
+		$execludeIds = $REX['ADDON']['seo42']['settings']['remove_root_cats_for_categories'];
+
+		if (isset($params['category_id'])) {
+			// category with startarticle created
+			$curCatId = $params['category_id'];
+		} else {
+			// normal article created
+			$curCatId = $params['re_id'];
+		}
+
+		if (in_array($curCatId, $execludeIds)) {
+			$sql = rex_sql::factory();
+			//$sql->debugsql = 1;
+			$sql->setTable($REX['TABLE_PREFIX'] . "article");
+			$sql->setWhere("id=" . $params['id']);
+
+			$sql->setValue('seo_custom_url', '{"url_type":6,"url_clone":false}');
+			$sql->setValue('updatedate',  time());
+
+			// do db update
+			$sql->update();
+		}
+	}
 }
