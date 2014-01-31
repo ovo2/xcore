@@ -16,7 +16,7 @@ seo42_config_ok = Settings have been updated.
 seo42_config_error = Einstellungen konnte nicht gespeichert werden!
 seo42_config_file_no_perms = Konfigurationsdatei "{0}" ist nicht beschreibbar!
 seo42_dbfields_readded = {0}: Fehlende DB-Felder des AddOns wurden hinzugefügt.
-seo42_dbfields_readded_check_setup = {0}: Bitte überprüfen Sie ob das Setup (Schritt 3) erneut durchgeführt werden muss.
+seo42_dbfields_readded_check_setup = {0}: Bitte überprüfen Sie ob Schritt 3 des SEO42-Setup erneut durchgeführt werden muss.
 seo42_check_lang_msg = {0}: Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.lang.inc.php" Datei.
 
 seo42_tooltip_headline = Hinweis

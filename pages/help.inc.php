@@ -2,7 +2,7 @@
 
 // include markdwon parser
 if (!class_exists('Parsedown')) {
-	require($REX['INCLUDE_PATH'] . '/addons/ckeditor/classes/class.parsedown.inc.php');
+	require($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.parsedown.inc.php');
 }
 
 $mypage = rex_request('page','string');

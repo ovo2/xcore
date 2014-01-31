@@ -730,16 +730,6 @@ class seo42 {
 		return strpos($parsedServerUrl['host'], "www.") === 0;
 	}
 
-	public static function getArticle($articleId = 0, $ctypeId = 1) {
-		if ($articleId == 0) {
-			$articleId = self::$curArticle->getId();
-		}
-
-		$article = new article($articleId);
-		
-		return $article->getArticle($ctypeId); 
-	}
-
 	public static function setNavigationClass($class) {
 		self::$navigationClass = $class;
 	}
