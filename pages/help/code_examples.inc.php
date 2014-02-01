@@ -1,23 +1,30 @@
 <h1><?php echo $I18N->msg('seo42_help_codeexamples'); ?></h1>
 
 <?php
-$codeExample1 = '<head>
-	<?php echo seo42::getHtml(); ?>
-</head>';
-
-$codeExample2 = '<?php
+$codeExample1 = '<?php
 echo rex_getUrl(42);
 // --> ' . seo42::getUrlStart() . 'questions/the-ultimate-answer.html
 
-echo seo42::getMediaFile("image.png");
-// --> ' . seo42::getUrlStart() . 'files/image.png
-
-echo seo42::getUrlStart() . "js/jquery.min.js"; 
-// --> ' . seo42::getUrlStart() . 'js/jquery.min.js
-
 echo seo42::getFullUrl(42);
 // --> ' . seo42::getServerUrl() . 'questions/the-ultimate-answer.html
+
+echo seo42::getMediaFile("image.png");
+// --> ' . seo42::getUrlStart() . 'files/image.png
 ?>';
+
+$codeExample2 = '
+<link rel="stylesheet" href="<?php echo seo42::getCSSFile("default.css"); ?>" type="text/css" media="screen,print" />
+<link rel="stylesheet" href="<?php echo seo42::getCSSFile("theme.scss"); ?>" type="text/css" media="screen,print" />
+<link rel="stylesheet" href="<?php echo seo42::getCSSFile("stuff.less", array("color" => "red", "base" => "960px")); ?>" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php echo seo42::getCSSFile("http://fonts.googleapis.com/css?family=Fjalla+One"); ?>" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php echo seo42::getCombinedCSSFile("combined.css", array("foo.css", "bar.scss", "batz.less")); ?>" type="text/css" media="screen" />
+<link rel="shortcut icon" href="<?php echo seo42::getImageFile("favicon.ico"); ?>" type="image/x-icon" />
+
+<script type="text/javascript" src="<?php echo seo42::getJSFile("http://codeorigin.jquery.com/jquery-2.0.3.min.js"); ?>"></script>
+<script type="text/javascript" src="<?php echo seo42::getCombinedJSFile("combined.js", array("jquery.magnific-popup.min.js", "jquery.nivo-slider.min.js")); ?>"></script>
+<script type="text/javascript"><?php echo seo42::getJSCodeFromTemplate(5); ?></script>
+<script type="text/javascript" src="<?php echo seo42::getJSFile("init.js"); ?>"></script>
+';
 
 $codeExample3 = '<?php
 echo seo42::getImageManagerUrl("image.png", "rex_mediapool_detail"); 

@@ -199,28 +199,43 @@ if ($func == "do_copy") {
 </div>
 
 <?php
-$codeExample1 = '<head>
+$codeExample = '<!DOCTYPE html>
+
+<html lang="<?php echo seo42::getLangCode(); ?>">
+<head>
+	<meta charset="utf-8" />
 	<base href="<?php echo seo42::getBaseUrl(); ?>" />
 	<title><?php echo seo42::getTitle(); ?></title>
 	<meta name="description" content="<?php echo seo42::getDescription(); ?>" />
 	<meta name="keywords" content="<?php echo seo42::getKeywords(); ?>" />
 	<meta name="robots" content="<?php echo seo42::getRobotRules();?>" />
+	<link rel="stylesheet" href="<?php echo seo42::getCSSFile("default.css"); ?>" type="text/css" media="screen,print" />
+	<link rel="stylesheet" href="<?php echo seo42::getCSSFile("print.css"); ?>" type="text/css" media="print" />
+	<link rel="shortcut icon" href="<?php echo seo42::getImageFile("favicon.ico"); ?>" type="image/x-icon" />
 	<link rel="canonical" href="<?php echo seo42::getCanonicalUrl(); ?>" />
-</head>';
+	<?php echo seo42::getLangTags(); ?>
+</head>
 
-$codeExample2 = '<?php echo seo42::getLangTags(); ?>';
+<body>
+<div id="container">
+	<div id="link"><a href="<?php echo rex_getUrl(1); ?>">' . $I18N->msg('seo42_setup_codeexamples_goto_startpage') . '</a></div>
+	<div id="image"><img src="<?php echo seo42::getImageManagerUrl("logo.png", "my_img_type"); ?>" alt="" /></div>
+	<div id="mainmenu"><?php echo seo42::getNavigationByLevel(0, 1); ?></div>
+	<div id="submenu"><?php echo seo42::getNavigationByLevel(1, 3); ?></div>
+	<div id="content"><?php echo $this->getArticle(); ?></div>
+	<div id="footer"><?php echo seo42::getNavigationByCategory(42); ?></div>
+</div>
+<script type="text/javascript" src="<?php echo seo42::getJSFile("jquery.min.js"); ?>"></script>
+<script type="text/javascript" src="<?php echo seo42::getJSFile("init.js"); ?>"></script>
+</body>
+</html>';
 ?>
 
 <div class="rex-addon-output">
 	<h2 class="rex-hl2"><?php echo $I18N->msg('seo42_setup_step3'); ?></h2>
 	<div class="rex-area-content">
 		<p class="info-msg"><?php echo $I18N->msg('seo42_setup_step3_msg1'); ?></p>
-		<div id="code-example1"><?php rex_highlight_string($codeExample1); ?></div>
-
-		<div class="spacer"></div>
-		
-		<p class="info-msg"><?php echo $I18N->msg('seo42_setup_step3_msg2'); ?></p>
-		<div id="code-example2"><?php rex_highlight_string($codeExample2); ?></div>
+		<div id="code-example1"><?php rex_highlight_string($codeExample); ?></div>
 
 		<p class="info-msg last-msg"><?php echo $I18N->msg('seo42_setup_codeexamples'); ?></p>
 	</div>
@@ -240,7 +255,8 @@ $codeExample2 = '<?php echo seo42::getLangTags(); ?>';
 }
 
 #rex-page-seo42 .rex-code {
-    word-wrap: break-word;
+    overflow: auto;
+	white-space: nowrap;
 }
 
 #rex-page-seo42 .spacer {

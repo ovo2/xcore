@@ -22,7 +22,7 @@ seo42_check_lang_msg = {0}: Bitte überprüfen und aktualisieren Sie ggf. auch d
 seo42_tooltip_headline = Hinweis
 seo42_tooltip_close = Schließen
 
-seo42_start_headline = SEO42 for REDAXO
+seo42_start_headline = SEO42 für REDAXO
 
 seo42_tools_caption = SEO Web Tools
 seo42_tool2 = Google Submit Url
@@ -96,11 +96,11 @@ seo42_setup_htaccess_patch_ok = .htaccess Anpassungen wurden vorgenommen.
 seo42_setup_htaccess_patch_failed = Die Anpassungen an der .htaccess Datei konnten nicht vorgenommen werden.
 seo42_setup_step2_button = Datei kopieren
 seo42_setup_step3 = Schritt 3: Template anpassen
-seo42_setup_step3_msg1 = Zuletzt passen Sie den Head-Bereich Ihres Templates wie folgt an:
-seo42_setup_step3_msg2 = Für eine mehrsprachige Website fügen Sie zusätzlich diese Zeile hinzu:
+seo42_setup_step3_msg1 = Zuletzt nutzen Sie dieses HTML5 Boilerplate als Basis für Ihre eigenen Templates:
+seo42_setup_codeexamples_goto_startpage = zur Startseite
 seo42_setup_url_alert = URL der Website muss mit "http://" beginnen und mit "/" enden.
 seo42_setup_htaccess_alert = Im Hauptverzeichnis von REDAXO existiert bereits eine .htaccess Datei.\r\nWollen Sie diese überschreiben?\r\n\r\nHinweis: Ein Backup der Datei wird automatisch in /seo42/backup/ gespeichert.
-seo42_setup_codeexamples = Für ein optimales SEO nutzen Sie außerdem die PHP-Methoden aus den <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=codeexamples">Codebeispielen</a>...
+seo42_setup_codeexamples = Weitere <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=codeexamples">Codebeispiele</a> finden Sie in der Hilfe von SEO42...
 seo42_setup_rewritebase = RewriteBase automatisch anpassen: <i>RewriteBase /{0}</i>
 seo42_setup_subdir_hint = (Bitte Unterordner mit angeben)
 seo42_setup_rewritebase_alert = Bitte folgende Anpassung in der .htaccess Datei vornehmen:
@@ -145,14 +145,14 @@ seo42_urlpage_lang_clone_hint = Notice
 seo42_urlpage_lang_clone_hint_msg = Settings of language {0} have been inherited.
 seo42_urlpage_url_already_exists = URL "{0}" exists already.
 
-seo42_urltype_intern = Reference to article:
-seo42_urltype_intern_plus_clang = Reference to {0} of language {1}.
-seo42_urltype_userdef = Reference to external URL
-seo42_urltype_userdef_javascript = Reference to javascript code.
-seo42_urltype_mediapool = Reference to mediapool file: {0}
-seo42_urltype_langswitch = Language switch to language: {0}
-seo42_urltype_none = URL of this article has been removed.
-seo42_urltype_error = URL type of this article is invalid!
+seo42_urltype_intern = Verweis auf Artikel:
+seo42_urltype_intern_plus_clang = Verweis auf Artikel {0} der Sprache {1}.
+seo42_urltype_userdef = Verweis auf externe URL
+seo42_urltype_userdef_javascript = Verweis auf JavaScript-Code.
+seo42_urltype_mediapool = Verweis auf Medienpool-Datei: {0}
+seo42_urltype_langswitch = Sprachumschalter zu Sprache: {0}
+seo42_urltype_none = Die URL dieses Artikels wurde entfernt.
+seo42_urltype_error = Der URL-Typ dieses Artikels ist ungültig!
 
 seo42_help_chapter_readme = Readme
 seo42_help_chapter_changelog = Changelog
@@ -175,10 +175,10 @@ seo42_help_marvin_msg10 = Meine Fähigkeit zum Fröhlichsein könntest du in ein
 seo42_help_marvin_msg11 = Ich habe mit dem Bordcomputer gesprochen. Er hasst mich.
 
 seo42_help_codeexamples = Codebeispiele
-seo42_help_codeexamples_title1 = Alternative Einbindung der Html-Tags
-seo42_help_codeexamples_description1 = Neben dem Beispiel im Setup Schritt 3 kann man die ganzen Tags auch so einbinden:
-seo42_help_codeexamples_title2 = Einheitliche Urls
-seo42_help_codeexamples_description2 = Nutzen Sie diese Möglichkeiten um Ihre Urls zu vereinheitlichen und automatisch die richtigen URLs ausgeben zu lassen:
+seo42_help_codeexamples_title1 = Einheitliche Urls
+seo42_help_codeexamples_description1 = Nutzen Sie diese Möglichkeiten um Ihre Urls zu vereinheitlichen und automatisch die richtigen URLs ausgeben zu lassen:
+seo42_help_codeexamples_title2 = Erweiterte Resourceneinbindung
+seo42_help_codeexamples_description2 = Sie können u.a. CSS/JS Dateien kombinieren, SCSS/LESS Dateien einbinden oder JS-Code aus einem Template einfügen:
 seo42_help_codeexamples_title3 = Suchmaschinenfreundliche Image Manager Urls
 seo42_help_codeexamples_description3 = Über diese Methoden lassen sich suchmaschinenfreundliche Urls für Image Manager Bilder erzeugen: 
 seo42_help_codeexamples_title4 = Lang Code ausgeben

@@ -56,8 +56,10 @@ echo '
 ?>
 
 <style type="text/css">
-div.rex-addon-content p.rex-code {
-	margin-bottom: 22px;
+div.rex-addon-content .rex-code {
+	margin-bottom: 22px !important;
+	overflow: auto;
+	white-space: nowrap;
 }
 
 .addon-template h1 {
