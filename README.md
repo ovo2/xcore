@@ -64,6 +64,26 @@ Verfügbare Plugins für SEO42
 
 * [url_control](https://github.com/tbaddade/redaxo_plugin_url_control) - Plugin zur URL-Generierung für eigene AddOns
 
+Hinweis zur mitgelieferten .htaccess Datei
+------------------------------------------
+
+Das AddOn Resource Includer inkl. `.htaccess` Datei wurde direkt in SEO42 3.0+ integriert. Da nun die Cachingdauer von CSS/JS Dateien auf 4 Wochen eingestellt ist sollte unbedingt entweder die Methoden `seo42::getCSSFile()` / `seo42::getJSFile()` genutzt werden oder man reduziert in der `.htaccess` Datei die Cachingdauer (z.B. auf 1 Woche).
+
+Alle URL-Typen aktivieren
+-------------------------
+
+* Einige Url-Typen greifen erst, wenn bei der Ausgabe der Navigation auf diese reagiert wird.
+* Die Navigationsfunktionen von SEO42 unterstützt diese Typen bereits (siehe Hilfe > Codebeispiele).
+* Über die Option `all_url_types` können diese bei Bedarf aber auch deaktiviert werden.
+
+Entwicklung von Plugins für SEO42
+---------------------------------
+
+* SEO42 bindet automatisch seine installierten und aktvierten Plugins in das Addon-Menü ein.
+* Es wird ausserdem automatisch die Sprachdatei des Plugins eingebunden. Im Plugin selbst muss man also nichts weiter tun.
+* Plugins sollten die SEO42 API verwendet. Aktuell gibt ein Übersicht der PHP-Methoden unter Hilfe > Debug.
+* Möchte man z.B. Titel, Beschreibung, usw. für einen bestimmten Artikel bekommen, so ruft man vor dem jeweiligen Methoden-Aufruf die Methode `seo42::initArticle($articleId)` auf. Zum Schluss sollte man wieder den aktuellen Artikel zurücksetzen mit `seo42::initArticle($REX['ARTICLE_ID'])` (aber eigentlich nur fürs Frontend nötig).
+
 Update von SEO42 2.x auf SEO42 2.6 und höher
 --------------------------------------------
 
@@ -82,21 +102,6 @@ Update von REXSEO42 1.1/1.2 auf SEO42 2.x
 * In allen Templates den Klassennamen von `rexseo42` nach `seo42` umbenennen.
 * AddOn-Einstellungen von Hand nachprüfen und ggf. korrigieren (ab 2.6.0 hat die `settings.lang.inc.php` ein neues Format!).
 * Ggf. Cache löschen.
-
-Alle URL-Typen aktivieren
--------------------------
-
-* Einige Url-Typen greifen erst, wenn bei der Ausgabe der Navigation auf diese reagiert wird.
-* Die Navigationsfunktionen von SEO42 unterstützt diese Typen bereits (siehe Hilfe > Codebeispiele).
-* Über die Option `all_url_types` können diese bei Bedarf aber auch deaktiviert werden.
-
-Entwicklung von Plugins für SEO42
----------------------------------
-
-* SEO42 bindet automatisch seine installierten und aktvierten Plugins in das Addon-Menü ein.
-* Es wird ausserdem automatisch die Sprachdatei des Plugins eingebunden. Im Plugin selbst muss man also nichts weiter tun.
-* Plugins sollten die SEO42 API verwendet. Aktuell gibt ein Übersicht der PHP-Methoden unter Hilfe > Debug.
-* Möchte man z.B. Titel, Beschreibung, usw. für einen bestimmten Artikel bekommen, so ruft man vor dem jeweiligen Methoden-Aufruf die Methode `seo42::initArticle($articleId)` auf. Zum Schluss sollte man wieder den aktuellen Artikel zurücksetzen mit `seo42::initArticle($REX['ARTICLE_ID'])` (aber eigentlich nur fürs Frontend nötig).
 
 Hinweise
 --------
