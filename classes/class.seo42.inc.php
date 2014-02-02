@@ -293,6 +293,10 @@ class seo42 {
 	}
 
 	public static function getImageManagerUrl($imageFile, $imageType) {
+		return self::getImageManagerFile($imageFile, $imageType);
+	}
+
+	public static function getImageManagerFile($imageFile, $imageType) {
 		global $REX;
 	
 		if ($REX['REDAXO']) {
