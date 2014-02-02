@@ -217,29 +217,21 @@ class seo42 {
 		$out = '';
 		$i = 0;
 
-		if (self::has404ResponseFlag()) {
-			return '';
-		}
+		if (!self::has404ResponseFlag() && self::isMultiLangInstall() && (self::getFullUrl($REX['ARTICLE_ID'], $REX['CUR_CLANG']) == self::getServerUrl() . self::getRequestUriWithoutQueryString())) { // check if its an normal article url (no special url_control urls etc.)
+			foreach ($REX['CLANG'] as $clangId => $clangName) {
+				$article = OOArticle::getArticleById(self::$curArticle->getId(), $clangId);
 
-		if (self::getFullUrl($REX['ARTICLE_ID'], $REX['CUR_CLANG']) == self::getServerUrl() . self::getRequestUriWithoutQueryString()) { // check if its an normal article url (no special url_control urls etc.)
-			if (self::isMultiLangInstall()) {
-				foreach ($REX['CLANG'] as $clangId => $clangName) {
-					$article = OOArticle::getArticleById(self::$curArticle->getId(), $clangId);
+				if ($article->isOnline() || $REX['CUR_CLANG'] == $clangId) {
+					$hreflang = self::getLangCode($clangId);
 
-					if ($article->isOnline() || $REX['CUR_CLANG'] == $clangId) {
-						$hreflang = self::getLangCode($clangId);
-
-						if ($i > 0) {
-							$out .= $indent;
-						}
-
-						$out .= '<link rel="alternate" href="' . self::getFullUrl(self::$curArticle->getId(), $clangId)  . self::getQueryString() . '" hreflang="' . $hreflang . '" />' . PHP_EOL;
-
-						$i++;
+					if ($i > 0) {
+						$out .= $indent;
 					}
+
+					$out .= '<link rel="alternate" href="' . self::getFullUrl(self::$curArticle->getId(), $clangId)  . self::getQueryString() . '" hreflang="' . $hreflang . '" />' . PHP_EOL;
+
+					$i++;
 				}
-			} else {
-				$out = PHP_EOL;
 			}
 		} else {
 			$out = PHP_EOL;
