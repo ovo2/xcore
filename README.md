@@ -131,6 +131,7 @@ Links
 -----
 
 * BugTracker: <https://github.com/RexDude/seo42/issues>
+* Klasse seo42: <https://github.com/RexDude/seo42/blob/master/classes/class.seo42.inc.php>
 * Klasse res42: <https://github.com/RexDude/seo42/blob/master/classes/class.res42.inc.php>
 * Klasse nav42: <https://github.com/RexDude/seo42/blob/master/classes/class.nav42.inc.php>
 * Online JavaScript/CSS Compression Using YUI Compressor: <http://refresh-sf.com/yui/>
