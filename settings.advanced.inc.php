@@ -17,7 +17,7 @@ $REX['ADDON']['seo42']['settings']['urlpage'] = true;
 $REX['ADDON']['seo42']['settings']['title_preview'] = true;
 
 // hides the no prefix/suffix checkbox in seopage if false. only necessary if a different title schema is used and therefore no prefix/suffix checkbox is needed
-$REX['ADDON']['seo42']['settings']['no_prefix_checkbox'] = true;
+$REX['ADDON']['seo42']['settings']['no_prefix_checkbox'] = false;
 
 // if true user can change canonical url via seo page. please use this only if you exactly know what you are doing or know that your redaxo users and admins exactly know what they are doing ;)
 $REX['ADDON']['seo42']['settings']['custom_canonical_url'] = false;
