@@ -1,17 +1,18 @@
 SEO42 - Changelog
 =================
 
-### Version 3.0.0 BETA - 02. Februar 2014
+### Version 3.0.0 - 02. Februar 2014
 
 * Neu: Beginners' Guide als kleine Anleitung für Einsteiger und Neulinge hinzugefügt, zu finden in der SEO42 Hilfe.
 * Neu: SEO42 HTML5 Boilerplate hinzugefügt. Kann und soll als Basis für eigene Templates genutzt werden. Zu finden im Setup Schritt 3.
-* Neu: Das AddOn Resource Includer inkl. `.htaccess`Datei, SCSS/LESS Compiler, etc. wurde direkt in SEO42 integriert. Da nun die Cachingdauer von CSS/JS Dateien auf 4 Wochen eingestellt ist sollte unbedingt entweder die Methoden `seo42::getCSSFile()` / `seo42::getJSFile()` genutzt werden oder man reduziert in der `.htaccess` Datei die Cachingdauer (z.B. auf 1 Woche).
+* Neu: Das AddOn Resource Includer inkl. `.htaccess` Datei, SCSS/LESS Compiler, etc. wurde direkt in SEO42 integriert. Da nun die Cachingdauer von CSS/JS Dateien auf 4 Wochen eingestellt ist sollte unbedingt entweder die Methoden `seo42::getCSSFile()` / `seo42::getJSFile()` genutzt werden oder man reduziert in der `.htaccess` Datei die Cachingdauer (z.B. auf 1 Woche).
 * Neu: Option `remove_root_cats_for_categories` hinzugefügt mit der man Kategorien (IDs) einstellen kann deren Artikel automatisch den URL-Typ "Root-Kategorie entfernen" erhalten sollen (experimentell!)
 * Verbessert: `seo42` Klasse: Wrapper Methoden `seo42::getNavigationByLevel()`, `seo42::getNavigationByCategory()`, `seo42::getLangNavigation()` hinzugefügt, `seo42::setNavigationClass()` (default auf `nav42`) hinzugefügt
 * Verbessert: `seo42::getImageManagerUrl()` umbenannt in `seo42::getImageManagerFile()`. `seo42::getImageManagerUrl()` bleibt aus Kompatibilitätsgründen bestehen.
 * Verbessert: `nav42` Klasse: Abhängigkeit zu `rex_navigation` entfernt, ein Patchen des Community AddOns ist jetzt nicht mehr nötig (entsprechenden Readme-Eintrag entfernt)
 * Verbessert: `auto_redirects` Option in die Einstellungen-Seite gepackt
 * Verbessert: `smart_redirects` Option jetzt standardmäßig eingeschaltet
+* Verbessert: `seo42::getLangTags()` berücksichtigt jetzt extra Urls (z.B. per url_control Plugin)
 
 ### Version 2.8.3 - 11. Januar 2014
 

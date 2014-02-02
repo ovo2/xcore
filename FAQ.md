@@ -95,7 +95,7 @@ Vorläufig wurden diese hier ausgelagert: `settings.advanced.inc.php`
 Wie kann ich suchmaschinenfreundliche URLs für Bilder erhalten, die über den Image Manager generiert wurden?
 ------------------------------------------------------------------------------------------------------------
 
-Zum Beispiel über die Methode `seo42::getImageManagerUrl()`. Siehe dazu Codebeispiel 3 in der Hilfe.
+Zum Beispiel über die Methode `seo42::getImageManagerFile()`. Siehe dazu Codebeispiel 3 in der Hilfe.
 
 
 Ich möchte nicht-www Anfragen auf die www Variante umleiten lassen. Soll doch SEO-technisch gut sein, oder?

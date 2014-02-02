@@ -286,7 +286,7 @@ class seo42 {
 		if ($imageType == '') {
 			$url = self::getMediaFile($imageFile);
 		} else {
-			$url = self::getImageManagerUrl($imageFile, $imageType);
+			$url = self::getImageManagerFile($imageFile, $imageType);
 		}
 
 		return '<img src="' . $url . '" width="' . $imgWidth . '" height="' . $imgHeight . '" alt="' . $altAttribute . '" />';
@@ -568,7 +568,7 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::getLangTags');
 		$out .= self::getDebugInfoRow('seo42::getHtml');
 		$out .= self::getDebugInfoRow('seo42::getImageTag', array('image.png', 'rex_mediapool_detail', '150', '100'));
-		$out .= self::getDebugInfoRow('seo42::getImageManagerUrl', array('image.png', 'rex_mediapool_detail'));
+		$out .= self::getDebugInfoRow('seo42::getImageManagerFile', array('image.png', 'rex_mediapool_detail'));
 		$out .= self::getDebugInfoRow('seo42::getAnswer');
 
 		$out .= '</table>';
