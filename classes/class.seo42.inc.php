@@ -221,20 +221,24 @@ class seo42 {
 			return '';
 		}
 
-		foreach ($REX['CLANG'] as $clangId => $clangName) {
-			$article = OOArticle::getArticleById(self::$curArticle->getId(), $clangId);
+		if (self::isMultiLangInstall()) {
+			foreach ($REX['CLANG'] as $clangId => $clangName) {
+				$article = OOArticle::getArticleById(self::$curArticle->getId(), $clangId);
 
-			if ($article->isOnline() || $REX['CUR_CLANG'] == $clangId) {
-				$hreflang = self::getLangCode($clangId);
+				if ($article->isOnline() || $REX['CUR_CLANG'] == $clangId) {
+					$hreflang = self::getLangCode($clangId);
 
-				if ($i > 0) {
-					$out .= $indent;
+					if ($i > 0) {
+						$out .= $indent;
+					}
+
+					$out .= '<link rel="alternate" href="' . self::getFullUrl(self::$curArticle->getId(), $clangId)  . self::getQueryString() . '" hreflang="' . $hreflang . '" />' . PHP_EOL;
+
+					$i++;
 				}
-
-				$out .= '<link rel="alternate" href="' . self::getFullUrl(self::$curArticle->getId(), $clangId)  . self::getQueryString() . '" hreflang="' . $hreflang . '" />' . PHP_EOL;
-
-				$i++;
 			}
+		} else {
+			$out = PHP_EOL;
 		}
 
 		return $out;
