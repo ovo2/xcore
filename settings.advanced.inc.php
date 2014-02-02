@@ -67,9 +67,6 @@ $REX['ADDON']['seo42']['settings']['ignore_root_cats'] = false;
 // character to replace whitespaces with in urls
 $REX['ADDON']['seo42']['settings']['url_whitespace_replace']  = '-';
 
-// 0 = off, 1 = auto redirect from "index.php?article_id=1" schema, 2 = auto redirect from "1-0-ArticleName.html" schema
-$REX['ADDON']['seo42']['settings']['auto_redirects'] = 0;
-
 // default follow flag for robots meta tag, can be empty
 $REX['ADDON']['seo42']['settings']['robots_follow_flag'] = 'follow';
 
@@ -84,12 +81,6 @@ $REX['ADDON']['seo42']['settings']['drop_dbfields_on_uninstall'] = true;
 
 // used to control which article should be used for debug output in help section, default is $REX['START_ARTICLE_ID']
 $REX['ADDON']['seo42']['settings']['debug_article_id']  = $REX['START_ARTICLE_ID'];
-
-// built in resource includer settings
-$REX['ADDON']['seo42']['settings']['css_dir'] = "/resources/css/";
-$REX['ADDON']['seo42']['settings']['js_dir'] = "/resources/js/";
-$REX['ADDON']['seo42']['settings']['images_dir'] = "/resources/images/";
-$REX['ADDON']['seo42']['settings']['send_header_x_ua_compatible'] = "1";
 
 // ****************************************************************
 // **  DELETE REDAXO CACHE AFTER YOU MADE CHANGES TO THIS FILE!  **

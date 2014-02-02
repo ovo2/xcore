@@ -53,6 +53,9 @@ seo42_configfile_update = Konfiguration wurde aktualisiert!
 seo42_configfile_nosave = Konfiguration konnte nicht gespeichert werden!
 seo42_configfile_nowrite = Konfigurationsdatei "{0}" ist nicht beschreibbar!
 
+seo42_settings_advanced_settings_section = Weitere Einstellungen
+seo42_settings_resource_section = Resourcen
+seo42_settings_robots_sitemap_section = Generierte Dateien
 seo42_settings_url_ending_without = (ohne)
 seo42_settings_langslug_all = Bei allen Sprachen einfügen
 seo42_settings_langslug_noslug = Kein lang slug für Sprache:
@@ -61,7 +64,7 @@ seo42_settings_language = Sprache
 seo42_settings_url_ending = URL Endung
 seo42_settings_startpage = Startseite
 seo42_settings_main_section = Allgemein
-seo42_settings_robots_additional = Zusätzliche Einträge
+seo42_settings_robots_additional = robots.txt Einträge
 seo42_settings_robots_link = Link zur robots.txt
 seo42_settings_sitemap_link = Link zur sitemap.xml
 seo42_settings_submit = Einstellungen speichern
@@ -70,6 +73,14 @@ seo42_settings_advanced_hint = Weitere Einstellungen
 seo42_settings_show_all = Alle Einstellungen
 seo42_settings_show = anzeigen
 seo42_settings_hide = verstecken
+seo42_settings_css_dir = CSS Verzeichnis
+seo42_settings_js_dir = JS Verzeichnis
+seo42_settings_images_dir = Images Verzeichnis
+seo42_settings_send_header_x_ua_compatible = X-UA-Compatible<br />Header senden
+seo42_settings_auto_redirects = Auto Redirects
+seo42_settings_auto_redirects_0 = Aus
+seo42_settings_auto_redirects_1 = Automatische Redirect von "index.php?article_id=1" Urls
+seo42_settings_auto_redirects_2 = Automatische Redirect von "1-0-ArticleName.html" Urls
 
 seo42_setup_file_backup_failed = Datei "{0}" konnte nicht gesichert werden!
 seo42_setup_file_copy_successful = Kopieren der Datei erfolgreich.
@@ -145,14 +156,14 @@ seo42_urlpage_lang_clone_hint = Notice
 seo42_urlpage_lang_clone_hint_msg = Settings of language {0} have been inherited.
 seo42_urlpage_url_already_exists = URL "{0}" exists already.
 
-seo42_urltype_intern = Verweis auf Artikel:
-seo42_urltype_intern_plus_clang = Verweis auf Artikel {0} der Sprache {1}.
-seo42_urltype_userdef = Verweis auf externe URL
-seo42_urltype_userdef_javascript = Verweis auf JavaScript-Code.
-seo42_urltype_mediapool = Verweis auf Medienpool-Datei: {0}
-seo42_urltype_langswitch = Sprachumschalter zu Sprache: {0}
-seo42_urltype_none = Die URL dieses Artikels wurde entfernt.
-seo42_urltype_error = Der URL-Typ dieses Artikels ist ungültig!
+seo42_urltype_intern = Reference to article:
+seo42_urltype_intern_plus_clang = Reference to {0} of language {1}.
+seo42_urltype_userdef = Reference to external URL
+seo42_urltype_userdef_javascript = Reference to javascript code.
+seo42_urltype_mediapool = Reference to mediapool file: {0}
+seo42_urltype_langswitch = Language switch to language: {0}
+seo42_urltype_none = URL of this article has been removed.
+seo42_urltype_error = URL type of this article is invalid!
 
 seo42_help_chapter_readme = Readme
 seo42_help_chapter_changelog = Changelog

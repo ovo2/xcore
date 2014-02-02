@@ -13,17 +13,32 @@ if ($func == 'update') {
 	$_homeurl = trim(rex_request('homeurl', 'int'));
 	$_homelang = trim(rex_request('homelang', 'int'));
 	$_robots = trim(rex_request('robots', 'string'));
+	$autoRedirects = trim(rex_request('auto_redirects', 'int'));
+	$cssDir = trim(rex_request('css_dir', 'string'));
+	$jsDir = trim(rex_request('js_dir', 'string'));
+	$imagesDir = trim(rex_request('images_dir', 'string'));
+	$xuaCompatHeader = trim(rex_request('x_ua_compatible', 'string'));
 
 	$REX['ADDON']['seo42']['settings']['url_ending'] = $_url_ending;
 	$REX['ADDON']['seo42']['settings']['hide_langslug'] = $_hide_langslug;
 	$REX['ADDON']['seo42']['settings']['homeurl'] = $_homeurl;
 	$REX['ADDON']['seo42']['settings']['homelang'] = $_homelang;
+	$REX['ADDON']['seo42']['settings']['auto_redirects'] = $autoRedirects;
+	$REX['ADDON']['seo42']['settings']['css_dir'] = $cssDir;
+	$REX['ADDON']['seo42']['settings']['js_dir'] = $jsDir;
+	$REX['ADDON']['seo42']['settings']['images_dir'] = $imagesDir;
+	$REX['ADDON']['seo42']['settings']['send_header_x_ua_compatible'] = $xuaCompatHeader;
 
 	$content = '
 		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'url_ending\'] = \'' . $_url_ending . '\';
 		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'hide_langslug\'] = ' . $_hide_langslug . ';
 		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'homeurl\'] = ' . $_homeurl . ';
 		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'homelang\'] = ' . $_homelang . ';
+		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'auto_redirects\'] = ' . $autoRedirects . ';
+		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'css_dir\'] = "' . $cssDir . '";
+		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'js_dir\'] = "' . $jsDir . '";
+		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'images_dir\'] = "' . $imagesDir . '";
+		$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'send_header_x_ua_compatible\'] = "' . $xuaCompatHeader . '";
 	';
 
 	// write independent config file
@@ -123,102 +138,145 @@ if (count($REX['CLANG']) > 1) {
   $homelang_box = '';
 }
 
-// form
-echo '
+$auto_redirects_select = new rex_select();
+$auto_redirects_select->setSize(1);
+$auto_redirects_select->setName('auto_redirects');
+$auto_redirects_select->addOption($I18N->msg('seo42_settings_auto_redirects_0'), '0');
+$auto_redirects_select->addOption($I18N->msg('seo42_settings_auto_redirects_1'), '1');
+$auto_redirects_select->addOption($I18N->msg('seo42_settings_auto_redirects_2'), '2');
+$auto_redirects_select->setSelected($REX['ADDON'][$myself]['settings']['auto_redirects']);
+
+?>
 
 <div class="rex-addon-output">
   <div class="rex-form">
 
   <form action="index.php" method="post">
     <input type="hidden" name="page" value="seo42" />
-    <input type="hidden" name="subpage" value="' . $subpage . '" />
+    <input type="hidden" name="subpage" value="<?php echo $subpage; ?>" />
     <input type="hidden" name="func" value="update" />
-';
 
-echo '
       <fieldset class="rex-form-col-1">
-        <legend>' . $I18N->msg('seo42_settings_main_section') . '</legend>
+        <legend><?php echo $I18N->msg('seo42_settings_main_section'); ?></legend>
         <div class="rex-form-wrapper">
 
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
-              <label for="url_ending">' . $I18N->msg('seo42_settings_url_ending') . '</label>
-               '.$url_ending_select->get().'
+              <label for="url_ending"><?php echo $I18N->msg('seo42_settings_url_ending'); ?></label>
+               <?php echo $url_ending_select->get(); ?>
             </p>
           </div>
 
-          '.$hide_langslug_select.'
+          <?php echo $hide_langslug_select; ?>
 
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
-              <label for="homeurl">' . $I18N->msg('seo42_settings_startpage') . '</label>
-                '.$homeurl_select->get().'
-                '.$homelang_box.'
+              <label for="homeurl"><?php echo $I18N->msg('seo42_settings_startpage'); ?></label>
+                <?php echo $homeurl_select->get(); ?>
+                <?php echo $homelang_box; ?>
             </p>
-          </div>';
+          </div>
 
-	echo '<div class="rex-form-row rex-form-element-v1">
+		 <div class="rex-form-row">
+            <p class="rex-form-col-a rex-form-select">
+              <label for="auto_redirects"><?php echo $I18N->msg('seo42_settings_auto_redirects'); ?></label>
+               <?php echo $auto_redirects_select->get(); ?>
+            </p>
+          </div>
+		</div>
+       </fieldset>
+
+    <fieldset class="rex-form-col-1">
+        <legend><?php echo $I18N->msg('seo42_settings_resource_section'); ?></legend>
+        <div class="rex-form-wrapper">
+
+          	<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="css_dir"><?php echo $I18N->msg('seo42_settings_css_dir'); ?></label>
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['css_dir']; ?>" name="css_dir" class="rex-form-text" id="css_dir">
+				</p>
+			</div>
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="js_dir"><?php echo $I18N->msg('seo42_settings_js_dir'); ?></label>
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['js_dir']; ?>" name="js_dir" class="rex-form-text" id="js_dir">
+				</p>
+			</div>
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="images_dir"><?php echo $I18N->msg('seo42_settings_images_dir'); ?></label>
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['images_dir']; ?>" name="images_dir" class="rex-form-text" id="images_dir">
+				</p>
+			</div>
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-checkbox">
+					<label for="x_ua_compatible"><?php echo $I18N->msg('seo42_settings_send_header_x_ua_compatible'); ?></label>
+					<input type="checkbox" name="x_ua_compatible" id="x_ua_compatible" value="1" <?php if ($REX['ADDON']['seo42']['settings']['send_header_x_ua_compatible'] == 1) { echo 'checked="checked"'; } ?>>
+				</p>
+			</div>
+		</div>
+       </fieldset>
+
+      <fieldset class="rex-form-col-1">
+        <legend><?php echo $I18N->msg('seo42_settings_robots_sitemap_section'); ?></legend>
+        <div class="rex-form-wrapper">
+
+          <div class="rex-form-row">
+            <p class="rex-form-col-a rex-form-select">
+              <label for="robots"><?php echo $I18N->msg('seo42_settings_robots_additional'); ?></label>
+              <textarea id="rexseo_robots" name="robots" rows="2"><?php echo stripslashes($REX['ADDON'][$myself]['settings']['robots']); ?></textarea>
+            </p>
+          </div>
+
+		  <div class="rex-form-row">
+            <p class="rex-form-col-a rex-form-select">
+              <label for="robots-txt"><?php echo $I18N->msg('seo42_settings_robots_link'); ?></label>
+              <span class="rex-form-read" id="robots-txt"><a href="<?php echo seo42::getBaseUrl(); ?>robots.txt" target="_blank"><?php echo seo42::getBaseUrl(); ?>robots.txt</a></span>
+            </p>
+          </div>
+
+		<div class="rex-form-row">
+            <p class="rex-form-col-a rex-form-select">
+              <label for="xml-sitemap"><?php echo $I18N->msg('seo42_settings_sitemap_link'); ?></label>
+              <span class="rex-form-read" id="xml-sitemap"><a href="<?php echo seo42::getBaseUrl(); ?>sitemap.xml" target="_blank"><?php echo seo42::getBaseUrl(); ?>sitemap.xml</a></span>
+            </p>
+          </div>
+
+        </div>
+      </fieldset>
+
+	<fieldset class="rex-form-col-1">
+      <legend><?php echo $I18N->msg('seo42_settings_advanced_settings_section'); ?></legend>
+      <div class="rex-form-wrapper">
+        <div class="rex-form-row rex-form-element-v1">
 			<p class="rex-form-col-a rex-form-read">
-				<label for="lang_hint">' . $I18N->msg('seo42_settings_lang_hint') . '</label>
-				' . seo42_utils::getLangSettingsFile() . '
+				<label for="lang_hint"><?php echo $I18N->msg('seo42_settings_lang_hint'); ?></label>
+				<?php echo seo42_utils::getLangSettingsFile(); ?>
 			</p>
-		</div>';
+		</div>
 
-	echo '<div class="rex-form-row rex-form-element-v1">
+	    <div class="rex-form-row rex-form-element-v1">
 			<p class="rex-form-col-a rex-form-read">
-				<label for="advanced_hint">' . $I18N->msg('seo42_settings_advanced_hint') . '</label>
+				<label for="advanced_hint"><?php echo $I18N->msg('seo42_settings_advanced_hint'); ?></label>
 				<span class="rex-form-read" id="advanced_hint"><code>/seo42/settings.advanced.inc.php</code></span>
 			</p>
 		</div>
 
 		<div class="rex-form-row rex-form-element-v1">
 			<p class="rex-form-col-a rex-form-read">
-				<label for="show-settings">' . $I18N->msg('seo42_settings_show_all') . '</label>
-				<span class="rex-form-read"><a id="show-settings" href="#">' . $I18N->msg('seo42_settings_show') . '</a></span>
+				<label for="show-settings"><?php echo $I18N->msg('seo42_settings_show_all'); ?></label>
+				<span class="rex-form-read"><a id="show-settings" href="#"><?php echo $I18N->msg('seo42_settings_show'); ?></a></span>
 			</p>
 		</div>
 
 		<div id="all-settings" style="display: none;" class="rex-form-row rex-form-element-v1">
 			<p class="rex-form-col-a rex-form-read">
-				<pre class="rex-code">' . seo42_utils::print_r_pretty($REX['ADDON']['seo42']['settings']) . '</pre>
+				<pre class="rex-code"><?php echo seo42_utils::print_r_pretty($REX['ADDON']['seo42']['settings']); ?></pre>
 			</p>
 		</div>
-
-        </div>
-      </fieldset>
-
-      <fieldset class="rex-form-col-1">
-        <legend>robots.txt</legend>
-        <div class="rex-form-wrapper">
-
-          <div class="rex-form-row">
-            <p class="rex-form-col-a rex-form-select">
-              <label for="robots">' . $I18N->msg('seo42_settings_robots_additional') . '</label>
-              <textarea id="rexseo_robots" name="robots" rows="2">'.stripslashes($REX['ADDON'][$myself]['settings']['robots']).'</textarea>
-            </p>
-          </div>
-
-		  <div class="rex-form-row">
-            <p class="rex-form-col-a rex-form-select">
-              <label for="robots-txt">' . $I18N->msg('seo42_settings_robots_link') . '</label>
-              <span class="rex-form-read" id="robots-txt"><a href="' . seo42::getBaseUrl() . 'robots.txt" target="_blank">' . seo42::getBaseUrl() . 'robots.txt</a></span>
-            </p>
-          </div>
-
-        </div>
-      </fieldset>
-
-
-      <fieldset class="rex-form-col-1">
-        <legend>sitemap.xml</legend>
-        <div class="rex-form-wrapper">
-
-          <div class="rex-form-row">
-            <p class="rex-form-col-a rex-form-select">
-              <label for="xml-sitemap">' . $I18N->msg('seo42_settings_sitemap_link') . '</label>
-              <span class="rex-form-read" id="xml-sitemap"><a href="' . seo42::getBaseUrl() . 'sitemap.xml" target="_blank">' . seo42::getBaseUrl() . 'sitemap.xml</a></span>
-            </p>
-          </div>
 
         </div>
       </fieldset>
@@ -230,7 +288,7 @@ echo '
           <div class="rex-form-row rex-form-element-v2">
 
             <p class="rex-form-submit">
-              <input style="margin-top: 5px; margin-bottom: 5px;" class="rex-form-submit" type="submit" id="sendit" name="sendit" value="' . $I18N->msg('seo42_settings_submit') . '" />
+              <input style="margin-top: 5px; margin-bottom: 5px;" class="rex-form-submit" type="submit" id="sendit" name="sendit" value="<?php echo $I18N->msg('seo42_settings_submit'); ?>" />
             </p>
           </div>
 
@@ -241,8 +299,7 @@ echo '
   </div>
 </div>
 
-';
-
+<?php
 unset($homeurl_select,$url_ending_select);
 ?>
 
