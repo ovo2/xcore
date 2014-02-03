@@ -1,6 +1,10 @@
 SEO42 - Changelog
 =================
 
+### Version 3.1.0 DEV
+
+* Verbessert: Englisches Langfile komplett übersetzt. Credits und ein Dankeschön gehen an SigmaAlphaPi :)
+
 ### Version 3.0.0 - 02. Februar 2014
 
 * Neu: Beginners' Guide als kleine Anleitung für Einsteiger und Neulinge hinzugefügt, zu finden in der SEO42 Hilfe.
