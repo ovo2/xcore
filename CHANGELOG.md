@@ -3,7 +3,7 @@ SEO42 - Changelog
 
 ### Version 3.1.0 DEV
 
-* Verbessert: Englisches Langfile komplett übersetzt. Credits und ein Dankeschön gehen an SigmaAlphaPi :)
+* Verbessert: Englisches Langfile komplett übersetzt. Credits und ein herzliches Dankeschön gehen an SigmaAlphaPi :)
 
 ### Version 3.0.0 - 02. Februar 2014
 
