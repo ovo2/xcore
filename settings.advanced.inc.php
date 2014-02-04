@@ -76,6 +76,9 @@ $REX['ADDON']['seo42']['settings']['robots_archive_flag'] = 'noarchive';
 // if true website startarticle will have 1.0, all other articles will have 0.8 priority. if false priority gets calculated by category level.
 $REX['ADDON']['seo42']['settings']['static_sitemap_priority'] = true;
 
+// you can force download of certain filetypes. put file in files dir, add filetype to array e.g. 'pdf' and link to file like this: /download/foo.pdf or use seo42::getDownloadFile($file)
+$REX['ADDON']['seo42']['settings']['force_download_for_filetypes'] = array();
+
 // if false seo database fields won't be dropped if seo42 will be uninstalled. perhaps someday interesting when updateing seo42...
 $REX['ADDON']['seo42']['settings']['drop_dbfields_on_uninstall'] = true; 
 

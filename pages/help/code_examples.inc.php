@@ -9,7 +9,10 @@ echo seo42::getFullUrl(42);
 // --> ' . seo42::getServerUrl() . 'questions/the-ultimate-answer.html
 
 echo seo42::getMediaFile("image.png");
-// --> ' . seo42::getUrlStart() . 'files/image.png
+// --> ' . seo42::getUrlStart() . $REX['MEDIA_DIR'] . '/image.png
+
+echo seo42::getDownloadFile("doc.pdf");
+// --> ' . seo42::getUrlStart() . seo42::downloadDir . '/doc.pdf
 ?>';
 
 $codeExample2 = '

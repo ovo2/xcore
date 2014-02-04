@@ -36,8 +36,34 @@ if (rex_request('rexseo_func')!='')
       die();
     break;
 
-    default:
-    break;
-  }
+	case 'download':
+		error_reporting(0);
+		@ini_set('display_errors', 0);
+
+		if ((isset($REX['ADDON']['seo42']['settings']['force_download_for_filetypes']) && is_array($REX['ADDON']['seo42']['settings']['force_download_for_filetypes']) && count($REX['ADDON']['seo42']['settings']['force_download_for_filetypes']) > 0) && isset($_GET["file"])) {
+			$file = urlencode(basename($_GET['file']));
+			$fileWithPath = realpath('./' . $REX['MEDIA_DIR'] . '/' . $file);
+			$pathInfo = pathinfo($fileWithPath);
+
+			if (isset($pathInfo['extension']) && in_array($pathInfo['extension'], $REX['ADDON']['seo42']['settings']['force_download_for_filetypes']) && file_exists($fileWithPath)) {
+				header('Content-Description: File Transfer');
+				header('Content-Type: application/octet-stream');
+				header('Content-Disposition: attachment; filename=' . $file);
+				header('Expires: 0');
+				header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+				header('Pragma: public');
+				header('Content-Length: ' . filesize($fileWithPath));
+
+				ob_clean();
+				flush();
+
+				readfile($fileWithPath);
+				exit;
+			}
+		}
+	default:
+		break;
+
+	}
 }
 

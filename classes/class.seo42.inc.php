@@ -20,6 +20,9 @@ class seo42 {
 	protected static $is404Response;
 	protected static $ignoreQueryParams;
 	protected static $navigationClass;
+
+	const downloadDir = 'download';
+	const imageTypesDir = 'imagetypes';
 	
 	public static function init() {
 		// to be called before resolve()
@@ -304,11 +307,15 @@ class seo42 {
 			return $REX['HTDOCS_PATH'] . 'redaxo/index.php?rex_img_type=' . $imageType . '&amp;rex_img_file=' . $imageFile;
 		} else {
 			if (self::$seoFriendlyImageManagerUrls && self::$rewriterEnabled) {
-				return self::getUrlStart() . self::$mediaDir . '/imagetypes/' . $imageType . '/' . $imageFile;
+				return self::getUrlStart() . self::$mediaDir . '/' . self::imageTypesDir . '/' . $imageType . '/' . $imageFile;
 			} else {
 				return self::getUrlStart() . 'index.php?rex_img_type=' . $imageType . '&amp;rex_img_file=' . $imageFile;
 			}
 		}
+	}
+
+	public static function getDownloadFile($file) {
+		return self::getUrlStart() . self::downloadDir . '/' . $file;
 	}
 
 	public static function getHtml($indent = "\t") {
@@ -569,6 +576,7 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::getHtml');
 		$out .= self::getDebugInfoRow('seo42::getImageTag', array('image.png', 'rex_mediapool_detail', '150', '100'));
 		$out .= self::getDebugInfoRow('seo42::getImageManagerFile', array('image.png', 'rex_mediapool_detail'));
+		$out .= self::getDebugInfoRow('seo42::getDownloadFile', array('doc.pdf'));
 		$out .= self::getDebugInfoRow('seo42::getAnswer');
 
 		$out .= '</table>';

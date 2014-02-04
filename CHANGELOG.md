@@ -3,6 +3,7 @@ SEO42 - Changelog
 
 ### Version 3.1.0 DEV
 
+* Neu: Force Download Funktionalität inkl. suchmaschinenfreundlicher Urls hinzugefügt. Datei in `files` Ordner anlegen, Dateityp (z.B. 'pdf') zu Einstellung `force_download_for_filetypes` hinzufügen und `seo42::getDownloadFile($file)` nutzen oder so verlinken: `/download/foo.pdf` (`.htaccess` hat sich geändert!)
 * Verbessert: Englisches Langfile komplett übersetzt. Credits und ein herzliches Dankeschön gehen an SigmaAlphaPi :)
 
 ### Version 3.0.0 - 02. Februar 2014
