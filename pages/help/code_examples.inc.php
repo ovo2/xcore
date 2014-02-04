@@ -31,7 +31,7 @@ $codeExample2 = '
 
 $codeExample3 = '<?php
 echo seo42::getImageManagerFile("image.png", "rex_mediapool_detail"); 
-// --> ' . seo42::getUrlStart() . 'files/imagestypes/rex_mediapool_detail/image.png
+// --> ' . seo42::getUrlStart() . seo42::imageTypesDir . '/rex_mediapool_detail/image.png
 ?>';
 
 $codeExample4 = '<!DOCTYPE html>

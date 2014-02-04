@@ -307,7 +307,7 @@ class seo42 {
 			return $REX['HTDOCS_PATH'] . 'redaxo/index.php?rex_img_type=' . $imageType . '&amp;rex_img_file=' . $imageFile;
 		} else {
 			if (self::$seoFriendlyImageManagerUrls && self::$rewriterEnabled) {
-				return self::getUrlStart() . self::$mediaDir . '/' . self::imageTypesDir . '/' . $imageType . '/' . $imageFile;
+				return self::getUrlStart() . self::imageTypesDir . '/' . $imageType . '/' . $imageFile;
 			} else {
 				return self::getUrlStart() . 'index.php?rex_img_type=' . $imageType . '&amp;rex_img_file=' . $imageFile;
 			}
