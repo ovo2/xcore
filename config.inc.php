@@ -163,5 +163,10 @@ if ($REX['REDAXO']) {
 
 	// send additional headers for article if necessary
 	rex_register_extension('OUTPUT_FILTER_CACHE', 'seo42_utils::sendHeadersForArticleOnly');
+
+	// fix image manager headers if necessary
+	if ($REX['ADDON']['seo42']['settings']['fix_image_manager_cache_control_header'] && (isset($_GET['rex_img_type']))) {
+		header('Cache-Control: max-age=604800'); // 1 week
+	}
 }
 
