@@ -64,6 +64,7 @@ Verfügbare Plugins für SEO42
 ----------------------------
 
 * [url_control](https://github.com/tbaddade/redaxo_plugin_url_control) - Plugin zur URL-Generierung für eigene AddOns
+* Temporärer Url Control Fork der mit SEO42 3.0 zusammenfunzt: https://github.com/RexDude/url_control
 
 Hinweis zur mitgelieferten .htaccess Datei
 ------------------------------------------
