@@ -89,19 +89,6 @@ class RexseoRewrite
         return;
       }
 
-
-      // GET ID FROM EXTENSION POINT
-      $ep = rex_register_extension_point('REXSEO_ARTICLE_ID_NOT_FOUND', '');
-      if(isset($ep['article_id']) && $ep['article_id'] > 0)
-      {
-        if(isset($ep['clang']) && $ep['clang'] > -1)
-        {
-          $clang = $ep['clang'];
-        }
-        return self::setArticleId($ep['article_id'],$clang);
-      }
-
-
 		// smart redirects option
 		if ($REX['ADDON']['seo42']['settings']['smart_redirects']) {
 			$requestUriWithCorrectUrlEnding = trim($_SERVER['REQUEST_URI'], '/') . $REX['ADDON']['seo42']['settings']['url_ending'];
@@ -134,22 +121,34 @@ class RexseoRewrite
 		}
 
 
-      // check for possible lang slug to load up correct language for 404 article
-      $firstSlashPos = strpos($path, '/');
+		// check for possible lang slug to load up correct language for 404 article
+		$firstSlashPos = strpos($path, '/');
 
-      if ($firstSlashPos !== false) {
-        $possibleLangSlug = substr($path, 0, $firstSlashPos);
-		$langSlugs = array();
+		if ($firstSlashPos !== false) {
+			$possibleLangSlug = substr($path, 0, $firstSlashPos);
+			$langSlugs = array();
 
-		foreach ($REX['CLANG'] as $clangId => $clangName) {
-			$langSlugs[] = seo42::getLangSlug($clangId);
+			foreach ($REX['CLANG'] as $clangId => $clangName) {
+				$langSlugs[] = seo42::getLangSlug($clangId);
+			}
+
+			$clangId = array_search($possibleLangSlug, $langSlugs);
+
+			if ($clangId !== false) {
+				$clang = $clangId;
+				$REX['CUR_CLANG'] = $clang;
+			}
 		}
 
-        $clangId = array_search($possibleLangSlug, $langSlugs);
-
-        if ($clangId !== false) {
-          $clang = $clangId;
+      // GET ID FROM EXTENSION POINT
+      $ep = rex_register_extension_point('REXSEO_ARTICLE_ID_NOT_FOUND', '');
+      if(isset($ep['article_id']) && $ep['article_id'] > 0)
+      {
+        if(isset($ep['clang']) && $ep['clang'] > -1)
+        {
+          $clang = $ep['clang'];
         }
+        return self::setArticleId($ep['article_id'],$clang);
       }
 
       // STILL NO MATCH -> 404
