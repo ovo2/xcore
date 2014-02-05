@@ -53,6 +53,7 @@ if (rex_request('rexseo_func')!='')
 				header('Expires: 0');
 				header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 				header('Pragma: public');
+				header('Link: <' . seo42::getServerUrl() . ltrim(seo42::getMediaFile($file), "./") . '>; rel="canonical"');
 				header('Content-Length: ' . filesize($fileWithPath));
 
 				ob_clean();
@@ -62,6 +63,7 @@ if (rex_request('rexseo_func')!='')
 				exit;
 			}
 		}
+		break;
 	default:
 		break;
 
