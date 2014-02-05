@@ -3,6 +3,7 @@ SEO42 - Changelog
 
 ### Version 3.1.0 DEV
 
+* Fixed #106: $REX['CUR_CLANG'] wird jetzt vor dem Aufruf von REXSEO_ARTICLE_ID_NOT_FOUND gesetzt
 * Fixed: Problem mit `auth_media` in Zusammenhang mit suchmaschinenfreundlichen Image Manager Urls gefixt (`.htaccess` hat sich geändert!)
 * Neu: Force Download Funktionalität inkl. suchmaschinenfreundlicher Urls und Canonical Header hinzugefügt. Datei in `files` Ordner ablegen, Dateityp (z.B. 'pdf') zu Einstellung `force_download_for_filetypes` hinzufügen und `seo42::getDownloadFile($file)` nutzen oder so verlinken: `/download/foo.pdf` (`.htaccess` hat sich geändert!)
 * Verbessert: Englisches Langfile komplett übersetzt. Credits und ein herzliches Dankeschön gehen an SigmaAlphaPi :)
