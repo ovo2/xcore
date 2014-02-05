@@ -41,7 +41,8 @@ if (rex_request('rexseo_func')!='')
 		@ini_set('display_errors', 0);
 
 		if ((isset($REX['ADDON']['seo42']['settings']['force_download_for_filetypes']) && is_array($REX['ADDON']['seo42']['settings']['force_download_for_filetypes']) && count($REX['ADDON']['seo42']['settings']['force_download_for_filetypes']) > 0) && isset($_GET["file"])) {
-			$file = urlencode(basename($_GET['file']));
+			$file = strtolower(preg_replace("/[^a-zA-Z0-9.\-\$\+]/","_", rex_get('file', 'string')));
+			$file = urlencode(basename($file));
 			$fileWithPath = realpath('./' . $REX['MEDIA_DIR'] . '/' . $file);
 			$pathInfo = pathinfo($fileWithPath);
 
