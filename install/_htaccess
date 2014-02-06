@@ -36,7 +36,7 @@ AddDefaultCharset utf-8
 	AddOutputFilterByType DEFLATE x-font/svg
 </IfModule>
 
-# CACHING HEADERS
+# ADD CACHING HEADERS
 <IfModule mod_expires.c>
 	ExpiresActive On
 	ExpiresDefault "access plus 1 week"

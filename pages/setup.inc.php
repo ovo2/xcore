@@ -19,7 +19,6 @@ $codeExample = '<!DOCTYPE html>
 <body>
 <div id="container">
 	<div id="link"><a href="<?php echo rex_getUrl(1); ?>">' . $I18N->msg('seo42_setup_codeexamples_goto_startpage') . '</a></div>
-	<div id="download"><a href="<?php echo seo42::getDownloadFile("doc.pdf"); ?>">PDF-Download</a></div>
 	<div id="media"><img src="<?php echo seo42::getMediaFile("logo.png"); ?>" alt="" /></div>
 	<div id="imagetype"><img src="<?php echo seo42::getImageManagerFile("pic.png", "my_img_type"); ?>" alt="" /></div>
 	<div id="mainmenu"><?php echo seo42::getNavigationByLevel(0, 1); ?></div>
