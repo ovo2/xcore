@@ -3,10 +3,10 @@ SEO42 - Changelog
 
 ### Version 3.1.0 DEV
 
-* Fixed #106: `$REX['CUR_CLANG']` wird jetzt vor dem Aufruf von `REXSEO_ARTICLE_ID_NOT_FOUND` gesetzt. Wichtig für `url_control` Plugin.
-* Fixed: Problem mit dem `auth_media` Plugin in Zusammenhang mit suchmaschinenfreundlichen Image Manager Urls gefixt (`.htaccess` hat sich geändert!)
+* Fixed #106: `$REX['CUR_CLANG']` wird jetzt vor dem Aufruf von `REXSEO_ARTICLE_ID_NOT_FOUND` gesetzt. Wichtig für das `url_control` Plugin.
+* Fixed: Problem mit dem `auth_media` Plugin in Zusammenhang mit suchmaschinenfreundlichen Image Manager Urls gefixt. Ulrs lauten jetzt so: `/imagetypes/img_type/pic.jpg` (`.htaccess` hat sich geändert!)
 * Neu: Force Download Funktionalität inkl. suchmaschinenfreundlicher Urls und Canonical Header hinzugefügt. Datei in `files` Ordner ablegen, Dateityp (z.B. 'pdf') zu Einstellung `force_download_for_filetypes` hinzufügen und `seo42::getDownloadFile($file)` nutzen oder so verlinken: `/download/foo.pdf` (`.htaccess` hat sich geändert!)
-* Neu: Bei manchen Webserver (z.B. 1und1) wird für Image Manager Bilder per `.htaccess` Datei kein Cache Control Header gesendet. Über die neue Einstellung `fix_image_manager_cache_control_header` wird dies per PHP erledigt.
+* Neu: Bei manchen Webserver (z.B. 1und1) wird für Image Manager Bilder per `.htaccess` Datei kein Cache Control Header gesendet. Über die neue Einstellung `fix_image_manager_cache_control_header` wird dies per PHP erledigt. Default ist aber deaktiviert.
 * Verbessert: Englisches Langfile komplett übersetzt. Credits und ein herzliches Dankeschön gehen an SigmaAlphaPi :)
 * Verbessert: Man kann jetzt auch weitere Unterordner angeben bei der Nutzung von `seo42::getCSSFile()` und Co.. Beispiel: `seo42::getCSSFile("foo/extra.css")` -> `/resources/css/foo/extra.css`
 * Verbessert: Beginners' Guide in Startguide umbenannt
