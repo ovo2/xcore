@@ -1,5 +1,5 @@
-SEO42 - Beginner's Guide
-========================
+SEO42 - The Hitchhiker's Guide to SEO42
+=======================================
 
 Diese Hinweise richten sich primär an User die zum ersten mal SEO42 nutzen oder noch Anfänger auf dem Gebiet REDAXO und SEO(42) sind.
 
