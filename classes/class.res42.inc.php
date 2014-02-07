@@ -102,10 +102,12 @@ class res42 {
 		$mtime = @filemtime($path . $file); 
 
 		if ($mtime != false) {
-			return preg_replace('{\\.([^./]+)$}', ".$mtime.\$1", $file);
+			$fileWithVersionParam = preg_replace('{\\.([^./]+)$}', ".$mtime.\$1", $file);
 		} else {
-			return $file;
+			$fileWithVersionParam = $file;
 		}
+
+		return ltrim($fileWithVersionParam, "./");
 	}
 
 	protected static function combineFiles($combinedFile, $filePath, $sourceFiles = array()) {
