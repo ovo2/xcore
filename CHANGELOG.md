@@ -8,7 +8,7 @@ SEO42 - Changelog
 * Neu: Force Download Funktionalität inkl. suchmaschinenfreundlicher Urls und Canonical Header hinzugefügt. Datei in `files` Ordner ablegen, Dateityp (z.B. 'pdf') zu Einstellung `force_download_for_filetypes` hinzufügen und `seo42::getDownloadFile($file)` nutzen oder so verlinken: `/download/foo.pdf` (`.htaccess` hat sich geändert!)
 * Neu: Bei manchen Webserver (z.B. 1und1) wird für Image Manager Bilder per `.htaccess` Datei kein Cache Control Header gesendet. Über die neue Einstellung `fix_image_manager_cache_control_header` wird dies per PHP erledigt.
 * Verbessert: Englisches Langfile komplett übersetzt. Credits und ein herzliches Dankeschön gehen an SigmaAlphaPi :)
-* Verbessert: Man kann jetzt auch weitere Unterordner angeben bei der Nutzung von `seo42::getCSSFile()` und Co.. Beispiel: `seo42::getCSSFile("foo/extra.css")`
+* Verbessert: Man kann jetzt auch weitere Unterordner angeben bei der Nutzung von `seo42::getCSSFile()` und Co.. Beispiel: `seo42::getCSSFile("foo/extra.css")` -> `/resources/css/foo/extra.css`
 
 ### Version 3.0.0 - 02. Februar 2014
 
