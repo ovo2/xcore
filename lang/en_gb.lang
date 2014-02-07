@@ -64,6 +64,7 @@ seo42_settings_language = Language
 seo42_settings_url_ending = URL ending
 seo42_settings_startpage = Startpage
 seo42_settings_main_section = Rewriter
+seo42_settings_misc_section = Miscellaneous
 seo42_settings_robots_additional = robots.txt entries
 seo42_settings_robots_link = Link to robots.txt
 seo42_settings_sitemap_link = Link to sitemap.xml

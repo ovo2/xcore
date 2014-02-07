@@ -211,12 +211,6 @@ $auto_redirects_select->setSelected($REX['ADDON'][$myself]['settings']['auto_red
 				</p>
 			</div>
 
-			<div class="rex-form-row rex-form-element-v1">
-				<p class="rex-form-checkbox">
-					<label for="x_ua_compatible"><?php echo $I18N->msg('seo42_settings_send_header_x_ua_compatible'); ?></label>
-					<input type="checkbox" name="x_ua_compatible" id="x_ua_compatible" value="1" <?php if ($REX['ADDON']['seo42']['settings']['send_header_x_ua_compatible'] == 1) { echo 'checked="checked"'; } ?>>
-				</p>
-			</div>
 		</div>
        </fieldset>
 
@@ -247,6 +241,19 @@ $auto_redirects_select->setSelected($REX['ADDON'][$myself]['settings']['auto_red
 
         </div>
       </fieldset>
+
+    <fieldset class="rex-form-col-1">
+        <legend><?php echo $I18N->msg('seo42_settings_misc_section'); ?></legend>
+        <div class="rex-form-wrapper">
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-checkbox">
+					<label for="x_ua_compatible"><?php echo $I18N->msg('seo42_settings_send_header_x_ua_compatible'); ?></label>
+					<input type="checkbox" name="x_ua_compatible" id="x_ua_compatible" value="1" <?php if ($REX['ADDON']['seo42']['settings']['send_header_x_ua_compatible'] == 1) { echo 'checked="checked"'; } ?>>
+				</p>
+			</div>
+		</div>
+       </fieldset>
 
 	<fieldset class="rex-form-col-1">
       <legend><?php echo $I18N->msg('seo42_settings_advanced_settings_section'); ?></legend>
