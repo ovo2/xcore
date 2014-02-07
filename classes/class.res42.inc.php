@@ -99,15 +99,14 @@ class res42 {
 	}
 
 	protected static function getFileWithVersionParam($file, $path) {
+		$file = ltrim($file, "./");
 		$mtime = @filemtime($path . $file); 
 
 		if ($mtime != false) {
-			$fileWithVersionParam = preg_replace('{\\.([^./]+)$}', ".$mtime.\$1", $file);
+			return preg_replace('{\\.([^./]+)$}', ".$mtime.\$1", $file);
 		} else {
-			$fileWithVersionParam = $file;
+			return $file;
 		}
-
-		return ltrim($fileWithVersionParam, "./");
 	}
 
 	protected static function combineFiles($combinedFile, $filePath, $sourceFiles = array()) {
