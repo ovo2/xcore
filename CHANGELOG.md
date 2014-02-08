@@ -1,7 +1,7 @@
 SEO42 - Changelog
 =================
 
-### Version 3.1.0 DEV
+### Version 3.1.0 - 08. Februar 2014 
 
 * Fixed #106: `$REX['CUR_CLANG']` wird jetzt vor dem Aufruf von `REXSEO_ARTICLE_ID_NOT_FOUND` gesetzt. Wichtig für das `url_control` Plugin.
 * Fixed: Problem mit dem `auth_media` Plugin in Zusammenhang mit suchmaschinenfreundlichen Image Manager Urls gefixt. Ulrs lauten jetzt so: `/imagetypes/img_type/pic.jpg` (`.htaccess` hat sich geändert!)
@@ -9,7 +9,7 @@ SEO42 - Changelog
 * Neu: Bei manchen Webserver (z.B. 1und1) wird für Image Manager Bilder per `.htaccess` Datei kein Cache Control Header gesendet. Über die neue Einstellung `fix_image_manager_cache_control_header` wird dies per PHP erledigt. Default ist aber deaktiviert.
 * Verbessert: Englisches Langfile komplett übersetzt. Credits und ein herzliches Dankeschön gehen an SigmaAlphaPi :)
 * Verbessert: Man kann jetzt auch weitere Unterordner angeben bei der Nutzung von `seo42::getCSSFile()` und Co.. Beispiel: `seo42::getCSSFile("foo/extra.css")` -> `/resources/css/foo/extra.css`
-* Verbessert: Vorhandene Lang-Presets als Kommentar in die `settings.lang.inc.php` gepackt zur direkten Verwendung :)
+* Verbessert: Vorhandene Lang-Presets als Kommentar in die `settings.lang.inc.php` gepackt zur direkten Verwendung. Danke an alle die hier mit eingebracht haben und noch einbringen werden ;)
 * Verbessert: Beginners' Guide in Startguide umbenannt
 
 ### Version 3.0.0 - 02. Februar 2014
