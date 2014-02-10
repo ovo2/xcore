@@ -750,6 +750,12 @@ class seo42 {
 		self::$navigationClass = $class;
 	}
 
+	public static function getUrlString($string) {
+		global $REX;
+	
+		return strtolower(rexseo_parse_article_name($string, $REX['ARTICLE_ID'], $REX['CUR_CLANG']));
+	}
+
 	public static function getNavigationByLevel($levelStart = 0, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') {
 		return call_user_func(self::$navigationClass . '::getNavigationByLevel', $levelStart, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);		
 	}

@@ -1,6 +1,10 @@
 SEO42 - Changelog
 =================
 
+### Version 3.2.0 DEV
+
+* Neu: `seo42::getUrlString($string)` hinzugefügt. Wrappt `rexseo_parse_article_name` und ist nützlich um z.B. saubere Ankernamen für Urls zu erzeugen `foo.html#clean-anchor-name`
+
 ### Version 3.1.0 - 08. Februar 2014 
 
 * Fixed #106: `$REX['CUR_CLANG']` wird jetzt vor dem Aufruf von `REXSEO_ARTICLE_ID_NOT_FOUND` gesetzt. Wichtig für das `url_control` Plugin.
