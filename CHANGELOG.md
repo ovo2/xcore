@@ -3,6 +3,7 @@ SEO42 - Changelog
 
 ### Version 3.1.1 - 13. Februar 2014
 
+* Fixed #107: Betrifft nur Unterordner-Installs: Canonical Url jetzt ohne doppelten Unterordner
 * Neu: `seo42::getTitlePart()` hinzugefügt falls jemand nur den Titel ohne den Websitenamen brauchen sollte ;)
 * Neu: `seo42::getUrlString($string)` hinzugefügt. Wrappt `rexseo_parse_article_name` und ist nützlich um z.B. saubere Ankernamen für Urls zu erzeugen `foo.html#clean-anchor-name`
 * Verbessert: Anpassungen für das `url_control` Plugin vorgenommen

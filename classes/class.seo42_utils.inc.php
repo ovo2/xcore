@@ -619,7 +619,7 @@ class seo42_utils {
 
 				if (seo42::isSubDirInstall()) {
 					// remove subdir from request uri
-					$requestUri = '/' . ltrim($_SERVER['REQUEST_URI'], '/' . seo42::getServerSubDir());
+					$requestUri = trimSubDir($_SERVER['REQUEST_URI']);
 				} else {
 					$requestUri = $_SERVER['REQUEST_URI'];
 				}
@@ -645,6 +645,10 @@ class seo42_utils {
 				}
 			}
 		}
+	}
+
+	public static function trimSubDir($string) {
+		return '/' . substr($string, strlen('/' . seo42::getServerSubDir()));
 	}
 
 	public static function getCacheFile($cacheFile) {

@@ -215,7 +215,14 @@ class seo42 {
 	}
 
 	public static function getRequestUriWithoutQueryString() {
-		return ltrim(strtok($_SERVER['REQUEST_URI'], '?'), '/');
+		if (seo42::isSubDirInstall()) {
+			// remove subdir from request uri
+			$requestUri = seo42_utils::trimSubDir($_SERVER['REQUEST_URI']);
+		} else {
+			$requestUri = $_SERVER['REQUEST_URI'];
+		}
+
+		return ltrim(strtok($requestUri, '?'), '/');
 	}
 
 	public static function getLangTags($indent = "\t") {
