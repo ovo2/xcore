@@ -3,7 +3,7 @@
 // register addon
 $REX['ADDON']['rxid']['seo42'] = '0';
 $REX['ADDON']['name']['seo42'] = 'SEO42';
-$REX['ADDON']['version']['seo42'] = '3.2.0 DEV';
+$REX['ADDON']['version']['seo42'] = '3.1.1 DEV';
 $REX['ADDON']['author']['seo42'] = 'Markus Staab, Wolfgang Huttegger, Dave Holloway, Jan Kristinus, jdlx, RexDude';
 $REX['ADDON']['supportpage']['seo42'] = 'forum.redaxo.de';
 $REX['ADDON']['perm']['seo42'] = 'seo42[]';
@@ -166,9 +166,10 @@ if ($REX['REDAXO']) {
 	// send additional headers for article if necessary
 	rex_register_extension('OUTPUT_FILTER_CACHE', 'seo42_utils::sendHeadersForArticleOnly');
 
-	// fix image manager headers if necessary
+	// fix headers for image manager images if necessary
 	if ($REX['ADDON']['seo42']['settings']['fix_image_manager_cache_control_header'] && (isset($_GET['rex_img_type']))) {
 		header('Cache-Control: max-age=604800'); // 1 week
+		header('Expires: '. gmdate('D, d M Y H:i:s \G\M\T', time() + 604800));
 	}
 }
 
