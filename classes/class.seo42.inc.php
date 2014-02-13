@@ -112,7 +112,24 @@ class seo42 {
 			// use default website name if user did not set different one
 			$websiteName = self::getWebsiteName();
 		}
-	
+		
+		if (self::getArticleValue('seo_ignore_prefix') == '1') {
+			// no prefix, just the title
+			$fullTitle = self::getTitlePart();
+		} else { 
+			if (self::isStartArticle()) {
+				// the start article shows the website name first
+				$fullTitle = $websiteName . ' ' . self::getTitleDelimiter() . ' ' . self::getTitlePart();
+			} else {
+				// all other articles will show title first
+				$fullTitle = self::getTitlePart() . ' ' . self::getTitleDelimiter() . ' ' . $websiteName;
+			}
+		 }
+
+		return htmlspecialchars($fullTitle);
+	}
+
+	public static function getTitlePart() {
 		if (self::getArticleValue('seo_title') == '') {
 			// use article name as title
 			$titlePart = self::getArticleName();
@@ -120,21 +137,8 @@ class seo42 {
 			// use title that user defined
 			$titlePart = self::getArticleValue('seo_title');
 		}
-		
-		if (self::getArticleValue('seo_ignore_prefix') == '1') {
-			// no prefix, just the title
-			$fullTitle = $titlePart;
-		} else { 
-			if (self::isStartArticle()) {
-				// the start article shows the website name first
-				$fullTitle = $websiteName . ' ' . self::getTitleDelimiter() . ' ' . $titlePart;
-			} else {
-				// all other articles will show title first
-				$fullTitle = $titlePart . ' ' . self::getTitleDelimiter() . ' ' . $websiteName;
-			}
-		 }
 
-		return htmlspecialchars($fullTitle);
+		return htmlspecialchars($titlePart);
 	}
 
 	public static function getDescription() {
@@ -543,6 +547,7 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::getTrimmedUrl', array(self::$curArticle->getId()));
 		$out .= self::getDebugInfoRow('seo42::getFullUrl', array(self::$curArticle->getId()));
 		$out .= self::getDebugInfoRow('seo42::getTitle');
+		$out .= self::getDebugInfoRow('seo42::getTitlePart');
 		$out .= self::getDebugInfoRow('seo42::getDescription');
 		$out .= self::getDebugInfoRow('seo42::getKeywords');
 		$out .= self::getDebugInfoRow('seo42::getRobotRules');

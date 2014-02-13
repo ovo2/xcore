@@ -1,8 +1,9 @@
 SEO42 - Changelog
 =================
 
-### Version 3.2.0 DEV
+### Version 3.1.1 DEV
 
+* Neu: `seo42::getTitlePart()` hinzugefügt falls jemand nur den Titel ohne den Websitenamen brauchen sollte ;)
 * Neu: `seo42::getUrlString($string)` hinzugefügt. Wrappt `rexseo_parse_article_name` und ist nützlich um z.B. saubere Ankernamen für Urls zu erzeugen `foo.html#clean-anchor-name`
 
 ### Version 3.1.0 - 08. Februar 2014 
