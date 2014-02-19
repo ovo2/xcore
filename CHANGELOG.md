@@ -1,6 +1,10 @@
 SEO42 - Changelog
 =================
 
+### Version 3.1.2 DEV
+
+* Fixed #110: `seo42::getTitle()` und `&amp;` Problem gefixt, thx@akrys
+
 ### Version 3.1.1 - 13. Februar 2014
 
 * Fixed #107: Betrifft nur Unterordner-Installs: Canonical Url jetzt ohne doppelten Unterordner

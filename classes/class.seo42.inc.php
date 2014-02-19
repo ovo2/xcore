@@ -138,7 +138,7 @@ class seo42 {
 			$titlePart = self::getArticleValue('seo_title');
 		}
 
-		return htmlspecialchars($titlePart);
+		return $titlePart;
 	}
 
 	public static function getDescription() {
