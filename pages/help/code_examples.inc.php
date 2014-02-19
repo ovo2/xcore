@@ -80,7 +80,9 @@ echo seo42::getNavigationByCategory(42, 2, true, true, false, "current", "nav", 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_3') . '
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_4') . '
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_5') . '
-echo seo42::getLangNavigation("lang-nav", "current", true, false);
+// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_6') . '
+// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_7') . '
+echo seo42::getLangNavigation("lang-nav", "current", true, false, true, true);
 ?>';
 
 $codeExample7 = '<?php

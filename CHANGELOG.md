@@ -4,6 +4,8 @@ SEO42 - Changelog
 ### Version 3.1.2 DEV
 
 * Fixed #110: `seo42::getTitle()` und `&amp;` Problem gefixt, thx@akrys
+* Verbessert: `seo42::getLangNavigation()` gibt nun Ids aus statt Klassen (wenn gewünscht)
+* Verbessert: Codebeispiele in der Hilfe für `seo42::getLangNavigation()` ergänzt
 
 ### Version 3.1.1 - 13. Februar 2014
 

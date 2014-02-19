@@ -29,7 +29,7 @@ class nav42 {
 		return $nav->get($categoryId, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
 	}
 
-	public static function getLangNavigation($ulId = '', $currentClass = 'selected', $showLiClasses = false, $hideLiIfOfflineArticle = false, $useLangCodeAsLinkText = false, $upperCaseLinkText = false) {
+	public static function getLangNavigation($ulId = '', $currentClass = 'selected', $showLiIds = false, $hideLiIfOfflineArticle = false, $useLangCodeAsLinkText = false, $upperCaseLinkText = false) {
 		global $REX;
 
 		// ul id
@@ -77,29 +77,22 @@ class nav42 {
 					$linkText = strtoupper($linkText);
 				}
 
-				$cssClasses = '';
-
-				// li classes
-				if ($showLiClasses) {
-					$cssClasses .= ' ' . $langSlug;
+				// li attribute
+				if ($showLiIds) {
+					$liIdAttribute = ' id="' . $langSlug . '"';
+				} else {
+					$liIdAttribute = '';
 				}
 
-				// current class
+				// class attribute
 				if ($REX['CUR_CLANG'] == $clangId) {
-					$cssClasses .= ' ' . $currentClass;
-				}
-
-				$trimmedCssClasses = trim($cssClasses);
-
-				// build class attribute
-				if ($trimmedCssClasses != '') {
-					$liClassAttribute = ' class="' . $trimmedCssClasses . '"';
+					$liClassAttribute = ' class="' . $currentClass . '"';
 				} else {
 					$liClassAttribute = '';
 				}
 				
 				// li out
-				$out .= '<li' . $liClassAttribute . '><a href="' . rex_getUrl($newArticleId, $clangId) . '">' . $linkText . '</a></li>';
+				$out .= '<li' . $liIdAttribute . $liClassAttribute . '><a href="' . rex_getUrl($newArticleId, $clangId) . '">' . $linkText . '</a></li>';
 			}
 		}
 
