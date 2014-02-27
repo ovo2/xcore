@@ -482,6 +482,10 @@ class seo42 {
 		return self::getMediaDir() . $file;
 	}
 
+	public static function getMediaUrl($file) {
+		return self::getServerUrl() . self::$mediaDir . '/' . $file;
+	}
+
 	public static function getMediaAddonDir() {
 		global $REX;
 
@@ -583,6 +587,7 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::getQueryString');
 		$out .= self::getDebugInfoRow('seo42::getMediaDir');
 		$out .= self::getDebugInfoRow('seo42::getMediaFile', array('image.png'));
+		$out .= self::getDebugInfoRow('seo42::getMediaUrl', array('image.png'));
 		$out .= self::getDebugInfoRow('seo42::getMediaAddonDir');
 		$out .= self::getDebugInfoRow('seo42::getLangTags');
 		$out .= self::getDebugInfoRow('seo42::getHtml');

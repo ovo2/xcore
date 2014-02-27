@@ -1,6 +1,10 @@
 SEO42 - Changelog
 =================
 
+### Version 3.2.0 DEV
+
+* Neu: `seo42::getMediaUrl()` hinzugefügt. Wie `seo42::getMediaFile()` nur mit voller Url ausgabe, thx@SigmaAlphaPi
+
 ### Version 3.1.2 - 19. Februar 2014
 
 * Fixed #110: `seo42::getTitle()` und `&amp;` Problem gefixt, thx@akrys
