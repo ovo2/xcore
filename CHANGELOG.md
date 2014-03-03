@@ -3,6 +3,7 @@ SEO42 - Changelog
 
 ### Version 3.2.0 DEV
 
+* Verbessert: Angabe von `//` Urls zusätzlich zu `http://` möglich bei `seo42::getCSS()` und Co., thx@DanielWeitenauer
 * Neu: `seo42::getMediaUrl()` hinzugefügt. Wie `seo42::getMediaFile()` nur mit voller Url ausgabe, thx@SigmaAlphaPi
 
 ### Version 3.1.2 - 19. Februar 2014
