@@ -291,7 +291,7 @@ class res42 {
 	}
 
 	protected static function isHttpAddress($file) {
-		if (strpos($file, 'http') === 0) {
+		if ((strpos($file, 'http') === 0) || strpos($file, '//') === 0) {
 			return true;
 		} else {
 			return false;
