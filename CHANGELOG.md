@@ -3,8 +3,11 @@ SEO42 - Changelog
 
 ### Version 3.2.0 DEV
 
-* Verbessert: Angabe von `//` Urls zusätzlich zu `http://` möglich bei `seo42::getCSS()` und Co., thx@DanielWeitenauer
 * Neu: `seo42::getMediaUrl()` hinzugefügt. Wie `seo42::getMediaFile()` nur mit voller Url ausgabe, thx@SigmaAlphaPi
+* Neu: EP's `SEO42_COMPILE_LESS` und `SEO42_COMPILE_SCSS` hinzugefügt um alternative Compiler damit einbinden zu können, thx@DanielWeitenauer
+* Neu: Neues Plugin `lessdotphp` (alternativer LESS Compiler) von DanielWeitenauer in die Readme hinzugefügt, thx@DanielWeitenauer
+* Fixed: Import Dir beim LESS Compiler richtig gesetzt, so dass jetzt `@include` korrekt funktioniert, thx@DanielWeitenauer
+* Verbessert: Angabe von `//` Urls zusätzlich zu `http://` möglich bei `seo42::getCSS()` und Co., thx@DanielWeitenauer
 
 ### Version 3.1.2 - 19. Februar 2014
 
