@@ -1,7 +1,7 @@
 SEO42 - Changelog
 =================
 
-### Version 3.2.0 DEV
+### Version 3.2.0 - 16. März 2014
 
 * Neu: `seo42::getMediaUrl()` hinzugefügt. Wie `seo42::getMediaFile()` nur mit voller Url ausgabe, thx@SigmaAlphaPi
 * Neu: EP's `SEO42_COMPILE_LESS` und `SEO42_COMPILE_SCSS` hinzugefügt um alternative Compiler damit einbinden zu können, thx@DanielWeitenauer
