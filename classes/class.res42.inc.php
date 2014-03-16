@@ -188,8 +188,6 @@ class res42 {
 	}
 
 	protected static function getCompiledCSSFile($sourceFile, $sourceFileType, $vars = array()) {
-		global $REX;
-		
 		$cssFile = self::replaceFileExtension($sourceFile, 'css');
 		$sourceFileWithPath = self::$cssPath . $sourceFile;
 		$cssFileWithPath = self::$cssPath . $cssFile;
@@ -198,13 +196,6 @@ class res42 {
 		$sourceFileMTime = @filemtime($sourceFileWithPath);
 
 		if ($cssFileMTime == false || $sourceFileMTime > $cssFileMTime) {
-			// include compiler
-			$compilerClass = $sourceFileType . 'c';
-
-			if (!class_exists($compilerClass)) {
-				require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.' . $compilerClass . '.inc.php');
-			}
-
 			// compile scss
 			self::compileCSS($sourceFileWithPath, $cssFileWithPath, $sourceFileType, $vars);
 		}
@@ -214,6 +205,8 @@ class res42 {
 	}
 
 	protected static function compileCSS($sourceFileWithPath, $cssFileWithPath, $sourceFileType, $vars) {
+		global $REX;
+		
 		if (!file_exists($sourceFileWithPath)) {
 			return;
 		}
@@ -224,38 +217,64 @@ class res42 {
 		// strip comments out
 		$sourceFileContent = self::stripCSSComments($sourceFileContent);
 
+		// get file path
+		$path = pathinfo($sourceFileWithPath);
+
 		// compile source file to css
 		try {
 			if ($sourceFileType == 'scss') {
-				$formatter = new scss_formatter;
-				$formatter->indentChar = "\t";
-				$formatter->close = "}" . PHP_EOL;
-				$formatter->assignSeparator = ": ";
+				// EP for scss string compilation
+				$compiledCSS = rex_register_extension_point('SEO42_COMPILE_SCSS', $sourceFileContent, array('vars' => $vars));
 
-				$scss = new scssc();
-				$scss->setFormatter($formatter);
-				$compiledCSS = $scss->compile($sourceFileContent);
+				if ($sourceFileContent == $compiledCSS) {
+					// include compiler
+					if (!class_exists('scssc')) {
+						require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.scssc.inc.php');
+					}
+					
+					$formatter = new scss_formatter;
+					$formatter->indentChar = "\t";
+					$formatter->close = "}" . PHP_EOL;
+					$formatter->assignSeparator = ": ";
+	
+					$scss = new scssc();
+					$scss->setFormatter($formatter);
+					
+					$compiledCSS = $scss->compile($sourceFileContent);
+				}
 			} else {
-				$formatter = new lessc_formatter_classic;
-				$formatter->indentChar = "\t";
-				$formatter->close = "}" . PHP_EOL;
-				$formatter->assignSeparator = ": ";
-		
-				$less = new lessc();
-				$less->setFormatter($formatter);
-				$less->setPreserveComments(true);
-				$less->setVariables($vars);
-				$compiledCSS = $less->compile($sourceFileContent);
+				// EP for less string compilation
+				$compiledCSS = rex_register_extension_point('SEO42_COMPILE_LESS', $sourceFileContent, array('vars' => $vars, 'path' => $path['dirname']));
+				
+				if ($sourceFileContent == $compiledCSS) { 
+					// include compiler
+					if (!class_exists('lessc')) {
+						require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.lessc.inc.php');
+					}
+					
+					$formatter = new lessc_formatter_classic;
+					$formatter->indentChar = "\t";
+					$formatter->close = "}" . PHP_EOL;
+					$formatter->assignSeparator = ": ";
+	
+					$less = new lessc();
+					$less->setImportDir($path['dirname']);
+					$less->setFormatter($formatter);
+					$less->setPreserveComments(true);
+					$less->setVariables($vars);
+				
+					$compiledCSS = $less->compile($sourceFileContent);
+				}
 			}
 		} catch (Exception $e) {
 			echo '" />'; // close tag as we are probably in an open link tag in head section of website 
 			echo '<p style="margin: 5px;"><code>';
 			echo '<strong>' . strtoupper($sourceFileType) . ' Compile Error:</strong><br/>';
-		    echo $e->getMessage();
+			echo $e->getMessage();
 			echo '</code></p>';
 			exit;
 		}	
-
+		
 		// write css
 		$fileHandle = fopen($cssFileWithPath, 'w');
 		fwrite($fileHandle, $compiledCSS);
