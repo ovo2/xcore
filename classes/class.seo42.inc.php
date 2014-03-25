@@ -594,6 +594,7 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::getImageTag', array('image.png', 'rex_mediapool_detail', '150', '100'));
 		$out .= self::getDebugInfoRow('seo42::getImageManagerFile', array('image.png', 'rex_mediapool_detail'));
 		$out .= self::getDebugInfoRow('seo42::getDownloadFile', array('doc.pdf'));
+		$out .= self::getDebugInfoRow('seo42::getUrlString', array("The Hitchhiker's Guide to the Galaxy!"));
 		$out .= self::getDebugInfoRow('seo42::getAnswer');
 
 		$out .= '</table>';
