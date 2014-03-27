@@ -619,7 +619,7 @@ class seo42_utils {
 
 				if (seo42::isSubDirInstall()) {
 					// remove subdir from request uri
-					$requestUri = trimSubDir($_SERVER['REQUEST_URI']);
+					$requestUri = self::trimSubDir($_SERVER['REQUEST_URI']);
 				} else {
 					$requestUri = $_SERVER['REQUEST_URI'];
 				}

@@ -1,6 +1,11 @@
 SEO42 - Changelog
 =================
 
+### Version 3.2.1 DEV
+
+* Fixed #122: Nur Unterordner-Installs: Call to undefined function trimSubDir() Fehler gefixt, thx@Sysix-Coding
+* Verbessert: `seo42::getUrlString()` zum Debug-Output hinzugefügt
+
 ### Version 3.2.0 - 16. März 2014
 
 * Neu: `seo42::getMediaUrl()` hinzugefügt. Wie `seo42::getMediaFile()` nur mit voller Url ausgabe, thx@SigmaAlphaPi
