@@ -18,7 +18,6 @@ AddDefaultCharset utf-8
 	AddType application/x-shockwave-flash .swf
 	AddType x-font/eot .eot
 	AddType x-font/ttf .ttf
-	AddType x-font/svg .svg
 	AddType x-font/woff .woff
 </IfModule>
 
@@ -31,9 +30,9 @@ AddDefaultCharset utf-8
 	AddOutputFilterByType DEFLATE application/javascript
 	AddOutputFilterByType DEFLATE application/json
 	AddOutputFilterByType DEFLATE application/xml
+	AddOutputFilterByType DEFLATE image/svg+xml
 	AddOutputFilterByType DEFLATE x-font/eot
 	AddOutputFilterByType DEFLATE x-font/ttf
-	AddOutputFilterByType DEFLATE x-font/svg
 </IfModule>
 
 # ADD CACHING HEADERS
@@ -49,6 +48,7 @@ AddDefaultCharset utf-8
 	ExpiresByType image/jpg "access plus 1 week"
 	ExpiresByType image/jpeg "access plus 1 week"
 	ExpiresByType image/x-icon "access plus 4 week"
+	ExpiresByType image/svg+xml "access plus 4 weeks"
 	ExpiresByType video/mp4 "access plus 4 weeks"
 	ExpiresByType video/ogg "access plus 4 weeks"
 	ExpiresByType video/webm "access plus 4 weeks"
@@ -58,7 +58,6 @@ AddDefaultCharset utf-8
 	ExpiresByType application/x-shockwave-flash "access plus 4 weeks"
 	ExpiresByType x-font/eot "access plus 4 weeks"
 	ExpiresByType x-font/ttf "access plus 4 weeks"
-	ExpiresByType x-font/svg "access plus 4 weeks"
 	ExpiresByType x-font/woff "access plus 4 weeks"
 </IfModule>
 
