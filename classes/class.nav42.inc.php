@@ -1,20 +1,95 @@
 <?php
 
 class nav42 {
+	// config vars for nav42
+	protected $levelDepth;
+	protected $showAll;
+	protected $ignoreOfflines;
+	protected $hideWebsiteStartArticle;
+	protected $currentClass;
+	protected $firstUlId;
+	protected $firstUlClass;
+	protected $liIdFromMetaField;
+	protected $liClassFromMetaField;
+	protected $linkFromUserFunc;
+
+	// old vars from rex_navigation
 	var $depth;
 	var $open;
 	var $ignore_offlines;
 	var $path = array();
 	var $callbacks = array();
-
 	var $current_article_id = -1;
 	var $current_category_id = -1;
 
-	function nav42() {
-		// do nothing
+	public function __construct() {
+		$this->levelDepth = 3;
+		$this->showAll = false;
+		$this->ignoreOfflines = true;
+		$this->hideWebsiteStartArticle = false;
+		$this->currentClass = 'selected';
+		$this->firstUlId = '';
+		$this->firstUlClass = '';
+		$this->liIdFromMetaField = '';
+		$this->liClassFromMetaField = '';
+		$this->linkFromUserFunc = '';
 	}
 
-	public static function getNavigationByLevel($levelStart = 0, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') {
+	public function setLevelDepth($levelDepth) {
+		$this->levelDepth = $levelDepth;
+	}
+
+	public function setShowAll($showAll) {
+		$this->showAll = $showAll;
+	}
+
+	public function setIgnoreOfflines($ignoreOfflines) {
+		$this->ignoreOfflines = $ignoreOfflines;
+	}
+
+	public function setHideWebsiteStartArticle($hideWebsiteStartArticle) {
+		$this->hideWebsiteStartArticle = $hideWebsiteStartArticle;
+	}
+
+	public function setCurrentClass($currentClass) {
+		$this->currentClass = $currentClass;
+	}
+
+	public function setFirstUlId($firstUlId) {
+		$this->firstUlId = $firstUlId;
+	}
+
+	public function setFirstUlClass($firstUlClass) {
+		$this->firstUlClass = $firstUlClass;
+	}
+
+	public function setLiIdFromMetaField($liIdFromMetaField) {
+		$this->liIdFromMetaField = $liIdFromMetaField;
+	}
+
+	public function setLiClassFromMetaField($liClassFromMetaField) {
+		$this->liClassFromMetaField = $liClassFromMetaField;
+	}
+
+	public function setLinkFromUserFunc($linkFromUserFunc) {
+		$this->linkFromUserFunc = $linkFromUserFunc;
+	}
+
+	public function getNavigationByLevel($levelStart = 0) {
+		global $REX;
+		
+		$navPath = explode('|', ('0' . $REX['ART'][$REX['ARTICLE_ID']]['path'][$REX['CUR_CLANG']] . $REX['ARTICLE_ID'] . '|'));
+
+		return $this->get($navPath[$levelStart], $this->levelDepth, $this->showAll, $this->ignoreOfflines, $this->hideWebsiteStartArticle, $this->currentClass, $this->firstUlId, $this->firstUlClass, $this->liIdFromMetaField, $this->liClassFromMetaField, $this->linkFromUserFunc);
+	}
+
+	public static function getNavigationByCategory($categoryId, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') {
+		$nav = new nav42();
+
+		return $nav->get($categoryId, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
+	}
+
+	/*public static function _getNavigationByLevel($levelStart = 0, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') {
 		global $REX;
 		
 		$nav = new nav42();
@@ -23,11 +98,11 @@ class nav42 {
 		return $nav->get($navPath[$levelStart], $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
 	}
 
-	public static function getNavigationByCategory($categoryId, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') {
+	public static function _getNavigationByCategory($categoryId, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') {
 		$nav = new nav42();
 
 		return $nav->get($categoryId, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
-	}
+	}*/
 
 	public static function getLangNavigation($ulId = '', $currentClass = 'selected', $showLiIds = false, $hideLiIfOfflineArticle = false, $useLangCodeAsLinkText = false, $upperCaseLinkText = false) {
 		global $REX;
