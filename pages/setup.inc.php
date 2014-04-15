@@ -21,10 +21,10 @@ $codeExample = '<!DOCTYPE html>
 	<div id="link"><a href="<?php echo rex_getUrl(1); ?>">' . $I18N->msg('seo42_setup_codeexamples_goto_startpage') . '</a></div>
 	<div id="media"><img src="<?php echo seo42::getMediaFile("logo.png"); ?>" alt="" /></div>
 	<div id="imagetype"><img src="<?php echo seo42::getImageManagerFile("pic.png", "my_img_type"); ?>" alt="" /></div>
-	<div id="mainmenu"><?php echo seo42::getNavigationByLevel(0, 1); ?></div>
-	<div id="submenu"><?php echo seo42::getNavigationByLevel(1, 3); ?></div>
+	<div id="mainmenu"><?php $mainNav = new nav42(); echo $mainNav->getNavigationByLevel(0); ?></div>
+	<div id="submenu"><?php $subNav = new nav42(); echo $subNav->getNavigationByLevel(1); ?></div>
 	<div id="content"><?php echo $this->getArticle(); ?></div>
-	<div id="footer"><?php echo seo42::getNavigationByCategory(42); ?></div>
+	<div id="footer"><?php $footerNav = new nav42(); echo $footerNav->getNavigationByCategory(42); ?></div>
 </div>
 <script type="text/javascript" src="<?php echo seo42::getJSFile("jquery.min.js"); ?>"></script>
 <script type="text/javascript" src="<?php echo seo42::getJSFile("init.js"); ?>"></script>
