@@ -41,48 +41,54 @@ $codeExample5 = '<title><?php echo seo42::getTitle(rex_string_table::getString("
 
 $codeExample6 = '<?php 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment1') . '
-echo seo42::getNavigationByLevel(0, 1);
+$nav = new nav42();
+$nav->setLevelDepth(1);
+echo $nav->getNavigationByLevel(0);
 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment2') . '
-echo seo42::getNavigationByLevel(1, 3);
-
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment3_1') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment3_2') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment3_3') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment3_4') . '
-echo seo42::getNavigationByLevel(0, 2, true, false, true);
+$nav = new nav42();
+$nav->setLevelDepth(3);
+echo $nav->getNavigationByLevel(1);
 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment4_1') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment4_2') . '
-echo seo42::getNavigationByCategory(42, 2);
+$nav = new nav42();
+$nav->setLevelDepth(2); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment4_2') . '
+echo $nav->getNavigationByCategory(42);
 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_1') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_2') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_3') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_4') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_5') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_6') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_7') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_8') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_9') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_10') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_11') . '
-echo seo42::getNavigationByCategory(42, 2, true, true, false, "current", "nav", "sf-menu", "cat_css_id", "cat_css_class", function($cat, $depth) {
-	if ($depth == 1) {
+$nav = new nav42();
+
+$nav->setLevelDepth(2); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_2') . '
+$nav->setShowAll(true); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_3') . '
+$nav->setIgnoreOfflines(true); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_4') . '
+$nav->setHideWebsiteStartArticle(false); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_5') . '
+$nav->setSelectedClass("current"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_6') . '
+$nav->setActiveClass("current active"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_6a') . '
+$nav->setUlId("nav", 0); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_7') . '
+$nav->setUlClass("sf-menu", 0); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_8') . '
+$nav->setLiIdFromMetaField("cat_css_id"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_9') . '
+$nav->setLiClassFromMetaField("cat_css_class"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_10') . '
+$nav->setLinkFromUserFunc(function($cat, $depth) { // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_11') . '
+    if ($depth == 1) {
 		return htmlspecialchars($cat->getName());
 	} else {
 		return \'<a href="\' . $cat->getUrl() . \'">\' . htmlspecialchars($cat->getName()) . \'</a>\';
 	}
 });
 
+echo $nav->getNavigationByCategory(42);
+
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_1') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_2') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_3') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_4') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_5') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_6') . '
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_7') . '
-echo seo42::getLangNavigation("lang-nav", "current", true, false, true, true);
+$nav = new nav42();
+
+$nav->setLangUlId("lang-nav"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_2') . '
+$nav->setLangSelectedClass("current"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_3') . '
+$nav->setLangShowLiIds(true); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_4') . '
+$nav->setLangHideLiIfOfflineArticle(false); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_5') . '
+$nav->setLangUseLangCodeAsLinkText(true); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_6') . '
+$nav->setLangUpperCaseLinkText(true); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_7') . '
+
+echo $nav->getLangNavigation();
 ?>';
 
 $codeExample7 = '<?php

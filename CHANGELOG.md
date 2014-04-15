@@ -1,10 +1,16 @@
 SEO42 - Changelog
 =================
 
-### Version 3.2.1 DEV
+### Version 3.3.0 DEV
 
 * Fixed #123: SVG Bilder wurden nicht angezeigt bei bestimmten Webserverkonfigurationen (Achtung, `.htaccess` Datei hat sich in dieser Version geändert), thx@meugel
 * Fixed #122: Nur Unterordner-Installs: Call to undefined function trimSubDir() Fehler gefixt, thx@Sysix-Coding
+* nav42: Komplettumbau der Klasse `nav42`. Ist nun keine statische Klasse mehr! Siehe Codebeispiele in der Hilfe von SEO42.
+* nav42: `setUlId($ulId, $level = 0)` und `setUlClass($ulClass, $level = 0)` hinzugefügt. Damit kann man jeder Ul auf jedem Level innerhalb der Navigation eine CSS-Klasse/ID zuweisen
+* nav42: `setActiveClass($activeClass)` hinzugefügt. Damit kann mann die letzte selektierte Klasse angeben. Default: `selected active`
+* nav42: `setCurrentClass()` in `setSelectedClass()` umbenannt
+* nav42: `setLangCurrentClass` in `setLangSelectedClass` umbenannt
+* Entfernt: Wrapper-Methoden `seo42::getNavigationByLevel()`, `seo42::getNavigationByCategory()` und `seo42::getLangNavigation()`. Aufruf bitte nur noch über die Klasse `nav42`.
 * Verbessert: `seo42::getUrlString()` zum Debug-Output hinzugefügt
 
 ### Version 3.2.0 - 16. März 2014

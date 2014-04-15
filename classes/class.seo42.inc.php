@@ -774,18 +774,6 @@ class seo42 {
 		return strtolower(rexseo_parse_article_name($string, $REX['ARTICLE_ID'], $REX['CUR_CLANG']));
 	}
 
-	public static function getNavigationByLevel($levelStart = 0, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') {
-		return call_user_func(self::$navigationClass . '::getNavigationByLevel', $levelStart, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);		
-	}
-
-	public static function getNavigationByCategory($categoryId, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') {
-		return call_user_func(self::$navigationClass . '::getNavigationByCategory', $categoryId, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
-	}
-
-	public static function getLangNavigation($ulId = '', $currentClass = 'selected', $showLiClasses = false, $hideLiIfOfflineArticle = false, $useLangCodeAsLinkText = false, $upperCaseLinkText = false) {
-		return call_user_func(self::$navigationClass . '::getLangNavigation', $ulId, $currentClass, $showLiClasses, $hideLiIfOfflineArticle, $useLangCodeAsLinkText, $upperCaseLinkText);
-	}
-
 	public static function getCSSFile($file, $vars = array()) {
 		return res42::getCSSFile($file, $vars);
 	}

@@ -19,7 +19,7 @@ Features
 * One Page Mode für Websites die nur über eine Seite verfügen (z.B. Parallax-Websites etc.)
 * Suchmaschinenfreundliche Image Manager Urls durch Verwendung der verfügbaren PHP-Methoden
 * SEO Tools inkl. Live PageRank Checker sowie Anzeige des Google Index der aktuellen Website
-* Eingebaute Navigationsfunktionen. Alle URL-Typen werden hierbei berücksichtigt.
+* Eingebaute Navigationsfunktionen (Klasse `nav42`). Alle URL-Typen werden hierbei berücksichtigt.
 * Einrichtung von 301 Weiterleitungen. Parameter in der alten URL sind ohne Probleme möglich.
 * Spezielle sprachabhängige sowie sprachunabhängige Sonderzeichen-Umschreibungen einstellbar
 * Pro Sprache kann Urlencode genutzt oder auch die URLs einer anderen Sprache übernommen werden
@@ -45,20 +45,20 @@ Features Resourceneinbindung
 * Überführung von Variablenwerten von PHP nach LESS möglich. Mehr Infos in den Codebeispielen und [hier](http://leafo.net/lessphp/docs/#setting_variables_from_php)
 * Einbindung von JavaScript Code aus einem REDAXO Template (oder einer Datei) heraus inkl. PHP Interpretierung
 
-Features Navigationsausgabe
----------------------------
+Features Navigationsausgabe (Klasse nav42)
+------------------------------------------
 
 * Ausgabe der Navigation von einer Katagorie aus oder über Kategorie-Levels
 * Es wird zuerst eine nackte UL-Liste ohne Klassen oder Ids ausgegeben
 * Startartikel der Website (z.B. Home) kann ausgeblendet werden
 * Einstellen der CSS-Klasse für selektierte Menüpunkte (z.B. `current`)
-* Die erste UL kann eine Klasse und/oder ID zugewiesen bekommen (Suckerfish/Superfish)
+* Jede UL kann eine Klasse und/oder ID zugewiesen bekommen (Suckerfish/Superfish)
 * Angabe von MetaInfo Felder aus denen Klassen und IDs für die LI's herausgezogen werden
 * Aufruf einer benutzerdef. PHP-Funktion möglich, die den Inhalt der LI's zurückgibt
 * Unterstützung für alle URL-Typen von SEO42
 * Reagiert automatisch auf gesperrte Artikel etc. bei installiertem Community AddOn
 * Ausgabe einer einfachen Sprachnavigation möglich
-* Vollständige Codebeispiele in der Hilfe von SEO42
+* Codebeispiele in der Hilfe von SEO42
 
 Verfügbare Plugins für SEO42
 ----------------------------

@@ -207,10 +207,6 @@ seo42_help_codeexamples_title8 = Debug output
 seo42_help_codeexamples_description8 = With this method you can retrieve detailed debug information about the current article:
 seo42_help_codeexamples_ex6_comment1 = output of the 1. navigation level
 seo42_help_codeexamples_ex6_comment2 = output of the 2. and 3. navigation level
-seo42_help_codeexamples_ex6_comment3_1 = output of the 1. and 2. navigation level,
-seo42_help_codeexamples_ex6_comment3_2 = all sublevels are visible
-seo42_help_codeexamples_ex6_comment3_3 = offline articles are included
-seo42_help_codeexamples_ex6_comment3_4 = the website's start article der website is hidden
 seo42_help_codeexamples_ex6_comment4_1 = output of a navigation with start category id = 42
 seo42_help_codeexamples_ex6_comment4_2 = 2 levels in depth
 seo42_help_codeexamples_ex6_comment5_1 = output of a navigation with start category id = 42
@@ -219,6 +215,7 @@ seo42_help_codeexamples_ex6_comment5_3 = all sublevels are visible
 seo42_help_codeexamples_ex6_comment5_4 = offline articles are hidden
 seo42_help_codeexamples_ex6_comment5_5 = the website's start article der website is visible
 seo42_help_codeexamples_ex6_comment5_6 = class for li of selected menu entry: "current"
+seo42_help_codeexamples_ex6_comment5_6a = li class für current active menu entry: "current active"
 seo42_help_codeexamples_ex6_comment5_7 = id of outer ul: "nav"
 seo42_help_codeexamples_ex6_comment5_8 = class of outer ul: "sf-menu"
 seo42_help_codeexamples_ex6_comment5_9 = id for li from metainfo field: "cat_css_id"

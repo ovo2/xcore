@@ -1,22 +1,28 @@
 <?php
 
 class nav42 {
-	// config vars for nav42
+	// main config vars for nav42
 	protected $levelDepth;
 	protected $showAll;
 	protected $ignoreOfflines;
 	protected $hideWebsiteStartArticle;
-	protected $currentClass;
-	protected $firstUlId;
-	protected $firstUlClass;
+	protected $selectedClass;
+	protected $activeClass;
+	protected $ulId;
+	protected $ulClass;
 	protected $liIdFromMetaField;
 	protected $liClassFromMetaField;
 	protected $linkFromUserFunc;
 
+	// lang nav vars
+	protected $langUlId;
+	protected $langSelectedClass;
+	protected $langShowLiIds;
+	protected $langHideLiIfOfflineArticle;
+	protected $langUseLangCodeAsLinkText;
+	protected $langUpperCaseLinkText;
+
 	// old vars from rex_navigation
-	var $depth;
-	var $open;
-	var $ignore_offlines;
 	var $path = array();
 	var $callbacks = array();
 	var $current_article_id = -1;
@@ -27,13 +33,51 @@ class nav42 {
 		$this->showAll = false;
 		$this->ignoreOfflines = true;
 		$this->hideWebsiteStartArticle = false;
-		$this->currentClass = 'selected';
-		$this->firstUlId = '';
-		$this->firstUlClass = '';
+		$this->selectedClass = 'selected';
+		$this->activeClass = 'selected active';
+		$this->ulId = array();
+		$this->ulClass = array();
 		$this->liIdFromMetaField = '';
 		$this->liClassFromMetaField = '';
 		$this->linkFromUserFunc = '';
+
+		$this->langUlId = '';
+		$this->langSelectedClass = 'selected';
+		$this->langShowLiIds = false;
+		$this->langHideLiIfOfflineArticle = false;
+		$this->langUseLangCodeAsLinkText = false;
+		$this->langUpperCaseLinkText = false;
 	}
+
+	/* ------------------------------------------------------------------------------------------------------ */
+
+	public function getNavigationByLevel($levelStart = 0) {
+		global $REX;
+		
+		$navPath = explode('|', ('0' . $REX['ART'][$REX['ARTICLE_ID']]['path'][$REX['CUR_CLANG']] . $REX['ARTICLE_ID'] . '|'));
+
+		return $this->get($navPath[$levelStart]);
+	}
+
+	public function getNavigationByCategory($categoryId) {
+		return $this->get($categoryId);
+	}
+
+	public function getLangNavigation() {
+		return $this->_getLangNavigation();
+	}
+
+	/* ------------------------------------------------------------------------------------------------------ */
+
+	public static function getCurrentArticleId() {
+		return $this->current_article_id;
+	}
+
+	public static function getCurrentCategoryId() {
+		return $this->current_category_id;
+	}
+
+	/* ------------------------------------------------------------------------------------------------------ */
 
 	public function setLevelDepth($levelDepth) {
 		$this->levelDepth = $levelDepth;
@@ -51,16 +95,20 @@ class nav42 {
 		$this->hideWebsiteStartArticle = $hideWebsiteStartArticle;
 	}
 
-	public function setCurrentClass($currentClass) {
-		$this->currentClass = $currentClass;
+	public function setSelectedClass($selectedClass) {
+		$this->selectedClass = $selectedClass;
 	}
 
-	public function setFirstUlId($firstUlId) {
-		$this->firstUlId = $firstUlId;
+	public function setActiveClass($activeClass) {
+		$this->activeClass = $activeClass;
 	}
 
-	public function setFirstUlClass($firstUlClass) {
-		$this->firstUlClass = $firstUlClass;
+	public function setUlId($ulId, $level = 0) {
+		$this->ulId[$level] = $ulId;
+	}
+
+	public function setUlClass($ulClass, $level = 0) {
+		$this->ulClass[$level] = $ulClass;
 	}
 
 	public function setLiIdFromMetaField($liIdFromMetaField) {
@@ -75,116 +123,43 @@ class nav42 {
 		$this->linkFromUserFunc = $linkFromUserFunc;
 	}
 
-	public function getNavigationByLevel($levelStart = 0) {
-		global $REX;
-		
-		$navPath = explode('|', ('0' . $REX['ART'][$REX['ARTICLE_ID']]['path'][$REX['CUR_CLANG']] . $REX['ARTICLE_ID'] . '|'));
+	/* ------------------------------------------------------------------------------------------------------ */
 
-		return $this->get($navPath[$levelStart], $this->levelDepth, $this->showAll, $this->ignoreOfflines, $this->hideWebsiteStartArticle, $this->currentClass, $this->firstUlId, $this->firstUlClass, $this->liIdFromMetaField, $this->liClassFromMetaField, $this->linkFromUserFunc);
+	public function setLangUlId($langUlId) {
+		$this->langUlId = $langUlId;
 	}
 
-	public static function getNavigationByCategory($categoryId, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') {
-		$nav = new nav42();
-
-		return $nav->get($categoryId, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
+	public function setLangSelectedClass($langSelectedClass) {
+		$this->langSelectedClass = $langSelectedClass;
 	}
 
-	/*public static function _getNavigationByLevel($levelStart = 0, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') {
-		global $REX;
-		
-		$nav = new nav42();
-		$navPath = explode('|', ('0' . $REX['ART'][$REX['ARTICLE_ID']]['path'][$REX['CUR_CLANG']] . $REX['ARTICLE_ID'] . '|'));
-
-		return $nav->get($navPath[$levelStart], $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
+	public function setLangShowLiIds($langShowLiIds) {
+		$this->langShowLiIds = $langShowLiIds;
 	}
 
-	public static function _getNavigationByCategory($categoryId, $levelDepth = 2, $showAll = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') {
-		$nav = new nav42();
-
-		return $nav->get($categoryId, $levelDepth, $showAll, $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
-	}*/
-
-	public static function getLangNavigation($ulId = '', $currentClass = 'selected', $showLiIds = false, $hideLiIfOfflineArticle = false, $useLangCodeAsLinkText = false, $upperCaseLinkText = false) {
-		global $REX;
-
-		// ul id
-		if ($ulId == '') {
-			$ulIdAttribute = '';
-		} else {
-			$ulIdAttribute = ' id="' . $ulId . '"';
-		}
-
-		$out = '<ul' . $ulIdAttribute . '>';
-
-		foreach ($REX['CLANG'] as $clangId => $clangName) {
-			$article = OOArticle::getArticleById($REX['ARTICLE_ID'], $clangId);
-
-			// new article id
-			if (OOArticle::isValid($article) && $article->isOnline()) {
-				$newArticleId = $article->getId();
-				$articleStatus = true;
-			} else {
-				$newArticleId = $REX['START_ARTICLE_ID'];
-				$articleStatus = false;
-			}
-
-			if (!$articleStatus && $hideLiIfOfflineArticle) {
-				// do nothing
-			} else {
-				if (class_exists('seo42')) {
-					$langCode = seo42::getLangCode($clangId);
-					$originalName = seo42::getOriginalLangName($clangId);
-					$langSlug = seo42::getLangSlug($clangId);
-				} else {
-					$langCode = $clangName;
-					$originalName = $clangName;
-					$langSlug = $clangName;
-				}		
-
-				// link text
-				if ($useLangCodeAsLinkText) {
-					$linkText = $langCode;
-				} else {
-					$linkText = $originalName;
-				}
-
-				if ($upperCaseLinkText) {
-					$linkText = strtoupper($linkText);
-				}
-
-				// li attribute
-				if ($showLiIds) {
-					$liIdAttribute = ' id="' . $langSlug . '"';
-				} else {
-					$liIdAttribute = '';
-				}
-
-				// class attribute
-				if ($REX['CUR_CLANG'] == $clangId) {
-					$liClassAttribute = ' class="' . $currentClass . '"';
-				} else {
-					$liClassAttribute = '';
-				}
-				
-				// li out
-				$out .= '<li' . $liIdAttribute . $liClassAttribute . '><a href="' . rex_getUrl($newArticleId, $clangId) . '">' . $linkText . '</a></li>';
-			}
-		}
-
-		$out .= '</ul>';
-
-		return $out;
+	public function setLangHideLiIfOfflineArticle($langHideLiIfOfflineArticle) {
+		$this->langHideLiIfOfflineArticle = $langHideLiIfOfflineArticle;
 	}
 
-	function _getNavigation($categoryId, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') { 
+	public function setLangUseLangCodeAsLinkText($langUseLangCodeAsLinkText) {
+		$this->langUseLangCodeAsLinkText = $langUseLangCodeAsLinkText;
+	}
+
+	public function setLangUpperCaseLinkText($langUpperCaseLinkText) {
+		$this->langUpperCaseLinkText = $langUpperCaseLinkText;
+	}
+
+	/* ------------------------------------------------------------------------------------------------------ */
+
+	protected function _getNavigation($categoryId) { 
 		global $REX;
 
 		static $depth = 0;
 		
 		if ($categoryId < 1) {
-			$cats = OOCategory::getRootCategories($ignoreOfflines);
+			$cats = OOCategory::getRootCategories($this->ignoreOfflines);
 		} else {
-			$cats = OOCategory::getChildrenById($categoryId, $ignoreOfflines);
+			$cats = OOCategory::getChildrenById($categoryId, $this->ignoreOfflines);
 		}
 
 		$return = '';
@@ -192,15 +167,12 @@ class nav42 {
 		$ulClassAttribute = '';
 
 		if (count($cats) > 0) {
-			if ($depth == 0) {
-				// this is first ul
-				if ($firstUlId != '') {
-					$ulIdAttribute = ' id="' . $firstUlId . '"';
-				}
+			if (isset($this->ulId[$depth])) {
+				$ulIdAttribute = ' id="' . $this->ulId[$depth] . '"';
+			}
 
-				if ($firstUlClass != '') {
-					$ulClassAttribute = ' class="' . $firstUlClass . '"';
-				}
+			if (isset($this->ulClass[$depth])) {
+				$ulClassAttribute = ' class="' . $this->ulClass[$depth] . '"';
 			}
 
 			$return .= '<ul' . $ulIdAttribute . $ulClassAttribute . '>';
@@ -213,22 +185,22 @@ class nav42 {
 				$idAttribute = '';
 
 				// li class from meta infos
-				if ($liClassFromMetaField != '' && $cat->getValue($liClassFromMetaField) != '') {
-					$cssClasses .= ' ' . $cat->getValue($liClassFromMetaField);
+				if ($this->liClassFromMetaField != '' && $cat->getValue($this->liClassFromMetaField) != '') {
+					$cssClasses .= ' ' . $cat->getValue($this->liClassFromMetaField);
 				}
 
 				// li id from meta infos
-				if ($liIdFromMetaField != '' && $cat->getValue($liIdFromMetaField) != '') {
-					$idAttribute = ' id="' . $cat->getValue($liIdFromMetaField) . '"';
+				if ($this->liIdFromMetaField != '' && $cat->getValue($this->liIdFromMetaField) != '') {
+					$idAttribute = ' id="' . $cat->getValue($this->liIdFromMetaField) . '"';
 				}
 
 				// selected class
 				if ($cat->getId() == $this->current_category_id) {
-					// current menuitem
-					$cssClasses .= ' ' . $currentClass;
+					// active menuitem
+					$cssClasses .= ' ' . $this->activeClass;
 				} elseif (in_array($cat->getId(), $this->path)) {
-					// active menuitem in path
-					$cssClasses .= ' ' . $currentClass;
+					// current menuitem
+					$cssClasses .= ' ' . $this->selectedClass;
 				} else {
 					// do nothing
 				}
@@ -242,7 +214,7 @@ class nav42 {
 					$classAttribute = '';
 				}
 
-				if ($hideWebsiteStartArticle && ($cat->getId() == $REX['START_ARTICLE_ID'])) {
+				if ($this->hideWebsiteStartArticle && ($cat->getId() == $REX['START_ARTICLE_ID'])) {
 					// do nothing
 				} else {
 					$depth++;
@@ -250,8 +222,8 @@ class nav42 {
 
 					$return .= '<li' . $idAttribute . $classAttribute . '>';
 
-					if ($linkFromUserFunc != '') {
-						$defaultLink = call_user_func($linkFromUserFunc, $cat, $depth);
+					if ($this->linkFromUserFunc != '') {
+						$defaultLink = call_user_func($this->linkFromUserFunc, $cat, $depth);
 					} else {
 						$defaultLink = '<a href="' . $cat->getUrl() . '">' . htmlspecialchars($cat->getName()) . '</a>';
 					}
@@ -292,7 +264,7 @@ class nav42 {
 									// select li that is current language
 									if ($REX['CUR_CLANG'] == $newClangId) {
 										$return = substr($return, 0, strlen($return) - strlen('<li>'));
-										$return .= '<li class="' . $currentClass . '">';
+										$return .= '<li class="' . $this->selectedClass . '">';
 									}
 
 									$return .= '<a href="' . rex_getUrl($newArticleId, $newClangId) . '">' . htmlspecialchars($cat->getName()) . '</a>';
@@ -309,8 +281,8 @@ class nav42 {
 						}
 					} 
 				
-					if (($this->open || $cat->getId() == $this->current_category_id || in_array($cat->getId(), $this->path)) && ($this->depth > $depth || $this->depth < 0)) {
-						$return .= $this->_getNavigation($cat->getId(), $ignoreOfflines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
+					if (($this->showAll || $cat->getId() == $this->current_category_id || in_array($cat->getId(), $this->path)) && ($this->levelDepth > $depth || $this->levelDepth < 0)) {
+						$return .= $this->_getNavigation($cat->getId());
 					}
 				
 					$depth--;
@@ -327,23 +299,19 @@ class nav42 {
 		return $return;
 	}
 
-	function get($categoryId = 0, $depth = 3, $open = false, $ignoreOfflines = true, $hideWebsiteStartArticle = false, $currentClass = 'selected', $firstUlId = '', $firstUlClass = '', $liIdFromMetaField = '', $liClassFromMetaField = '', $linkFromUserFunc = '') { 
+	protected function get($categoryId = 0) { 
 		if (!$this->_setActivePath()) {
 			return false;
 		}
-
-		$this->depth = $depth;
-		$this->open = $open;
-		$this->ignore_offlines = $ignoreOfflines;
 
 		if (class_exists('rex_com_auth')) {
 			$this->addCallback("nav42::checkPerm");
 		}
 		
-		return $this->_getNavigation($categoryId, $this->ignore_offlines, $hideWebsiteStartArticle, $currentClass, $firstUlId, $firstUlClass, $liIdFromMetaField, $liClassFromMetaField, $linkFromUserFunc);
+		return $this->_getNavigation($categoryId);
 	}
 
-	function _setActivePath() {
+	protected function _setActivePath() {
 		global $REX;
 
 		$article_id = $REX["ARTICLE_ID"];
@@ -365,17 +333,17 @@ class nav42 {
 		return FALSE;
 	}
 
-	function checkPerm($nav, $depth) {
+	protected function checkPerm($nav, $depth) {
 		return rex_com_auth::checkPerm($nav);
 	}
 
-	function addCallback($callback = "", $depth = "") {
+	protected function addCallback($callback = "", $depth = "") {
 		if ($callback != "") {
 			$this->callbacks[] = array("callback" => $callback, "depth" => $depth);
 		}
 	}
 
-	function _checkCallbacks($category, $depth) {
+	protected function _checkCallbacks($category, $depth) {
 		foreach($this->callbacks as $c) {
 			if ($c["depth"] == "" || $c["depth"] == $depth) {
 				$callback = $c['callback'];
@@ -407,6 +375,80 @@ class nav42 {
 		}
 
 		return true;
+	}
+
+	/* ------------------------------------------------------------------------------------------------------ */
+
+	protected function _getLangNavigation() {
+		global $REX;
+
+		// ul id
+		if ($this->langUlId == '') {
+			$ulIdAttribute = '';
+		} else {
+			$ulIdAttribute = ' id="' . $this->langUlId . '"';
+		}
+
+		$out = '<ul' . $ulIdAttribute . '>';
+
+		foreach ($REX['CLANG'] as $clangId => $clangName) {
+			$article = OOArticle::getArticleById($REX['ARTICLE_ID'], $clangId);
+
+			// new article id
+			if (OOArticle::isValid($article) && $article->isOnline()) {
+				$newArticleId = $article->getId();
+				$articleStatus = true;
+			} else {
+				$newArticleId = $REX['START_ARTICLE_ID'];
+				$articleStatus = false;
+			}
+
+			if (!$articleStatus && $this->langHideLiIfOfflineArticle) {
+				// do nothing
+			} else {
+				if (class_exists('seo42')) {
+					$langCode = seo42::getLangCode($clangId);
+					$originalName = seo42::getOriginalLangName($clangId);
+					$langSlug = seo42::getLangSlug($clangId);
+				} else {
+					$langCode = $clangName;
+					$originalName = $clangName;
+					$langSlug = $clangName;
+				}		
+
+				// link text
+				if ($this->langUseLangCodeAsLinkText) {
+					$linkText = $langCode;
+				} else {
+					$linkText = $originalName;
+				}
+
+				if ($this->langUpperCaseLinkText) {
+					$linkText = strtoupper($linkText);
+				}
+
+				// li attribute
+				if ($this->langShowLiIds) {
+					$liIdAttribute = ' id="' . $langSlug . '"';
+				} else {
+					$liIdAttribute = '';
+				}
+
+				// class attribute
+				if ($REX['CUR_CLANG'] == $clangId) {
+					$liClassAttribute = ' class="' . $this->langSelectedClass . '"';
+				} else {
+					$liClassAttribute = '';
+				}
+				
+				// li out
+				$out .= '<li' . $liIdAttribute . $liClassAttribute . '><a href="' . rex_getUrl($newArticleId, $clangId) . '">' . $linkText . '</a></li>';
+			}
+		}
+
+		$out .= '</ul>';
+
+		return $out;
 	}
 }
 
