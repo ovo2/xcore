@@ -69,16 +69,6 @@ class nav42 {
 
 	/* ------------------------------------------------------------------------------------------------------ */
 
-	public static function getCurrentArticleId() {
-		return $this->current_article_id;
-	}
-
-	public static function getCurrentCategoryId() {
-		return $this->current_category_id;
-	}
-
-	/* ------------------------------------------------------------------------------------------------------ */
-
 	public function setLevelDepth($levelDepth) {
 		$this->levelDepth = $levelDepth;
 	}
