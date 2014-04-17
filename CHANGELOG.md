@@ -1,7 +1,7 @@
 SEO42 - Changelog
 =================
 
-### Version 3.3.0 DEV
+### Version 3.3.0 - 17. April 2014
 
 * Fixed #123: SVG Bilder wurden nicht angezeigt bei bestimmten Webserverkonfigurationen (Achtung, `.htaccess` Datei hat sich in dieser Version geändert), thx@meugel
 * Fixed #122: Nur Unterordner-Installs: Call to undefined function trimSubDir() Fehler gefixt, thx@Sysix-Coding
