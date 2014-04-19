@@ -13,6 +13,12 @@ Meine CSS Dateien werden nicht geladen?!
 Stellen Sie sicher, dass der Base-Tag sich an oberster Stelle in Head-Bereich Ihrer Website befindet. Bei REDAXO-Unterordner-Installationen zusätzlich drauf achten, die URLs nicht mit / zu beginnen bzw. einfach Codebeispiele 2 nutzen!
 
 
+Warum funktioniert nach Installation von SEO42 die Suche mittels RexSearch nicht mehr?
+--------------------------------------------------------------------------------------
+
+Vermutlich weil hartcodierte `index.php?article_id=x` Urls verwendet werden. Bitte Urls nur noch per `rex_getUrl()` ausgeben lassen. Beispiel: `<form action="<?php echo rex_getUrl(42);?>" method="post">`
+
+
 Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterordner installiert habe?
 ---------------------------------------------------------------------------------------
 
@@ -21,7 +27,7 @@ Desweiteren sollten Ihre URLs nicht mit / beginnen. Nutzen Sie die PHP-Methoden 
 
 
 Warum soll man mit seo42::getCSSFile() und seo42::getJSFile() seine CSS/JS Dateien ausgeben lassen?
-------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
 
 Weil in der .htaccess Datei standardmäßig ein Caching von 4 Wochen eingestellt ist und durch das Anhängen eines Versionsstrings an die Dateien dann diese automatisch neu heruntergeladen werden bei einem Update.
 
