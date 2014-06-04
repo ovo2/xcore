@@ -669,8 +669,8 @@ class seo42_utils {
 		
 		foreach($regexArray as $link) {
 			
-			// all * replace with "(\w+)" regex
-			$preg = str_replace('\*', '(\w+)', preg_quote($link));
+			// all * replace with "([\w.-]+)" regex
+			$preg = str_replace('\*', '([\w.-]+)', preg_quote($link));
 			
 			if(preg_match('#'.$preg.'#', $requestUri, $matches)) {
 				
