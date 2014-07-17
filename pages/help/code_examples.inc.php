@@ -93,7 +93,7 @@ echo $nav->getLangNavigation();
 
 $codeExample7 = '<?php
 // --> ' . strtoupper($I18N->msg('seo42_help_codeexamples_ex7_comment1')) . '
-class seo42_ex extends seo42
+class seo42_ex extends seo42 {
 	public static function getTitle($websiteName = "") {
 		if ($websiteName == "") {
 			// use default website name if user did not set different one

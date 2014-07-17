@@ -107,7 +107,7 @@ Zum Beispiel über die Methode `seo42::getImageManagerFile()`. Siehe dazu Codebe
 Ich möchte nicht-www Anfragen auf die www Variante umleiten lassen. Soll doch SEO-technisch gut sein, oder?
 -----------------------------------------------------------------------------------------------------------
 
-Yup. In der .htaccess die entsprechenden Zeilen un-auskommentieren bzw. über Setup Schritt 1 automatisch machen lassen.
+Yup. In der .htaccess die entsprechenden Zeilen un-auskommentieren bzw. über Setup Schritt 2 automatisch machen lassen.
 
 
 Meine URLs haben sich geändert. Wie kann ich saubere Weiterleitungen hinbekommen?

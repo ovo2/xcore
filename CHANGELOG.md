@@ -3,8 +3,9 @@ SEO42 - Changelog
 
 ### Version 3.3.1 - 17. Juli 2014
 
-* Hinweis: Die mitgelieferte .htaccess Datei hat sich in dieser Version geändert. Bei Update bitte beachten.
-* Fixed: #129: JS und CSS Dateien wurden bei der Verwendung von seo42::getJSFile()/seo42::getCSSFile() nicht geladen, wenn ein Versionsstring bereits im Dateinamen enthalten war
+* Hinweis: Die mitgelieferte `.htaccess` Datei hat sich in dieser Version geändert. Bei Update bitte beachten.
+* Fixed: #129: JS und CSS Dateien wurden bei der Verwendung von `seo42::getJSFile()`/`seo42::getCSSFile()` nicht geladen, wenn ein Versionsstring bereits im Dateinamen enthalten war
+* Verbessert: In Codebeispiel 7 fehlende Klammer ergänzt
 
 ### Version 3.3.0 - 17. April 2014
 
