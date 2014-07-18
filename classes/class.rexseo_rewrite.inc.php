@@ -305,9 +305,7 @@ class RexseoRewrite
   {
     global $REXSEO_IDS;
 
-	$base = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://';
-	$base .= $_SERVER['HTTP_HOST'] . '/'; // 42 | . $REX['ADDON']['seo42']['settings']['install_subdir'];
-
+	$base = seo42::getServerUrl();
     $status   = isset($redirect['status']) ? $redirect['status'] : 200;
     $location = $base.$REXSEO_IDS[$redirect['id']][$redirect['clang']]['url'];
 

@@ -1,6 +1,10 @@
 SEO42 - Changelog
 =================
 
+### Version 3.3.2 DEV
+
+* Fixed #135: [Nur Unterordner-Installs] Auto Redirects führt ein redirect ohne Unterordner aus, thx@execrable für den Bugreport
+
 ### Version 3.3.1 - 17. Juli 2014
 
 * Hinweis: Die mitgelieferte `.htaccess` Datei hat sich in dieser Version geändert. Bei Update bitte beachten.
