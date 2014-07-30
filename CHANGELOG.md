@@ -1,10 +1,10 @@
 SEO42 - Changelog
 =================
 
-### Version 3.3.2 DEV
+### Version 3.3.2 - 30. Juli 2014
 
 * Fixed #135: [Nur Unterordner-Installs] Auto Redirects führt ein redirect ohne Unterordner aus, thx@execrable für den Bugreport
-* Neu `nav42`: `setHideIds(array(1,2,3))` hinzugefügt. Damit lassen sich beliebige Menüeinträge verstecken. In der Sitemap.xml bleiben diese aber erhalten wenn online.
+* Neu `nav42`: `setHideIds(array(1,2,3))` hinzugefügt. Damit lassen sich beliebige Menüeinträge (Artikel-IDs) verstecken. In der Sitemap.xml bleiben diese aber erhalten wenn online.
 
 ### Version 3.3.1 - 17. Juli 2014
 
