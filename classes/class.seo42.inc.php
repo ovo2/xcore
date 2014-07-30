@@ -329,6 +329,18 @@ class seo42 {
 		return self::getUrlStart() . self::downloadDir . '/' . $file;
 	}
 
+	public static function getAllowedDownloadFileTypes() {
+		global $REX;
+
+		return $REX['ADDON']['seo42']['settings']['force_download_for_filetypes'];
+	}
+
+	public static function isAllowedDownloadFileType($fileType) {
+		global $REX;
+
+		return in_array($fileType, $REX['ADDON']['seo42']['settings']['force_download_for_filetypes']);
+	}
+
 	public static function getHtml($indent = "\t") {
 		$out = '';
 
