@@ -307,6 +307,7 @@ class seo42 {
 	}
 
 	public static function getImageManagerUrl($imageFile, $imageType) {
+		// seo42::getImageManagerUrl() is deprecated! use seo42::getImageManagerFile().
 		return self::getImageManagerFile($imageFile, $imageType);
 	}
 
