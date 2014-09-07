@@ -1,6 +1,11 @@
 SEO42 - Changelog
 =================
 
+### Next Version
+
+* Neu: FAQ Eintrag: Warum bekomme ich einen Fehler bei der Einbindung von Bootstrap? (inkl. Hinweise in die Readme aufgenommen), thx@webghostx
+* Neu: FAQ Eintrag: Wie installiere ich ein (SEO42) Plugin?, thx@webghostx
+
 ### Version 3.3.2 - 30. Juli 2014
 
 * Fixed #135: [Nur Unterordner-Installs] Auto Redirects führt ein redirect ohne Unterordner aus, thx@execrable für den Bugreport

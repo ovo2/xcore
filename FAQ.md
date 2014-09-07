@@ -26,6 +26,12 @@ Im SEO42 Setup (URL der Website) und in der .htaccess den Unterordner mit angebe
 Desweiteren sollten Ihre URLs nicht mit / beginnen. Nutzen Sie die PHP-Methoden aus Codebeispiel 1!
 
 
+Warum bekomme ich einen Fehler bei der Einbindung von Bootstrap?
+----------------------------------------------------------------
+
+Bootstrap nutzt einige speziellen Funktionen die lesphp von leafo nicht versteht. Um das Problem zu Lösen muss das Plugin [lessdotphp](https://github.com/DanielWeitenauer/lessdotphp) installiert werden
+
+
 Warum soll man mit seo42::getCSSFile() und seo42::getJSFile() seine CSS/JS Dateien ausgeben lassen?
 ---------------------------------------------------------------------------------------------------
 
@@ -120,6 +126,12 @@ Habe gehört das es SEO-technisch gut wäre wenn Bilder ein Alt-Attribut zugewie
 -------------------------------------------------------------------------------------------
 
 Dafür kann man die Methode `seo42::getImageTag()` nutzen, die dann einen kompletten Image-Tag inkl. Alt-Attribut ausspuckt (siehe Codebeispiel 3). Und im Medienpool wird dieser dann im Titel-Feld gesetzt.
+
+
+Wie installiere ich ein (SEO42) Plugin?
+---------------------------------------
+
+Das Plugin nach `/seo42/plugins/` kopieren. Danach im Redaxo-Backend zum Menu-Punkt "AddOn", dort nach dem Plugin suchen und installieren sowie aktivieren.
 
 
 Mir gefällt SEO42 nicht! Wie bekomme ich das AddOn wieder entfernt?

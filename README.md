@@ -63,8 +63,8 @@ Features Navigationsausgabe (Klasse nav42)
 Verfügbare Plugins für SEO42
 ----------------------------
 
-* [url_control](https://github.com/tbaddade/redaxo_plugin_url_control) - Plugin zur URL-Generierung für eigene AddOns.
-* [lessdotphp](https://github.com/DanielWeitenauer/lessdotphp) - Less.php für SEO42.
+* [url_control](https://github.com/tbaddade/redaxo_plugin_url_control) - Plugin zur URL-Generierung für eigene AddOns
+* [lessdotphp](https://github.com/DanielWeitenauer/lessdotphp) - Less.php für SEO42 (Empfohlen für Bootstrap)
 
 Hinweis zur mitgelieferten .htaccess Datei
 ------------------------------------------
@@ -128,6 +128,7 @@ Hinweise Resourceneinbindung
 * Aktuell wird keine JavaScript Kompression (minify) durchgeführt. Es sollten immer die `min.js` Dateien angegeben werden. 
 * Variable von PHP nach LESS: <http://leafo.net/lessphp/docs/#setting_variables_from_php>
 * Warum `foo.1234567.css`? <http://stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring>
+* Bei Verwendung von Bootstrap muss man das Plugin [lessdotphp](https://github.com/DanielWeitenauer/lessdotphp) installieren, sofern man Bootstrap neu Compilieren will
 
 Links
 -----
