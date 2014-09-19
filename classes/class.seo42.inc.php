@@ -307,7 +307,6 @@ class seo42 {
 	}
 
 	public static function getImageManagerUrl($imageFile, $imageType) {
-		// seo42::getImageManagerUrl() is deprecated! use seo42::getImageManagerFile().
 		return self::getImageManagerFile($imageFile, $imageType);
 	}
 
@@ -797,6 +796,10 @@ class seo42 {
 
 	public static function getImageFile($file) {
 		return res42::getImageFile($file);
+	}
+
+	public static function getResourceFile($fileWithPath) {
+		return res42::getResourceFile($fileWithPath);
 	}
 
 	public static function getCombinedCSSFile($combinedFile, $sourceFiles) {

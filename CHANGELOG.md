@@ -3,6 +3,7 @@ SEO42 - Changelog
 
 ### Next Version
 
+* Neu: `seo42::getResourceFile($fileWithPath)` implementiert. Damit kann man nun unabhängig von den gesetzten Resource-Verzeichnissen JS/CSS Dateien inkl. Versionsstring ausgeben lassen. Pfad muss hier mit angegeben werden! Codebeispiele wurden ergänzt.
 * Neu: FAQ Eintrag: Warum bekomme ich einen Fehler bei der Einbindung von Bootstrap? (inkl. Hinweise in die Readme aufgenommen), thx@webghostx
 * Neu: FAQ Eintrag: Wie installiere ich ein (SEO42) Plugin?, thx@webghostx
 

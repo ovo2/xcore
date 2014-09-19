@@ -50,6 +50,17 @@ class res42 {
 		return self::$imagesDir . $file;
 	}
 
+	public static function getResourceFile($fileWithPath) {
+		$info = pathinfo($fileWithPath);
+		$dir = $info['dirname'] . '/';
+
+		if ($info['extension'] == 'css' || $info['extension'] == 'js') {
+			return self::prepareDir($info['dirname']) . self::getFileWithVersionParam($info['basename'], $info['dirname']);
+		} else {
+			return self::prepareDir($info['dirname']) . $info['basename'];
+		}
+	}
+
 	public static function getCombinedCSSFile($combinedFile, $sourceFiles) {
 		self::combineFiles($combinedFile, self::$cssPath, $sourceFiles);
 
@@ -100,7 +111,8 @@ class res42 {
 
 	protected static function getFileWithVersionParam($file, $path) {
 		$file = ltrim($file, "./");
-		$mtime = @filemtime($path . $file); 
+		$path = trim($path, "./");
+		$mtime = @filemtime($path . '/' . $file); 
 
 		if ($mtime != false) {
 			return preg_replace('{\\.([^./]+)$}', ".$mtime.\$1", $file);
