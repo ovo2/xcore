@@ -816,7 +816,17 @@ class seo42_utils {
 	public static function addRemoveRootCatUrlType($params) {
 		global $REX;
 
-		$execludeIds = $REX['ADDON']['seo42']['settings']['remove_root_cats_for_categories'];
+		self::addUrlType(6, $REX['ADDON']['seo42']['settings']['remove_root_cats_for_categories'], $params);
+	}
+
+	public static function addNoUrlType($params) {
+		global $REX;
+
+		self::addUrlType(5, $REX['ADDON']['seo42']['settings']['no_url_for_categories'], $params);
+	}
+
+	public static function addUrlType($typeId, $execludeIds, $params) {
+		global $REX;
 
 		if (isset($params['category_id'])) {
 			// category with startarticle created
@@ -832,7 +842,7 @@ class seo42_utils {
 			$sql->setTable($REX['TABLE_PREFIX'] . "article");
 			$sql->setWhere("id=" . $params['id']);
 
-			$sql->setValue('seo_custom_url', '{"url_type":6,"url_clone":false}');
+			$sql->setValue('seo_custom_url', '{"url_type":' . $typeId . ',"url_clone":false}');
 			$sql->setValue('updatedate',  time());
 
 			// do db update
