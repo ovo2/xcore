@@ -8,6 +8,7 @@ SEO42 - Changelog
 * Neu: Option `robots_txt_auto_disallow` hinzugefügt um den automatischen robots.txt Eintrag abschalten zu können. Url landet bei einem Disallow meist im Index, während wenn man nur den noindex Metatag setzt dass nicht passieren sollte.
 * Neu: FAQ Eintrag: Warum bekomme ich einen Fehler bei der Einbindung von Bootstrap? (inkl. Hinweise in die Readme aufgenommen), thx@webghostx
 * Neu: FAQ Eintrag: Wie installiere ich ein (SEO42) Plugin?, thx@webghostx
+* Verbessert #132: Anpassungen vorgenommen für url_control Plugin
 
 ### Version 3.3.2 - 30. Juli 2014
 

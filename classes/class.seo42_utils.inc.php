@@ -55,10 +55,11 @@ class seo42_utils {
 
 			// init rewriter 
 			$rewriter = new RexseoRewrite();
-			$rewriter->resolve();
 
 			// rewrite ep 
 			rex_register_extension('URL_REWRITE', array ($rewriter, 'rewrite'));
+
+			$rewriter->resolve();
 		}
 
 		// init current article
