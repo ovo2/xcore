@@ -22,8 +22,10 @@ class rexseo_robots
   public function setContent($content)
   {
 	global $REX;
+
 	$out = '';
 	$langs = array_keys($REX['CLANG']); // get clang ids
+	$defaultRobotsTxt = 'User-agent: *' . "\r\n" . 'Disallow:';
 
 	foreach ($langs as $lang) {
 		$query = "SELECT id FROM ".$REX['TABLE_PREFIX']."article WHERE seo_noindex = '1' AND status = 1 AND clang = " . $lang; 
@@ -40,8 +42,8 @@ class rexseo_robots
 		$out = "User-agent: *" . "\r\n" . $out . "\r\n";
 	}
 
-	if ($out == '' && $content == '') {
-		$this->robots_txt = 'User-agent: *' . "\r\n" . 'Disallow:';
+	if (!$REX['ADDON']['seo42']['settings']['robots_txt_auto_disallow'] || ($out == '' && $content == '')) {
+		$this->robots_txt = $defaultRobotsTxt;
 	} else {
 	    $this->robots_txt = $out . $content;
 	}

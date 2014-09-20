@@ -70,6 +70,9 @@ $REX['ADDON']['seo42']['settings']['ignore_root_cats'] = false;
 // character to replace whitespaces with in urls
 $REX['ADDON']['seo42']['settings']['url_whitespace_replace']  = '-';
 
+// if noindex flag is set for article you can choose also to automatically add a disallow statement to robots.txt. this is not recommended because then the url will normally end up in the index. noindex meta tag only is the better choice
+$REX['ADDON']['seo42']['settings']['robots_txt_auto_disallow'] = false;
+
 // default follow flag for robots meta tag, can be empty
 $REX['ADDON']['seo42']['settings']['robots_follow_flag'] = 'follow';
 
