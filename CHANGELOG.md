@@ -4,6 +4,7 @@ SEO42 - Changelog
 ### Version 3.4.0 DEV
 
 * Neu: `seo42::getResourceFile($fileWithPath)` implementiert. Damit kann man nun unabhängig von den gesetzten Resource-Verzeichnissen JS/CSS Dateien inkl. Versionsstring ausgeben lassen. Pfad muss hier mit angegeben werden! Codebeispiele wurden ergänzt.
+* Neu: 'seo42::getMediaDirName()' gibt wie `seo42::getMediaDir()` den Mediaordner (R4 = files) zurück, allerdings ohne vorangestellten Slash etc.
 * Neu: Option `no_url_for_categories` hinzugefügt (Prinzip wie 'remove_root_cats_for_categories'). Damit kann man ein Array von Kategorie ID's angeben, deren Artikel automatisch den URL-Typ "Keine URL" zugewiesen bekommen. Nützlich für Container Kategorien deren Artikel on/offline schaltbar sein sollen aber deren URLs nicht in der Sitemap erscheinen dürfen.
 * Neu: Option `robots_txt_auto_disallow` hinzugefügt um den automatischen robots.txt Eintrag abschalten zu können. Url landet bei einem Disallow meist im Index, während wenn man nur den noindex Metatag setzt dass nicht passieren sollte.
 * Neu: FAQ Eintrag: Warum bekomme ich einen Fehler bei der Einbindung von Bootstrap? (inkl. Hinweise in die Readme aufgenommen), thx@webghostx

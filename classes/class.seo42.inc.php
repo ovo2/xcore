@@ -490,6 +490,10 @@ class seo42 {
 		}
 	}
 
+	public static function getMediaDirName() {
+		return self::$mediaDir;
+	}
+
 	public static function getMediaFile($file) {
 		return self::getMediaDir() . $file;
 	}
