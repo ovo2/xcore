@@ -10,6 +10,7 @@ SEO42 - Changelog
 * Neu: Option `no_url_for_categories` hinzugefügt (Prinzip wie `remove_root_cats_for_categories`). Damit kann man ein Array von Kategorie ID's angeben, deren Artikel automatisch den URL-Typ "Keine URL" zugewiesen bekommen. Nützlich für Container Kategorien deren Artikel on/offline schaltbar sein sollen aber deren URLs nicht in der Sitemap erscheinen dürfen.
 * Neu: Option `robots_txt_auto_disallow` hinzugefügt um den automatischen robots.txt Eintrag abschalten zu können. Url landet bei einem Disallow meist im Index, während wenn man nur den noindex Metatag setzt dass nicht passieren sollte.
 * Neu: Option `redirects_allow_regex` hinzugefügt. Redirects unterstützen jetzt die RegEx Notation wenn Option aktiv, thx@Sysix-Coding
+* Neu: Option `auto_redirects` in den Einstellungen um dass Handling von `ArticleName.0-42.html` aus R3 ergänzt, thx@Tobi
 * Neu: FAQ Eintrag: Warum bekomme ich einen Fehler bei der Einbindung von Bootstrap? (inkl. Hinweise in die Readme aufgenommen), thx@webghostx
 * Neu: FAQ Eintrag: Wie installiere ich ein (SEO42) Plugin?, thx@webghostx
 * Verbessert: `.htaccess` Audiotypen hinzugefügt
