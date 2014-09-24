@@ -307,6 +307,7 @@ class seo42 {
 	}
 
 	public static function getImageManagerUrl($imageFile, $imageType) {
+		// seo42::getImageManagerUrl() is deprecated! use seo42::getImageManagerFile().
 		return self::getImageManagerFile($imageFile, $imageType);
 	}
 
@@ -522,6 +523,10 @@ class seo42 {
 		}
 	}
 
+	public static function getUrl($id = '', $clang = '', $params = '', $divider = '&amp;') {
+		return rex_getUrl($id, $clang, $params, $divider);
+	}
+
 	public static function getFullUrl($id = '', $clang = '', $params = '', $divider = '&amp;') {
 		$url = self::getTrimmedUrl($id, $clang, $params, $divider);
 		
@@ -577,6 +582,7 @@ class seo42 {
 		$out .= '<table>';
 
 		$out .= self::getDebugInfoRow('rex_getUrl', array(self::$curArticle->getId()));
+		$out .= self::getDebugInfoRow('seo42::getUrl', array(self::$curArticle->getId()));
 		$out .= self::getDebugInfoRow('seo42::getTrimmedUrl', array(self::$curArticle->getId()));
 		$out .= self::getDebugInfoRow('seo42::getFullUrl', array(self::$curArticle->getId()));
 		$out .= self::getDebugInfoRow('seo42::getTitle');

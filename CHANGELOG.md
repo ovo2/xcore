@@ -6,12 +6,14 @@ SEO42 - Changelog
 * Neu: `seo42::getResourceFile($fileWithPath)` implementiert. Damit kann man nun unabhängig von den gesetzten Resource-Verzeichnissen JS/CSS Dateien inkl. Versionsstring ausgeben lassen. Pfad muss hier mit angegeben werden! Codebeispiele wurden ergänzt.
 * Neu: `seo42::getMediaDirName()` gibt den reinen Medienordner (R4 = files) zurück. Im Gegensatz dazu gibt `seo42::getMediaDir()` den Medienordner inkl. Slash vor und danach aus.
 * Neu: `seo42::getAbsoluteMediaFile($file)` hinzugefügt. Gibt den absoluten Pfad der Mediendatei aus. Nützlich für `filesize()` etc.
+* Neu: `seo42::getUrl()` hinzugefügt als Wrapper zu `rex_getUrl()`
 * Neu: Option `no_url_for_categories` hinzugefügt (Prinzip wie `remove_root_cats_for_categories`). Damit kann man ein Array von Kategorie ID's angeben, deren Artikel automatisch den URL-Typ "Keine URL" zugewiesen bekommen. Nützlich für Container Kategorien deren Artikel on/offline schaltbar sein sollen aber deren URLs nicht in der Sitemap erscheinen dürfen.
 * Neu: Option `robots_txt_auto_disallow` hinzugefügt um den automatischen robots.txt Eintrag abschalten zu können. Url landet bei einem Disallow meist im Index, während wenn man nur den noindex Metatag setzt dass nicht passieren sollte.
 * Neu: FAQ Eintrag: Warum bekomme ich einen Fehler bei der Einbindung von Bootstrap? (inkl. Hinweise in die Readme aufgenommen), thx@webghostx
 * Neu: FAQ Eintrag: Wie installiere ich ein (SEO42) Plugin?, thx@webghostx
 * Verbessert: `.htaccess` Audiotypen hinzugefügt
 * Verbessert #132: Anpassungen vorgenommen für url_control Plugin
+* Deprecated: `seo42::getImageManagerUrl()` wurde zur Entfernung vorgemerkt. Bitte nur noch `seo42::getImageManagerFile()` benutzen.
 
 ### Version 3.3.2 - 30. Juli 2014
 
