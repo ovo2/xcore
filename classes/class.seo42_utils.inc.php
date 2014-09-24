@@ -624,13 +624,28 @@ class seo42_utils {
 				} else {
 					$requestUri = $_SERVER['REQUEST_URI'];
 				}
+				
+				$redirect = false;
+				
+				if(array_key_exists($requestUri, $REX['SEO42_REDIRECTS'])) {
+					
+					$redirectUri = $REX['SEO42_REDIRECTS'][$requestUri];
+					$redirect = true;
+					
+				} elseif($REX['ADDON']['seo42']['settings']['redirects_allow_regex']) {
+					
+					if($redirectUri = self::regexRedirect($requestUri)) {			
+						$redirect = true;
+					}
+					
+				}
 
-				if (array_key_exists($requestUri, $REX['SEO42_REDIRECTS'])) {
+				if ($redirect) {
 					if (seo42::isSubDirInstall()) {
 						// add subdir to target url
-						$targetUrl = '/' . seo42::getServerSubDir() . $REX['SEO42_REDIRECTS'][$requestUri];
+						$targetUrl = '/' . seo42::getServerSubDir() . $redirectUri;
 					} else {
-						$targetUrl = $REX['SEO42_REDIRECTS'][$requestUri];
+						$targetUrl = $redirectUri;
 					}
 
 					if (strpos($targetUrl, 'http') === false) {
@@ -646,6 +661,36 @@ class seo42_utils {
 				}
 			}
 		}
+	}
+	
+	public static function regexRedirect($requestUri) {
+		global $REX;
+
+		$regexArray = preg_grep('/\*/', array_keys($REX['SEO42_REDIRECTS']));
+		
+		foreach($regexArray as $link) {
+			
+			// all * replace with "([\w.-]+)" regex
+			$preg = str_replace('\*', '([\w.-]+)', preg_quote($link));
+			
+			if(preg_match('#'.$preg.'#', $requestUri, $matches)) {
+				
+				$url = $REX['SEO42_REDIRECTS'][$link];
+				
+				// check if any variables in the Target-Url
+				if(preg_match_all('/\{(\d)\}/', $url, $match)) {			
+					
+					foreach($match[0] as $key=>$value) {						
+						$url = str_replace($value, $matches[$match[1][$key]], $url);						
+					}
+					
+				}
+				
+				return $url;
+				
+			}
+		}
+		
 	}
 
 	public static function trimSubDir($string) {
