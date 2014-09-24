@@ -498,6 +498,12 @@ class seo42 {
 		return self::getMediaDir() . $file;
 	}
 
+	public static function getAbsoluteMediaFile($file) {
+		global $REX;
+		
+		return $REX['FRONTEND_PATH'] . '/' . seo42::getMediaDirName() . '/' . $file;
+	}
+
 	public static function getMediaUrl($file) {
 		return self::getServerUrl() . self::$mediaDir . '/' . $file;
 	}
