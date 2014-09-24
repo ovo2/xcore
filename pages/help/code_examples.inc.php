@@ -41,6 +41,11 @@ $codeExample4 = '<!DOCTYPE html>
 
 $codeExample5 = '<title><?php echo seo42::getTitle(rex_string_table::getString("website_name")); ?></title>';
 
+$codeExample5a = '<?php
+echo seo42::getUrlString("The Hitchhiker\'s Guide to the Galaxy!");
+// --> the-hitchhikers-guide-to-the-galaxy
+?>';
+
 $codeExample6 = '<?php 
 // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment1') . '
 $nav = new nav42();
@@ -157,15 +162,19 @@ $codeExample8 = '<?php echo seo42::getDebugInfo(); ?>';
 <p><?php echo $I18N->msg('seo42_help_codeexamples_description5'); ?></p>
 <?php rex_highlight_string($codeExample5); ?>
 
-<h2>6) <?php echo $I18N->msg('seo42_help_codeexamples_title6'); ?></h2>
+<h2>6) <?php echo $I18N->msg('seo42_help_codeexamples_title5a'); ?></h2>
+<p><?php echo $I18N->msg('seo42_help_codeexamples_description5a'); ?></p>
+<?php rex_highlight_string($codeExample5a); ?>
+
+<h2>7) <?php echo $I18N->msg('seo42_help_codeexamples_title6'); ?></h2>
 <p><?php echo $I18N->msg('seo42_help_codeexamples_description6'); ?></p>
 <?php rex_highlight_string($codeExample6); ?>
 
-<h2>7) <?php echo $I18N->msg('seo42_help_codeexamples_title7'); ?></h2>
+<h2>8) <?php echo $I18N->msg('seo42_help_codeexamples_title7'); ?></h2>
 <p><?php echo $I18N->msg('seo42_help_codeexamples_description7'); ?></p>
 <?php rex_highlight_string($codeExample7); ?>
 
-<h2>8) <?php echo $I18N->msg('seo42_help_codeexamples_title8'); ?></h2>
+<h2>9) <?php echo $I18N->msg('seo42_help_codeexamples_title8'); ?></h2>
 <p><?php echo $I18N->msg('seo42_help_codeexamples_description8'); ?></p>
 <?php rex_highlight_string($codeExample8); ?>
 

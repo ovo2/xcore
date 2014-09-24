@@ -14,6 +14,7 @@ SEO42 - Changelog
 * Neu: FAQ Eintrag: Warum bekomme ich einen Fehler bei der Einbindung von Bootstrap? (inkl. Hinweise in die Readme aufgenommen), thx@webghostx
 * Neu: FAQ Eintrag: Wie installiere ich ein (SEO42) Plugin?, thx@webghostx
 * Verbessert: `.htaccess` Audiotypen hinzugefügt
+* Verbessert: `seo42::getUrlString()` Codebeispiel hinzugefügt
 * Verbessert #132: Anpassungen vorgenommen für url_control Plugin
 * Deprecated: `seo42::getImageManagerUrl()` wurde zur Entfernung vorgemerkt. Bitte nur noch `seo42::getImageManagerFile()` benutzen.
 

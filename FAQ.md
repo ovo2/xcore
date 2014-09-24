@@ -77,7 +77,7 @@ Der zuständige Parameter heißt `title_delimiter` und ist in der `settings.adva
 Wie kann ich den Titel sonst noch beinflussen?
 ----------------------------------------------
 
-Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix" (wenn aktiv) wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode `seo42::getTitle()` überschreiben, siehe dazu Codebeispiel 7.
+Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix" (wenn aktiv) wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode `seo42::getTitle()` überschreiben, siehe dazu Codebeispiel 8.
 
 
 Warum wird der Titel für die Startseite "andersherum" ausgegeben wie für die Folgeseiten?
