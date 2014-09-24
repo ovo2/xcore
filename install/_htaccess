@@ -12,6 +12,8 @@ AddDefaultCharset utf-8
 	AddType video/ogg .ogv
 	AddType video/mp4 .mp4
 	AddType video/webm .webm
+	AddType audio/mpeg .mp3
+	AddType audio/ogg .ogg
 	AddType application/javascript .js
 	AddType application/json .json
 	AddType application/xml .xml
