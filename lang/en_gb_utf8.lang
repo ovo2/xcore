@@ -80,8 +80,9 @@ seo42_settings_images_dir = Images directory
 seo42_settings_send_header_x_ua_compatible = Send X-UA-Compatible header
 seo42_settings_auto_redirects = Auto Redirects
 seo42_settings_auto_redirects_0 = Off
-seo42_settings_auto_redirects_1 = Auto Redirect "index.php?article_id=1" Urls
-seo42_settings_auto_redirects_2 = Auto Redirect "1-0-ArticleName.html" Urls
+seo42_settings_auto_redirects_1 = Auto Redirect "index.php?article_id=42" Urls
+seo42_settings_auto_redirects_2 = Auto Redirect "42-0-ArticleName.html" Urls
+seo42_settings_auto_redirects_3 = Auto Redirect "ArticleName.0-42.html" Urls
 
 seo42_setup_file_backup_failed = The file "{0}" could not be saved!
 seo42_setup_file_copy_successful = Copying of file successful.

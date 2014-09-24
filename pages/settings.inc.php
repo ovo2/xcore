@@ -144,6 +144,7 @@ $auto_redirects_select->setName('auto_redirects');
 $auto_redirects_select->addOption($I18N->msg('seo42_settings_auto_redirects_0'), '0');
 $auto_redirects_select->addOption($I18N->msg('seo42_settings_auto_redirects_1'), '1');
 $auto_redirects_select->addOption($I18N->msg('seo42_settings_auto_redirects_2'), '2');
+$auto_redirects_select->addOption($I18N->msg('seo42_settings_auto_redirects_3'), '3');
 $auto_redirects_select->setSelected($REX['ADDON'][$myself]['settings']['auto_redirects']);
 
 ?>

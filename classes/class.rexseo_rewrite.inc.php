@@ -103,9 +103,13 @@ class RexseoRewrite
 		}
 
 		// auto redirects 
-		if ($REX['ADDON']['seo42']['settings']['auto_redirects'] == 2) {
+		if ($REX['ADDON']['seo42']['settings']['auto_redirects'] == 2 || $REX['ADDON']['seo42']['settings']['auto_redirects'] == 3) {
 			// smart redirects for old fashioned standard redaxo rewrite methods
-			preg_match('/\/(.*(\.))?((?P<id>[0-9]+)\-(?P<clang>[0-9]+))((\-|\.).*)/', $_SERVER['REQUEST_URI'], $url_params);
+			if ($REX['ADDON']['seo42']['settings']['auto_redirects'] == 2) {
+				preg_match('/\/(.*(\.))?((?P<id>[0-9]+)\-(?P<clang>[0-9]+))((\-|\.).*)/', $_SERVER['REQUEST_URI'], $url_params);
+			} else {
+				preg_match('/\/(.*(\.))?((?P<clang>[0-9]+)\-(?P<id>[0-9]+))((\-|\.).*)/', $_SERVER['REQUEST_URI'], $url_params);
+			}
 
 			if ($url_params !== false && isset($url_params['id']) && isset($url_params['clang'])) {
 				$article = OOArticle::getArticleById($url_params['id'], $url_params['clang']);
