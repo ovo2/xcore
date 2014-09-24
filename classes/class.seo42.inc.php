@@ -608,8 +608,10 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::has404ResponseFlag');
 		$out .= self::getDebugInfoRow('seo42::getQueryString');
 		$out .= self::getDebugInfoRow('seo42::getMediaDir');
+		$out .= self::getDebugInfoRow('seo42::getMediaDirName');
 		$out .= self::getDebugInfoRow('seo42::getMediaFile', array('image.png'));
 		$out .= self::getDebugInfoRow('seo42::getMediaUrl', array('image.png'));
+		$out .= self::getDebugInfoRow('seo42::getAbsoluteMediaFile', array('image.png'));
 		$out .= self::getDebugInfoRow('seo42::getMediaAddonDir');
 		$out .= self::getDebugInfoRow('seo42::getLangTags');
 		$out .= self::getDebugInfoRow('seo42::getHtml');
