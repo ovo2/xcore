@@ -1,7 +1,7 @@
 SEO42 - Changelog
 =================
 
-### Version 3.4.0 DEV
+### Version 3.4.0 - 24. September 2014
 
 * Neu: `seo42::getResourceFile($fileWithPath)` implementiert. Damit kann man nun unabhängig von den gesetzten Resource-Verzeichnissen JS/CSS Dateien inkl. Versionsstring ausgeben lassen. Pfad muss hier mit angegeben werden! Codebeispiele wurden ergänzt.
 * Neu: `seo42::getMediaDirName()` gibt den reinen Medienordner (R4 = files) zurück. Im Gegensatz dazu gibt `seo42::getMediaDir()` den Medienordner inkl. Slash vor und danach aus.
