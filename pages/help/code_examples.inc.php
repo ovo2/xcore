@@ -64,6 +64,7 @@ $nav->setLevelDepth(2); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_
 $nav->setShowAll(true); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_3') . '
 $nav->setIgnoreOfflines(true); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_4') . '
 $nav->setHideWebsiteStartArticle(false); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_5') . '
+$nav->setHideIds(array(42, 108)); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_5a') . '
 $nav->setSelectedClass("current"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_6') . '
 $nav->setActiveClass("current active"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_6a') . '
 $nav->setUlId("nav", 0); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_7') . '

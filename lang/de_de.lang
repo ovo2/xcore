@@ -214,6 +214,7 @@ seo42_help_codeexamples_ex6_comment5_2 = 2 level tief
 seo42_help_codeexamples_ex6_comment5_3 = alle unterebenen werden angezeigt
 seo42_help_codeexamples_ex6_comment5_4 = offline artikel werden nicht angezeigt
 seo42_help_codeexamples_ex6_comment5_5 = startartikel der website wird nicht ausgeblendet
+seo42_help_codeexamples_ex6_comment5_5a = kategorien mit ids 42 und 108 werden ausgeblendet
 seo42_help_codeexamples_ex6_comment5_6 = li klasse für selektierte menüpunkte: "current"
 seo42_help_codeexamples_ex6_comment5_6a = li klasse für gerade aktiven menüpunkt: "current active"
 seo42_help_codeexamples_ex6_comment5_7 = erste ul id: "nav"

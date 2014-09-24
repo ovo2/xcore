@@ -44,12 +44,6 @@ Wie muss die URL der Website im Setup genau angegeben werden?
 Die URL der Website muss mit `http://` beginnen und mit einem `/` enden.
 
 
-Kann ich den Base-Tag auch weglassen?
--------------------------------------
-
-Ja, wenn Sie alle Ihre URLs anhand der PHP-Methoden aus Codebeispiel 1 generieren lassen. Dies gilt insbesondere für REDAXO-Unterordner-Installationen.
-
-
 Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?
 ---------------------------------------------------------------------
 
@@ -119,7 +113,7 @@ Yup. In der .htaccess die entsprechenden Zeilen un-auskommentieren bzw. über Se
 Meine URLs haben sich geändert. Wie kann ich saubere Weiterleitungen hinbekommen?
 ---------------------------------------------------------------------------------
 
-Dies ist mittlerweile über die Redirects-Seite möglich. Bitte Urls immer mit einem Splash beginnen, die Ziel Url kann aber auch mit http:// beginnen.
+Dies ist mittlerweile über die Redirects-Seite möglich. Bitte Urls immer mit einem Slash beginnen, die Ziel Url kann aber auch mit http:// beginnen.
 
 
 Habe gehört das es SEO-technisch gut wäre wenn Bilder ein Alt-Attribut zugewiesen bekommen?

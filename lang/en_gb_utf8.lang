@@ -214,6 +214,7 @@ seo42_help_codeexamples_ex6_comment5_2 = 2 levels in depth
 seo42_help_codeexamples_ex6_comment5_3 = all sublevels are visible
 seo42_help_codeexamples_ex6_comment5_4 = offline articles are hidden
 seo42_help_codeexamples_ex6_comment5_5 = the website's start article der website is visible
+seo42_help_codeexamples_ex6_comment5_5a = categories with ids 42 and 108 will be not visible
 seo42_help_codeexamples_ex6_comment5_6 = class for li of selected menu entry: "current"
 seo42_help_codeexamples_ex6_comment5_6a = li class für current active menu entry: "current active"
 seo42_help_codeexamples_ex6_comment5_7 = id of outer ul: "nav"
