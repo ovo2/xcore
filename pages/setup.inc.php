@@ -16,7 +16,7 @@ $codeExample = '<!DOCTYPE html>
 </head>
 
 <body>
-<!-- Add your site content here -->
+
 <script type="text/javascript" src="<?php echo seo42::getJSFile("jquery.min.js"); ?>"></script>
 <script type="text/javascript" src="<?php echo seo42::getJSFile("init.js"); ?>"></script>
 </body>

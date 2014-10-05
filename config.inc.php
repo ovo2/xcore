@@ -77,15 +77,17 @@ $REX['ADDON']['seo42']['settings']['global_special_chars'] = '';
 $REX['ADDON']['seo42']['settings']['global_special_chars_rewrite'] = '';
 $REX['ADDON']['seo42']['settings']['urlencode_lowercase'] = false;
 $REX['ADDON']['seo42']['settings']['urlencode_whitespace_replace']  = '_';
+$REX['ADDON']['seo42']['settings']['robots'] = '';
+$REX['ADDON']['seo42']['settings']['pagerank_checker_unlock'] = false;
+$REX['ADDON']['seo42']['settings']['cached_redirects'] = array();
+$REX['ADDON']['seo42']['settings']['redirects'] = true;
+
 $REX['ADDON']['seo42']['settings']['lang'][0]['url'] = ''; // not used
 $REX['ADDON']['seo42']['settings']['lang'][0]['code'] = 'de';
 $REX['ADDON']['seo42']['settings']['lang'][0]['original_name'] = 'deutsch';
 $REX['ADDON']['seo42']['settings']['lang'][0]['rewrite_mode'] = SEO42_REWRITEMODE_SPECIAL_CHARS;
 $REX['ADDON']['seo42']['settings']['lang'][0]['special_chars'] = 'Ä|ä|Ö|ö|Ü|ü|ß|&';
 $REX['ADDON']['seo42']['settings']['lang'][0]['special_chars_rewrite'] = 'Ae|ae|Oe|oe|Ue|ue|ss|und';
-$REX['ADDON']['seo42']['settings']['robots'] = '';
-$REX['ADDON']['seo42']['settings']['pagerank_checker_unlock'] = false;
-$REX['ADDON']['seo42']['settings']['cached_redirects'] = array();
 
 // overwrite default settings with user settings
 if (file_exists(SEO42_SETTINGS_FILE)) {
@@ -163,9 +165,14 @@ if ($REX['REDAXO']) {
 		// add subpages
 		$REX['ADDON']['seo42']['SUBPAGES'] = array(
 			array('', $I18N->msg('seo42_start')),
-			array('tools', $I18N->msg('seo42_tools')),
-			array('redirects', $I18N->msg('seo42_redirects'))
+			array('tools', $I18N->msg('seo42_tools'))
 		);
+
+		if ($REX['ADDON']['seo42']['settings']['redirects']) {
+			array_push($REX['ADDON']['seo42']['SUBPAGES'], 
+				array('redirects', $I18N->msg('seo42_redirects'))
+			);
+		}
 
 		// plugins (will be autoloaded incl. language file)
 		$plugins = OOPlugin::getAvailablePlugins('seo42');

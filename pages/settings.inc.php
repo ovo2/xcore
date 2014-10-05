@@ -23,7 +23,7 @@ if ($func == 'update') {
 	if ($msg == '') {
 		$REX['ADDON']['seo42']['settings'] = array_merge((array) $REX['ADDON']['seo42']['settings'], (array) $settings);
 
-		$content = "<?php\n\n";
+		$content = "<?php\n";
 
 		foreach ((array) $REX['ADDON']['seo42']['settings'] as $key => $value) {
 			if (!in_array($key, $REX['SEO42_WEBSITE_SETTINGS'])) {

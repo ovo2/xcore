@@ -50,9 +50,6 @@ if (count($error) == 0) {
 	// delete cache
 	rex_generateAll();
 
-	// restore redirects file if necessary
-	seo42_utils::checkForRedirectsFile();
-
 	// done!
 	$REX['ADDON']['install'][$myself] = 1;
 } else {
