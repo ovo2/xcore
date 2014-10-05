@@ -648,15 +648,6 @@ class seo42 {
 			$out .= 'File not found: ' . $pathlistRoot;
 		}
 
-		// redirects
-		$redirectsRoot = seo42_utils::getRedirectsFile();
-
-		if (file_exists($redirectsRoot)) {
-			$out .= '<h2>Redirects</h2>';
-			$content = rex_get_file_contents($redirectsRoot);
-			$out .= rex_highlight_string($content, true);
-		}
-
 		// .htaccess
 		$out .= '<h2>.htaccess</h2>';
 

@@ -18,9 +18,13 @@ $REX['EXTPERM'][] = 'seo42[url_default]';
 
 // consts
 define('SEO42_SETTINGS_FILE', $REX['INCLUDE_PATH'] . '/data/addons/seo42/settings.inc.php');
+define('SEO42_DATA_DIR', $REX['INCLUDE_PATH'] . '/data/addons/seo42/');
 define('SEO42_BACKUP_DIR', $REX['INCLUDE_PATH'] . '/data/addons/seo42/backup/');
-define('SEO42_GENERATED_DIR', $REX['INCLUDE_PATH'] . '/data/addons/seo42/generated/');
 define('SEO42_PATHLIST', $REX['GENERATED_PATH'] . '/files/seo42_pathlist.php');
+
+// vars
+$REX['SEO42_WEBSITE_SETTINGS'] = array('robots', 'cached_redirects', 'pagerank_checker_unlock');
+$REX['SEO42_ARRAY_SETTINGS'] = array('remove_root_cats_for_categories', 'no_url_for_categories', 'ignore_query_params', 'force_download_for_filetypes');
 
 // includes
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.res42.inc.php');
@@ -69,7 +73,6 @@ $REX['ADDON']['seo42']['settings']['force_download_for_filetypes'] = ''; // you 
 $REX['ADDON']['seo42']['settings']['fix_image_manager_cache_control_header'] = false; // cache control header for image manager files is normally set through .htaccess, but on some servers (1und1) it won't be set correctly so we do it manually
 $REX['ADDON']['seo42']['settings']['drop_dbfields_on_uninstall'] = true; // if false seo database fields won't be dropped if seo42 will be uninstalled. perhaps someday interesting when updateing seo42...
 $REX['ADDON']['seo42']['settings']['debug_article_id']  = $REX['START_ARTICLE_ID']; // used to control which article should be used for debug output in help section, default is $REX['START_ARTICLE_ID']
-$REX['ADDON']['seo42']['settings']['allowed_domains'] = ''; // allowed domains for page rank checker
 $REX['ADDON']['seo42']['settings']['global_special_chars'] = '';
 $REX['ADDON']['seo42']['settings']['global_special_chars_rewrite'] = '';
 $REX['ADDON']['seo42']['settings']['urlencode_lowercase'] = false;
@@ -80,21 +83,28 @@ $REX['ADDON']['seo42']['settings']['lang'][0]['original_name'] = 'deutsch';
 $REX['ADDON']['seo42']['settings']['lang'][0]['rewrite_mode'] = SEO42_REWRITEMODE_SPECIAL_CHARS;
 $REX['ADDON']['seo42']['settings']['lang'][0]['special_chars'] = 'Ä|ä|Ö|ö|Ü|ü|ß|&';
 $REX['ADDON']['seo42']['settings']['lang'][0]['special_chars_rewrite'] = 'Ae|ae|Oe|oe|Ue|ue|ss|und';
-$REX['ADDON']['seo42']['settings']['allowed_domains'] = '';
+$REX['ADDON']['seo42']['settings']['robots'] = '';
+$REX['ADDON']['seo42']['settings']['pagerank_checker_unlock'] = false;
+$REX['ADDON']['seo42']['settings']['cached_redirects'] = array();
 
 // overwrite default settings with user settings
 if (file_exists(SEO42_SETTINGS_FILE)) {
 	require_once(SEO42_SETTINGS_FILE);
 }
 
-// convert to real arrays
-$REX['ADDON']['seo42']['settings']['remove_root_cats_for_categories'] = explode(',', $REX['ADDON']['seo42']['settings']['remove_root_cats_for_categories']);
-$REX['ADDON']['seo42']['settings']['no_url_for_categories'] = explode(',', $REX['ADDON']['seo42']['settings']['no_url_for_categories']);
-$REX['ADDON']['seo42']['settings']['ignore_query_params'] = explode(',', $REX['ADDON']['seo42']['settings']['ignore_query_params']);
-$REX['ADDON']['seo42']['settings']['force_download_for_filetypes'] = explode(',', $REX['ADDON']['seo42']['settings']['force_download_for_filetypes']);
+// special website settings
+define('SEO42_WEBSITE_SETTINGS_FILE', seo42_utils::getWebsiteSettingsFile());
 
-// robots settings (can be different when website manager is installed)
-seo42_utils::includeRobotsSettings();
+if (file_exists(SEO42_WEBSITE_SETTINGS_FILE)) {
+	require_once(SEO42_WEBSITE_SETTINGS_FILE);
+}
+
+// convert to real arrays
+foreach ($REX['SEO42_ARRAY_SETTINGS'] as $key => $value) {
+	if ($REX['ADDON']['seo42']['settings'][$value] != '') {
+		$REX['ADDON']['seo42']['settings'][$value] = explode(',', $REX['ADDON']['seo42']['settings'][$value]);
+	}
+}
 
 // fix for iis webserver: set request uri manually if not available
 seo42_utils::requestUriFix();

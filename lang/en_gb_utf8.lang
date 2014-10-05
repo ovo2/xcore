@@ -259,8 +259,6 @@ seo42_redirect_none = <none>
 seo42_redirect_help = Redirects Plugin for SEO42
 seo42_redirect_sourceurl_alert = The old URL must start with "/".
 seo42_redirect_targeturl_alert = The new URL must start with "http://" or "/".
-seo42_redirect_restore_cachefile_ok = Missing cache file "{0}" was restored.
-seo42_redirect_restore_cachefile_fail = Cache file "{0}" could not be saved!
 seo42_redirect_test = test
 
 seo42_install_make_dir = The folder "/redaxo/include/{0}/" can not be created, check for write access or create the folder manually!

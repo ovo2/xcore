@@ -3,14 +3,14 @@ SEO42 - Changelog
 
 ### Version 4.0.0 DEV
 
-* Hinweis: Die mitgelieferte `.htaccess` Datei hat sich in dieser Version geändert. Bei Update bitte beachten.
+* Update-Hinweis: Die mitgelieferte `.htaccess` Datei hat sich geändert. Bitte Setup Schritt 2 wiederholen.
 * Neu: Bei einem Update werden die Einstellungen nicht mehr überschrieben, da diese nun im Data-Ordner von REDAXO abgelegt werden
-* Neu: Alle Dateien wie Redirects und `.htaccess` Backups werden im Data-Ordner von REDAXO abgelegt
+* Neu: Alle Dateien wie Redirects-Cachedatei und `.htaccess` Backups werden im Data-Ordner von REDAXO abgelegt
 * Neu: Alle Einstellungen in die Oberfläche gepackt
-* Verbessert: Das SEO42 Boilerplate in Setup Schritt 3 wurde entschlackt.
+* Verbessert: Das SEO42 Boilerplate in Setup Schritt 3 wurde entschlackt
 * API Umstellung: EP's haben jetzt alle den Prefix `SEO42_`
 * API Umstellung: Pathlist Arrays lauten jetzt `$SEO42_URLS` und `$SEO42_IDS`
-* API Umstellung: Alle Funktionen aus der Rewriter-Klasse `SEO42Rewrite` sowie die PHP-Dateien selbst beginnen jetzt mit Prefix `seo42_`
+* API Umstellung: Alle Funktionen aus der Rewriter-Klasse umbenannten `SEO42Rewrite` sowie die PHP-Dateien selbst beginnen jetzt mit Prefix `seo42_`
 
 ### Version 3.4.0 - 24. September 2014
 

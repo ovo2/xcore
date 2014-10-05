@@ -26,16 +26,18 @@ if ($func == 'update') {
 		$content = "<?php\n\n";
 
 		foreach ((array) $REX['ADDON']['seo42']['settings'] as $key => $value) {
-			if ($key != 'lang') {
-				if (is_array($value)) {
-					$value = implode(',', $value);
-				}
+			if (!in_array($key, $REX['SEO42_WEBSITE_SETTINGS'])) {
+				if ($key != 'lang') {
+					if (is_array($value)) {
+						$value = implode(',', $value);
+					}
 
-				$content .= "\$REX['ADDON']['seo42']['settings']['$key'] = '" . $value . "';\n";
-			} else {
-				// TODO: clang index dynamisch
-				foreach ((array) $REX['ADDON']['seo42']['settings']['lang'][0] as $key => $value) {
-					$content .= "\$REX['ADDON']['seo42']['settings']['lang'][0]['$key'] = '" . $value . "';\n";
+					$content .= "\$REX['ADDON']['seo42']['settings']['$key'] = '" . $value . "';\n";
+				} else {
+					// TODO: clang index dynamisch
+					foreach ((array) $REX['ADDON']['seo42']['settings']['lang'][0] as $key => $value) {
+						$content .= "\$REX['ADDON']['seo42']['settings']['lang'][0]['$key'] = '" . $value . "';\n";
+					}
 				}
 			}
 		}
@@ -47,9 +49,7 @@ if ($func == 'update') {
 		}
 	}
 
-	// update robots file
-	seo42_utils::updateRobotsFile($settings['robots']);
-	seo42_utils::includeRobotsSettings();
+	seo42_utils::updateWebsiteSettingsFile($settings);
 
 	seo42_generate_pathlist('');
 }
