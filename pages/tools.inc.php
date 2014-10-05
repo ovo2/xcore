@@ -1,4 +1,5 @@
 <?php
+// TODO
 $config_file = $REX['INCLUDE_PATH'] . '/addons/seo42/settings.domains.inc.php';
 
 require($config_file);

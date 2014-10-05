@@ -1,7 +1,5 @@
 <?php
 
-define('REXSEO_PATHLIST', $REX['GENERATED_PATH'] . '/files/rexseo_pathlist.php'); // uses new rex var introduced in REDAXO 4.5
-
 class RexseoRewrite
 {
   

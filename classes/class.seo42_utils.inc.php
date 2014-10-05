@@ -812,17 +812,18 @@ class seo42_utils {
 		return -1;
 	}
 
-	public static function getLangSettingsFile() {
+	// TODO 
+	/*public static function getLangSettingsFile() {
 		global $REX, $I18N;
 
 		if (!isset($REX['ADDON']['seo42']['settings']['lang']) || seo42::getLangCount() != count($REX['ADDON']['seo42']['settings']['lang'])) {
-			$icon = '<span title="' . $I18N->msg('seo42_setup_langfile_error') . '" class="seo42-tooltip status exclamation">&nbsp;</span>';
+			$icon = '<span title="' . $I18N->msg('seo42_setup_langcount_error') . '" class="seo42-tooltip status exclamation">&nbsp;</span>';
 		} else {
 			$icon = '';
 		}
 
 		return '<span class="rex-form-read" id="lang_hint"><code>/seo42/settings.lang.inc.php</code></span>' . $icon;
-	}
+	}*/
 
 	public static function emptySEODataAfterClangAdded($params) {
 		global $REX;
@@ -894,5 +895,29 @@ class seo42_utils {
 			// do db update
 			$sql->update();
 		}
+	}
+
+	public static function checkDir($dir) {
+		global $REX, $I18N;
+
+		$path = $dir;
+
+		if (!@is_dir($path)) {
+			@mkdir($path, $REX['DIRPERM'], true);
+		}
+
+		if (!@is_dir($path)) {
+			return $I18N->msg('seo42_install_make_dir', $dir);
+		} elseif (!@is_writable($path . '/.')) {
+			return $I18N->msg('seo42_install_perm_dir', $dir);
+		}
+		
+		return '';
+	}
+
+	public static function checkDirForFile($fileWithPath) {
+		$pathInfo = pathinfo($fileWithPath);
+
+		return self::checkDir($pathInfo['dirname']);
 	}
 }

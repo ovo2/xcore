@@ -29,7 +29,6 @@ Features
 * Automatische sowie individuelle Canonical URLs
 * Nicht-WWW zu WWW Umleitung (und umgekehrt). Lässt sich auch über das Setup aktivieren.
 * Smart Redirects: Automatische Umleitungen für falsch eingegebene Urls z.B. von Url-Endung `/` nach `.html`
-* Weitere Einstellungen (vorerst) in der `settings.advanced.inc.php` und `settings.lang.inc.php`
 * Force Download Funktionalität inkl. suchmaschinenfreundlicher URLs und Canonical Header (z.B. für PDF Downloads)
 * Keine Abhängigkeiten zu weiteren Addons wie Textile oder XForm
 * Kompatibel zum [Website Manager](https://github.com/RexDude/website_manager) sowie [Community](https://github.com/dergel/redaxo4_community) AddOn
@@ -86,25 +85,6 @@ Entwicklung von Plugins für SEO42
 * Plugins sollten die SEO42 API verwendet. Aktuell gibt ein Übersicht der PHP-Methoden unter Hilfe > Debug.
 * Möchte man z.B. Titel, Beschreibung, usw. für einen bestimmten Artikel bekommen, so ruft man vor dem jeweiligen Methoden-Aufruf die Methode `seo42::initArticle($articleId)` auf. Zum Schluss sollte man wieder den aktuellen Artikel zurücksetzen mit `seo42::initArticle($REX['ARTICLE_ID'])` (aber eigentlich nur fürs Frontend nötig).
 
-Update von SEO42 2.x auf SEO42 2.6 und höher
---------------------------------------------
-
-* AddOn-Ordner der alten Version löschen (vorher sichern!).
-* AddOn-Ordner der neuen Version einspielen.
-* SEO42 über die AddOn-Verwaltung von REDAXO reinstallieren.
-* AddOn-Einstellungen von Hand nachprüfen und ggf. korrigieren (`settings.lang.inc.php` hat ein neues Format!).
-* Ggf. Cache löschen.
-
-Update von REXSEO42 1.1/1.2 auf SEO42 2.x
------------------------------------------
-
-* In der `settings.advanced.inc.php` von REXSEO42 die Option `drop_dbfields_on_uninstall` auf `false` setzen.
-* REXSEO42 deinstallieren und AddOn-Ordner löschen.
-* SEO42 installieren.
-* In allen Templates den Klassennamen von `rexseo42` nach `seo42` umbenennen.
-* AddOn-Einstellungen von Hand nachprüfen und ggf. korrigieren (ab 2.6.0 hat die `settings.lang.inc.php` ein neues Format!).
-* Ggf. Cache löschen.
-
 Hinweise
 --------
 
@@ -116,9 +96,8 @@ Hinweise
 * Der Fehlerartikel unter REDAXO > System sollte nicht gleich dem Startartikel der Website entsprechen. Es sollte aufjedenfall ein eigener Fehlerartikel angelegt werden.
 * Implementiert man sein eigenes Titel-Schema, ist es vielleicht sinnvoll die Optionen `title_preview` und `no_prefix_checkbox` auf `false` zu setzen.
 * `$REX["MOD_REWRITE"]` braucht nicht mehr auf `true` gesetzt werden (z.B. über die System-Page von REDAXO). Wenn SEO42 aktiv, wird es automatisch gesetzt.
-* Eine hilfreiche Sprach-Sonderzeichen-Tabelle für die Ermittlung der Sonderzeichen-Umschreibungen für die `settings.lang.inc.php` findet man hier: <http://unicode.e-workers.de/>
+* Eine hilfreiche Sprach-Sonderzeichen-Tabelle für die Ermittlung der Sonderzeichen-Umschreibungen für die Spracheinstellungen findet man hier: <http://unicode.e-workers.de/>
 * Vorläufige Sammlung der Lang-Presets hier: <https://github.com/RexDude/seo42/issues/61>
-* Momentan muss man noch von Hand benötigte Einstellungen in den Dateien `settings.advanced.inc.php` und `settings.lang.inc.php` vornehmen. Danach sollte der Cache gelöscht werden.
 
 
 Hinweise Resourceneinbindung

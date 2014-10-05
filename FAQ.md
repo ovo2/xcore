@@ -71,7 +71,7 @@ Cache löschen, AddOn reinstallieren und evtl. das Setup neu durchlaufen sind hi
 Ich möchte das Trennzeichen im Titel umstellen. Wo kann ich das machen?
 -----------------------------------------------------------------------
 
-Der zuständige Parameter heißt `title_delimiter` und ist in der `settings.advanced.inc.php` einstellbar.
+Unter Einstellungen wird dies vorgenommen. Option heißt `title_delimiter`.
 
 
 Wie kann ich den Titel sonst noch beinflussen?
@@ -90,12 +90,6 @@ Wo bekomme ich eigentlich eine gute verständliche Einführung in das Thema "Suc
 -----------------------------------------------------------------------------------------------------
 
 Zum Beispiel hier: <http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf>
-
-
-Wo sind eigentlich all die restlichen Einstellungen von RexSEO abgeblieben?
----------------------------------------------------------------------------
-
-Vorläufig wurden diese hier ausgelagert: `settings.advanced.inc.php`
 
 
 Wie kann ich suchmaschinenfreundliche URLs für Bilder erhalten, die über den Image Manager generiert wurden?

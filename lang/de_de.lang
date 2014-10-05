@@ -14,10 +14,9 @@ seo42_install_concurrent = Bitte folgendes AddOn zuvor deinstallieren:
 seo42_uninstall_dbfields_not_removed = Die Datenbankfelder wurden NICHT entfernt.
 seo42_config_ok = Einstellungen wurde aktualisiert.
 seo42_config_error = Einstellungen konnte nicht gespeichert werden!
-seo42_config_file_no_perms = Konfigurationsdatei "{0}" ist nicht beschreibbar!
 seo42_dbfields_readded = {0}: Fehlende DB-Felder des AddOns wurden hinzugefügt.
 seo42_dbfields_readded_check_setup = {0}: Bitte überprüfen Sie ob Schritt 3 des SEO42-Setup erneut durchgeführt werden muss.
-seo42_check_lang_msg = {0}: Bitte überprüfen und aktualisieren Sie ggf. auch die "settings.lang.inc.php" Datei.
+seo42_check_lang_msg = {0}: Bitte überprüfen und aktualisieren Sie auch die Spracheinstellungen.
 
 seo42_tooltip_headline = Hinweis
 seo42_tooltip_close = Schließen
@@ -69,8 +68,6 @@ seo42_settings_robots_additional = robots.txt Einträge
 seo42_settings_robots_link = Link zur robots.txt
 seo42_settings_sitemap_link = Link zur sitemap.xml
 seo42_settings_submit = Einstellungen speichern
-seo42_settings_lang_hint = Spracheinstellungen
-seo42_settings_advanced_hint = Weitere Einstellungen
 seo42_settings_show_all = Alle Einstellungen
 seo42_settings_show = anzeigen
 seo42_settings_hide = verstecken
@@ -118,7 +115,7 @@ seo42_setup_rewritebase = RewriteBase automatisch anpassen: <i>RewriteBase /{0}<
 seo42_setup_subdir_hint = (Bitte Unterordner mit angeben)
 seo42_setup_rewritebase_alert = Bitte folgende Anpassung in der .htaccess Datei vornehmen:
 seo42_setup_directory_listing_alert = Falls Ihr Webserver ein 500 Error melden sollte, dann bitte die Zeile <strong>Options -Indexes</strong> in der .htaccess Datei wieder entfernen.
-seo42_setup_langfile_error = Die Anzahl definierter Sprachen in der <strong>settings.lang.inc.php</strong> Datei stimmt momentan mit der Anzahl der REDAXO-Sprachen nicht überein!
+seo42_setup_langcount_error = Die Anzahl definierter Sprachen in den Spracheinstellungen stimmt momentan mit der Anzahl der REDAXO-Sprachen nicht überein!
 
 seo42_seopage_updated = SEO-Daten wurden aktualisiert.
 seo42_seopage_main_section = Allgemein
@@ -196,7 +193,7 @@ seo42_help_codeexamples_description2 = Sie können u.a. CSS/JS Dateien kombiniere
 seo42_help_codeexamples_title3 = Suchmaschinenfreundliche Image Manager Urls
 seo42_help_codeexamples_description3 = Über diese Methoden lassen sich suchmaschinenfreundliche Urls für Image Manager Bilder erzeugen: 
 seo42_help_codeexamples_title4 = Lang Code ausgeben
-seo42_help_codeexamples_description4 = Geben Sie so den aktuellen Lang Code aus der momentan in der <code>settings.lang.inc.php</code> definiert werden kann:
+seo42_help_codeexamples_description4 = Geben Sie so den aktuellen Lang Code aus der in den Spracheinstellungen definiert werden kann:
 seo42_help_codeexamples_title5 = Sprachunabhängiger Website-Name im Titel
 seo42_help_codeexamples_description5 = Einen sprachunabhängigen Titel erhält man so (Website-Name wird hier aus dem String Table AddOn geholt):
 seo42_help_codeexamples_title5a = Einen String für die Verwendung in einer URL formatiert ausgeben
@@ -264,5 +261,6 @@ seo42_redirect_restore_cachefile_ok = Fehlende Cache-Datei "{0}" wurde wiederher
 seo42_redirect_restore_cachefile_fail = Cache-Datei "{0}" konnte nicht gespeichert werden!
 seo42_redirect_test = testen
 
-seo42_warning_old_settings_file = SEO42: Ihre "settings.lang.inc.php" scheint noch das alte Format zu haben. Bitte korrigieren!
+seo42_install_make_dir = Der Ordner "/redaxo/include/{0}/" kann nicht angelegt werden, überprüfen Sie die Schreibrechte oder legen Sie den Ordner von Hand an und geben ihm Schreibrechte.
+seo42_install_perm_dir = Der Ordner "/redaxo/include/{0}/" benötigt Schreibrechte!
 
