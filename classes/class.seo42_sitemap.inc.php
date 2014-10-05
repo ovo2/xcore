@@ -1,6 +1,6 @@
 <?php
 
-class rexseo_sitemap
+class seo42_sitemap
 {
   private $mode;
   private $db_articles;
@@ -13,13 +13,13 @@ class rexseo_sitemap
    */
   private function get_db_articles()
   {
-    global $REX, $REXSEO_URLS;
+    global $REX, $SEO42_URLS;
 
 	if ($REX['ADDON']['seo42']['settings']['rewriter']) {
-		// use rexseo pathlist
-		array_multisort($REXSEO_URLS);
+		// use seo42 pathlist
+		array_multisort($SEO42_URLS);
 
-		foreach ($REXSEO_URLS as $url)  {
+		foreach ($SEO42_URLS as $url)  {
 			$article = OOArticle::getArticleById($url['id'], $url['clang']);
 
 			if (OOArticle::isValid($article)) {
@@ -45,11 +45,11 @@ class rexseo_sitemap
 		// at the moment: no sitemap urls if rewriter is turned off
 	}
 
-    // EXTENSIONPOINT REXSEO_SITEMAP_ARRAY_CREATED
-    $db_articles = rex_register_extension_point('REXSEO_SITEMAP_ARRAY_CREATED',$db_articles);
+    // EXTENSIONPOINT SEO42_SITEMAP_ARRAY_CREATED
+    $db_articles = rex_register_extension_point('SEO42_SITEMAP_ARRAY_CREATED',$db_articles);
 
-    // EXTENSIONPOINT REXSEO_SITEMAP_ARRAY_FINAL (READ ONLY)
-    rex_register_extension_point('REXSEO_SITEMAP_ARRAY_FINAL',$db_articles);
+    // EXTENSIONPOINT SEO42_SITEMAP_ARRAY_FINAL (READ ONLY)
+    rex_register_extension_point('SEO42_SITEMAP_ARRAY_FINAL',$db_articles);
 
     $this->db_articles = $db_articles;
   }
@@ -143,7 +143,7 @@ class rexseo_sitemap
   /**
    * CONSTRUCTOR
    */
-  public function rexseo_sitemap()
+  public function seo42_sitemap()
   {
     global $REX;
 
@@ -206,8 +206,8 @@ class rexseo_sitemap
 			}
 		}
 
-        // EXTENSIONPOINT REXSEO_SITEMAP_INJECT
-        $inject = rex_register_extension_point('REXSEO_SITEMAP_INJECT');
+        // EXTENSIONPOINT SEO42_SITEMAP_INJECT
+        $inject = rex_register_extension_point('SEO42_SITEMAP_INJECT');
         if(is_array($inject) && count($inject)>0)
         {
           foreach($inject as $key => $art)

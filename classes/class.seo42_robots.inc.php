@@ -1,5 +1,5 @@
 <?php
-class rexseo_robots
+class seo42_robots
 {
   private $robots_txt;
 
@@ -7,7 +7,7 @@ class rexseo_robots
   /**
    * CONSTRUCTOR
    */
-  public function rexseo_robots()
+  public function seo42_robots()
   {
     global $REX;
     $this->robots_txt = '';

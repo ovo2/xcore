@@ -1,10 +1,10 @@
 <?php
 
-class RexseoRewrite
+class SEO42Rewrite
 {
   
   /* constructor */
-  function RexseoRewrite() {
+  function SEO42Rewrite() {
     // do nothing
   }
 
@@ -16,13 +16,13 @@ class RexseoRewrite
   */
   function resolve()
   {
-    global $REX, $REXSEO_URLS, $REXSEO_IDS;
+    global $REX, $SEO42_URLS, $SEO42_IDS;
 
-    if(!file_exists(REXSEO_PATHLIST)) {
-      rexseo_generate_pathlist(array());
+    if(!file_exists(SEO42_PATHLIST)) {
+      seo42_generate_pathlist(array());
     } 
 
-    require_once(REXSEO_PATHLIST);
+    require_once(SEO42_PATHLIST);
 
     if(!$REX['REDAXO'])
     {
@@ -91,9 +91,9 @@ class RexseoRewrite
 		if ($REX['ADDON']['seo42']['settings']['smart_redirects']) {
 			$requestUriWithCorrectUrlEnding = trim($_SERVER['REQUEST_URI'], '/') . $REX['ADDON']['seo42']['settings']['url_ending'];
 				 
-			if (isset($REXSEO_URLS[$requestUriWithCorrectUrlEnding])) {
-				$redirect = array('id' => $REXSEO_URLS[$requestUriWithCorrectUrlEnding]['id'],
-	                              'clang' => $REXSEO_URLS[$requestUriWithCorrectUrlEnding]['clang'],
+			if (isset($SEO42_URLS[$requestUriWithCorrectUrlEnding])) {
+				$redirect = array('id' => $SEO42_URLS[$requestUriWithCorrectUrlEnding]['id'],
+	                              'clang' => $SEO42_URLS[$requestUriWithCorrectUrlEnding]['clang'],
 	                              'status' => 301);
 
 				return self::redirect($redirect);
@@ -143,7 +143,7 @@ class RexseoRewrite
 		}
 
       // GET ID FROM EXTENSION POINT
-      $ep = rex_register_extension_point('REXSEO_ARTICLE_ID_NOT_FOUND', '');
+      $ep = rex_register_extension_point('SEO42_ARTICLE_ID_NOT_FOUND', '');
       if(isset($ep['article_id']) && $ep['article_id'] > 0)
       {
         if(isset($ep['clang']) && $ep['clang'] > -1)
@@ -168,11 +168,11 @@ class RexseoRewrite
   */
   function resolve_from_pathlist($path)
   {
-    global $REXSEO_URLS;
+    global $SEO42_URLS;
 
-    if(isset($REXSEO_URLS[$path]))
+    if(isset($SEO42_URLS[$path]))
     {
-      $status = isset($REXSEO_URLS[$path]['status']) ? $REXSEO_URLS[$path]['status'] : 200;
+      $status = isset($SEO42_URLS[$path]['status']) ? $SEO42_URLS[$path]['status'] : 200;
 
       switch($status)
       {
@@ -180,15 +180,15 @@ class RexseoRewrite
         case 302:
         case 303:
         case 307:
-          $redirect = array('id'    => $REXSEO_URLS[$path]['id'],
-                            'clang' => $REXSEO_URLS[$path]['clang'],
+          $redirect = array('id'    => $SEO42_URLS[$path]['id'],
+                            'clang' => $SEO42_URLS[$path]['clang'],
                             'status'=> $status);
           self::redirect($redirect);
           return true;
         default:
-          if(isset($REXSEO_URLS[$path]['params']))
-            self::populateGlobals($REXSEO_URLS[$path]['params'],false);
-          self::setArticleId($REXSEO_URLS[$path]['id'],$REXSEO_URLS[$path]['clang']);
+          if(isset($SEO42_URLS[$path]['params']))
+            self::populateGlobals($SEO42_URLS[$path]['params'],false);
+          self::setArticleId($SEO42_URLS[$path]['id'],$SEO42_URLS[$path]['clang']);
           return true;
       }
     }
@@ -211,14 +211,14 @@ class RexseoRewrite
     }
 
 
-    // EP "REXSEO_PRE_REWRITE"
-    $url = rex_register_extension_point('REXSEO_PRE_REWRITE', false, $params);
+    // EP "SEO42_PRE_REWRITE"
+    $url = rex_register_extension_point('SEO42_PRE_REWRITE', false, $params);
     if($url !== false)
     {
       return $url;
     }
 
-    global $REX, $REXSEO_IDS;
+    global $REX, $SEO42_IDS;
 
     $id             = $params['id'];
     $name           = $params['name'];
@@ -231,9 +231,9 @@ class RexseoRewrite
 
     // GET URL FROM PATHLIST AND APPEND PARAMS
 
-    if(isset($REXSEO_IDS[$id]) && isset($REXSEO_IDS[$id][$clang]))
+    if(isset($SEO42_IDS[$id]) && isset($SEO42_IDS[$id][$clang]))
     {
-      $base_url = $REXSEO_IDS[$id][$clang]['url'];
+      $base_url = $SEO42_IDS[$id][$clang]['url'];
       $url      = $base_url.$urlparams;
       $notfound = false;
     }
@@ -243,12 +243,12 @@ class RexseoRewrite
       $url = '';
 	  $base_url = '';
 
-	  if (!empty($REXSEO_IDS)) {
-          if (!isset($REXSEO_IDS[$notfound_id][$clang]['url'])) {
+	  if (!empty($SEO42_IDS)) {
+          if (!isset($SEO42_IDS[$notfound_id][$clang]['url'])) {
             $clang = $REX['START_CLANG_ID'];
           }
 
-	      $url = $base_url = $REXSEO_IDS[$notfound_id][$clang]['url'];
+	      $url = $base_url = $SEO42_IDS[$notfound_id][$clang]['url'];
 	  }
 
       $notfound = true;
@@ -280,7 +280,7 @@ class RexseoRewrite
 		$url = $trimmedUrl;
 	}
 
-    // EP "REXSEO_POST_REWRITE"
+    // EP "SEO42_POST_REWRITE"
     $ep_params = array('article_id'     => $id,
                        'clang'          => $clang,
                        'notfound'       => $notfound,
@@ -290,7 +290,7 @@ class RexseoRewrite
                        'params'         => $params['params'],
                        'divider'        => $params['divider']
                        );
-    $url = rex_register_extension_point('REXSEO_POST_REWRITE', $url, $ep_params);
+    $url = rex_register_extension_point('SEO42_POST_REWRITE', $url, $ep_params);
 
     return $url;
   }
@@ -305,11 +305,11 @@ class RexseoRewrite
   */
   protected function redirect($redirect)
   {
-    global $REXSEO_IDS;
+    global $SEO42_IDS;
 
 	$base = seo42::getServerUrl();
     $status   = isset($redirect['status']) ? $redirect['status'] : 200;
-    $location = $base.$REXSEO_IDS[$redirect['id']][$redirect['clang']]['url'];
+    $location = $base.$SEO42_IDS[$redirect['id']][$redirect['clang']]['url'];
 
     while(ob_get_level()){
       ob_end_clean();
@@ -411,23 +411,23 @@ class RexseoRewrite
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
-* REXSEO_UNSET_PATHITEM()
+* SEO42_UNSET_PATHITEM()
 *
 * delete single article from path-arrays
 */
-function rexseo_unset_pathitem($id=false)
+function seo42_unset_pathitem($id=false)
 {
-  global $REXSEO_IDS, $REXSEO_URLS;
+  global $SEO42_IDS, $SEO42_URLS;
 
   if($id)
   {
-    unset($REXSEO_IDS[$id]);
+    unset($SEO42_IDS[$id]);
 
-    foreach($REXSEO_URLS as $k => $v)
+    foreach($SEO42_URLS as $k => $v)
     {
       if($v['id']==$id)
       {
-        unset($REXSEO_URLS[$k]);
+        unset($SEO42_URLS[$k]);
         break;
       }
     }
@@ -436,15 +436,15 @@ function rexseo_unset_pathitem($id=false)
 
 
 /**
-* REXSEO_GENERATE_PATHLIST()
+* seo42_generate_pathlist()
 *
 * generiert die Pathlist, abhängig von Aktion
 * @author markus.staab[at]redaxo[dot]de Markus Staab
 * @package redaxo4.2
 */
-function rexseo_generate_pathlist($params)
+function seo42_generate_pathlist($params)
 {
-  global $REX, $REXSEO_IDS, $REXSEO_URLS;
+  global $REX, $SEO42_IDS, $SEO42_URLS;
 
   // temporary community install workaround
   if (!isset($REX['ADDON']['seo42'])) {
@@ -452,17 +452,17 @@ function rexseo_generate_pathlist($params)
   }
 
   // include pathlist file
-  if(file_exists(REXSEO_PATHLIST))
+  if(file_exists(SEO42_PATHLIST))
   {
-    require_once (REXSEO_PATHLIST);
+    require_once (SEO42_PATHLIST);
   }
 
-  // EXTENSION POINT "REXSEO_PATHLIST_BEFORE_REBUILD"
-  $subject = array('REXSEO_IDS'=>$REXSEO_IDS,'REXSEO_URLS'=>$REXSEO_URLS);
-  rex_register_extension_point('REXSEO_PATHLIST_BEFORE_REBUILD',$subject);
+  // EXTENSION POINT "SEO42_PATHLIST_BEFORE_REBUILD"
+  $subject = array('SEO42_IDS'=>$SEO42_IDS,'SEO42_URLS'=>$SEO42_URLS);
+  rex_register_extension_point('SEO42_PATHLIST_BEFORE_REBUILD',$subject);
 
-  $REXSEO_IDS = array();
-  $REXSEO_URLS = array();
+  $SEO42_IDS = array();
+  $SEO42_URLS = array();
   $REX['SEO42_URL_CLONE'] = array();
 
     $db = new rex_sql();
@@ -485,7 +485,7 @@ function rexseo_generate_pathlist($params)
 			$langSlug = seo42::getLangSlug($clangId);
 
 			if ($REX['ADDON']['seo42']['settings']['homelang'] != $clangId) {
-				$REXSEO_URLS[$langSlug]  = array ('id' => $REX['START_ARTICLE_ID'],'clang' => $clangId, 'status' => 301);
+				$SEO42_URLS[$langSlug]  = array ('id' => $REX['START_ARTICLE_ID'],'clang' => $clangId, 'status' => 301);
 			}
 		}
 	}
@@ -503,7 +503,7 @@ function rexseo_generate_pathlist($params)
         if (count($REX['CLANG']) > 1 && $clang != $REX['ADDON']['seo42']['settings']['hide_langslug'])
         {
           $pathname = '';
-          $pathname = rexseo_appendToPath($pathname, seo42::getLangSlug($clang), $id, $clang); 
+          $pathname = seo42_appendToPath($pathname, seo42::getLangSlug($clang), $id, $clang); 
         }
 
         // pfad über kategorien bauen
@@ -528,7 +528,7 @@ function rexseo_generate_pathlist($params)
             $name = $ooc->getName();
             unset($ooc);
 
-            $pathname = rexseo_appendToPath($pathname, $name, $id, $clang);
+            $pathname = seo42_appendToPath($pathname, $name, $id, $clang);
           }
         }
 
@@ -545,16 +545,16 @@ function rexseo_generate_pathlist($params)
           $ooc = $ooa->getCategory();
           $catname = $ooc->getName();
           unset($ooc);
-          $pathname = rexseo_appendToPath($pathname, $catname, $id, $clang);
+          $pathname = seo42_appendToPath($pathname, $catname, $id, $clang);
         }
 
-        // url_schema: rexseo
+        // url_schema: seo42
         if(!$ooa->isStartArticle())
         {
-        // eigentlicher artikel anhängen
-        $name = $ooa->getName();
-        unset($ooa);
-        $pathname = rexseo_appendToPath($pathname, $name, $id, $clang);
+          // eigentlicher artikel anhängen
+          $name = $ooa->getName();
+          unset($ooa);
+          $pathname = seo42_appendToPath($pathname, $name, $id, $clang);
         }
 
         // ALLGEMEINE URL ENDUNG
@@ -577,12 +577,12 @@ function rexseo_generate_pathlist($params)
 
       }
 
-      // UNSET OLD URL FROM $REXSEO_URLS
-      if(isset($REXSEO_IDS[$id][$clang]['url']) && isset($REXSEO_URLS[$REXSEO_IDS[$id][$clang]['url']]))
-        unset($REXSEO_URLS[$REXSEO_IDS[$id][$clang]['url']]);
+      // UNSET OLD URL FROM $SEO42_URLS
+      if(isset($SEO42_IDS[$id][$clang]['url']) && isset($SEO42_URLS[$SEO42_IDS[$id][$clang]['url']]))
+        unset($SEO42_URLS[$SEO42_IDS[$id][$clang]['url']]);
 
-      $REXSEO_IDS[$id][$clang] = array('url' => $pathname);
-      $REXSEO_URLS[$pathname]  = array('id'  => (int) $id, 'clang' => (int) $clang);
+      $SEO42_IDS[$id][$clang] = array('url' => $pathname);
+      $SEO42_URLS[$pathname]  = array('id'  => (int) $id, 'clang' => (int) $clang);
 
       // get data from default lang if clone option is enabled for all other langs
       $jsonData = json_decode($db->getValue('seo_custom_url'), true);
@@ -624,36 +624,36 @@ function rexseo_generate_pathlist($params)
 				case SEO42_URL_TYPE_USERDEF_INTERN:
 					$customUrl = $jsonData['custom_url'];
 
-					$REXSEO_URLS[$customUrl] = $REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']];
-					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]);
+					$SEO42_URLS[$customUrl] = $SEO42_URLS[$SEO42_IDS[$articleId][$clangId]['url']];
+					unset($SEO42_URLS[$SEO42_IDS[$articleId][$clangId]['url']]);
 
-					$REXSEO_IDS[$articleId][$clangId] = array('url' => $customUrl);
+					$SEO42_IDS[$articleId][$clangId] = array('url' => $customUrl);
 
 					break;
 				case SEO42_URL_TYPE_USERDEF_EXTERN:
 					$customUrl = $jsonData['custom_url'];
 
-					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]);
+					unset($SEO42_URLS[$SEO42_IDS[$articleId][$clangId]['url']]);
 
-					$REXSEO_IDS[$articleId][$clangId] = array('url' => $customUrl);
+					$SEO42_IDS[$articleId][$clangId] = array('url' => $customUrl);
 					break;
 				case SEO42_URL_TYPE_MEDIAPOOL:
 					$customUrl = $REX['MEDIA_DIR'] . '/' . $jsonData['file'];
 
-					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
+					unset($SEO42_URLS[$SEO42_IDS[$articleId][$clangId]['url']]); 
 
-					$REXSEO_IDS[$articleId][$clangId] = array('url' => $customUrl);
+					$SEO42_IDS[$articleId][$clangId] = array('url' => $customUrl);
 
 					break;
 				case SEO42_URL_TYPE_INTERN_REPLACE:
 					$customArticleId = $jsonData['article_id'];
 
-					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
+					unset($SEO42_URLS[$SEO42_IDS[$articleId][$clangId]['url']]); 
 
-					if (isset($REXSEO_IDS[$customArticleId][$clangId]['url'])) {
-			  			$REXSEO_IDS[$articleId][$clangId] = array('url' => $REXSEO_IDS[$customArticleId][$clangId]['url']);
+					if (isset($SEO42_IDS[$customArticleId][$clangId]['url'])) {
+			  			$SEO42_IDS[$articleId][$clangId] = array('url' => $SEO42_IDS[$customArticleId][$clangId]['url']);
 					} else {
-						$REXSEO_IDS[$articleId][$clangId] = array('url' => '');
+						$SEO42_IDS[$articleId][$clangId] = array('url' => '');
 					}
 
 					break;
@@ -661,42 +661,42 @@ function rexseo_generate_pathlist($params)
 					$customArticleId = $jsonData['article_id'];
 					$customClangId = $jsonData['clang_id'];
 
-					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
+					unset($SEO42_URLS[$SEO42_IDS[$articleId][$clangId]['url']]); 
 
-					if (isset($REXSEO_IDS[$customArticleId][$customClangId]['url'])) {
-			  			$REXSEO_IDS[$articleId][$clangId] = array('url' => $REXSEO_IDS[$customArticleId][$customClangId]['url']);
+					if (isset($SEO42_IDS[$customArticleId][$customClangId]['url'])) {
+			  			$SEO42_IDS[$articleId][$clangId] = array('url' => $SEO42_IDS[$customArticleId][$customClangId]['url']);
 					} else {
-						$REXSEO_IDS[$articleId][$clangId] = array('url' => '');
+						$SEO42_IDS[$articleId][$clangId] = array('url' => '');
 					}
 
 					break;
 				case SEO42_URL_TYPE_REMOVE_ROOT_CAT:
-					$curUrl = $REXSEO_IDS[$articleId][$clangId]['url'];
+					$curUrl = $SEO42_IDS[$articleId][$clangId]['url'];
 					$newUrl = seo42_utils::removeRootCatFromUrl($curUrl, $clangId);
 
 					if ($newUrl != '') {
 						// same as SEO42_URL_TYPE_USERDEF_INTERN
-						$REXSEO_URLS[$newUrl] = $REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']];
-						unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
+						$SEO42_URLS[$newUrl] = $SEO42_URLS[$SEO42_IDS[$articleId][$clangId]['url']];
+						unset($SEO42_URLS[$SEO42_IDS[$articleId][$clangId]['url']]); 
 
-						$REXSEO_IDS[$articleId][$clangId] = array('url' => $newUrl);
+						$SEO42_IDS[$articleId][$clangId] = array('url' => $newUrl);
 					}			
 					
 					break;
 				case SEO42_URL_TYPE_CALL_FUNC:
 					if ($jsonData['no_url']) {
-						unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
+						unset($SEO42_URLS[$SEO42_IDS[$articleId][$clangId]['url']]); 
 					}
 
 					break;
 				case SEO42_URL_TYPE_LANGSWITCH:
-					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
+					unset($SEO42_URLS[$SEO42_IDS[$articleId][$clangId]['url']]); 
 
 					break;
 				case SEO42_URL_TYPE_NONE:
-					unset($REXSEO_URLS[$REXSEO_IDS[$articleId][$clangId]['url']]); 
+					unset($SEO42_URLS[$SEO42_IDS[$articleId][$clangId]['url']]); 
 
-		  			$REXSEO_IDS[$articleId][$clangId] = array('url' => '');
+		  			$SEO42_IDS[$articleId][$clangId] = array('url' => '');
 					break;	
 			}
 
@@ -709,32 +709,32 @@ function rexseo_generate_pathlist($params)
 	// -----------------------------------------------------------------------------------------------------------
 
 
-  // EXTENSION POINT "REXSEO_PATHLIST_CREATED"
-  $subject = array('REXSEO_IDS'=>$REXSEO_IDS,'REXSEO_URLS'=>$REXSEO_URLS);
-  $subject = rex_register_extension_point('REXSEO_PATHLIST_CREATED',$subject);
+  // EXTENSION POINT "SEO42_PATHLIST_CREATED"
+  $subject = array('SEO42_IDS'=>$SEO42_IDS,'SEO42_URLS'=>$SEO42_URLS);
+  $subject = rex_register_extension_point('SEO42_PATHLIST_CREATED',$subject);
 
-  // EXTENSION POINT "REXSEO_PATHLIST_FINAL" - READ ONLY
-  rex_register_extension_point('REXSEO_PATHLIST_FINAL',$subject);
+  // EXTENSION POINT "SEO42_PATHLIST_FINAL" - READ ONLY
+  rex_register_extension_point('SEO42_PATHLIST_FINAL',$subject);
 
   // ASSEMBLE, COMPRESS & WRITE PATHLIST TO FILE
-  $pathlist_content = '$REXSEO_IDS = '.var_export($subject['REXSEO_IDS'],true).';'.PHP_EOL.'$REXSEO_URLS = '.var_export($subject['REXSEO_URLS'],true).';';
+  $pathlist_content = '$SEO42_IDS = '.var_export($subject['SEO42_IDS'],true).';'.PHP_EOL.'$SEO42_URLS = '.var_export($subject['SEO42_URLS'],true).';';
 
-  $pathlist_content = rexseo_compressPathlist($pathlist_content);
+  $pathlist_content = seo42_compressPathlist($pathlist_content);
 
-  rex_put_file_contents(REXSEO_PATHLIST,'<?php'.PHP_EOL.$pathlist_content);
+  rex_put_file_contents(SEO42_PATHLIST,'<?php'.PHP_EOL.$pathlist_content);
 
   // PURGE *.CONTENT CACHEFILES TO UPDATE INTERNAL LINKS CREATED BY replceLinks() in rex_article_base
-  rexseo_purgeCacheFiles();
+  seo42_purgeCacheFiles();
 }
 
 
 /**
-* REXSEO_PURGECACHEFILES()
+* SEO42_PURGECACHEFILES()
 *
 * selectively purge cache files by extension
 * @param $type (string) cachefile extension
 */
-function rexseo_purgeCacheFiles($ext='.content')
+function seo42_purgeCacheFiles($ext='.content')
 {
   global $REX;
 
@@ -752,12 +752,12 @@ function rexseo_purgeCacheFiles($ext='.content')
 
 
 /**
-* REXSEO_COMPRESSPATHLIST()
+* SEO42_COMPRESSPATHLIST()
 *
 * replaces excessive linfeeds and whitespaces from var_export
-* @param $str (string) the rexseo_pathlist as string
+* @param $str (string) the SEO42_PATHLIST as string
 */
-function rexseo_compressPathlist($str)
+function seo42_compressPathlist($str)
 {
   global $REX;
 
@@ -793,7 +793,7 @@ function rexseo_compressPathlist($str)
 }
 
 
-function rexseo_appendToPath($path, $name, $article_id, $clang)
+function seo42_appendToPath($path, $name, $article_id, $clang)
 {
   global $REX;
 
@@ -819,7 +819,7 @@ function rexseo_appendToPath($path, $name, $article_id, $clang)
     }
     else
     {
-      $name = strtolower(rexseo_parse_article_name($name, $article_id, $clang));
+      $name = strtolower(seo42_parse_article_name($name, $article_id, $clang));
       $name = str_replace('+',$REX['ADDON']['seo42']['settings']['url_whitespace_replace'],$name);
     }
 
@@ -840,7 +840,7 @@ function rexseo_appendToPath($path, $name, $article_id, $clang)
 * @param $article_id (string) article id
 * @param $clang      (string) clang
 */
-function rexseo_parse_article_name($name, $article_id, $clang)
+function seo42_parse_article_name($name, $article_id, $clang)
 {
   global $REX, $I18N;
 

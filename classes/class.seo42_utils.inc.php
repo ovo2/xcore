@@ -36,7 +36,7 @@ class seo42_utils {
 
 		if ($REX['MOD_REWRITE']) {
 			// includes
-			require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.rexseo_rewrite.inc.php');
+			require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42_rewrite.inc.php');
 
 			if ($REX['REDAXO']) { // this is only necessary for backend
 				$extensionPoints = array(
@@ -49,12 +49,12 @@ class seo42_utils {
 
 				// generate pathlist on each extension point
 				foreach($extensionPoints as $extensionPoint) {
-					rex_register_extension($extensionPoint, 'rexseo_generate_pathlist');
+					rex_register_extension($extensionPoint, 'seo42_generate_pathlist');
 				}
 			}
 
 			// init rewriter 
-			$rewriter = new RexseoRewrite();
+			$rewriter = new SEO42Rewrite();
 
 			// rewrite ep 
 			rex_register_extension('URL_REWRITE', array ($rewriter, 'rewrite'));
@@ -68,8 +68,8 @@ class seo42_utils {
 		// controller
 		include($REX['INCLUDE_PATH'] . '/addons/seo42/controller.inc.php');
 
-		// rexseo post init
-		rex_register_extension_point('REXSEO_INCLUDED');
+		// seo42 post init
+		rex_register_extension_point('SEO42_INCLUDED');
 	}
 
 	public static function sendHeaders() {
@@ -813,7 +813,7 @@ class seo42_utils {
 	}
 
 	// TODO 
-	/*public static function getLangSettingsFile() {
+	public static function getLangSettingsFile() {
 		global $REX, $I18N;
 
 		if (!isset($REX['ADDON']['seo42']['settings']['lang']) || seo42::getLangCount() != count($REX['ADDON']['seo42']['settings']['lang'])) {
@@ -823,7 +823,7 @@ class seo42_utils {
 		}
 
 		return '<span class="rex-form-read" id="lang_hint"><code>/seo42/settings.lang.inc.php</code></span>' . $icon;
-	}*/
+	}
 
 	public static function emptySEODataAfterClangAdded($params) {
 		global $REX;
@@ -842,7 +842,7 @@ class seo42_utils {
 		$sanitizedUrlParts = explode('/', $sanitizedUrl);
 
 		for ($i = 0; $i < count($sanitizedUrlParts); $i++) {
-			$sanitizedUrlParts[$i] = rexseo_parse_article_name($sanitizedUrlParts[$i], $REX['ARTICLE_ID'], $REX['CUR_CLANG']);
+			$sanitizedUrlParts[$i] = seo42_parse_article_name($sanitizedUrlParts[$i], $REX['ARTICLE_ID'], $REX['CUR_CLANG']);
 		}
 
 		$sanitizedUrl = implode('/', $sanitizedUrlParts);

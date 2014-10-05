@@ -639,7 +639,7 @@ class seo42 {
 		// pathlist
 		$out .= '<h2>Pathlist</h2>';
 
-		$pathlistRoot = REXSEO_PATHLIST;
+		$pathlistRoot = SEO42_PATHLIST;
 
 		if (file_exists($pathlistRoot)) {
 			$content = rex_get_file_contents($pathlistRoot);
@@ -801,7 +801,7 @@ class seo42 {
 	public static function getUrlString($string) {
 		global $REX;
 	
-		return strtolower(rexseo_parse_article_name($string, $REX['ARTICLE_ID'], $REX['CUR_CLANG']));
+		return strtolower(seo42_parse_article_name($string, $REX['ARTICLE_ID'], $REX['CUR_CLANG']));
 	}
 
 	public static function getCSSFile($file, $vars = array()) {
