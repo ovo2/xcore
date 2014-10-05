@@ -549,6 +549,13 @@ class seo42_utils {
 		$robotsContent = '';
 		$robotsFile = self::getRobotsFile();
 
+		$msg = seo42_utils::checkDir(SEO42_GENERATED_DIR);
+
+		if ($msg != '') {
+			echo rex_warning($msg);
+			return false;
+		}
+
 		if (!file_exists($robotsFile)) {
 			self::createDynFile($robotsFile);
 		}
@@ -576,6 +583,13 @@ class seo42_utils {
 
 		$redirectsContent = '';
 		$redirectsFile = self::getRedirectsFile();
+
+		$msg = seo42_utils::checkDir(SEO42_GENERATED_DIR);
+
+		if ($msg != '') {
+			echo rex_warning($msg);
+			return false;
+		}
 
 		if (!file_exists($redirectsFile)) {
 			self::createDynFile($redirectsFile);
@@ -706,7 +720,7 @@ class seo42_utils {
 			$file = $cacheFile . '.inc.php';
 		}
 
-		return $REX['INCLUDE_PATH'] . '/addons/seo42/generated/' . $file;
+		return SEO42_GENERATED_DIR . $file;
 	}
 
 	public static function getRedirectsFile() {
@@ -746,9 +760,9 @@ class seo42_utils {
 
 		if ($sql->getRows() > 0 && !file_exists(self::getRedirectsFile())) {
 			if (self::updateRedirectsFile()) {
-				echo rex_info($I18N->msg('seo42_redirect_restore_cachefile_ok', '/seo42/generated/' . basename(self::getRedirectsFile())));
+				echo rex_info($I18N->msg('seo42_redirect_restore_cachefile_ok', SEO42_GENERATED_DIR . basename(self::getRedirectsFile())));
 			} else {
-				echo rex_warning($I18N->msg('seo42_redirect_restore_cachefile_fail', '/seo42/generated/' . basename(self::getRedirectsFile())));
+				echo rex_warning($I18N->msg('seo42_redirect_restore_cachefile_fail', SEO42_GENERATED_DIR . basename(self::getRedirectsFile())));
 			}
 		}
 	}
@@ -812,8 +826,7 @@ class seo42_utils {
 		return -1;
 	}
 
-	// TODO 
-	public static function getLangSettingsFile() {
+	public static function getLangSettingsMsg() {
 		global $REX, $I18N;
 
 		if (!isset($REX['ADDON']['seo42']['settings']['lang']) || seo42::getLangCount() != count($REX['ADDON']['seo42']['settings']['lang'])) {
@@ -822,7 +835,7 @@ class seo42_utils {
 			$icon = '';
 		}
 
-		return '<span class="rex-form-read" id="lang_hint"><code>/seo42/settings.lang.inc.php</code></span>' . $icon;
+		return '<span class="rex-form-read" id="lang_hint">' . $I18N->msg('seo42_setup_lang_settings_hint') . '</span>' . $icon;
 	}
 
 	public static function emptySEODataAfterClangAdded($params) {

@@ -53,7 +53,7 @@ Entweder vollständige Links inkl. vorangestelltem Artikel benutzen, z.B. `redax
 Wo legt SEO42 die Backups für die .htaccess Dateien an?
 -------------------------------------------------------
 
-Im Backup-Verzeichnis des AddOns: `/seo42/backup/`
+Im Data-Ordner von REDAXO: `/redaxo/include/data/addons/seo42/backup/`
 
 
 Warum kann kann man keine globalen Descriptions und Keywords eintragen, die dann für alle Seiten gültig sind?

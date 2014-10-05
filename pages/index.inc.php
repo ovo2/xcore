@@ -18,7 +18,7 @@ $highlight = rex_request('highlight', 'string');
 $myroot = $REX['INCLUDE_PATH'] . '/addons/' . $myself;
 
 // includes
-require_once($myroot.'/classes/class.rexseo_rewrite.inc.php');
+require_once($myroot.'/classes/class.seo42_rewrite.inc.php');
 
 // layout top
 require($REX['INCLUDE_PATH'] . '/layout/top.php');

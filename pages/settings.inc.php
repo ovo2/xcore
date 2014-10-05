@@ -7,6 +7,7 @@ $func = rex_request('func', 'string');
 if ($func == 'update') {
 	$settings = (array) rex_post('settings', 'array', array());
 
+	// trim settings
 	$settings['css_dir'] = trim($settings['css_dir']);
 	$settings['js_dir'] = trim($settings['js_dir']);
 	$settings['images_dir'] = trim($settings['images_dir']);
@@ -46,19 +47,14 @@ if ($func == 'update') {
 		}
 	}
 
-	/*
 	// update robots file
-	if ($REX['ADDON']['seo42']['settings']['robots'] == '' && $_robots == '') {
-		// do nothing
-	} else {
-		seo42_utils::updateRobotsFile($_robots);
-		seo42_utils::includeRobotsSettings();
-	}
-	*/
+	seo42_utils::updateRobotsFile($settings['robots']);
+	seo42_utils::includeRobotsSettings();
 
-	rexseo_generate_pathlist('');
+	seo42_generate_pathlist('');
 }
 
+// checkbox states
 $checkboxeStates['send_header_x_ua_compatible'] = $REX['ADDON']['seo42']['settings']['send_header_x_ua_compatible'] ? ' checked="checked"' : '';
 
 // url ending select box
@@ -220,7 +216,7 @@ $auto_redirects_select->setSelected($REX['ADDON'][$myself]['settings']['auto_red
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
               <label for="robots"><?php echo $I18N->msg('seo42_settings_robots_additional'); ?></label>
-              <textarea id="rexseo_robots" name="settings[robots]" rows="2"><?php echo stripslashes($REX['ADDON'][$myself]['settings']['robots']); ?></textarea>
+              <textarea name="settings[robots]" rows="2"><?php echo stripslashes($REX['ADDON'][$myself]['settings']['robots']); ?></textarea>
             </p>
           </div>
 

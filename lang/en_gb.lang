@@ -1,6 +1,6 @@
 seo42 = SEO42
 
-seo42_help_message = An intergalactic fork of the original RexSEO AddOn for REDAXO with alternative user guidance and a few more SEO goodies...
+seo42_help_message = An intergalactic SEO AddOn for REDAXO 4.5+
 seo42_start = Start
 seo42_settings = Settings
 seo42_tools = Tools
@@ -68,6 +68,7 @@ seo42_settings_robots_additional = robots.txt entries
 seo42_settings_robots_link = Link to robots.txt
 seo42_settings_sitemap_link = Link to sitemap.xml
 seo42_settings_submit = Save settings
+seo42_settings_lang_hint = Language settings
 seo42_settings_show_all = All settings
 seo42_settings_show = show
 seo42_settings_hide = hide
@@ -106,16 +107,17 @@ seo42_setup_htaccess_patch_ok = Patching of .htaccess file was successful.
 seo42_setup_htaccess_patch_failed = Patching of .htaccess file could not be done.
 seo42_setup_step2_button = Copy file
 seo42_setup_step3 = Step 3:Customize template
-seo42_setup_step3_msg1 = Please use this HTML5 Boilerplate as a starting point for your own templates:
+seo42_setup_step3_msg1 = Please use this SEO42 Boilerplate as a starting point for your own templates:
 seo42_setup_codeexamples_goto_startpage = Link to startpage
 seo42_setup_url_alert = URL of the website must begin with "http://" and end with "/".
-seo42_setup_htaccess_alert = There is already a .htaccess file present in REDAXO's root directory.\r\nDo you want to overwrite it?\r\n\r\nNote: A backup will be saved in /seo42/backup/ automatically.
+seo42_setup_htaccess_alert = There is already a .htaccess file present in REDAXO's root directory.\r\nDo you want to overwrite it?\r\n\r\nNote: A backup will be saved in /data/addons/seo42/backup/ automatically.
 seo42_setup_codeexamples = Further <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=codeexamples">examples of code</a> are to be found in SEO42's help area...
 seo42_setup_rewritebase = Adjust RewriteBase automatically: <i>RewriteBase /{0}</i>
 seo42_setup_subdir_hint = (Please specify the subfolder, if necessary)
 seo42_setup_rewritebase_alert = Please take the following adjustments in the .htaccess file:
 seo42_setup_directory_listing_alert = If your webserver should report a 500 error, please remove the line <strong>Options -Indexes</strong> in the .htaccess file.
 seo42_setup_langcount_error = The number of defined languages ​​in the language settings does not match the number of REDAXO languages!
+seo42_setup_lang_settings_hint = Please check the language <a href="index.php?page=seo42&amp;subpage=settings">settings</a>!
 
 seo42_seopage_updated = SEO-Data updated.
 seo42_seopage_main_section = General

@@ -16,12 +16,12 @@ if (rex_post('save_data', 'boolean')) {
 			// do nothing
 			break;
 		case SEO42_URL_TYPE_USERDEF_INTERN:
-			global $REXSEO_URLS;
+			global $SEO42_URLS;
 
 			$sanitizedUrl = seo42_utils::parseInternalUrl(rex_post('userdef_intern'));
 
 			// check if url already exists
-			if (isset($REXSEO_URLS[$sanitizedUrl])) { // url already exists
+			if (isset($SEO42_URLS[$sanitizedUrl])) { // url already exists
 				$doDataUpdate = false;
 				echo rex_warning($I18N->msg('seo42_urlpage_url_already_exists', seo42_utils::getCustomUrl($sanitizedUrl)));
 			} else {
@@ -43,12 +43,12 @@ if (rex_post('save_data', 'boolean')) {
 			$newUrlData['clang_id'] = rex_post('intern_replace_clang_clang_id', 'int');
 			break;
 		case SEO42_URL_TYPE_REMOVE_ROOT_CAT:
-			global $REXSEO_URLS;
+			global $SEO42_URLS;
 
 			$newUrl = seo42_utils::removeRootCatFromUrl(rex_getUrl($REX['ARTICLE_ID'], $REX['CUR_CLANG']), $REX['CUR_CLANG']);
 
 			// check if url already exists
-			if (isset($REXSEO_URLS[$newUrl])) { // url already exists
+			if (isset($SEO42_URLS[$newUrl])) { // url already exists
 				$doDataUpdate = false;
 				echo rex_warning($I18N->msg('seo42_urlpage_url_already_exists', seo42_utils::getCustomUrl($newUrl)));
 			}
@@ -100,7 +100,7 @@ if (rex_post('save_data', 'boolean')) {
 		// generate stuff new
 		rex_deleteCacheArticleContent($articleId, $clang);
 		rex_generateArticle($articleId);
-		rexseo_generate_pathlist(array());
+		seo42_generate_pathlist(array());
 
 		 // this is for frontend link fix with js
 		$dataUpdated = true;

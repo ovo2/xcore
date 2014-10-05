@@ -27,14 +27,16 @@ class seo42_robots
 	$langs = array_keys($REX['CLANG']); // get clang ids
 	$defaultRobotsTxt = 'User-agent: *' . "\r\n" . 'Disallow:';
 
-	foreach ($langs as $lang) {
-		$query = "SELECT id FROM ".$REX['TABLE_PREFIX']."article WHERE seo_noindex = '1' AND status = 1 AND clang = " . $lang; 
-		$sql = new rex_sql(); 
-		$sql->setQuery($query);
+	if ($REX['ADDON']['seo42']['settings']['robots_txt_auto_disallow']) {
+		foreach ($langs as $lang) {
+			$query = "SELECT id FROM ".$REX['TABLE_PREFIX']."article WHERE seo_noindex = '1' AND status = 1 AND clang = " . $lang; 
+			$sql = new rex_sql(); 
+			$sql->setQuery($query);
 	
-		for ($i = 1; $i <= $sql->getRows(); $i++) { 
-	  		$out .= "Disallow: /" .  seo42::getTrimmedUrl($sql->getValue('id'), $lang) . "\r\n"; 
-		  	$sql->next(); 
+			for ($i = 1; $i <= $sql->getRows(); $i++) { 
+		  		$out .= "Disallow: /" .  seo42::getTrimmedUrl($sql->getValue('id'), $lang) . "\r\n"; 
+			  	$sql->next(); 
+			}
 		}
 	}
 	
@@ -42,7 +44,7 @@ class seo42_robots
 		$out = "User-agent: *" . "\r\n" . $out . "\r\n";
 	}
 
-	if (!$REX['ADDON']['seo42']['settings']['robots_txt_auto_disallow'] || ($out == '' && $content == '')) {
+	if ($out == '' && $content == '') {
 		$this->robots_txt = $defaultRobotsTxt;
 	} else {
 	    $this->robots_txt = $out . $content;

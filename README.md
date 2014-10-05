@@ -1,7 +1,7 @@
 SEO42 AddOn für REDAXO 4.5+
 ===========================
 
-Ein intergalaktischer Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzerführung und noch ein paar weiteren SEO-Goodies...
+Ein intergalaktisches SEO-Addon für REDAXO 4.5+
 
 Features
 --------
@@ -137,8 +137,8 @@ siehe [LICENSE.md](LICENSE.md)
 Credits
 -------
 
-* [GN2](https://github.com/gn2netwerk) und [jdlx](https://github.com/jdlx) für das original RexSEO AddOn
-* [Markus Staab](https://github.com/staabm) für das zugrundeliegende url_rewrite AddOn
+* [GN2](https://github.com/gn2netwerk) und [jdlx](https://github.com/jdlx) für RexSEO
+* [Markus Staab](https://github.com/staabm) für url_rewrite
 * [Jan Kristinus](http://github.com/dergel) für REDAXO und den neuen EP in REDAXO 4.5
 * [Gregor Harlan](https://github.com/gharlan) und [Thomas Blum](https://github.com/tbaddade) für Hilfe, Code und Bugmeldungen :)
 * [Peter Bickel](https://github.com/polarpixel) für generelle Unterstützung und die Hilfe bei der englischen Übersetzung

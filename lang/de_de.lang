@@ -1,6 +1,6 @@
 seo42 = SEO42
 
-seo42_help_message = Ein intergalaktischer Fork des original RexSEO AddOns für REDAXO mit alternativer Benutzerführung und noch ein paar weiteren SEO-Goodies...
+seo42_help_message = Ein intergalaktisches SEO-Addon für REDAXO 4.5+
 seo42_start = Start
 seo42_settings = Einstellungen
 seo42_tools = Tools
@@ -12,7 +12,7 @@ seo42_urlpage_linktext = URL
 seo42_install_rex_version = Dieses AddOn benötigt REDAXO Version 4.5.0 oder höher.
 seo42_install_concurrent = Bitte folgendes AddOn zuvor deinstallieren:
 seo42_uninstall_dbfields_not_removed = Die Datenbankfelder wurden NICHT entfernt.
-seo42_config_ok = Einstellungen wurde aktualisiert.
+seo42_config_ok = Einstellungen wurden aktualisiert.
 seo42_config_error = Einstellungen konnte nicht gespeichert werden!
 seo42_dbfields_readded = {0}: Fehlende DB-Felder des AddOns wurden hinzugefügt.
 seo42_dbfields_readded_check_setup = {0}: Bitte überprüfen Sie ob Schritt 3 des SEO42-Setup erneut durchgeführt werden muss.
@@ -68,6 +68,7 @@ seo42_settings_robots_additional = robots.txt Einträge
 seo42_settings_robots_link = Link zur robots.txt
 seo42_settings_sitemap_link = Link zur sitemap.xml
 seo42_settings_submit = Einstellungen speichern
+seo42_settings_lang_hint = Spracheinstellungen
 seo42_settings_show_all = Alle Einstellungen
 seo42_settings_show = anzeigen
 seo42_settings_hide = verstecken
@@ -106,16 +107,17 @@ seo42_setup_htaccess_patch_ok = .htaccess Anpassungen wurden vorgenommen.
 seo42_setup_htaccess_patch_failed = Die Anpassungen an der .htaccess Datei konnten nicht vorgenommen werden.
 seo42_setup_step2_button = Datei kopieren
 seo42_setup_step3 = Schritt 3: Template anpassen
-seo42_setup_step3_msg1 = Zuletzt nutzen Sie dieses HTML5 Boilerplate als Basis für Ihre eigenen Templates:
+seo42_setup_step3_msg1 = Zuletzt nutzen Sie dieses SEO42 Boilerplate als Basis für Ihre eigenen Templates:
 seo42_setup_codeexamples_goto_startpage = Link zur Startseite
 seo42_setup_url_alert = URL der Website muss mit "http://" beginnen und mit "/" enden.
-seo42_setup_htaccess_alert = Im Hauptverzeichnis von REDAXO existiert bereits eine .htaccess Datei.\r\nWollen Sie diese überschreiben?\r\n\r\nHinweis: Ein Backup der Datei wird automatisch in /seo42/backup/ gespeichert.
+seo42_setup_htaccess_alert = Im Hauptverzeichnis von REDAXO existiert bereits eine .htaccess Datei.\r\nWollen Sie diese überschreiben?\r\n\r\nHinweis: Ein Backup der Datei wird automatisch in /data/addons/seo42/backup/ gespeichert.
 seo42_setup_codeexamples = Weitere <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=codeexamples">Codebeispiele</a> finden Sie in der Hilfe von SEO42...
 seo42_setup_rewritebase = RewriteBase automatisch anpassen: <i>RewriteBase /{0}</i>
 seo42_setup_subdir_hint = (Bitte Unterordner mit angeben)
 seo42_setup_rewritebase_alert = Bitte folgende Anpassung in der .htaccess Datei vornehmen:
 seo42_setup_directory_listing_alert = Falls Ihr Webserver ein 500 Error melden sollte, dann bitte die Zeile <strong>Options -Indexes</strong> in der .htaccess Datei wieder entfernen.
 seo42_setup_langcount_error = Die Anzahl definierter Sprachen in den Spracheinstellungen stimmt momentan mit der Anzahl der REDAXO-Sprachen nicht überein!
+seo42_setup_lang_settings_hint = Bitte die Sprachen in den <a href="index.php?page=seo42&amp;subpage=settings">Einstellungen</a> überprüfen!
 
 seo42_seopage_updated = SEO-Daten wurden aktualisiert.
 seo42_seopage_main_section = Allgemein

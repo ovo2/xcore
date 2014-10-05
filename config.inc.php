@@ -3,7 +3,7 @@
 // register addon
 $REX['ADDON']['rxid']['seo42'] = '0';
 $REX['ADDON']['name']['seo42'] = 'SEO42';
-$REX['ADDON']['version']['seo42'] = '3.5.0 DEV';
+$REX['ADDON']['version']['seo42'] = '4.0.0 DEV';
 $REX['ADDON']['author']['seo42'] = 'Markus Staab, Wolfgang Huttegger, Dave Holloway, Jan Kristinus, jdlx, RexDude';
 $REX['ADDON']['supportpage']['seo42'] = 'forum.redaxo.de';
 $REX['ADDON']['perm']['seo42'] = 'seo42[]';
@@ -18,7 +18,9 @@ $REX['EXTPERM'][] = 'seo42[url_default]';
 
 // consts
 define('SEO42_SETTINGS_FILE', $REX['INCLUDE_PATH'] . '/data/addons/seo42/settings.inc.php');
-define('REXSEO_PATHLIST', $REX['GENERATED_PATH'] . '/files/rexseo_pathlist.php'); // uses new rex var introduced in REDAXO 4.5
+define('SEO42_BACKUP_DIR', $REX['INCLUDE_PATH'] . '/data/addons/seo42/backup/');
+define('SEO42_GENERATED_DIR', $REX['INCLUDE_PATH'] . '/data/addons/seo42/generated/');
+define('SEO42_PATHLIST', $REX['GENERATED_PATH'] . '/files/seo42_pathlist.php');
 
 // includes
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.res42.inc.php');
@@ -72,11 +74,13 @@ $REX['ADDON']['seo42']['settings']['global_special_chars'] = '';
 $REX['ADDON']['seo42']['settings']['global_special_chars_rewrite'] = '';
 $REX['ADDON']['seo42']['settings']['urlencode_lowercase'] = false;
 $REX['ADDON']['seo42']['settings']['urlencode_whitespace_replace']  = '_';
+$REX['ADDON']['seo42']['settings']['lang'][0]['url'] = ''; // not used
 $REX['ADDON']['seo42']['settings']['lang'][0]['code'] = 'de';
 $REX['ADDON']['seo42']['settings']['lang'][0]['original_name'] = 'deutsch';
 $REX['ADDON']['seo42']['settings']['lang'][0]['rewrite_mode'] = SEO42_REWRITEMODE_SPECIAL_CHARS;
 $REX['ADDON']['seo42']['settings']['lang'][0]['special_chars'] = 'Ä|ä|Ö|ö|Ü|ü|ß|&';
 $REX['ADDON']['seo42']['settings']['lang'][0]['special_chars_rewrite'] = 'Ae|ae|Oe|oe|Ue|ue|ss|und';
+$REX['ADDON']['seo42']['settings']['allowed_domains'] = '';
 
 // overwrite default settings with user settings
 if (file_exists(SEO42_SETTINGS_FILE)) {

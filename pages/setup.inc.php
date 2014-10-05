@@ -11,21 +11,12 @@ $codeExample = '<!DOCTYPE html>
 	<meta name="robots" content="<?php echo seo42::getRobotRules();?>" />
 	<link rel="stylesheet" href="<?php echo seo42::getCSSFile("default.css"); ?>" type="text/css" media="screen,print" />
 	<link rel="stylesheet" href="<?php echo seo42::getCSSFile("print.css"); ?>" type="text/css" media="print" />
-	<link rel="shortcut icon" href="<?php echo seo42::getImageFile("favicon.ico"); ?>" type="image/x-icon" />
 	<link rel="canonical" href="<?php echo seo42::getCanonicalUrl(); ?>" />
 	<?php echo seo42::getLangTags(); ?>
 </head>
 
 <body>
-<div id="container">
-	<div id="link"><a href="<?php echo rex_getUrl(1); ?>">' . $I18N->msg('seo42_setup_codeexamples_goto_startpage') . '</a></div>
-	<div id="media"><img src="<?php echo seo42::getMediaFile("logo.png"); ?>" alt="" /></div>
-	<div id="imagetype"><img src="<?php echo seo42::getImageManagerFile("pic.png", "my_img_type"); ?>" alt="" /></div>
-	<div id="mainmenu"><?php $mainNav = new nav42(); echo $mainNav->getNavigationByLevel(0); ?></div>
-	<div id="submenu"><?php $subNav = new nav42(); echo $subNav->getNavigationByLevel(1); ?></div>
-	<div id="content"><?php echo $this->getArticle(); ?></div>
-	<div id="footer"><?php $footerNav = new nav42(); echo $footerNav->getNavigationByCategory(42); ?></div>
-</div>
+<!-- Add your site content here -->
 <script type="text/javascript" src="<?php echo seo42::getJSFile("jquery.min.js"); ?>"></script>
 <script type="text/javascript" src="<?php echo seo42::getJSFile("init.js"); ?>"></script>
 </body>
@@ -37,7 +28,7 @@ $chapter = rex_request('chapter', 'string');
 $func = rex_request('func', 'string');
 
 $htaccessRoot = $REX['FRONTEND_PATH'] . '/.htaccess';
-$backupPathRoot = $REX['INCLUDE_PATH'] . '/addons/seo42/backup/';
+$backupPathRoot = SEO42_BACKUP_DIR;
 
 if (isset($REX['WEBSITE_MANAGER'])) {
 	$wmDisabled = ' disabled="disabled"';
@@ -54,15 +45,22 @@ if ($func == "do_copy") {
 	$htaccessFileExists = false;
 	$copySuccessful = false;
 
-	if (file_exists($htaccessRoot)) {
-		$htaccessFileExists = true;
+	$msg = seo42_utils::checkDir($backupPathRoot);
 
-		if (copy($htaccessRoot, $backupPathRoot . $htaccessBackupFile)) {
-			$doCopy = true;
-		} else {
-			rex_warning($I18N->msg('seo42_setup_file_backup_failed', $htaccessRoot));
-			$doCopy = false;
-		} 
+	if ($msg != '') {
+		echo rex_warning($msg);
+		$doCopy = false;
+	} else {
+		if (file_exists($htaccessRoot)) {
+			$htaccessFileExists = true;
+
+			if (copy($htaccessRoot, $backupPathRoot . $htaccessBackupFile)) {
+				$doCopy = true;
+			} else {
+				rex_warning($I18N->msg('seo42_setup_file_backup_failed', $htaccessRoot));
+				$doCopy = false;
+			} 
+		}
 	}
 
 	// then copy if backup was successful
@@ -178,9 +176,9 @@ if ($func == "do_copy") {
 				<span class="url-hint"><?php echo $I18N->msg('seo42_setup_url_alert'); ?></span>
 			</p>
 			
-			<p class="rex-form-col-a rex-form-read">
+			<p class="rex-form-col-a rex-form-read lang-settings">
 				<label for="lang_hint"><?php echo $I18N->msg('seo42_settings_lang_hint'); ?></label>
-				<?php echo seo42_utils::getLangSettingsFile(); ?>
+				<?php echo seo42_utils::getLangSettingsMsg(); ?>
 			</p>
 
 			<input type="hidden" name="page" value="seo42" />
@@ -323,6 +321,10 @@ if ($func == "do_copy") {
 
 .rex-form-checkbox label span {
 	font-size: 10px;
+}
+
+#rex-page-seo42 .lang-settings span.status.exclamation {
+	background-position: left -80px;
 }
 </style>
 
