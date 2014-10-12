@@ -89,6 +89,94 @@ $REX['ADDON']['seo42']['settings']['lang'][0]['rewrite_mode'] = SEO42_REWRITEMOD
 $REX['ADDON']['seo42']['settings']['lang'][0]['special_chars'] = 'Ä|ä|Ö|ö|Ü|ü|ß|&';
 $REX['ADDON']['seo42']['settings']['lang'][0]['special_chars_rewrite'] = 'Ae|ae|Oe|oe|Ue|ue|ss|und';
 
+$json = json_format(json_encode($REX['ADDON']['seo42']['settings']));
+$arr = json_decode($json, true);
+
+//out($arr);
+
+//out(var_export($REX['ADDON']['seo42']['settings']));
+
+
+function json_format($json)
+{
+    $tab = "  ";
+    $new_json = "";
+    $indent_level = 0;
+    $in_string = false;
+
+    $json_obj = json_decode($json);
+
+    if($json_obj === false)
+        return false;
+
+    $json = json_encode($json_obj);
+    $len = strlen($json);
+
+    for($c = 0; $c < $len; $c++)
+    {
+        $char = $json[$c];
+        switch($char)
+        {
+            case '{':
+            case '[':
+                if(!$in_string)
+                {
+                    $new_json .= $char . "\n" . str_repeat($tab, $indent_level+1);
+                    $indent_level++;
+                }
+                else
+                {
+                    $new_json .= $char;
+                }
+                break;
+            case '}':
+            case ']':
+                if(!$in_string)
+                {
+                    $indent_level--;
+                    $new_json .= "\n" . str_repeat($tab, $indent_level) . $char;
+                }
+                else
+                {
+                    $new_json .= $char;
+                }
+                break;
+            case ',':
+                if(!$in_string)
+                {
+                    $new_json .= ",\n" . str_repeat($tab, $indent_level);
+                }
+                else
+                {
+                    $new_json .= $char;
+                }
+                break;
+            case ':':
+                if(!$in_string)
+                {
+                    $new_json .= ": ";
+                }
+                else
+                {
+                    $new_json .= $char;
+                }
+                break;
+            case '"':
+                if($c > 0 && $json[$c-1] != '\\')
+                {
+                    $in_string = !$in_string;
+                }
+            default:
+                $new_json .= $char;
+                break;                   
+        }
+    }
+
+    return $new_json;
+} 
+
+
+
 // overwrite default settings with user settings
 if (file_exists(SEO42_SETTINGS_FILE)) {
 	require_once(SEO42_SETTINGS_FILE);
@@ -131,6 +219,9 @@ if (!$REX['SETUP']) {
 
 	// init seo42
 	rex_register_extension('ADDONS_INCLUDED', 'seo42_utils::init', '', REX_EXTENSION_EARLY);
+
+	// init res42
+	rex_register_extension('ADDONS_INCLUDED', 'res42::init');
 
 	// send additional headers if necessary
 	rex_register_extension('OUTPUT_FILTER_CACHE', 'seo42_utils::sendHeaders');
@@ -251,9 +342,6 @@ if ($REX['REDAXO']) {
 		rex_register_extension('CAT_ADDED', 'seo42_utils::addNoUrlType');
 	}
 } else {
-	// init res42 class
-	rex_register_extension('ADDONS_INCLUDED', 'res42::init');
-
 	// send additional headers for article if necessary
 	rex_register_extension('OUTPUT_FILTER_CACHE', 'seo42_utils::sendHeadersForArticleOnly');
 

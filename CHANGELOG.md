@@ -7,7 +7,9 @@ SEO42 - Changelog
 * Neu: Bei einem Update werden die Einstellungen nicht mehr überschrieben, da diese nun im Data-Ordner von REDAXO abgelegt werden
 * Neu: Alle Dateien wie Redirects-Cachedatei und `.htaccess` Backups werden im Data-Ordner von REDAXO abgelegt
 * Neu: Alle Einstellungen in die Oberfläche gepackt
-* Verbessert: Das SEO42 Boilerplate in Setup Schritt 3 wurde entschlackt
+* Neu: Einstellung `redirects` hinzugefügt, um die Rediretcs-Seite ausschalten zu können (z.B. wenn man die Redirects-Funktionalität des url_control Plugin einsetzt)
+* Verbessert: Das SEO42 Boilerplate in Setup Schritt 3 wurde etwas entschlackt
+* Fixed: `seo42::getImageFile()` gab im Backend nicht den richtigen Wert aus
 * API Umstellung: EP's haben jetzt alle den Prefix `SEO42_`
 * API Umstellung: Pathlist Arrays lauten jetzt `$SEO42_URLS` und `$SEO42_IDS`
 * API Umstellung: Alle Funktionen aus der Rewriter-Klasse umbenannten `SEO42Rewrite` sowie die PHP-Dateien selbst beginnen jetzt mit Prefix `seo42_`
