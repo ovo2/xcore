@@ -6,41 +6,26 @@ $func = rex_request('func', 'string');
 // save settings
 if ($func == 'update') {
 	$settings = (array) rex_post('settings', 'array', array());
-
-	// trim settings
-	$settings['css_dir'] = trim($settings['css_dir']);
-	$settings['js_dir'] = trim($settings['js_dir']);
-	$settings['images_dir'] = trim($settings['images_dir']);
-	$settings['robots'] = trim($settings['robots']);
-
-	$msg = '';
 	$msg = seo42_utils::checkDirForFile(SEO42_SETTINGS_FILE);
 
 	if ($msg != '') {
 		echo rex_warning($msg);
-	}
-
-	if ($msg == '') {
-		$REX['ADDON']['seo42']['settings'] = array_merge((array) $REX['ADDON']['seo42']['settings'], (array) $settings);
-
-		$content = "<?php\n";
-
-		foreach ((array) $REX['ADDON']['seo42']['settings'] as $key => $value) {
-			if (!in_array($key, $REX['SEO42_WEBSITE_SETTINGS'])) {
-				if ($key != 'lang') {
-					if (is_array($value)) {
-						$value = implode(',', $value);
-					}
-
-					$content .= "\$REX['ADDON']['seo42']['settings']['$key'] = '" . $value . "';\n";
-				} else {
-					// TODO: clang index dynamisch
-					foreach ((array) $REX['ADDON']['seo42']['settings']['lang'][0] as $key => $value) {
-						$content .= "\$REX['ADDON']['seo42']['settings']['lang'][0]['$key'] = '" . $value . "';\n";
-					}
-				}
+	} else {
+		// type conversion
+		foreach ($REX['ADDON']['seo42']['settings'] as $key => $value) {
+			if (isset($settings[$key])) {
+				$settings[$key] = seo42_utils::convertVarType($value, $settings[$key]);
 			}
 		}
+
+		// merge
+		$REX['ADDON']['seo42']['settings'] = array_merge((array) $REX['ADDON']['seo42']['settings'], $settings);
+
+		// write
+		$content = "<?php\n";
+		$content .= '$REX[\'ADDON\'][\'seo42\'][\'settings\'] = ';
+		$content .= var_export($REX['ADDON']['seo42']['settings'], true);
+		$content .= ';';
 
 		if (rex_put_file_contents(SEO42_SETTINGS_FILE, $content)) {
 			echo rex_info($I18N->msg('seo42_config_ok'));
@@ -50,12 +35,8 @@ if ($func == 'update') {
 	}
 
 	seo42_utils::updateWebsiteSettingsFile($settings);
-
 	seo42_generate_pathlist('');
 }
-
-// checkbox states
-$checkboxeStates['send_header_x_ua_compatible'] = $REX['ADDON']['seo42']['settings']['send_header_x_ua_compatible'] ? ' checked="checked"' : '';
 
 // url ending select box
 $url_ending_select = new rex_select();
@@ -216,7 +197,7 @@ $auto_redirects_select->setSelected($REX['ADDON'][$myself]['settings']['auto_red
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
               <label for="robots"><?php echo $I18N->msg('seo42_settings_robots_additional'); ?></label>
-              <textarea name="settings[robots]" rows="2"><?php echo stripslashes($REX['ADDON'][$myself]['settings']['robots']); ?></textarea>
+              <textarea name="settings[robots]" rows="2"><?php echo stripslashes($REX['ADDON'][$myself]['website_settings']['robots']); ?></textarea>
             </p>
           </div>
 
@@ -245,7 +226,7 @@ $auto_redirects_select->setSelected($REX['ADDON'][$myself]['settings']['auto_red
 				<p class="rex-form-checkbox">
 					<label for="send_header_x_ua_compatible"><?php echo $I18N->msg('seo42_settings_send_header_x_ua_compatible'); ?></label>
 					<input type="hidden" name="settings[send_header_x_ua_compatible]" value="0" />
-					<input type="checkbox" name="settings[send_header_x_ua_compatible]" id="send_header_x_ua_compatible" value="1" <?php echo $checkboxeStates['send_header_x_ua_compatible'] ?>>
+					<input type="checkbox" name="settings[send_header_x_ua_compatible]" id="send_header_x_ua_compatible" value="1" <?php if ($REX['ADDON']['seo42']['settings']['send_header_x_ua_compatible']) { echo 'checked="checked"'; } ?>>
 				</p>
 			</div>
 		</div>
@@ -264,6 +245,8 @@ $auto_redirects_select->setSelected($REX['ADDON'][$myself]['settings']['auto_red
 		<div id="all-settings" style="display: none;" class="rex-form-row rex-form-element-v1">
 			<p class="rex-form-col-a rex-form-read">
 				<pre class="rex-code"><?php echo seo42_utils::print_r_pretty($REX['ADDON']['seo42']['settings']); ?></pre>
+				<br />
+				<pre class="rex-code"><?php echo seo42_utils::print_r_pretty($REX['ADDON']['seo42']['website_settings']); ?></pre>
 			</p>
 		</div>
 

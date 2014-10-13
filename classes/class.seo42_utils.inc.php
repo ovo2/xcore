@@ -551,52 +551,63 @@ class seo42_utils {
 
 		if ($msg != '') {
 			echo rex_warning($msg);
-		}
-
-		if (!file_exists($settingsFile)) {
-			self::createDynFile($settingsFile);
-		}
-
-		// file content
-		if (!isset($settings['pagerank_checker_unlock'])) {
-			$settings['pagerank_checker_unlock'] = $REX['ADDON']['seo42']['settings']['pagerank_checker_unlock'];
-		}
-
-		if (!isset($settings['robots'])) {
-			$settings['robots'] = $REX['ADDON']['seo42']['settings']['robots'];
-		}
-
-		$content .= '$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'pagerank_checker_unlock\'] = \'' . $settings['pagerank_checker_unlock'] . '\';' . PHP_EOL;
-		$content .= '$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'robots\'] = \'' . $settings['robots'] . '\';' . PHP_EOL;
-		$content .= '$REX[\'ADDON\'][\'seo42\'][\'settings\'][\'cached_redirects\'] = array(' . PHP_EOL;
-
-		$sql = rex_sql::factory();
-		//$sql->debugsql = true;
-		$sql->setQuery('SELECT * FROM ' . $REX['TABLE_PREFIX'] . 'redirects');
-
-		for ($i = 0; $i < $sql->getRows(); $i++) {
-			$content .= "\t" . '"' . $sql->getValue('source_url') . '" => "' . $sql->getValue('target_url') . '"';
-		
-			if ($i < $sql->getRows() - 1) {
-				$content .= ', ' . PHP_EOL;
+			return false;
+		} else {
+			if (!file_exists($settingsFile)) {
+				self::createDynFile($settingsFile);
 			}
 
-			$sql->next();
-		}
+			// pagerank_checker_unlock
+			if (isset($settings['pagerank_checker_unlock'])) {
+				$settings['pagerank_checker_unlock'] = seo42_utils::convertVarType($REX['ADDON']['seo42']['website_settings']['pagerank_checker_unlock'], $settings['pagerank_checker_unlock']);
+			} else {
+				$settings['pagerank_checker_unlock'] = $REX['ADDON']['seo42']['website_settings']['pagerank_checker_unlock'];
+			}
 
-		$content .= PHP_EOL . ');' . PHP_EOL;
+			// robots
+			if (isset($settings['robots'])) {
+				$settings['robots'] = seo42_utils::convertVarType($REX['ADDON']['seo42']['website_settings']['robots'], $settings['robots']);
+			} else {
+				$settings['robots'] = $REX['ADDON']['seo42']['website_settings']['robots'];
+			}
+			
+			$content .= '$REX[\'ADDON\'][\'seo42\'][\'website_settings\'][\'robots\'] = ' .var_export($settings['robots'], true) . ';' . PHP_EOL;
+			$content .= '$REX[\'ADDON\'][\'seo42\'][\'website_settings\'][\'pagerank_checker_unlock\'] = ' . var_export($settings['pagerank_checker_unlock'], true) . ';' . PHP_EOL;
 
-	  	if (rex_replace_dynamic_contents($settingsFile, $content)) {
-			return true;
-		} else {
-			return false;
+			// merge
+			$REX['ADDON']['seo42']['website_settings'] = array_merge((array) $REX['ADDON']['seo42']['website_settings'], $settings);
+
+			// cached redirects
+			$content .= '$REX[\'ADDON\'][\'seo42\'][\'website_settings\'][\'cached_redirects\'] = array(' . PHP_EOL;
+
+			$sql = rex_sql::factory();
+			//$sql->debugsql = true;
+			$sql->setQuery('SELECT * FROM ' . $REX['TABLE_PREFIX'] . 'redirects');
+
+			for ($i = 0; $i < $sql->getRows(); $i++) {
+				$content .= "\t" . '"' . $sql->getValue('source_url') . '" => "' . $sql->getValue('target_url') . '"';
+		
+				if ($i < $sql->getRows() - 1) {
+					$content .= ', ' . PHP_EOL;
+				}
+
+				$sql->next();
+			}
+
+			$content .= PHP_EOL . ');' . PHP_EOL;
+
+		  	if (rex_replace_dynamic_contents($settingsFile, $content)) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 	}
 
 	public static function redirect() {
 		global $REX;
 
-		if (isset($REX['ADDON']['seo42']['settings']['cached_redirects']) && count($REX['ADDON']['seo42']['settings']['cached_redirects']) > 0) {
+		if (isset($REX['ADDON']['seo42']['website_settings']['cached_redirects']) && count($REX['ADDON']['seo42']['website_settings']['cached_redirects']) > 0) {
 			seo42::init(); 
 
 			if (seo42::isSubDirInstall()) {
@@ -608,8 +619,8 @@ class seo42_utils {
 			
 			$redirect = false;
 			
-			if (array_key_exists($requestUri, $REX['ADDON']['seo42']['settings']['cached_redirects'])) {
-				$redirectUri = $REX['ADDON']['seo42']['settings']['cached_redirects'][$requestUri];
+			if (array_key_exists($requestUri, $REX['ADDON']['seo42']['website_settings']['cached_redirects'])) {
+				$redirectUri = $REX['ADDON']['seo42']['website_settings']['cached_redirects'][$requestUri];
 				$redirect = true;
 				
 			} elseif ($REX['ADDON']['seo42']['settings']['redirects_allow_regex']) {
@@ -643,7 +654,7 @@ class seo42_utils {
 	public static function regexRedirect($requestUri) {
 		global $REX;
 
-		$regexArray = preg_grep('/\*/', array_keys($REX['ADDON']['seo42']['settings']['cached_redirects']));
+		$regexArray = preg_grep('/\*/', array_keys($REX['ADDON']['seo42']['website_settings']['cached_redirects']));
 		
 		foreach($regexArray as $link) {
 			
@@ -652,7 +663,7 @@ class seo42_utils {
 			
 			if(preg_match('#'.$preg.'#', $requestUri, $matches)) {
 				
-				$url = $REX['ADDON']['seo42']['settings']['cached_redirects'][$link];
+				$url = $REX['ADDON']['seo42']['website_settings']['cached_redirects'][$link];
 				
 				// check if any variables in the Target-Url
 				if(preg_match_all('/\{(\d)\}/', $url, $match)) {			
@@ -794,7 +805,7 @@ class seo42_utils {
 	public static function sendHeadersForArticleOnly() {
 		global $REX;
 
-		if ($REX['ADDON']['seo42']['settings']['send_header_x_ua_compatible'] == 1) {
+		if ($REX['ADDON']['seo42']['settings']['send_header_x_ua_compatible']) {
 			header('X-UA-Compatible: IE=Edge');
 		}
 	}
@@ -858,5 +869,25 @@ class seo42_utils {
 		$pathInfo = pathinfo($fileWithPath);
 
 		return self::checkDir($pathInfo['dirname']);
+	}
+
+	public static function convertVarType($originalValue, $newValue) {
+		switch (gettype($originalValue)) {
+			case 'string':
+				return trim($newValue);
+				break;
+			case 'integer':
+				return intval($newValue);
+				break;
+			case 'boolean':
+				return (bool) $newValue;
+				break;
+			case 'array':
+				return explode(SEO42_ARRAY_DELIMITER, $newValue);
+				break;
+			default:
+				return $newValue;
+				
+		}
 	}
 }
