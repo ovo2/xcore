@@ -32,10 +32,10 @@ if ($func == 'update') {
 		} else {
 			echo rex_warning($I18N->msg('seo42_config_error'));
 		}
-	}
 
-	seo42_utils::updateWebsiteSettingsFile($settings);
-	seo42_generate_pathlist('');
+		seo42_utils::updateWebsiteSettingsFile($settings);
+		seo42_generate_pathlist('');
+	}
 }
 
 // url ending select box

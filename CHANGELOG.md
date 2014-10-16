@@ -8,6 +8,7 @@ SEO42 - Changelog
 * Neu: Alle Dateien wie Redirects-Cachedatei und `.htaccess` Backups werden im Data-Ordner von REDAXO abgelegt
 * Neu: Alle Einstellungen in die Oberfläche gepackt
 * Neu: Einstellung `redirects` hinzugefügt, um die Rediretcs-Seite ausschalten zu können (z.B. wenn man die Redirects-Funktionalität des url_control Plugin einsetzt)
+* Neu: Einstellung `allow_article_id` hinzugefügt, um bei Spezialfällen nicht umgeschriebene Urls zu erlauben. Auchtung! Bitte nur einschalten wenn wirklich benötigt! Und: setzt die `auto_redirects` Option für die nicht umgeschriebenen Urls ausser Kraft!
 * Verbessert: Das SEO42 Boilerplate in Setup Schritt 3 wurde etwas entschlackt
 * Fixed: `seo42::getImageFile()` gab im Backend nicht den richtigen Wert aus und dadurch wurde Bild nicht angezeigt
 * API Umstellung: EP's haben jetzt alle den Prefix `SEO42_`

@@ -41,6 +41,13 @@ class SEO42Rewrite
         return;
       } 
 
+
+      // allow_article_id ?
+      if ($REX['ADDON']['seo42']['settings']['allow_article_id'] && rex_get('article_id', 'int') > 0) {
+        return self::setArticleId(rex_request('article_id', 'int'), rex_request('clang', 'int', $clang));
+      }
+
+
       // IF NON_REWRITTEN URLS ALLOWED -> USE ARTICLE_ID FROM REQUEST
       if ($REX['ADDON']['seo42']['settings']['auto_redirects'] != 0 && rex_get('article_id', 'int') > 0)
       {
