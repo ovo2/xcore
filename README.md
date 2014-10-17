@@ -119,16 +119,20 @@ Links
 * ISO Language Codes: <http://www.w3schools.com/tags/ref_language_codes.asp>
 * Sprach-Sonderzeichen-Tabelle: <http://unicode.e-workers.de/>
 
+Changelog
+---------
+
+siehe [CHANGELOG.md](CHANGELOG.md)
+
+Updatehinweise
+--------------
+
+siehe [UPDATE.md](UPDATE.md)
 
 FAQ
 ---
 
 siehe [FAQ.md](FAQ.md)
-
-Changelog
----------
-
-siehe [CHANGELOG.md](CHANGELOG.md)
 
 Lizenz
 ------
