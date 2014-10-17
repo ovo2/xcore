@@ -1,5 +1,7 @@
 <?php
 
+// if one day seo42_update_msg value will be changed, key name + update.inc.php must be changed too, otherwise user will get old msg!
+
 if ($I18N->hasMsg('seo42_update_msg')) {
 	$msg = $I18N->msg('seo42_update_msg');
 } else {
