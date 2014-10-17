@@ -306,11 +306,6 @@ class seo42 {
 		return '<img src="' . $url . '" width="' . $imgWidth . '" height="' . $imgHeight . '" alt="' . $altAttribute . '" />';
 	}
 
-	public static function getImageManagerUrl($imageFile, $imageType) {
-		// seo42::getImageManagerUrl() is deprecated! use seo42::getImageManagerFile().
-		return self::getImageManagerFile($imageFile, $imageType);
-	}
-
 	public static function getImageManagerFile($imageFile, $imageType) {
 		global $REX;
 	
@@ -634,6 +629,10 @@ class seo42 {
 
 		$out .= '<pre class="rex-code">';
 		$out .= seo42_utils::print_r_pretty($REX['ADDON']['seo42']['settings'], true);
+		$out .= '</pre>';
+
+		$out .= '<pre class="rex-code">';
+		$out .= seo42_utils::print_r_pretty($REX['ADDON']['seo42']['website_settings'], true);
 		$out .= '</pre>';
 
 		// pathlist

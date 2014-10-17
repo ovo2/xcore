@@ -15,6 +15,7 @@ SEO42 - Changelog
 * API Umstellung: EP's haben jetzt alle den Prefix `SEO42_`
 * API Umstellung: Pathlist Arrays lauten jetzt `$SEO42_URLS` und `$SEO42_IDS`
 * API Umstellung: Alle Funktionen aus der Rewriter-Klasse umbenannten `SEO42Rewrite` sowie die PHP-Dateien selbst beginnen jetzt mit Prefix `seo42_`
+* API Umstellung: `seo42::getImageManagerUrl()` entfernt. Bitte nur noch `seo42::getImageManagerFile()` benutzen
 * Entfernt: `drop_dbfields_on_uninstall` Option
 * Entfernt: `debug_article_id` Option
 
