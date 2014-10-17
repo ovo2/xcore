@@ -28,7 +28,7 @@ if (rex_request('seo42_func')!='')
       require_once $REX['INCLUDE_PATH'].'/addons/seo42/classes/class.seo42_robots.inc.php';
 
       $robots = new seo42_robots();
-      $robots->setContent($REX['ADDON']['seo42']['settings']['robots']);
+      $robots->setContent($REX['ADDON']['seo42']['website_settings']['robots']);
       $robots->addSitemapLink();
       $robots->send();
 

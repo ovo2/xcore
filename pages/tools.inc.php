@@ -5,6 +5,7 @@ require($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42_tool_manager.i
 $func = rex_request('func', 'string');
 
 if ($func == 'add_domain') {
+	$settings = array();
 	$settings['pagerank_checker_unlock'] = true;
 
 	seo42_utils::updateWebsiteSettingsFile($settings);

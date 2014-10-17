@@ -45,21 +45,21 @@ if ($func == "do_copy") {
 	$htaccessFileExists = false;
 	$copySuccessful = false;
 
-	$msg = seo42_utils::checkDir($backupPathRoot);
+	if (file_exists($htaccessRoot)) {
+		$htaccessFileExists = true;
 
-	if ($msg != '') {
-		echo rex_warning($msg);
-		$doCopy = false;
-	} else {
-		if (file_exists($htaccessRoot)) {
-			$htaccessFileExists = true;
+		$msg = seo42_utils::checkDir($backupPathRoot);
 
+		if ($msg != '') {
+			echo rex_warning($msg);
+			$doCopy = false;
+		} else {
 			if (copy($htaccessRoot, $backupPathRoot . $htaccessBackupFile)) {
 				$doCopy = true;
 			} else {
 				rex_warning($I18N->msg('seo42_setup_file_backup_failed', $htaccessRoot));
 				$doCopy = false;
-			} 
+			}
 		}
 	}
 

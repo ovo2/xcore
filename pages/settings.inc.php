@@ -22,10 +22,13 @@ if ($func == 'update') {
 		$REX['ADDON']['seo42']['settings'] = array_merge((array) $REX['ADDON']['seo42']['settings'], $settings);
 
 		// write
-		$content = "<?php\n";
-		$content .= '$REX[\'ADDON\'][\'seo42\'][\'settings\'] = ';
-		$content .= var_export($REX['ADDON']['seo42']['settings'], true);
-		$content .= ';';
+		$content = "<?php\n\n";
+		
+		foreach ((array) $REX['ADDON']['seo42']['settings'] as $key => $value) {
+			if (!isset($REX['ADDON']['seo42']['website_settings'][$key])) {
+				$content .= "\$REX['ADDON']['seo42']['settings']['$key'] = " . var_export($value, true) . ";\n";
+			}
+		}
 
 		if (rex_put_file_contents(SEO42_SETTINGS_FILE, $content)) {
 			echo rex_info($I18N->msg('seo42_config_ok'));
