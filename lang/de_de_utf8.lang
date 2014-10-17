@@ -75,6 +75,7 @@ seo42_settings_hide = verstecken
 seo42_settings_css_dir = CSS Verzeichnis
 seo42_settings_js_dir = JS Verzeichnis
 seo42_settings_images_dir = Images Verzeichnis
+seo42_settings_icons_dir = Icons Verzeichnis
 seo42_settings_send_header_x_ua_compatible = X-UA-Compatible<br />Header senden
 seo42_settings_auto_redirects = Auto Redirects
 seo42_settings_auto_redirects_0 = Aus

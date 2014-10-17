@@ -807,6 +807,10 @@ class seo42 {
 		return res42::getImageFile($file);
 	}
 
+	public static function getIconFile($file) {
+		return res42::getIconFile($file);
+	}
+
 	public static function getResourceFile($fileWithPath) {
 		return res42::getResourceFile($fileWithPath);
 	}

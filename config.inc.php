@@ -35,6 +35,7 @@ $REX['ADDON']['seo42']['settings'] = array(
 	'css_dir' => '/resources/css/',
 	'js_dir' => '/resources/js/',
 	'images_dir' => '/resources/images/',
+	'icons_dir' => '/resources/icons/',
 	'url_ending' => '.html',
 	'url_whitespace_replace' => '-',
 	'url_start' => '/',

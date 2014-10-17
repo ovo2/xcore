@@ -190,6 +190,13 @@ $auto_redirects_select->setSelected($REX['ADDON'][$myself]['settings']['auto_red
 				</p>
 			</div>
 
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="icons_dir"><?php echo $I18N->msg('seo42_settings_icons_dir'); ?></label>
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['icons_dir']; ?>" name="settings[icons_dir]" class="rex-form-text" id="icons_dir">
+				</p>
+			</div>
+
 		</div>
        </fieldset>
 

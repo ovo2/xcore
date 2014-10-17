@@ -7,6 +7,8 @@ class res42 {
 	protected static $jsPath;
 	protected static $imagesDir;
 	protected static $imagesPath;
+	protected static $iconsDir;
+	protected static $iconsPath;
 
 	public static function init() { // called only by seo42 addon
 		global $REX;
@@ -14,14 +16,17 @@ class res42 {
 		$cssDir = $REX['ADDON']['seo42']['settings']['css_dir'];
 		$jsDir = $REX['ADDON']['seo42']['settings']['js_dir'];
 		$imagesDir = $REX['ADDON']['seo42']['settings']['images_dir'];
+		$iconsDir = $REX['ADDON']['seo42']['settings']['icons_dir'];
 
 		self::$cssDir = self::prepareDir($cssDir);
 		self::$jsDir = self::prepareDir($jsDir);
 		self::$imagesDir = self::prepareDir($imagesDir);
+		self::$iconsDir = self::prepareDir($iconsDir);
 
 		self::$cssPath = self::preparePath($cssDir);
 		self::$jsPath = self::preparePath($jsDir);
 		self::$imagesPath = self::preparePath($imagesDir);
+		self::$iconsPath = self::preparePath($iconsDir);
 	}
 
 	public static function getCSSFile($file, $vars = array()) {
@@ -48,6 +53,10 @@ class res42 {
 
 	public static function getImageFile($file) {
 		return self::$imagesDir . $file;
+	}
+
+	public static function getIconFile($file) {
+		return self::$iconsDir . $file;
 	}
 
 	public static function getResourceFile($fileWithPath) {
