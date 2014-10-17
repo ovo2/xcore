@@ -13,12 +13,13 @@ $func = rex_request('func', 'string');
 $chapterpages = array (
 	'' => array($I18N->msg('seo42_help_chapter_readme'), 'pages/help/readme.inc.php'),
 	'changelog' => array($I18N->msg('seo42_help_chapter_changelog'), 'pages/help/changelog.inc.php'),
-	'license' => array($I18N->msg('seo42_help_chapter_license'), 'pages/help/license.inc.php'),
+	'update' => array($I18N->msg('seo42_help_chapter_update'), 'pages/help/update.inc.php'),
 	'startguide' => array($I18N->msg('seo42_help_chapter_startguide'), 'pages/help/startguide.inc.php'),
 	'codeexamples' => array($I18N->msg('seo42_help_chapter_codeexamples'), 'pages/help/code_examples.inc.php'),
 	'faq' => array($I18N->msg('seo42_help_chapter_faq'), 'pages/help/faq.inc.php'),
 	'marvin' => array($I18N->msg('seo42_help_chapter_marvin'), 'pages/help/marvin.inc.php'),
-	'debug' => array($I18N->msg('seo42_help_chapter_debug'), 'pages/help/debug.inc.php')
+	'debug' => array($I18N->msg('seo42_help_chapter_debug'), 'pages/help/debug.inc.php'),
+	'license' => array($I18N->msg('seo42_help_chapter_license'), 'pages/help/license.inc.php')
 );
 
 // build chapter navigation

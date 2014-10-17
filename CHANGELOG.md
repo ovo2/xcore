@@ -3,7 +3,7 @@ SEO42 - Changelog
 
 ### Version 4.0.0 DEV
 
-* Update-Hinweis: Die mitgelieferte `.htaccess` Datei hat sich geändert. Bitte Setup Schritt 2 wiederholen.
+* Neu: Update-Hinweise (auch für alle zukünftigen Versionen) wurden in die Datei `UPDATE.md` ausgelagert und sind auch über die Hilfe im AddOn einsehbar.
 * Neu: Bei einem Update werden die Einstellungen nicht mehr überschrieben, da diese nun im Data-Ordner von REDAXO abgelegt werden
 * Neu: Alle Dateien wie Redirects-Cachedatei und `.htaccess` Backups werden im Data-Ordner von REDAXO abgelegt
 * Neu: Alle Einstellungen in die Oberfläche gepackt

@@ -96,8 +96,6 @@ Hinweise
 * Der Fehlerartikel unter REDAXO > System sollte nicht gleich dem Startartikel der Website entsprechen. Es sollte aufjedenfall ein eigener Fehlerartikel angelegt werden.
 * Implementiert man sein eigenes Titel-Schema, ist es vielleicht sinnvoll die Optionen `title_preview` und `no_prefix_checkbox` auf `false` zu setzen.
 * `$REX["MOD_REWRITE"]` braucht nicht mehr auf `true` gesetzt werden (z.B. über die System-Page von REDAXO). Wenn SEO42 aktiv, wird es automatisch gesetzt.
-* Eine hilfreiche Sprach-Sonderzeichen-Tabelle für die Ermittlung der Sonderzeichen-Umschreibungen für die Spracheinstellungen findet man hier: <http://unicode.e-workers.de/>
-* Vorläufige Sammlung der Lang-Presets hier: <https://github.com/RexDude/seo42/issues/61>
 
 
 Hinweise Resourceneinbindung
@@ -117,6 +115,9 @@ Links
 * Klasse res42: <https://github.com/RexDude/seo42/blob/master/classes/class.res42.inc.php>
 * Klasse nav42: <https://github.com/RexDude/seo42/blob/master/classes/class.nav42.inc.php>
 * Online JavaScript/CSS Compression Using YUI Compressor: <http://refresh-sf.com/yui/>
+* Lang-Presets Sammlung: <https://github.com/RexDude/seo42/issues/61>
+* ISO Language Codes: <http://www.w3schools.com/tags/ref_language_codes.asp>
+* Sprach-Sonderzeichen-Tabelle: <http://unicode.e-workers.de/>
 
 
 FAQ
