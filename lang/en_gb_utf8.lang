@@ -264,3 +264,6 @@ seo42_redirect_test = test
 
 seo42_install_make_dir = The folder "/redaxo/include/{0}/" can not be created, check for write access or create the folder manually!
 seo42_install_perm_dir = The folder "/redaxo/include/{0}/" needs write access!
+
+seo42_update_msg = SEO42: Please check the <a href="index.php?page=seo42&subpage=help&chapter=update">updatelog</a> for this version.
+

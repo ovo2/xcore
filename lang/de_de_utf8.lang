@@ -265,3 +265,5 @@ seo42_redirect_test = testen
 seo42_install_make_dir = Der Ordner "/redaxo/include/{0}/" kann nicht angelegt werden, überprüfen Sie die Schreibrechte oder legen Sie den Ordner von Hand an und geben ihm Schreibrechte.
 seo42_install_perm_dir = Der Ordner "/redaxo/include/{0}/" benötigt Schreibrechte!
 
+seo42_update_msg = SEO42: Bitte beachten Sie die <a href="index.php?page=seo42&subpage=help&chapter=update">Update-Hinweise</a> für diese Version.
+
