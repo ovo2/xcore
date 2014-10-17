@@ -76,14 +76,6 @@ FileETag None
 	RewriteEngine On
 	RewriteBase /
 
-	# REDIRECT NON-WWW TO WWW (SUBDOMAINS WON'T BE AFFECTED)
-	#RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$
-	#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301]
-
-	# REDIRECT WWW TO NON-WWW
-	#RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-	#RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
-
 	# REDIRECT SITEMAP.XML TO SEO42 SITEMAP FUNCTION
 	RewriteRule ^sitemap\.xml$ index.php?seo42_func=sitemap [NC,L]
 

@@ -11,7 +11,6 @@ seo42_seopage_linktext = SEO
 seo42_urlpage_linktext = URL
 seo42_install_rex_version = This AddOn requires REDAXO Version 4.5.0 or higher.
 seo42_install_concurrent = Please uninstall this AddOn first:
-seo42_uninstall_dbfields_not_removed = Database fields could not be removed.
 seo42_config_ok = Settings have been updated.
 seo42_config_error = Settings could not be updated!
 seo42_dbfields_readded = {0}: Missing database fields were added.
@@ -82,6 +81,12 @@ seo42_settings_auto_redirects_0 = Off
 seo42_settings_auto_redirects_1 = Auto Redirect "index.php?article_id=42" Urls
 seo42_settings_auto_redirects_2 = Auto Redirect "42-0-ArticleName.html" Urls
 seo42_settings_auto_redirects_3 = Auto Redirect "ArticleName.0-42.html" Urls
+seo42_settings_anti_double_content_redirects = Anti Double Content Redirects
+seo42_settings_anti_double_content_redirects_0 = Off
+seo42_settings_anti_double_content_redirects_1 = One domain only
+seo42_settings_anti_double_content_redirects_2 = NON-WWW to WWW
+seo42_settings_anti_double_content_redirects_3 = WWW to NON-WWW 
+seo42_settings_anti_double_content_redirects_4 = HTTPS only
 
 seo42_setup_file_backup_failed = The file "{0}" could not be saved!
 seo42_setup_file_copy_successful = Copying of file successful.
@@ -99,8 +104,6 @@ seo42_setup_step1_button = Save settings
 seo42_setup_step2 = Step 2: Copy file
 seo42_setup_step2_msg1 = The following file must be copied to REDAXO's root directory and renamed correctly:
 seo42_setup_to = to
-seo42_setup_www_redirect_checkbox = Enable redirect to WWW domain
-seo42_setup_non_www_redirect_checkbox = Enable redirect to non-WWW domain
 seo42_setup_directory_listing_checkbox = Disable directory listing
 seo42_setup_recommended = (recommended)
 seo42_setup_required = (required)
@@ -238,7 +241,7 @@ seo42_help_codeexamples_ex7_comment2 = give entire title in lowercase (as an exa
 seo42_help_codeexamples_ex7_comment3 = method calls only with this derived class
 seo42_help_codeexamples_ex7_comment4 = gives the title in lowercase letters
 
-seo42_help_debug_article_wrong = Article invalid!
+seo42_help_debug_article_wrong = Article invalid with ID = 
 
 seo42_redirect_id = ID
 seo42_redirect_deleted = Redirect was deleted

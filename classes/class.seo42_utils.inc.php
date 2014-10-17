@@ -31,9 +31,6 @@ class seo42_utils {
 	public static function init($params) {
 		global $REX;
 
-		// init globals
-		seo42::init();
-
 		if ($REX['MOD_REWRITE']) {
 			// includes
 			require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42_rewrite.inc.php');
@@ -203,7 +200,7 @@ class seo42_utils {
 	public static function getServerUrl() {
 		$url = $_SERVER['REQUEST_URI'];
 		$parts = explode('/',$url);
-		$serverUrl = 'http://' . $_SERVER['SERVER_NAME'];
+		$serverUrl = 'http://' . self::getServerHost();
 
 		for ($i = 0; $i < count($parts) - 2; $i++) {
 			$serverUrl .= $parts[$i] . "/";
@@ -608,8 +605,6 @@ class seo42_utils {
 		global $REX;
 
 		if (isset($REX['ADDON']['seo42']['website_settings']['cached_redirects']) && count($REX['ADDON']['seo42']['website_settings']['cached_redirects']) > 0) {
-			seo42::init(); 
-
 			if (seo42::isSubDirInstall()) {
 				// remove subdir from request uri
 				$requestUri = self::trimSubDir($_SERVER['REQUEST_URI']);
@@ -657,18 +652,16 @@ class seo42_utils {
 		$regexArray = preg_grep('/\*/', array_keys($REX['ADDON']['seo42']['website_settings']['cached_redirects']));
 		
 		foreach($regexArray as $link) {
-			
 			// all * replace with "([\w.-]+)" regex
 			$preg = str_replace('\*', '([\w.-]+)', preg_quote($link));
 			
-			if(preg_match('#'.$preg.'#', $requestUri, $matches)) {
-				
+			if (preg_match('#'.$preg.'#', $requestUri, $matches)) {
 				$url = $REX['ADDON']['seo42']['website_settings']['cached_redirects'][$link];
 				
 				// check if any variables in the Target-Url
-				if(preg_match_all('/\{(\d)\}/', $url, $match)) {			
+				if (preg_match_all('/\{(\d)\}/', $url, $match)) {			
 					
-					foreach($match[0] as $key=>$value) {						
+					foreach($match[0] as $key => $value) {						
 						$url = str_replace($value, $matches[$match[1][$key]], $url);						
 					}
 					
@@ -889,5 +882,82 @@ class seo42_utils {
 				return $newValue;
 				
 		}
+	}
+
+	public static function antiDoubleContentRedirect() {
+		global $REX;
+
+		if ($REX['ADDON']['seo42']['settings']['anti_double_content_redirects'] == 0) {
+			// do nothing
+			return;
+		} else {
+			$urlParts = parse_url($REX['SERVER']);
+
+			if (isset($urlParts['scheme'])) {
+				$protocol = $urlParts['scheme'];
+			} else {
+				$protocol = 'http';
+			}
+
+			if (isset($urlParts['host'])) {
+				$server = $urlParts['host'];
+			} else {
+				$server = $REX['SERVER'];
+			}
+
+			$location = '';
+			$serverHost = self::getServerHost();
+			$requestUri = $_SERVER['REQUEST_URI'];
+
+			// check for possible protocol only redirect
+			if (isset($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] != $protocol) {
+				$location = $protocol . '://' . $serverHost . $requestUri;
+			}
+
+			switch ($REX['ADDON']['seo42']['settings']['anti_double_content_redirects']) {
+				case 1:
+					// one domain only
+					if ($serverHost != $server) {
+						$location = $protocol . '://' . $server . $requestUri;
+					}
+
+					break;
+				case 2:
+					// non-www to www
+					if (preg_match('/^[^.]+\.[^.]+$/', $serverHost, $hits)) {
+						$location = $protocol . '://www.' . $hits[0] . $requestUri;
+					}
+
+					break;
+				case 3:
+					// www to non-www
+					if (preg_match('/^www\.(.*)$/', $serverHost, $hits)) {
+						$location = $protocol . '://' . substr($hits[0], 4) . $requestUri;
+					}
+
+					break;
+				case 4:
+					// https only
+					$urlParts = parse_url($serverHost);
+
+					if (isset($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] == 'http') {
+						$location = 'https://' . $serverHost . $requestUri;
+					}
+
+					break;
+			}
+
+			if ($location != '') {
+				header('HTTP/1.1 301 Moved Permanently');
+			 	header('Location: ' . $location);
+
+				exit;
+			}
+		}
+	}
+
+	public static function getServerHost() {
+		// return $_SERVER['SERVER_NAME'];
+		return $_SERVER['HTTP_HOST']; 
 	}
 }

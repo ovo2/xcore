@@ -125,6 +125,16 @@ $auto_redirects_select->addOption($I18N->msg('seo42_settings_auto_redirects_2'),
 $auto_redirects_select->addOption($I18N->msg('seo42_settings_auto_redirects_3'), '3');
 $auto_redirects_select->setSelected($REX['ADDON'][$myself]['settings']['auto_redirects']);
 
+$anti_double_content_redirects_select = new rex_select();
+$anti_double_content_redirects_select->setSize(1);
+$anti_double_content_redirects_select->setName('settings[anti_double_content_redirects]');
+$anti_double_content_redirects_select->addOption($I18N->msg('seo42_settings_anti_double_content_redirects_0'), '0');
+$anti_double_content_redirects_select->addOption($I18N->msg('seo42_settings_anti_double_content_redirects_1'), '1');
+$anti_double_content_redirects_select->addOption($I18N->msg('seo42_settings_anti_double_content_redirects_2'), '2');
+$anti_double_content_redirects_select->addOption($I18N->msg('seo42_settings_anti_double_content_redirects_3'), '3');
+$anti_double_content_redirects_select->addOption($I18N->msg('seo42_settings_anti_double_content_redirects_4'), '4');
+$anti_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['settings']['anti_double_content_redirects']);
+
 ?>
 
 <div class="rex-addon-output">
@@ -158,10 +168,18 @@ $auto_redirects_select->setSelected($REX['ADDON'][$myself]['settings']['auto_red
 
 		 <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
+              <label for="anti_double_content_redirects"><?php echo $I18N->msg('seo42_settings_anti_double_content_redirects'); ?></label>
+               <?php echo $anti_double_content_redirects_select->get(); ?>
+            </p>
+          </div>
+
+		 <div class="rex-form-row">
+            <p class="rex-form-col-a rex-form-select">
               <label for="auto_redirects"><?php echo $I18N->msg('seo42_settings_auto_redirects'); ?></label>
                <?php echo $auto_redirects_select->get(); ?>
             </p>
           </div>
+
 		</div>
        </fieldset>
 

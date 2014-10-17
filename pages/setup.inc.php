@@ -83,25 +83,8 @@ if ($func == "do_copy") {
 		echo rex_warning($I18N->msg('seo42_setup_backup_failed'));
 	}
 
-	if ($copySuccessful && (rex_request('www_redirect', 'int') == 1 || rex_request('modify_rewritebase', 'int') == 1 || rex_request('directory_listing', 'int') == 1)) {
+	if ($copySuccessful && (rex_request('modify_rewritebase', 'int') == 1 || rex_request('directory_listing', 'int') == 1)) {
 		$content = rex_get_file_contents($htaccessRoot);
-
-		// this is for non-ww to www redirect
-		if (rex_request('www_redirect', 'int') == 1) {
-			if (seo42::isWwwServerUrl()) {
-				$wwwRedirect1 = '#RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$';
-				$wwwRedirect2 = '#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301]';
-	
-				$content = str_replace($wwwRedirect1, ltrim($wwwRedirect1, '#'), $content);
-				$content = str_replace($wwwRedirect2, ltrim($wwwRedirect2, '#'), $content);
-			} else {
-				$wwwRedirect1 = '#RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]';
-				$wwwRedirect2 = '#RewriteRule ^(.*)$ http://%1/$1 [R=301,L]';
-	
-				$content = str_replace($wwwRedirect1, ltrim($wwwRedirect1, '#'), $content);
-				$content = str_replace($wwwRedirect2, ltrim($wwwRedirect2, '#'), $content);
-			}
-		}
 
 		// this is for subdir installations  
 		if (rex_request('modify_rewritebase', 'int') == 1) {
@@ -208,11 +191,6 @@ if ($func == "do_copy") {
 			<?php } ?>
 
 			<p class="rex-form-checkbox rex-form-label-right"> 
-				<input type="checkbox" value="1" id="www_redirect" name="www_redirect" />
-				<label for="www_redirect"><?php if (seo42::isWwwServerUrl()) { echo $I18N->msg('seo42_setup_www_redirect_checkbox'); } else { echo $I18N->msg('seo42_setup_non_www_redirect_checkbox'); } echo  ' <span>' . $I18N->msg('seo42_setup_recommended') . '</span>'; ?></label>
-			</p>
-
-			<p class="rex-form-checkbox rex-form-label-right"> 
 				<input type="checkbox" value="1" id="directory_listing" name="directory_listing" />
 				<label for="directory_listing"><?php echo $I18N->msg('seo42_setup_directory_listing_checkbox') . ' <span>' . $I18N->msg('seo42_setup_recommended') . '</span>'; ?></label>
 				<span id="directory_listing_hint" title="<?php echo $I18N->msg('seo42_setup_directory_listing_alert'); ?>" class="seo42-tooltip status exclamation">&nbsp;</span>
@@ -304,10 +282,6 @@ if ($func == "do_copy") {
 
 #rex-page-seo42 #modify_rewritebase {
 	margin-top: 10px;
-}
-
-#rex-page-seo42 #www_redirect {
-    margin-top: 8px;
 }
 
 #rex-page-seo42 #directory_listing {

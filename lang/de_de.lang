@@ -11,7 +11,6 @@ seo42_seopage_linktext = SEO
 seo42_urlpage_linktext = URL
 seo42_install_rex_version = Dieses AddOn benötigt REDAXO Version 4.5.0 oder höher.
 seo42_install_concurrent = Bitte folgendes AddOn zuvor deinstallieren:
-seo42_uninstall_dbfields_not_removed = Die Datenbankfelder wurden NICHT entfernt.
 seo42_config_ok = Einstellungen wurden aktualisiert.
 seo42_config_error = Einstellungen konnte nicht gespeichert werden!
 seo42_dbfields_readded = {0}: Fehlende DB-Felder des AddOns wurden hinzugefügt.
@@ -82,6 +81,12 @@ seo42_settings_auto_redirects_0 = Aus
 seo42_settings_auto_redirects_1 = Automatischer Redirect von "index.php?article_id=42" Urls
 seo42_settings_auto_redirects_2 = Automatischer Redirect von "42-0-ArticleName.html" Urls
 seo42_settings_auto_redirects_3 = Automatischer Redirect von "ArticleName.0-42.html" Urls
+seo42_settings_anti_double_content_redirects = Anti Double Content Redirects
+seo42_settings_anti_double_content_redirects_0 = Aus
+seo42_settings_anti_double_content_redirects_1 = One Domain Only
+seo42_settings_anti_double_content_redirects_2 = NON-WWW zu WWW
+seo42_settings_anti_double_content_redirects_3 = WWW zu NON-WWW 
+seo42_settings_anti_double_content_redirects_4 = Nur HTTPS
 
 seo42_setup_file_backup_failed = Datei "{0}" konnte nicht gesichert werden!
 seo42_setup_file_copy_successful = Kopieren der Datei erfolgreich.
@@ -99,8 +104,6 @@ seo42_setup_step1_button = Einstellungen übernehmen
 seo42_setup_step2 = Schritt 2: Datei kopieren
 seo42_setup_step2_msg1 = Folgende Datei muss in das Hauptverzeichnis von REDAXO kopiert und korrekt umbenannt werden:
 seo42_setup_to = nach
-seo42_setup_www_redirect_checkbox = Umleitung auf die WWW-Domain aktivieren
-seo42_setup_non_www_redirect_checkbox = Umleitung auf die Domain ohne WWW aktivieren
 seo42_setup_directory_listing_checkbox = Directory Listing abschalten
 seo42_setup_recommended = (empfohlen)
 seo42_setup_required = (benötigt)
@@ -238,7 +241,7 @@ seo42_help_codeexamples_ex7_comment2 = gesamten titel in kleinbuchstaben ausgebe
 seo42_help_codeexamples_ex7_comment3 = methoden aufrufe dann nur noch über diese abgeleitete klasse
 seo42_help_codeexamples_ex7_comment4 = gibt nun den titel in kleinbuchstaben aus
 
-seo42_help_debug_article_wrong = Artikel ungültig!
+seo42_help_debug_article_wrong = Artikel ungültig mit ID = 
 
 seo42_redirect_id = ID
 seo42_redirect_deleted = Redirect wurde gelöscht

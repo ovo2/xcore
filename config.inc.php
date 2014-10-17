@@ -50,7 +50,7 @@ $REX['ADDON']['seo42']['settings'] = array(
 	'homeurl' => 2,
 	'homelang' => 0,
 	'auto_redirects' => 0,
-	'debug_article_id' => $REX['START_ARTICLE_ID'],
+	'anti_double_content_redirects' => 1,
 	'send_header_x_ua_compatible' => true,
 	'rewriter' => true,
 	'seopage' => true,
@@ -72,7 +72,6 @@ $REX['ADDON']['seo42']['settings'] = array(
 	'robots_txt_auto_disallow' => false,
 	'static_sitemap_priority' => true,
 	'fix_image_manager_cache_control_header' => false,
-	'drop_dbfields_on_uninstall' => true,
 	'urlencode_lowercase' => false,
 	'allow_article_id' => false,
 	'remove_root_cats_for_categories' => array(),
@@ -107,12 +106,17 @@ if (file_exists(SEO42_WEBSITE_SETTINGS_FILE)) {
 	require_once(SEO42_WEBSITE_SETTINGS_FILE);
 }
 
+// pre init seo42 vars
+seo42::init();
+
 // fix for iis webserver: set request uri manually if not available
 seo42_utils::requestUriFix();
 
-// do redirect for frontend if necessary
+// do redirects
+seo42_utils::antiDoubleContentRedirect();
+
 if (!$REX['REDAXO']) {
-	seo42_utils::redirect();
+	seo42_utils::redirect();	
 }
 
 // init

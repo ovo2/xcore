@@ -5,6 +5,7 @@ SEO42 - Changelog
 
 * Fixed: `seo42::getImageFile()` gab im Backend nicht den richtigen Wert aus und dadurch wurde Bild nicht angezeigt
 * Neu: Update-Hinweise (auch für alle zukünftigen Versionen) wurden in die Datei `UPDATE.md` ausgelagert und sind auch über die Hilfe im AddOn einsehbar.
+* Neu: Anti Double Content Redirects eingeführt. Ersetzen die WWW/Non-WWW Redirects aus Setup Schritt 2. One Domain Only Redirect hinzugefügt um nur noch eine Domain zu erlauben.
 * Neu: Bei einem Update werden die Einstellungen nicht mehr überschrieben, da diese nun im Data-Ordner von REDAXO abgelegt werden
 * Neu: Alle Dateien wie Redirects-Cachedatei und `.htaccess` Backups werden im Data-Ordner von REDAXO abgelegt
 * Neu: Einstellung `redirects` hinzugefügt, um die Redirects-Seite ausschalten zu können (z.B. wenn man die Redirects-Funktionalität des url_control Plugin einsetzt). Die Option kann theoretisch auch von einem Plugin gesetzt werden.
@@ -14,6 +15,8 @@ SEO42 - Changelog
 * API Umstellung: EP's haben jetzt alle den Prefix `SEO42_`
 * API Umstellung: Pathlist Arrays lauten jetzt `$SEO42_URLS` und `$SEO42_IDS`
 * API Umstellung: Alle Funktionen aus der Rewriter-Klasse umbenannten `SEO42Rewrite` sowie die PHP-Dateien selbst beginnen jetzt mit Prefix `seo42_`
+* Entfernt: `drop_dbfields_on_uninstall` Option
+* Entfernt: `debug_article_id` Option
 
 ### Version 3.4.0 - 24. September 2014
 
