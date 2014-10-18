@@ -37,6 +37,11 @@
 	margin-left: 5px;
 }
 
+#rex-page-seo42 span.status.right {
+	float: right;
+	margin-right: 5px;
+}
+
 #rex-page-seo42 span.status.success {
 	background-position: left top;	
 }
@@ -47,6 +52,10 @@
 
 #rex-page-seo42 span.status.exclamation {
 	background-position: left -78px;	
+}
+
+#rex-page-seo42 span.status.information {
+	background-position: left -60px;	
 }
 
 /* --------------------------------------------------------------------- */
@@ -68,4 +77,17 @@
 		padding-left: 0 !important;
 	}
 }
+
+/* --------------------------------------------------------------------- */
+
+.tags {
+	display: none;
+}
+
+.tag-editor {
+	width: 456px;
+	border: 1px solid #999 !important;
+}
+
+
 

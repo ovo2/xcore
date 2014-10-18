@@ -55,6 +55,17 @@ jQuery(document).ready(function($) {
 			title: '<?php echo $I18N->msg('seo42_tooltip_headline'); ?>'
 		}
 	});
+
+	$('.seo42-info-tooltip[title]').qtip({
+		style: {
+			classes: 'qtip-light qtip-rounded qtip-shadow'
+		},
+		content: {
+			title: '<?php echo $I18N->msg('seo42_tooltip_info_headline'); ?>'
+		}
+	});
+
+	$('input.tags').tagEditor();
 });
 </script>
 
