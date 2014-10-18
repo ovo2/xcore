@@ -1,20 +1,5 @@
 <?php
 
-define('SEO42_URL_TYPE_DEFAULT', 0); 
-define('SEO42_URL_TYPE_INTERN_REPLACE_CLANG', 1); 
-define('SEO42_URL_TYPE_USERDEF_INTERN', 2);
-define('SEO42_URL_TYPE_MEDIAPOOL', 3);
-define('SEO42_URL_TYPE_LANGSWITCH', 4); // should also be handled by navigation output.
-define('SEO42_URL_TYPE_NONE', 5); // should also be handled by navigation output.
-define('SEO42_URL_TYPE_REMOVE_ROOT_CAT', 6);
-define('SEO42_URL_TYPE_INTERN_REPLACE', 7);
-define('SEO42_URL_TYPE_CALL_FUNC', 8); // should also be handled by navigation output.
-define('SEO42_URL_TYPE_USERDEF_EXTERN', 9);
-
-define('SEO42_REWRITEMODE_SPECIAL_CHARS', 0);
-define('SEO42_REWRITEMODE_URLENCODE', 1);
-define('SEO42_REWRITEMODE_INHERIT', 2);
-
 class seo42_utils {
 	public static function appendToPageHeader($params) {
 		global $REX;
@@ -890,10 +875,10 @@ class seo42_utils {
 		}
 	}
 
-	public static function antiDoubleContentRedirect() {
+	public static function noDoubleContentRedirect() {
 		global $REX;
 
-		if ($REX['ADDON']['seo42']['settings']['anti_double_content_redirects'] == 0) {
+		if ($REX['ADDON']['seo42']['settings']['no_double_content_redirects'] == SEO42_NO_DOUBLE_CONTENT_REDIRECT_NONE) {
 			// do nothing
 			return;
 		} else {
@@ -920,29 +905,29 @@ class seo42_utils {
 				$location = $protocol . '://' . $serverHost . $requestUri;
 			}
 
-			switch ($REX['ADDON']['seo42']['settings']['anti_double_content_redirects']) {
-				case 1:
+			switch ($REX['ADDON']['seo42']['settings']['no_double_content_redirects']) {
+				case SEO42_NO_DOUBLE_CONTENT_REDIRECT_ONE_DOMAIN_ONLY:
 					// one domain only
 					if ($serverHost != $server) {
 						$location = $protocol . '://' . $server . $requestUri;
 					}
 
 					break;
-				case 2:
+				case SEO42_NO_DOUBLE_CONTENT_REDIRECT_NON_WWW_TO_WWW:
 					// non-www to www
 					if (preg_match('/^[^.]+\.[^.]+$/', $serverHost, $hits)) {
 						$location = $protocol . '://www.' . $hits[0] . $requestUri;
 					}
 
 					break;
-				case 3:
+				case SEO42_NO_DOUBLE_CONTENT_REDIRECT_WWW_TO_NON_WWW:
 					// www to non-www
 					if (preg_match('/^www\.(.*)$/', $serverHost, $hits)) {
 						$location = $protocol . '://' . substr($hits[0], 4) . $requestUri;
 					}
 
 					break;
-				case 4:
+				case SEO42_NO_DOUBLE_CONTENT_REDIRECT_ONLY_HTTPS:
 					// https only
 					$urlParts = parse_url($serverHost);
 

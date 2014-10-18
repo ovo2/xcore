@@ -49,9 +49,9 @@ class SEO42Rewrite
 
 
       // IF NON_REWRITTEN URLS ALLOWED -> USE ARTICLE_ID FROM REQUEST
-      if ($REX['ADDON']['seo42']['settings']['auto_redirects'] != 0 && rex_get('article_id', 'int') > 0)
+      if ($REX['ADDON']['seo42']['settings']['auto_redirects'] != SEO42_AUTO_REDIRECT_NONE && rex_get('article_id', 'int') > 0)
       {
-        if ($REX['ADDON']['seo42']['settings']['auto_redirects'] == 1)
+        if ($REX['ADDON']['seo42']['settings']['auto_redirects'] == SEO42_AUTO_REDIRECT_ARTICLE_ID)
         {
           $artId = rex_request('article_id','int');
           $clangId = rex_request('clang','int',$clang);
@@ -108,9 +108,9 @@ class SEO42Rewrite
 		}
 
 		// auto redirects 
-		if ($REX['ADDON']['seo42']['settings']['auto_redirects'] == 2 || $REX['ADDON']['seo42']['settings']['auto_redirects'] == 3) {
+		if ($REX['ADDON']['seo42']['settings']['auto_redirects'] == SEO42_AUTO_REDIRECT_URL_REWRITE || $REX['ADDON']['seo42']['settings']['auto_redirects'] == SEO42_AUTO_REDIRECT_URL_REWRITE_R3) {
 			// smart redirects for old fashioned standard redaxo rewrite methods
-			if ($REX['ADDON']['seo42']['settings']['auto_redirects'] == 2) {
+			if ($REX['ADDON']['seo42']['settings']['auto_redirects'] == SEO42_AUTO_REDIRECT_URL_REWRITE) {
 				preg_match('/\/(.*(\.))?((?P<clang>[0-9]+)(.*)\-(?P<id>[0-9]+))((\-|\.).*)/', $_SERVER['REQUEST_URI'], $url_params);
 			} else {
 				preg_match('/\/(.*(\.))?((?P<clang>[0-9]+)\-(?P<id>[0-9]+))((\-|\.).*)/', $_SERVER['REQUEST_URI'], $url_params);

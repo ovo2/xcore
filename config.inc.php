@@ -30,54 +30,80 @@ define('SEO42_BACKUP_DIR', $REX['INCLUDE_PATH'] . '/data/addons/seo42/backup/');
 define('SEO42_PATHLIST', $REX['GENERATED_PATH'] . '/files/seo42_pathlist.php');
 define('SEO42_WEBSITE_SETTINGS_FILE', seo42_utils::getWebsiteSettingsFile());
 
+define('SEO42_URL_TYPE_DEFAULT', 0); 
+define('SEO42_URL_TYPE_INTERN_REPLACE_CLANG', 1); 
+define('SEO42_URL_TYPE_USERDEF_INTERN', 2);
+define('SEO42_URL_TYPE_MEDIAPOOL', 3);
+define('SEO42_URL_TYPE_LANGSWITCH', 4); // should also be handled by navigation output.
+define('SEO42_URL_TYPE_NONE', 5); // should also be handled by navigation output.
+define('SEO42_URL_TYPE_REMOVE_ROOT_CAT', 6);
+define('SEO42_URL_TYPE_INTERN_REPLACE', 7);
+define('SEO42_URL_TYPE_CALL_FUNC', 8); // should also be handled by navigation output.
+define('SEO42_URL_TYPE_USERDEF_EXTERN', 9);
+
+define('SEO42_REWRITEMODE_SPECIAL_CHARS', 0);
+define('SEO42_REWRITEMODE_URLENCODE', 1);
+define('SEO42_REWRITEMODE_INHERIT', 2);
+
+define('SEO42_NO_DOUBLE_CONTENT_REDIRECT_NONE', 0);
+define('SEO42_NO_DOUBLE_CONTENT_REDIRECT_ONE_DOMAIN_ONLY', 1);
+define('SEO42_NO_DOUBLE_CONTENT_REDIRECT_NON_WWW_TO_WWW', 2);
+define('SEO42_NO_DOUBLE_CONTENT_REDIRECT_WWW_TO_NON_WWW', 3);
+define('SEO42_NO_DOUBLE_CONTENT_REDIRECT_ONLY_HTTPS', 4);
+
+define('SEO42_AUTO_REDIRECT_NONE', 0);
+define('SEO42_AUTO_REDIRECT_ARTICLE_ID', 1);
+define('SEO42_AUTO_REDIRECT_URL_REWRITE', 2);
+define('SEO42_AUTO_REDIRECT_URL_REWRITE_R3', 3);
+
 // default settings (user settings are saved in data dir!)
 $REX['ADDON']['seo42']['settings'] = array(
+	'rewriter' => true,
+	'url_ending' => '.html',
+	'hide_langslug' => 0,
+	'homeurl' => 2,
+	'homelang' => 0,
+	'no_double_content_redirects' => SEO42_NO_DOUBLE_CONTENT_REDIRECT_ONE_DOMAIN_ONLY,
+	'auto_redirects' => SEO42_AUTO_REDIRECT_NONE,
+	'smart_redirects' => true,
+	'redirects_allow_regex' => false,
 	'css_dir' => '/resources/css/',
 	'js_dir' => '/resources/js/',
 	'images_dir' => '/resources/images/',
 	'icons_dir' => '/resources/icons/',
-	'url_ending' => '.html',
+	'seo_friendly_image_manager_urls' => true,
+	'full_urls' => false,
+	'allow_article_id' => false,
+	'ignore_root_cats' => false,
+	'include_query_params' => true,
+	'ignore_query_params' => array(),
 	'url_whitespace_replace' => '-',
 	'url_start' => '/',
 	'url_start_subdir' => './',
-	'global_special_chars' => '',
-	'global_special_chars_rewrite' => '',
-	'urlencode_whitespace_replace' => '_',
+	'remove_root_cats_for_categories' => array(),
+	'no_url_for_categories' => array(),
+	'send_header_x_ua_compatible' => true,
+	'fix_image_manager_cache_control_header' => false,
+	'force_download_for_filetypes' => array(),
+	'static_sitemap_priority' => true,
+	'no_robots_txt_auto_disallow' => true,
 	'robots_follow_flag' => 'follow',
 	'robots_archive_flag' => 'noarchive',
 	'title_delimiter' => '-',
-	'hide_langslug' => 0,
-	'homeurl' => 2,
-	'homelang' => 0,
-	'auto_redirects' => 0,
-	'anti_double_content_redirects' => 1,
-	'send_header_x_ua_compatible' => true,
-	'rewriter' => true,
 	'seopage' => true,
-	'urlpage' => true,
-	'redirects' => true,
-	'pagerank_checker' => true,
 	'title_preview' => true,
 	'no_prefix_checkbox' => false,
 	'custom_canonical_url' => false,
 	'noindex_checkbox' => false,
+	'urlpage' => true,
 	'all_url_types' => true,
-	'full_urls' => false,
-	'smart_redirects' => true,
-	'redirects_allow_regex' => false,
-	'include_query_params' => true,
-	'seo_friendly_image_manager_urls' => true,
+	'pagerank_checker' => true,
+	'redirects' => true,
 	'one_page_mode' => false,
-	'ignore_root_cats' => false,
-	'robots_txt_auto_disallow' => false,
-	'static_sitemap_priority' => true,
-	'fix_image_manager_cache_control_header' => false,
+	'global_special_chars' => '',
+	'global_special_chars_rewrite' => '',
+	'urlencode_whitespace_replace' => '_',
 	'urlencode_lowercase' => false,
-	'allow_article_id' => false,
-	'remove_root_cats_for_categories' => array(),
-	'no_url_for_categories' => array(),
-	'ignore_query_params' => array(),
-	'force_download_for_filetypes' => array(),
 	'lang' => array(
 		0 => array(
 			'url' => '',
@@ -113,7 +139,7 @@ seo42::init();
 seo42_utils::requestUriFix();
 
 // do redirects
-seo42_utils::antiDoubleContentRedirect();
+seo42_utils::noDoubleContentRedirect();
 
 if (!$REX['REDAXO']) {
 	seo42_utils::redirect();	

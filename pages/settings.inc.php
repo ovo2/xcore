@@ -98,7 +98,7 @@ if (count($REX['CLANG']) > 1) {
 if (count($REX['CLANG']) > 1) {
   $homelang_select = new rex_select();
   $homelang_select->setSize(1);
-  $homelang_select->setName('[homelang]');
+  $homelang_select->setName('settings[homelang]');
 
   foreach($REX['CLANG'] as $id => $str) {
     $homelang_select->addOption($str,$id);
@@ -119,21 +119,21 @@ if (count($REX['CLANG']) > 1) {
 $auto_redirects_select = new rex_select();
 $auto_redirects_select->setSize(1);
 $auto_redirects_select->setName('settings[auto_redirects]');
-$auto_redirects_select->addOption($I18N->msg('seo42_settings_auto_redirects_0'), '0');
-$auto_redirects_select->addOption($I18N->msg('seo42_settings_auto_redirects_1'), '1');
-$auto_redirects_select->addOption($I18N->msg('seo42_settings_auto_redirects_2'), '2');
-$auto_redirects_select->addOption($I18N->msg('seo42_settings_auto_redirects_3'), '3');
+$auto_redirects_select->addOption($I18N->msg('seo42_settings_auto_redirects_0'), SEO42_AUTO_REDIRECT_NONE);
+$auto_redirects_select->addOption($I18N->msg('seo42_settings_auto_redirects_1'), SEO42_AUTO_REDIRECT_ARTICLE_ID);
+$auto_redirects_select->addOption($I18N->msg('seo42_settings_auto_redirects_2'), SEO42_AUTO_REDIRECT_URL_REWRITE);
+$auto_redirects_select->addOption($I18N->msg('seo42_settings_auto_redirects_3'), SEO42_AUTO_REDIRECT_URL_REWRITE_R3);
 $auto_redirects_select->setSelected($REX['ADDON'][$myself]['settings']['auto_redirects']);
 
-$anti_double_content_redirects_select = new rex_select();
-$anti_double_content_redirects_select->setSize(1);
-$anti_double_content_redirects_select->setName('settings[anti_double_content_redirects]');
-$anti_double_content_redirects_select->addOption($I18N->msg('seo42_settings_anti_double_content_redirects_0'), '0');
-$anti_double_content_redirects_select->addOption($I18N->msg('seo42_settings_anti_double_content_redirects_1'), '1');
-$anti_double_content_redirects_select->addOption($I18N->msg('seo42_settings_anti_double_content_redirects_2'), '2');
-$anti_double_content_redirects_select->addOption($I18N->msg('seo42_settings_anti_double_content_redirects_3'), '3');
-$anti_double_content_redirects_select->addOption($I18N->msg('seo42_settings_anti_double_content_redirects_4'), '4');
-$anti_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['settings']['anti_double_content_redirects']);
+$no_double_content_redirects_select = new rex_select();
+$no_double_content_redirects_select->setSize(1);
+$no_double_content_redirects_select->setName('settings[no_double_content_redirects]');
+$no_double_content_redirects_select->addOption($I18N->msg('seo42_settings_no_double_content_redirects_0'), SEO42_NO_DOUBLE_CONTENT_REDIRECT_NONE);
+$no_double_content_redirects_select->addOption($I18N->msg('seo42_settings_no_double_content_redirects_1'), SEO42_NO_DOUBLE_CONTENT_REDIRECT_ONE_DOMAIN_ONLY);
+$no_double_content_redirects_select->addOption($I18N->msg('seo42_settings_no_double_content_redirects_2'), SEO42_NO_DOUBLE_CONTENT_REDIRECT_NON_WWW_TO_WWW);
+$no_double_content_redirects_select->addOption($I18N->msg('seo42_settings_no_double_content_redirects_3'), SEO42_NO_DOUBLE_CONTENT_REDIRECT_WWW_TO_NON_WWW);
+$no_double_content_redirects_select->addOption($I18N->msg('seo42_settings_no_double_content_redirects_4'), SEO42_NO_DOUBLE_CONTENT_REDIRECT_ONLY_HTTPS);
+$no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['settings']['no_double_content_redirects']);
 
 ?>
 
@@ -183,8 +183,8 @@ $anti_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setti
 
        <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
-              <label for="anti_double_content_redirects"><?php echo $I18N->msg('seo42_settings_anti_double_content_redirects'); ?></label>
-               <?php echo $anti_double_content_redirects_select->get(); ?>
+              <label for="no_double_content_redirects"><?php echo $I18N->msg('seo42_settings_no_double_content_redirects'); ?></label>
+               <?php echo $no_double_content_redirects_select->get(); ?>
             </p>
           </div>
 
@@ -274,6 +274,14 @@ $anti_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setti
 					<label for="allow_article_id"><?php echo $I18N->msg('seo42_settings_allow_article_id'); ?></label>
 					<input type="hidden" name="settings[allow_article_id]" value="0" />
 					<input type="checkbox" name="settings[allow_article_id]" id="allow_article_id" value="1" <?php if ($REX['ADDON']['seo42']['settings']['allow_article_id']) { echo 'checked="checked"'; } ?>>
+				</p>
+			</div>
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-checkbox">
+					<label for="ignore_root_cats"><?php echo $I18N->msg('seo42_settings_ignore_root_cats'); ?></label>
+					<input type="hidden" name="settings[ignore_root_cats]" value="0" />
+					<input type="checkbox" name="settings[ignore_root_cats]" id="ignore_root_cats" value="1" <?php if ($REX['ADDON']['seo42']['settings']['ignore_root_cats']) { echo 'checked="checked"'; } ?>>
 				</p>
 			</div>
 
@@ -403,25 +411,11 @@ $anti_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setti
         <legend><?php echo $I18N->msg('seo42_settings_robots_section'); ?></legend>
         <div class="rex-form-wrapper">
 
-	      <div class="rex-form-row rex-form-element-v1">
-				<p class="rex-form-text">
-					<label for="robots_follow_flag"><?php echo $I18N->msg('seo42_settings_robots_follow_flag'); ?></label>
-					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['robots_follow_flag']; ?>" name="settings[robots_follow_flag]" class="rex-form-text" id="robots_follow_flag">
-				</p>
-			</div>
-
-	      <div class="rex-form-row rex-form-element-v1">
-				<p class="rex-form-text">
-					<label for="robots_archive_flag"><?php echo $I18N->msg('seo42_settings_robots_archive_flag'); ?></label>
-					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['robots_archive_flag']; ?>" name="settings[robots_archive_flag]" class="rex-form-text" id="robots_archive_flag">
-				</p>
-			</div>
-
 			<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-checkbox">
-					<label for="robots_txt_auto_disallow"><?php echo $I18N->msg('seo42_settings_robots_txt_auto_disallow'); ?></label>
-					<input type="hidden" name="settings[robots_txt_auto_disallow]" value="0" />
-					<input type="checkbox" name="settings[robots_txt_auto_disallow]" id="robots_txt_auto_disallow" value="1" <?php if ($REX['ADDON']['seo42']['settings']['robots_txt_auto_disallow']) { echo 'checked="checked"'; } ?>>
+					<label for="no_robots_txt_auto_disallow"><?php echo $I18N->msg('seo42_settings_no_robots_txt_auto_disallow'); ?></label>
+					<input type="hidden" name="settings[no_robots_txt_auto_disallow]" value="0" />
+					<input type="checkbox" name="settings[no_robots_txt_auto_disallow]" id="no_robots_txt_auto_disallow" value="1" <?php if ($REX['ADDON']['seo42']['settings']['no_robots_txt_auto_disallow']) { echo 'checked="checked"'; } ?>>
 				</p>
 			</div>
 
@@ -443,6 +437,35 @@ $anti_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setti
       </fieldset>
 
     <fieldset class="rex-form-col-1">
+        <legend><?php echo $I18N->msg('seo42_settings_html_section'); ?></legend>
+        <div class="rex-form-wrapper">
+
+
+	      <div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="robots_follow_flag"><?php echo $I18N->msg('seo42_settings_robots_follow_flag'); ?></label>
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['robots_follow_flag']; ?>" name="settings[robots_follow_flag]" class="rex-form-text" id="robots_follow_flag">
+				</p>
+			</div>
+
+	      <div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="robots_archive_flag"><?php echo $I18N->msg('seo42_settings_robots_archive_flag'); ?></label>
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['robots_archive_flag']; ?>" name="settings[robots_archive_flag]" class="rex-form-text" id="robots_archive_flag">
+				</p>
+			</div>
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="title_delimiter"><?php echo $I18N->msg('seo42_settings_title_delimiter'); ?></label>
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['title_delimiter']; ?>" name="settings[title_delimiter]" class="rex-form-text" id="title_delimiter">
+				</p>
+			</div>
+
+        </div>
+      </fieldset>
+
+    <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_ui_section'); ?></legend>
         <div class="rex-form-wrapper">
 
@@ -451,14 +474,6 @@ $anti_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setti
 					<label for="seopage"><?php echo $I18N->msg('seo42_settings_seopage'); ?></label>
 					<input type="hidden" name="settings[seopage]" value="0" />
 					<input type="checkbox" name="settings[seopage]" id="seopage" value="1" <?php if ($REX['ADDON']['seo42']['settings']['seopage']) { echo 'checked="checked"'; } ?>>
-				</p>
-			</div>
-
-			<div class="rex-form-row rex-form-element-v1">
-				<p class="rex-form-checkbox">
-					<label for="urlpage"><?php echo $I18N->msg('seo42_settings_urlpage'); ?></label>
-					<input type="hidden" name="settings[urlpage]" value="0" />
-					<input type="checkbox" name="settings[urlpage]" id="urlpage" value="1" <?php if ($REX['ADDON']['seo42']['settings']['urlpage']) { echo 'checked="checked"'; } ?>>
 				</p>
 			</div>
 
@@ -488,17 +503,25 @@ $anti_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setti
 
 			<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-checkbox">
-					<label for="all_url_types"><?php echo $I18N->msg('seo42_settings_all_url_types'); ?></label>
-					<input type="hidden" name="settings[all_url_types]" value="0" />
-					<input type="checkbox" name="settings[all_url_types]" id="all_url_types" value="1" <?php if ($REX['ADDON']['seo42']['settings']['all_url_types']) { echo 'checked="checked"'; } ?>>
+					<label for="noindex_checkbox"><?php echo $I18N->msg('seo42_settings_noindex_checkbox'); ?></label>
+					<input type="hidden" name="settings[noindex_checkbox]" value="0" />
+					<input type="checkbox" name="settings[noindex_checkbox]" id="noindex_checkbox" value="1" <?php if ($REX['ADDON']['seo42']['settings']['noindex_checkbox']) { echo 'checked="checked"'; } ?>>
 				</p>
 			</div>
 
 			<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-checkbox">
-					<label for="noindex_checkbox"><?php echo $I18N->msg('seo42_settings_noindex_checkbox'); ?></label>
-					<input type="hidden" name="settings[noindex_checkbox]" value="0" />
-					<input type="checkbox" name="settings[noindex_checkbox]" id="noindex_checkbox" value="1" <?php if ($REX['ADDON']['seo42']['settings']['noindex_checkbox']) { echo 'checked="checked"'; } ?>>
+					<label for="urlpage"><?php echo $I18N->msg('seo42_settings_urlpage'); ?></label>
+					<input type="hidden" name="settings[urlpage]" value="0" />
+					<input type="checkbox" name="settings[urlpage]" id="urlpage" value="1" <?php if ($REX['ADDON']['seo42']['settings']['urlpage']) { echo 'checked="checked"'; } ?>>
+				</p>
+			</div>
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-checkbox">
+					<label for="all_url_types"><?php echo $I18N->msg('seo42_settings_all_url_types'); ?></label>
+					<input type="hidden" name="settings[all_url_types]" value="0" />
+					<input type="checkbox" name="settings[all_url_types]" id="all_url_types" value="1" <?php if ($REX['ADDON']['seo42']['settings']['all_url_types']) { echo 'checked="checked"'; } ?>>
 				</p>
 			</div>
 
@@ -526,21 +549,6 @@ $anti_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setti
     <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_misc_section'); ?></legend>
         <div class="rex-form-wrapper">
-
-			<div class="rex-form-row rex-form-element-v1">
-				<p class="rex-form-text">
-					<label for="title_delimiter"><?php echo $I18N->msg('seo42_settings_title_delimiter'); ?></label>
-					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['title_delimiter']; ?>" name="settings[title_delimiter]" class="rex-form-text" id="title_delimiter">
-				</p>
-			</div>
-
-			<div class="rex-form-row rex-form-element-v1">
-				<p class="rex-form-checkbox">
-					<label for="ignore_root_cats"><?php echo $I18N->msg('seo42_settings_ignore_root_cats'); ?></label>
-					<input type="hidden" name="settings[ignore_root_cats]" value="0" />
-					<input type="checkbox" name="settings[ignore_root_cats]" id="ignore_root_cats" value="1" <?php if ($REX['ADDON']['seo42']['settings']['ignore_root_cats']) { echo 'checked="checked"'; } ?>>
-				</p>
-			</div>
 
 			<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-checkbox">

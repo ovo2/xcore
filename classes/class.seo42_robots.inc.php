@@ -27,7 +27,7 @@ class seo42_robots
 	$langs = array_keys($REX['CLANG']); // get clang ids
 	$defaultRobotsTxt = 'User-agent: *' . "\r\n" . 'Disallow:';
 
-	if ($REX['ADDON']['seo42']['settings']['robots_txt_auto_disallow']) {
+	if (!$REX['ADDON']['seo42']['settings']['no_robots_txt_auto_disallow']) {
 		foreach ($langs as $lang) {
 			$query = "SELECT id FROM ".$REX['TABLE_PREFIX']."article WHERE seo_noindex = '1' AND status = 1 AND clang = " . $lang; 
 			$sql = new rex_sql(); 

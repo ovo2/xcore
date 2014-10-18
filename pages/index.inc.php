@@ -47,6 +47,10 @@ require $REX['INCLUDE_PATH'] . $local_path . $subpage . '.inc.php';
 
 <script type="text/javascript">
 jQuery(document).ready(function($) {
+	if (!jQuery.ui) {
+		$('head').append('<script type="text/javascript" src="../<?php echo $REX['MEDIA_ADDON_DIR']; ?>/<?php echo rex_request('page'); ?>/jquery-ui.min.js" />');
+	}
+
     $('.seo42-tooltip[title]').qtip({
 		style: {
 			classes: 'qtip-default qtip-rounded qtip-shadow'
