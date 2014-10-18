@@ -106,12 +106,12 @@ $REX['ADDON']['seo42']['settings'] = array(
 	'urlencode_lowercase' => false,
 	'lang' => array(
 		0 => array(
-			'url' => '',
 			'code' => 'de',
 			'original_name' => 'deutsch',
 			'rewrite_mode' => SEO42_REWRITEMODE_SPECIAL_CHARS,
 			'special_chars' => 'Ä|ä|Ö|ö|Ü|ü|ß|&',
-			'special_chars_rewrite' => 'Ae|ae|Oe|oe|Ue|ue|ss|und'
+			'special_chars_rewrite' => 'Ae|ae|Oe|oe|Ue|ue|ss|und',
+			'inherit_from_clang' => 0
 		)
 	)
 );

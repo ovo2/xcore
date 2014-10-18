@@ -7,7 +7,7 @@ Features
 --------
 
 * Generierung von suchmaschinenfreundlichen URLs (Apache Webserver benötigt Modul `mod_rewrite`)
-* Sauber eingestelltes Caching und GZipping von Resourcen wie Bildern, Fonts, CSS und JS Dateien (.htaccess)
+* Sauber eingestelltes Caching sowie Komprimierung für Resourcen wie Bildern, Fonts, CSS und JS Dateien (.htaccess)
 * Automatische Umschreibung der Startseite der Website in `/` (für alle Sprachen möglich)
 * Verschiedene URL-Endungen einstellbar (z.B. Endung `.html` oder `/`)
 * Automatische Titel-Generierung. Mitgeliefertes Titel-Schema aus [Google-PDF](http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf) entnommen.
@@ -27,7 +27,7 @@ Features
 * Automatische `rel="alternate"` Tags für mehrsprachige Websites
 * Option um die Indizierung von Seiten durch Suchmaschinen zu verhindern
 * Automatische sowie individuelle Canonical URLs
-* Nicht-WWW zu WWW Umleitung (und umgekehrt). Lässt sich auch über das Setup aktivieren.
+* One Domain Only sowie Nicht-WWW zu WWW Umleitung (und umgekehrt) inkl. HTTPS Berücksichtigung.
 * Smart Redirects: Automatische Umleitungen für falsch eingegebene Urls z.B. von Url-Endung `/` nach `.html`
 * Force Download Funktionalität inkl. suchmaschinenfreundlicher URLs und Canonical Header (z.B. für PDF Downloads)
 * Keine Abhängigkeiten zu weiteren Addons wie Textile oder XForm
@@ -49,7 +49,7 @@ Features Navigationsausgabe (Klasse nav42)
 
 * Ausgabe der Navigation von einer Katagorie aus oder über Kategorie-Levels
 * Es wird zuerst eine nackte UL-Liste ohne Klassen oder Ids ausgegeben
-* Startartikel der Website (z.B. Home) kann ausgeblendet werden
+* Artikel (z.B. Home) können ausgeblendet werden
 * Einstellen der CSS-Klasse für selektierte Menüpunkte (z.B. `current`)
 * Jede UL kann eine Klasse und/oder ID zugewiesen bekommen (Suckerfish/Superfish)
 * Angabe von MetaInfo Felder aus denen Klassen und IDs für die LI's herausgezogen werden
@@ -156,6 +156,7 @@ Credits
 * [QTip2](http://qtip2.com/) by Craig Thompson
 * [jQuery-tagEditor](https://github.com/Pixabay/jQuery-tagEditor) by Pixabay.com
 * jQuery UI: <http://jqueryui.com/>
+* jQuery Bootstrap-style Dropdowns: <https://github.com/claviska/jquery-dropdown>
 * Hitchhiker's Guide to the Galaxy Icons by [Iconshock](http://www.iconarchive.com/artist/iconshock.html)
 * Status Icons from [FamFamFam Silk Icons](http://www.famfamfam.com/lab/icons/silk/) and [Oxygen Icons](http://www.oxygen-icons.org/)
 * Macht’s gut und danke für den Fisch ;)

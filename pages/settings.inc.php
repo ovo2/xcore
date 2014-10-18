@@ -1,4 +1,6 @@
 <?php
+require_once($REX['INCLUDE_PATH'] . '/addons/seo42/langpresets.inc.php');
+
 $myself = rex_request('page', 'string');
 $subpage = rex_request('subpage', 'string');
 $func = rex_request('func', 'string');
@@ -6,29 +8,50 @@ $func = rex_request('func', 'string');
 // save settings
 if ($func == 'update') {
 	$settings = (array) rex_post('settings', 'array', array());
+	$langSettings = (array) rex_post('lang_settings', 'array', array());
 	$msg = seo42_utils::checkDirForFile(SEO42_SETTINGS_FILE);
 
 	if ($msg != '') {
 		echo rex_warning($msg);
 	} else {
-		// type conversion
+		// type conversion normal settings
 		foreach ($REX['ADDON']['seo42']['settings'] as $key => $value) {
-			if (isset($settings[$key])) {
-				$settings[$key] = seo42_utils::convertVarType($value, $settings[$key]);
+			if ($key != 'lang') { // lang is extra, see below
+				if (isset($settings[$key])) {
+					$settings[$key] = seo42_utils::convertVarType($value, $settings[$key]);
+				}
+			}
+		}
+
+		// type conversion lang settings
+		foreach ($REX['CLANG'] as $clangId => $clangName) {
+			if (isset($langSettings[$clangId])) {
+				foreach ($langSettings[$clangId] as $key => $value) {
+					if (isset($langSettings[$clangId][$key])) {
+						$langSettings[$clangId][$key] = seo42_utils::convertVarType($REX['ADDON']['seo42']['settings']['lang'][0][$key], $langSettings[$clangId][$key]);
+					}
+				}
 			}
 		}
 
 		// merge
 		$REX['ADDON']['seo42']['settings'] = array_merge((array) $REX['ADDON']['seo42']['settings'], $settings);
 
+		// replace lang settings
+		unset($REX['ADDON']['seo42']['settings']['lang']);
+		$REX['ADDON']['seo42']['settings']['lang'] = $langSettings;
+
 		// write
 		$content = "<?php\n\n";
 		
+		// settings
 		foreach ((array) $REX['ADDON']['seo42']['settings'] as $key => $value) {
 			if (!isset($REX['ADDON']['seo42']['website_settings'][$key])) {
 				$content .= "\$REX['ADDON']['seo42']['settings']['$key'] = " . var_export($value, true) . ";\n";
 			}
 		}
+
+		// lang settings
 
 		if (rex_put_file_contents(SEO42_SETTINGS_FILE, $content)) {
 			echo rex_info($I18N->msg('seo42_config_ok'));
@@ -214,6 +237,181 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
         </div>
     </fieldset>
 
+
+			<?php
+
+			foreach ($REX['CLANG'] as $clangId => $clangName) {
+				if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['code'])) {
+					$code = $REX['ADDON']['seo42']['settings']['lang'][$clangId]['code'];
+				} else {
+					$code = '';
+				}
+
+				if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['original_name'])) {
+					$originalName = $REX['ADDON']['seo42']['settings']['lang'][$clangId]['original_name'];
+				} else {
+					$originalName = '';
+				}
+
+				if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['rewrite_mode'])) {
+					$rewriteMode = $REX['ADDON']['seo42']['settings']['lang'][$clangId]['rewrite_mode'];
+				} else {
+					$rewriteMode = SEO42_REWRITEMODE_SPECIAL_CHARS;
+				}
+
+				if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['special_chars'])) {
+					$specialChars = $REX['ADDON']['seo42']['settings']['lang'][$clangId]['special_chars'];
+				} else {
+					$specialChars = '';
+				}
+
+				if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['special_chars_rewrite'])) {
+					$specialCharsRewrite = $REX['ADDON']['seo42']['settings']['lang'][$clangId]['special_chars_rewrite'];
+				} else {
+					$specialCharsRewrite = '';
+				}
+
+				if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['inherit_from_clang'])) {
+					$inheritFromClang = $REX['ADDON']['seo42']['settings']['lang'][$clangId]['inherit_from_clang'];
+				} else {
+					$inheritFromClang = 0;
+				}
+
+				echo '<fieldset class="rex-form-col-1">';
+				echo '<legend>' . $I18N->msg('seo42_settings_langname_section') . ' ' . $clangName  . '</legend>';
+				echo '<div class="rex-form-wrapper">';
+			?>
+
+			<a href="#" class="preset-button" data-vertical-offset="-10" data-dropdown="#dropdown-<?php echo $clangId; ?>"><?php echo $I18N->msg('seo42_settings_lang_presets'); ?></a>
+
+			<div id="dropdown-<?php echo $clangId; ?>" class="dropdown dropdown-relative">
+				<ul class="dropdown-menu" data-clang="<?php echo $clangId; ?>">
+					<?php
+					foreach ($REX['SEO42_LANG_PRESETS'] as $key => $value) {
+						echo '<li data-langpreset-id="' . $key . '"><a href="#' . $key . '">' . $value['original_name'] . '</a></li>';
+					}
+					?>
+				</ul>
+			</div>
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="lang_settings_<?php echo $clangId; ?>_code"><?php echo $I18N->msg('seo42_settings_lang_code'); ?></label>
+					<input type="text" value="<?php echo $code; ?>" name="lang_settings[<?php echo $clangId; ?>][code]" class="rex-form-text" id="lang_settings_<?php echo $clangId; ?>_code">
+				</p>
+			</div>
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="lang_settings_<?php echo $clangId; ?>_original_name"><?php echo $I18N->msg('seo42_settings_lang_original_name'); ?></label>
+					<input type="text" value="<?php echo $originalName; ?>" name="lang_settings[<?php echo $clangId; ?>][original_name]" class="rex-form-text" id="lang_settings_<?php echo $clangId; ?>_original_name">
+				</p>
+			</div>
+
+		
+			<?php
+			$rewrite_mode_select = new rex_select();
+			$rewrite_mode_select->setSize(1);
+			$rewrite_mode_select->setName('lang_settings[' . $clangId . '][rewrite_mode]');
+			$rewrite_mode_select->setAttribute('id', 'lang_settings_' . $clangId . '_rewrite_mode');
+			$rewrite_mode_select->setAttribute('class', 'rewrite_mode');
+			$rewrite_mode_select->setAttribute('data-clang', $clangId);
+			$rewrite_mode_select->addOption($I18N->msg('seo42_settings_lang_rewrite_mode_0'), SEO42_REWRITEMODE_SPECIAL_CHARS);
+			$rewrite_mode_select->addOption($I18N->msg('seo42_settings_lang_rewrite_mode_1'), SEO42_REWRITEMODE_URLENCODE);
+			$rewrite_mode_select->addOption($I18N->msg('seo42_settings_lang_rewrite_mode_2'), SEO42_REWRITEMODE_INHERIT);
+			$rewrite_mode_select->setSelected($rewriteMode);
+			?>
+
+	     <div class="rex-form-row">
+            <p class="rex-form-col-a rex-form-select">
+              <label for="lang_settings_<?php echo $clangId; ?>_rewrite_mode"><?php echo $I18N->msg('seo42_settings_lang_rewrite_mode'); ?></label>
+               <?php echo $rewrite_mode_select->get(); ?>
+            </p>
+          </div>
+
+			<div class="rex-form-row rex-form-element-v1" id="lang_settings_<?php echo $clangId; ?>_special_chars_row">
+				<p class="rex-form-text">
+					<label for="lang_settings_<?php echo $clangId; ?>_special_chars"><?php echo $I18N->msg('seo42_settings_lang_special_chars'); ?></label>
+					<input type="text" value="<?php echo $specialChars; ?>" name="lang_settings[<?php echo $clangId; ?>][special_chars]" class="rex-form-text" id="lang_settings_<?php echo $clangId; ?>_special_chars">
+				</p>
+			</div>
+
+			<div class="rex-form-row rex-form-element-v1" id="lang_settings_<?php echo $clangId; ?>_special_chars_rewrite_row">
+				<p class="rex-form-text">
+					<label for="lang_settings_<?php echo $clangId; ?>_special_chars_rewrite"><?php echo $I18N->msg('seo42_settings_lang_special_chars_rewrite'); ?></label>
+					<input type="text" value="<?php echo $specialCharsRewrite; ?>" name="lang_settings[<?php echo $clangId; ?>][special_chars_rewrite]" class="rex-form-text" id="lang_settings_<?php echo $clangId; ?>_special_chars_rewrite">
+				</p>
+			</div>
+
+			<?php
+			$inherit_from_clang_select = new rex_select();
+			$inherit_from_clang_select->setSize(1);
+			$inherit_from_clang_select->setName('lang_settings[' . $clangId . '][inherit_from_clang]');
+			$inherit_from_clang_select->setAttribute('id', 'lang_settings_' . $clangId . '_inherit_from_clang');
+
+			foreach ($REX['CLANG'] as $clangIdTemp => $clangName) {
+				if ($clangIdTemp != $clangId) {
+					$inherit_from_clang_select->addOption($clangName, $clangIdTemp);
+				}
+			}
+
+			$inherit_from_clang_select->setSelected($inheritFromClang);
+			?>
+
+	     <div class="rex-form-row" id="lang_settings_<?php echo $clangId; ?>_inherit_from_clang_row">
+            <p class="rex-form-col-a rex-form-select">
+              <label for="lang_settings_<?php echo $clangId; ?>_inherit_from_clang"><?php echo $I18N->msg('seo42_settings_lang_inherit_from_clang'); ?></label>
+               <?php echo $inherit_from_clang_select->get(); ?>
+            </p>
+          </div>
+
+
+			<?php
+				echo '</div>';
+				echo '</fieldset>';
+			}
+
+			?>
+
+
+      <fieldset class="rex-form-col-1">
+        <legend><?php echo $I18N->msg('seo42_settings_lang_section'); ?></legend>
+        <div class="rex-form-wrapper">
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="global_special_chars"><?php echo $I18N->msg('seo42_settings_global_special_chars'); ?></label>
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['global_special_chars']; ?>" name="settings[global_special_chars]" class="rex-form-text" id="global_special_chars">
+				</p>
+			</div>
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="global_special_chars_rewrite"><?php echo $I18N->msg('seo42_settings_global_special_chars_rewrite'); ?></label>
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['global_special_chars_rewrite']; ?>" name="settings[global_special_chars_rewrite]" class="rex-form-text" id="global_special_chars_rewrite">
+				</p>
+			</div>
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="urlencode_whitespace_replace"><?php echo $I18N->msg('seo42_settings_urlencode_whitespace_replace'); ?></label>
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['urlencode_whitespace_replace']; ?>" name="settings[urlencode_whitespace_replace]" class="rex-form-text" id="urlencode_whitespace_replace">
+				</p>
+			</div>
+
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-checkbox">
+					<label for="urlencode_lowercase"><?php echo $I18N->msg('seo42_settings_urlencode_lowercase'); ?></label>
+					<input type="hidden" name="settings[urlencode_lowercase]" value="0" />
+					<input type="checkbox" name="settings[urlencode_lowercase]" id="urlencode_lowercase" value="1" <?php if ($REX['ADDON']['seo42']['settings']['urlencode_lowercase']) { echo 'checked="checked"'; } ?>>
+				</p>
+			</div>
+
+        </div>
+    </fieldset>
+
+
     <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_resource_section'); ?></legend>
         <div class="rex-form-wrapper">
@@ -285,21 +483,6 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 				</p>
 			</div>
 
-			<div class="rex-form-row rex-form-element-v1">
-				<p class="rex-form-checkbox">
-					<label for="include_query_params"><?php echo $I18N->msg('seo42_settings_include_query_params'); ?></label>
-					<input type="hidden" name="settings[include_query_params]" value="0" />
-					<input type="checkbox" name="settings[include_query_params]" id="include_query_params" value="1" <?php if ($REX['ADDON']['seo42']['settings']['include_query_params']) { echo 'checked="checked"'; } ?>>
-				</p>
-			</div>
-
-			<div class="rex-form-row rex-form-element-v1">
-				<p class="rex-form-text">
-					<label for="ignore_query_params"><?php echo $I18N->msg('seo42_settings_ignore_query_params'); ?></label>
-					<input type="text" value="<?php echo seo42_utils::implodeArray($REX['ADDON']['seo42']['settings']['ignore_query_params']); ?>" name="settings[ignore_query_params]" class="rex-form-text tags" id="ignore_query_params">
-				</p>
-			</div>
-
             <div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-text">
 					<label for="url_whitespace_replace"><?php echo $I18N->msg('seo42_settings_url_whitespace_replace'); ?></label>
@@ -346,6 +529,32 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
 		</div>
        </fieldset>
+
+
+		<fieldset class="rex-form-col-1">
+        <legend><?php echo $I18N->msg('seo42_settings_canonical_section'); ?></legend>
+        <div class="rex-form-wrapper">
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-checkbox">
+					<label for="include_query_params"><?php echo $I18N->msg('seo42_settings_include_query_params'); ?></label>
+					<input type="hidden" name="settings[include_query_params]" value="0" />
+					<input type="checkbox" name="settings[include_query_params]" id="include_query_params" value="1" <?php if ($REX['ADDON']['seo42']['settings']['include_query_params']) { echo 'checked="checked"'; } ?>>
+				</p>
+			</div>
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="ignore_query_params"><?php echo $I18N->msg('seo42_settings_ignore_query_params'); ?></label>
+					<input type="text" value="<?php echo seo42_utils::implodeArray($REX['ADDON']['seo42']['settings']['ignore_query_params']); ?>" name="settings[ignore_query_params]" class="rex-form-text tags" id="ignore_query_params">
+				</p>
+			</div>
+
+
+		</div>
+       </fieldset>
+
+
 
       <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_header_section'); ?></legend>
@@ -611,10 +820,21 @@ unset($homeurl_select,$url_ending_select);
 #lang_hint {
 	width: auto;
 }
+
+.preset-button {
+	float: right;
+	margin-right: 8px;
+	margin-top: -20px;
+}
+
+div#rex-website .dropdown a:hover {
+	text-decoration: none;
+}
 </style>
 
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
+		// show settings
 		$('#show-settings').toggle( 
 			function() {
 				$('#all-settings').slideDown(); 
@@ -625,6 +845,44 @@ unset($homeurl_select,$url_ending_select);
 				$('#show-settings').html('<?php echo $I18N->msg('seo42_settings_show'); ?>');
 			} 
 		);
+
+		// rewrite mode
+		$('.rewrite_mode').change(function() {
+			var curClang = $(this).attr('data-clang');
+
+			if ($(this).val() == "<?php echo SEO42_REWRITEMODE_SPECIAL_CHARS; ?>") {
+				$('#lang_settings_' + curClang + '_inherit_from_clang_row').hide();
+				$('#lang_settings_' + curClang + '_special_chars_row').show();
+				$('#lang_settings_' + curClang + '_special_chars_rewrite_row').show();
+			} else if ($(this).val() == "<?php echo SEO42_REWRITEMODE_URLENCODE; ?>") {
+				$('#lang_settings_' + curClang + '_special_chars_row').hide();
+				$('#lang_settings_' + curClang + '_special_chars_rewrite_row').hide();
+				$('#lang_settings_' + curClang + '_inherit_from_clang_row').hide();
+			} else if ($(this).val() == "<?php echo SEO42_REWRITEMODE_INHERIT; ?>") {
+				$('#lang_settings_' + curClang + '_special_chars_row').hide();
+				$('#lang_settings_' + curClang + '_special_chars_rewrite_row').hide();
+				$('#lang_settings_' + curClang + '_inherit_from_clang_row').show();				
+			}
+		});
+
+		$('.rewrite_mode').change();
+
+		// presets
+		var langPresets = <?php echo json_encode($REX['SEO42_LANG_PRESETS']); ?>;
+
+		$('ul.dropdown-menu li').click(function(e) { 
+			var curClang = $(this).parent().attr('data-clang');
+			var curLangPresetIndex = $(this).attr('data-langpreset-id');
+
+			$('#lang_settings_' + curClang + '_code').val(langPresets[curLangPresetIndex]['code']);
+			$('#lang_settings_' + curClang + '_original_name').val(langPresets[curLangPresetIndex]['original_name']);
+			$('#lang_settings_' + curClang + '_rewrite_mode').val(langPresets[curLangPresetIndex]['rewrite_mode']);
+			$('#lang_settings_' + curClang + '_special_chars').val(langPresets[curLangPresetIndex]['special_chars']);
+			$('#lang_settings_' + curClang + '_special_chars_rewrite').val(langPresets[curLangPresetIndex]['special_chars_rewrite']);
+			$('#lang_settings_' + curClang + '_inherit_from_clang').val(langPresets[curLangPresetIndex]['inherit_from_clang']);
+
+			$('.rewrite_mode').change();
+    	});
 	});
 </script>
 

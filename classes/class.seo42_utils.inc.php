@@ -8,8 +8,10 @@ class seo42_utils {
 		$insert .= '<link rel="stylesheet" type="text/css" href="../' . $REX['MEDIA_ADDON_DIR'] . '/seo42/seo42.css" />' . PHP_EOL;
 		$insert .= '<link rel="stylesheet" type="text/css" href="../' . $REX['MEDIA_ADDON_DIR'] . '/seo42/qtip.css" />' . PHP_EOL;
 		$insert .= '<link rel="stylesheet" type="text/css" href="../' . $REX['MEDIA_ADDON_DIR'] . '/seo42/jquery.tag-editor.css" />' . PHP_EOL;
+		$insert .= '<link rel="stylesheet" type="text/css" href="../' . $REX['MEDIA_ADDON_DIR'] . '/seo42/jquery.dropdown.css" />' . PHP_EOL;
 		$insert .= '<script type="text/javascript" src="../' . $REX['MEDIA_ADDON_DIR'] . '/seo42/jquery.qtip.min.js"></script>' . PHP_EOL;
 		$insert .= '<script type="text/javascript" src="../' . $REX['MEDIA_ADDON_DIR'] . '/seo42/jquery.tag-editor.min.js"></script>' . PHP_EOL;
+		$insert .= '<script type="text/javascript" src="../' . $REX['MEDIA_ADDON_DIR'] . '/seo42/jquery.dropdown.min.js"></script>' . PHP_EOL;
 		$insert .= '<!-- END seo42 -->';
 	
 		return $params['subject'] . PHP_EOL . $insert;

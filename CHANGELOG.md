@@ -3,7 +3,8 @@ SEO42 - Changelog
 
 ### Version 4.0.0 DEV
 
-* Fixed: `seo42::getImageFile()` gab im Backend nicht den richtigen Wert aus und dadurch wurde Bild nicht angezeigt
+* Update: Bitte die Hinweise in der `UPDATE.md` beachten!
+* Fixed: `seo42::getImageFile()` gab im Backend nicht den richtigen Wert aus und dadurch wurde das Bild nicht angezeigt
 * Neu: Update-Hinweise (auch für alle zukünftigen Versionen) wurden in die Datei `UPDATE.md` ausgelagert und sind auch über die Hilfe im AddOn einsehbar.
 * Neu: No Double Content Redirects eingeführt. Ersetzen die WWW/Non-WWW Redirects aus Setup Schritt 2. One Domain Only Redirect hinzugefügt um nur noch eine Domain zu erlauben.
 * Neu: Bei einem Update werden die Einstellungen nicht mehr überschrieben, da diese nun im Data-Ordner von REDAXO abgelegt werden
@@ -13,11 +14,12 @@ SEO42 - Changelog
 * Neu: Einstellung `allow_article_id` hinzugefügt, um bei Spezialfällen nicht umgeschriebene Urls zu erlauben. Achtung! Bitte nur einschalten wenn wirklich benötigt! Und: Diese Option setzt die `auto_redirects` Option für die nicht umgeschriebenen Urls ausser Kraft!
 * Neu: `seo42::getIconFile()` inkl. Directoryangabe in den Einstellungen hinzugefügt
 * Verbessert: Das SEO42 Boilerplate in Setup Schritt 3 wurde etwas abgespeckt so dass nur noch die wichtigsten Zeilen sichbar sind
+* Verbessert: `seo42::getMediaUrl()` und `seo42::getAbsoluteMediaFile()` zu den Codebeispielen hinzugefügt
 * API Umstellung: EP's haben jetzt alle den Prefix `SEO42_`
 * API Umstellung: Pathlist Arrays lauten jetzt `$SEO42_URLS` und `$SEO42_IDS`
 * API Umstellung: Alle Funktionen aus der Rewriter-Klasse umbenannten `SEO42Rewrite` sowie die PHP-Dateien selbst beginnen jetzt mit Prefix `seo42_`
 * API Umstellung: `seo42::getImageManagerUrl()` entfernt. Bitte nur noch `seo42::getImageManagerFile()` benutzen
-* Umbeannt: `robots_txt_auto_disallow` in `no_robots_txt_auto_disallow`
+* Umbenannt: `robots_txt_auto_disallow` in `no_robots_txt_auto_disallow`
 * Entfernt: `drop_dbfields_on_uninstall` Option
 * Entfernt: `debug_article_id` Option
 

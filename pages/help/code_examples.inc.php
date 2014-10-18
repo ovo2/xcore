@@ -11,6 +11,12 @@ echo seo42::getFullUrl(42);
 echo seo42::getMediaFile("image.png");
 // --> ' . seo42::getUrlStart() . $REX['MEDIA_DIR'] . '/image.png
 
+echo seo42::getMediaUrl("image.png");
+// --> ' . seo42::getMediaUrl('image.png') . '
+
+echo seo42::getAbsoluteMediaFile("image.png");
+// --> ' . seo42::getAbsoluteMediaFile('image.png') . '
+
 echo seo42::getDownloadFile("doc.pdf");
 // --> ' . seo42::getUrlStart() . seo42::downloadDir . '/doc.pdf
 ?>';
@@ -143,6 +149,8 @@ echo seo42_ex::getTitle(); // ' . $I18N->msg('seo42_help_codeexamples_ex7_commen
 $codeExample8 = '<?php echo seo42::getDebugInfo(); ?>';
 
 ?>
+
+<p><?php echo $I18N->msg('seo42_help_codeexamples_intro'); ?></p>
 
 <h2>1) <?php echo $I18N->msg('seo42_help_codeexamples_title1'); ?></h2>
 <p><?php echo $I18N->msg('seo42_help_codeexamples_description1'); ?></p>

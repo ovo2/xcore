@@ -128,6 +128,25 @@ seo42_settings_ignore_root_cats = Ignore Root Cats
 seo42_settings_one_page_mode = One Page Mode
 seo42_settings_allow_article_id = Allow article_id urls
 seo42_settings_html_section = Html
+seo42_settings_canonical_section = Auto canonical url
+
+seo42_settings_lang_section = Languages
+seo42_settings_global_special_chars = Global special chars
+seo42_settings_global_special_chars_rewrite = Global special chars rewrite
+seo42_settings_urlencode_whitespace_replace = Urlencode whitespace replace char
+seo42_settings_urlencode_lowercase = Urlencode lowercase
+
+seo42_settings_langname_section = Language:
+seo42_settings_lang_code = Code
+seo42_settings_lang_original_name = Name
+seo42_settings_lang_rewrite_mode = Rewrite mode
+seo42_settings_lang_rewrite_mode_0 = Special chars
+seo42_settings_lang_rewrite_mode_1 = Urlencode
+seo42_settings_lang_rewrite_mode_2 = Take from other lang
+seo42_settings_lang_special_chars = Special chars 
+seo42_settings_lang_special_chars_rewrite = Special chars rewrite
+seo42_settings_lang_inherit_from_clang = Language
+seo42_settings_lang_presets = Presets
 
 seo42_setup_file_backup_failed = The file "{0}" could not be saved!
 seo42_setup_file_copy_successful = Copying of file successful.
@@ -234,6 +253,7 @@ seo42_help_marvin_msg10 = I'd give you advice, but you wouldn't listen. No one e
 seo42_help_marvin_msg11 = I have a million ideas. They all point to certain death.
 
 seo42_help_codeexamples = Examples of code
+seo42_help_codeexamples_intro = Here you will find a collection of examples for the SEO42 API. Please use this PHP methods for an ideal SEO. More PHP methods can be found at the <a href="index.php?page=seo42&subpage=help&chapter=debug">Debug</a> page.
 seo42_help_codeexamples_title1 = Uniform Urls
 seo42_help_codeexamples_description1 = Take advantage of these possibilities to unify your Urls and automatically output the correct URLs:
 seo42_help_codeexamples_title2 = Include advanced resources

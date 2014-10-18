@@ -127,6 +127,25 @@ seo42_settings_ignore_root_cats = Root-Kats ignorieren (experimentell)
 seo42_settings_one_page_mode = One Page Mode
 seo42_settings_allow_article_id = URLs mit article_id erlauben
 seo42_settings_html_section = Html
+seo42_settings_canonical_section = Auto Canonical Url
+
+seo42_settings_lang_section = Sprachen
+seo42_settings_global_special_chars = Global Special Chars
+seo42_settings_global_special_chars_rewrite = Global Special Chars Rewrite
+seo42_settings_urlencode_whitespace_replace = Urlencode Whitespace Replace Char
+seo42_settings_urlencode_lowercase = Urlencode Lowercase
+
+seo42_settings_langname_section = Sprache:
+seo42_settings_lang_code = Code
+seo42_settings_lang_original_name = Name
+seo42_settings_lang_rewrite_mode = Rewrite Mode
+seo42_settings_lang_rewrite_mode_0 = Special Chars
+seo42_settings_lang_rewrite_mode_1 = Urlencode
+seo42_settings_lang_rewrite_mode_2 = Von anderer Sprache übernehmen
+seo42_settings_lang_special_chars = Special Chars 
+seo42_settings_lang_special_chars_rewrite = Special Chars Rewrite
+seo42_settings_lang_inherit_from_clang = Sprache
+seo42_settings_lang_presets = Presets
 
 seo42_setup_file_backup_failed = Datei "{0}" konnte nicht gesichert werden!
 seo42_setup_file_copy_successful = Kopieren der Datei erfolgreich.
@@ -233,6 +252,7 @@ seo42_help_marvin_msg10 = Meine Fähigkeit zum Fröhlichsein könntest du in einer 
 seo42_help_marvin_msg11 = Ich habe mit dem Bordcomputer gesprochen. Er hasst mich.
 
 seo42_help_codeexamples = Codebeispiele
+seo42_help_codeexamples_intro = Hier finden Sie eine Auswahl an an Beispielen zur SEO42 API. Nutzen Sie nach Möglichkeit alle hier vorgestellten PHP-Methoden für ein optimales SEO. Weitere PHP-Methoden finden Sie auch auf der <a href="index.php?page=seo42&subpage=help&chapter=debug">Debug</a> Seite.
 seo42_help_codeexamples_title1 = Einheitliche URLs
 seo42_help_codeexamples_description1 = Nutzen Sie diese Möglichkeiten um Ihre URLs zu vereinheitlichen und automatisch die richtigen URLs ausgeben zu lassen:
 seo42_help_codeexamples_title2 = Erweiterte Resourceneinbindung
