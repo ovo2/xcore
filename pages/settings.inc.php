@@ -44,14 +44,11 @@ if ($func == 'update') {
 		// write
 		$content = "<?php\n\n";
 		
-		// settings
 		foreach ((array) $REX['ADDON']['seo42']['settings'] as $key => $value) {
 			if (!isset($REX['ADDON']['seo42']['website_settings'][$key])) {
 				$content .= "\$REX['ADDON']['seo42']['settings']['$key'] = " . var_export($value, true) . ";\n";
 			}
 		}
-
-		// lang settings
 
 		if (rex_put_file_contents(SEO42_SETTINGS_FILE, $content)) {
 			echo rex_info($I18N->msg('seo42_config_ok'));

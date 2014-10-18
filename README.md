@@ -85,6 +85,13 @@ Entwicklung von Plugins für SEO42
 * Plugins sollten die SEO42 API verwendet. Aktuell gibt ein Übersicht der PHP-Methoden unter Hilfe > Debug.
 * Möchte man z.B. Titel, Beschreibung, usw. für einen bestimmten Artikel bekommen, so ruft man vor dem jeweiligen Methoden-Aufruf die Methode `seo42::initArticle($articleId)` auf. Zum Schluss sollte man wieder den aktuellen Artikel zurücksetzen mit `seo42::initArticle($REX['ARTICLE_ID'])` (aber eigentlich nur fürs Frontend nötig).
 
+Language Presets
+----------------
+
+* Lang-Presets Sammlung: <https://github.com/RexDude/seo42/issues/61>
+* ISO Language Codes: <http://www.w3schools.com/tags/ref_language_codes.asp>
+* Sprach-Sonderzeichen-Tabelle: <http://unicode.e-workers.de/>
+
 Hinweise
 --------
 
@@ -115,9 +122,6 @@ Links
 * Klasse res42: <https://github.com/RexDude/seo42/blob/master/classes/class.res42.inc.php>
 * Klasse nav42: <https://github.com/RexDude/seo42/blob/master/classes/class.nav42.inc.php>
 * Online JavaScript/CSS Compression Using YUI Compressor: <http://refresh-sf.com/yui/>
-* Lang-Presets Sammlung: <https://github.com/RexDude/seo42/issues/61>
-* ISO Language Codes: <http://www.w3schools.com/tags/ref_language_codes.asp>
-* Sprach-Sonderzeichen-Tabelle: <http://unicode.e-workers.de/>
 
 Changelog
 ---------
