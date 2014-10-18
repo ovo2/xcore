@@ -7,6 +7,7 @@ SEO42 - Changelog
 * Neu: Update-Hinweise (auch für alle zukünftigen Versionen) wurden in die Datei `UPDATE.md` ausgelagert und sind auch über die Hilfe im AddOn einsehbar.
 * Neu: Anti Double Content Redirects eingeführt. Ersetzen die WWW/Non-WWW Redirects aus Setup Schritt 2. One Domain Only Redirect hinzugefügt um nur noch eine Domain zu erlauben.
 * Neu: Bei einem Update werden die Einstellungen nicht mehr überschrieben, da diese nun im Data-Ordner von REDAXO abgelegt werden
+* Neu: Einstellungen nun alle über das Backend verfügbar :)
 * Neu: Alle Dateien wie Redirects-Cachedatei und `.htaccess` Backups werden im Data-Ordner von REDAXO abgelegt
 * Neu: Einstellung `redirects` hinzugefügt, um die Redirects-Seite ausschalten zu können (z.B. wenn man die Redirects-Funktionalität des url_control Plugin einsetzt). Die Option kann theoretisch auch von einem Plugin gesetzt werden.
 * Neu: Einstellung `allow_article_id` hinzugefügt, um bei Spezialfällen nicht umgeschriebene Urls zu erlauben. Achtung! Bitte nur einschalten wenn wirklich benötigt! Und: Diese Option setzt die `auto_redirects` Option für die nicht umgeschriebenen Urls ausser Kraft!
