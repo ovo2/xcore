@@ -235,6 +235,45 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
     </fieldset>
 
 
+
+      <fieldset class="rex-form-col-1">
+        <legend><?php echo $I18N->msg('seo42_settings_lang_section'); ?></legend>
+        <div class="rex-form-wrapper slide">
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="global_special_chars"><?php echo $I18N->msg('seo42_settings_global_special_chars'); ?></label>
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['global_special_chars']; ?>" name="settings[global_special_chars]" class="rex-form-text pipes" id="global_special_chars">
+				</p>
+			</div>
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="global_special_chars_rewrite"><?php echo $I18N->msg('seo42_settings_global_special_chars_rewrite'); ?></label>
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['global_special_chars_rewrite']; ?>" name="settings[global_special_chars_rewrite]" class="rex-form-text pipes" id="global_special_chars_rewrite">
+				</p>
+			</div>
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="urlencode_whitespace_replace"><?php echo $I18N->msg('seo42_settings_urlencode_whitespace_replace'); ?></label>
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['urlencode_whitespace_replace']; ?>" name="settings[urlencode_whitespace_replace]" class="rex-form-text" id="urlencode_whitespace_replace">
+				</p>
+			</div>
+
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-checkbox">
+					<label for="urlencode_lowercase"><?php echo $I18N->msg('seo42_settings_urlencode_lowercase'); ?></label>
+					<input type="hidden" name="settings[urlencode_lowercase]" value="0" />
+					<input type="checkbox" name="settings[urlencode_lowercase]" id="urlencode_lowercase" value="1" <?php if ($REX['ADDON']['seo42']['settings']['urlencode_lowercase']) { echo 'checked="checked"'; } ?>>
+				</p>
+			</div>
+
+        </div>
+    </fieldset>
+
+
 			<?php
 
 			foreach ($REX['CLANG'] as $clangId => $clangName) {
@@ -369,44 +408,6 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 			}
 
 			?>
-
-
-      <fieldset class="rex-form-col-1">
-        <legend><?php echo $I18N->msg('seo42_settings_lang_section'); ?></legend>
-        <div class="rex-form-wrapper slide">
-
-			<div class="rex-form-row rex-form-element-v1">
-				<p class="rex-form-text">
-					<label for="global_special_chars"><?php echo $I18N->msg('seo42_settings_global_special_chars'); ?></label>
-					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['global_special_chars']; ?>" name="settings[global_special_chars]" class="rex-form-text pipes" id="global_special_chars">
-				</p>
-			</div>
-
-			<div class="rex-form-row rex-form-element-v1">
-				<p class="rex-form-text">
-					<label for="global_special_chars_rewrite"><?php echo $I18N->msg('seo42_settings_global_special_chars_rewrite'); ?></label>
-					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['global_special_chars_rewrite']; ?>" name="settings[global_special_chars_rewrite]" class="rex-form-text pipes" id="global_special_chars_rewrite">
-				</p>
-			</div>
-
-			<div class="rex-form-row rex-form-element-v1">
-				<p class="rex-form-text">
-					<label for="urlencode_whitespace_replace"><?php echo $I18N->msg('seo42_settings_urlencode_whitespace_replace'); ?></label>
-					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['urlencode_whitespace_replace']; ?>" name="settings[urlencode_whitespace_replace]" class="rex-form-text" id="urlencode_whitespace_replace">
-				</p>
-			</div>
-
-
-			<div class="rex-form-row rex-form-element-v1">
-				<p class="rex-form-checkbox">
-					<label for="urlencode_lowercase"><?php echo $I18N->msg('seo42_settings_urlencode_lowercase'); ?></label>
-					<input type="hidden" name="settings[urlencode_lowercase]" value="0" />
-					<input type="checkbox" name="settings[urlencode_lowercase]" id="urlencode_lowercase" value="1" <?php if ($REX['ADDON']['seo42']['settings']['urlencode_lowercase']) { echo 'checked="checked"'; } ?>>
-				</p>
-			</div>
-
-        </div>
-    </fieldset>
 
 
     <fieldset class="rex-form-col-1">
