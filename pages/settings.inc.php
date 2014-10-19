@@ -329,14 +329,14 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 			<div class="rex-form-row rex-form-element-v1" id="lang_settings_<?php echo $clangId; ?>_special_chars_row">
 				<p class="rex-form-text">
 					<label for="lang_settings_<?php echo $clangId; ?>_special_chars"><?php echo $I18N->msg('seo42_settings_lang_special_chars'); ?></label>
-					<input type="text" value="<?php echo $specialChars; ?>" name="lang_settings[<?php echo $clangId; ?>][special_chars]" class="rex-form-text" id="lang_settings_<?php echo $clangId; ?>_special_chars">
+					<input type="text" value="<?php echo $specialChars; ?>" name="lang_settings[<?php echo $clangId; ?>][special_chars]" class="rex-form-text pipes" id="lang_settings_<?php echo $clangId; ?>_special_chars">
 				</p>
 			</div>
 
 			<div class="rex-form-row rex-form-element-v1" id="lang_settings_<?php echo $clangId; ?>_special_chars_rewrite_row">
 				<p class="rex-form-text">
 					<label for="lang_settings_<?php echo $clangId; ?>_special_chars_rewrite"><?php echo $I18N->msg('seo42_settings_lang_special_chars_rewrite'); ?></label>
-					<input type="text" value="<?php echo $specialCharsRewrite; ?>" name="lang_settings[<?php echo $clangId; ?>][special_chars_rewrite]" class="rex-form-text" id="lang_settings_<?php echo $clangId; ?>_special_chars_rewrite">
+					<input type="text" value="<?php echo $specialCharsRewrite; ?>" name="lang_settings[<?php echo $clangId; ?>][special_chars_rewrite]" class="rex-form-text pipes" id="lang_settings_<?php echo $clangId; ?>_special_chars_rewrite">
 				</p>
 			</div>
 
@@ -347,7 +347,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 			$inherit_from_clang_select->setAttribute('id', 'lang_settings_' . $clangId . '_inherit_from_clang');
 
 			foreach ($REX['CLANG'] as $clangIdTemp => $clangName) {
-				if ($clangIdTemp != $clangId) {
+				if (count($REX['CLANG']) == 1 || $clangIdTemp != $clangId) {
 					$inherit_from_clang_select->addOption($clangName, $clangIdTemp);
 				}
 			}
@@ -378,14 +378,14 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 			<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-text">
 					<label for="global_special_chars"><?php echo $I18N->msg('seo42_settings_global_special_chars'); ?></label>
-					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['global_special_chars']; ?>" name="settings[global_special_chars]" class="rex-form-text" id="global_special_chars">
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['global_special_chars']; ?>" name="settings[global_special_chars]" class="rex-form-text pipes" id="global_special_chars">
 				</p>
 			</div>
 
 			<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-text">
 					<label for="global_special_chars_rewrite"><?php echo $I18N->msg('seo42_settings_global_special_chars_rewrite'); ?></label>
-					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['global_special_chars_rewrite']; ?>" name="settings[global_special_chars_rewrite]" class="rex-form-text" id="global_special_chars_rewrite">
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['global_special_chars_rewrite']; ?>" name="settings[global_special_chars_rewrite]" class="rex-form-text pipes" id="global_special_chars_rewrite">
 				</p>
 			</div>
 
@@ -818,10 +818,32 @@ unset($homeurl_select,$url_ending_select);
 	width: auto;
 }
 
+.pipes {
+	font-family: 'Trebuchet MS', Verdana, Arial;
+}
+
 .preset-button {
 	float: right;
-	margin-right: 8px;
-	margin-top: -20px;
+	margin-right: 4px;
+	margin-top: -22px;
+	font-weight: bold;
+	border-radius: 4px;
+	padding: 2px 4px;
+}
+
+.preset-button:hover,
+.preset-button.dropdown-open {
+	background: #ccc;
+	text-decoration: none !important;
+}
+
+.preset-button:after {
+    color: #08c;
+    content: "↓";
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 3px;
+	vertical-align: text-top;
 }
 
 div#rex-website .dropdown a:hover {
@@ -879,6 +901,10 @@ div#rex-website .dropdown a:hover {
 			$('#lang_settings_' + curClang + '_inherit_from_clang').val(langPresets[curLangPresetIndex]['inherit_from_clang']);
 
 			$('.rewrite_mode').change();
+			/*$('#lang_settings_' + curClang + '_special_chars').tagEditor('destroy');
+			$('#lang_settings_' + curClang + '_special_chars').tagEditor();
+			$('#lang_settings_' + curClang + '_special_chars_rewrite').tagEditor('destroy');
+			$('#lang_settings_' + curClang + '_special_chars_rewrite').tagEditor();*/
     	});
 	});
 </script>
