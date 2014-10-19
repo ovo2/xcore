@@ -27,7 +27,7 @@ if ($func == 'update') {
 		foreach ($REX['CLANG'] as $clangId => $clangName) {
 			if (isset($langSettings[$clangId])) {
 				foreach ($langSettings[$clangId] as $key => $value) {
-					if (isset($langSettings[$clangId][$key])) {
+					if (isset($langSettings[$clangId][$key]) && isset($REX['ADDON']['seo42']['settings']['lang'][0][$key])) {
 						$langSettings[$clangId][$key] = seo42_utils::convertVarType($REX['ADDON']['seo42']['settings']['lang'][0][$key], $langSettings[$clangId][$key]);
 					}
 				}
@@ -553,6 +553,23 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
 
 
+	<fieldset class="rex-form-col-1">
+      <legend><?php echo $I18N->msg('seo42_settings_download_section'); ?></legend>
+      <div class="rex-form-wrapper">
+
+
+		<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="force_download_for_filetypes"><?php echo $I18N->msg('seo42_settings_force_download_for_filetypes'); ?></label>
+					<input type="text" value="<?php echo seo42_utils::implodeArray($REX['ADDON']['seo42']['settings']['force_download_for_filetypes']); ?>" name="settings[force_download_for_filetypes]" class="rex-form-text tags" id="force_download_for_filetypes">
+				</p>
+			</div>
+
+		</div>
+       </fieldset>
+
+
+
       <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_header_section'); ?></legend>
         <div class="rex-form-wrapper">
@@ -576,20 +593,6 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 		</div>
        </fieldset>
 
-	<fieldset class="rex-form-col-1">
-      <legend><?php echo $I18N->msg('seo42_settings_download_section'); ?></legend>
-      <div class="rex-form-wrapper">
-
-
-		<div class="rex-form-row rex-form-element-v1">
-				<p class="rex-form-text">
-					<label for="force_download_for_filetypes"><?php echo $I18N->msg('seo42_settings_force_download_for_filetypes'); ?></label>
-					<input type="text" value="<?php echo seo42_utils::implodeArray($REX['ADDON']['seo42']['settings']['force_download_for_filetypes']); ?>" name="settings[force_download_for_filetypes]" class="rex-form-text tags" id="force_download_for_filetypes">
-				</p>
-			</div>
-
-		</div>
-       </fieldset>
 
      <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_sitemap_section'); ?></legend>
@@ -901,10 +904,6 @@ div#rex-website .dropdown a:hover {
 			$('#lang_settings_' + curClang + '_inherit_from_clang').val(langPresets[curLangPresetIndex]['inherit_from_clang']);
 
 			$('.rewrite_mode').change();
-			/*$('#lang_settings_' + curClang + '_special_chars').tagEditor('destroy');
-			$('#lang_settings_' + curClang + '_special_chars').tagEditor();
-			$('#lang_settings_' + curClang + '_special_chars_rewrite').tagEditor('destroy');
-			$('#lang_settings_' + curClang + '_special_chars_rewrite').tagEditor();*/
     	});
 	});
 </script>
