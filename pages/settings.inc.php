@@ -167,7 +167,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
       <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_main_section'); ?></legend>
-        <div class="rex-form-wrapper">
+        <div class="rex-form-wrapper slide">
 
             <div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-checkbox">
@@ -199,7 +199,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
     <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_redirects_section'); ?></legend>
-        <div class="rex-form-wrapper">
+        <div class="rex-form-wrapper slide">
 
        <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
@@ -276,10 +276,10 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
 				echo '<fieldset class="rex-form-col-1">';
 				echo '<legend>' . $I18N->msg('seo42_settings_langname_section') . ' ' . $clangName  . '</legend>';
-				echo '<div class="rex-form-wrapper">';
+				echo '<div class="rex-form-wrapper slide">';
 			?>
 
-			<a href="#" class="preset-button" data-vertical-offset="-10" data-dropdown="#dropdown-<?php echo $clangId; ?>"><?php echo $I18N->msg('seo42_settings_lang_presets'); ?></a>
+			<a href="#" class="preset-button" data-vertical-offset="-14" data-dropdown="#dropdown-<?php echo $clangId; ?>"><?php echo $I18N->msg('seo42_settings_lang_presets'); ?></a>
 
 			<div id="dropdown-<?php echo $clangId; ?>" class="dropdown dropdown-relative">
 				<ul class="dropdown-menu" data-clang="<?php echo $clangId; ?>">
@@ -373,7 +373,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
       <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_lang_section'); ?></legend>
-        <div class="rex-form-wrapper">
+        <div class="rex-form-wrapper slide">
 
 			<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-text">
@@ -411,7 +411,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
     <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_resource_section'); ?></legend>
-        <div class="rex-form-wrapper">
+        <div class="rex-form-wrapper slide">
 
           	<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-text">
@@ -446,7 +446,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
       <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_urls_section'); ?></legend>
-        <div class="rex-form-wrapper">
+        <div class="rex-form-wrapper slide">
 
 			<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-checkbox">
@@ -506,7 +506,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
       <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_auto_url_types_section'); ?></legend>
-        <div class="rex-form-wrapper">
+        <div class="rex-form-wrapper slide">
 
 			<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-text">
@@ -530,7 +530,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
 		<fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_canonical_section'); ?></legend>
-        <div class="rex-form-wrapper">
+        <div class="rex-form-wrapper slide">
 
 			<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-checkbox">
@@ -555,7 +555,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
 	<fieldset class="rex-form-col-1">
       <legend><?php echo $I18N->msg('seo42_settings_download_section'); ?></legend>
-      <div class="rex-form-wrapper">
+      <div class="rex-form-wrapper slide">
 
 
 		<div class="rex-form-row rex-form-element-v1">
@@ -572,7 +572,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
       <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_header_section'); ?></legend>
-        <div class="rex-form-wrapper">
+        <div class="rex-form-wrapper slide">
 
 			<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-checkbox">
@@ -596,7 +596,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
      <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_sitemap_section'); ?></legend>
-        <div class="rex-form-wrapper">
+        <div class="rex-form-wrapper slide">
 
 			<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-checkbox">
@@ -618,7 +618,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
       <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_robots_section'); ?></legend>
-        <div class="rex-form-wrapper">
+        <div class="rex-form-wrapper slide">
 
 			<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-checkbox">
@@ -647,7 +647,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
     <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_html_section'); ?></legend>
-        <div class="rex-form-wrapper">
+        <div class="rex-form-wrapper slide">
 
 
 	      <div class="rex-form-row rex-form-element-v1">
@@ -676,7 +676,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
     <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_ui_section'); ?></legend>
-        <div class="rex-form-wrapper">
+        <div class="rex-form-wrapper slide">
 
 			<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-checkbox">
@@ -757,7 +757,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
     <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_misc_section'); ?></legend>
-        <div class="rex-form-wrapper">
+        <div class="rex-form-wrapper slide">
 
 			<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-checkbox">
@@ -773,7 +773,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 <?php if ($func != 'update') { ?>
 	<fieldset class="rex-form-col-1">
       <legend><?php echo $I18N->msg('seo42_settings_advanced_settings_section'); ?></legend>
-      <div class="rex-form-wrapper">
+      <div class="rex-form-wrapper slide">
 
 		<div class="rex-form-row rex-form-element-v1">
 			<p class="rex-form-col-a rex-form-read">
@@ -821,6 +821,23 @@ unset($homeurl_select,$url_ending_select);
 	width: auto;
 }
 
+div.rex-form legend {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	cursor: pointer;
+	border-bottom: 1px solid #fff;
+}
+
+div.rex-form legend:hover {
+	background: #eee;
+}
+
+.rex-form-wrapper.slide {
+	display: none;
+}
+
 .pipes {
 	font-family: 'Trebuchet MS', Verdana, Arial;
 }
@@ -828,7 +845,7 @@ unset($homeurl_select,$url_ending_select);
 .preset-button {
 	float: right;
 	margin-right: 4px;
-	margin-top: -22px;
+	margin-top: -23px;
 	font-weight: bold;
 	border-radius: 4px;
 	padding: 2px 4px;
@@ -905,6 +922,11 @@ div#rex-website .dropdown a:hover {
 
 			$('.rewrite_mode').change();
     	});
+
+		// slide
+		$('.rex-form-col-1 legend').click(function(e) { 
+			$(this).next('.rex-form-wrapper.slide').slideToggle();
+		});
 	});
 </script>
 
