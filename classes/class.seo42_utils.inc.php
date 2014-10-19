@@ -527,6 +527,18 @@ class seo42_utils {
 		}
 	}
 
+	public static function restoreCachedRedirects() {
+			global $REX;
+
+			$sql = rex_sql::factory();
+			//$sql->debugsql = true;
+			$sql->setQuery('SELECT * FROM ' . $REX['TABLE_PREFIX'] . 'redirects');
+
+			if ($sql->getRows() > 0) {
+				self::updateWebsiteSettingsFile();
+			}
+	}
+
 	public static function updateWebsiteSettingsFile($settings = array()) {
 		global $REX;
 

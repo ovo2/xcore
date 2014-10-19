@@ -45,7 +45,7 @@ echo '<div class="rex-addon-output-v2">';
 
 if ($func == '') {
 	// restore redirects file if necessary
-	seo42_utils::updateWebsiteSettingsFile();
+	seo42_utils::restoreCachedRedirects();
 
 	// rex list
 	$query = 'SELECT * FROM ' . $REX['TABLE_PREFIX'] . 'redirects ORDER BY id';
