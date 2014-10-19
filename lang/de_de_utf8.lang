@@ -252,7 +252,7 @@ seo42_help_marvin_msg10 = Meine Fähigkeit zum Fröhlichsein könntest du in ein
 seo42_help_marvin_msg11 = Ich habe mit dem Bordcomputer gesprochen. Er hasst mich.
 
 seo42_help_codeexamples = Codebeispiele
-seo42_help_codeexamples_intro = Hier finden Sie eine Auswahl an an Beispielen zur SEO42 API. Nutzen Sie nach Möglichkeit alle hier vorgestellten PHP-Methoden für ein optimales SEO. Weitere PHP-Methoden finden Sie auch auf der <a href="index.php?page=seo42&subpage=help&chapter=debug">Debug</a> Seite.
+seo42_help_codeexamples_intro = Hier gibt es eine Auswahl an an Beispielen zur SEO42 API.<br />Für weitere Beispiele siehe die <a href="index.php?page=seo42&subpage=help&chapter=debug">Debug</a> Seite.
 seo42_help_codeexamples_title1 = Einheitliche URLs
 seo42_help_codeexamples_description1 = Nutzen Sie diese Möglichkeiten um Ihre URLs zu vereinheitlichen und automatisch die richtigen URLs ausgeben zu lassen:
 seo42_help_codeexamples_title2 = Erweiterte Resourceneinbindung

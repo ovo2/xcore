@@ -253,7 +253,7 @@ seo42_help_marvin_msg10 = I'd give you advice, but you wouldn't listen. No one e
 seo42_help_marvin_msg11 = I have a million ideas. They all point to certain death.
 
 seo42_help_codeexamples = Examples of code
-seo42_help_codeexamples_intro = Here you will find a collection of examples for the SEO42 API. Please use this PHP methods for an ideal SEO. More PHP methods can be found at the <a href="index.php?page=seo42&subpage=help&chapter=debug">Debug</a> page.
+seo42_help_codeexamples_intro = Here you will find a collection of examples for the SEO42 API.<br />More examples can be found on the <a href="index.php?page=seo42&subpage=help&chapter=debug">Debug</a> page.
 seo42_help_codeexamples_title1 = Uniform Urls
 seo42_help_codeexamples_description1 = Take advantage of these possibilities to unify your Urls and automatically output the correct URLs:
 seo42_help_codeexamples_title2 = Include advanced resources
