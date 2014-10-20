@@ -295,11 +295,11 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 				} else {
 					$inheritFromClang = 0;
 				}
-
-				echo '<fieldset class="rex-form-col-1">';
-				echo '<legend>' . $I18N->msg('seo42_settings_langname_section') . ' ' . $clangName  . '</legend>';
-				echo '<div class="rex-form-wrapper slide">';
 			?>
+
+			<fieldset class="rex-form-col-1">
+			<legend><?php echo $I18N->msg('seo42_settings_langname_section');?> <?php echo $clangName; ?></legend>
+			<div class="rex-form-wrapper slide">
 
 			<a href="#" class="preset-button" data-vertical-offset="-14" data-dropdown="#dropdown-<?php echo $clangId; ?>"><?php echo $I18N->msg('seo42_settings_lang_presets'); ?></a>
 
@@ -384,10 +384,11 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
             </p>
           </div>
 
+		</div>
+		</fieldset>
+
 
 			<?php
-				echo '</div>';
-				echo '</fieldset>';
 			}
 
 			?>
@@ -806,7 +807,7 @@ div.rex-form legend.open {
 .preset-button {
 	float: right;
 	margin-right: 4px;
-	margin-top: -24px;
+	margin-top: -23px;
 	font-weight: bold;
 	border-radius: 4px;
 	padding: 2px 4px;
