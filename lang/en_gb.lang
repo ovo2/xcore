@@ -52,7 +52,6 @@ seo42_configfile_update = Config file was updated!
 seo42_configfile_nosave = Config file could not be saved!
 seo42_configfile_nowrite = Config file "{0}" is not writable!
 
-seo42_settings_advanced_settings_section = All settings
 seo42_settings_resource_section = Resources
 seo42_settings_robots_section = Robots.txt
 seo42_settings_url_ending_without = (without)
@@ -69,9 +68,6 @@ seo42_settings_robots_link = Link to robots.txt
 seo42_settings_sitemap_link = Link to sitemap.xml
 seo42_settings_submit = Save settings
 seo42_settings_lang_hint = Language settings
-seo42_settings_show_all = All settings
-seo42_settings_show = show
-seo42_settings_hide = hide
 seo42_settings_css_dir = CSS directory
 seo42_settings_js_dir = JS directory
 seo42_settings_images_dir = Images directory

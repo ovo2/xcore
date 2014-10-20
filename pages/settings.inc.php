@@ -771,32 +771,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 		</div>
        </fieldset>
 
-<?php if ($func != 'update') { ?>
-	<fieldset class="rex-form-col-1">
-      <legend><?php echo $I18N->msg('seo42_settings_advanced_settings_section'); ?></legend>
-      <div class="rex-form-wrapper slide">
-
-		<div class="rex-form-row rex-form-element-v1">
-			<p class="rex-form-col-a rex-form-read">
-				<label for="show-settings"><?php echo $I18N->msg('seo42_settings_show_all'); ?></label>
-				<span class="rex-form-read"><a id="show-settings" href="#"><?php echo $I18N->msg('seo42_settings_show'); ?></a></span>
-			</p>
-		</div>
-
-		<div id="all-settings" style="display: none;" class="rex-form-row rex-form-element-v1">
-			<p class="rex-form-col-a rex-form-read">
-				<pre class="rex-code"><?php echo seo42_utils::print_r_pretty($REX['ADDON']['seo42']['settings']); ?></pre>
-				<br />
-				<pre class="rex-code"><?php echo seo42_utils::print_r_pretty($REX['ADDON']['seo42']['website_settings']); ?></pre>
-			</p>
-		</div>
-
-        </div>
-      </fieldset>
-<?php } ?>
-
       <fieldset class="rex-form-col-1">
-        <legend>&nbsp;</legend>
         <div class="rex-form-wrapper">
 
           <div class="rex-form-row rex-form-element-v2">
@@ -818,10 +793,6 @@ unset($homeurl_select,$url_ending_select);
 ?>
 
 <style type="text/css">
-#lang_hint {
-	width: auto;
-}
-
 div.rex-form legend {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -829,10 +800,16 @@ div.rex-form legend {
 	width: 100%;
 	cursor: pointer;
 	border-bottom: 1px solid #fff;
+	background: transparent url("../<?php echo $REX['MEDIA_ADDON_DIR']; ?>/seo42/arrows.png") no-repeat 7px 10px;
+	padding-left: 19px;
 }
 
 div.rex-form legend:hover {
-	background: #eee;
+	background-color: #eee;
+}
+
+div.rex-form legend.open {
+	background-position: 7px -36px;
 }
 
 .rex-form-wrapper.slide {
@@ -874,18 +851,6 @@ div#rex-website .dropdown a:hover {
 
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
-		// show settings
-		$('#show-settings').toggle( 
-			function() {
-				$('#all-settings').slideDown(); 
-				$('#show-settings').html('<?php echo $I18N->msg('seo42_settings_hide'); ?>');
-			}, 
-			function() { 
-				$('#all-settings').slideUp(); 
-				$('#show-settings').html('<?php echo $I18N->msg('seo42_settings_show'); ?>');
-			} 
-		);
-
 		// rewrite mode
 		$('.rewrite_mode').change(function() {
 			var curClang = $(this).attr('data-clang');
@@ -926,6 +891,7 @@ div#rex-website .dropdown a:hover {
 
 		// slide
 		$('.rex-form-col-1 legend').click(function(e) { 
+			$(this).toggleClass('open');
 			$(this).next('.rex-form-wrapper.slide').slideToggle();
 		});
 	});

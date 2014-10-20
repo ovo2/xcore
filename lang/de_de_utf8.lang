@@ -51,7 +51,6 @@ seo42_configfile_update = Konfiguration wurde aktualisiert!
 seo42_configfile_nosave = Konfiguration konnte nicht gespeichert werden!
 seo42_configfile_nowrite = Konfigurationsdatei "{0}" ist nicht beschreibbar!
 
-seo42_settings_advanced_settings_section = Alle Einstellungen
 seo42_settings_resource_section = Resourcen
 seo42_settings_robots_section = Robots.txt
 seo42_settings_url_ending_without = (ohne)
@@ -68,9 +67,6 @@ seo42_settings_robots_link = Link zur robots.txt
 seo42_settings_sitemap_link = Link zur sitemap.xml
 seo42_settings_submit = Einstellungen speichern
 seo42_settings_lang_hint = Spracheinstellungen
-seo42_settings_show_all = Alle Einstellungen
-seo42_settings_show = anzeigen
-seo42_settings_hide = verstecken
 seo42_settings_css_dir = CSS Verzeichnis
 seo42_settings_js_dir = JS Verzeichnis
 seo42_settings_images_dir = Images Verzeichnis
