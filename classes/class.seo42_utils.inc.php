@@ -517,95 +517,79 @@ class seo42_utils {
 		fclose($fileHandle);
 	}
 
-	public static function getWebsiteSettingsFile() {
+	public static function getSettingsFile() {
 		global $REX;
 
-		if (isset($REX['WEBSITE_MANAGER'])) {
-			return SEO42_DATA_DIR . 'settings.website' . $REX['WEBSITE_MANAGER']->getCurrentWebsiteId() . '.inc.php';
+		if (isset($REX['WEBSITE_MANAGER']) && $REX['WEBSITE_MANAGER']->getCurrentWebsiteId() != $REX['WEBSITE_MANAGER']->getMasterWebsiteId()) {
+			return SEO42_DATA_DIR . 'settings' . $REX['WEBSITE_MANAGER']->getCurrentWebsiteId() . '.inc.php';
 		} else {
-			return SEO42_DATA_DIR . 'settings.website1.inc.php';
+			return SEO42_DATA_DIR . 'settings.inc.php';
 		}
 	}
 
-	public static function restoreCachedRedirects() {
-			global $REX;
+	public static function includeSettingsFile() {
+		global $REX; // important for include
 
-			$sql = rex_sql::factory();
-			//$sql->debugsql = true;
-			$sql->setQuery('SELECT * FROM ' . $REX['TABLE_PREFIX'] . 'redirects');
+		$settingsFile = self::getSettingsFile();
 
-			if ($sql->getRows() > 0) {
-				self::updateWebsiteSettingsFile();
-			}
+		if (!file_exists($settingsFile)) {
+			self::updateSettingsFile(false);
+		}
+
+		require_once($settingsFile);
 	}
 
-	public static function updateWebsiteSettingsFile($settings = array()) {
-		global $REX;
+	public static function updateSettingsFile($showSuccessMsg = true) {
+		global $REX, $I18N;
 
-		$msg = '';
-		$content = '';
-		$settingsFile = seo42_utils::getWebsiteSettingsFile();
-		$msg = seo42_utils::checkDirForFile($settingsFile);
+		$settingsFile = self::getSettingsFile();
+		$msg = self::checkDirForFile($settingsFile);
 
 		if ($msg != '') {
-			echo rex_warning($msg);
-			return false;
+			echo rex_warning($msg);			
 		} else {
 			if (!file_exists($settingsFile)) {
 				self::createDynFile($settingsFile);
 			}
 
-			// pagerank_checker_unlock
-			if (isset($settings['pagerank_checker_unlock'])) {
-				$settings['pagerank_checker_unlock'] = seo42_utils::convertVarType($REX['ADDON']['seo42']['website_settings']['pagerank_checker_unlock'], $settings['pagerank_checker_unlock']);
-			} else {
-				$settings['pagerank_checker_unlock'] = $REX['ADDON']['seo42']['website_settings']['pagerank_checker_unlock'];
-			}
-
-			// robots
-			if (isset($settings['robots'])) {
-				$settings['robots'] = seo42_utils::convertVarType($REX['ADDON']['seo42']['website_settings']['robots'], $settings['robots']);
-			} else {
-				$settings['robots'] = $REX['ADDON']['seo42']['website_settings']['robots'];
-			}
-			
-			$content .= '$REX[\'ADDON\'][\'seo42\'][\'website_settings\'][\'robots\'] = ' .var_export($settings['robots'], true) . ';' . PHP_EOL;
-			$content .= '$REX[\'ADDON\'][\'seo42\'][\'website_settings\'][\'pagerank_checker_unlock\'] = ' . var_export($settings['pagerank_checker_unlock'], true) . ';' . PHP_EOL;
-
-			// merge
-			$REX['ADDON']['seo42']['website_settings'] = array_merge((array) $REX['ADDON']['seo42']['website_settings'], $settings);
-
-			// cached redirects
-			$content .= '$REX[\'ADDON\'][\'seo42\'][\'website_settings\'][\'cached_redirects\'] = array(' . PHP_EOL;
-
-			$sql = rex_sql::factory();
-			//$sql->debugsql = true;
-			$sql->setQuery('SELECT * FROM ' . $REX['TABLE_PREFIX'] . 'redirects');
-
-			for ($i = 0; $i < $sql->getRows(); $i++) {
-				$content .= "\t" . '"' . $sql->getValue('source_url') . '" => "' . $sql->getValue('target_url') . '"';
+			$content = "<?php\n\n";
 		
-				if ($i < $sql->getRows() - 1) {
-					$content .= ', ' . PHP_EOL;
-				}
-
-				$sql->next();
+			foreach ((array) $REX['ADDON']['seo42']['settings'] as $key => $value) {
+				$content .= "\$REX['ADDON']['seo42']['settings']['$key'] = " . var_export($value, true) . ";\n";
 			}
 
-			$content .= PHP_EOL . ');' . PHP_EOL;
-
-		  	if (rex_replace_dynamic_contents($settingsFile, $content)) {
-				return true;
+			if (rex_put_file_contents($settingsFile, $content)) {
+				if ($showSuccessMsg) {
+					echo rex_info($I18N->msg('seo42_config_ok'));
+				}
 			} else {
-				return false;
+				echo rex_warning($I18N->msg('seo42_config_error'));
 			}
 		}
+	}
+
+	public static function updateCachedRedirects($showSuccessMsg) {
+		global $REX;
+
+		$sql = rex_sql::factory();
+		//$sql->debugsql = true;
+		$sql->setQuery('SELECT * FROM ' . $REX['TABLE_PREFIX'] . 'redirects');
+
+		$REX['ADDON']['seo42']['settings']['cached_redirects'] = array();
+
+		for ($i = 0; $i < $sql->getRows(); $i++) {
+			$REX['ADDON']['seo42']['settings']['cached_redirects'][$sql->getValue('source_url')] = $sql->getValue('target_url');
+
+			$sql->next();
+		}
+
+		self::updateSettingsFile($showSuccessMsg);
 	}
 
 	public static function redirect() {
 		global $REX;
 
-		if (isset($REX['ADDON']['seo42']['website_settings']['cached_redirects']) && count($REX['ADDON']['seo42']['website_settings']['cached_redirects']) > 0) {
+		if (isset($REX['ADDON']['seo42']['settings']['cached_redirects']) && count($REX['ADDON']['seo42']['settings']['cached_redirects']) > 0) {
 			if (seo42::isSubDirInstall()) {
 				// remove subdir from request uri
 				$requestUri = self::trimSubDir($_SERVER['REQUEST_URI']);
@@ -615,8 +599,8 @@ class seo42_utils {
 			
 			$redirect = false;
 			
-			if (array_key_exists($requestUri, $REX['ADDON']['seo42']['website_settings']['cached_redirects'])) {
-				$redirectUri = $REX['ADDON']['seo42']['website_settings']['cached_redirects'][$requestUri];
+			if (array_key_exists($requestUri, $REX['ADDON']['seo42']['settings']['cached_redirects'])) {
+				$redirectUri = $REX['ADDON']['seo42']['settings']['cached_redirects'][$requestUri];
 				$redirect = true;
 				
 			} elseif ($REX['ADDON']['seo42']['settings']['redirects_allow_regex']) {
@@ -650,14 +634,14 @@ class seo42_utils {
 	public static function regexRedirect($requestUri) {
 		global $REX;
 
-		$regexArray = preg_grep('/\*/', array_keys($REX['ADDON']['seo42']['website_settings']['cached_redirects']));
+		$regexArray = preg_grep('/\*/', array_keys($REX['ADDON']['seo42']['settings']['cached_redirects']));
 		
 		foreach($regexArray as $link) {
 			// all * replace with "([\w.-]+)" regex
 			$preg = str_replace('\*', '([\w.-]+)', preg_quote($link));
 			
 			if (preg_match('#'.$preg.'#', $requestUri, $matches)) {
-				$url = $REX['ADDON']['seo42']['website_settings']['cached_redirects'][$link];
+				$url = $REX['ADDON']['seo42']['settings']['cached_redirects'][$link];
 				
 				// check if any variables in the Target-Url
 				if (preg_match_all('/\{(\d)\}/', $url, $match)) {			

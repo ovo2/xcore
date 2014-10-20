@@ -5,12 +5,9 @@ require($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42_tool_manager.i
 $func = rex_request('func', 'string');
 
 if ($func == 'add_domain') {
-	$settings = array();
-	$settings['pagerank_checker_unlock'] = true;
+	$REX['ADDON']['seo42']['settings']['pagerank_checker_unlock'] = true;
 
-	seo42_utils::updateWebsiteSettingsFile($settings);
-
-	$REX['ADDON']['seo42']['website_settings']['pagerank_checker_unlock'] = $settings['pagerank_checker_unlock'];
+	seo42_utils::updateSettingsFile();
 }
 
 $googleIndexLink = 'http://www.google.com/search?q=site:' . seo42::getServerWithSubDir();;
@@ -22,9 +19,9 @@ $googleIndexLink = 'http://www.google.com/search?q=site:' . seo42::getServerWith
 	<div class="rex-area-content">
 		<div class="tool-icon"></div>
 		<p><?php echo $I18N->msg('seo42_pr_tool_msg') . ' ' . seo42::getServerWithSubdir() ?>.</p>
-		<p class="pr"><?php echo $I18N->msg('seo42_pr_tool_pagerank'); ?>: <span id="pagerank" class="info"><?php if ($REX['ADDON']['seo42']['website_settings']['pagerank_checker_unlock']) { echo $I18N->msg('seo42_pr_tool_pagerank_ready'); } else { echo $I18N->msg('seo42_tool_domain_not_unlocked'); } ?></span></p>
+		<p class="pr"><?php echo $I18N->msg('seo42_pr_tool_pagerank'); ?>: <span id="pagerank" class="info"><?php if ($REX['ADDON']['seo42']['settings']['pagerank_checker_unlock']) { echo $I18N->msg('seo42_pr_tool_pagerank_ready'); } else { echo $I18N->msg('seo42_tool_domain_not_unlocked'); } ?></span></p>
 		
-		<?php if ($REX['ADDON']['seo42']['website_settings']['pagerank_checker_unlock']) { ?>
+		<?php if ($REX['ADDON']['seo42']['settings']['pagerank_checker_unlock']) { ?>
 		<p>
 			<input id="pr-check" type="button" class="rex-form-submit" value="<?php echo $I18N->msg('seo42_pr_tool_button'); ?>" />
 		</p>
@@ -49,7 +46,7 @@ $googleIndexLink = 'http://www.google.com/search?q=site:' . seo42::getServerWith
 		<p><?php echo $I18N->msg('seo42_show_index_tool_msg', seo42::getServerWithSubdir()); ?></p>
 		<p class="url"><?php echo $googleIndexLink; ?></p>
 
-		<?php if ($REX['ADDON']['seo42']['website_settings']['pagerank_checker_unlock']) { ?>
+		<?php if ($REX['ADDON']['seo42']['settings']['pagerank_checker_unlock']) { ?>
 		<p>
 			<input id="show-index" type="button" class="rex-form-submit" value="<?php echo $I18N->msg('seo42_show_index_tool_button'); ?>" />
 		</p>
@@ -193,7 +190,7 @@ jQuery(document).ready(function($) {
 		});
 	});
 
-	<?php if (!$REX['ADDON']['seo42']['website_settings']['pagerank_checker_unlock']) { ?>
+	<?php if (!$REX['ADDON']['seo42']['settings']['pagerank_checker_unlock']) { ?>
 		jQuery('.domain-unlock-form').submit(function() {
 			if (confirm('<?php echo $I18N->msg('seo42_tool_domain_unlock_msg', seo42::getServerWithSubDir()); ?>')) {
 				return true;

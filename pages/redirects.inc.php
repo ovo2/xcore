@@ -15,7 +15,7 @@ if($func == 'delete' && $redirect_id > 0) {
 		echo rex_warning($sql->getErrro());
 	}
 
-	seo42_utils::updateWebsiteSettingsFile();
+	seo42_utils::updateCachedRedirects(false);
 	
 	$func = '';
 }
@@ -24,7 +24,7 @@ if($func == 'delete' && $redirect_id > 0) {
 rex_register_extension('REX_FORM_SAVED', function ($params) {
 	global $REX;
 
-	seo42_utils::updateWebsiteSettingsFile();
+	seo42_utils::updateCachedRedirects(false);
 	
 	// use exit statement, if you want to debug
 	return true;
@@ -34,7 +34,7 @@ rex_register_extension('REX_FORM_SAVED', function ($params) {
 rex_register_extension('REX_FORM_DELETED', function ($params) {
 	global $REX;
 
-	seo42_utils::updateWebsiteSettingsFile();
+	seo42_utils::updateCachedRedirects(false);
 
 	// use exit statement, if you want to debug
 	return true;
@@ -44,8 +44,7 @@ rex_register_extension('REX_FORM_DELETED', function ($params) {
 echo '<div class="rex-addon-output-v2">';
 
 if ($func == '') {
-	// restore redirects file if necessary
-	seo42_utils::restoreCachedRedirects();
+	seo42_utils::updateCachedRedirects(false);
 
 	// rex list
 	$query = 'SELECT * FROM ' . $REX['TABLE_PREFIX'] . 'redirects ORDER BY id';

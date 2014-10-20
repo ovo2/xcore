@@ -631,10 +631,6 @@ class seo42 {
 		$out .= seo42_utils::print_r_pretty($REX['ADDON']['seo42']['settings'], true);
 		$out .= '</pre>';
 
-		$out .= '<pre class="rex-code">';
-		$out .= seo42_utils::print_r_pretty($REX['ADDON']['seo42']['website_settings'], true);
-		$out .= '</pre>';
-
 		// pathlist
 		$out .= '<h2>Pathlist</h2>';
 

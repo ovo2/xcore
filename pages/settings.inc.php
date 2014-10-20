@@ -9,56 +9,39 @@ $func = rex_request('func', 'string');
 if ($func == 'update') {
 	$settings = (array) rex_post('settings', 'array', array());
 	$langSettings = (array) rex_post('lang_settings', 'array', array());
-	$msg = seo42_utils::checkDirForFile(SEO42_SETTINGS_FILE);
-
-	if ($msg != '') {
-		echo rex_warning($msg);
-	} else {
-		// type conversion normal settings
-		foreach ($REX['ADDON']['seo42']['settings'] as $key => $value) {
-			if ($key != 'lang') { // lang is extra, see below
-				if (isset($settings[$key])) {
-					$settings[$key] = seo42_utils::convertVarType($value, $settings[$key]);
-				}
+	
+	// type conversion normal settings
+	foreach ($REX['ADDON']['seo42']['settings'] as $key => $value) {
+		if ($key != 'lang') { // lang is extra, see below
+			if (isset($settings[$key])) {
+				$settings[$key] = seo42_utils::convertVarType($value, $settings[$key]);
 			}
 		}
-
-		// type conversion lang settings
-		foreach ($REX['CLANG'] as $clangId => $clangName) {
-			if (isset($langSettings[$clangId])) {
-				foreach ($langSettings[$clangId] as $key => $value) {
-					if (isset($langSettings[$clangId][$key]) && isset($REX['ADDON']['seo42']['settings']['lang'][0][$key])) {
-						$langSettings[$clangId][$key] = seo42_utils::convertVarType($REX['ADDON']['seo42']['settings']['lang'][0][$key], $langSettings[$clangId][$key]);
-					}
-				}
-			}
-		}
-
-		// merge
-		$REX['ADDON']['seo42']['settings'] = array_merge((array) $REX['ADDON']['seo42']['settings'], $settings);
-
-		// replace lang settings
-		unset($REX['ADDON']['seo42']['settings']['lang']);
-		$REX['ADDON']['seo42']['settings']['lang'] = $langSettings;
-
-		// write
-		$content = "<?php\n\n";
-		
-		foreach ((array) $REX['ADDON']['seo42']['settings'] as $key => $value) {
-			if (!isset($REX['ADDON']['seo42']['website_settings'][$key])) {
-				$content .= "\$REX['ADDON']['seo42']['settings']['$key'] = " . var_export($value, true) . ";\n";
-			}
-		}
-
-		if (rex_put_file_contents(SEO42_SETTINGS_FILE, $content)) {
-			echo rex_info($I18N->msg('seo42_config_ok'));
-		} else {
-			echo rex_warning($I18N->msg('seo42_config_error'));
-		}
-
-		seo42_utils::updateWebsiteSettingsFile($settings);
-		seo42_generate_pathlist('');
 	}
+
+	// replace settings
+	$REX['ADDON']['seo42']['settings'] = array_merge((array) $REX['ADDON']['seo42']['settings'], $settings);
+
+	// type conversion lang settings
+	foreach ($REX['CLANG'] as $clangId => $clangName) {
+		if (isset($langSettings[$clangId])) {
+			foreach ($langSettings[$clangId] as $key => $value) {
+				if (isset($langSettings[$clangId][$key]) && isset($REX['ADDON']['seo42']['settings']['lang'][0][$key])) {
+					$langSettings[$clangId][$key] = seo42_utils::convertVarType($REX['ADDON']['seo42']['settings']['lang'][0][$key], $langSettings[$clangId][$key]);
+				}
+			}
+		}
+	}
+
+	// replace lang settings
+	unset($REX['ADDON']['seo42']['settings']['lang']);
+	$REX['ADDON']['seo42']['settings']['lang'] = $langSettings;
+
+	// update settings file
+	seo42_utils::updateSettingsFile();
+
+	// update pathlist
+	seo42_generate_pathlist('');
 }
 
 // url ending select box
@@ -632,7 +615,7 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
               <label for="robots"><?php echo $I18N->msg('seo42_settings_robots_additional'); ?></label>
-              <textarea name="settings[robots]" rows="2"><?php echo stripslashes($REX['ADDON'][$myself]['website_settings']['robots']); ?></textarea>
+              <textarea name="settings[robots]" rows="2"><?php echo stripslashes($REX['ADDON'][$myself]['settings']['robots']); ?></textarea>
             </p>
           </div>
 
@@ -823,7 +806,7 @@ div.rex-form legend.open {
 .preset-button {
 	float: right;
 	margin-right: 4px;
-	margin-top: -23px;
+	margin-top: -24px;
 	font-weight: bold;
 	border-radius: 4px;
 	padding: 2px 4px;

@@ -24,11 +24,9 @@ require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42_utils.inc
 
 // consts
 define('SEO42_ARRAY_DELIMITER', ',');
-define('SEO42_SETTINGS_FILE', $REX['INCLUDE_PATH'] . '/data/addons/seo42/settings.inc.php');
 define('SEO42_DATA_DIR', $REX['INCLUDE_PATH'] . '/data/addons/seo42/');
 define('SEO42_BACKUP_DIR', $REX['INCLUDE_PATH'] . '/data/addons/seo42/backup/');
 define('SEO42_PATHLIST', $REX['GENERATED_PATH'] . '/files/seo42_pathlist.php');
-define('SEO42_WEBSITE_SETTINGS_FILE', seo42_utils::getWebsiteSettingsFile());
 
 define('SEO42_URL_TYPE_DEFAULT', 0); 
 define('SEO42_URL_TYPE_INTERN_REPLACE_CLANG', 1); 
@@ -87,6 +85,7 @@ $REX['ADDON']['seo42']['settings'] = array(
 	'fix_image_manager_cache_control_header' => false,
 	'static_sitemap_priority' => true,
 	'no_robots_txt_auto_disallow' => true,
+	'robots' => '',
 	'robots_follow_flag' => 'follow',
 	'robots_archive_flag' => 'noarchive',
 	'title_delimiter' => '-',
@@ -100,6 +99,7 @@ $REX['ADDON']['seo42']['settings'] = array(
 	'pagerank_checker' => true,
 	'redirects' => true,
 	'one_page_mode' => false,
+	'pagerank_checker_unlock' => false,
 	'global_special_chars' => '',
 	'global_special_chars_rewrite' => '',
 	'urlencode_whitespace_replace' => '_',
@@ -113,24 +113,12 @@ $REX['ADDON']['seo42']['settings'] = array(
 			'special_chars_rewrite' => 'Ae|ae|Oe|oe|Ue|ue|ss|und',
 			'inherit_from_clang' => 0
 		)
-	)
-);
-
-$REX['ADDON']['seo42']['website_settings'] = array(
-	'robots' => '',
-	'pagerank_checker_unlock' => false,
+	),
 	'cached_redirects' => array()
 );
 
 // overwrite default settings with user settings
-if (file_exists(SEO42_SETTINGS_FILE)) {
-	require_once(SEO42_SETTINGS_FILE);
-}
-
-// special website settings
-if (file_exists(SEO42_WEBSITE_SETTINGS_FILE)) {
-	require_once(SEO42_WEBSITE_SETTINGS_FILE);
-}
+seo42_utils::includeSettingsFile();
 
 // pre init seo42 vars
 seo42::init();
