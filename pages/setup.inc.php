@@ -199,6 +199,7 @@ if ($func == "do_copy") {
 			<input type="hidden" name="page" value="seo42" />
 			<input type="hidden" name="subpage" value="setup" />
 			<input type="hidden" name="func" value="do_copy" />
+			<div class="spacer small"></div>
 			<div class="rex-form-row">
 				<p class="button"><input type="submit" class="rex-form-submit" name="sendit" id="copy-file-submit" value="<?php echo $I18N->msg('seo42_setup_step2_button'); ?>" /></p>
 			</div>
@@ -237,6 +238,10 @@ if ($func == "do_copy") {
 
 #rex-page-seo42 .spacer {
 	height: 10px;
+}
+
+#rex-page-seo42 .spacer.small {
+	height: 5px;
 }
 
 #rex-page-seo42 .info-msg {

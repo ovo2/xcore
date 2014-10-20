@@ -118,7 +118,7 @@ seo42_settings_seopage = SEO page
 seo42_settings_urlpage = URL page
 seo42_settings_title_preview = Titel preview
 seo42_settings_no_prefix_checkbox = No prefix checkbox
-seo42_settings_custom_canonical_url = Custom canonical URL
+seo42_settings_custom_canonical_url = Custom canonical url
 seo42_settings_all_url_types = All URL types
 seo42_settings_noindex_checkbox = Noindex checkbox
 seo42_settings_pagerank_checker = Pagerank checker
@@ -127,7 +127,7 @@ seo42_settings_title_delimiter = Titel delimiter
 seo42_settings_ignore_root_cats = Ignore Root Cats
 seo42_settings_one_page_mode = One Page Mode
 seo42_settings_allow_article_id = Allow article_id urls
-seo42_settings_html_section = Html
+seo42_settings_html_section = HTML tags
 seo42_settings_canonical_section = Auto canonical url
 
 seo42_settings_lang_section = Languages
@@ -176,7 +176,7 @@ seo42_setup_codeexamples_goto_startpage = Link to startpage
 seo42_setup_url_alert = URL of the website must begin with "http://" and end with "/".
 seo42_setup_htaccess_alert = There is already a .htaccess file present in REDAXO's root directory.\r\nDo you want to overwrite it?\r\n\r\nNote: A backup will be saved in /data/addons/seo42/backup/ automatically.
 seo42_setup_codeexamples = Further <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=codeexamples">examples of code</a> are to be found in SEO42's help area...
-seo42_setup_rewritebase = Adjust RewriteBase automatically: <i>RewriteBase /{0}</i>
+seo42_setup_rewritebase = Adjust RewriteBase: <i>RewriteBase /{0}</i>
 seo42_setup_subdir_hint = (Please specify the subfolder, if necessary)
 seo42_setup_rewritebase_alert = Please take the following adjustments in the .htaccess file:
 seo42_setup_directory_listing_alert = If your webserver should report a 500 error, please remove the line <strong>Options -Indexes</strong> in the .htaccess file.

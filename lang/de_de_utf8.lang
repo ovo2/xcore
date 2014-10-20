@@ -126,8 +126,8 @@ seo42_settings_title_delimiter = Titel Trennstrich
 seo42_settings_ignore_root_cats = Root-Kats ignorieren (experimentell)
 seo42_settings_one_page_mode = One Page Mode
 seo42_settings_allow_article_id = URLs mit article_id erlauben
-seo42_settings_html_section = Html
-seo42_settings_canonical_section = Auto Canonical Url
+seo42_settings_html_section = HTML Tags
+seo42_settings_canonical_section = Auto Canonical URL
 
 seo42_settings_lang_section = Sprachen
 seo42_settings_global_special_chars = Global Special Chars
@@ -175,7 +175,7 @@ seo42_setup_codeexamples_goto_startpage = Link zur Startseite
 seo42_setup_url_alert = URL der Website muss mit "http://" beginnen und mit "/" enden.
 seo42_setup_htaccess_alert = Im Hauptverzeichnis von REDAXO existiert bereits eine .htaccess Datei.\r\nWollen Sie diese überschreiben?\r\n\r\nHinweis: Ein Backup der Datei wird automatisch in /data/addons/seo42/backup/ gespeichert.
 seo42_setup_codeexamples = Weitere <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=codeexamples">Codebeispiele</a> finden Sie in der Hilfe von SEO42...
-seo42_setup_rewritebase = RewriteBase automatisch anpassen: <i>RewriteBase /{0}</i>
+seo42_setup_rewritebase = RewriteBase anpassen: <i>RewriteBase /{0}</i>
 seo42_setup_subdir_hint = (Bitte Unterordner mit angeben)
 seo42_setup_rewritebase_alert = Bitte folgende Anpassung in der .htaccess Datei vornehmen:
 seo42_setup_directory_listing_alert = Falls Ihr Webserver ein 500 Error melden sollte, dann bitte die Zeile <strong>Options -Indexes</strong> in der .htaccess Datei wieder entfernen.
