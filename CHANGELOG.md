@@ -1,9 +1,7 @@
 SEO42 - Changelog
 =================
 
-### Version 4.0.0 BETA
-
-Achtung! Diese Version ist noch nicht für den Produktiveinsatz empfohlen! Bitte auf die 3.4 ausweichen!
+### Version 4.0.0 - 21. Oktober 2014
 
 * Update: Bitte die Hinweise in der `UPDATE.md` beachten!
 * Fixed: `seo42::getImageFile()` gab im Backend nicht den richtigen Wert aus und dadurch wurde das Bild nicht angezeigt
