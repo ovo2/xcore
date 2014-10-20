@@ -921,8 +921,8 @@ class seo42_utils {
 
 			switch ($REX['ADDON']['seo42']['settings']['no_double_content_redirects']) {
 				case SEO42_NO_DOUBLE_CONTENT_REDIRECT_ONE_DOMAIN_ONLY:
-					// one domain only
-					if ($serverHost != $server) {
+					// one domain only (when website manager ist installed this redirect is not allowed)
+					if (!isset($REX['WEBSITE_MANAGER']) && $serverHost != $server) {
 						$location = $protocol . '://' . $server . $requestUri;
 					}
 
