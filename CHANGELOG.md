@@ -5,6 +5,7 @@ SEO42 - Changelog
 
 * Update: Bitte die Hinweise in der `UPDATE.md` beachten!
 * Fixed #147: Der standardmäßig aktivierte No Double Content Redirect führte zu Problemen wenn die URL der Website (noch) nicht korrekt gesetzt war.
+* Verbessert: Hinweis in die Startguide aufgenommen: Ein No Double Content Redirect sollte in den Einstellungen ausgewählt werden nachdem das Setup durchgeführt wurde. Empfohlen: One Domain Only
 * Verbessert: Benutzungs-Hinweis für den Tag Editor in den Einstellungen hinzugefügt
 
 ### Version 4.0.0 - 21. Oktober 2014
