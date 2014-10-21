@@ -1,6 +1,11 @@
 SEO42 - Changelog
 =================
 
+### Version 4.0.1 - 22. Oktober 2014
+
+* Update: Bitte die Hinweise in der `UPDATE.md` beachten!
+* Fixed #147: Der standardmäßig aktivierte No Double Content Redirect führte zu Problemen wenn die URL der Website (noch) nicht korrekt gesetzt war.
+
 ### Version 4.0.0 - 21. Oktober 2014
 
 * Update: Bitte die Hinweise in der `UPDATE.md` beachten!
