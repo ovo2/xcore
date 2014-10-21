@@ -801,7 +801,7 @@ div.rex-form legend.open {
 }
 
 .pipes {
-	font-family: 'Trebuchet MS', Verdana, Arial;
+	font-family: Verdana, 'Trebuchet MS', Arial, sans-serif;
 }
 
 .preset-button {
