@@ -835,6 +835,9 @@ div#rex-website .dropdown a:hover {
 
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
+		// tag editor inputs fields
+		$('input.tags').tagEditor({placeholder: "<?php echo $I18N->msg('seo42_settings_tag_editor_hint'); ?>"});
+
 		// rewrite mode
 		$('.rewrite_mode').change(function() {
 			var curClang = $(this).attr('data-clang');

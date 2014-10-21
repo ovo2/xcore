@@ -125,6 +125,7 @@ seo42_settings_one_page_mode = One Page Mode
 seo42_settings_allow_article_id = Allow article_id urls
 seo42_settings_html_section = HTML tags
 seo42_settings_canonical_section = Auto canonical url
+seo42_settings_tag_editor_hint = Use enter key to add multiple values
 
 seo42_settings_lang_section = Languages
 seo42_settings_global_special_chars = Global special chars
