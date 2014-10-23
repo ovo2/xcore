@@ -18,7 +18,7 @@ SEO42 - Changelog
 * Fixed: `seo42::getImageFile()` gab im Backend nicht den richtigen Wert aus und dadurch wurde das Bild nicht angezeigt
 * Neu: Update-Hinweise (auch für alle zukünftigen Versionen) wurden in die Datei `UPDATE.md` ausgelagert und sind auch über die Hilfe im AddOn einsehbar.
 * Neu: No Double Content Redirects eingeführt. Ersetzen die WWW/Non-WWW Redirects aus Setup Schritt 2. One Domain Only Redirect hinzugefügt um nur noch eine Domain zu erlauben.
-* Neu: Bei einem Update werden die Einstellungen nicht mehr überschrieben, da diese nun im Data-Ordner von REDAXO abgelegt werden
+* Neu: Updatefähigkeit für REDAXO 4.6 hergestellt. Bei einem Update werden die Einstellungen nicht mehr überschrieben, da diese nun im Data-Ordner von REDAXO abgelegt werden
 * Neu: Einstellungen nun alle über das Backend verfügbar :)
 * Neu: Alle Dateien wie Redirects-Cachedatei und `.htaccess` Backups werden im Data-Ordner von REDAXO abgelegt
 * Neu: Einstellung `redirects` hinzugefügt, um die Redirects-Seite ausschalten zu können (z.B. wenn man die Redirects-Funktionalität des url_control Plugin einsetzt). Die Option kann theoretisch auch von einem Plugin gesetzt werden.
