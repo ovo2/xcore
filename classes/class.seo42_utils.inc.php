@@ -839,9 +839,13 @@ class seo42_utils {
 		}
 
 		if (!@is_dir($path)) {
-			return $I18N->msg('seo42_install_make_dir', $dir);
+			if ($REX['REDAXO']) {
+				return $I18N->msg('seo42_install_make_dir', $dir);
+			}
 		} elseif (!@is_writable($path . '/.')) {
-			return $I18N->msg('seo42_install_perm_dir', $dir);
+			if ($REX['REDAXO']) {
+				return $I18N->msg('seo42_install_perm_dir', $dir);
+			}
 		}
 		
 		return '';
