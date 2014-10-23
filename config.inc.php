@@ -117,6 +117,11 @@ $REX['ADDON']['seo42']['settings'] = array(
 	'cached_redirects' => array()
 );
 
+// append lang file
+if ($REX['REDAXO']) {
+	$I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/seo42/lang/');
+}
+
 // overwrite default settings with user settings
 seo42_utils::includeSettingsFile();
 
@@ -157,9 +162,6 @@ if (!$REX['SETUP']) {
 }
 
 if ($REX['REDAXO']) {
-	// append lang file
-	$I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/seo42/lang/');
-
 	// handels ajax request for google pagerank checker in tools section
 	if ($REX['ADDON']['seo42']['settings']['pagerank_checker'] && isset($REX['USER']) && rex_request('function') == 'getpagerank') {
 		require($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.google_pagerank_checker.inc.php');

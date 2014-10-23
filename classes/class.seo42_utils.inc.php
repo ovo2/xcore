@@ -546,7 +546,9 @@ class seo42_utils {
 		$msg = self::checkDirForFile($settingsFile);
 
 		if ($msg != '') {
-			echo rex_warning($msg);			
+			if ($REX['REDAXO']) {
+				echo rex_warning($msg);
+			}
 		} else {
 			if (!file_exists($settingsFile)) {
 				self::createDynFile($settingsFile);
@@ -559,11 +561,13 @@ class seo42_utils {
 			}
 
 			if (rex_put_file_contents($settingsFile, $content)) {
-				if ($showSuccessMsg) {
+				if ($REX['REDAXO'] && $showSuccessMsg) {
 					echo rex_info($I18N->msg('seo42_config_ok'));
 				}
 			} else {
-				echo rex_warning($I18N->msg('seo42_config_error'));
+				if ($REX['REDAXO']) {
+					echo rex_warning($I18N->msg('seo42_config_error'));
+				}
 			}
 		}
 	}
