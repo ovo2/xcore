@@ -16,6 +16,11 @@ $REX['EXTPERM'][] = 'seo42[seo_default]';
 $REX['EXTPERM'][] = 'seo42[seo_extended]';
 $REX['EXTPERM'][] = 'seo42[url_default]';
 
+// append lang file
+if ($REX['REDAXO']) {
+	$I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/seo42/lang/');
+}
+
 // includes
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.res42.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.nav42.inc.php');
@@ -116,11 +121,6 @@ $REX['ADDON']['seo42']['settings'] = array(
 	),
 	'cached_redirects' => array()
 );
-
-// append lang file
-if ($REX['REDAXO']) {
-	$I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/seo42/lang/');
-}
 
 // overwrite default settings with user settings
 seo42_utils::includeSettingsFile();
