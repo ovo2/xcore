@@ -3,7 +3,8 @@ SEO42 - Changelog
 
 ### Version 4.0.1++
 
-* Lang-Presets hinzugefügt für schwedisch und norwegisch, thx@polarpixel
+* Lang-Presets hinzugefügt: ungarisch
+* Lang-Presets hinzugefügt: schwedisch und norwegisch, thx@polarpixel
 
 ### Version 4.0.1 - 22. Oktober 2014
 

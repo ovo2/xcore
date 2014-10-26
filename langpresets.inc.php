@@ -58,6 +58,14 @@ $REX['SEO42_LANG_PRESETS'] = array(
 		'inherit_from_clang' => 0
 	),
 	array(
+		'code' => 'hu',
+		'original_name' => 'magyar',
+		'rewrite_mode' => SEO42_REWRITEMODE_SPECIAL_CHARS,
+		'special_chars' => 'Á|á|É|é|Í|í|Ó|ó|Ö|ö|Ő|ő|Ú|ú|Ü|ü|Ű|ű|&',
+		'special_chars_rewrite' => 'A|a|E|e|I|i|O|o|O|o|O|o|U|u|U|u|U|u|es',
+		'inherit_from_clang' => 0
+	),
+	array(
 		'code' => 'nl',
 		'original_name' => 'nederlands',
 		'rewrite_mode' => SEO42_REWRITEMODE_SPECIAL_CHARS,
