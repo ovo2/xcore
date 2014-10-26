@@ -1,7 +1,7 @@
 SEO42 - Changelog
 =================
 
-### Version 4.0.1++
+### Version 4.0.2 DEV
 
 * Neu: www.seobility.net zu den Tools hinzugefügt
 * Neu: Lang-Presets hinzugefügt: ungarisch, schwedisch und norwegisch, thx@polarpixel
