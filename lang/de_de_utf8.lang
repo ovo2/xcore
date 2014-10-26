@@ -33,6 +33,8 @@ seo42_tool6 = Seitwert Quick-Analyse
 seo42_tool6_desc = Eine erste kostenlose Analyse Ihrer Website durch den Webdienst Seitwert.de.
 seo42_tool8 = Google SERP Snippet Optimization Tool
 seo42_tool8_desc = Das Google SERP Snippet Optimization Tool zeigt eine Vorschau der Snippets die Google generiert.
+seo42_tool9 = Seobility
+seo42_tool9_desc = Seobility überprüft Ihre Webseite und gibt Ihnen Optimierungstipps.
 seo42_pr_tool = Google PageRank Checker
 seo42_pr_tool_msg = Dieses Tool ermittelt den <a href="http://suchmaschinenoptimierung.michaelsattler.de/pagerank.html" class="extern" target="_blank">PageRank</a> für
 seo42_pr_tool_pagerank = PageRank
@@ -66,7 +68,7 @@ seo42_settings_robots_additional = robots.txt Einträge
 seo42_settings_robots_link = Link zur robots.txt
 seo42_settings_sitemap_link = Link zur sitemap.xml
 seo42_settings_submit = Einstellungen speichern
-seo42_settings_lang_hint = Spracheinstellungen
+seo42_settings_lang_hint = Sprachen
 seo42_settings_css_dir = CSS Verzeichnis
 seo42_settings_js_dir = JS Verzeichnis
 seo42_settings_images_dir = Images Verzeichnis
