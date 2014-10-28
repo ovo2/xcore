@@ -887,10 +887,14 @@ class seo42_utils {
 		if ($REX['ADDON']['seo42']['settings']['no_double_content_redirects'] == SEO42_NO_DOUBLE_CONTENT_REDIRECT_NONE) {
 			// do nothing
 			return;
+		} elseif ($REX['ADDON']['seo42']['settings']['no_double_content_redirects_only_frontend'] && $REX['REDAXO']) {
+			// do nothing
+			return;
 		} elseif (isset($REX['SETUP']) && $REX['SETUP']) {
 			// do nothing
 			return;
 		} else {
+			// todo: here now seo42 methods can be used!
 			$urlParts = parse_url($REX['SERVER']);
 
 			if (isset($urlParts['scheme'])) {
@@ -918,7 +922,12 @@ class seo42_utils {
 				case SEO42_NO_DOUBLE_CONTENT_REDIRECT_ONE_DOMAIN_ONLY:
 					// one domain only (when website manager ist installed this redirect is not allowed)
 					if (!isset($REX['WEBSITE_MANAGER']) && $serverHost != $server) {
-						$location = $protocol . '://' . $server . $requestUri;
+						$serverUrl = seo42::getServerUrl();
+
+						// don't redirect if server url is empty, or default value or not full url
+						if ($serverUrl != '' && $serverUrl != 'www.redaxo.org' && self::startsWith($serverUrl, 'http') && self::endsWith($serverUrl, '/')) {
+							$location = $protocol . '://' . $server . $requestUri;
+						}
 					}
 
 					break;
@@ -963,5 +972,13 @@ class seo42_utils {
 
 	public static function implodeArray($array) {
 		return implode(SEO42_ARRAY_DELIMITER, $array); 
+	}
+
+	public static function startsWith($haystack, $needle) {
+		return $needle === "" || strpos($haystack, $needle) === 0;
+	}
+
+	public static function endsWith($haystack, $needle) {
+		return $needle === "" || substr($haystack, -strlen($needle)) === $needle;
 	}
 }

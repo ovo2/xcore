@@ -191,6 +191,14 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
             </p>
           </div>
 
+          <div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-checkbox">
+					<label for="no_double_content_redirects_only_frontend"><?php echo $I18N->msg('seo42_settings_no_double_content_redirects_only_frontend'); ?></label>
+					<input type="hidden" name="settings[no_double_content_redirects_only_frontend]" value="0" />
+					<input type="checkbox" name="settings[no_double_content_redirects_only_frontend]" id="no_double_content_redirects_only_frontend" value="1" <?php if ($REX['ADDON']['seo42']['settings']['no_double_content_redirects_only_frontend']) { echo 'checked="checked"'; } ?>>
+				</p>
+			</div>
+
 		 <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
               <label for="auto_redirects"><?php echo $I18N->msg('seo42_settings_auto_redirects'); ?></label>

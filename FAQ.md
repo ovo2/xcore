@@ -6,6 +6,11 @@ Mein Webserver meldet einen 500 Server Error?!
 
 Vermutlich liegt es an der Zeile `Options -Indexes` in der .htaccess Datei. Einfach diese Zeile auskommentieren.
 
+Warum wird meine Website umgeleitet auf eine andere URL?
+--------------------------------------------------------
+
+Standardmäßig ist ein Redirect auf die im Setup angegebene URL der Website eingestellt um Double Content zu vermeiden. Prüfen Sie diesen Wert auf Richtigkeit oder schalten Sie die No Double Content Redirects in den Einstellungen aus.
+
 
 Meine CSS Dateien werden nicht geladen?!
 ----------------------------------------

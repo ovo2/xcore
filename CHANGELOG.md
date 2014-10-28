@@ -5,7 +5,8 @@ SEO42 - Changelog
 
 * Neu: www.seobility.net zu den Tools hinzugefügt
 * Neu: Lang-Presets hinzugefügt: ungarisch, schwedisch und norwegisch, thx@polarpixel
-* Verbessert: No Double Content Redirects ausgeschaltet wenn REDAXO Setup aktiv
+* Neu: FAQ Eintrag: "Warum wird meine Website umgeleitet auf eine andere URL?"
+* Verbessert: No Double Content Redirect: One Domain Only wieder standardmäßig aktiviert und Option hinzugefügt damit dieser Redirect nur noch fürs Frontend greift per default
 * Finetuning
 
 ### Version 4.0.1 - 22. Oktober 2014
