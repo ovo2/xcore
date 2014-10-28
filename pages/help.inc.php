@@ -17,8 +17,8 @@ $chapterpages = array (
 	'startguide' => array($I18N->msg('seo42_help_chapter_startguide'), 'pages/help/startguide.inc.php'),
 	'faq' => array($I18N->msg('seo42_help_chapter_faq'), 'pages/help/faq.inc.php'),
 	'codeexamples' => array($I18N->msg('seo42_help_chapter_codeexamples'), 'pages/help/code_examples.inc.php'),
-	'marvin' => array($I18N->msg('seo42_help_chapter_marvin'), 'pages/help/marvin.inc.php'),
 	'debug' => array($I18N->msg('seo42_help_chapter_debug'), 'pages/help/debug.inc.php'),
+	'marvin' => array($I18N->msg('seo42_help_chapter_marvin'), 'pages/help/marvin.inc.php'),
 	'license' => array($I18N->msg('seo42_help_chapter_license'), 'pages/help/license.inc.php')
 );
 
