@@ -55,6 +55,10 @@ class res42 {
 		return self::$imagesDir . $file;
 	}
 
+	public static function getAbsoluteImageFile($file) {
+		return realpath(self::$imagesPath) . '/' . $file;
+	}
+
 	public static function getIconFile($file) {
 		return self::$iconsDir . $file;
 	}
