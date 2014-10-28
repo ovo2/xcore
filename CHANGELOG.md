@@ -7,6 +7,7 @@ SEO42 - Changelog
 * Neu: Lang-Presets hinzugefügt: ungarisch, schwedisch und norwegisch, thx@polarpixel
 * Neu: `seo42::getAbsoluteImageFile()` hinzugefügt
 * Neu: FAQ Eintrag: "Warum wird meine Website umgeleitet auf eine andere URL?"
+* Neu: FAQ Eintrag: "Das umschalten von $REX['MOD_REWRITE'] hat keine Wirkung?!"
 * Verbessert: No Double Content Redirect: One Domain Only wieder standardmäßig aktiviert und Option hinzugefügt damit dieser Redirect nur noch fürs Frontend greift per default
 * Finetuning
 
