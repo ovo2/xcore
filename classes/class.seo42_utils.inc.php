@@ -922,10 +922,8 @@ class seo42_utils {
 				case SEO42_NO_DOUBLE_CONTENT_REDIRECT_ONE_DOMAIN_ONLY:
 					// one domain only (when website manager ist installed this redirect is not allowed)
 					if (!isset($REX['WEBSITE_MANAGER']) && $serverHost != $server) {
-						$serverUrl = seo42::getServerUrl();
-
 						// don't redirect if server url is empty, or default value or not full url
-						if ($serverUrl != '' && $serverUrl != 'www.redaxo.org' && self::startsWith($serverUrl, 'http') && self::endsWith($serverUrl, '/')) {
+						if (self::isWebsiteUrlValid(seo42::getServerUrl())) {
 							$location = $protocol . '://' . $server . $requestUri;
 						}
 					}
@@ -980,5 +978,13 @@ class seo42_utils {
 
 	public static function endsWith($haystack, $needle) {
 		return $needle === "" || substr($haystack, -strlen($needle)) === $needle;
+	}
+
+	public static function isWebsiteUrlValid($url) {
+		if ($url != '' && $url != 'www.redaxo.org' && self::startsWith($url, 'http') && self::endsWith($url, '/')) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
