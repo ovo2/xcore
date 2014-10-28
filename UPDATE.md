@@ -7,6 +7,5 @@ SEO42 - Updatehinweise
 * Addon-Assets wurden geändert. Bitte Addon reinstallieren und Browsercache löschen.
 * Es gab Änderungen an der API. EPs sowie Methoden- und Klassennamen haben sich geändert. Bitte die Changelog beachten.
 * Bereits gemachte Einstellungen müssen diesesmal noch neu gesetzt werden. Aber der nächsten Version werden die Einstellungen automatisch übernommen.
-* Die WWW zu Nicht-WWW Redirects werden jetzt über die No Double Content Redirects Einstellung auf der Einstellungen-Seite vorgenommen.
 
 
