@@ -3,11 +3,12 @@ SEO42 - Changelog
 
 ### Version 4.0.2 DEV
 
-* Neu: www.seobility.net zu den Tools hinzugefügt
 * Neu: Lang-Presets hinzugefügt: ungarisch, schwedisch und norwegisch, thx@polarpixel
+* Neu: www.seobility.net zu den Tools hinzugefügt
 * Neu: `seo42::getAbsoluteImageFile()` hinzugefügt
 * Neu: FAQ Eintrag: "Warum wird meine Website umgeleitet auf eine andere URL?"
 * Neu: FAQ Eintrag: "Das umschalten von $REX['MOD_REWRITE'] hat keine Wirkung?!"
+* Neu: FAQ Eintrag: "Wie werden die Standardeinstellungen von SEO42 wiederhergestellt?"
 * Verbessert: No Double Content Redirect: One Domain Only wieder standardmäßig aktiviert und Option hinzugefügt damit dieser Redirect nur noch fürs Frontend greift per default
 * Finetuning
 

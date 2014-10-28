@@ -43,6 +43,12 @@ Warum bekomme ich einen Fehler bei der Einbindung von Bootstrap?
 Bootstrap nutzt einige speziellen Funktionen die lesphp von leafo nicht versteht. Um das Problem zu Lösen muss das Plugin [lessdotphp](https://github.com/DanielWeitenauer/lessdotphp) installiert werden
 
 
+Wie werden die Standardeinstellungen von SEO42 wiederhergestellt?
+------------------------------------------------------------------
+
+Bitte die Datei `/include/data/addons/seo42/settings.inc.php` löschen und das REDAXO Backend aufrufen. Achtung: alle geänderten Einstellungen gehen dabei verloren.
+
+
 Warum soll man mit seo42::getCSSFile() und seo42::getJSFile() seine CSS/JS Dateien ausgeben lassen?
 ---------------------------------------------------------------------------------------------------
 
