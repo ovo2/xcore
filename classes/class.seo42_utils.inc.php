@@ -887,6 +887,9 @@ class seo42_utils {
 		if ($REX['ADDON']['seo42']['settings']['no_double_content_redirects'] == SEO42_NO_DOUBLE_CONTENT_REDIRECT_NONE) {
 			// do nothing
 			return;
+		} elseif (isset($REX['SETUP']) && $REX['SETUP']) {
+			// do nothing
+			return;
 		} else {
 			$urlParts = parse_url($REX['SERVER']);
 

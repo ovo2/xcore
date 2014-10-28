@@ -5,6 +5,7 @@ SEO42 - Changelog
 
 * Neu: www.seobility.net zu den Tools hinzugefügt
 * Neu: Lang-Presets hinzugefügt: ungarisch, schwedisch und norwegisch, thx@polarpixel
+* Verbessert: No Double Content Redirects ausgeschaltet wenn REDAXO Setup aktiv
 * Finetuning
 
 ### Version 4.0.1 - 22. Oktober 2014
