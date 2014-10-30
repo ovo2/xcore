@@ -1,6 +1,10 @@
 SEO42 - Changelog
 =================
 
+### Version 4.1.0 DEV
+
+* Verbessert: Website Manager 3.0 Kompatibilität
+
 ### Version 4.0.2 - 28. Oktober 2014
 
 * Neu: Lang-Presets hinzugefügt: ungarisch, schwedisch und norwegisch, thx@polarpixel

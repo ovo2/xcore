@@ -921,7 +921,7 @@ class seo42_utils {
 			switch ($REX['ADDON']['seo42']['settings']['no_double_content_redirects']) {
 				case SEO42_NO_DOUBLE_CONTENT_REDIRECT_ONE_DOMAIN_ONLY:
 					// one domain only (when website manager ist installed this redirect is not allowed)
-					if (!isset($REX['WEBSITE_MANAGER']) && $serverHost != $server) {
+					if ($serverHost != $server) {
 						// don't redirect if server url is empty, or default value or not full url
 						if (self::isWebsiteUrlValid(seo42::getServerUrl())) {
 							$location = $protocol . '://' . $server . $requestUri;
