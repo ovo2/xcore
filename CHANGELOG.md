@@ -1,9 +1,10 @@
 SEO42 - Changelog
 =================
 
-### Version 4.1.0 DEV
+### Next Version
 
 * Verbessert: Website Manager 3.0 Kompatibilität
+* Verbessert: `minifier` Plugin zur Readme hinzugefügt
 
 ### Version 4.0.2 - 28. Oktober 2014
 
