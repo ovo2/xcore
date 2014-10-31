@@ -123,6 +123,7 @@ Links
 * Klasse res42: <https://github.com/RexDude/seo42/blob/master/classes/class.res42.inc.php>
 * Klasse nav42: <https://github.com/RexDude/seo42/blob/master/classes/class.nav42.inc.php>
 * Online JavaScript/CSS Compression Using YUI Compressor: <http://refresh-sf.com/yui/>
+* REDAXO Tutorial: [SEO-AddOns - URL-Umschreibung und (viel) mehr](http://www.redaxo.org/de/doku/tutorials/seo-addons---urls-und-mehr/)
 
 Changelog
 ---------

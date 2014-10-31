@@ -10,3 +10,4 @@ Diese Hinweise richten sich primär an User die zum ersten mal SEO42 nutzen oder
 - Für ein bestmögliches SEO sollte man sich an das SEO42 Boilerplate im Setup und an die Codebeispiele in der Hilfe (z.b. suchmaschinenfreundliche Image Manager Urls) orientieren. 
 - In der `.htaccess` Datei ist eine Cachingdauer für CSS/JS Dateien von 4 Wochen eingestellt. Bitte reduzieren (z.B. auf 1 Woche) wenn die Dateien nicht wie vorgeschlagen per `seo42::getCSSFile()` / `seo42::getJSFile()` eingebunden werden sollten.
 - Der Fehlerartikel unter REDAXO > System sollte nicht gleich dem Startartikel der Website entsprechen. Es sollte aufjedenfall ein eigener Fehlerartikel angelegt werden.
+- Einen kurze Einführung zu SEO42 findet man hier: [REDAXO Tutorial: SEO-AddOns - URL-Umschreibung und mehr](http://www.redaxo.org/de/doku/tutorials/seo-addons---urls-und-mehr/)
