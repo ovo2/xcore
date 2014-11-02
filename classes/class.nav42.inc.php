@@ -10,6 +10,7 @@ class nav42 {
 	protected $activeClass;
 	protected $ulId;
 	protected $ulClass;
+	protected $liClass;
 	protected $liIdFromMetaField;
 	protected $liClassFromMetaField;
 	protected $linkFromUserFunc;
