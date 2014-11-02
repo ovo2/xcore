@@ -38,6 +38,7 @@ class nav42 {
 		$this->activeClass = 'selected active';
 		$this->ulId = array();
 		$this->ulClass = array();
+		$this->liClass = '';
 		$this->liIdFromMetaField = '';
 		$this->liClassFromMetaField = '';
 		$this->linkFromUserFunc = '';
@@ -101,6 +102,10 @@ class nav42 {
 
 	public function setUlClass($ulClass, $level = 0) {
 		$this->ulClass[$level] = $ulClass;
+	}
+
+	public function setLiClass($liClass) {
+		$this->liClass = $liClass;
 	}
 
 	public function setLiIdFromMetaField($liIdFromMetaField) {
@@ -179,6 +184,11 @@ class nav42 {
 
 				$cssClasses = '';
 				$idAttribute = '';
+
+				// default li class
+				if ($this->liClass != '') {
+					$cssClasses .= ' ' . $this->liClass;
+				}
 
 				// li class from meta infos
 				if ($this->liClassFromMetaField != '' && $cat->getValue($this->liClassFromMetaField) != '') {
