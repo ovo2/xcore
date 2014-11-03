@@ -3,7 +3,8 @@ SEO42 - Changelog
 
 ### Next Version
 
-* Neu: 'nav42::setLiClass()' hinzugefügt, thx@polarpixel
+* Fixed #155: Kombination One Page Mode + Mehrsprachigkeit führte in der Sitemap.xml zu einem fehlerhaften Eintrag, thx@TobiasKrais
+* Neu: `nav42::setLiClass()` hinzugefügt, thx@polarpixel
 * Neu: FAQ Eintrag: "Gibt es ein Tutorial zu SEO42 und/oder weitere Informationen zu den Features des Addons?"
 * Verbessert: Website Manager 3.0 Kompatibilität
 * Verbessert: `minifier` Plugin zur Readme hinzugefügt

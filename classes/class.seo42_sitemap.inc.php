@@ -186,10 +186,12 @@ class seo42_sitemap
 
 		if ($REX['ADDON']['seo42']['settings']['one_page_mode']) {
 			foreach($REX['CLANG'] as $clangId => $clangName) {
-				$art = $this->db_articles[$REX['START_ARTICLE_ID']][$clangId];
+				if (isset($this->db_articles[$REX['START_ARTICLE_ID']][$clangId])) {
+					$art = $this->db_articles[$REX['START_ARTICLE_ID']][$clangId];
 
-				if ($art['noindex'] != true) {
-				   	$xml_sitemap .= self::xml_loc_fragment($art['loc'],$art['lastmod'],$art['changefreq'],$art['priority']);
+					if ($art['noindex'] != true) {
+					   	$xml_sitemap .= self::xml_loc_fragment($art['loc'],$art['lastmod'],$art['changefreq'],$art['priority']);
+					}
 				}
 			}	
 		} else {
