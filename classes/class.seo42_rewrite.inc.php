@@ -365,7 +365,7 @@ class SEO42Rewrite
 
     // STANDARD PARAMS STRING
     $urlparams = $urlparams == '' ? '' : '?'.$urlparams;
-    $urlparams = str_replace(array('/amp;','?&amp;'),array('/','?'),$urlparams);
+    $urlparams = str_replace(array('/amp;','?&amp;','?&'),array('/','?','?'),$urlparams);
 
     return $urlparams;
   }
