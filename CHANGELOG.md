@@ -1,9 +1,10 @@
 SEO42 - Changelog
 =================
 
-### Next Version
+### Version 4.1.0 DEV
 
 * Fixed #155: Kombination One Page Mode + Mehrsprachigkeit führte in der Sitemap.xml zu einem fehlerhaften Eintrag, thx@TobiasKrais
+* Fixed #156: Bei Benutzung von `rex_redirect()` gab es Probleme mit den Query Parametern, thx@Sysix
 * Neu: `nav42::setLiClass()` hinzugefügt, thx@polarpixel
 * Neu: FAQ Eintrag: "Gibt es ein Tutorial zu SEO42 und/oder weitere Informationen zu den Features des Addons?"
 * Verbessert: Website Manager 3.0 Kompatibilität
@@ -22,7 +23,6 @@ SEO42 - Changelog
 
 ### Version 4.0.1 - 22. Oktober 2014
 
-* Update: Bitte die Hinweise in der `UPDATE.md` beachten!
 * Fixed #147: Der standardmäßig aktivierte No Double Content Redirect führte zu Problemen wenn die URL der Website (noch) nicht korrekt gesetzt war. Default deshalb vorerst deaktiviert.
 * Verbessert: Hinweis in die Startguide aufgenommen: Ein No Double Content Redirect sollte in den Einstellungen ausgewählt werden nachdem das Setup durchgeführt wurde. Empfohlen: One Domain Only
 * Verbessert: Benutzungs-Hinweis für den Tag Editor in den Einstellungen hinzugefügt

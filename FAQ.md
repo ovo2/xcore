@@ -6,6 +6,7 @@ Mein Webserver meldet einen 500 Server Error?!
 
 Vermutlich liegt es an der Zeile `Options -Indexes` in der .htaccess Datei. Einfach diese Zeile auskommentieren.
 
+
 Warum wird meine Website umgeleitet auf eine andere URL?
 --------------------------------------------------------
 
@@ -18,8 +19,8 @@ Meine CSS Dateien werden nicht geladen?!
 Stellen Sie sicher, dass der Base-Tag sich an oberster Stelle in Head-Bereich Ihrer Website befindet. Bei REDAXO-Unterordner-Installationen zusätzlich drauf achten, die URLs nicht mit / zu beginnen bzw. einfach Codebeispiele 2 nutzen!
 
 
-Das umschalten von $REX['MOD_REWRITE'] hat keine Wirkung?!
-----------------------------------------------------------
+Warum hat das Umschalten von $REX['MOD_REWRITE'] keine Wirkung?
+---------------------------------------------------------------
 
 SEO42 funktioniert mittlerweile unabhängig von dieser REDAXO Variable. Will man den Rewriter ausschalten gibt es da eine Einstellung "URLs umschreiben" unter "Rewriter" die man nutzen kann.
 
