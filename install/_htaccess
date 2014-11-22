@@ -9,18 +9,21 @@ AddDefaultCharset utf-8
 # ADD MIME TYPES
 <IfModule mod_mime.c>
 	AddType image/x-icon .ico
+	AddType image/svg+xml svg
 	AddType video/ogg .ogv
 	AddType video/mp4 .mp4
 	AddType video/webm .webm
+	AddType video/x-flv flv
 	AddType audio/mpeg .mp3
 	AddType audio/ogg .ogg
 	AddType application/javascript .js
 	AddType application/json .json
 	AddType application/xml .xml
 	AddType application/x-shockwave-flash .swf
-	AddType x-font/eot .eot
-	AddType x-font/ttf .ttf
-	AddType x-font/woff .woff
+	AddType application/vnd.ms-fontobject .eot
+	AddType application/x-font-ttf .ttf
+	AddType application/font-woff .woff
+	AddType application/font-woff2 .woff2
 </IfModule>
 
 # COMPRESS FILES
@@ -33,8 +36,8 @@ AddDefaultCharset utf-8
 	AddOutputFilterByType DEFLATE application/json
 	AddOutputFilterByType DEFLATE application/xml
 	AddOutputFilterByType DEFLATE image/svg+xml
-	AddOutputFilterByType DEFLATE x-font/eot
-	AddOutputFilterByType DEFLATE x-font/ttf
+	AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+	AddOutputFilterByType DEFLATE application/x-font-ttf
 </IfModule>
 
 # ADD CACHING HEADERS
@@ -54,13 +57,15 @@ AddDefaultCharset utf-8
 	ExpiresByType video/mp4 "access plus 4 weeks"
 	ExpiresByType video/ogg "access plus 4 weeks"
 	ExpiresByType video/webm "access plus 4 weeks"
+	ExpiresByType video/x-flv "access plus 4 weeks"
 	ExpiresByType application/javascript "access plus 4 weeks"
 	ExpiresByType application/json "access plus 0 seconds"
 	ExpiresByType application/xml "access plus 0 seconds"
 	ExpiresByType application/x-shockwave-flash "access plus 4 weeks"
-	ExpiresByType x-font/eot "access plus 4 weeks"
-	ExpiresByType x-font/ttf "access plus 4 weeks"
-	ExpiresByType x-font/woff "access plus 4 weeks"
+	ExpiresByType application/vnd.ms-fontobject "access plus 4 weeks"
+	ExpiresByType application/x-font-ttf "access plus 4 weeks"
+	ExpiresByType application/font-woff "access plus 4 weeks"
+	ExpiresByType application/font-woff2 "access plus 4 weeks"
 </IfModule>
 
 # REMOVE ETAG
