@@ -3,6 +3,7 @@ SEO42 - Changelog
 
 ### Version 4.1.0 DEV
 
+* Update: Bitte die Hinweise in der `UPDATE.md` beachten!
 * Fixed #155: Kombination One Page Mode + Mehrsprachigkeit führte in der Sitemap.xml zu einem fehlerhaften Eintrag, thx@TobiasKrais
 * Fixed #156: Bei Benutzung von `rex_redirect()` gab es Probleme mit den Query Parametern, thx@Sysix
 * Fixed #158: Mime Types für Fonts verbessert, Chrome meldete sonst "Resource interpreted as font but transferred with MIME type x-font/woff", thx@TobiasKrais
