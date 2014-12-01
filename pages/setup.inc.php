@@ -305,6 +305,10 @@ if ($func == "do_copy") {
 #rex-page-seo42 .lang-settings span.status.exclamation {
 	background-position: left -80px;
 }
+
+#rex-page-seo42 .rex-hl2 {
+	font-size: 1.2em;
+}
 </style>
 
 <script type="text/javascript">

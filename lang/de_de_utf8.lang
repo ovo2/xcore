@@ -287,6 +287,7 @@ seo42_help_codeexamples_ex6_comment5_6 = li klasse für selektierte menüpunkte:
 seo42_help_codeexamples_ex6_comment5_6a = li klasse für gerade aktiven menüpunkt: "current active"
 seo42_help_codeexamples_ex6_comment5_7 = erste ul id: "nav"
 seo42_help_codeexamples_ex6_comment5_8 = erste ul klasse "sf-menu"
+seo42_help_codeexamples_ex6_comment5_8a = li klasse "list-item"
 seo42_help_codeexamples_ex6_comment5_9 = li id aus metainfo feld: "cat_css_id"
 seo42_help_codeexamples_ex6_comment5_10 = li klasse aus metainfo feld: "cat_css_class"
 seo42_help_codeexamples_ex6_comment5_11 = php funktion die den link zurückgibt (hier als beispiel: erste ebene ohne verlinkung)

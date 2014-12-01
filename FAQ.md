@@ -10,7 +10,7 @@ Vermutlich liegt es an der Zeile `Options -Indexes` in der .htaccess Datei. Einf
 Warum wird meine Website umgeleitet auf eine andere URL?
 --------------------------------------------------------
 
-Standardmäßig ist ein Redirect auf die im Setup angegebene URL der Website eingestellt um Double Content zu vermeiden. Prüfen Sie diesen Wert auf Richtigkeit oder schalten Sie die No Double Content Redirects in den Einstellungen aus.
+Standardmäßig ist ein Redirect auf die im Setup angegebene URL der Website eingestellt um Double Content zu vermeiden. Prüfen Sie diesen Wert auf Richtigkeit oder schalten Sie die No Double Content Redirects auf einen anderen Wert um.
 
 
 Meine CSS Dateien werden nicht geladen?!
@@ -125,13 +125,13 @@ Zum Beispiel über die Methode `seo42::getImageManagerFile()`. Siehe dazu Codebe
 Ich möchte nicht-www Anfragen auf die www Variante umleiten lassen. Soll doch SEO-technisch gut sein, oder?
 -----------------------------------------------------------------------------------------------------------
 
-Yup. In der .htaccess die entsprechenden Zeilen un-auskommentieren bzw. über Setup Schritt 2 automatisch machen lassen.
+Yup. Dafür gibt es mittlerweile die No Double Content Redirects die sich über die Einstellungen-Seite aktivieren lassen.
 
 
 Meine URLs haben sich geändert. Wie kann ich saubere Weiterleitungen hinbekommen?
 ---------------------------------------------------------------------------------
 
-Dies ist mittlerweile über die Redirects-Seite möglich. Bitte Urls immer mit einem Slash beginnen, die Ziel Url kann aber auch mit http:// beginnen.
+Dies ist mittlerweile über die Redirects-Seite möglich. Bitte Urls immer mit einem Slash beginnen, die Ziel Url kann aber auch mit http:// beginnen. Schauen Sie sich auch die weiteren Redirects Möglichkeiten in den Einstellungen an.
 
 
 Habe gehört das es SEO-technisch gut wäre wenn Bilder ein Alt-Attribut zugewiesen bekommen?

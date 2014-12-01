@@ -29,6 +29,7 @@ Features
 * Automatische sowie individuelle Canonical URLs
 * One Domain Only sowie Nicht-WWW zu WWW Umleitung (und umgekehrt) inkl. HTTPS Berücksichtigung.
 * Smart Redirects: Automatische Umleitungen für falsch eingegebene Urls z.B. von Url-Endung `/` nach `.html`
+* No Double Content Redirects: Automatische Umleitungen für zusätzliche Domains um Double Content Probleme zu vermeiden
 * Force Download Funktionalität inkl. suchmaschinenfreundlicher URLs und Canonical Header (z.B. für PDF Downloads)
 * Keine Abhängigkeiten zu weiteren Addons wie Textile oder XForm
 * Kompatibel zum [Website Manager](https://github.com/RexDude/website_manager) sowie [Community](https://github.com/dergel/redaxo4_community) AddOn

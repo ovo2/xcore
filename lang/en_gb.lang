@@ -288,6 +288,7 @@ seo42_help_codeexamples_ex6_comment5_6 = class for li of selected menu entry: "c
 seo42_help_codeexamples_ex6_comment5_6a = li class für current active menu entry: "current active"
 seo42_help_codeexamples_ex6_comment5_7 = id of outer ul: "nav"
 seo42_help_codeexamples_ex6_comment5_8 = class of outer ul: "sf-menu"
+seo42_help_codeexamples_ex6_comment5_8a = li class "list-item"
 seo42_help_codeexamples_ex6_comment5_9 = id for li from metainfo field: "cat_css_id"
 seo42_help_codeexamples_ex6_comment5_10 = class for li from metainfo field: "cat_css_class"
 seo42_help_codeexamples_ex6_comment5_11 = PHP function giving the link (example: first level without links)
