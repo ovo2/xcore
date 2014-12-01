@@ -24,6 +24,7 @@ AddDefaultCharset utf-8
 	AddType application/x-font-ttf .ttf
 	AddType application/font-woff .woff
 	AddType application/font-woff2 .woff2
+	AddType font/opentype otf
 </IfModule>
 
 # COMPRESS FILES
@@ -32,12 +33,13 @@ AddDefaultCharset utf-8
 	AddOutputFilterByType DEFLATE text/plain
 	AddOutputFilterByType DEFLATE text/xml
 	AddOutputFilterByType DEFLATE text/css
+	AddOutputFilterByType DEFLATE image/svg+xml
 	AddOutputFilterByType DEFLATE application/javascript
 	AddOutputFilterByType DEFLATE application/json
 	AddOutputFilterByType DEFLATE application/xml
-	AddOutputFilterByType DEFLATE image/svg+xml
 	AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
 	AddOutputFilterByType DEFLATE application/x-font-ttf
+	AddOutputFilterByType DEFLATE font/opentype
 </IfModule>
 
 # ADD CACHING HEADERS
@@ -66,6 +68,7 @@ AddDefaultCharset utf-8
 	ExpiresByType application/x-font-ttf "access plus 4 weeks"
 	ExpiresByType application/font-woff "access plus 4 weeks"
 	ExpiresByType application/font-woff2 "access plus 4 weeks"
+	ExpiresByType font/opentype "access plus 4 weeks"
 </IfModule>
 
 # REMOVE ETAG
