@@ -91,7 +91,6 @@ Entwicklung von Plugins für SEO42
 Language Presets
 ----------------
 
-* Lang-Presets Sammlung: <https://github.com/RexDude/seo42/issues/61>
 * ISO Language Codes: <http://www.w3schools.com/tags/ref_language_codes.asp>
 * Sprach-Sonderzeichen-Tabelle: <http://unicode.e-workers.de/>
 
@@ -120,11 +119,10 @@ Hinweise Resourceneinbindung
 Links
 -----
 
-* BugTracker: <https://github.com/RexDude/seo42/issues>
 * Klasse seo42: <https://github.com/RexDude/seo42/blob/master/classes/class.seo42.inc.php>
 * Klasse res42: <https://github.com/RexDude/seo42/blob/master/classes/class.res42.inc.php>
 * Klasse nav42: <https://github.com/RexDude/seo42/blob/master/classes/class.nav42.inc.php>
-* Online JavaScript/CSS Compression Using YUI Compressor: <http://refresh-sf.com/yui/>
+* Online JavaScript/CSS Compression Using YUI Compressor: <http://gpbmike.github.io/refresh-sf/>
 
 Artikel/Tutorials
 -----------------
