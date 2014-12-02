@@ -13,6 +13,7 @@ SEO42 - Changelog
 * Neu: `min42` Plugin zur Readme hinzugefügt, thx@webghostx
 * Neu: FAQ Eintrag: "Gibt es ein Tutorial zu SEO42 und/oder weitere Informationen zu den Features des Addons?"
 * Verbessert: Existiert bereits eine `robots.txt`, `sitemap.xml` oder `google*.html` Datei so wird diese zuerst ausgeliefert bevor das automatische Handling von SEO42 greift
+* Verbessert: Cached Redirects wurden in eine eigene Datei ausgelagert
 * Verbessert: Website Manager 3.0 Kompatibilität
 * Finetuning
 

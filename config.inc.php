@@ -123,12 +123,14 @@ $REX['ADDON']['seo42']['settings'] = array(
 			'special_chars_rewrite' => 'Ae|ae|Oe|oe|Ue|ue|ss|und',
 			'inherit_from_clang' => 0
 		)
-	),
-	'cached_redirects' => array()
+	)
 );
 
 // overwrite default settings with user settings
 seo42_utils::includeSettingsFile();
+
+// include cached redirects
+seo42_utils::includeRedirectsFile();
 
 // pre init seo42 vars
 seo42::init();

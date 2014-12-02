@@ -4,6 +4,7 @@ SEO42 - Updatehinweise
 ### Version 4.1.0
 
 * Die mitgelieferte `.htaccess` Datei hat sich geändert. Bitte Setup Schritt 2 wiederholen.
+* Es gab Änderungen an den Einstellungen. Bitte einmal die Einstellungen speichern.
 
 ### Version 4.0.0
 
