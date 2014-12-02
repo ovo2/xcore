@@ -59,6 +59,7 @@ Features Navigationsausgabe (Klasse nav42)
 * Unterstützung für alle URL-Typen von SEO42
 * Reagiert automatisch auf gesperrte Artikel etc. bei installiertem Community AddOn
 * Ausgabe einer einfachen Sprachnavigation möglich
+* Ausgabe einer Breadcrumb Navigation möglich
 * Codebeispiele in der Hilfe von SEO42
 
 Verfügbare Plugins für SEO42

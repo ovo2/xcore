@@ -106,6 +106,15 @@ $nav->setLangUseLangCodeAsLinkText(true); // ' . $I18N->msg('seo42_help_codeexam
 $nav->setLangUpperCaseLinkText(true); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_7') . '
 
 echo $nav->getLangNavigation();
+
+// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment7_1') . '
+$nav = new nav42();
+
+$nav->setBreadcrumbCssClass("breadcrumb"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment7_2') . '
+$nav->setBreadcrumbOlList(false); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment7_3') . '
+$nav->setBreadcrumbStartArticleName("<i class=\'fa fa-home\'></i>"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment7_4') . '
+
+echo $nav->getBreadcrumbNavigation();
 ?>';
 
 $codeExample7 = '<?php

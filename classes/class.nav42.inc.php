@@ -24,6 +24,11 @@ class nav42 {
 	protected $langUseLangCodeAsLinkText;
 	protected $langUpperCaseLinkText;
 
+	// breadcrumb vars
+	protected $breadcrumbCssClass;
+	protected $breadcrumbOlList;
+	protected $breadcrumbStartArticleName;
+
 	// old vars from rex_navigation
 	var $path = array();
 	var $callbacks = array();
@@ -51,6 +56,10 @@ class nav42 {
 		$this->langHideLiIfOfflineArticle = false;
 		$this->langUseLangCodeAsLinkText = false;
 		$this->langUpperCaseLinkText = false;
+
+		$this->breadcrumbCssClass = '';
+		$this->breadcrumbOlList = false;
+		$this->breadcrumbStartArticleName = '';
 	}
 
 	/* ------------------------------------------------------------------------------------------------------ */
@@ -149,6 +158,20 @@ class nav42 {
 
 	public function setLangUpperCaseLinkText($langUpperCaseLinkText) {
 		$this->langUpperCaseLinkText = $langUpperCaseLinkText;
+	}
+
+	/* ------------------------------------------------------------------------------------------------------ */
+
+	public function setBreadcrumbCssClass($breadcrumbCssClass) {
+		$this->breadcrumbCssClass = $breadcrumbCssClass;
+	}
+
+	public function setBreadcrumbOlList($breadcrumbOlList) {
+		$this->breadcrumbOlList = $breadcrumbOlList;
+	}
+
+	public function setBreadcrumbStartArticleName($breadcrumbStartArticleName) {
+		$this->breadcrumbStartArticleName = $breadcrumbStartArticleName;
 	}
 
 	/* ------------------------------------------------------------------------------------------------------ */
@@ -456,6 +479,58 @@ class nav42 {
 		$out .= '</ul>';
 
 		return $out;
+	}
+
+	/* ------------------------------------------------------------------------------------------------------ */
+
+	public function getBreadcrumbNavigation() {
+		global $REX;
+
+		$listType = 'ul';
+
+		if ($this->breadcrumbOlList) {
+			$listType = 'ol';
+		}
+
+		if ($this->breadcrumbCssClass !== '') {
+			$cssClass = ' class="' . $this->breadcrumbCssClass . '"';
+		} else {
+			$cssClass = '';
+		}
+
+		$html = '<' . $listType . $cssClass . '>';
+		$path = explode('|', $REX['ART'][$REX['ARTICLE_ID']]['path'][$REX['CUR_CLANG']] . $REX['ARTICLE_ID']);
+
+		if ($REX['ARTICLE_ID'] !== $REX['START_ARTICLE_ID']) {
+			$path = array_merge(array($REX['START_ARTICLE_ID']), $path);
+		}
+
+		foreach ($path as $id) {
+			if ($id) {
+				if ($this->breadcrumbStartArticleName === false && intval($id) === $REX['START_ARTICLE_ID']) {
+					continue;
+				}
+
+				$article = OOArticle::getArticleById($id);
+				$articleName = $article->getName();
+
+				if ($this->breadcrumbStartArticleName !== '' && intval($id) === $REX['START_ARTICLE_ID']) {
+					$articleName = $this->breadcrumbStartArticleName;
+				}
+
+				$html .= '<li>';
+
+				if (intval($id) === $REX['ARTICLE_ID']) {
+					$html .= $articleName;
+				} else {
+					$html .= '<a href="' . $article->getUrl() . '">' . $articleName . '</a>';
+				}
+
+				$html .= '</li>';
+			}
+		}
+		
+		return $html .= '</' . $listType . '>';
 	}
 }
 
