@@ -12,6 +12,7 @@ SEO42 - Changelog
 * Neu: FAQ Eintrag: "Gibt es ein Tutorial zu SEO42 und/oder weitere Informationen zu den Features des Addons?"
 * Verbessert: Website Manager 3.0 Kompatibilität
 * Verbessert: `min42` Plugin zur Readme hinzugefügt, thx@webghostx
+* Finetuning
 
 ### Version 4.0.2 - 28. Oktober 2014
 

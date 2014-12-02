@@ -144,6 +144,13 @@ $no_double_content_redirects_select->addOption($I18N->msg('seo42_settings_no_dou
 $no_double_content_redirects_select->addOption($I18N->msg('seo42_settings_no_double_content_redirects_4'), SEO42_NO_DOUBLE_CONTENT_REDIRECT_ONLY_HTTPS);
 $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['settings']['no_double_content_redirects']);
 
+$no_double_content_redirects_availability_select = new rex_select();
+$no_double_content_redirects_availability_select->setSize(1);
+$no_double_content_redirects_availability_select->setName('settings[no_double_content_redirects_availability]');
+$no_double_content_redirects_availability_select->addOption($I18N->msg('seo42_settings_no_double_content_redirects_availability_1'), 1);
+$no_double_content_redirects_availability_select->addOption($I18N->msg('seo42_settings_no_double_content_redirects_availability_0'), 0);
+$no_double_content_redirects_availability_select->setSelected($REX['ADDON'][$myself]['settings']['no_double_content_redirects_availability']);
+
 ?>
 
 <div class="rex-addon-output">
@@ -199,9 +206,8 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
 
           <div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-checkbox">
-					<label for="no_double_content_redirects_only_frontend"><?php echo $I18N->msg('seo42_settings_no_double_content_redirects_only_frontend'); ?></label>
-					<input type="hidden" name="settings[no_double_content_redirects_only_frontend]" value="0" />
-					<input type="checkbox" name="settings[no_double_content_redirects_only_frontend]" id="no_double_content_redirects_only_frontend" value="1" <?php if ($REX['ADDON']['seo42']['settings']['no_double_content_redirects_only_frontend']) { echo 'checked="checked"'; } ?>>
+					<label for="no_double_content_redirects_availability"><?php echo $I18N->msg('seo42_settings_no_double_content_redirects_availability'); ?></label>
+					<?php echo $no_double_content_redirects_availability_select->get(); ?>
 				</p>
 			</div>
 

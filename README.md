@@ -31,7 +31,7 @@ Features
 * Smart Redirects: Automatische Umleitungen für falsch eingegebene Urls z.B. von Url-Endung `/` nach `.html`
 * No Double Content Redirects: Automatische Umleitungen für zusätzliche Domains um Double Content Probleme zu vermeiden
 * Force Download Funktionalität inkl. suchmaschinenfreundlicher URLs und Canonical Header (z.B. für PDF Downloads)
-* Google Site Verification Unterstützung ohne das man noch die Html-Datei uploaden muss
+* Google Site Verification Unterstützung ohne dass man noch die Html-Datei uploaden muss
 * Keine Abhängigkeiten zu weiteren Addons wie Textile oder XForm
 * Kompatibel zum [Website Manager](https://github.com/RexDude/website_manager) sowie [Community](https://github.com/dergel/redaxo4_community) AddOn
 * Enthält die Antwort auf die eine Frage ;)

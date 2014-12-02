@@ -85,8 +85,10 @@ seo42_settings_no_double_content_redirects_1 = One Domain Only
 seo42_settings_no_double_content_redirects_2 = Nicht-WWW zu WWW
 seo42_settings_no_double_content_redirects_3 = WWW zu Nicht-WWW 
 seo42_settings_no_double_content_redirects_4 = Nur HTTPS
-seo42_settings_no_double_content_redirects_only_frontend = Nur im Frontend zulassen
 seo42_settings_no_double_content_redirects_1_invalid = URL der Website ungültig!
+seo42_settings_no_double_content_redirects_availability = Gültigkeit der No Double Content Redirects
+seo42_settings_no_double_content_redirects_availability_1 = Nur Frontend
+seo42_settings_no_double_content_redirects_availability_0 = Front- und Backend
 
 seo42_settings_rewriter = URLs umschreiben
 seo42_settings_redirects_section = Redirects

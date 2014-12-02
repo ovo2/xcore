@@ -54,6 +54,9 @@ define('SEO42_NO_DOUBLE_CONTENT_REDIRECT_NON_WWW_TO_WWW', 2);
 define('SEO42_NO_DOUBLE_CONTENT_REDIRECT_WWW_TO_NON_WWW', 3);
 define('SEO42_NO_DOUBLE_CONTENT_REDIRECT_ONLY_HTTPS', 4);
 
+define('SEO42_NO_DOUBLE_CONTENT_REDIRECT_AVAILABILITY_FRONTEND_BACKEND', 0);
+define('SEO42_NO_DOUBLE_CONTENT_REDIRECT_AVAILABILITY_FRONTEND', 1);
+
 define('SEO42_AUTO_REDIRECT_NONE', 0);
 define('SEO42_AUTO_REDIRECT_ARTICLE_ID', 1);
 define('SEO42_AUTO_REDIRECT_URL_REWRITE', 2);
@@ -67,7 +70,7 @@ $REX['ADDON']['seo42']['settings'] = array(
 	'homeurl' => 2,
 	'homelang' => 0,
 	'no_double_content_redirects' => SEO42_NO_DOUBLE_CONTENT_REDIRECT_ONE_DOMAIN_ONLY,
-	'no_double_content_redirects_only_frontend' => true,
+	'no_double_content_redirects_availability' => SEO42_NO_DOUBLE_CONTENT_REDIRECT_AVAILABILITY_FRONTEND,
 	'auto_redirects' => SEO42_AUTO_REDIRECT_NONE,
 	'smart_redirects' => true,
 	'redirects_allow_regex' => false,
