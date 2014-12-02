@@ -7,11 +7,12 @@ SEO42 - Changelog
 * Fixed #155: Kombination One Page Mode + Mehrsprachigkeit führte in der Sitemap.xml zu einem fehlerhaften Eintrag, thx@TobiasKrais
 * Fixed #156: Bei Benutzung von `rex_redirect()` gab es Probleme mit den Query Parametern, thx@Sysix
 * Fixed #158: Mime Types für Fonts verbessert, Chrome meldete sonst "Resource interpreted as font but transferred with MIME type x-font/woff", thx@TobiasKrais
-* Neu: Ausgabe einer Breadcrumb Navigation, siehe Codebeispiele, thx@webghostx
+* Neu: Ausgabe einer Breadcrumb Navigation möglich, siehe Codebeispiele, thx@webghostx
 * Neu: Google Site Verification Unterstützung: über die Webmaster Tools den Namen der Html-Datei (google*.html) kopieren und bei den Einstellungen eintragen. Upload der Datei nicht nötig!
 * Neu: `nav42::setLiClass()` hinzugefügt, thx@polarpixel
 * Neu: `min42` Plugin zur Readme hinzugefügt, thx@webghostx
 * Neu: FAQ Eintrag: "Gibt es ein Tutorial zu SEO42 und/oder weitere Informationen zu den Features des Addons?"
+* Verbessert: Existiert bereits eine `robots.txt`, `sitemap.xml` oder `google*.html` Datei so wird diese zuerst ausgeliefert bevor das automatische Handling von SEO42 greift
 * Verbessert: Website Manager 3.0 Kompatibilität
 * Finetuning
 

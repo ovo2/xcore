@@ -85,9 +85,11 @@ FileETag None
 	RewriteBase /
 
 	# REDIRECT SITEMAP.XML TO SEO42 SITEMAP FUNCTION
+	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteRule ^sitemap\.xml$ index.php?seo42_func=sitemap [NC,L]
 
 	# REDIRECT ROBOTS.TXT TO SEO42 ROBOTS FUNCTION
+	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteRule ^robots\.txt$ index.php?seo42_func=robots [NC,L]
 
 	# REWRITE RULE FOR GOOGLE SITE VERIFICATION FILE
