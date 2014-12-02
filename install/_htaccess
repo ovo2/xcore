@@ -90,6 +90,10 @@ FileETag None
 	# REDIRECT ROBOTS.TXT TO SEO42 ROBOTS FUNCTION
 	RewriteRule ^robots\.txt$ index.php?seo42_func=robots [NC,L]
 
+	# REWRITE RULE FOR GOOGLE SITE VERIFICATION FILE
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^google([a-zA-Z0-9]){1,20}\.html$ index.php?seo42_func=googlesiteverification [NC,L]
+
 	# REWRITE RULE FOR SEO FRIENDLY DOWNLOAD URLS
 	RewriteRule ^download[s]?/([^/]*) index.php?seo42_func=download&file=$1 [NC,L]
 

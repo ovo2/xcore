@@ -63,6 +63,20 @@ if (rex_request('seo42_func')!='')
 			}
 		}
 		break;
+
+	case 'googlesiteverification':
+		$googleSiteVerificationFile = strtolower(preg_replace("/[^a-zA-Z0-9.\-\$\+]/","_", trim(trim($REX['ADDON']['seo42']['settings']['google_site_verification_filename']), '/')));
+		$requestedFile = strtolower(preg_replace("/[^a-zA-Z0-9.\-\$\+]/","_", trim($_SERVER['REQUEST_URI'], '/')));
+
+		if ($googleSiteVerificationFile != '' && $requestedFile == $googleSiteVerificationFile) {
+			ob_clean();
+			flush();
+
+			echo 'google-site-verification: ' . $googleSiteVerificationFile;
+			exit;
+		}
+    break;
+
 	default:
 		break;
 

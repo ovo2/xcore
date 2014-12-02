@@ -644,6 +644,20 @@ $no_double_content_redirects_select->setSelected($REX['ADDON'][$myself]['setting
         </div>
       </fieldset>
 
+      <fieldset class="rex-form-col-1">
+        <legend><?php echo $I18N->msg('seo42_settings_google_site_verification_section'); ?></legend>
+        <div class="rex-form-wrapper slide">
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="google_site_verification_filename"><?php echo $I18N->msg('seo42_settings_google_site_verification_filename'); ?></label>
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['google_site_verification_filename']; ?>" name="settings[google_site_verification_filename]" class="rex-form-text" id="google_site_verification_filename">
+				</p>
+			</div>
+
+        </div>
+      </fieldset>
+
     <fieldset class="rex-form-col-1">
         <legend><?php echo $I18N->msg('seo42_settings_html_section'); ?></legend>
         <div class="rex-form-wrapper slide">

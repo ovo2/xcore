@@ -92,6 +92,7 @@ $REX['ADDON']['seo42']['settings'] = array(
 	'static_sitemap_priority' => true,
 	'no_robots_txt_auto_disallow' => true,
 	'robots' => '',
+	'google_site_verification_filename' => '',
 	'robots_follow_flag' => 'follow',
 	'robots_archive_flag' => 'noarchive',
 	'title_delimiter' => '-',
