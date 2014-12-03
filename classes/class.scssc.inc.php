@@ -43,7 +43,7 @@
  * @author Leaf Corcoran <leafot@gmail.com>
  */
 class scssc {
-	static public $VERSION = 'v0.0.13';
+	static public $VERSION = 'v0.0.15';
 
 	static protected $operatorNames = array(
 		'+' => 'add',
@@ -1445,6 +1445,11 @@ class scssc {
 	}
 
 	protected function applyArguments($argDef, $argValues) {
+		$storeEnv = $this->getStoreEnv();
+
+		$env = new stdClass;
+		$env->store = $storeEnv->store;
+
 		$hasVariable = false;
 		$args = array();
 		foreach ($argDef as $i => $arg) {
@@ -1492,6 +1497,7 @@ class scssc {
 
 		foreach ($args as $arg) {
 			list($i, $name, $default, $isVariable) = $arg;
+
 			if ($isVariable) {
 				$val = array('list', ',', array());
 				for ($count = count($remaining); $i < $count; $i++) {
@@ -1505,12 +1511,24 @@ class scssc {
 			} elseif (isset($keywordArgs[$name])) {
 				$val = $keywordArgs[$name];
 			} elseif (!empty($default)) {
-				$val = $default;
+				continue;
 			} else {
 				$this->throwError("Missing argument $name");
 			}
 
-			$this->set($name, $this->reduce($val, true), true);
+			$this->set($name, $this->reduce($val, true), true, $env);
+		}
+
+		$storeEnv->store = $env->store;
+
+		foreach ($args as $arg) {
+			list($i, $name, $default, $isVariable) = $arg;
+
+			if ($isVariable || isset($remaining[$i]) || isset($keywordArgs[$name]) || empty($default)) {
+				continue;
+			}
+
+			$this->set($name, $this->reduce($default, true), true);
 		}
 	}
 
@@ -1533,13 +1551,13 @@ class scssc {
 		return isset($this->storeEnv) ? $this->storeEnv : $this->env;
 	}
 
-	protected function set($name, $value, $shadow=false) {
+	protected function set($name, $value, $shadow=false, $env = null) {
 		$name = $this->normalizeName($name);
 
 		if ($shadow) {
-			$this->setRaw($name, $value);
+			$this->setRaw($name, $value, $env);
 		} else {
-			$this->setExisting($name, $value);
+			$this->setExisting($name, $value, $env);
 		}
 	}
 
@@ -1553,8 +1571,9 @@ class scssc {
 		}
 	}
 
-	protected function setRaw($name, $value) {
-		$env = $this->getStoreEnv();
+	protected function setRaw($name, $value, $env = null) {
+		if (!isset($env)) $env = $this->getStoreEnv();
+
 		$env->store[$name] = $value;
 	}
 
@@ -2991,7 +3010,7 @@ class scss_parser {
 
 			// doesn't match built in directive, do generic one
 			if ($this->literal('@', false) && $this->keyword($dirName) &&
-				($this->openString('{', $dirValue) || true) &&
+				($this->variable($dirValue) || $this->openString('{', $dirValue) || true) &&
 				$this->literal('{'))
 			{
 				$directive = $this->pushSpecialBlock('directive');
