@@ -1,7 +1,7 @@
 SEO42 - Changelog
 =================
 
-### Version 4.1.0 DEV
+### Version 4.1.0 - 03. Dezember 2014
 
 * Update: Bitte die Hinweise in der `UPDATE.md` beachten!
 * Fixed #155: Kombination One Page Mode + Mehrsprachigkeit führte in der Sitemap.xml zu einem fehlerhaften Eintrag, thx@TobiasKrais
