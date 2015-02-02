@@ -4,6 +4,7 @@ SEO42 - Changelog
 ### Version 4.1.1 DEV
 
 * Fixed: Auto Redirects für alte url_rewrite Urls, thx@TobiasKrais
+* Verbessert: Die URL der Startseite kann jetzt nicht mehr verändert werden, thx@execrable
 
 ### Version 4.1.0 - 03. Dezember 2014
 

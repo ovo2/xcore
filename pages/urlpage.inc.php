@@ -155,16 +155,19 @@ if ($urlField != '') {
 								<label for="url_description"><?php echo $I18N->msg('seo42_urlpage_url_type'); ?></label>
 								<select name="url_type" size="1" id="url_type" class="rex-form-select">
 									<option <?php if ($urlType == SEO42_URL_TYPE_DEFAULT) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_DEFAULT; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_default'); ?></option>
-									<option <?php if ($urlType == SEO42_URL_TYPE_USERDEF_INTERN) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_USERDEF_INTERN; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_userdef_intern'); ?></option>
-									<option <?php if ($urlType == SEO42_URL_TYPE_USERDEF_EXTERN) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_USERDEF_EXTERN; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_userdef_extern'); ?></option>
-									<option <?php if ($urlType == SEO42_URL_TYPE_MEDIAPOOL) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_MEDIAPOOL; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_mediapool'); ?></option>
-									<option <?php if ($urlType == SEO42_URL_TYPE_INTERN_REPLACE) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_INTERN_REPLACE; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_intern_replace'); ?></option>
-									<option <?php if ($urlType == SEO42_URL_TYPE_INTERN_REPLACE_CLANG) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_INTERN_REPLACE_CLANG; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_intern_replace_clang'); ?></option>
-									<option <?php if ($urlType == SEO42_URL_TYPE_REMOVE_ROOT_CAT) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_REMOVE_ROOT_CAT; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_remove_root_cat'); ?></option>
-									<?php if ($REX['ADDON']['seo42']['settings']['all_url_types']) { ?>
-									<option <?php if ($urlType == SEO42_URL_TYPE_CALL_FUNC) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_CALL_FUNC; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_call_func'); ?></option>
-									<option <?php if ($urlType == SEO42_URL_TYPE_LANGSWITCH) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_LANGSWITCH; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_langswitch'); ?></option>
-									<option <?php if ($urlType == SEO42_URL_TYPE_NONE) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_NONE; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_none'); ?></option>
+
+									<?php if ($REX['ARTICLE_ID'] != $REX['START_ARTICLE_ID']) { ?>
+										<option <?php if ($urlType == SEO42_URL_TYPE_USERDEF_INTERN) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_USERDEF_INTERN; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_userdef_intern'); ?></option>
+										<option <?php if ($urlType == SEO42_URL_TYPE_USERDEF_EXTERN) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_USERDEF_EXTERN; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_userdef_extern'); ?></option>
+										<option <?php if ($urlType == SEO42_URL_TYPE_MEDIAPOOL) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_MEDIAPOOL; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_mediapool'); ?></option>
+										<option <?php if ($urlType == SEO42_URL_TYPE_INTERN_REPLACE) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_INTERN_REPLACE; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_intern_replace'); ?></option>
+										<option <?php if ($urlType == SEO42_URL_TYPE_INTERN_REPLACE_CLANG) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_INTERN_REPLACE_CLANG; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_intern_replace_clang'); ?></option>
+										<option <?php if ($urlType == SEO42_URL_TYPE_REMOVE_ROOT_CAT) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_REMOVE_ROOT_CAT; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_remove_root_cat'); ?></option>
+										<?php if ($REX['ADDON']['seo42']['settings']['all_url_types']) { ?>
+											<option <?php if ($urlType == SEO42_URL_TYPE_CALL_FUNC) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_CALL_FUNC; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_call_func'); ?></option>
+											<option <?php if ($urlType == SEO42_URL_TYPE_LANGSWITCH) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_LANGSWITCH; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_langswitch'); ?></option>
+											<option <?php if ($urlType == SEO42_URL_TYPE_NONE) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_NONE; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_none'); ?></option>
+										<?php } ?>
 									<?php } ?>
 								</select>
 							</p>
