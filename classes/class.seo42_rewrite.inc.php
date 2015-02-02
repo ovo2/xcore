@@ -110,10 +110,10 @@ class SEO42Rewrite
 		// auto redirects 
 		if ($REX['ADDON']['seo42']['settings']['auto_redirects'] == SEO42_AUTO_REDIRECT_URL_REWRITE || $REX['ADDON']['seo42']['settings']['auto_redirects'] == SEO42_AUTO_REDIRECT_URL_REWRITE_R3) {
 			// smart redirects for old fashioned standard redaxo rewrite methods
-			if ($REX['ADDON']['seo42']['settings']['auto_redirects'] == SEO42_AUTO_REDIRECT_URL_REWRITE) {
+			if ($REX['ADDON']['seo42']['settings']['auto_redirects'] == SEO42_AUTO_REDIRECT_URL_REWRITE_R3) {
 				preg_match('/\/(.*(\.))?((?P<clang>[0-9]+)(.*)\-(?P<id>[0-9]+))((\-|\.).*)/', $_SERVER['REQUEST_URI'], $url_params);
 			} else {
-				preg_match('/\/(.*(\.))?((?P<clang>[0-9]+)\-(?P<id>[0-9]+))((\-|\.).*)/', $_SERVER['REQUEST_URI'], $url_params);
+				preg_match('/\/(.*(\.))?((?P<id>[0-9]+)\-(?P<clang>[0-9]+))((\-|\.).*)/', $_SERVER['REQUEST_URI'], $url_params);
 			}
 
 			if ($url_params !== false && isset($url_params['id']) && isset($url_params['clang'])) {

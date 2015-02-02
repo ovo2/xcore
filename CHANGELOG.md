@@ -1,6 +1,10 @@
 SEO42 - Changelog
 =================
 
+### Version 4.1.1 DEV
+
+* Fixed: Auto Redirects für alte url_rewrite Urls, thx@TobiasKrais
+
 ### Version 4.1.0 - 03. Dezember 2014
 
 * Update: Bitte die Hinweise in der `UPDATE.md` beachten!
