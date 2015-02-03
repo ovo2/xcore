@@ -963,8 +963,14 @@ class seo42_utils {
 			$serverHost = self::getServerHost();
 			$requestUri = $_SERVER['REQUEST_URI'];
 
+			if (self::isHttps()) {
+				$curProtocol = 'https';
+			} else {
+				$curProtocol = 'http';
+			}
+
 			// check for possible protocol only redirect
-			if (isset($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] != $protocol) {
+			if ($curProtocol != $protocol) {
 				$location = $protocol . '://' . $serverHost . $requestUri;
 			}
 
@@ -1037,4 +1043,12 @@ class seo42_utils {
 			return false;
 		}
 	}
+
+	public static function isHttps() {
+		if ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443) {
+			return true;
+		} else {
+			return false;
+		}
+	} 
 }
