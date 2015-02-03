@@ -29,13 +29,14 @@ $codeExample2 = '
 <link rel="stylesheet" href="<?php echo seo42::getCSSFile("http://fonts.googleapis.com/css?family=Fjalla+One"); ?>" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php echo seo42::getResourceFile("resources/mediaelement/mediaelementplayer.css"); ?>" type="text/css" media="screen" />
 
+<link rel="shortcut icon" href="<?php echo seo42::getIconFile("favicon.ico"); ?>" />
+
 <script type="text/javascript" src="<?php echo seo42::getCombinedJSFile("combined.js", array("jquery.magnific-popup.min.js", "jquery.nivo-slider.min.js")); ?>"></script>
 <script type="text/javascript" src="<?php echo seo42::getJSFile("http://codeorigin.jquery.com/jquery-2.0.3.min.js"); ?>"></script>
 <script type="text/javascript" src="<?php echo seo42::getResourceFile("resources/mediaelement/mediaelement-and-player.min.js"); ?>"></script>
 <script type="text/javascript" src="<?php echo seo42::getJSFile("init.js"); ?>"></script>
 <script type="text/javascript"><?php echo seo42::getJSCodeFromTemplate(5); ?></script>
 
-<link rel="shortcut icon" href="<?php echo seo42::getIconFile("favicon.ico"); ?>" />
 <img src="<?php echo seo42::getImageFile("logo.png"); ?>" />
 ';
 

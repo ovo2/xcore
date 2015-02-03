@@ -5,9 +5,10 @@ Diese Hinweise richten sich primär an User die zum ersten mal SEO42 nutzen oder
 
 - Nach Installation und Aktivierung des AddOns SEO42 sollte als nächstes das SEO42 Setup durchgeführt werden.
 - Nach durchführen des Setups sollte unbedingt die Spracheinstellungen kontrolliert und ggf. angepasst werden ja nach eingesetzter Sprachen.
-- Der No Double Content Redirect sollte in den Einstellungen ausgewählt werden nachdem das Setup durchgeführt wurde. Empfohlen: One Domain Only
+- Ein No Double Content Redirect sollte in den Einstellungen ausgewählt werden nachdem das Setup durchgeführt wurde. Empfohlen: One Domain Only
 - Hartcodierte Urls wie `index.php?article_id=42` sind nicht mehr zulässig. Alle Urls müssen über `rex_getUrl(42)` ausgegeben werden. Siehe Hilfe > Codebeispiele 1.
 - Für ein bestmögliches SEO sollte man sich an das SEO42 Boilerplate im Setup und an die Codebeispiele in der Hilfe (z.b. suchmaschinenfreundliche Image Manager Urls) orientieren. 
+- Zum SEO42 Boilerplate: Der eigene Code wird direkt nach `<body>` notiert, die JS Skripts kommen als letztes. Aufruf von `seo42::getLangTags()` kann bei einsprachigen Websites entfernt werden. Und CSS und JS Dateien im `<head>` Bereich sind natürlich anzupassen bzw. zu ergänzen ;)
 - In der `.htaccess` Datei ist eine Cachingdauer für CSS/JS Dateien von 4 Wochen eingestellt. Bitte reduzieren (z.B. auf 1 Woche) wenn die Dateien nicht wie vorgeschlagen per `seo42::getCSSFile()` / `seo42::getJSFile()` eingebunden werden sollten.
 - Der Fehlerartikel unter REDAXO > System sollte nicht gleich dem Startartikel der Website entsprechen. Es sollte aufjedenfall ein eigener Fehlerartikel angelegt werden.
 - Einen kurze Einführung zu SEO42 findet man hier: [REDAXO Tutorial: SEO-AddOns - URL-Umschreibung und mehr](http://www.redaxo.org/de/doku/sinnvolle-addons/seo-addons---urls-und-mehr/)
