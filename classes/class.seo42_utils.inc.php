@@ -1003,7 +1003,7 @@ class seo42_utils {
 					// https only
 					$urlParts = parse_url($serverHost);
 
-					if (isset($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] == 'http') {
+					if ($curProtocol == 'http') {
 						$location = 'https://' . $serverHost . $requestUri;
 					}
 
