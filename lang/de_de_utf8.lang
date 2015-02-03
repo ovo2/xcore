@@ -306,9 +306,9 @@ seo42_help_codeexamples_ex6_comment7_1 = ausgabe einer breadcrumb navigation
 seo42_help_codeexamples_ex6_comment7_2 = ul klasse: "breadcrumb"
 seo42_help_codeexamples_ex6_comment7_3 = es wird eine ul liste ausgegeben
 seo42_help_codeexamples_ex6_comment7_4 = ausgabe mit font-awesome icon
-seo42_help_codeexamples_ex7_comment1 = eigene klasse ableiten und getTitle() methode überschreiben
-seo42_help_codeexamples_ex7_comment2 = gesamten titel in kleinbuchstaben ausgeben (als beispiel)
-seo42_help_codeexamples_ex7_comment3 = methoden aufrufe dann nur noch über diese abgeleitete klasse
+seo42_help_codeexamples_ex7_comment1 = 1.) eigene klasse ableiten und getTitle() methode überschreiben
+seo42_help_codeexamples_ex7_comment2 = 2.) gesamten titel in kleinbuchstaben ausgeben (als beispiel)
+seo42_help_codeexamples_ex7_comment3 = 3.) methoden aufrufe dann nur noch über diese abgeleitete klasse
 seo42_help_codeexamples_ex7_comment4 = gibt nun den titel in kleinbuchstaben aus
 
 seo42_help_debug_article_wrong = Artikel ungültig mit ID = 

@@ -307,9 +307,9 @@ seo42_help_codeexamples_ex6_comment7_1 = output of a breadcrumb navigation
 seo42_help_codeexamples_ex6_comment7_2 = ul class: "breadcrumb"
 seo42_help_codeexamples_ex6_comment7_3 = output a ul list
 seo42_help_codeexamples_ex6_comment7_4 = output with font-awesome icon
-seo42_help_codeexamples_ex7_comment1 = derive your own class and override getTitle() method
-seo42_help_codeexamples_ex7_comment2 = give entire title in lowercase (as an example)
-seo42_help_codeexamples_ex7_comment3 = method calls only with this derived class
+seo42_help_codeexamples_ex7_comment1 = 1.) derive your own class and override getTitle() method
+seo42_help_codeexamples_ex7_comment2 = 2.) give entire title in lowercase (as an example)
+seo42_help_codeexamples_ex7_comment3 = 3.) method calls only with this derived class
 seo42_help_codeexamples_ex7_comment4 = gives the title in lowercase letters
 
 seo42_help_debug_article_wrong = Article invalid with ID = 

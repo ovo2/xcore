@@ -77,7 +77,7 @@ if (!$REX['ADDON']['seo42']['settings']['pagerank_checker']) {
 	$toolManager->addTool($tool);
 }
 
-$tool = new seo42_tool($I18N->msg('seo42_tool9'), $I18N->msg('seo42_tool9_desc'), ' http://www.seobility.net/');
+$tool = new seo42_tool($I18N->msg('seo42_tool9'), $I18N->msg('seo42_tool9_desc'), 'https://www.seobility.net/de/seocheck/');
 $toolManager->addTool($tool);
 
 $tool = new seo42_tool($I18N->msg('seo42_tool6'), $I18N->msg('seo42_tool6_desc'), 'http://www.seitwert.de/#quick');

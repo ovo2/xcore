@@ -65,7 +65,7 @@ Die URL der Website muss mit `http://` beginnen und mit einem `/` enden.
 Gibt es ein Tutorial zu SEO42 und/oder weitere Informationen zu den Features des Addons?
 ----------------------------------------------------------------------
 
-Ja :) [REDAXO Tutorial: SEO-AddOns - URL-Umschreibung und mehr](http://www.redaxo.org/de/doku/tutorials/seo-addons---urls-und-mehr/)
+Ja :) [REDAXO Tutorial: SEO-AddOns - URL-Umschreibung und mehr](http://www.redaxo.org/de/doku/sinnvolle-addons/seo-addons---urls-und-mehr/)
 
 
 Wenn ich Links mit Anchors nutze, lande ich immer auf der Startseite?

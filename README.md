@@ -128,7 +128,7 @@ Links
 Artikel/Tutorials
 -----------------
 
-* REDAXO Tutorial: [SEO-AddOns - URL-Umschreibung und (viel) mehr](http://www.redaxo.org/de/doku/tutorials/seo-addons---urls-und-mehr/)
+* REDAXO Tutorial: [SEO-AddOns - URL-Umschreibung und (viel) mehr](http://www.redaxo.org/de/doku/sinnvolle-addons/seo-addons---urls-und-mehr/)
 
 Changelog
 ---------
