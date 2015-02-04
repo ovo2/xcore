@@ -7,7 +7,8 @@ SEO42 - Changelog
 * Fixed: http/https Weiterleitung, thx@Christian
 * Verbessert: Die URL der Startseite kann jetzt nicht mehr verändert werden, thx@execrable
 * Verbessert: Startguide ergänzt um verschiedene Hinweise zum SEO42 Boilerplate
-* Verbessert: Verschiedene Links korrigiert
+* Verbessert: Startguide ergänzt um Tips zur Resourcen-Einbindung
+* Verbessert: Externe Links korrigiert
 
 ### Version 4.1.0 - 03. Dezember 2014
 
