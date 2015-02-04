@@ -1,14 +1,14 @@
 SEO42 - Changelog
 =================
 
-### Version 4.1.1 DEV
+### Version 4.1.1 - 04. Februar 2015
 
 * Fixed: Auto Redirects für alte url_rewrite Urls, thx@TobiasKrais
 * Fixed: http/https Weiterleitung, thx@Christian
 * Verbessert: Die URL der Startseite kann jetzt nicht mehr verändert werden, thx@execrable
 * Verbessert: Startguide ergänzt um verschiedene Hinweise zum SEO42 Boilerplate
 * Verbessert: Startguide ergänzt um Tips zur Resourcen-Einbindung
-* Verbessert: Externe Links korrigiert
+* Verbessert: Externe Links korrigiert (SEO42 Einführung + Seobility)
 
 ### Version 4.1.0 - 03. Dezember 2014
 
