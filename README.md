@@ -27,9 +27,8 @@ Features
 * Automatische `rel="alternate"` Tags für mehrsprachige Websites
 * Option um die Indizierung von Seiten durch Suchmaschinen zu verhindern
 * Automatische sowie individuelle Canonical URLs
-* One Domain Only sowie Nicht-WWW zu WWW Umleitung (und umgekehrt) inkl. HTTPS Berücksichtigung.
+* One Domain Only sowie Nicht-WWW zu WWW Umleitung (und umgekehrt) inkl. autom. HTTPS Berücksichtigung.
 * Smart Redirects: Automatische Umleitungen für falsch eingegebene Urls z.B. von Url-Endung `/` nach `.html`
-* No Double Content Redirects: Automatische Umleitungen für zusätzliche Domains um Double Content Probleme zu vermeiden
 * Force Download Funktionalität inkl. suchmaschinenfreundlicher URLs und Canonical Header (z.B. für PDF Downloads)
 * Google Site Verification Unterstützung ohne dass man noch die Html-Datei uploaden muss
 * Keine Abhängigkeiten zu weiteren Addons wie Textile oder XForm
