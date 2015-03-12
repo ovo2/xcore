@@ -664,12 +664,7 @@ class seo42_utils {
 			}
 
 			if ($redirect) {
-				if (seo42::isSubDirInstall()) {
-					// add subdir to target url
-					$targetUrl = '/' . seo42::getServerSubDir() . $redirectUri;
-				} else {
-					$targetUrl = $redirectUri;
-				}
+				$targetUrl = $redirectUri;
 
 				if (strpos($targetUrl, 'http') === false) {
 					$location = seo42::getServerUrl()  . ltrim($targetUrl, '/');
