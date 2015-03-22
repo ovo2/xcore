@@ -4,6 +4,7 @@ SEO42 - Changelog
 ### Version 4.2.0 DEV
 
 * Fixed #168: Smart Redirect ging bei Url Endung "/" nicht, thx@JeGr
+* Fixed #165: RegEx Redirect bei Subdir Installs, thx@NGWNGW
 
 ### Version 4.1.1 - 04. Februar 2015
 
