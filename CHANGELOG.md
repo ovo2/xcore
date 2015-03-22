@@ -1,6 +1,10 @@
 SEO42 - Changelog
 =================
 
+### Version 4.2.0 DEV
+
+* Fixed #168: Smart Redirect ging bei Url Endung "/" nicht, thx@JeGr
+
 ### Version 4.1.1 - 04. Februar 2015
 
 * Fixed: Auto Redirects für alte url_rewrite Urls, thx@TobiasKrais
