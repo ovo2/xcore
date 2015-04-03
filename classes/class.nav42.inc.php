@@ -367,7 +367,7 @@ class nav42 {
 		return rex_com_auth::checkPerm($nav);
 	}
 
-	protected function addCallback($callback = "", $depth = "") {
+	public function addCallback($callback = "", $depth = "") {
 		if ($callback != "") {
 			$this->callbacks[] = array("callback" => $callback, "depth" => $depth);
 		}
