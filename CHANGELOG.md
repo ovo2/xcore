@@ -3,10 +3,11 @@ SEO42 - Changelog
 
 ### Version 4.1.2 DEV
 
-* Fixed #171: Es gab einen 404 Fehler wenn eine interne Url gleich war die automatisch Generierte Url
+* Fixed #171: Es gab einen 404 Fehler wenn eine interne Url gleich war die automatisch generierte Url
 * Fixed #170: `nav42::addCallback()` public gemacht, thx@dtpop
 * Fixed #168: Smart Redirect ging bei Url Endung "/" nicht, thx@JeGr
 * Fixed #165: RegEx Redirect bei Subdir Installs, thx@NGWNGW
+* Fixed: Startartikel der Website wird jetzt immer, auch wenn offline, in die sitemap.xml aufgenommen
 
 ### Version 4.1.1 - 04. Februar 2015
 
