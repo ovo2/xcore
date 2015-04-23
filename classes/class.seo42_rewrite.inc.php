@@ -96,11 +96,8 @@ class SEO42Rewrite
 
 		// smart redirects option
 		if ($REX['ADDON']['seo42']['settings']['smart_redirects']) {
-			$trimmedReuqestUri = trim($_SERVER['REQUEST_URI'], '/');
-			$trimmedReuqestUri = str_replace('.html', '', $trimmedReuqestUri);
-
-			$requestUriWithCorrectUrlEnding = $trimmedReuqestUri . $REX['ADDON']['seo42']['settings']['url_ending'];
-			
+			$requestUriWithCorrectUrlEnding = trim($_SERVER['REQUEST_URI'], '/') . $REX['ADDON']['seo42']['settings']['url_ending'];
+				 
 			if (isset($SEO42_URLS[$requestUriWithCorrectUrlEnding])) {
 				$redirect = array('id' => $SEO42_URLS[$requestUriWithCorrectUrlEnding]['id'],
 	                              'clang' => $SEO42_URLS[$requestUriWithCorrectUrlEnding]['clang'],
@@ -634,8 +631,10 @@ function seo42_generate_pathlist($params)
 				case SEO42_URL_TYPE_USERDEF_INTERN:
 					$customUrl = $jsonData['custom_url'];
 
-					$SEO42_URLS[$customUrl] = $SEO42_URLS[$SEO42_IDS[$articleId][$clangId]['url']];
-					unset($SEO42_URLS[$SEO42_IDS[$articleId][$clangId]['url']]);
+					if ($SEO42_IDS[$articleId][$clangId]['url'] != $customUrl) { // only if custom url ist different then auto url
+						$SEO42_URLS[$customUrl] = $SEO42_URLS[$SEO42_IDS[$articleId][$clangId]['url']];
+						unset($SEO42_URLS[$SEO42_IDS[$articleId][$clangId]['url']]);
+					}
 
 					$SEO42_IDS[$articleId][$clangId] = array('url' => $customUrl);
 
