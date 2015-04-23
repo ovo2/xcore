@@ -1,7 +1,7 @@
 SEO42 - Changelog
 =================
 
-### Version 4.2.0 DEV
+### Version 4.1.2 DEV
 
 * Fixed #171: Es gab einen 404 Fehler wenn eine interne Url gleich war die automatisch Generierte Url
 * Fixed #170: `nav42::addCallback()` public gemacht, thx@dtpop

@@ -96,8 +96,11 @@ class SEO42Rewrite
 
 		// smart redirects option
 		if ($REX['ADDON']['seo42']['settings']['smart_redirects']) {
-			$requestUriWithCorrectUrlEnding = trim($_SERVER['REQUEST_URI'], '/') . $REX['ADDON']['seo42']['settings']['url_ending'];
-				 
+			$trimmedReuqestUri = trim($_SERVER['REQUEST_URI'], '/');
+			$trimmedReuqestUri = str_replace('.html', '', $trimmedReuqestUri);
+
+			$requestUriWithCorrectUrlEnding = $trimmedReuqestUri . $REX['ADDON']['seo42']['settings']['url_ending'];
+			
 			if (isset($SEO42_URLS[$requestUriWithCorrectUrlEnding])) {
 				$redirect = array('id' => $SEO42_URLS[$requestUriWithCorrectUrlEnding]['id'],
 	                              'clang' => $SEO42_URLS[$requestUriWithCorrectUrlEnding]['clang'],
@@ -908,3 +911,4 @@ function seo42_parse_article_name($name, $article_id, $clang)
 
     return $parsedName;
 }
+
