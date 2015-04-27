@@ -9,6 +9,7 @@ class res42 {
 	protected static $imagesPath;
 	protected static $iconsDir;
 	protected static $iconsPath;
+	protected static $rewriterEnabled;
 
 	public static function init() { // called only by seo42 addon
 		global $REX;
@@ -27,6 +28,8 @@ class res42 {
 		self::$jsPath = self::preparePath($jsDir);
 		self::$imagesPath = self::preparePath($imagesDir);
 		self::$iconsPath = self::preparePath($iconsDir);
+
+		self::$rewriterEnabled = $REX['ADDON']['seo42']['settings']['rewriter'];
 	}
 
 	public static function getCSSFile($file, $vars = array()) {
@@ -123,6 +126,10 @@ class res42 {
 	}
 
 	protected static function getFileWithVersionParam($file, $path) {
+		if (!self::$rewriterEnabled) {
+			return $file;
+		}
+
 		$file = ltrim($file, "./");
 		$path = trim($path, "./");
 		$mtime = @filemtime($path . '/' . $file); 

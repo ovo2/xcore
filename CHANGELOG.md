@@ -7,7 +7,8 @@ SEO42 - Changelog
 * Fixed #170: `nav42::addCallback()` public gemacht, thx@dtpop
 * Fixed #168: Smart Redirect ging bei Url Endung "/" nicht, thx@JeGr
 * Fixed #165: RegEx Redirect bei Subdir Installs, thx@NGWNGW
-* Fixed: Startartikel der Website wird jetzt immer, auch wenn offline, in die sitemap.xml aufgenommen
+* Verbessert: Startartikel der Website wird jetzt immer, auch wenn offline, in die sitemap.xml aufgenommen
+* Verbessert: Wird der Rewriter ausgeschaltet werden auch die CSS/JS Dateien nicht mehr mit einem Versionsstring bestückt
 
 ### Version 4.1.1 - 04. Februar 2015
 
