@@ -1,7 +1,7 @@
 SEO42 - Changelog
 =================
 
-### Version 4.1.2 - 04. Main 2015
+### Version 4.1.2 - 04. Mai 2015
 
 * Fixed #144: Bei URL Endung "ohne" funktionieren die automatischen Sprach Redirects nicht, thx@TobiasKrais
 * Fixed #171: Es gab einen 404 Fehler wenn eine interne Url gleich war die automatisch generierte Url
