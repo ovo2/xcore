@@ -3,6 +3,7 @@ SEO42 - Changelog
 
 ### Version 4.1.2 DEV
 
+* Fixed #144: Bei URL Endung "ohne" funktionieren die automatischen Sprach Redirects nicht, thx@TobiasKrais
 * Fixed #171: Es gab einen 404 Fehler wenn eine interne Url gleich war die automatisch generierte Url
 * Fixed #170: `nav42::addCallback()` public gemacht, thx@dtpop
 * Fixed #168: Smart Redirect ging bei Url Endung "/" nicht, thx@JeGr

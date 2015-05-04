@@ -490,9 +490,13 @@ function seo42_generate_pathlist($params)
 	$db->setQuery($sqlQuery);
 
 	// redirects start articles withou slash: /xx to /xx/
-	if (count($REX['CLANG']) > 1 && $REX['ADDON']['seo42']['settings']['url_ending'] != '') {
+	if (count($REX['CLANG']) > 1) {
 		foreach ($REX['CLANG'] as $clangId => $clangName) {
-			$langSlug = seo42::getLangSlug($clangId);
+			if ($REX['ADDON']['seo42']['settings']['url_ending'] == '') {
+				$langSlug = seo42::getLangSlug($clangId) . '/';
+			} else {
+				$langSlug = seo42::getLangSlug($clangId);
+			}
 
 			if ($REX['ADDON']['seo42']['settings']['homelang'] != $clangId) {
 				$SEO42_URLS[$langSlug]  = array ('id' => $REX['START_ARTICLE_ID'],'clang' => $clangId, 'status' => 301);
@@ -582,7 +586,14 @@ function seo42_generate_pathlist($params)
                $db->getValue('id') == $REX['START_ARTICLE_ID'] &&
                count($REX['CLANG']) > 1)
         {
-          $pathname = seo42::getLangSlug($clang).'/';
+
+          if ($REX['ADDON']['seo42']['settings']['url_ending'] == '') {
+            $langSlug = seo42::getLangSlug($clang);
+          } else {
+            $langSlug = seo42::getLangSlug($clang) . '/';
+          }
+
+          $pathname = $langSlug;
         }
 
       }
