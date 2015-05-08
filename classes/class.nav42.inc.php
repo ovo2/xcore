@@ -514,19 +514,21 @@ class nav42 {
 				$article = OOArticle::getArticleById($id);
 				$articleName = $article->getName();
 
-				if ($this->breadcrumbStartArticleName !== '' && intval($id) === $REX['START_ARTICLE_ID']) {
-					$articleName = $this->breadcrumbStartArticleName;
+				if ($article->isOnline()) {
+					if ($this->breadcrumbStartArticleName !== '' && intval($id) === $REX['START_ARTICLE_ID']) {
+						$articleName = $this->breadcrumbStartArticleName;
+					}
+
+					$html .= '<li>';
+
+					if (intval($id) === $REX['ARTICLE_ID']) {
+						$html .= $articleName;
+					} else {
+						$html .= '<a href="' . $article->getUrl() . '">' . $articleName . '</a>';
+					}
+
+					$html .= '</li>';
 				}
-
-				$html .= '<li>';
-
-				if (intval($id) === $REX['ARTICLE_ID']) {
-					$html .= $articleName;
-				} else {
-					$html .= '<a href="' . $article->getUrl() . '">' . $articleName . '</a>';
-				}
-
-				$html .= '</li>';
 			}
 		}
 		

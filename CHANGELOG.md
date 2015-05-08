@@ -1,6 +1,10 @@
 SEO42 - Changelog
 =================
 
+### Version 4.1.3 DEV
+
+* Fixed #174: nav42: Breadcrumb Navigation zeigt jetzt keine offline Artikel mehr an
+
 ### Version 4.1.2 - 04. Mai 2015
 
 * Fixed #144: Bei URL Endung "ohne" funktionieren die automatischen Sprach Redirects nicht, thx@TobiasKrais
