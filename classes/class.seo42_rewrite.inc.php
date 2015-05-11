@@ -141,7 +141,7 @@ class SEO42Rewrite
 			$langSlugs = array();
 
 			foreach ($REX['CLANG'] as $clangId => $clangName) {
-				$langSlugs[] = seo42::getLangSlug($clangId);
+				$langSlugs[$clangId] = seo42::getLangSlug($clangId);
 			}
 
 			$clangId = array_search($possibleLangSlug, $langSlugs);
