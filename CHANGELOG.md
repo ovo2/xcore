@@ -3,6 +3,7 @@ SEO42 - Changelog
 
 ### Version 4.1.3 DEV
 
+* Fixed #175: Bei mehrsprachigen Websites wurde der 404 Artikel nicht angezeigt wenn die `clang` IDs nicht durchgegehnd nummeriert waren, thx@GeForce92
 * Fixed #174: nav42: Breadcrumb Navigation zeigt jetzt keine offline Artikel mehr an
 
 ### Version 4.1.2 - 04. Mai 2015
