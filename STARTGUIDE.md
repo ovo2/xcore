@@ -13,3 +13,4 @@ Diese Hinweise richten sich primär an User die zum ersten mal SEO42 nutzen oder
 - In der `.htaccess` Datei ist eine Cachingdauer für CSS/JS Dateien von 4 Wochen eingestellt. Bitte reduzieren (z.B. auf 1 Woche) wenn die Dateien nicht wie vorgeschlagen per `seo42::getCSSFile()` / `seo42::getJSFile()` eingebunden werden sollten.
 - Der Fehlerartikel unter REDAXO > System sollte nicht gleich dem Startartikel der Website entsprechen. Es sollte aufjedenfall ein eigener Fehlerartikel angelegt werden.
 - Einen kurze Einführung zu SEO42 findet man hier: [REDAXO Tutorial: SEO-AddOns - URL-Umschreibung und mehr](http://www.redaxo.org/de/doku/sinnvolle-addons/seo-addons---urls-und-mehr/)
+- Für Websites die bei 1und1 gehostet werden: es empfiehlt sich die Einstellung `HTTP Header` > `Image Manager Cache Control Header Fix` zu setzen, da sonst Image Manager Bilder nicht gecachet werden.

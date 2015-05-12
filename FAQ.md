@@ -31,6 +31,12 @@ Warum funktioniert nach Installation von SEO42 die Suche mittels RexSearch nicht
 Vermutlich weil hartcodierte `index.php?article_id=x` Urls verwendet werden. Bitte Urls nur noch per `rex_getUrl()` ausgeben lassen. Beispiel: `<form action="<?php echo rex_getUrl(42);?>" method="post">`
 
 
+Auf meinem 1und1 Server werden die Image Manager Bilder nicht gecachet sonder jedesmal neu heruntergeladen?!
+------------------------------------------------------------------------------------------------------------
+
+Hier muss man in den Einstellungen folgende Einstellung aktivieren: HTTP Header > Image Manager Cache Control Header Fix.
+
+
 Gibts was bestimmtes zu beachten wenn ich REDAXO in einem Unterordner installiert habe?
 ---------------------------------------------------------------------------------------
 

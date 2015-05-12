@@ -105,6 +105,7 @@ Hinweise
 * Der Fehlerartikel unter REDAXO > System sollte nicht gleich dem Startartikel der Website entsprechen. Es sollte aufjedenfall ein eigener Fehlerartikel angelegt werden.
 * Implementiert man sein eigenes Titel-Schema, ist es vielleicht sinnvoll die Optionen `title_preview` und `no_prefix_checkbox` auf `false` zu setzen.
 * `$REX["MOD_REWRITE"]` braucht nicht mehr auf `true` gesetzt werden (z.B. über die System-Page von REDAXO). Wenn SEO42 aktiv, wird es automatisch gesetzt.
+* Für Websites die bei 1und1 gehostet werden: es empfiehlt sich die Einstellung `HTTP Header` > `Image Manager Cache Control Header Fix` zu setzen, da sonst Image Manager Bilder nicht gecachet werden.
 
 
 Hinweise Resourceneinbindung
