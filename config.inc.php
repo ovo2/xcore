@@ -207,7 +207,7 @@ if ($REX['REDAXO']) {
 		$plugins = OOPlugin::getAvailablePlugins('seo42');
 
 		for ($i = 0; $i < count($plugins); $i++) {
-            if (file_exists($REX['INCLUDE_PATH'] . '/addons/seo42/plugins/' . $plugins[$i] . '/pages/' . $plugins[$i]) ) {
+            if (file_exists($REX['INCLUDE_PATH'] . '/addons/seo42/plugins/' . $plugins[$i] . '/pages/' . $plugins[$i] . '.inc.php') ) { 
 				$I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/seo42/plugins/' . $plugins[$i] . '/lang/'); // make msg for subpage available at this point 
 				array_push($REX['ADDON']['seo42']['SUBPAGES'], array($plugins[$i], $I18N->msg('seo42_' . $plugins[$i])));
             }
