@@ -6,7 +6,7 @@ $ctype = rex_request('ctype');
 $doDataUpdate = true;
 $dataUpdated = false;
 
-if (rex_post('save_data', 'boolean')) {
+if (rex_post('save_url_data', 'boolean')) {
 	$newUrlType = rex_post('url_type', 'int');
 
 	$newUrlData['url_type'] = $newUrlType;
@@ -370,7 +370,7 @@ if ($urlField != '') {
 					<div class="rex-form-wrapper">
 						<div class="rex-form-row">
 							<p class="rex-form-col-a rex-form-submit">
-								<input type="submit" value="<?php echo $I18N->msg('seo42_urlpage_button_text'); ?>" name="save_data" class="rex-form-submit" />
+								<input type="submit" value="<?php echo $I18N->msg('seo42_urlpage_button_text'); ?>" name="save_url_data" class="rex-form-submit" />
 								<br/><br/>
 							</p>
 						</div>
