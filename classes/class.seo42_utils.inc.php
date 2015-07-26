@@ -54,16 +54,6 @@ class seo42_utils {
 		// controller
 		include($REX['INCLUDE_PATH'] . '/addons/seo42/controller.inc.php');
 
-		if (rex_post('save_url_data', 'boolean')) {
-			$params = array();
-
-			$params['id'] = rex_post('article_id', 'int');
-			$params['clang'] = rex_post('clang', 'int');
-			$params['url_type'] = rex_post('url_type', 'int');
-
-			rex_register_extension_point('SEO42_URL_UPDATED', '', $params);
-		}
-
 		// seo42 post init
 		rex_register_extension_point('SEO42_INCLUDED');
 	}

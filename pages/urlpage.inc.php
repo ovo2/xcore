@@ -97,11 +97,22 @@ if (rex_post('save_url_data', 'boolean')) {
 		// info msg
 		echo rex_info($I18N->msg('seo42_urlpage_updated'));
 
+		// extension point 1
+		$params = array();
+		$params['id'] = $articleId;
+		$params['clang'] = $clang;
+		$params['url_type'] = $newUrlType;
+
+		rex_register_extension_point('SEO42_URL_UPDATE', '', $params);
+
 		// generate stuff new
 		rex_deleteCacheArticleContent($articleId, $clang);
 		rex_generateArticle($articleId);
 		seo42_generate_pathlist(array());
 
+		// extension point 2
+		rex_register_extension_point('SEO42_URL_UPDATED', '', $params);
+		
 		 // this is for frontend link fix with js
 		$dataUpdated = true;
 	} else {
