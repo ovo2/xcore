@@ -57,6 +57,9 @@ if ($func == '') {
 	$list->setColumnLabel('source_url', $I18N->msg('seo42_redirect_source_url'));
 	$list->setColumnLabel('target_url', $I18N->msg('seo42_redirect_target_url'));
 
+	$list->removeColumn('create_date');
+	$list->removeColumn('expire_date');
+
 	if (rex_request('sort') == '') {
 		$list->setColumnSortable('id', 'desc');
 	} else {
