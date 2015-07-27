@@ -94,6 +94,19 @@ Language Presets
 * ISO Language Codes: <http://www.w3schools.com/tags/ref_language_codes.asp>
 * Sprach-Sonderzeichen-Tabelle: <http://unicode.e-workers.de/>
 
+RegEx Redirect Beispiel
+-----------------------
+
+Vor der Benutzung nicht vergessen die RegEx Redirects einzuschalten in den "Einstellungen".
+
+* Alte Url: `/kategorie/artikel_*`
+* Neue Url: `/kategorie/artikel-{1}.html`
+
+Folgende Urls werden damit umgeleitet (hier nur 1 Beispiel):
+
+* Von: `/kategorie/artikel_foo`
+* Nach: `/kategorie/artikel-foo.html`
+
 Hinweise
 --------
 

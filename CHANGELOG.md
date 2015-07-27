@@ -8,6 +8,7 @@ SEO42 - Changelog
 * Fixed: Die Seite eines Plugins wurden nicht automatisch angezeigt im Menü
 * Neu: EP's `SEO42_URL_UPDATE` und `SEO42_URL_UPDATED` hinzugefügt. Wird getriggert wenn die URL über die URL-Seite in der Artikelansicht geändert wurde
 * Neu: FAQ Eintrag (+ Startguide und Readme) hinzugefügt: "Auf meinem 1und1 Server werden die Image Manager Bilder nicht gecachet sonder jedesmal neu heruntergeladen?!" 
+* Neu: RegEx Redirect Beispiel in die Readme aufgenommen
 
 ### Version 4.1.2 - 04. Mai 2015
 
