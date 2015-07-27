@@ -11,6 +11,7 @@ SEO42 - Changelog
 * Neu: FAQ Eintrag (+ Startguide und Readme) hinzugefügt: "Auf meinem 1und1 Server werden die Image Manager Bilder nicht gecachet sonder jedesmal neu heruntergeladen?!" 
 * Neu: RegEx Redirect Beispiel in die Readme aufgenommen
 * Verbessert: Bei den One Domain only Redirects wurde der Hinweis mit aufgenommen dass WWW/Nicht-WWW Weiterleitungen hier automatisch mit inkludiert sind
+* Verbessert: Setup Schritt 4 hinzugefügt mit Links zum Hilfe-Bereich
 
 ### Version 4.1.2 - 04. Mai 2015
 

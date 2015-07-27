@@ -178,10 +178,13 @@ seo42_setup_htaccess_patch_failed = Patching of .htaccess file could not be done
 seo42_setup_step2_button = Copy file
 seo42_setup_step3 = Step 3:Customize template
 seo42_setup_step3_msg1 = Please use this SEO42 Boilerplate as a starting point for your own templates:
+seo42_setup_step4 = Schritt 4: Optimize your code
+seo42_setup_step4_msg1 = New to SEO42? Please read the <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=startguide">startguide</a> first.
+seo42_setup_step4_msg2 = Further <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=codeexamples">examples of code</a> are to be found in SEO42's help area.
+seo42_setup_step4_msg3 = Help and hints can be found in the <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=">Readme</a> and in the <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=faq">FAQ</a>.
 seo42_setup_codeexamples_goto_startpage = Link to startpage
 seo42_setup_url_alert = URL of the website must begin with "http://" and end with "/".
 seo42_setup_htaccess_alert = There is already a .htaccess file present in REDAXO's root directory.\r\nDo you want to overwrite it?\r\n\r\nNote: A backup will be saved in /data/addons/seo42/backup/ automatically.
-seo42_setup_codeexamples = Further <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=codeexamples">examples of code</a> are to be found in SEO42's help area...
 seo42_setup_rewritebase = Adjust RewriteBase: <i>RewriteBase /{0}</i>
 seo42_setup_subdir_hint = (Please specify the subfolder, if necessary)
 seo42_setup_rewritebase_alert = Please take the following adjustments in the .htaccess file:
