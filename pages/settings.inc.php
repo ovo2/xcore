@@ -138,7 +138,7 @@ $no_double_content_redirects_select = new rex_select();
 $no_double_content_redirects_select->setSize(1);
 $no_double_content_redirects_select->setName('settings[no_double_content_redirects]');
 $no_double_content_redirects_select->addOption($I18N->msg('seo42_settings_no_double_content_redirects_0'), SEO42_NO_DOUBLE_CONTENT_REDIRECT_NONE);
-$no_double_content_redirects_select->addOption($I18N->msg('seo42_settings_no_double_content_redirects_1') . ' [' . $serverString . ']', SEO42_NO_DOUBLE_CONTENT_REDIRECT_ONE_DOMAIN_ONLY);
+$no_double_content_redirects_select->addOption($I18N->msg('seo42_settings_no_double_content_redirects_1') . ' [' . $serverString . '] ' . $I18N->msg('seo42_settings_no_double_content_redirects_1a'), SEO42_NO_DOUBLE_CONTENT_REDIRECT_ONE_DOMAIN_ONLY);
 $no_double_content_redirects_select->addOption($I18N->msg('seo42_settings_no_double_content_redirects_2'), SEO42_NO_DOUBLE_CONTENT_REDIRECT_NON_WWW_TO_WWW);
 $no_double_content_redirects_select->addOption($I18N->msg('seo42_settings_no_double_content_redirects_3'), SEO42_NO_DOUBLE_CONTENT_REDIRECT_WWW_TO_NON_WWW);
 $no_double_content_redirects_select->addOption($I18N->msg('seo42_settings_no_double_content_redirects_4'), SEO42_NO_DOUBLE_CONTENT_REDIRECT_ONLY_HTTPS);

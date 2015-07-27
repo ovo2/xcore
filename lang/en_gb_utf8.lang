@@ -83,6 +83,7 @@ seo42_settings_auto_redirects_3 = Auto Redirect "ArticleName.0-42.html" Urls
 seo42_settings_no_double_content_redirects = No Double Content Redirects
 seo42_settings_no_double_content_redirects_0 = Off
 seo42_settings_no_double_content_redirects_1 = One domain only
+seo42_settings_no_double_content_redirects_1a = incl. WWW/NON-WWW
 seo42_settings_no_double_content_redirects_2 = NON-WWW to WWW
 seo42_settings_no_double_content_redirects_3 = WWW to NON-WWW 
 seo42_settings_no_double_content_redirects_4 = HTTPS only
