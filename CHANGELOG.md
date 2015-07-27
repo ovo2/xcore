@@ -6,6 +6,7 @@ SEO42 - Changelog
 * Fixed #175: Bei mehrsprachigen Websites wurde der 404 Artikel nicht angezeigt wenn die `clang` IDs nicht durchgehend nummeriert waren, thx@GeForce92
 * Fixed #174: nav42: Breadcrumb Navigation zeigt jetzt keine offline Artikel mehr an
 * Fixed: Die Seite eines Plugins wurden nicht automatisch angezeigt im Menü
+* Fixed: Offline Startartikel einer anderen Sprache wie der Default Sprache werden nun nicht mehr angezeigt in der `sitemap.xml`
 * Neu: EP's `SEO42_URL_UPDATE` und `SEO42_URL_UPDATED` hinzugefügt. Wird getriggert wenn die URL über die URL-Seite in der Artikelansicht geändert wurde
 * Neu: FAQ Eintrag (+ Startguide und Readme) hinzugefügt: "Auf meinem 1und1 Server werden die Image Manager Bilder nicht gecachet sonder jedesmal neu heruntergeladen?!" 
 * Neu: RegEx Redirect Beispiel in die Readme aufgenommen
