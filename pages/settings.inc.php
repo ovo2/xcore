@@ -228,9 +228,24 @@ $no_double_content_redirects_availability_select->setSelected($REX['ADDON'][$mys
 
           <div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-checkbox">
+					<label for="sync_redirects"><?php echo $I18N->msg('seo42_settings_sync_redirects'); ?></label>
+					<input type="hidden" name="settings[sync_redirects]" value="0" />
+					<input type="checkbox" name="settings[sync_redirects]" id="sync_redirects" value="1" <?php if ($REX['ADDON']['seo42']['settings']['sync_redirects']) { echo 'checked="checked"'; } ?>>
+				</p>
+			</div>
+
+          <div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-checkbox">
 					<label for="redirects_allow_regex"><?php echo $I18N->msg('seo42_settings_redirects_allow_regex'); ?></label>
 					<input type="hidden" name="settings[redirects_allow_regex]" value="0" />
 					<input type="checkbox" name="settings[redirects_allow_regex]" id="redirects_allow_regex" value="1" <?php if ($REX['ADDON']['seo42']['settings']['redirects_allow_regex']) { echo 'checked="checked"'; } ?>>
+				</p>
+			</div>
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-text">
+					<label for="redirects_max_age"><?php echo $I18N->msg('seo42_settings_redirects_max_age'); ?></label>
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['redirects_max_age']; ?>" name="settings[redirects_max_age]" class="rex-form-text" id="redirects_max_age">
 				</p>
 			</div>
 

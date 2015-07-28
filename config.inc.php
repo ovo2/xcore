@@ -73,7 +73,9 @@ $REX['ADDON']['seo42']['settings'] = array(
 	'no_double_content_redirects_availability' => SEO42_NO_DOUBLE_CONTENT_REDIRECT_AVAILABILITY_FRONTEND,
 	'auto_redirects' => SEO42_AUTO_REDIRECT_NONE,
 	'smart_redirects' => true,
+	'sync_redirects' => false,
 	'redirects_allow_regex' => false,
+	'redirects_max_age' => 0,
 	'css_dir' => '/resources/css/',
 	'js_dir' => '/resources/js/',
 	'images_dir' => '/resources/images/',
@@ -143,6 +145,24 @@ seo42_utils::noDoubleContentRedirect();
 
 if (!$REX['REDAXO']) {
 	seo42_utils::redirect();	
+}
+
+//sync redirects
+if ($REX['ADDON']['seo42']['settings']['sync_redirects']) {
+	// register sync redirects extensions
+	$extensionPoints = array('CAT_UPDATED', 'CAT_MOVED', 'ART_UPDATED', 'ART_MOVED', 'ART_TO_STARTPAGE', 'SEO42_URL_UPDATE');
+
+	foreach($extensionPoints as $extensionPoint) {
+		rex_register_extension($extensionPoint, 'seo42_utils::updateUrl');
+	}
+
+	rex_register_extension('CAT_UPDATED', 'seo42_utils::addMultipleRedirects');
+	rex_register_extension('CAT_MOVED', 'seo42_utils::addMultipleRedirects');
+}
+
+// check for expired redirects
+if (seo42_utils::redirectsDoExpire()) {
+	seo42_utils::checkExpiredRedirects();
 }
 
 // init

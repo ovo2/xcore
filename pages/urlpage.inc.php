@@ -100,10 +100,19 @@ if (rex_post('save_url_data', 'boolean')) {
 		// extension point 1
 		$params = array();
 		$params['id'] = $articleId;
-		$params['clang'] = $clang;
 		$params['url_type'] = $newUrlType;
 
-		rex_register_extension_point('SEO42_URL_UPDATE', '', $params);
+		if ($newUrlData['url_clone']) {
+			foreach ($REX['CLANG'] as $clang => $clang_name) {
+				$params['clang'] = $clang;
+
+				rex_register_extension_point('SEO42_URL_UPDATE', '', $params);
+			}
+		} else {
+			$params['clang'] = $clang;
+
+			rex_register_extension_point('SEO42_URL_UPDATE', '', $params);
+		}
 
 		// generate stuff new
 		rex_deleteCacheArticleContent($articleId, $clang);

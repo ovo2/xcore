@@ -100,7 +100,9 @@ seo42_settings_download_section = Download
 seo42_settings_sitemap_section = Sitemap.xml
 seo42_settings_ui_section = User Interface
 seo42_settings_smart_redirects = Smart Redirects
+seo42_settings_sync_redirects = Sync Redirects
 seo42_settings_redirects_allow_regex = RegEx Unterstützung für benutzerdef. Redirects
+seo42_settings_redirects_max_age = Redirects Ablauf in Tagen
 seo42_settings_seo_friendly_image_manager_urls = SEO-freundliche Image Manager URLs
 seo42_settings_full_urls = Vollständige URLs
 seo42_settings_include_query_params = Query Params erlauben 
@@ -177,7 +179,7 @@ seo42_setup_htaccess_patch_failed = Die Anpassungen an der .htaccess Datei konnt
 seo42_setup_step2_button = Datei kopieren
 seo42_setup_step3 = Schritt 3: Template anpassen
 seo42_setup_step3_msg1 = Zuletzt nutzen Sie dieses SEO42 Boilerplate als Basis für Ihre eigenen Templates:
-seo42_setup_step4 = Schritt 4: Code optimieren
+seo42_setup_step4 = Schritt 4: Optimierungen
 seo42_setup_step4_msg1 = Neu bei SEO42? Bitte lesen Sie unbedingt die <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=startguide">Startguide</a>.
 seo42_setup_step4_msg2 = Weitere <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=codeexamples">Codebeispiele</a> finden Sie in der Hilfe von SEO42.
 seo42_setup_step4_msg3 = Hilfe und Hinweise finden Sie in der <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=">Readme</a> und in der <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=faq">FAQ</a>.
@@ -332,6 +334,8 @@ seo42_redirect_redirect_exists = Eine Redirect mit dieser ID existiert bereits!
 seo42_redirect_name = Name 
 seo42_redirect_source_url = Alte URL
 seo42_redirect_target_url = Neue URL
+seo42_redirect_create_date = Erstelldatum
+seo42_redirect_expire_date = Ablaufdatum
 seo42_redirect = Redirect
 seo42_redirect_not_available = Redirect nicht vorhanden!
 seo42_redirect_none = <keins>

@@ -18,7 +18,7 @@ class seo42_utils {
 	}
 
 	public static function init($params) {
-		global $REX;
+		global $REX, $SEO42_IDS, $SEO42_IDS_CLONE;
 
 		if ($REX['MOD_REWRITE']) {
 			// includes
@@ -46,6 +46,9 @@ class seo42_utils {
 			rex_register_extension('URL_REWRITE', array ($rewriter, 'rewrite'));
 
 			$rewriter->resolve();
+
+			// clone urls for later usage with sync redirects 
+			$SEO42_IDS_CLONE = $SEO42_IDS;
 		}
 
 		// init current article
@@ -1046,4 +1049,127 @@ class seo42_utils {
 			return false;
 		}
 	} 
+
+	public static function updateUrl($params) {
+		global $REX, $SEO42_IDS_CLONE;
+		$id = $params['id'];
+		$clangId = $params['clang'];
+		$oldUrl = '/' . $SEO42_IDS_CLONE[$id][$clangId]['url'];
+		$urlType = -1;
+
+		if (isset($params['url_type'])) {
+			$urlType = $params['url_type'];
+
+			if ($urlType == SEO42_URL_TYPE_DEFAULT || 
+				$urlType == SEO42_URL_TYPE_USERDEF_INTERN || 
+				$urlType == SEO42_URL_TYPE_REMOVE_ROOT_CAT || 
+				$urlType == SEO42_URL_TYPE_INTERN_REPLACE || 
+				$urlType == SEO42_URL_TYPE_INTERN_REPLACE_CLANG) {
+				// do nothing, proceed
+			} else {
+				return;
+			}
+		}
+
+		// checkout new url
+		rex_deleteCacheArticleContent($id, $clangId);
+		rex_generateArticle($id);
+		seo42_generate_pathlist(array());
+		
+		$newUrl = self::getUrl($id, $clangId);
+
+		// point of no return
+		if ($oldUrl == '/' || $oldUrl == '' || $newUrl == '' || $oldUrl == $newUrl) {
+			return;
+		}
+
+		// check for redirects loop
+		$sql = rex_sql::factory();
+		$sql->setDebug(false);
+		$sql->setQuery('SELECT * FROM `' . $REX['TABLE_PREFIX'] . 'redirects` WHERE source_url LIKE "' . $newUrl  . '"');
+
+		if ($sql->getRows() > 0) {
+			// delete existing redirect to avoid loop
+			$sql2 = rex_sql::factory();
+			$sql2->setDebug(false);
+			$sql2->setQuery('DELETE FROM `' . $REX['TABLE_PREFIX'] . 'redirects` WHERE source_url LIKE "' . $newUrl  . '"');
+		} else {
+			$maxAge =  intval($REX['ADDON']['seo42']['settings']['redirects_max_age']);
+			$createDate = self::getDate();
+			$expireDate = self::getDate($maxAge);
+
+			if (!seo42_utils::redirectsDoExpire()) {
+				$expireDate = 0;
+			}
+
+			// add new redirect
+			$sql2 = rex_sql::factory();
+			$sql2->setDebug(false);
+			$sql2->setQuery('INSERT INTO `' . $REX['TABLE_PREFIX'] . 'redirects` (source_url, target_url, create_date, expire_date) VALUES ("' . $oldUrl . '", "' . $newUrl . '", "' . $createDate . '", "' . $expireDate . '")');
+		}
+
+		// update cached redirects
+		self::updateRedirectsFile(false);
+	}
+
+	public static function checkExpiredRedirects() {
+		global $REX;
+
+		$sql = rex_sql::factory();
+		$sql->setDebug(false);
+		$sql->setQuery('SELECT id, create_date, expire_date FROM `' . $REX['TABLE_PREFIX'] . 'redirects` WHERE expire_date IS NOT NULL AND expire_date != "0000-00-00 00:00:00" AND NOW() >= expire_date');
+
+		if ($sql->getRows() > 0) {
+			for ($i = 0; $i < $sql->getRows(); $i++) {		
+				$sql2 = rex_sql::factory();
+				$sql2->setDebug(false);
+				$sql2->setQuery('DELETE FROM `' . $REX['TABLE_PREFIX'] . 'redirects` WHERE id = ' . $sql->getValue('id'));
+
+				$sql->next();
+			}
+		}
+	}
+
+	public static function getUrl($articleId, $clang = 0) {
+		return '/' . ltrim(rex_getUrl($articleId, $clang), "./");
+	}
+
+	public static function redirectsDoExpire() {
+		global $REX;
+
+		if (intval($REX['ADDON']['seo42']['settings']['redirects_max_age']) > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static function getLastInsertedId($sql) {
+		return $sql->last_insert_id;
+	}
+
+	public static function getDate($addDays = 0) {
+		return date('Y-m-d H:i:s', strtotime('+' . $addDays . ' day', time()));
+	}
+
+	public static function addMultipleRedirects($params) {
+		global $REX;
+
+		$id = $params['id'];
+		$clangId = $params['clang'];
+
+		$sql = rex_sql::factory();
+		$sql->setDebug(true);
+		$sql->setQuery('SELECT * FROM `' . $REX['TABLE_PREFIX'] . 'article` WHERE path LIKE "%|' . $id  . '|%"');
+
+		for ($i = 0; $i < $sql->getRows(); $i++) {
+			$params = array();
+			$params['id'] = $sql->getValue('id');
+			$params['clang'] = $sql->getValue('clang');
+
+			self::updateUrl($params);
+
+			$sql->next();
+		}
+	}
 }
