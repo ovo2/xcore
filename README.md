@@ -107,6 +107,15 @@ Folgende Urls werden damit umgeleitet (hier nur 1 Beispiel):
 * Von: `/kategorie/artikel_foo`
 * Nach: `/kategorie/artikel-foo.html`
 
+Redirects Varianten
+-------------------
+
+* No Double Content Redirects: Hiermit werden hauptsächlich die WWW/Nicht-WWW Redirects gesteuert
+* Auto Redirects: Für alle REDAXO Urls 
+* Smart Redirects: Für manuell falsch eingegebene Urls, z.B. wird dann `/foo/` nach `/foo.html` umgeleitet
+* Sync Redirects: Beim Umbenennen/Verschieben von Katgeorien/Artikel werden Redirects automatisch angelegt
+* Benutzerdef. Redrirects: Von Hand eingetragene Redirects
+
 Hinweise
 --------
 
