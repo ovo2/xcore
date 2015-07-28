@@ -380,7 +380,7 @@ function rex_article2startpage($neu_id)
         rex_register_extension_point('ART_TO_STARTPAGE', '', array (
             'id' => $neu_id,
             'id_old' => $alt_id,
-            'clang' => $clang
+            'clang' => $clang,
         ));
     }
 
@@ -781,11 +781,6 @@ function rex_moveArticle($id, $from_cat_id, $to_cat_id)
                 // Prios neu berechnen
                 rex_newArtPrio($to_cat_id, $clang, 1, 0);
                 rex_newArtPrio($from_cat_id, $clang, 1, 0);
-
-				rex_register_extension_point('ART_MOVED', '', array(
-					'id' => $id,
-					'clang' => $clang
-				));
             } else {
                 return false;
             }
@@ -896,11 +891,6 @@ function rex_moveCategory($from_cat, $to_cat)
                 $up->setValue('re_id', $to_cat);
                 $up->setValue('catprior', ($catprior + 1));
                 $up->update();
-
-				rex_register_extension_point('CAT_MOVED', '', array(
-					'id' => $from_cat,
-					'clang' => $clang
-				));
             }
 
             // ----- generiere artikel neu - ohne neue inhaltsgenerierung
