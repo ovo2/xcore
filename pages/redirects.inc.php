@@ -179,6 +179,22 @@ if ($func == '') {
 echo '</div>';
 ?>
 
+<style type="text/css">
+#rex-page-seo42 table {
+	width: auto;
+	table-layout: fixed;
+}
+
+#rex-page-seo42 table td:nth-child(3),
+#rex-page-seo42 table td:nth-child(4),
+#rex-page-seo42 table td:nth-child(5) {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 180px;
+}
+</style>
+
 <script type="text/javascript">
 jQuery(document).ready( function() {
 	// focus
@@ -202,6 +218,15 @@ jQuery(document).ready( function() {
 		}
 
 		return false;
+	});
+
+	jQuery('#rex-page-seo42 table td:nth-child(3),#rex-page-seo42 table td:nth-child(4)').each(function (index) {
+		var $this = jQuery(this);
+		var titleVal = $this.text();
+
+		if (titleVal != '') {
+			$this.attr('title', jQuery.trim(titleVal));
+		}
 	});
 });
 </script>
