@@ -236,6 +236,14 @@ $no_double_content_redirects_availability_select->setSelected($REX['ADDON'][$mys
 
           <div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-checkbox">
+					<label for="sync_redirects_only_online"><?php echo $I18N->msg('seo42_settings_sync_redirects_only_online'); ?></label>
+					<input type="hidden" name="settings[sync_redirects_only_online]" value="0" />
+					<input type="checkbox" name="settings[sync_redirects_only_online]" id="sync_redirects_only_online" value="1" <?php if ($REX['ADDON']['seo42']['settings']['sync_redirects_only_online']) { echo 'checked="checked"'; } ?>>
+				</p>
+			</div>
+
+          <div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-checkbox">
 					<label for="redirects_allow_regex"><?php echo $I18N->msg('seo42_settings_redirects_allow_regex'); ?></label>
 					<input type="hidden" name="settings[redirects_allow_regex]" value="0" />
 					<input type="checkbox" name="settings[redirects_allow_regex]" id="redirects_allow_regex" value="1" <?php if ($REX['ADDON']['seo42']['settings']['redirects_allow_regex']) { echo 'checked="checked"'; } ?>>

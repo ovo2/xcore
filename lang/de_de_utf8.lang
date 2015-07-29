@@ -101,6 +101,7 @@ seo42_settings_sitemap_section = Sitemap.xml
 seo42_settings_ui_section = User Interface
 seo42_settings_smart_redirects = Smart Redirects
 seo42_settings_sync_redirects = Sync Redirects
+seo42_settings_sync_redirects_only_online = Sync Redirects nur bei Online Artikeln
 seo42_settings_redirects_allow_regex = RegEx Unterstützung für benutzerdef. Redirects
 seo42_settings_redirects_max_age = Redirects Ablauf in Tagen
 seo42_settings_seo_friendly_image_manager_urls = SEO-freundliche Image Manager URLs

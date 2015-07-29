@@ -1103,7 +1103,12 @@ class seo42_utils {
 						if ($oldUrl == '/' || $oldUrl == '' || $newUrl == '' || $oldUrl == $newUrl) {
 							// do nothing
 						} else {
-							$newRedirects[$oldUrl] = $newUrl;
+							$article = OOArticle::getArticleById($id, $clangId);
+							$onlyOnline = $REX['ADDON']['seo42']['settings']['sync_redirects_only_online'];
+
+							if (!$onlyOnline || ($onlyOnline && $article->isOnline())) {
+								$newRedirects[$oldUrl] = $newUrl;
+							}
 						}
 					}
 				}

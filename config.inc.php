@@ -74,6 +74,7 @@ $REX['ADDON']['seo42']['settings'] = array(
 	'auto_redirects' => SEO42_AUTO_REDIRECT_NONE,
 	'smart_redirects' => true,
 	'sync_redirects' => false,
+	'sync_redirects_only_online' => false,
 	'redirects_allow_regex' => false,
 	'redirects_max_age' => 0,
 	'css_dir' => '/resources/css/',
