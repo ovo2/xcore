@@ -1050,68 +1050,6 @@ class seo42_utils {
 		}
 	} 
 
-	public static function updateUrl($params) {
-		global $REX, $SEO42_IDS_CLONE;
-		$id = $params['id'];
-		$clangId = $params['clang'];
-		$oldUrl = '/' . $SEO42_IDS_CLONE[$id][$clangId]['url'];
-		$urlType = -1;
-
-		if (isset($params['url_type'])) {
-			$urlType = $params['url_type'];
-
-			if ($urlType == SEO42_URL_TYPE_DEFAULT || 
-				$urlType == SEO42_URL_TYPE_USERDEF_INTERN || 
-				$urlType == SEO42_URL_TYPE_REMOVE_ROOT_CAT || 
-				$urlType == SEO42_URL_TYPE_INTERN_REPLACE || 
-				$urlType == SEO42_URL_TYPE_INTERN_REPLACE_CLANG) {
-				// do nothing, proceed
-			} else {
-				return;
-			}
-		}
-
-		// checkout new url
-		rex_deleteCacheArticleContent($id, $clangId);
-		rex_generateArticle($id);
-		seo42_generate_pathlist(array());
-		
-		$newUrl = self::getUrl($id, $clangId);
-
-		// point of no return
-		if ($oldUrl == '/' || $oldUrl == '' || $newUrl == '' || $oldUrl == $newUrl) {
-			return;
-		}
-
-		// check for redirects loop
-		$sql = rex_sql::factory();
-		$sql->setDebug(false);
-		$sql->setQuery('SELECT * FROM `' . $REX['TABLE_PREFIX'] . 'redirects` WHERE source_url LIKE "' . $newUrl  . '"');
-
-		if ($sql->getRows() > 0) {
-			// delete existing redirect to avoid loop
-			$sql2 = rex_sql::factory();
-			$sql2->setDebug(false);
-			$sql2->setQuery('DELETE FROM `' . $REX['TABLE_PREFIX'] . 'redirects` WHERE source_url LIKE "' . $newUrl  . '"');
-		} else {
-			$maxAge =  intval($REX['ADDON']['seo42']['settings']['redirects_max_age']);
-			$createDate = self::getDate();
-			$expireDate = self::getDate($maxAge);
-
-			if (!seo42_utils::redirectsDoExpire()) {
-				$expireDate = 0;
-			}
-
-			// add new redirect
-			$sql2 = rex_sql::factory();
-			$sql2->setDebug(false);
-			$sql2->setQuery('INSERT INTO `' . $REX['TABLE_PREFIX'] . 'redirects` (source_url, target_url, create_date, expire_date) VALUES ("' . $oldUrl . '", "' . $newUrl . '", "' . $createDate . '", "' . $expireDate . '")');
-		}
-
-		// update cached redirects
-		self::updateRedirectsFile(false);
-	}
-
 	public static function checkExpiredRedirects() {
 		global $REX;
 
@@ -1128,10 +1066,6 @@ class seo42_utils {
 				$sql->next();
 			}
 		}
-	}
-
-	public static function getUrl($articleId, $clang = 0) {
-		return '/' . ltrim(rex_getUrl($articleId, $clang), "./");
 	}
 
 	public static function redirectsDoExpire() {
@@ -1152,24 +1086,71 @@ class seo42_utils {
 		return date('Y-m-d H:i:s', strtotime('+' . $addDays . ' day', time()));
 	}
 
-	public static function addMultipleRedirects($params) {
-		global $REX;
+	public static function syncRedirects() {
+		global $REX, $SEO42_IDS, $SEO42_IDS_CLONE;
 
-		$id = $params['id'];
-		$clangId = $params['clang'];
+		$newRedirects = array();
 
-		$sql = rex_sql::factory();
-		$sql->setDebug(true);
-		$sql->setQuery('SELECT * FROM `' . $REX['TABLE_PREFIX'] . 'article` WHERE path LIKE "%|' . $id  . '|%"');
+		seo42_generate_pathlist(array());
 
-		for ($i = 0; $i < $sql->getRows(); $i++) {
-			$params = array();
-			$params['id'] = $sql->getValue('id');
-			$params['clang'] = $sql->getValue('clang');
+		foreach ($SEO42_IDS as $id => $value) {
+			if (isset($SEO42_IDS_CLONE[$id])) {
+				foreach ($REX['CLANG'] as $clangId => $clangName) {
+					$oldUrl = '/' . $SEO42_IDS_CLONE[$id][$clangId]['url'];
+					$newUrl = '/' . $SEO42_IDS[$id][$clangId]['url'];
 
-			self::updateUrl($params);
+					if ($oldUrl !== $newUrl) {
+						if ($oldUrl == '/' || $oldUrl == '' || $newUrl == '' || $oldUrl == $newUrl) {
+							// do nothing
+						} else {
+							$newRedirects[$oldUrl] = $newUrl;
+						}
+					}
+				}
+			}
+		}
 
-			$sql->next();
+		if (count($newRedirects) > 0) {
+			foreach ($newRedirects as $oldUrl => $newUrl) {
+				// check for redirects loop
+				$sql = rex_sql::factory();
+				$sql->setDebug(false);
+				$sql->setQuery('SELECT * FROM `' . $REX['TABLE_PREFIX'] . 'redirects` WHERE source_url LIKE "' . $newUrl  . '"');
+
+				if ($sql->getRows() > 0) {
+					// delete existing redirect to avoid loop
+					$sql2 = rex_sql::factory();
+					$sql2->setDebug(false);
+					$sql2->setQuery('DELETE FROM `' . $REX['TABLE_PREFIX'] . 'redirects` WHERE source_url LIKE "' . $newUrl  . '"');
+				} else {
+					$maxAge =  intval($REX['ADDON']['seo42']['settings']['redirects_max_age']);
+					$createDate = self::getDate();
+					$expireDate = self::getDate($maxAge);
+
+					if (!seo42_utils::redirectsDoExpire()) {
+						$expireDate = 0;
+					}
+
+					$sql2 = rex_sql::factory();
+					$sql2->setDebug(false);
+					$sql2->setQuery('SELECT * FROM `' . $REX['TABLE_PREFIX'] . 'redirects` WHERE source_url LIKE "' . $oldUrl  . '"');
+	
+					if ($sql2->getRows() > 0) {
+						// update existing redirect
+						$sql3 = rex_sql::factory();
+						$sql3->setDebug(false);
+						$sql3->setQuery('UPDATE `' . $REX['TABLE_PREFIX'] . 'redirects` SET source_url = "' . $oldUrl . '", target_url = "' . $newUrl . '", create_date = "' . $createDate . '", expire_date = "' . $expireDate . '" WHERE id = ' . $sql2->getValue('id'));
+					} else {
+						// add new redirect
+						$sql3 = rex_sql::factory();
+						$sql3->setDebug(false);
+						$sql3->setQuery('INSERT INTO `' . $REX['TABLE_PREFIX'] . 'redirects` (source_url, target_url, create_date, expire_date) VALUES ("' . $oldUrl . '", "' . $newUrl . '", "' . $createDate . '", "' . $expireDate . '")');
+					}
+				}
+			}
+
+			// update cached redirects
+			self::updateRedirectsFile(false);
 		}
 	}
 }

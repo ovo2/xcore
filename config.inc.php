@@ -147,19 +147,6 @@ if (!$REX['REDAXO']) {
 	seo42_utils::redirect();	
 }
 
-//sync redirects
-if ($REX['ADDON']['seo42']['settings']['sync_redirects']) {
-	// register sync redirects extensions
-	$extensionPoints = array('CAT_UPDATED', 'CAT_MOVED', 'ART_UPDATED', 'ART_MOVED', 'ART_TO_STARTPAGE', 'SEO42_URL_UPDATE');
-
-	foreach($extensionPoints as $extensionPoint) {
-		rex_register_extension($extensionPoint, 'seo42_utils::updateUrl');
-	}
-
-	rex_register_extension('CAT_UPDATED', 'seo42_utils::addMultipleRedirects');
-	rex_register_extension('CAT_MOVED', 'seo42_utils::addMultipleRedirects');
-}
-
 // check for expired redirects
 if (seo42_utils::redirectsDoExpire()) {
 	seo42_utils::checkExpiredRedirects();
@@ -194,6 +181,13 @@ if ($REX['REDAXO']) {
 		require($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.google_pagerank_checker.inc.php');
 		echo GooglePageRankChecker::getRank(rex_request('url'));
 		exit;
+	}
+
+	//sync redirects
+	if ($REX['ADDON']['seo42']['settings']['sync_redirects']) {
+		if (rex_request('page') == 'structure' || rex_request('page') == 'content') {
+			rex_register_extension('OUTPUT_FILTER_CACHE', 'seo42_utils::syncRedirects');
+		}
 	}
 
 	// subpages
