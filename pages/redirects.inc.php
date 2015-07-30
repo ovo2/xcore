@@ -91,6 +91,40 @@ if ($func == '') {
 	$list->setColumnSortable('source_url', 'asc');
 	$list->setColumnSortable('target_url', 'asc');
 
+	$list->setColumnFormat('source_url', 'custom',  create_function(
+		'$params',
+		'global $REX, $I18N;
+
+		$list = $params["list"];
+
+		$query = \'SELECT * FROM \' . $REX[\'TABLE_PREFIX\'] . \'redirects WHERE id=\' . $list->getValue("id");
+		$sql = new sql();
+		$sql->setQuery($query);
+
+		if ($sql->getRows() > 0) {
+			$text = urldecode("/" . ltrim($sql->getValue(\'source_url\'), \'/\'));
+		}
+
+		return $text;'	
+	));
+
+	$list->setColumnFormat('target_url', 'custom',  create_function(
+		'$params',
+		'global $REX, $I18N;
+
+		$list = $params["list"];
+
+		$query = \'SELECT * FROM \' . $REX[\'TABLE_PREFIX\'] . \'redirects WHERE id=\' . $list->getValue("id");
+		$sql = new sql();
+		$sql->setQuery($query);
+
+		if ($sql->getRows() > 0) {
+			$text = urldecode("/" . ltrim($sql->getValue(\'target_url\'), \'/\'));
+		}
+
+		return $text;'	
+	));
+
 	// icon column
 	$thIcon = '<a class="rex-i-element rex-i-generic-add" href="'. $list->getUrl(array('func' => 'add')) .'"><span class="rex-i-element-text">' . $I18N->msg('seo42_redirect_create') . '</span></a>';
 	$tdIcon = '<span class="rex-i-element rex-i-generic"><span class="rex-i-element-text">###name###</span></span>';
