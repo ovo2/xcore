@@ -1124,19 +1124,29 @@ class seo42_utils {
 
 		// userdef urls
 		$userDefOldUrls = self::getUserDefUrls($SEO42_URLS_CLONE);
-		$userDefNewUrls = self::getUserDefUrls($SEO42_URLS);
 
-		foreach ($userDefNewUrls as $id => $url) {
-			if (isset($userDefOldUrls[$id])) {				
-				$oldUrl = '/' . $userDefOldUrls[$id];
-				$newUrl = '/' . $userDefNewUrls[$id];
+		if (isset($userDefOldUrls) && is_array($userDefOldUrls) && count($userDefOldUrls) > 0) {
+			// include pathlist manually because at this point userdef urls are missing in $SEO42_URLS array
+			unset($SEO42_URLS);
 
-				if ($oldUrl !== $newUrl) {
-					if ($oldUrl == '/' || $oldUrl == '' || $newUrl == '' || $oldUrl == $newUrl) {
-						// do nothing
-					} else {
-						if (!isset($newRedirects[$oldUrl])) {
-							$newRedirects[$oldUrl] = $newUrl;
+			if (file_exists(SEO42_PATHLIST)) {
+				include(SEO42_PATHLIST);
+			}
+
+			$userDefNewUrls = self::getUserDefUrls($SEO42_URLS);
+
+			foreach ($userDefNewUrls as $id => $url) {
+				if (isset($userDefOldUrls[$id])) {				
+					$oldUrl = '/' . $userDefOldUrls[$id];
+					$newUrl = '/' . $userDefNewUrls[$id];
+
+					if ($oldUrl !== $newUrl) {
+						if ($oldUrl == '/' || $oldUrl == '' || $newUrl == '' || $oldUrl == $newUrl) {
+							// do nothing
+						} else {
+							if (!isset($newRedirects[$oldUrl])) {
+								$newRedirects[$oldUrl] = $newUrl;
+							}
 						}
 					}
 				}
