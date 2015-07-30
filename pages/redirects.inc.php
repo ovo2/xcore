@@ -93,36 +93,20 @@ if ($func == '') {
 
 	$list->setColumnFormat('source_url', 'custom',  create_function(
 		'$params',
-		'global $REX, $I18N;
+		'global $REX;
 
 		$list = $params["list"];
 
-		$query = \'SELECT * FROM \' . $REX[\'TABLE_PREFIX\'] . \'redirects WHERE id=\' . $list->getValue("id");
-		$sql = new sql();
-		$sql->setQuery($query);
-
-		if ($sql->getRows() > 0) {
-			$text = urldecode("/" . ltrim($sql->getValue(\'source_url\'), \'/\'));
-		}
-
-		return $text;'	
+		return urldecode($list->getValue("source_url"));'	
 	));
 
 	$list->setColumnFormat('target_url', 'custom',  create_function(
 		'$params',
-		'global $REX, $I18N;
+		'global $REX;
 
 		$list = $params["list"];
 
-		$query = \'SELECT * FROM \' . $REX[\'TABLE_PREFIX\'] . \'redirects WHERE id=\' . $list->getValue("id");
-		$sql = new sql();
-		$sql->setQuery($query);
-
-		if ($sql->getRows() > 0) {
-			$text = urldecode("/" . ltrim($sql->getValue(\'target_url\'), \'/\'));
-		}
-
-		return $text;'	
+		return urldecode($list->getValue("target_url"));'	
 	));
 
 	// icon column
