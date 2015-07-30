@@ -1128,6 +1128,7 @@ class seo42_utils {
 		if (isset($userDefOldUrls) && is_array($userDefOldUrls) && count($userDefOldUrls) > 0) {
 			// include pathlist manually because at this point userdef urls are missing in $SEO42_URLS array
 			unset($SEO42_URLS);
+			unset($SEO42_IDS);
 
 			if (file_exists(SEO42_PATHLIST)) {
 				include(SEO42_PATHLIST);
@@ -1135,17 +1136,25 @@ class seo42_utils {
 
 			$userDefNewUrls = self::getUserDefUrls($SEO42_URLS);
 
-			foreach ($userDefNewUrls as $id => $url) {
-				if (isset($userDefOldUrls[$id])) {				
-					$oldUrl = '/' . $userDefOldUrls[$id];
-					$newUrl = '/' . $userDefNewUrls[$id];
+			foreach ($userDefNewUrls as $id => $data) {
+				if (isset($userDefOldUrls[$id])) {
+					$oldUrl = '/' . $userDefOldUrls[$id]['url'];
+					$newUrl = '/' . $userDefNewUrls[$id]['url'];
 
 					if ($oldUrl !== $newUrl) {
 						if ($oldUrl == '/' || $oldUrl == '' || $newUrl == '' || $oldUrl == $newUrl) {
 							// do nothing
 						} else {
-							if (!isset($newRedirects[$oldUrl])) {
-								$newRedirects[$oldUrl] = $newUrl;
+							$article = OOArticle::getArticleById($data['article_id'], $data['clang']);
+
+							if (is_object($article)) {
+								$onlyOnline = $REX['ADDON']['seo42']['settings']['sync_redirects_only_online'];
+
+								if (!isset($newRedirects[$oldUrl])) {
+									if (!$onlyOnline || ($onlyOnline && $article->isOnline())) {
+										$newRedirects[$oldUrl] = $newUrl;
+									}
+								}
 							}
 						}
 					}
@@ -1213,7 +1222,7 @@ class seo42_utils {
 			if (isset($data['params']) && is_array($data['params']) && count($data['params']) > 0) {
 				$key = $data['id'] . $seperator .  $data['clang'] . $seperator . implode($data['params'], $seperator);
 
-				$userDefUrls[$key] = $url;
+				$userDefUrls[$key] = array('url' => $url, 'article_id' => $data['id'], 'clang' => $data['clang']);
 			}
 		}
 
