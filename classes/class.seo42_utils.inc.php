@@ -1127,10 +1127,10 @@ class seo42_utils {
 
 		if (isset($userDefOldUrls) && is_array($userDefOldUrls) && count($userDefOldUrls) > 0) {
 			// include pathlist manually because at this point userdef urls are missing in $SEO42_URLS array
-			unset($SEO42_URLS);
-			unset($SEO42_IDS);
-
 			if (file_exists(SEO42_PATHLIST)) {
+				unset($SEO42_URLS);
+				unset($SEO42_IDS);
+
 				include(SEO42_PATHLIST);
 			}
 
