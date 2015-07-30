@@ -18,7 +18,7 @@ class seo42_utils {
 	}
 
 	public static function init($params) {
-		global $REX, $SEO42_IDS, $SEO42_IDS_CLONE;
+		global $REX, $SEO42_IDS, $SEO42_IDS_CLONE, $SEO42_URLS, $SEO42_URLS_CLONE;
 
 		if ($REX['MOD_REWRITE']) {
 			// includes
@@ -48,7 +48,10 @@ class seo42_utils {
 			$rewriter->resolve();
 
 			// clone urls for later usage with sync redirects 
-			$SEO42_IDS_CLONE = $SEO42_IDS;
+			if ($REX['ADDON']['seo42']['settings']['sync_redirects']) {
+				$SEO42_IDS_CLONE = $SEO42_IDS;
+				$SEO42_URLS_CLONE = $SEO42_URLS;
+			}
 		}
 
 		// init current article
@@ -1087,12 +1090,13 @@ class seo42_utils {
 	}
 
 	public static function syncRedirects() {
-		global $REX, $SEO42_IDS, $SEO42_IDS_CLONE;
+		global $REX, $SEO42_IDS, $SEO42_IDS_CLONE, $SEO42_URLS, $SEO42_URLS_CLONE;
 
 		$newRedirects = array();
 
 		seo42_generate_pathlist(array());
 
+		// normal urls with existing article_id
 		foreach ($SEO42_IDS as $id => $value) {
 			if (isset($SEO42_IDS_CLONE[$id])) {
 				foreach ($REX['CLANG'] as $clangId => $clangName) {
@@ -1113,6 +1117,25 @@ class seo42_utils {
 								}
 							}
 						}
+					}
+				}
+			}
+		}
+
+		// userdef urls
+		$userDefOldUrls = self::getUserDefUrls($SEO42_URLS_CLONE);
+		$userDefNewUrls = self::getUserDefUrls($SEO42_URLS);
+
+		foreach ($userDefNewUrls as $id => $url) {
+			if (isset($userDefOldUrls[$id])) {				
+				$oldUrl = '/' . $userDefOldUrls[$id];
+				$newUrl = '/' . $userDefNewUrls[$id];
+
+				if ($oldUrl !== $newUrl) {
+					if ($oldUrl == '/' || $oldUrl == '' || $newUrl == '' || $oldUrl == $newUrl) {
+						// do nothing
+					} else {
+						$newRedirects[$oldUrl] = $newUrl;
 					}
 				}
 			}
@@ -1166,5 +1189,22 @@ class seo42_utils {
 	public static function sqlLike($string) {
 		// url encoded strings can have % 
 		return str_replace('%', '|%', $string);
+	}
+
+	public static function getUserDefUrls($urlData) {
+		$userDefUrls = array();
+		$seperator = '-';
+
+		foreach ($urlData as $url => $data) {
+			$params = array();
+
+			if (isset($data['params']) && is_array($data['params']) && count($data['params']) > 0) {
+				$key = $data['id'] . $seperator .  $data['clang'] . $seperator . implode($data['params'], $seperator);
+
+				$userDefUrls[$key] = $url;
+			}
+		}
+
+		return $userDefUrls;
 	}
 }
