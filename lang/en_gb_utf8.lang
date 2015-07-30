@@ -129,6 +129,7 @@ seo42_settings_all_url_types = All URL types
 seo42_settings_noindex_checkbox = Noindex checkbox
 seo42_settings_pagerank_checker = Pagerank checker
 seo42_settings_redirects = Redirects page
+seo42_settings_redirects_compact_view = Compact redirects view
 seo42_settings_title_delimiter = Titel delimiter
 seo42_settings_ignore_root_cats = Ignore Root Cats
 seo42_settings_one_page_mode = One Page Mode

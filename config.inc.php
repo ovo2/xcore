@@ -111,6 +111,7 @@ $REX['ADDON']['seo42']['settings'] = array(
 	'all_url_types' => true,
 	'pagerank_checker' => true,
 	'redirects' => true,
+	'redirects_compact_view' => false,
 	'one_page_mode' => false,
 	'pagerank_checker_unlock' => false,
 	'global_special_chars' => '',

@@ -792,6 +792,14 @@ $no_double_content_redirects_availability_select->setSelected($REX['ADDON'][$mys
 				</p>
 			</div>
 
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-checkbox">
+					<label for="redirects_compact_view"><?php echo $I18N->msg('seo42_settings_redirects_compact_view'); ?></label>
+					<input type="hidden" name="settings[redirects_compact_view]" value="0" />
+					<input type="checkbox" name="settings[redirects_compact_view]" id="redirects_compact_view" value="1" <?php if ($REX['ADDON']['seo42']['settings']['redirects_compact_view']) { echo 'checked="checked"'; } ?>>
+				</p>
+			</div>
+
         </div>
       </fieldset>
 

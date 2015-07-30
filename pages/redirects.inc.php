@@ -179,6 +179,7 @@ if ($func == '') {
 echo '</div>';
 ?>
 
+<?php if ($REX['ADDON']['seo42']['settings']['redirects_compact_view']) { ?>
 <style type="text/css">
 #rex-page-seo42 table {
 	width: auto;
@@ -194,6 +195,7 @@ echo '</div>';
 	max-width: 180px;
 }
 </style>
+<?php } ?>
 
 <script type="text/javascript">
 jQuery(document).ready( function() {
