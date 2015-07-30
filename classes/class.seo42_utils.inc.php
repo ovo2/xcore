@@ -1104,10 +1104,13 @@ class seo42_utils {
 							// do nothing
 						} else {
 							$article = OOArticle::getArticleById($id, $clangId);
-							$onlyOnline = $REX['ADDON']['seo42']['settings']['sync_redirects_only_online'];
 
-							if (!$onlyOnline || ($onlyOnline && $article->isOnline())) {
-								$newRedirects[$oldUrl] = $newUrl;
+							if (is_object($article)) {
+								$onlyOnline = $REX['ADDON']['seo42']['settings']['sync_redirects_only_online'];
+
+								if (!$onlyOnline || ($onlyOnline && $article->isOnline())) {
+									$newRedirects[$oldUrl] = $newUrl;
+								}
 							}
 						}
 					}
@@ -1120,13 +1123,13 @@ class seo42_utils {
 				// check for redirects loop
 				$sql = rex_sql::factory();
 				$sql->setDebug(false);
-				$sql->setQuery('SELECT * FROM `' . $REX['TABLE_PREFIX'] . 'redirects` WHERE source_url LIKE "' . $newUrl  . '"');
+				$sql->setQuery("SELECT * FROM `" . $REX['TABLE_PREFIX'] . "redirects` WHERE source_url LIKE '" . self::sqlLike($newUrl) . "' ESCAPE '|'");
 
 				if ($sql->getRows() > 0) {
 					// delete existing redirect to avoid loop
 					$sql2 = rex_sql::factory();
 					$sql2->setDebug(false);
-					$sql2->setQuery('DELETE FROM `' . $REX['TABLE_PREFIX'] . 'redirects` WHERE source_url LIKE "' . $newUrl  . '"');
+					$sql2->setQuery("DELETE FROM `" . $REX['TABLE_PREFIX'] . "redirects` WHERE source_url LIKE '" . self::sqlLike($newUrl) . "' ESCAPE '|'");
 				} else {
 					$maxAge =  intval($REX['ADDON']['seo42']['settings']['redirects_max_age']);
 					$createDate = self::getDate();
@@ -1136,9 +1139,10 @@ class seo42_utils {
 						$expireDate = 0;
 					}
 
+					// check if redirect already exists
 					$sql2 = rex_sql::factory();
 					$sql2->setDebug(false);
-					$sql2->setQuery('SELECT * FROM `' . $REX['TABLE_PREFIX'] . 'redirects` WHERE source_url LIKE "' . $oldUrl  . '"');
+					$sql2->setQuery("SELECT * FROM `" . $REX['TABLE_PREFIX'] . "redirects` WHERE source_url LIKE '" . self::sqlLike($oldUrl) . "' ESCAPE '|'");
 	
 					if ($sql2->getRows() > 0) {
 						// update existing redirect
@@ -1157,5 +1161,10 @@ class seo42_utils {
 			// update cached redirects
 			self::updateRedirectsFile(false);
 		}
+	}
+
+	public static function sqlLike($string) {
+		// url encoded strings can have % 
+		return str_replace('%', '|%', $string);
 	}
 }
