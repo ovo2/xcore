@@ -1135,7 +1135,9 @@ class seo42_utils {
 					if ($oldUrl == '/' || $oldUrl == '' || $newUrl == '' || $oldUrl == $newUrl) {
 						// do nothing
 					} else {
-						$newRedirects[$oldUrl] = $newUrl;
+						if (!isset($newRedirects[$oldUrl])) {
+							$newRedirects[$oldUrl] = $newUrl;
+						}
 					}
 				}
 			}
