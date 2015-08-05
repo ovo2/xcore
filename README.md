@@ -28,7 +28,7 @@ Features
 * Option um die Indizierung von Seiten durch Suchmaschinen zu verhindern
 * Automatische sowie individuelle Canonical URLs
 * One Domain Only sowie Nicht-WWW zu WWW Umleitung (und umgekehrt) inkl. autom. HTTPS Berücksichtigung.
-* Smart Redirects: Automatische Umleitungen für falsch eingegebene Urls z.B. von Url-Endung `/` nach `.html`
+* 5 verschiedene Redirects Varianten, u.a. Smart Redirects: Automatische Umleitungen für falsch eingegebene Urls z.B. von Url-Endung `/` nach `.html`
 * Force Download Funktionalität inkl. suchmaschinenfreundlicher URLs und Canonical Header (z.B. für PDF Downloads)
 * Google Site Verification Unterstützung ohne dass man noch die Html-Datei uploaden muss
 * Keine Abhängigkeiten zu weiteren Addons wie Textile oder XForm
