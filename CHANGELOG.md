@@ -1,6 +1,10 @@
 SEO42 - Changelog
 =================
 
+### Version 4.2.1 DEV
+
+* Verbessert: Beim DB Import wird nun auch auf die neuen Redirects Felder gecheckt
+
 ### Version 4.2.0 - 31. Juli 2015
 
 * Fixed #175: Bei mehrsprachigen Websites wurde der 404 Artikel nicht angezeigt wenn die `clang` IDs nicht durchgehend nummeriert waren, thx@GeForce92
