@@ -88,11 +88,10 @@ class seo42_utils {
 		$sql->setQuery('SELECT seo_title, seo_description, seo_keywords, seo_custom_url, seo_canonical_url, seo_noindex, seo_ignore_prefix FROM ' . $REX['TABLE_PREFIX'] . 'article');
 
 		$sql2 = rex_sql::factory();
-		$sql->setDebug(true);
 		$sql2->setQuery('SELECT create_date, expire_date FROM ' . $REX['TABLE_PREFIX'] . 'redirects');
 
 		// check for db fields
-		if ($sql->getRows() == 0 || $sql2->getRows() == 0) {
+		if ($sql->getError() != '' || $sql2->getError() != '') {
 			require($REX['INCLUDE_PATH'] . '/addons/seo42/install.inc.php');
 			echo rex_info($I18N->msg('seo42_dbfields_readded', $REX['ADDON']['name']['seo42']));
 			echo rex_info($I18N->msg('seo42_dbfields_readded_check_setup', $REX['ADDON']['name']['seo42']));
