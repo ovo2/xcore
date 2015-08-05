@@ -3,7 +3,7 @@ SEO42 - Changelog
 
 ### Version 4.2.1 DEV
 
-* Verbessert: Beim DB Import wird nun auch auf die neuen Redirects Felder gecheckt
+* Verbessert: Beim DB Import wird nun auch auf die neuen Redirects Felder geprüft
 
 ### Version 4.2.0 - 31. Juli 2015
 
