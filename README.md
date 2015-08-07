@@ -111,10 +111,10 @@ Redirects Varianten
 -------------------
 
 * No Double Content Redirects: Hiermit werden hauptsächlich die WWW/Nicht-WWW Redirects gesteuert
-* Auto Redirects: Für alte REDAXO Urls 
-* Smart Redirects: Für vom Benutzer falsch eingegebene Urls, z.B. wird dann `/foo/` nach `/foo.html` umgeleitet (wenn `.html` als Url-Endung angegeben)
+* Auto Redirects: Für alte REDAXO Urls sowie für nicht umgeschriebene REDAXO Urls
+* Smart Redirects: Für vom Benutzer im Browser falsch eingegebene Urls, z.B. wird dann `/foo/` nach `/foo.html` umgeleitet (wenn `.html` als Url-Endung angegeben)
 * Sync Redirects: Beim Umbenennen/Verschieben von Katgeorien/Artikel werden Redirects automatisch angelegt
-* Benutzerdef. Redirects: Von Hand eingetragene Redirects
+* Benutzerdef. Redirects: Von Hand eingetragene Redirects (mit und ohne RegEx Notation möglich)
 
 Hinweise
 --------
