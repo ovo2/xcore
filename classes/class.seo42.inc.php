@@ -573,6 +573,14 @@ class seo42 {
 		$out .= '</table>';
 
 		// methods
+		if ($REX['REDAXO']) {
+			$isBackend = true;
+			$includeQueryParams = $REX['ADDON']['seo42']['settings']['include_query_params'];
+
+			$REX['REDAXO'] = false;
+			$REX['ADDON']['seo42']['settings']['include_query_params'] = false;
+		}
+
 		$out .= '<h2>Class Methods</h2>';
 		$out .= '<table>';
 
@@ -624,11 +632,28 @@ class seo42 {
 
 		$out .= '</table>';
 
+		if ($isBackend) {
+			$REX['REDAXO'] = $isBackend;
+			$REX['ADDON']['seo42']['settings']['include_query_params'] = $includeQueryParams;
+		}
+
 		// settings
 		$out .= '<h2>Settings</h2>';
 
 		$out .= '<pre class="rex-code">';
 		$out .= seo42_utils::print_r_pretty($REX['ADDON']['seo42']['settings'], true);
+		$out .= '</pre>';
+
+		// settings differences
+		$out .= '<h2>Changed Settings (without language settings)</h2>';
+		$out .= '<pre class="rex-code">';
+
+		foreach($REX['ADDON']['seo42']['settings'] as $key => $value) {
+			if (!is_array($value) && isset($REX['ADDON']['seo42']['settings_backup'][$key]) && $value != $REX['ADDON']['seo42']['settings_backup'][$key]) {
+				$out .= '[' . $key . ']' . "<br />";
+			}
+		}
+
 		$out .= '</pre>';
 
 		// cached redirects
