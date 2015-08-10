@@ -648,8 +648,8 @@ class seo42 {
 		$out .= '<h2>Changed Settings (without language settings)</h2>';
 		$out .= '<pre class="rex-code">';
 
-		foreach($REX['ADDON']['seo42']['settings'] as $key => $value) {
-			if (!is_array($value) && isset($REX['ADDON']['seo42']['settings_backup'][$key]) && $value != $REX['ADDON']['seo42']['settings_backup'][$key]) {
+		foreach($REX['ADDON']['seo42']['settings_default'] as $key => $value) {
+			if (!is_array($value) && isset($REX['ADDON']['seo42']['settings'][$key]) && $value != $REX['ADDON']['seo42']['settings'][$key]) {
 				$out .= '[' . $key . ']' . "<br />";
 			}
 		}

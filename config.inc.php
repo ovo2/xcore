@@ -131,7 +131,7 @@ $REX['ADDON']['seo42']['settings'] = array(
 );
 
 // backup default settings for debug mode 
-$REX['ADDON']['seo42']['settings_backup'] = $REX['ADDON']['seo42']['settings'];
+$REX['ADDON']['seo42']['settings_default'] = $REX['ADDON']['seo42']['settings'];
 
 // overwrite default settings with user settings
 seo42_utils::includeSettingsFile();
