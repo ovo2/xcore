@@ -131,7 +131,7 @@ Zum Beispiel über die Methode `seo42::getImageManagerFile()`. Siehe dazu Codebe
 Ich möchte nicht-www Anfragen auf die www Variante umleiten lassen. Soll doch SEO-technisch gut sein, oder?
 -----------------------------------------------------------------------------------------------------------
 
-Yup. Dafür gibt es mittlerweile die No Double Content Redirects die sich über die Einstellungen-Seite aktivieren lassen.
+Yup. Dafür gibt es mittlerweile die No Double Content Redirects die sich über die Einstellungen-Seite aktivieren lassen. Auch der One Domain Only Redirect leitet automatisch auf die WWW bzw. die Nicht-WWW Version um, je nachdem wie man die "URL der Website" im Setup angegeben hat.
 
 
 Meine URLs haben sich geändert. Wie kann ich saubere Weiterleitungen hinbekommen?

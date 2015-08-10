@@ -128,6 +128,7 @@ Hinweise
 * Implementiert man sein eigenes Titel-Schema, ist es vielleicht sinnvoll die Optionen `title_preview` und `no_prefix_checkbox` auf `false` zu setzen.
 * `$REX["MOD_REWRITE"]` braucht nicht mehr auf `true` gesetzt werden (z.B. über die System-Page von REDAXO). Wenn SEO42 aktiv, wird es automatisch gesetzt.
 * Für Websites die bei 1und1 gehostet werden: es empfiehlt sich die Einstellung `HTTP Header` > `Image Manager Cache Control Header Fix` zu setzen, da sonst Image Manager Bilder nicht gecachet werden.
+* Auch der One Domain Only Redirect leitet automatisch auf die WWW bzw. die Nicht-WWW Version um, je nachdem wie man die "URL der Website" im Setup angegeben hat.
 
 
 Hinweise Resourceneinbindung
