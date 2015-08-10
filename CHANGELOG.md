@@ -1,7 +1,7 @@
 SEO42 - Changelog
 =================
 
-### Version 4.2.1 DEV
+### Version 4.2.1 - 10. August 2015
 
 * Neuer Hinweis: Der One Domain Only Redirect leitet automatisch auf die WWW bzw. die Nicht-WWW Version um, je nachdem wie man die "URL der Website" im Setup angegeben hat.
 * Verbessert: Beim DB Import wird nun auch auf die neuen Redirects Felder geprüft
