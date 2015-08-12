@@ -59,7 +59,7 @@ Bitte die Datei `/include/data/addons/seo42/settings.inc.php` löschen und das R
 Warum soll man mit seo42::getCSSFile() und seo42::getJSFile() seine CSS/JS Dateien ausgeben lassen?
 ---------------------------------------------------------------------------------------------------
 
-Weil in der .htaccess Datei standardmäßig ein Caching von 4 Wochen eingestellt ist und durch das Anhängen eines Versionsstrings an die Dateien dann diese automatisch neu heruntergeladen werden bei einem Update.
+Weil in der .htaccess Datei standardmäßig ein Caching von 4 Wochen eingestellt ist und durch das Anhängen eines Versionsstrings an die Dateien dann diese automatisch neu heruntergeladen werden bei einem Update, unabhängig vom eingestellten Caching.
 
 
 Wie muss die URL der Website im Setup genau angegeben werden?
