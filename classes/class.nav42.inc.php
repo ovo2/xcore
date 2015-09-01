@@ -228,7 +228,7 @@ class nav42 {
 
 				// li class
 				if (is_array($this->liClassFromArticleId) && isset($this->liClassFromArticleId[$cat->getId()])) {
-					$cssClasses .= ' ' . $this->liIdFromArticleId[$cat->getId()];
+					$cssClasses .= ' ' . $this->liClassFromArticleId[$cat->getId()];
 				}
 
 				if ($this->liClassFromMetaField != '' && $cat->getValue($this->liClassFromMetaField) != '') {
