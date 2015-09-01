@@ -86,6 +86,8 @@ $nav->setUlClass("sf-menu", 0); // ' . $I18N->msg('seo42_help_codeexamples_ex6_c
 $nav->setLiClass("list-item"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_8a') . '
 $nav->setLiIdFromMetaField("cat_css_id"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_9') . '
 $nav->setLiClassFromMetaField("cat_css_class"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_10') . '
+$nav->setLiIdFromArticleId(array(ARTICLE_ID_FOO => "foo", ARTICLE_ID_BAR => "bar")); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_12') . '
+$nav->setLiClassFromArticleId(array(42 => "my-class")); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_13') . '
 $nav->setLinkFromUserFunc(function($cat, $depth) { // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_11') . '
     if ($depth == 1) {
 		return htmlspecialchars($cat->getName());

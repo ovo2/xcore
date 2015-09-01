@@ -15,6 +15,8 @@ class nav42 {
 	protected $liClassFromMetaField;
 	protected $linkFromUserFunc;
 	protected $hideIds;
+	protected $liIdFromArticleId;
+	protected $liClassFromArticleId;
 
 	// lang nav vars
 	protected $langUlId;
@@ -49,6 +51,8 @@ class nav42 {
 		$this->liClassFromMetaField = '';
 		$this->linkFromUserFunc = '';
 		$this->hideIds = array();
+		$this->liIdFromArticleId = array();
+		$this->liClassFromArticleId = array();
 
 		$this->langUlId = '';
 		$this->langSelectedClass = 'selected';
@@ -134,6 +138,14 @@ class nav42 {
 		$this->hideIds = $hideIds;
 	}
 
+	public function setLiIdFromArticleId($liIdFromArticleId) {
+		$this->liIdFromArticleId = $liIdFromArticleId;
+	}
+
+	public function setLiClassFromArticleId($liClassFromArticleId) {
+		$this->liClassFromArticleId = $liClassFromArticleId;
+	}
+
 	/* ------------------------------------------------------------------------------------------------------ */
 
 	public function setLangUlId($langUlId) {
@@ -214,13 +226,19 @@ class nav42 {
 					$cssClasses .= ' ' . $this->liClass;
 				}
 
-				// li class from meta infos
+				// li class
+				if (is_array($this->liClassFromArticleId) && isset($this->liClassFromArticleId[$cat->getId()])) {
+					$cssClasses .= ' ' . $this->liIdFromArticleId[$cat->getId()];
+				}
+
 				if ($this->liClassFromMetaField != '' && $cat->getValue($this->liClassFromMetaField) != '') {
 					$cssClasses .= ' ' . $cat->getValue($this->liClassFromMetaField);
 				}
 
-				// li id from meta infos
-				if ($this->liIdFromMetaField != '' && $cat->getValue($this->liIdFromMetaField) != '') {
+				// li id
+				if (is_array($this->liIdFromArticleId) && isset($this->liIdFromArticleId[$cat->getId()])) {
+					$idAttribute = ' id="' . $this->liIdFromArticleId[$cat->getId()] . '"';
+				} elseif ($this->liIdFromMetaField != '' && $cat->getValue($this->liIdFromMetaField) != '') {
 					$idAttribute = ' id="' . $cat->getValue($this->liIdFromMetaField) . '"';
 				}
 

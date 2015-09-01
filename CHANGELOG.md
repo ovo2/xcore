@@ -1,6 +1,10 @@
 SEO42 - Changelog
 =================
 
+### Version 4.2.2 DEV
+
+* Neu: `setLiIdFromArticleId()` und `setLiClassFromArticleId()` zur `nav42` hinzugefügt. Damit kann man den Menüpunkten CSS IDs und Klassen zuweisen anhand der Artikel ID. Siehe Codebeispiele in der Hilfe.
+
 ### Version 4.2.1 - 10. August 2015
 
 * Neuer Hinweis: Der One Domain Only Redirect leitet automatisch auf die WWW bzw. die Nicht-WWW Version um, je nachdem wie man die "URL der Website" im Setup angegeben hat.
