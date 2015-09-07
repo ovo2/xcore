@@ -202,8 +202,12 @@ class res42 {
 				
 				// now combine
 				if (file_exists($fileWithPath)) {
-					$combinedFileContent .= file_get_contents($fileWithPath) . PHP_EOL . PHP_EOL;
+					$combinedFileContent .= file_get_contents($fileWithPath);
+				} else {
+					$combinedFileContent .= '/* file not found: ' . $fileWithPath . ' */';
 				}
+
+				$combinedFileContent .=  PHP_EOL . PHP_EOL;
 			}
 
 			// add hash
