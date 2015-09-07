@@ -4,6 +4,7 @@ SEO42 - Changelog
 ### Version 4.2.2 DEV
 
 * Neu: `setLiIdFromArticleId()` und `setLiClassFromArticleId()` zur `nav42` hinzugefügt. Damit kann man den Menüpunkten CSS IDs und Klassen zuweisen anhand der Artikel ID. Siehe Codebeispiele in der Hilfe.
+* Verbessert: SCSS Compiler auf Version 0.3.0 aktualisiert
 
 ### Version 4.2.1 - 10. August 2015
 

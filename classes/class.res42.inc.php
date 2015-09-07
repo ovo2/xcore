@@ -261,7 +261,7 @@ class res42 {
 				if ($sourceFileContent == $compiledCSS) {
 					// include compiler
 					if (!class_exists('scssc')) {
-						require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.scssc.inc.php');
+						require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/scssphp/scss.inc.php');
 					}
 					
 					$formatter = new scss_formatter;
