@@ -33,6 +33,7 @@ Features
 * Google Site Verification Unterstützung ohne dass man noch die Html-Datei uploaden muss
 * Keine Abhängigkeiten zu weiteren Addons wie Textile oder XForm
 * Kompatibel zum [Website Manager](https://github.com/RexDude/website_manager) sowie [Community](https://github.com/dergel/redaxo4_community) AddOn
+* Offline 404 Modus: Offline Artikel sind nicht mehr erreichbar (404 Seite). 
 * Enthält die Antwort auf die eine Frage ;)
 
 Features Resourceneinbindung

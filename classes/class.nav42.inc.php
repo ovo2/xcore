@@ -15,8 +15,8 @@ class nav42 {
 	protected $liClassFromMetaField;
 	protected $linkFromUserFunc;
 	protected $hideIds;
-	protected $liIdFromArticleId;
-	protected $liClassFromArticleId;
+	protected $liIdFromCategoryId;
+	protected $liClassFromCategoryId;
 
 	// lang nav vars
 	protected $langUlId;
@@ -51,8 +51,8 @@ class nav42 {
 		$this->liClassFromMetaField = '';
 		$this->linkFromUserFunc = '';
 		$this->hideIds = array();
-		$this->liIdFromArticleId = array();
-		$this->liClassFromArticleId = array();
+		$this->liIdFromCategoryId = array();
+		$this->liClassFromCategoryId = array();
 
 		$this->langUlId = '';
 		$this->langSelectedClass = 'selected';
@@ -138,12 +138,12 @@ class nav42 {
 		$this->hideIds = $hideIds;
 	}
 
-	public function setLiIdFromArticleId($liIdFromArticleId) {
-		$this->liIdFromArticleId = $liIdFromArticleId;
+	public function setliIdFromCategoryId($liIdFromCategoryId) {
+		$this->liIdFromCategoryId = $liIdFromCategoryId;
 	}
 
-	public function setLiClassFromArticleId($liClassFromArticleId) {
-		$this->liClassFromArticleId = $liClassFromArticleId;
+	public function setliClassFromCategoryId($liClassFromCategoryId) {
+		$this->liClassFromCategoryId = $liClassFromCategoryId;
 	}
 
 	/* ------------------------------------------------------------------------------------------------------ */
@@ -227,8 +227,8 @@ class nav42 {
 				}
 
 				// li class
-				if (is_array($this->liClassFromArticleId) && isset($this->liClassFromArticleId[$cat->getId()])) {
-					$cssClasses .= ' ' . $this->liClassFromArticleId[$cat->getId()];
+				if (is_array($this->liClassFromCategoryId) && isset($this->liClassFromCategoryId[$cat->getId()])) {
+					$cssClasses .= ' ' . $this->liClassFromCategoryId[$cat->getId()];
 				}
 
 				if ($this->liClassFromMetaField != '' && $cat->getValue($this->liClassFromMetaField) != '') {
@@ -236,8 +236,8 @@ class nav42 {
 				}
 
 				// li id
-				if (is_array($this->liIdFromArticleId) && isset($this->liIdFromArticleId[$cat->getId()])) {
-					$idAttribute = ' id="' . $this->liIdFromArticleId[$cat->getId()] . '"';
+				if (is_array($this->liIdFromCategoryId) && isset($this->liIdFromCategoryId[$cat->getId()])) {
+					$idAttribute = ' id="' . $this->liIdFromCategoryId[$cat->getId()] . '"';
 				} elseif ($this->liIdFromMetaField != '' && $cat->getValue($this->liIdFromMetaField) != '') {
 					$idAttribute = ' id="' . $cat->getValue($this->liIdFromMetaField) . '"';
 				}
