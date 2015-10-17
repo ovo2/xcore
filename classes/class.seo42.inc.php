@@ -836,7 +836,7 @@ class seo42 {
 		return md5($REX['INSTNAME']);
 	}
 
-	public static function backendUserLoggedIn() {
+	public static function isBackendUserLoggedIn() {
 		global $REX, $I18N;
 
 		$loggedIn = false;

@@ -202,7 +202,7 @@ class SEO42Rewrite
 			if ($REX['ADDON']['seo42']['settings']['offline_404_mode'] && is_object($article) && $article->getValue('status') == 0) {
 				seo42::set404ResponseFlag();
 
-				if (seo42::isPreviewMode() && seo42::backendUserLoggedIn()) {
+				if (seo42::isPreviewMode() && seo42::isBackendUserLoggedIn()) {
 					self::setArticleId($SEO42_URLS[$path]['id'],$SEO42_URLS[$path]['clang']);
 				} else {
 					self::setArticleId($REX['NOTFOUND_ARTICLE_ID'], $SEO42_URLS[$path]['clang']);
