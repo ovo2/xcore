@@ -3,7 +3,7 @@
 // register addon
 $REX['ADDON']['rxid']['seo42'] = '0';
 $REX['ADDON']['name']['seo42'] = 'SEO42';
-$REX['ADDON']['version']['seo42'] = '4.2.2 DEV';
+$REX['ADDON']['version']['seo42'] = '4.3.0 DEV';
 $REX['ADDON']['author']['seo42'] = 'Markus Staab, Wolfgang Huttegger, Dave Holloway, Jan Kristinus, jdlx, RexDude';
 $REX['ADDON']['supportpage']['seo42'] = 'forum.redaxo.de';
 $REX['ADDON']['perm']['seo42'] = 'seo42[]';
@@ -82,6 +82,7 @@ $REX['ADDON']['seo42']['settings'] = array(
 	'images_dir' => '/resources/images/',
 	'icons_dir' => '/resources/icons/',
 	'seo_friendly_image_manager_urls' => true,
+	'offline_404_mode' => false,
 	'full_urls' => false,
 	'allow_article_id' => false,
 	'ignore_root_cats' => false,

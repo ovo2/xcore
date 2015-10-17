@@ -178,7 +178,7 @@ class SEO42Rewrite
   */
   function resolve_from_pathlist($path)
   {
-    global $SEO42_URLS;
+    global $SEO42_URLS, $REX;
 
     if(isset($SEO42_URLS[$path]))
     {
@@ -196,6 +196,22 @@ class SEO42Rewrite
           self::redirect($redirect);
           return true;
         default:
+			// offline 404 mode
+			$article = OOArticle::getArticleById($SEO42_URLS[$path]['id'],$SEO42_URLS[$path]['clang']);
+
+			if ($REX['ADDON']['seo42']['settings']['offline_404_mode'] && is_object($article) && $article->getValue('status') == 0) {
+				seo42::set404ResponseFlag();
+
+				if (seo42::isPreviewMode() && seo42::backendUserLoggedIn()) {
+					self::setArticleId($SEO42_URLS[$path]['id'],$SEO42_URLS[$path]['clang']);
+				} else {
+					self::setArticleId($REX['NOTFOUND_ARTICLE_ID'], $SEO42_URLS[$path]['clang']);
+				}
+
+				return true;
+			}
+
+          // default
           if(isset($SEO42_URLS[$path]['params']))
             self::populateGlobals($SEO42_URLS[$path]['params'],false);
           self::setArticleId($SEO42_URLS[$path]['id'],$SEO42_URLS[$path]['clang']);

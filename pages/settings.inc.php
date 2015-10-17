@@ -486,6 +486,14 @@ $no_double_content_redirects_availability_select->setSelected($REX['ADDON'][$mys
 
 			<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-checkbox">
+					<label for="offline_404_mode"><?php echo $I18N->msg('seo42_settings_offline_404_mode'); ?></label>
+					<input type="hidden" name="settings[offline_404_mode]" value="0" />
+					<input type="checkbox" name="settings[offline_404_mode]" id="offline_404_mode" value="1" <?php if ($REX['ADDON']['seo42']['settings']['offline_404_mode']) { echo 'checked="checked"'; } ?>>
+				</p>
+			</div>
+
+			<div class="rex-form-row rex-form-element-v1">
+				<p class="rex-form-checkbox">
 					<label for="full_urls"><?php echo $I18N->msg('seo42_settings_full_urls'); ?></label>
 					<input type="hidden" name="settings[full_urls]" value="0" />
 					<input type="checkbox" name="settings[full_urls]" id="full_urls" value="1" <?php if ($REX['ADDON']['seo42']['settings']['full_urls']) { echo 'checked="checked"'; } ?>>

@@ -822,6 +822,43 @@ class seo42 {
 		return strtolower(seo42_parse_article_name($string, $REX['ARTICLE_ID'], $REX['CUR_CLANG']));
 	}
 
+	public static function isPreviewMode() {
+		if (rex_get('preview', 'string', '') == self::getPreviewToken()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static function getPreviewToken() {
+		global $REX;
+
+		return md5($REX['INSTNAME']);
+	}
+
+	public static function backendUserLoggedIn() {
+		global $REX, $I18N;
+
+		$loggedIn = false;
+
+		if (session_id() == '') {
+			session_start();
+		}
+
+		$loggedIn = isset($_SESSION[$REX['INSTNAME']]['UID']) && $_SESSION[$REX['INSTNAME']]['UID'] > 0;
+
+		if ($loggedIn && (!isset($REX['LOGIN']) || !is_object($REX['LOGIN']))) {
+			if (!is_object($I18N)) {
+				$I18N = rex_create_lang($REX['LANG']);
+			}
+
+			$REX['LOGIN'] = new rex_backend_login($REX['TABLE_PREFIX'] . 'user');
+			$loggedIn = $REX['LOGIN']->checkLogin();
+		}
+
+		return $loggedIn;
+	}
+
 	public static function getCSSFile($file, $vars = array()) {
 		return res42::getCSSFile($file, $vars);
 	}

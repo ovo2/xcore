@@ -1,8 +1,9 @@
 SEO42 - Changelog
 =================
 
-### Version 4.2.2 DEV
+### Version 4.3.0 DEV
 
+* Neu: Offline 404 Modus (unter Einstellungen > URLs): Ist der Modus aktiviert wird ein offline Artikel im Frontend nicht mehr angezeigt. Es kommt ein 404 Fehler + die Fehlerseite. Aus dem Backend heraus über den Link "Webansicht" kann man den Artikel jedoch noch aufrufen.
 * Neu: `setLiIdFromArticleId()` und `setLiClassFromArticleId()` zur `nav42` hinzugefügt. Damit kann man den Menüpunkten CSS IDs und Klassen zuweisen anhand der Artikel ID. Siehe Codebeispiele in der Hilfe.
 * Verbessert: SCSS Compiler auf Version 0.3.0 aktualisiert
 * Verbessert: File Combiner gibt "file not found" Meldung aus wenn Datei nicht vorhanden, thx@denisdanielyan

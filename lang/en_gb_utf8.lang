@@ -106,6 +106,7 @@ seo42_settings_sync_redirects_only_online = Sync Redirects only when articles on
 seo42_settings_redirects_allow_regex = RegEx support for userdef redirects
 seo42_settings_redirects_max_age = Redirects expire in days
 seo42_settings_seo_friendly_image_manager_urls = SEO friendly image manager URLs
+seo42_settings_offline_404_mode = Offline 404 Mode
 seo42_settings_full_urls = Full URLs
 seo42_settings_include_query_params = Include query params
 seo42_settings_ignore_query_params = Ignore query params
