@@ -6,13 +6,13 @@ Rewriter
 URLs umschreiben
 ----------------
 
-- Eingeschaltet werden Urls umgeschrieben
-- Augeschaltet erscheinen die Standard REDAXO `index.php?article_id=42` Urls 
+- Eingeschaltet werden URLs umgeschrieben
+- Augeschaltet erscheinen die Standard REDAXO `index.php?article_id=42` URLs 
 
 URL Endung
 ----------
 
-- Einstellung der Url Endung
+- Einstellung der URL Endung
 
 Spracheinestellungen
 --------------------------
