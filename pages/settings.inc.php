@@ -153,6 +153,8 @@ $no_double_content_redirects_availability_select->setSelected($REX['ADDON'][$mys
 
 ?>
 
+<span class="status information help"><a href="index.php?page=seo42&subpage=help&chapter=settings"><?php echo $I18N->msg('seo42_settings_help'); ?></a></span>
+
 <div class="rex-addon-output">
   <div class="rex-form">
 
@@ -903,6 +905,14 @@ div.rex-form legend.open {
 
 div#rex-website .dropdown a:hover {
 	text-decoration: none;
+}
+
+#rex-page-seo42 span.status.information.help {
+	float: right;
+	margin-bottom: 5px;
+	line-height: 18px;
+	padding-left: 19px;
+	width: auto !important;
 }
 </style>
 

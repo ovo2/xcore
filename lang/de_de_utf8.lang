@@ -61,7 +61,7 @@ seo42_settings_langslug_noslug = Kein lang slug für Sprache:
 seo42_settings_langslug = Lang slug
 seo42_settings_language = Sprache
 seo42_settings_url_ending = URL Endung
-seo42_settings_startpage = Startseite
+seo42_settings_startpage = Startseite umschreiben
 seo42_settings_main_section = Rewriter
 seo42_settings_misc_section = Sonstiges
 seo42_settings_robots_additional = robots.txt Einträge
@@ -158,6 +158,8 @@ seo42_settings_lang_special_chars_rewrite = Special Chars Rewrite
 seo42_settings_lang_inherit_from_clang = Sprache
 seo42_settings_lang_presets = Presets
 
+seo42_settings_help = Hilfe
+
 seo42_setup_file_backup_failed = Datei "{0}" konnte nicht gesichert werden!
 seo42_setup_file_copy_successful = Kopieren der Datei erfolgreich.
 seo42_setup_file_copy_failed = Beim Kopieren der .htaccess Datei ist ein Fehler aufgetreten. Bitte kopieren Sie die Datei manuell.
@@ -248,6 +250,7 @@ seo42_help_chapter_changelog = Changelog
 seo42_help_chapter_license = Lizenz
 seo42_help_chapter_update = Update
 seo42_help_chapter_startguide = Startguide
+seo42_help_chapter_settings = Einstellungen
 seo42_help_chapter_faq = FAQ
 seo42_help_chapter_codeexamples = Codebeispiele
 seo42_help_chapter_debug = Debug
