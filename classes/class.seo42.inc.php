@@ -236,7 +236,7 @@ class seo42 {
 				$article = OOArticle::getArticleById(self::$curArticle->getId(), $clangId);
 
 				if ($article->isOnline() || $REX['CUR_CLANG'] == $clangId) {
-					$hreflang = self::getLangCode($clangId);
+					$hreflang = self::getHreflang($clangId);
 
 					if ($i > 0) {
 						$out .= $indent;
@@ -384,24 +384,32 @@ class seo42 {
 		if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['code'])) {
 			return $REX['ADDON']['seo42']['settings']['lang'][$clangId]['code'];
 		} else {
-			return $REX['CLANG'][$clangId];
+			return '';
 		}
 	}
 
-	public static function getLangSlug($clangId) {
+	public static function getLangUrlSlug($clangId) {
 		global $REX;
 
-		if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['code'])) {
-			$langSlug = self::getLangCode($clangId);
+		if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['url_slug']) && $REX['ADDON']['seo42']['settings']['lang'][$clangId]['url_slug'] != '') {
+			$langUrlSlug = $REX['ADDON']['seo42']['settings']['lang'][$clangId]['url_slug'];
+		} elseif (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['code']) && $REX['ADDON']['seo42']['settings']['lang'][$clangId]['code'] != '') { // still needed because "url_slug" is new and earlier "code" was used!
+			// fallback #1
+			$langUrlSlug = self::getLangCode($clangId);
 	
-			if (strlen($langSlug) > 2) {
-				$langSlug = substr($langSlug, 0, 2);
+			if (strlen($langUrlSlug) > 2) {
+				$langUrlSlug = substr($langUrlSlug, 0, 2);
 			}
 		} else {
-			$langSlug = self::getLangName($clangId);
+			// fallback #2
+			$langUrlSlug = self::getLangName($clangId);
 		}
 
-		return strtolower($langSlug);
+		return strtolower($langUrlSlug);
+	}
+
+	/* deprecated */ public static function getLangSlug($clangId) {
+		return self::getLangUrlSlug($clangId);
 	}
 
 	public static function getLangName($clangId = -1) {
@@ -424,7 +432,93 @@ class seo42 {
 		if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['original_name'])) {
 			return $REX['ADDON']['seo42']['settings']['lang'][$clangId]['original_name'];
 		} else {
-			return $REX['CLANG'][$clangId];
+			return '';
+		}
+	}
+
+	public static function getLangRegionCode($clangId = -1) {
+		global $REX;
+
+		if ($clangId == -1) {
+			$clangId = $REX['CUR_CLANG'];
+		}
+
+		if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['region_code'])) {
+			return $REX['ADDON']['seo42']['settings']['lang'][$clangId]['region_code'];
+		} else {
+			return '';
+		}
+	}
+
+	public static function getLangRegion($clangId = -1) {
+		global $REX;
+
+		$langRegionCode = self::getLangRegionCode();
+		$explodedCode = explode('-', $langRegionCode);
+
+		if (isset($explodedCode[1])) {
+			return $explodedCode[1];
+		} else {
+			unset($explodedCode);
+
+			$explodedCode = explode('_', $langRegionCode);
+
+			if (isset($explodedCode[1])) {
+				return $explodedCode[1];
+			} else {
+				return '';
+			}
+		}
+	}
+
+	public static function getLangLocale($clangId = -1, $addCharset = true) {
+		$charsetString = '.UTF-8';
+		$locale = self::getLangRegionCode($clangId);
+
+		if ($locale == '') {
+			return '';
+		} else {
+			if ($addCharset) {
+				return $locale . $charsetString;
+			} else {
+				return $locale;
+			}
+		}
+	}
+
+	public static function setLocale($clangId = -1, $addCharset = true) {
+		$locale = self::getLangLocale($clangId, $addCharset);
+
+		if ($locale != '') {
+			setlocale (LC_ALL, $locale);
+		}
+	}
+
+	public static function getLangDir($clangId = -1) {
+		global $REX;
+
+		if ($clangId == -1) {
+			$clangId = $REX['CUR_CLANG'];
+		}
+
+		if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['dir'])) {
+			return $REX['ADDON']['seo42']['settings']['lang'][$clangId]['dir'];
+		} else {
+			return '';
+		}
+	}
+
+	public static function getHreflang($clangId = -1) {
+		global $REX;
+
+		if ($clangId == -1) {
+			$clangId = $REX['CUR_CLANG'];
+		}
+
+		if (isset($REX['ADDON']['seo42']['settings']['lang'][$clangId]['hreflang']) && $REX['ADDON']['seo42']['settings']['lang'][$clangId]['hreflang'] != '') {
+			return $REX['ADDON']['seo42']['settings']['lang'][$clangId]['hreflang'];
+		} else {
+			return self::getLangCode($clangId);
 		}
 	}
 
@@ -548,7 +642,7 @@ class seo42 {
 		global $I18N, $REX;
 
 		if ($articleId != 0) {
-			self::initArticle($articleId);			
+			self::initArticle($articleId);
 		}
 
 		if (!OOArticle::isValid(self::$curArticle)) {
@@ -573,6 +667,8 @@ class seo42 {
 		$out .= '</table>';
 
 		// methods
+		$isBackend = false;
+
 		if ($REX['REDAXO']) {
 			$isBackend = true;
 			$includeQueryParams = $REX['ADDON']['seo42']['settings']['include_query_params'];
@@ -597,10 +693,18 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::getArticleName');
 		$out .= self::getDebugInfoRow('seo42::isStartArticle');
 		$out .= self::getDebugInfoRow('seo42::getWebsiteName');
-		$out .= self::getDebugInfoRow('seo42::getLangCode', array('0'));
-		$out .= self::getDebugInfoRow('seo42::getLangSlug', array('0'));
-		$out .= self::getDebugInfoRow('seo42::getLangName', array('0'));
-		$out .= self::getDebugInfoRow('seo42::getOriginalLangName', array('0'));
+		$out .= self::getDebugInfoRow('seo42::getLangName', array($REX['CUR_CLANG']));
+		$out .= self::getDebugInfoRow('seo42::getOriginalLangName', array($REX['CUR_CLANG']));
+		$out .= self::getDebugInfoRow('seo42::getLangCode', array($REX['CUR_CLANG']));
+		$out .= self::getDebugInfoRow('seo42::getLangRegionCode', array($REX['CUR_CLANG']));
+		$out .= self::getDebugInfoRow('seo42::getLangRegion', array($REX['CUR_CLANG']));
+		$out .= self::getDebugInfoRow('seo42::getLangUrlSlug', array($REX['CUR_CLANG']));
+		$out .= self::getDebugInfoRow('seo42::getHreflang', array($REX['CUR_CLANG']));
+		$out .= self::getDebugInfoRow('seo42::getLangDir', array($REX['CUR_CLANG']));
+		$out .= self::getDebugInfoRow('seo42::getLangLocale', array($REX['CUR_CLANG'], 'true'));
+		$out .= self::getDebugInfoRow('seo42::getLangCount');
+		$out .= self::getDebugInfoRow('seo42::isMultiLangInstall');
+		$out .= self::getDebugInfoRow('seo42::getLangTags');
 		$out .= self::getDebugInfoRow('seo42::getServerProtocol');
 		$out .= self::getDebugInfoRow('seo42::getBaseUrl');
 		$out .= self::getDebugInfoRow('seo42::getServerUrl');
@@ -610,8 +714,6 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::isWwwServerUrl');
 		$out .= self::getDebugInfoRow('seo42::hasTemplateBaseTag');
 		$out .= self::getDebugInfoRow('seo42::isSubDirInstall');
-		$out .= self::getDebugInfoRow('seo42::isMultiLangInstall');
-		$out .= self::getDebugInfoRow('seo42::getLangCount');
 		$out .= self::getDebugInfoRow('seo42::getTitleDelimiter');
 		$out .= self::getDebugInfoRow('seo42::getUrlStart');
 		$out .= self::getDebugInfoRow('seo42::has404ResponseFlag');
@@ -622,7 +724,6 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::getMediaUrl', array('image.png'));
 		$out .= self::getDebugInfoRow('seo42::getAbsoluteMediaFile', array('image.png'));
 		$out .= self::getDebugInfoRow('seo42::getMediaAddonDir');
-		$out .= self::getDebugInfoRow('seo42::getLangTags');
 		$out .= self::getDebugInfoRow('seo42::getHtml');
 		$out .= self::getDebugInfoRow('seo42::getImageTag', array('image.png', 'rex_mediapool_detail', '150', '100'));
 		$out .= self::getDebugInfoRow('seo42::getImageManagerFile', array('image.png', 'rex_mediapool_detail'));

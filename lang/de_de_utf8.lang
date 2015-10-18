@@ -147,8 +147,12 @@ seo42_settings_urlencode_whitespace_replace = Urlencode Whitespace Replace Char
 seo42_settings_urlencode_lowercase = Urlencode Lowercase
 
 seo42_settings_langname_section = Sprache:
-seo42_settings_lang_code = Code
 seo42_settings_lang_original_name = Name
+seo42_settings_lang_code = Code
+seo42_settings_lang_region_code = Region Code
+seo42_settings_lang_url_slug = URL Slug
+seo42_settings_lang_hreflang = Hreflang
+seo42_settings_lang_dir = Dir
 seo42_settings_lang_rewrite_mode = Rewrite Mode
 seo42_settings_lang_rewrite_mode_0 = Special Chars
 seo42_settings_lang_rewrite_mode_1 = Urlencode

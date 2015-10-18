@@ -141,7 +141,7 @@ class SEO42Rewrite
 			$langSlugs = array();
 
 			foreach ($REX['CLANG'] as $clangId => $clangName) {
-				$langSlugs[$clangId] = seo42::getLangSlug($clangId);
+				$langSlugs[$clangId] = seo42::getLangUrlSlug($clangId);
 			}
 
 			$clangId = array_search($possibleLangSlug, $langSlugs);
@@ -509,9 +509,9 @@ function seo42_generate_pathlist($params)
 	if (count($REX['CLANG']) > 1) {
 		foreach ($REX['CLANG'] as $clangId => $clangName) {
 			if ($REX['ADDON']['seo42']['settings']['url_ending'] == '') {
-				$langSlug = seo42::getLangSlug($clangId) . '/';
+				$langSlug = seo42::getLangUrlSlug($clangId) . '/';
 			} else {
-				$langSlug = seo42::getLangSlug($clangId);
+				$langSlug = seo42::getLangUrlSlug($clangId);
 			}
 
 			if ($REX['ADDON']['seo42']['settings']['homelang'] != $clangId) {
@@ -533,7 +533,7 @@ function seo42_generate_pathlist($params)
         if (count($REX['CLANG']) > 1 && $clang != $REX['ADDON']['seo42']['settings']['hide_langslug'])
         {
           $pathname = '';
-          $pathname = seo42_appendToPath($pathname, seo42::getLangSlug($clang), $id, $clang); 
+          $pathname = seo42_appendToPath($pathname, seo42::getLangUrlSlug($clang), $id, $clang); 
         }
 
         // pfad über kategorien bauen
@@ -604,9 +604,9 @@ function seo42_generate_pathlist($params)
         {
 
           if ($REX['ADDON']['seo42']['settings']['url_ending'] == '') {
-            $langSlug = seo42::getLangSlug($clang);
+            $langSlug = seo42::getLangUrlSlug($clang);
           } else {
-            $langSlug = seo42::getLangSlug($clang) . '/';
+            $langSlug = seo42::getLangUrlSlug($clang) . '/';
           }
 
           $pathname = $langSlug;

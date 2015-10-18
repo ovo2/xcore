@@ -454,15 +454,27 @@ class nav42 {
 			if (!$articleStatus && $this->langHideLiIfOfflineArticle) {
 				// do nothing
 			} else {
+				$langCode = '';
+				$originalName = '';
+				$langSlug = '';
+
 				if (class_exists('seo42')) {
 					$langCode = seo42::getLangCode($clangId);
 					$originalName = seo42::getOriginalLangName($clangId);
-					$langSlug = seo42::getLangSlug($clangId);
-				} else {
+					$langSlug = seo42::getLangUrlSlug($clangId);
+				} 
+
+				if ($langCode == '') {
 					$langCode = $clangName;
+				}
+
+				if ($originalName == '') {
 					$originalName = $clangName;
+				}
+
+				if ($langSlug == '') {
 					$langSlug = $clangName;
-				}		
+				}
 
 				// link text
 				if ($this->langUseLangCodeAsLinkText) {
