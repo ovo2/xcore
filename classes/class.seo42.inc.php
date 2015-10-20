@@ -488,9 +488,10 @@ class seo42 {
 
 	public static function setLocale($clangId = -1, $addCharset = true) {
 		$locale = self::getLangLocale($clangId, $addCharset);
+		$locale = str_replace('-', '_', $locale);
 
 		if ($locale != '') {
-			setlocale (LC_ALL, $locale);
+			setlocale(LC_ALL, $locale);
 		}
 	}
 
