@@ -29,6 +29,7 @@ require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42_utils.inc
 
 // consts
 define('SEO42_ARRAY_DELIMITER', ',');
+define('SEO42_PREVIEW_QUERY_STRING_IDENTIFIER', 'rex_preview_id');
 define('SEO42_DATA_DIR', $REX['INCLUDE_PATH'] . '/data/addons/seo42/');
 define('SEO42_BACKUP_DIR', $REX['INCLUDE_PATH'] . '/data/addons/seo42/backup/');
 define('SEO42_PATHLIST', $REX['GENERATED_PATH'] . '/files/seo42_pathlist.php');

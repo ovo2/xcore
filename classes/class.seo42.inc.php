@@ -925,7 +925,7 @@ class seo42 {
 	}
 
 	public static function isPreviewMode() {
-		if (rex_get('rex_preview_id', 'string', '') == self::getPreviewToken()) {
+		if (rex_get(SEO42_PREVIEW_QUERY_STRING_IDENTIFIER, 'string', '') == self::getPreviewToken()) {
 			return true;
 		} else {
 			return false;

@@ -202,7 +202,7 @@ class SEO42Rewrite
 			if ($REX['ADDON']['seo42']['settings']['offline_404_mode'] && is_object($article) && $article->getValue('status') == 0) {
 				seo42::set404ResponseFlag();
 
-				if (seo42_utils::isBackendUserLoggedIn() && seo42::isPreviewMode()) {
+				if (rex_get(SEO42_PREVIEW_QUERY_STRING_IDENTIFIER, 'string', '') != '' /* with this no cookie will be created */ && seo42_utils::isBackendUserLoggedIn() && seo42::isPreviewMode()) {
 					self::setArticleId($SEO42_URLS[$path]['id'],$SEO42_URLS[$path]['clang']);
 				} else {
 					self::setArticleId($REX['NOTFOUND_ARTICLE_ID'], $SEO42_URLS[$path]['clang']);

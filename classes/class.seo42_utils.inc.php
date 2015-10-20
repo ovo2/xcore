@@ -186,7 +186,7 @@ class seo42_utils {
 		$article = OOArticle::getArticleById($REX['ARTICLE_ID'], $REX['CUR_CLANG']);
 
 		if ($REX['ADDON']['seo42']['settings']['offline_404_mode'] && is_object($article) && $article->getValue('status') == 0) {
-			$newUrl .= '?rex_preview_id=' . seo42::getPreviewToken();
+			$newUrl .= '?' . SEO42_PREVIEW_QUERY_STRING_IDENTIFIER . '=' . seo42::getPreviewToken();
 		}
 
 		$params['subject'][$lastElement] = preg_replace("/(?<=href=(\"|'))[^\"']+(?=(\"|'))/", $newUrl, $params['subject'][$lastElement]);
