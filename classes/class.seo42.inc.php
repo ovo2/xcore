@@ -450,7 +450,7 @@ class seo42 {
 		}
 	}
 
-	public static function getLangRegion($clangId = -1) {
+	public static function getRegionCode($clangId = -1) {
 		global $REX;
 
 		$langRegionCode = self::getLangRegionCode();
@@ -697,7 +697,7 @@ class seo42 {
 		$out .= self::getDebugInfoRow('seo42::getOriginalLangName', array($REX['CUR_CLANG']));
 		$out .= self::getDebugInfoRow('seo42::getLangCode', array($REX['CUR_CLANG']));
 		$out .= self::getDebugInfoRow('seo42::getLangRegionCode', array($REX['CUR_CLANG']));
-		$out .= self::getDebugInfoRow('seo42::getLangRegion', array($REX['CUR_CLANG']));
+		$out .= self::getDebugInfoRow('seo42::getRegionCode', array($REX['CUR_CLANG']));
 		$out .= self::getDebugInfoRow('seo42::getLangUrlSlug', array($REX['CUR_CLANG']));
 		$out .= self::getDebugInfoRow('seo42::getHreflang', array($REX['CUR_CLANG']));
 		$out .= self::getDebugInfoRow('seo42::getLangDir', array($REX['CUR_CLANG']));
