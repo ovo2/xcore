@@ -924,20 +924,6 @@ class seo42 {
 		return strtolower(seo42_parse_article_name($string, $REX['ARTICLE_ID'], $REX['CUR_CLANG']));
 	}
 
-	public static function isPreviewMode() {
-		if (rex_get(SEO42_PREVIEW_QUERY_STRING_IDENTIFIER, 'string', '') == self::getPreviewToken()) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public static function getPreviewToken() {
-		global $REX;
-
-		return md5($REX['INSTNAME'] . session_id());
-	}
-
 	public static function getCSSFile($file, $vars = array()) {
 		return res42::getCSSFile($file, $vars);
 	}

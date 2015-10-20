@@ -77,8 +77,8 @@ class seo42_utils {
 				header('X-Robots-Tag: noindex, noarchive');
 			}
 
-			// try fixing redaxo's errorarticle behaviour
-			if ((seo42::has404ResponseFlag() && $REX['START_ARTICLE_ID'] == $REX['NOTFOUND_ARTICLE_ID']) || ($REX['ADDON']['seo42']['settings']['offline_404_mode'] && seo42::isPreviewMode())) {
+			// try fixing redaxo's errorarticle behaviour + also used for preview mode
+			if (seo42::has404ResponseFlag()) {
 				header("HTTP/1.0 404 Not Found");
 			}
 		}
@@ -181,12 +181,6 @@ class seo42_utils {
 			$newUrl = seo42::getFullUrl($REX['START_ARTICLE_ID']);
 		} else {
 			$newUrl = seo42::getFullUrl();
-		}
-
-		$article = OOArticle::getArticleById($REX['ARTICLE_ID'], $REX['CUR_CLANG']);
-
-		if ($REX['ADDON']['seo42']['settings']['offline_404_mode'] && is_object($article) && $article->getValue('status') == 0) {
-			$newUrl .= '?' . SEO42_PREVIEW_QUERY_STRING_IDENTIFIER . '=' . seo42::getPreviewToken();
 		}
 
 		$params['subject'][$lastElement] = preg_replace("/(?<=href=(\"|'))[^\"']+(?=(\"|'))/", $newUrl, $params['subject'][$lastElement]);
