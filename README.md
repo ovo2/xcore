@@ -66,7 +66,7 @@ Verfügbare Plugins für SEO42
 ----------------------------
 
 * [url_control](https://github.com/tbaddade/redaxo_plugin_url_control) - Plugin zur URL-Generierung für eigene AddOns
-* [url_control](https://github.com/RexDude/url_control) - Inofizieller Fork des url_controls Plugin mit Unterstützung für SEO42 4.0+
+* [url_control](https://github.com/RexDude/url_control) Fork - Inoffizieller Fork des url_controls Plugin mit Unterstützung für SEO42 4.0+
 * [lessdotphp](https://github.com/DanielWeitenauer/lessdotphp) - Less.php für SEO42 (Empfohlen für Bootstrap)
 * [min42](https://github.com/webghostx/min42) Minifizierung von CSS/JS Dateien
 
