@@ -20,6 +20,7 @@ class seo42 {
 	protected static $is404Response;
 	protected static $ignoreQueryParams;
 	protected static $navigationClass;
+	protected static $urlEnding;
 
 	const downloadDir = 'download';
 	const imageTypesDir = 'imagetypes';
@@ -43,6 +44,7 @@ class seo42 {
 		self::$is404Response = false; // will be set from outside by set404ResponseFlag()
 		self::$ignoreQueryParams = $REX['ADDON']['seo42']['settings']['ignore_query_params'];
 		self::$navigationClass = 'nav42';
+		self::$urlEnding = $REX['ADDON']['seo42']['settings']['url_ending'];
 
 		// pull apart server url
 		$urlParts = parse_url(self::$serverUrl);
@@ -922,6 +924,10 @@ class seo42 {
 		global $REX;
 	
 		return strtolower(seo42_parse_article_name($string, $REX['ARTICLE_ID'], $REX['CUR_CLANG']));
+	}
+
+	public static function getUrlEnding() {
+		return self::$urlEnding;
 	}
 
 	public static function getCSSFile($file, $vars = array()) {
