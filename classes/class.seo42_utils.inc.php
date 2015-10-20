@@ -57,6 +57,9 @@ class seo42_utils {
 		// init current article
 		seo42::initArticle($REX['ARTICLE_ID']);
 
+		// set locale for correct language for php functions like strftime()
+		seo42::setLocale();
+
 		// controller
 		include($REX['INCLUDE_PATH'] . '/addons/seo42/controller.inc.php');
 
