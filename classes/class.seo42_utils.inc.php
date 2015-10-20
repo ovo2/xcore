@@ -183,7 +183,7 @@ class seo42_utils {
 		$article = OOArticle::getArticleById($REX['ARTICLE_ID'], $REX['CUR_CLANG']);
 
 		if ($REX['ADDON']['seo42']['settings']['offline_404_mode'] && is_object($article) && $article->getValue('status') == 0) {
-			$newUrl .= '?preview=' . seo42::getPreviewToken();
+			$newUrl .= '?rex_preview_id=' . seo42::getPreviewToken();
 		}
 
 		$params['subject'][$lastElement] = preg_replace("/(?<=href=(\"|'))[^\"']+(?=(\"|'))/", $newUrl, $params['subject'][$lastElement]);
@@ -1235,5 +1235,28 @@ class seo42_utils {
 		}
 
 		return $userDefUrls;
+	}
+
+	public static function isBackendUserLoggedIn() {
+		global $REX, $I18N;
+
+		$loggedIn = false;
+
+		if (session_id() == '') {
+			session_start();
+		}
+
+		$loggedIn = isset($_SESSION[$REX['INSTNAME']]['UID']) && $_SESSION[$REX['INSTNAME']]['UID'] > 0;
+
+		if ($loggedIn && (!isset($REX['LOGIN']) || !is_object($REX['LOGIN']))) {
+			if (!is_object($I18N)) {
+				$I18N = rex_create_lang($REX['LANG']);
+			}
+
+			$REX['LOGIN'] = new rex_backend_login($REX['TABLE_PREFIX'] . 'user');
+			$loggedIn = $REX['LOGIN']->checkLogin();
+		}
+
+		return $loggedIn;
 	}
 }

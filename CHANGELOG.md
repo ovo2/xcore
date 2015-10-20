@@ -6,7 +6,7 @@ SEO42 - Changelog
 * Neu: Offline 404 Modus (unter Einstellungen > URLs): Ist der Modus aktiviert wird ein Artikel der offline ist im Frontend nicht mehr angezeigt. Es kommt der Fehlerartikel mit einem 404 Header. Aus dem Backend heraus über den Link "Webansicht" kann man den Artikel jedoch noch aufrufen. Link ist nur gültig wenn Benutzer eingeloggt. Ausserdem wird dann ein 404 Header + X-Robots noindex Header zusätzlich gesendet.
 * Neu: `setLiIdFromCategoryId()` und `setLiClassFromCategoryId()` zur `nav42` hinzugefügt. Damit kann man den Menüpunkten CSS IDs und Klassen zuweisen anhand der Kategorie ID. Siehe Codebeispiele in der Hilfe.
 * [IM AUFBAU] Neu: Hilfe zu den Einstellungen (`SETTINGS.md`)
-* [IM AUFBAU] Verbessert: LangPresets um folgende Felder erweitert ... Methoden hinzugefügt ... Methoden umbenannt getLangUrlSlug ... Depracated getLangSlug
+* [IM AUFBAU] Verbessert: LangPresets um folgende Felder erweitert ... Methoden hinzugefügt ... Methoden umbenannt getLangUrlSlug ... Depracated getLangSlug ... Inkl. Methoden seo42::getLangLocale() und seo42::setLocale() als Wrapper für setlocale() von PHP.
 * Verbessert: SCSS Compiler auf Version 0.3.0 aktualisiert, thx@olien
 * Verbessert: File Combiner gibt "file not found" Meldung aus wenn Datei nicht vorhanden, thx@denisdanielyan
 

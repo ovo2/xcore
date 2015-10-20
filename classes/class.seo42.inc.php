@@ -457,14 +457,14 @@ class seo42 {
 		$explodedCode = explode('-', $langRegionCode);
 
 		if (isset($explodedCode[1])) {
-			return $explodedCode[1];
+			return strtolower($explodedCode[1]);
 		} else {
 			unset($explodedCode);
 
 			$explodedCode = explode('_', $langRegionCode);
 
 			if (isset($explodedCode[1])) {
-				return $explodedCode[1];
+				return strtolower($explodedCode[1]);
 			} else {
 				return '';
 			}
@@ -924,7 +924,7 @@ class seo42 {
 	}
 
 	public static function isPreviewMode() {
-		if (rex_get('preview', 'string', '') == self::getPreviewToken()) {
+		if (rex_get('rex_preview_id', 'string', '') == self::getPreviewToken()) {
 			return true;
 		} else {
 			return false;
@@ -934,30 +934,7 @@ class seo42 {
 	public static function getPreviewToken() {
 		global $REX;
 
-		return md5($REX['INSTNAME']);
-	}
-
-	public static function isBackendUserLoggedIn() {
-		global $REX, $I18N;
-
-		$loggedIn = false;
-
-		if (session_id() == '') {
-			session_start();
-		}
-
-		$loggedIn = isset($_SESSION[$REX['INSTNAME']]['UID']) && $_SESSION[$REX['INSTNAME']]['UID'] > 0;
-
-		if ($loggedIn && (!isset($REX['LOGIN']) || !is_object($REX['LOGIN']))) {
-			if (!is_object($I18N)) {
-				$I18N = rex_create_lang($REX['LANG']);
-			}
-
-			$REX['LOGIN'] = new rex_backend_login($REX['TABLE_PREFIX'] . 'user');
-			$loggedIn = $REX['LOGIN']->checkLogin();
-		}
-
-		return $loggedIn;
+		return md5($REX['INSTNAME'] . session_id());
 	}
 
 	public static function getCSSFile($file, $vars = array()) {
