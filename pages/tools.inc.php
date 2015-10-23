@@ -10,7 +10,7 @@ if ($func == 'add_domain') {
 	seo42_utils::updateSettingsFile();
 }
 
-$googleIndexLink = 'http://www.google.com/search?q=site:' . seo42::getServerWithSubDir();;
+$googleIndexLink = 'https://www.google.com/search?q=site:' . seo42::getServerWithSubDir();;
 ?>
 
 <?php if ($REX['ADDON']['seo42']['settings']['pagerank_checker']) { ?>
