@@ -11,10 +11,16 @@ SEO42 - Changelog
 * Neu: `seo42::getUrlEnding()` hinzugefügt
 * Neu: Plugin zur Readme hinzugefügt: `url_control` - Inofizieller Fork des url_controls Plugin mit Unterstützung für SEO42 4.0+
 * Neu: Hinweis aufgenommen: Der X-UA-Compatible Meta Tag kann im Template weggelassen werden, da SEO42 automatisch diesen als HTTP Header sendet.
-* Verbessert: LangPresets um folgende Felder erweitert ... Methoden hinzugefügt ... Methoden umbenannt getLangUrlSlug ... Depracated getLangSlug ... Inkl. Methoden seo42::getLangLocale() und seo42::setLocale() als Wrapper für setlocale() von PHP. thx@ chrfickinger
+* Verbessert: LangPresets Feld + Methode hinzugefügt: `region_code` / `seo42::getLangRegionCode()` / Beispielwert: de-AT (Sprache-REGION), thx@chrfickinger
+* Verbessert: LangPresets Feld + Methode hinzugefügt: `url_slug` / `seo42::getLangUrlSlug()` / Beispielwert: de, thx@chrfickinger
+* Verbessert: LangPresets Feld + Methode hinzugefügt: `hreflang` / `seo42::getHreflang()` / Beispielwert: de (de-AT nun auch möglich damit), thx@chrfickinger
+* Verbessert: LangPresets Feld + Methode hinzugefügt: `dir` / `seo42::getLangDir()` / Beispielwert: ltr, thx@DanielWeitenauer 
+* Verbessert: Methoden `seo42::getRegionCode()`, `seo42::getLangLocale()` und `seo42::setLocale()` als Wrapper für `setlocale()` von PHP hinzugefügt, thx@alexwenz
+* Verbessert: Methode `seo42::getLangSlug()` umbenannt in `seo42::getLangUrlSlug()`
 * Verbessert: AddTypes in `.htaccess` vereinheitlicht, thx@olien
 * Verbessert: SCSS Compiler auf Version 0.3.0 aktualisiert, thx@olien
 * Verbessert: File Combiner gibt "file not found" Meldung aus wenn Datei nicht vorhanden, thx@denisdanielyan
+* Deprecated: `seo42::getLangSlug()` (`seo42::getLangUrlSlug()` benutzen!)
 
 ### Version 4.2.1 - 10. August 2015
 
