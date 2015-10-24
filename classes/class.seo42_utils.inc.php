@@ -99,6 +99,8 @@ class seo42_utils {
 			echo rex_info($I18N->msg('seo42_dbfields_readded', $REX['ADDON']['name']['seo42']));
 			echo rex_info($I18N->msg('seo42_dbfields_readded_check_setup', $REX['ADDON']['name']['seo42']));
 		}
+
+		seo42_utils::updateRedirectsFile(false);
 	}
 
 	public static function showMsgAfterClangModified($params) {
