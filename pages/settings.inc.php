@@ -33,6 +33,15 @@ if ($func == 'update') {
 		}
 	}
 
+	// reset inherit_from_clang to default if rewrite_mode not changed
+	foreach ($REX['CLANG'] as $clangId => $clangName) {
+		if (isset($langSettings[$clangId])) {
+			if (isset($langSettings[$clangId]['rewrite_mode']) && $langSettings[$clangId]['rewrite_mode'] != SEO42_REWRITEMODE_INHERIT) {
+				$langSettings[$clangId]['inherit_from_clang'] = 0;
+			}
+		}
+	}
+
 	// replace lang settings
 	unset($REX['ADDON']['seo42']['settings']['lang']);
 	$REX['ADDON']['seo42']['settings']['lang'] = $langSettings;

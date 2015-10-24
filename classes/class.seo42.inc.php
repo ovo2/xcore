@@ -749,15 +749,9 @@ class seo42 {
 		$out .= '</pre>';
 
 		// settings differences
-		$out .= '<h2>Changed Settings (without language settings)</h2>';
+		$out .= '<h2>Changed Settings</h2>';
 		$out .= '<pre class="rex-code">';
-
-		foreach($REX['ADDON']['seo42']['settings_default'] as $key => $value) {
-			if (!is_array($value) && isset($REX['ADDON']['seo42']['settings'][$key]) && $value != $REX['ADDON']['seo42']['settings'][$key]) {
-				$out .= '[' . $key . ']' . "<br />";
-			}
-		}
-
+		$out .= seo42_utils::print_r_pretty(self::arrayRecursiveDiff($REX['ADDON']['seo42']['settings'], $REX['ADDON']['seo42']['settings_default']));
 		$out .= '</pre>';
 
 		// cached redirects
@@ -842,6 +836,30 @@ class seo42 {
 
 		return $out;
 	}
+
+	protected static function arrayRecursiveDiff($aArray1, $aArray2) {
+		$aReturn = array();
+
+		foreach ($aArray1 as $mKey => $mValue) {
+			if (array_key_exists($mKey, $aArray2)) {
+				if (is_array($mValue)) {
+					$aRecursiveDiff = self::arrayRecursiveDiff($mValue, $aArray2[$mKey]);
+					
+					if (count($aRecursiveDiff)) {
+						$aReturn[$mKey] = $aRecursiveDiff; 
+					}
+				} else {
+					if ($mValue != $aArray2[$mKey]) {
+						$aReturn[$mKey] = $mValue;
+					}
+				}
+			} else {
+				$aReturn[$mKey] = $mValue;
+			}
+		}
+
+		return $aReturn;
+	} 
 
 	protected static function getDebugInfoRow($func, $params = array()) {
 		$out = '';
