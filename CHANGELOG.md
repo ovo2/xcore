@@ -8,7 +8,9 @@ SEO42 - Changelog
 * [IM AUFBAU] Neu: Hilfe zu den Einstellungen (`SETTINGS.md`)
 * Neu: `seo42::getUrlEnding()` hinzugefügt
 * Neu: Plugin zur Readme hinzugefügt: `url_control` - Inofizieller Fork des url_controls Plugin mit Unterstützung für SEO42 4.0+
-* [IM AUFBAU] Verbessert: LangPresets um folgende Felder erweitert ... Methoden hinzugefügt ... Methoden umbenannt getLangUrlSlug ... Depracated getLangSlug ... Inkl. Methoden seo42::getLangLocale() und seo42::setLocale() als Wrapper für setlocale() von PHP.
+* Fixed: Cached Redirects werden nun nach Import aktualisiert
+* [IM AUFBAU] Verbessert: LangPresets um folgende Felder erweitert ... Methoden hinzugefügt ... Methoden umbenannt getLangUrlSlug ... Depracated getLangSlug ... Inkl. Methoden seo42::getLangLocale() und seo42::setLocale() als Wrapper für setlocale() von PHP. thx@ chrfickinger
+* Verbessert: AddTypes in `.htaccess` vereinheitlicht, thx@olien
 * Verbessert: SCSS Compiler auf Version 0.3.0 aktualisiert, thx@olien
 * Verbessert: File Combiner gibt "file not found" Meldung aus wenn Datei nicht vorhanden, thx@denisdanielyan
 
