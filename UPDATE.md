@@ -1,7 +1,7 @@
 SEO42 - Updatehinweise
 ======================
 
-### Version 4.2.0
+### Version 4.3.0
 
 * Die Spracheinstellungen inkl. den LangPresets wurden erweitert (siehe Changelog). Bitte alle Sprachen durchgehen und über die LangPresets die leeren Felder ergänzen.
 * Die mitgelieferte `.htaccess` Datei hat sich geändert. Bitte Setup Schritt 2 wiederholen.
