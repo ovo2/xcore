@@ -639,6 +639,8 @@ function seo42_generate_pathlist($params)
 	// URL MANIPULATION BY SEO42
 	// -----------------------------------------------------------------------------------------------------------
 
+	$interReplaceIds = array();
+
 	$db->reset();
 	
     for ($i = 0; $i < $db->getRows(); $i++) {
@@ -686,6 +688,7 @@ function seo42_generate_pathlist($params)
 					break;
 				case SEO42_URL_TYPE_INTERN_REPLACE:
 					$customArticleId = $jsonData['article_id'];
+					$interReplaceIds[$clangId][$articleId] = array($customArticleId, $clangId);
 
 					unset($SEO42_URLS[$SEO42_IDS[$articleId][$clangId]['url']]); 
 
@@ -699,6 +702,7 @@ function seo42_generate_pathlist($params)
 				case SEO42_URL_TYPE_INTERN_REPLACE_CLANG:
 					$customArticleId = $jsonData['article_id'];
 					$customClangId = $jsonData['clang_id'];
+					$interReplaceIds[$clangId][$articleId] = array($customArticleId, $customClangId);
 
 					unset($SEO42_URLS[$SEO42_IDS[$articleId][$clangId]['url']]); 
 
@@ -743,6 +747,13 @@ function seo42_generate_pathlist($params)
 		}
 
 		$db->next();
+	}
+
+	// workaround for #177
+	foreach ($interReplaceIds as $clangId => $value) {
+		foreach ($value as $interReplaceId => $noRootCatId) {
+			$SEO42_IDS[$interReplaceId][$clangId] = array('url' => $SEO42_IDS[$noRootCatId[0]][$noRootCatId[1]]['url']);
+		}
 	}
 
 	// -----------------------------------------------------------------------------------------------------------
