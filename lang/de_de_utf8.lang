@@ -188,8 +188,8 @@ seo42_setup_htaccess_patch_failed = Die Anpassungen an der .htaccess Datei konnt
 seo42_setup_step2_button = Datei kopieren
 seo42_setup_step3 = Schritt 3: Template anpassen
 seo42_setup_step3_msg1 = Zuletzt nutzen Sie dieses SEO42 Boilerplate als Basis für Ihre eigenen Templates:
-seo42_setup_step4 = Schritt 4: Optimierungen
-seo42_setup_step4_msg1 = Neu bei SEO42? Bitte lesen Sie unbedingt die <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=startguide">Startguide</a>.
+seo42_setup_step4 = Schritt 4: Code optimieren
+seo42_setup_step4_msg1 = Neu bei SEO42? Bitte lesen Sie unbedingt den <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=startguide">Startguide</a>.
 seo42_setup_step4_msg2 = Weitere <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=codeexamples">Codebeispiele</a> finden Sie in der Hilfe von SEO42.
 seo42_setup_step4_msg3 = Hilfe und Hinweise finden Sie in der <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=">Readme</a> und in der <a href="index.php?page=seo42&amp;subpage=help&amp;chapter=faq">FAQ</a>.
 seo42_setup_codeexamples_goto_startpage = Link zur Startseite
