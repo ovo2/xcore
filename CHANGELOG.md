@@ -12,10 +12,10 @@ SEO42 - Changelog
 * Neu: Plugin zur Readme hinzugefügt: `url_control` - Inofizieller Fork des url_controls Plugin mit Unterstützung für SEO42 4.0+
 * Neu: Hinweis aufgenommen: Der X-UA-Compatible Meta Tag kann im Template weggelassen werden, da SEO42 automatisch diesen als HTTP Header sendet.
 * Neu: Hilfe zu den Einstellungen (`SETTINGS.md`) [IM AUFBAU]
-* Neu: LangPresets Feld + Methode hinzugefügt: `region_code` / `seo42::getLangRegionCode()` / Beispielwert: de-AT (Sprache-REGION), thx@chrfickinger
-* Neu: LangPresets Feld + Methode hinzugefügt: `url_slug` / `seo42::getLangUrlSlug()` / Beispielwert: de, thx@chrfickinger
-* Neu: LangPresets Feld + Methode hinzugefügt: `hreflang` / `seo42::getHreflang()` / Beispielwert: de (de-AT nun auch möglich damit), thx@chrfickinger
-* Neu: LangPresets Feld + Methode hinzugefügt: `dir` / `seo42::getLangDir()` / Beispielwert: ltr, thx@DanielWeitenauer 
+* Neu: Sprachfeld `region_code` inkl. Methode `seo42::getLangRegionCode()` hinzugefügt. Beispielwert: de-AT (Sprache-REGION), thx@chrfickinger
+* Neu: Sprachfeld `url_slug` inkl. Methode `seo42::getLangUrlSlug()` hinzugefügt. Beispielwert: de, thx@chrfickinger
+* Neu: Sprachfeld `hreflang` inkl. Methode `seo42::getHreflang()` hinzugefügt. Beispielwert: de (de-AT nun auch möglich damit), thx@chrfickinger
+* Neu: Sprachfeld `dir` inkl. Methode `seo42::getLangDir()` hinzugefügt. Beispielwert: ltr, thx@DanielWeitenauer 
 * Neu: Methoden `seo42::getRegionCode()`, `seo42::getLangLocale()` und `seo42::setLocale()` als Wrapper für `setlocale()` von PHP hinzugefügt, thx@alexwenz
 * Verbessert: Methode `seo42::getLangSlug()` umbenannt in `seo42::getLangUrlSlug()`
 * Verbessert: AddTypes in `.htaccess` vereinheitlicht, thx@olien
