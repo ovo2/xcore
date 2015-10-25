@@ -20,8 +20,8 @@ use Leafo\ScssPhp\Compiler;
  */
 class Parser
 {
-    const SOURCE_POSITION = -1;
-    const SOURCE_PARSER   = -2;
+    const SOURCE_INDEX    = -1;
+    const SOURCE_POSITION = -2;
 
     /**
      * @var array
@@ -71,7 +71,7 @@ class Parser
     protected static $commentMultiRight = '*/';
 
     private $sourceName;
-    private $rootParser;
+    private $sourceIndex;
     private $charset;
     private $count;
     private $env;
@@ -83,13 +83,13 @@ class Parser
      * Constructor
      *
      * @param string  $sourceName
-     * @param boolean $rootParser
+     * @param integer $sourceIndex
      */
-    public function __construct($sourceName = null, $rootParser = true)
+    public function __construct($sourceName, $sourceIndex = 0)
     {
-        $this->sourceName = $sourceName;
-        $this->rootParser = $rootParser;
-        $this->charset = null;
+        $this->sourceName  = $sourceName ?: '(stdin)';
+        $this->sourceIndex = $sourceIndex;
+        $this->charset     = null;
 
         if (empty(self::$operatorStr)) {
             self::$operatorStr = $this->makeOperatorStr(self::$operators);
@@ -137,7 +137,7 @@ class Parser
         $this->pushBlock(null);
         $this->popBlock();
 
-        while (false !== $this->parseChunk()) {
+        while ($this->parseChunk()) {
             ;
         }
 
@@ -241,6 +241,20 @@ class Parser
 
         // the directives
         if (isset($this->buffer[$this->count]) && $this->buffer[$this->count] === '@') {
+            if ($this->literal('@at-root') &&
+                ($this->selectors($selector) || true) &&
+                ($this->map($with) || true) &&
+                $this->literal('{')
+            ) {
+                $atRoot = $this->pushSpecialBlock('at-root', $s);
+                $atRoot->selector = $selector;
+                $atRoot->with = $with;
+
+                return true;
+            }
+
+            $this->seek($s);
+
             if ($this->literal('@media') && $this->mediaQueryList($mediaQueryList) && $this->literal('{')) {
                 $media = $this->pushSpecialBlock('media', $s);
                 $media->queryList = $mediaQueryList[2];
@@ -470,16 +484,14 @@ class Parser
 
             // only retain the first @charset directive encountered
             if ($this->literal('@charset') &&
-                $this->valueList($charset) && $this->end()
+                $this->valueList($charset) &&
+                $this->end()
             ) {
                 if (! isset($this->charset)) {
                     $statement = array('charset', $charset);
 
                     $statement[self::SOURCE_POSITION] = $s;
-
-                    if (! $this->rootParser) {
-                        $statement[self::SOURCE_PARSER] = $this;
-                    }
+                    $statement[self::SOURCE_INDEX] = $this->sourceIndex;
 
                     $this->charset = $statement;
                 }
@@ -490,7 +502,8 @@ class Parser
             $this->seek($s);
 
             // doesn't match built in directive, do generic one
-            if ($this->literal('@', false) && $this->keyword($dirName) &&
+            if ($this->literal('@', false) &&
+                $this->keyword($dirName) &&
                 ($this->variable($dirValue) || $this->openString('{', $dirValue) || true) &&
                 $this->literal('{')
             ) {
@@ -527,7 +540,8 @@ class Parser
         // variable assigns
         if ($this->variable($name) &&
             $this->literal(':') &&
-            $this->valueList($value) && $this->end()
+            $this->valueList($value) &&
+            $this->end()
         ) {
             // check for '!flag'
             $assignmentFlag = $this->stripAssignmentFlag($value);
@@ -651,6 +665,7 @@ class Parser
 
                     return true;
                 }
+
                 // goes below...
             } else {
                 return false;
@@ -671,10 +686,10 @@ class Parser
     protected function pushBlock($selectors, $pos = 0)
     {
         $b = new \stdClass;
-        $b->parent = $this->env; // not sure if we need this yet
+        $b->parent = $this->env;
 
         $b->sourcePosition = $pos;
-        $b->sourceParser = $this;
+        $b->sourceIndex = $this->sourceIndex;
         $b->selectors = $selectors;
         $b->comments = array();
 
@@ -697,7 +712,7 @@ class Parser
     /**
      * Push special (named) block onto parse tree
      *
-     * @param array   $selectors
+     * @param string  $type
      * @param integer $pos
      *
      * @return \stdClass
@@ -759,10 +774,7 @@ class Parser
     {
         if ($pos !== null) {
             $statement[self::SOURCE_POSITION] = $pos;
-
-            if (! $this->rootParser) {
-                $statement[self::SOURCE_PARSER] = $this;
-            }
+            $statement[self::SOURCE_INDEX] = $this->sourceIndex;
         }
 
         $this->env->children[] = $statement;
@@ -1112,6 +1124,14 @@ class Parser
 
         $this->seek($s);
 
+        if ($this->literal('not', false) && $this->parenValue($inner)) {
+            $out = array('unary', 'not', $inner, $this->inParens);
+
+            return true;
+        }
+
+        $this->seek($s);
+
         if ($this->literal('+') && $this->value($inner)) {
             $out = array('unary', '+', $inner, $this->inParens);
 
@@ -1390,13 +1410,15 @@ class Parser
     {
         $s = $this->seek();
 
-        $this->literal('(');
+        if (! $this->literal('(')) {
+            return false;
+        }
 
         $keys = array();
         $values = array();
 
-        while ($this->genericList($key, 'expression') && $this->literal(':')
-            && $this->genericList($value, 'expression')
+        while ($this->genericList($key, 'expression') && $this->literal(':') &&
+            $this->genericList($value, 'expression')
         ) {
             $keys[] = $key;
             $values[] = $value;
@@ -1548,7 +1570,7 @@ class Parser
         $oldWhite = $this->eatWhiteDefault;
         $this->eatWhiteDefault = false;
 
-        while (true) {
+        for (;;) {
             if ($this->keyword($key)) {
                 $parts[] = $key;
                 continue;
@@ -1702,7 +1724,7 @@ class Parser
         $oldWhite = $this->eatWhiteDefault;
         $this->eatWhiteDefault = false;
 
-        while (true) {
+        for (;;) {
             if ($this->interpolation($inter)) {
                 $parts[] = $inter;
             } elseif ($this->keyword($text)) {
@@ -1788,7 +1810,7 @@ class Parser
     {
         $selector = array();
 
-        while (true) {
+        for (;;) {
             if ($this->match('[>+~]+', $m)) {
                 $selector[] = array($m[0]);
             } elseif ($this->selectorSingle($part)) {
@@ -1832,7 +1854,7 @@ class Parser
             $parts[] = '*';
         }
 
-        while (true) {
+        for (;;) {
             // see if we can stop early
             if ($this->match('\s*[{,]', $m)) {
                 $this->count--;
@@ -1925,7 +1947,7 @@ class Parser
                 $attrParts = array('[');
 
                 // keyword, string, operator
-                while (true) {
+                for (;;) {
                     if ($this->literal(']', false)) {
                         $this->count--;
                         break; // get out early
