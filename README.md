@@ -95,6 +95,8 @@ Language Presets
 
 * ISO Language Codes: <http://www.w3schools.com/tags/ref_language_codes.asp>
 * Sprach-Sonderzeichen-Tabelle: <http://unicode.e-workers.de/>
+* hreflang Link-Attribut Markup-Generator (für die Region Codes u.a.): <http://www.sistrix.de/hreflang-guide/generator/>
+* hreflang-Attribut für Sprach- oder Regions-URL Ihrer Seiten verwenden: https://support.google.com/webmasters/answer/189077
 
 RegEx Redirect Beispiel
 -----------------------
