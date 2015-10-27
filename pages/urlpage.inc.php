@@ -103,8 +103,8 @@ if (rex_post('save_url_data', 'boolean')) {
 		$params['url_type'] = $newUrlType;
 
 		if ($newUrlData['url_clone']) {
-			foreach ($REX['CLANG'] as $clang => $clang_name) {
-				$params['clang'] = $clang;
+			foreach ($REX['CLANG'] as $theClang => $clang_name) {
+				$params['clang'] = $theClang;
 
 				rex_register_extension_point('SEO42_URL_UPDATE', '', $params);
 			}

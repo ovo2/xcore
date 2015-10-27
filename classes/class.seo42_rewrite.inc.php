@@ -752,7 +752,9 @@ function seo42_generate_pathlist($params)
 	// workaround for #177
 	foreach ($interReplaceIds as $clangId => $value) {
 		foreach ($value as $interReplaceId => $targetArticle) {
-			$SEO42_IDS[$interReplaceId][$clangId] = array('url' => $SEO42_IDS[$targetArticle['id']][$targetArticle['clang']]['url']);
+			if (isset($SEO42_IDS[$targetArticle['id']][$targetArticle['clang']]['url'])) {
+				$SEO42_IDS[$interReplaceId][$clangId] = array('url' => $SEO42_IDS[$targetArticle['id']][$targetArticle['clang']]['url']);
+			}
 		}
 	}
 
