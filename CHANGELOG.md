@@ -5,7 +5,7 @@ SEO42 - Changelog
 
 * Update: Bitte die Hinweise in der `UPDATE.md` beachten!
 * Fixed #184: Cached Redirects werden nun nach Import aktualisiert
-* Fixed #177: Interne Ersetzung funktioniere nicht bei Ziel-URLs mit entfernter Root-Kategorie, thx@bega011
+* Fixed #177: Interne Ersetzung funktioniert nicht bei Ziel-URLs mit entfernter Root-Kategorie, thx@bega011
 * Neu: Offline 404 Modus (unter Einstellungen > URLs): Ist der Modus aktiviert wird ein Artikel der offline ist im Frontend nicht mehr angezeigt. Es kommt der Fehlerartikel mit einem 404 Header. Aus dem Backend heraus über den Link "Webansicht" kann man den Artikel jedoch noch aufrufen. Link ist dann nur gültig für den im Backend eingeloggten Benutzer. Ausserdem wird dann ein 404 Header + X-Robots noindex Header zusätzlich gesendet.
 * Neu: `setLiIdFromCategoryId()` und `setLiClassFromCategoryId()` zur `nav42` hinzugefügt. Damit kann man den Menüpunkten CSS IDs und Klassen zuweisen anhand der Kategorie ID. Siehe Codebeispiele in der Hilfe.
 * Neu: `seo42::getUrlEnding()` hinzugefügt
