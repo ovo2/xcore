@@ -1,7 +1,7 @@
 SEO42 - Changelog
 =================
 
-### Version 4.3.0 DEV
+### Version 4.3.0 - 27. Oktober 2015
 
 * Update: Bitte die Hinweise in der `UPDATE.md` beachten!
 * Fixed #184: Cached Redirects werden nun nach Import aktualisiert

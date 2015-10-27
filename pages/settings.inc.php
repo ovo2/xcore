@@ -162,8 +162,6 @@ $no_double_content_redirects_availability_select->setSelected($REX['ADDON'][$mys
 
 ?>
 
-<span class="status information help"><a href="index.php?page=seo42&subpage=help&chapter=settings"><?php echo $I18N->msg('seo42_settings_help'); ?></a></span>
-
 <div class="rex-addon-output">
   <div class="rex-form">
 
