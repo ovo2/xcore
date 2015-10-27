@@ -11,7 +11,6 @@ SEO42 - Changelog
 * Neu: `seo42::getUrlEnding()` hinzugefügt
 * Neu: Plugin zur Readme hinzugefügt: `url_control` Fork - Inofizieller Fork des url_controls Plugin mit Unterstützung für SEO42 4.0+
 * Neu: Hinweis aufgenommen: Der X-UA-Compatible Meta Tag kann im Template weggelassen werden, da SEO42 diesen automatisch als HTTP Header sendet.
-* Neu: Hilfe zu den Einstellungen (`SETTINGS.md`) [IM AUFBAU]
 * Neu: Sprachfeld `region_code` inkl. Methode `seo42::getLangRegionCode()` hinzugefügt. Beispielwert: de-AT (Sprache-REGION), thx@chrfickinger
 * Neu: Sprachfeld `url_slug` inkl. Methode `seo42::getLangUrlSlug()` hinzugefügt. Beispielwert: de, thx@chrfickinger
 * Neu: Sprachfeld `hreflang` inkl. Methode `seo42::getHreflang()` hinzugefügt. Beispielwert: de (de-AT nun auch möglich damit), thx@chrfickinger
