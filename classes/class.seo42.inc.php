@@ -43,7 +43,7 @@ class seo42 {
 		self::$fullUrls = $REX['ADDON']['seo42']['settings']['full_urls'];
 		self::$is404Response = false; // will be set from outside by set404ResponseFlag()
 		self::$ignoreQueryParams = $REX['ADDON']['seo42']['settings']['ignore_query_params'];
-		self::$navigationClass = 'nav42';
+		self::$navigationClass = 'rex_nav';
 		self::$urlEnding = $REX['ADDON']['seo42']['settings']['url_ending'];
 
 		// pull apart server url

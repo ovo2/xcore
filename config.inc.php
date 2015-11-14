@@ -23,7 +23,6 @@ if ($REX['REDAXO']) {
 
 // includes
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.rex_resource_includer.inc.php');
-require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.nav42.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42_utils.inc.php');
 

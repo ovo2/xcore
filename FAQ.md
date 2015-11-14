@@ -107,7 +107,7 @@ Unter Einstellungen wird dies vorgenommen. Option heißt `title_delimiter`.
 Wie kann ich den Titel sonst noch beinflussen?
 ----------------------------------------------
 
-Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix" (wenn aktiv) wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode `seo42::getTitle()` überschreiben, siehe dazu Codebeispiel 8.
+Auf der SEO-Seite eines Artikels kann man einen individuellen Titel eintragen. Über "Kein Prefix" (wenn aktiv) wird dieser ohne Zusatz angezeigt. Man kann außerdem die Methode `seo42::getTitle()` überschreiben, siehe dazu Codebeispiel 7.
 
 
 Warum wird der Titel für die Startseite "andersherum" ausgegeben wie für die Folgeseiten?

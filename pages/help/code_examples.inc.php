@@ -55,71 +55,6 @@ echo seo42::getUrlString("The Hitchhiker\'s Guide to the Galaxy!");
 // --> the-hitchhikers-guide-to-the-galaxy
 ?>';
 
-$codeExample6 = '<?php 
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment1') . '
-$nav = new nav42();
-$nav->setLevelDepth(1);
-echo $nav->getNavigationByLevel(0);
-
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment2') . '
-$nav = new nav42();
-$nav->setLevelDepth(3);
-echo $nav->getNavigationByLevel(1);
-
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment4_1') . '
-$nav = new nav42();
-$nav->setLevelDepth(2); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment4_2') . '
-echo $nav->getNavigationByCategory(42);
-
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_1') . '
-$nav = new nav42();
-
-$nav->setLevelDepth(2); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_2') . '
-$nav->setShowAll(true); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_3') . '
-$nav->setIgnoreOfflines(true); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_4') . '
-$nav->setHideWebsiteStartArticle(false); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_5') . '
-$nav->setHideIds(array(42, 108)); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_5a') . '
-$nav->setSelectedClass("current"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_6') . '
-$nav->setActiveClass("current active"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_6a') . '
-$nav->setUlId("nav", 0); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_7') . '
-$nav->setUlClass("sf-menu", 0); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_8') . '
-$nav->setLiClass("list-item"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_8a') . '
-$nav->setLiIdFromMetaField("cat_css_id"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_9') . '
-$nav->setLiClassFromMetaField("cat_css_class"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_10') . '
-$nav->setLiIdFromCategoryId(array(42 => "foo", 43 => "bar")); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_12') . '
-$nav->setLiClassFromCategoryId(array(42 => "my-class")); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_13') . '
-$nav->setLinkFromUserFunc(function($cat, $depth) { // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment5_11') . '
-    if ($depth == 1) {
-		return htmlspecialchars($cat->getName());
-	} else {
-		return \'<a href="\' . $cat->getUrl() . \'">\' . htmlspecialchars($cat->getName()) . \'</a>\';
-	}
-});
-
-echo $nav->getNavigationByCategory(42);
-
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_1') . '
-$nav = new nav42();
-
-$nav->setLangUlId("lang-nav"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_2') . '
-$nav->setLangSelectedClass("current"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_3') . '
-$nav->setLangShowLiIds(true); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_4') . '
-$nav->setLangHideLiIfOfflineArticle(false); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_5') . '
-$nav->setLangUseLangCodeAsLinkText(true); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_6') . '
-$nav->setLangUpperCaseLinkText(true); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment6_7') . '
-
-echo $nav->getLangNavigation();
-
-// ' . $I18N->msg('seo42_help_codeexamples_ex6_comment7_1') . '
-$nav = new nav42();
-
-$nav->setBreadcrumbCssClass("breadcrumb"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment7_2') . '
-$nav->setBreadcrumbOlList(false); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment7_3') . '
-$nav->setBreadcrumbStartArticleName("<i class=\'fa fa-home\'></i>"); // ' . $I18N->msg('seo42_help_codeexamples_ex6_comment7_4') . '
-
-echo $nav->getBreadcrumbNavigation();
-?>';
-
 $codeExample7 = '<?php
 // --> ' . strtoupper($I18N->msg('seo42_help_codeexamples_ex7_comment1')) . '
 class seo42_ex extends seo42 {
@@ -189,15 +124,11 @@ $codeExample8 = '<?php echo seo42::getDebugInfo(); ?>';
 <p><?php echo $I18N->msg('seo42_help_codeexamples_description5a'); ?></p>
 <?php rex_highlight_string($codeExample5a); ?>
 
-<h2>7) <?php echo $I18N->msg('seo42_help_codeexamples_title6'); ?></h2>
-<p><?php echo $I18N->msg('seo42_help_codeexamples_description6'); ?></p>
-<?php rex_highlight_string($codeExample6); ?>
-
-<h2>8) <?php echo $I18N->msg('seo42_help_codeexamples_title7'); ?></h2>
+<h2>7) <?php echo $I18N->msg('seo42_help_codeexamples_title7'); ?></h2>
 <p><?php echo $I18N->msg('seo42_help_codeexamples_description7'); ?></p>
 <?php rex_highlight_string($codeExample7); ?>
 
-<h2>9) <?php echo $I18N->msg('seo42_help_codeexamples_title8'); ?></h2>
+<h2>8) <?php echo $I18N->msg('seo42_help_codeexamples_title8'); ?></h2>
 <p><?php echo $I18N->msg('seo42_help_codeexamples_description8'); ?></p>
 <?php rex_highlight_string($codeExample8); ?>
 
