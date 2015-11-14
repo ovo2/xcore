@@ -145,14 +145,6 @@ Hinweise Resourceneinbindung
 * Warum `foo.1234567.css`? <http://stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring>
 * Bei Verwendung von Bootstrap muss man das Plugin [lessdotphp](https://github.com/DanielWeitenauer/lessdotphp) installieren, sofern man Bootstrap neu Compilieren will
 
-Links
------
-
-* Klasse seo42: <https://github.com/RexDude/seo42/blob/master/classes/class.seo42.inc.php>
-* Klasse res42: <https://github.com/RexDude/seo42/blob/master/classes/class.res42.inc.php>
-* Klasse nav42: <https://github.com/RexDude/seo42/blob/master/classes/class.nav42.inc.php>
-* Online JavaScript/CSS Compression Using YUI Compressor: <http://gpbmike.github.io/refresh-sf/>
-
 Artikel/Tutorials
 -----------------
 

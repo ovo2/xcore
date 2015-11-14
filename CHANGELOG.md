@@ -1,6 +1,10 @@
 SEO42 - Changelog
 =================
 
+### Version 4.4.0 DEV
+
+* Geändert: Klasse `res42` umbenannt in `rex_resource_includer`. Die Wrapper-Methoden der Klasse `seo42` bleiben unverändert erhalten, d.h. es sind keine Code-Anpassungen nötig.
+
 ### Version 4.3.0 - 27. Oktober 2015
 
 * Update: Bitte die Hinweise in der `UPDATE.md` beachten!

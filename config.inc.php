@@ -3,7 +3,7 @@
 // register addon
 $REX['ADDON']['rxid']['seo42'] = '0';
 $REX['ADDON']['name']['seo42'] = 'SEO42';
-$REX['ADDON']['version']['seo42'] = '4.3.0';
+$REX['ADDON']['version']['seo42'] = '4.4.0 DEV';
 $REX['ADDON']['author']['seo42'] = 'Markus Staab, Wolfgang Huttegger, Dave Holloway, Jan Kristinus, jdlx, RexDude';
 $REX['ADDON']['supportpage']['seo42'] = 'forum.redaxo.de';
 $REX['ADDON']['perm']['seo42'] = 'seo42[]';
@@ -22,7 +22,7 @@ if ($REX['REDAXO']) {
 }
 
 // includes
-require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.res42.inc.php');
+require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.rex_resource_includer.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.nav42.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42.inc.php');
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42_utils.inc.php');
@@ -178,8 +178,8 @@ if (!$REX['SETUP']) {
 	// init seo42
 	rex_register_extension('ADDONS_INCLUDED', 'seo42_utils::init', '', REX_EXTENSION_EARLY);
 
-	// init res42
-	rex_register_extension('ADDONS_INCLUDED', 'res42::init');
+	// init resource includer
+	rex_register_extension('ADDONS_INCLUDED', 'rex_resource_includer::init');
 
 	// send additional headers if necessary
 	rex_register_extension('OUTPUT_FILTER_CACHE', 'seo42_utils::sendHeaders');

@@ -1,6 +1,6 @@
 <?php
 
-class res42 {
+class rex_resource_includer {
 	protected static $cssDir;
 	protected static $cssPath;
 	protected static $jsDir;

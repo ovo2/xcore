@@ -949,43 +949,43 @@ class seo42 {
 	}
 
 	public static function getCSSFile($file, $vars = array()) {
-		return res42::getCSSFile($file, $vars);
+		return rex_resource_includer::getCSSFile($file, $vars);
 	}
 
 	public static function getJSFile($file) {
-		return res42::getJSFile($file);
+		return rex_resource_includer::getJSFile($file);
 	}
 
 	public static function getImageFile($file) {
-		return res42::getImageFile($file);
+		return rex_resource_includer::getImageFile($file);
 	}
 
 	public static function getAbsoluteImageFile($file) {
-		return res42::getAbsoluteImageFile($file);
+		return rex_resource_includer::getAbsoluteImageFile($file);
 	}
 
 	public static function getIconFile($file) {
-		return res42::getIconFile($file);
+		return rex_resource_includer::getIconFile($file);
 	}
 
 	public static function getResourceFile($fileWithPath) {
-		return res42::getResourceFile($fileWithPath);
+		return rex_resource_includer::getResourceFile($fileWithPath);
 	}
 
 	public static function getCombinedCSSFile($combinedFile, $sourceFiles) {
-		return res42::getCombinedCSSFile($combinedFile, $sourceFiles);
+		return rex_resource_includer::getCombinedCSSFile($combinedFile, $sourceFiles);
 	}
 
 	public static function getCombinedJSFile($combinedFile, $sourceFiles) {
-		 return res42::getCombinedJSFile($combinedFile, $sourceFiles);
+		 return rex_resource_includer::getCombinedJSFile($combinedFile, $sourceFiles);
 	}
 
 	public static function getJSCodeFromTemplate($templateId, $simpleMinify = true) {
-		return res42::getJSCodeFromTemplate($templateId, $simpleMinify);
+		return rex_resource_includer::getJSCodeFromTemplate($templateId, $simpleMinify);
 	}
 
 	public static function getJSCodeFromFile($file, $simpleMinify = true) {
-		return res42::getJSCodeFromFile($file, $simpleMinify);
+		return rex_resource_includer::getJSCodeFromFile($file, $simpleMinify);
 	}
 
 	public static function getAnswer() {
