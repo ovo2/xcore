@@ -1,5 +1,5 @@
-SEO42 - MIT Lizenz
-==================
+SEO42 für REDAXO 4 - MIT Lizenz
+===============================
 
 Copyright (c) 2015 RexDude
 

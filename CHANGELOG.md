@@ -4,6 +4,7 @@ SEO42 - Changelog
 ### Version 4.4.0 DEV
 
 * Update: Bitte die Hinweise in der `UPDATE.md` beachten!
+* Verbessert: Offline 404 Modus zeigt jetzt im Frontend einen Hinweis an: "REDAXO Offline Artikel (nur für eingeloggte Benutzer sichtbar)"
 * Geändert: Klasse `res42` umbenannt in `rex_resource_includer`. Die Wrapper-Methoden der Klasse `seo42` bleiben unverändert erhalten, d.h. es sind keine Code-Anpassungen nötig
 * Entfernt: Klasse `nav42` wurde in das neue Addon "Navigation Factory" überführt
 

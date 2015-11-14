@@ -324,4 +324,4 @@ seo42_install_make_dir = The folder "/redaxo/include/{0}/" can not be created, c
 seo42_install_perm_dir = The folder "/redaxo/include/{0}/" needs write access!
 
 seo42_update_msg = SEO42: Please check the <a href="index.php?page=seo42&subpage=help&chapter=update">updatelog</a> for this version (if available).
-
+seo42_offline_404_frontend_msg = <strong>REDAXO offline article</strong> (only visible for users that are logged in)

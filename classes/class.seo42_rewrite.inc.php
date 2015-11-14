@@ -204,6 +204,7 @@ class SEO42Rewrite
 
 				if (seo42_utils::isBackendUserLoggedIn()) {
 					self::setArticleId($SEO42_URLS[$path]['id'],$SEO42_URLS[$path]['clang']);
+					seo42::setOffline404ModeFlag(true);
 				} else {
 					self::setArticleId($REX['NOTFOUND_ARTICLE_ID'], $SEO42_URLS[$path]['clang']);
 				}

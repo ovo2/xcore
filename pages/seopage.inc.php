@@ -158,7 +158,7 @@ echo '
 									<label for="seo_keywords">' . $I18N->msg('seo42_seopage_keywords') . '</label>
 									<textarea name="seo_keywords" id="seo_keywords" rows="2" cols="50" class="rex-form-textarea">' . $seoData['seo_keywords'] . '</textarea>
 									<span class="rex-form-notice right">
-										<span id="keywords-wordcount">0</span>/7 ' . $I18N->msg('seo42_seopage_words') . '
+										<span id="keywords-wordcount">0</span>/5 ' . $I18N->msg('seo42_seopage_words') . '
 									</span>
 								</p>
 							</div>

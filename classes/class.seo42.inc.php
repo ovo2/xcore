@@ -18,6 +18,7 @@ class seo42 {
 	protected static $urlStart;
 	protected static $rewriterEnabled;
 	protected static $is404Response;
+	protected static $isOffline404Mode;
 	protected static $ignoreQueryParams;
 	protected static $navigationClass;
 	protected static $urlEnding;
@@ -42,6 +43,7 @@ class seo42 {
 		self::$rewriterEnabled = $REX['ADDON']['seo42']['settings']['rewriter'];
 		self::$fullUrls = $REX['ADDON']['seo42']['settings']['full_urls'];
 		self::$is404Response = false; // will be set from outside by set404ResponseFlag()
+		self::$isOffline404Mode = false; // will be set from outside by setOffline404ModeFlag()
 		self::$ignoreQueryParams = $REX['ADDON']['seo42']['settings']['ignore_query_params'];
 		self::$navigationClass = 'rex_nav';
 		self::$urlEnding = $REX['ADDON']['seo42']['settings']['url_ending'];
@@ -366,6 +368,18 @@ class seo42 {
 
 	public static function getArticleValue($key) {
 		return self::$curArticle->getValue($key);
+	}
+
+	public static function isArticleOnline() {
+		return self::$curArticle->isOnline();
+	}
+
+	public static function setOffline404ModeFlag($flag) {
+		self::$isOffline404Mode = $flag;
+	}
+
+	public static function isOffline404Mode() {
+		return self::$isOffline404Mode;
 	}
 	
 	public static function getWebsiteName() {

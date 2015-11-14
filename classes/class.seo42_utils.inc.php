@@ -65,6 +65,11 @@ class seo42_utils {
 
 		// seo42 post init
 		rex_register_extension_point('SEO42_INCLUDED');
+
+		// show offline 404 message for frontend user
+		if (!$REX['REDAXO'] && $REX['ADDON']['seo42']['settings']['offline_404_mode'] && seo42::isOffline404Mode()) {
+			rex_register_extension('OUTPUT_FILTER', 'seo42_utils::offline404ModeMsg');
+		}
 	}
 
 	public static function sendHeaders() {
@@ -1257,5 +1262,40 @@ class seo42_utils {
 		}
 
 		return $loggedIn;
+	}
+
+	public static function offline404ModeMsg($params) {
+		global $REX, $I18N;
+
+        if (!is_object($I18N)) {
+            $I18N = rex_create_lang($REX['LANG']);
+        }
+
+		$I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/seo42/lang/');
+
+		$insert = '
+			<!-- SEO42 Offline 404 Mode -->
+			<style type="text/css">
+				body { 
+					position: relative;
+				}
+
+				#seo42-offline-404-frontend-msg { 
+					font-family: Arial, sans-serif; 
+					font-size: 13px; 
+					color: white; 
+					background: darkred; 
+					position: fixed; 
+					left: 0; 
+					right: 0; 
+					top: 0; 
+					padding: 4px; 
+					text-align: center;
+				}
+			</style>
+			<div id="seo42-offline-404-frontend-msg">' . $I18N->msg('seo42_offline_404_frontend_msg') . '</div>
+			<!-- SEO42 Offline 404 Mode -->' .  PHP_EOL;
+		
+		return str_replace('</body>', $insert . '</body>', $params['subject']);
 	}
 }

@@ -327,4 +327,4 @@ seo42_install_make_dir = Der Ordner "/redaxo/include/{0}/" kann nicht angelegt w
 seo42_install_perm_dir = Der Ordner "/redaxo/include/{0}/" benötigt Schreibrechte!
 
 seo42_update_msg = SEO42: Bitte beachten Sie die <a href="index.php?page=seo42&subpage=help&chapter=update">Update-Hinweise</a> für diese Version (wenn vorhanden).
-
+seo42_offline_404_frontend_msg = REDAXO Offline Artikel (Artikel-Vorschau ist nur für aktuell eingeloggten Benutzer sichtbar)
