@@ -524,8 +524,8 @@ $no_double_content_redirects_availability_select->setSelected($REX['ADDON'][$mys
 
 			<div class="rex-form-row rex-form-element-v1">
 				<p class="rex-form-text">
-					<label for="icons_dir"><?php echo $I18N->msg('seo42_settings_icons_dir'); ?></label>
-					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['icons_dir']; ?>" name="settings[icons_dir]" class="rex-form-text" id="icons_dir">
+					<label for="favicons_dir"><?php echo $I18N->msg('seo42_settings_favicons_dir'); ?></label>
+					<input type="text" value="<?php echo $REX['ADDON']['seo42']['settings']['favicons_dir']; ?>" name="settings[favicons_dir]" class="rex-form-text" id="favicons_dir">
 				</p>
 			</div>
 

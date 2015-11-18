@@ -7,7 +7,7 @@ class rex_resource_includer {
 	protected static $jsPath;
 	protected static $imagesDir;
 	protected static $imagesPath;
-	protected static $iconsDir;
+	protected static $favIconsDir;
 	protected static $iconsPath;
 	protected static $rewriterEnabled;
 
@@ -17,17 +17,17 @@ class rex_resource_includer {
 		$cssDir = $REX['ADDON']['seo42']['settings']['css_dir'];
 		$jsDir = $REX['ADDON']['seo42']['settings']['js_dir'];
 		$imagesDir = $REX['ADDON']['seo42']['settings']['images_dir'];
-		$iconsDir = $REX['ADDON']['seo42']['settings']['icons_dir'];
+		$favIconsDir = $REX['ADDON']['seo42']['settings']['icons_dir'];
 
 		self::$cssDir = self::prepareDir($cssDir);
 		self::$jsDir = self::prepareDir($jsDir);
 		self::$imagesDir = self::prepareDir($imagesDir);
-		self::$iconsDir = self::prepareDir($iconsDir);
+		self::$favIconsDir = self::prepareDir($favIconsDir);
 
 		self::$cssPath = self::preparePath($cssDir);
 		self::$jsPath = self::preparePath($jsDir);
 		self::$imagesPath = self::preparePath($imagesDir);
-		self::$iconsPath = self::preparePath($iconsDir);
+		self::$iconsPath = self::preparePath($favIconsDir);
 
 		self::$rewriterEnabled = $REX['ADDON']['seo42']['settings']['rewriter'];
 	}
@@ -62,8 +62,13 @@ class rex_resource_includer {
 		return realpath(self::$imagesPath) . '/' . $file;
 	}
 
+	/* Deprecated */
 	public static function getIconFile($file) {
-		return self::$iconsDir . $file;
+		return self::$favIconsDir . $file;
+	}
+
+	public static function getFavIconFile($file) {
+		return self::$favIconsDir . $file;
 	}
 
 	public static function getResourceFile($fileWithPath) {

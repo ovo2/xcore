@@ -978,8 +978,13 @@ class seo42 {
 		return rex_resource_includer::getAbsoluteImageFile($file);
 	}
 
+	/* Deprecated */
 	public static function getIconFile($file) {
 		return rex_resource_includer::getIconFile($file);
+	}
+
+	public static function getFavIconFile($file) {
+		return rex_resource_includer::getFavIconFile($file);
 	}
 
 	public static function getResourceFile($fileWithPath) {
