@@ -12,7 +12,7 @@ Features
 * Verschiedene URL-Endungen einstellbar (z.B. Endung `.html` oder `/`)
 * Automatische Titel-Generierung. Mitgeliefertes Titel-Schema aus [Google-PDF](http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf) entnommen.
 * Extra SEO-Page für jeden Artikel inkl. Titel-Vorschau und Zeichen/Wörter Zähler
-* Extra URL-Page für jeden Artikel inkl 10 URL-Typen zur Manipulierung der generierten URL
+* Extra URL-Page für jeden Artikel inkl. 7+ URL-Typen zur Manipulierung der generierten URL
 * Automatische `sitemap.xml` und `robots.txt` Generierung
 * Neue vereinfachte Setup-Routine, benötigt keine MetaInfos mehr
 * Option um vollständige URLs inkl. Domainname wie bei WordPress zu erzeugen
@@ -61,8 +61,8 @@ Alle URL-Typen aktivieren
 -------------------------
 
 * Einige Url-Typen greifen erst, wenn bei der Ausgabe der Navigation auf diese reagiert wird.
-* Die Navigationsfunktionen von SEO42 unterstützt diese Typen bereits (siehe Hilfe > Codebeispiele).
-* Über die Option `all_url_types` können diese bei Bedarf aber auch deaktiviert werden.
+* Die Navigationsfunktionen von des Navigation Factory Addons unterstützt diese Typen automatisch.
+* Über die Option Einstellungen > User Interface > Alle URL Typen können diese aktiviert werden.
 
 Entwicklung von Plugins für SEO42
 ---------------------------------
