@@ -669,19 +669,19 @@ class seo42_utils {
 				$requestUri = $_SERVER['REQUEST_URI'];
 			}
 			
-			$redirect = false;
+			$doRedirect = false;
 			
 			if (array_key_exists($requestUri, $REX['SEO42_CACHED_REDIRECTS'])) {
 				$redirectUri = $REX['SEO42_CACHED_REDIRECTS'][$requestUri];
-				$redirect = true;
+				$doRedirect = true;
 				
 			} elseif ($REX['ADDON']['seo42']['settings']['redirects_allow_regex']) {
 				if ($redirectUri = self::regexRedirect($requestUri)) {			
-					$redirect = true;
+					$doRedirect = true;
 				}
 			}
 
-			if ($redirect) {
+			if ($doRedirect) {
 				$targetUrl = $redirectUri;
 
 				if (strpos($targetUrl, 'http') === false) {
