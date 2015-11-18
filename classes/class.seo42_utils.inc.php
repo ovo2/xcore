@@ -597,6 +597,7 @@ class seo42_utils {
 			// deprecated settings
 			unset($REX['ADDON']['seo42']['settings']['cached_redirects']);
 			unset($REX['ADDON']['seo42']['settings']['no_double_content_redirects_only_frontend']);
+			unset($REX['ADDON']['seo42']['settings']['icons_dir']);
 
 			$content = "<?php\n\n";
 		
@@ -1284,13 +1285,15 @@ class seo42_utils {
 					font-family: Arial, sans-serif; 
 					font-size: 13px; 
 					color: white; 
-					background: darkred; 
+					background: darkred;
+					border: 1px solid #fff;
 					position: fixed; 
 					left: 0; 
 					right: 0; 
 					top: 0; 
 					padding: 4px; 
 					text-align: center;
+					z-index: 100;
 				}
 			</style>
 			<div id="seo42-offline-404-frontend-msg">' . $I18N->msg('seo42_offline_404_frontend_msg') . '</div>

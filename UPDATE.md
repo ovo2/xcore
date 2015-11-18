@@ -3,7 +3,9 @@ SEO42 - Updatehinweise
 
 ### Version 4.4.0
 
-* Die Klasse `nav42` wurde in das neue Navigation Factory Addon überführt. Bitte den eigenen Code dementsprechend anpassen. Ab der nächsten SEO42 Version wird es die Klasse `nav42` nicht mehr geben!
+* Die Klasse `nav42` wurde in das neue Navigation Factory Addon überführt. Bitte den eigenen Code dementsprechend anpassen (API Änderungen im Changelog des Navigation Factory Addons). Ab der nächsten SEO42 Version wird es die Klasse `nav42` nicht mehr geben!
+* Bitte `seo42::getIconFile()` in `seo42::getFavIconFile()` im eigenen Code umbenennen (wenn die Methode überhaupt genutzt wird).
+* Es gab Änderungen an den Einstellungen. Bitte einmal die Einstellungen speichern und den Icon/Favicon Ordner überprüfen.
 
 ### Version 4.3.0
 
