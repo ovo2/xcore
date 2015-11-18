@@ -6,6 +6,7 @@ SEO42 - Changelog
 * Update: Achtung! Die Klasse `nav42` wird in der nächsten SEO42 Version (4.5.0) komplett entfernt werden. Bitte die Zeit nutzen und auf das Navigation Factory Addon umsteigen. Bitte im Navigation Factory Addon die Changelog studieren für API Änderungen.
 * Verbessert: Offline 404 Modus zeigt jetzt im Frontend einen Hinweis an: "REDAXO Offline Artikel (nur für eingeloggte Benutzer sichtbar)"
 * Verbessert: Data Addon Dir wird bei deinstallieren des Addons automatisch gelöscht
+* Geändert: Einstellungen > User Interface > Alle URL Typen standardmäßig deaktiviert
 * Geändert: Klasse `res42` umbenannt in `rex_resource_includer`. Die Wrapper-Methoden der Klasse `seo42` bleiben unverändert erhalten, d.h. es sind keine Code-Anpassungen nötig
 * Geändert: `seo42::getIconFile()` in `seo42::getFavIconFile()` umbenannt. Der Standard Favicon Ordner ist jetzt `/resources/favicons/`
 * Deprecated (veraltet): Klasse `nav42` wurde in das neue Navigation Factory Addon überführt. In der nächsten SEO42 Version wird die Klasse komplett entfernt werden

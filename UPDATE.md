@@ -3,7 +3,7 @@ SEO42 - Updatehinweise
 
 ### Version 4.4.0
 
-* Die Klasse `nav42` wurde in das neue Navigation Factory Addon überführt. Bitte den Code dementsprechend anpassen. Ab der nächsten SEO42 Version wird es die Klasse `nav42` nicht mehr geben!
+* Die Klasse `nav42` wurde in das neue Navigation Factory Addon überführt. Bitte den eigenen Code dementsprechend anpassen. Ab der nächsten SEO42 Version wird es die Klasse `nav42` nicht mehr geben!
 
 ### Version 4.3.0
 

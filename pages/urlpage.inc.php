@@ -186,8 +186,8 @@ if ($urlField != '') {
 										<?php if ($REX['ADDON']['seo42']['settings']['all_url_types']) { ?>
 											<option <?php if ($urlType == SEO42_URL_TYPE_CALL_FUNC) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_CALL_FUNC; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_call_func'); ?></option>
 											<option <?php if ($urlType == SEO42_URL_TYPE_LANGSWITCH) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_LANGSWITCH; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_langswitch'); ?></option>
-											<option <?php if ($urlType == SEO42_URL_TYPE_NONE) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_NONE; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_none'); ?></option>
 										<?php } ?>
+										<option <?php if ($urlType == SEO42_URL_TYPE_NONE) { echo 'selected'; } ?> value="<?php echo SEO42_URL_TYPE_NONE; ?>"><?php echo $I18N->msg('seo42_urlpage_urltype_none'); ?></option>
 									<?php } ?>
 								</select>
 							</p>
