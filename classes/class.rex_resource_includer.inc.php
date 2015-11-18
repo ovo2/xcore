@@ -8,7 +8,7 @@ class rex_resource_includer {
 	protected static $imagesDir;
 	protected static $imagesPath;
 	protected static $favIconsDir;
-	protected static $iconsPath;
+	protected static $favIconsPath;
 	protected static $rewriterEnabled;
 
 	public static function init() { // called only by seo42 addon
@@ -17,7 +17,7 @@ class rex_resource_includer {
 		$cssDir = $REX['ADDON']['seo42']['settings']['css_dir'];
 		$jsDir = $REX['ADDON']['seo42']['settings']['js_dir'];
 		$imagesDir = $REX['ADDON']['seo42']['settings']['images_dir'];
-		$favIconsDir = $REX['ADDON']['seo42']['settings']['icons_dir'];
+		$favIconsDir = $REX['ADDON']['seo42']['settings']['favicons_dir'];
 
 		self::$cssDir = self::prepareDir($cssDir);
 		self::$jsDir = self::prepareDir($jsDir);
@@ -27,7 +27,7 @@ class rex_resource_includer {
 		self::$cssPath = self::preparePath($cssDir);
 		self::$jsPath = self::preparePath($jsDir);
 		self::$imagesPath = self::preparePath($imagesDir);
-		self::$iconsPath = self::preparePath($favIconsDir);
+		self::$favIconsPath = self::preparePath($favIconsDir);
 
 		self::$rewriterEnabled = $REX['ADDON']['seo42']['settings']['rewriter'];
 	}
