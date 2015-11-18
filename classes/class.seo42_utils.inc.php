@@ -1298,4 +1298,16 @@ class seo42_utils {
 		
 		return str_replace('</body>', $insert . '</body>', $params['subject']);
 	}
+
+	public static function rrmdir($dir) { // removes all subdirs and files recursively
+		foreach(glob($dir . '/*') as $file) {
+		    if (is_dir($file)) {
+		        self::rrmdir($file);
+			} else {
+		        unlink($file);
+			}
+		}
+
+		rmdir($dir);
+	}
 }

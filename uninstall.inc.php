@@ -9,6 +9,9 @@ $sql->setQuery('ALTER TABLE `' . $REX['TABLE_PREFIX'] . 'article` DROP `seo_titl
 // rex_redirects
 $sql->setQuery('DROP TABLE IF EXISTS `' . $REX['TABLE_PREFIX'] . 'redirects`');
 
+// remove data dir for addon
+seo42_utils::rrmdir(SEO42_DATA_DIR);
+
 rex_generateAll();
 
 $REX['ADDON']['install']['seo42'] = 0;
