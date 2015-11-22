@@ -1,5 +1,8 @@
 <?php
 
+/* deprecated but still used by min42 plugin, don't remove it therefore! */
+class res42 extends rex_resource_includer {}
+
 class rex_resource_includer {
 	protected static $cssDir;
 	protected static $cssPath;

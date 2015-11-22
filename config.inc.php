@@ -3,7 +3,7 @@
 // register addon
 $REX['ADDON']['rxid']['seo42'] = '0';
 $REX['ADDON']['name']['seo42'] = 'SEO42';
-$REX['ADDON']['version']['seo42'] = '4.4.0';
+$REX['ADDON']['version']['seo42'] = '4.4.1';
 $REX['ADDON']['author']['seo42'] = 'Markus Staab, Wolfgang Huttegger, Dave Holloway, Jan Kristinus, jdlx, RexDude';
 $REX['ADDON']['supportpage']['seo42'] = 'forum.redaxo.de';
 $REX['ADDON']['perm']['seo42'] = 'seo42[]';
@@ -233,7 +233,16 @@ if ($REX['REDAXO']) {
 		for ($i = 0; $i < count($plugins); $i++) {
             if (file_exists($REX['INCLUDE_PATH'] . '/addons/seo42/plugins/' . $plugins[$i] . '/pages/' . $plugins[$i] . '.inc.php') ) { 
 				$I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/seo42/plugins/' . $plugins[$i] . '/lang/'); // make msg for subpage available at this point 
-				array_push($REX['ADDON']['seo42']['SUBPAGES'], array($plugins[$i], $I18N->msg('seo42_' . $plugins[$i])));
+
+				$msgKey = 'seo42_' . $plugins[$i];
+			
+				if ($I18N->hasMsg($msgKey)) {
+					$subpageName = $I18N->msg($msgKey);
+				} else {
+					$subpageName = $plugins[$i];
+				}
+			
+				array_push($REX['ADDON']['seo42']['SUBPAGES'], array($plugins[$i], $subpageName));
             }
 		}
 

@@ -1,6 +1,10 @@
 SEO42 - Changelog
 =================
 
+### Version 4.4.1 - 22. November 2015
+
+* Fixed #201: Kompatibilität zum min42 Plugin wiederhergestellt
+
 ### Version 4.4.0 - 18. November 2015
 
 * Update: Achtung! Die Klasse `nav42` wird in der nächsten SEO42 Version (4.5.0) komplett entfernt werden. Bitte die Zeit nutzen und auf das Navigation Factory Addon umsteigen. Bitte im Navigation Factory Addon die Changelog studieren für API Änderungen.
