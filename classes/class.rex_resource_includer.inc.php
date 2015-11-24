@@ -282,6 +282,7 @@ class rex_resource_includer {
 					$formatter->assignSeparator = ": ";
 	
 					$scss = new scssc();
+					$scss->addImportPath($path['dirname']);
 					$scss->setFormatter($formatter);
 					
 					$compiledCSS = $scss->compile($sourceFileContent);

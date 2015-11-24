@@ -1,6 +1,10 @@
 SEO42 - Changelog
 =================
 
+### Version 4.4.2 DEV
+
+* Fixed #202: `@import` in der SCSS-Datei funktionierte nicht, thx@bega011, thx@RNGesus
+
 ### Version 4.4.1 - 22. November 2015
 
 * Fixed #201: Kompatibilität zum min42 Plugin wiederhergestellt
