@@ -217,12 +217,22 @@ echo '</div>';
 
 <script type="text/javascript">
 jQuery(document).ready( function() {
+	var cancelClicked = false;
+
 	// focus
 	if (jQuery('#source-url').val() === '') {
 		jQuery('#source-url').focus();
 	}
 
-	jQuery('#rex-addon-editmode form').submit(function() {
+	jQuery('#rex_redirects_Redirect_anlegen_abort').click(function(e) {
+		cancelClicked = true;
+	});
+
+	jQuery('#rex-addon-editmode form').submit(function(e) {
+		if (cancelClicked) {
+			return true;
+		}
+
 		var pat = /^https?:\/\//i;
 		var sourceUrl = jQuery('#source-url').val();
 		var targetUrl = jQuery('#target-url').val();

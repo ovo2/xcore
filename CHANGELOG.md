@@ -4,6 +4,7 @@ SEO42 - Changelog
 ### Version 4.4.2 DEV
 
 * Fixed #202: `@import` in der SCSS-Datei funktionierte nicht, thx@bega011, thx@RNGesus
+* Fixed #207: Auf der Redirects Seite ging der Abbrechen Button nicht, thx@DanielWeitenauer
 
 ### Version 4.4.1 - 22. November 2015
 
