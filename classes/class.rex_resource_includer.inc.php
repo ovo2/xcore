@@ -293,22 +293,22 @@ class rex_resource_includer {
 				
 				if ($sourceFileContent == $compiledCSS) { 
 					// include compiler
-					if (!class_exists('lessc')) {
-						require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.lessc.inc.php');
+					if (!class_exists('Less_Parser')) {
+						require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/lessphp/Less.php');
 					}
-					
-					$formatter = new lessc_formatter_classic;
-					$formatter->indentChar = "\t";
-					$formatter->close = "}" . PHP_EOL;
-					$formatter->assignSeparator = ": ";
-	
-					$less = new lessc();
-					$less->setImportDir($path['dirname']);
-					$less->setFormatter($formatter);
-					$less->setPreserveComments(true);
-					$less->setVariables($vars);
-				
-					$compiledCSS = $less->compile($sourceFileContent);
+
+					$parser = new Less_Parser(array(
+						//'relativeUrls' => false
+					));
+
+					$parser->SetImportDirs(array(
+						realpath($path['dirname']) => ''
+					));
+
+					$parser->parse($sourceFileContent);
+					$parser->ModifyVars($vars);
+
+					$compiledCSS = $parser->getCss();
 				}
 			}
 		} catch (Exception $e) {
