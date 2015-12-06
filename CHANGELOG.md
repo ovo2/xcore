@@ -6,6 +6,7 @@ SEO42 - Changelog
 * Fixed #202: `@import` in der SCSS-Datei funktionierte nicht, thx@bega011, thx@RNGesus
 * Fixed #207: Auf der Redirects Seite ging der Abbrechen Button nicht, thx@DanielWeitenauer
 * Neu: Less.php als Standard LESS Parser hinzugefügt, Lessp.php SEO42 Plugin wird damit nicht mehr benötigt, thx@DanielWeitenauer
+* Neu: Less und Scss Compiler Versionsinfo zur Debugseite hinzugefügt
 
 ### Version 4.4.1 - 22. November 2015
 

@@ -28,6 +28,9 @@ require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42.inc.php')
 require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/class.seo42_utils.inc.php');
 
 // consts
+define('SEO42_LESSPHP_VERSION', '1.7.0.9');
+define('SEO42_SCSSPHP_VERSION', '0.3.3');
+
 define('SEO42_ARRAY_DELIMITER', ',');
 define('SEO42_DATA_DIR', $REX['INCLUDE_PATH'] . '/data/addons/seo42/');
 define('SEO42_BACKUP_DIR', $REX['INCLUDE_PATH'] . '/data/addons/seo42/backup/');
