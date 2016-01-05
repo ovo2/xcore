@@ -125,7 +125,7 @@ if ($func == '') {
 		$list = $params["list"];
 
 		$query = \'SELECT source_url FROM \' . $REX[\'TABLE_PREFIX\'] . \'redirects WHERE id=\' . $list->getValue("id");
-		$sql = new sql();
+		$sql = new rex_sql();
 		$sql->setQuery($query);
 
 		if ($sql->getRows() == 0) {
