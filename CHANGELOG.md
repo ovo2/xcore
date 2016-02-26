@@ -3,6 +3,7 @@ SEO42 - Changelog
 
 ### Version 4.4.2 DEV
 
+* Update: Das Navigation Factory Addon ersetzt nun die Klasse `nav42`. Bitte die Changelog des Addons studieren für API Änderungen. Die Dokumentation ist ebenfalls dort zu finden.
 * Fixed #211: Fatal error: Class 'sql' not found" auf der Page "Redirects", thx@mizmiz
 * Fixed #202: `@import` in der SCSS-Datei funktionierte nicht, thx@bega011, thx@RNGesus
 * Fixed #207: Auf der Redirects Seite ging der Abbrechen Button nicht, thx@DanielWeitenauer
@@ -15,7 +16,6 @@ SEO42 - Changelog
 
 ### Version 4.4.0 - 18. November 2015
 
-* Update: Achtung! Die Klasse `nav42` wird in der nächsten SEO42 Version (4.5.0) komplett entfernt werden. Bitte die Zeit nutzen und auf das Navigation Factory Addon umsteigen. Bitte im Navigation Factory Addon die Changelog studieren für API Änderungen.
 * Verbessert: Offline 404 Modus zeigt jetzt im Frontend einen Hinweis an: "REDAXO Offline Artikel (nur für eingeloggte Benutzer sichtbar)"
 * Verbessert: Data Addon Dir wird bei Deinstallation des Addons automatisch gelöscht
 * Geändert: Einstellungen > User Interface > Alle URL Typen standardmäßig deaktiviert
