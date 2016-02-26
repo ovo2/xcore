@@ -8,9 +8,11 @@ SEO42 - Changelog
 * Fixed #211: Fatal error: Class 'sql' not found" auf der Page "Redirects", thx@mizmiz
 * Fixed #202: `@import` in der SCSS-Datei funktionierte nicht, thx@bega011, thx@RNGesus
 * Fixed #207: Auf der Redirects Seite ging der Abbrechen Button nicht, thx@DanielWeitenauer
-* Verbessert: PHP7 Support
+* Fixed: Fatal error: Cannot redeclare class res42, thx@darwin
 * Neu: Less.php als Standard LESS Parser hinzugefügt, Lessp.php SEO42 Plugin wird damit nicht mehr benötigt, thx@DanielWeitenauer
+* Neu: Türkisches LangPreset hinzugefügt, thx@omphteliba
 * Neu: Less und Scss Compiler Versionsinfo zur Debugseite hinzugefügt
+* Verbessert: PHP7 Support
 
 ### Version 4.4.1 - 22. November 2015
 
