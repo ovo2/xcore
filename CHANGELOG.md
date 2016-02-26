@@ -3,7 +3,8 @@ SEO42 - Changelog
 
 ### Version 4.4.2 DEV
 
-* Update: Das Navigation Factory Addon ersetzt nun die Klasse `nav42`. Bitte die Changelog des Addons studieren für API Änderungen. Die Dokumentation ist ebenfalls dort zu finden.
+* Update: Das Navigation Factory Addon ersetzt nun die Klasse `nav42`. Bitte die Changelog des Addons studieren für API Änderungen. Die Dokumentation ist nun ebenfalls dort hingewandert.
+* Fixed #213: Download Dateiendung wird automatisch korrigiert wenn z.B. mit Punkt eingegeben wurde, thx@alexplusde
 * Fixed #211: Fatal error: Class 'sql' not found" auf der Page "Redirects", thx@mizmiz
 * Fixed #202: `@import` in der SCSS-Datei funktionierte nicht, thx@bega011, thx@RNGesus
 * Fixed #207: Auf der Redirects Seite ging der Abbrechen Button nicht, thx@DanielWeitenauer

@@ -46,6 +46,13 @@ if ($func == 'update') {
 	unset($REX['ADDON']['seo42']['settings']['lang']);
 	$REX['ADDON']['seo42']['settings']['lang'] = $langSettings;
 
+	// sanitize download filetype
+	if ($REX['ADDON']['seo42']['settings']['force_download_for_filetypes'] && count($REX['ADDON']['seo42']['settings']['force_download_for_filetypes']) > 0) {
+		for ($i = 0; $i < count($REX['ADDON']['seo42']['settings']['force_download_for_filetypes']); $i++) {
+			$REX['ADDON']['seo42']['settings']['force_download_for_filetypes'][$i] = trim($REX['ADDON']['seo42']['settings']['force_download_for_filetypes'][$i], ' .');
+		}
+	}
+
 	// update settings file
 	seo42_utils::updateSettingsFile();
 
