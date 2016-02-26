@@ -1,7 +1,7 @@
 SEO42 - Changelog
 =================
 
-### Version 4.4.2 DEV
+### Version 4.5.0 DEV
 
 * Update: Das Navigation Factory Addon ersetzt nun die Klasse `nav42`. Bitte die Changelog des Addons studieren für API Änderungen. Die Dokumentation ist nun ebenfalls dort hingewandert.
 * Fixed #213: Download Dateiendung wird automatisch korrigiert wenn z.B. mit Punkt eingegeben wurde, thx@alexplusde
