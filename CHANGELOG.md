@@ -4,6 +4,7 @@ SEO42 - Changelog
 ### Version 4.5.0 DEV
 
 * Update: Das Navigation Factory Addon ersetzt nun die Klasse `nav42`. Bitte die Changelog des Addons studieren für API Änderungen. Die Dokumentation ist nun ebenfalls dort hingewandert.
+* Fixed #218: `seo42::getMediaFile()` liefert nun einen leeren String zurück falls `$file` Parameter ebenfalls leer, thx@alexplusde
 * Fixed #213: Download Dateiendung wird automatisch korrigiert wenn z.B. mit Punkt eingegeben wurde, thx@alexplusde
 * Fixed #211: Fatal error: Class 'sql' not found" auf der Page "Redirects", thx@mizmiz
 * Fixed #202: `@import` in der SCSS-Datei funktionierte nicht, thx@bega011, thx@RNGesus

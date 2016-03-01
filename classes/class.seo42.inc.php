@@ -602,7 +602,11 @@ class seo42 {
 	}
 
 	public static function getMediaFile($file) {
-		return self::getMediaDir() . $file;
+		if ($file == '') {
+			return '';
+		} else {
+			return self::getMediaDir() . $file;
+		}
 	}
 
 	public static function getAbsoluteMediaFile($file) {
