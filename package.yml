@@ -1,0 +1,25 @@
+package: xcore
+version: '1.0.0-dev'
+author: RexDude
+supportpage: https://www.redaxo.org
+load: early
+page:
+    title: 'translate:title'
+    perm: admin[]
+    pjax: false
+    icon: rex-icon fa-times-circle
+    subpages:
+        main: { title: 'translate:main' }
+        features: { title: 'translate:features' }
+        rexx_api: { title: 'translate:rexx_api' }
+        config: { title: 'translate:config' }
+        setup: { title: 'translate:setup' }
+        help:
+            title: 'translate:help'
+            subpages:
+                readme: { title: 'translate:help_readme' }
+                changelog: { title: 'translate:help_changelog' }
+                license: { title: 'translate:help_license' }
+requires:
+    packages:
+        yrewrite: '^2.0'

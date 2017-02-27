@@ -1,0 +1,261 @@
+a:focus,
+a:hover,
+a:active {
+	outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+	outline: none;
+}
+
+/* There you go, only valid for Firefox and the ugly dotted outline around the selected option is gone. */
+/*select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}*/
+
+.navbar-collapse {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.rex-nav-main-list > li > a {
+	padding-left: 45px;
+}
+
+.rex-nav-main-title {
+	padding-left: 15px;
+}
+
+.panel-default > .panel-heading,
+.panel-add > .panel-heading, 
+.panel-edit > .panel-heading {
+	color: #fff;
+	border-color: #4b9ad9;
+	background-color: #4b9ad9;
+}
+
+.panel,
+.panel-add, 
+.panel-edit {
+	border-color: #4b9ad9;
+}
+
+.panel-add .panel-body, 
+.panel-edit .panel-body {
+	background-color: #fff;
+}
+
+.btn-save, 
+.btn-apply {
+    background-color: #3c4d60;
+    border-color: #3c4d60;
+}
+
+.btn-save:hover, 
+.btn-apply:hover,
+.btn-save:hover:active, 
+.btn-apply:hover:active,
+.btn-save:focus, 
+.btn-apply:focus {
+    background-color: #4b9ad9;
+    border-color: #4b9ad9;
+}
+
+.panel-add > .panel-heading mark, 
+.panel-add > .panel-heading .mark, 
+.panel-edit > .panel-heading mark, 
+.panel-edit > .panel-heading .mark {
+	background-color: #b2bbca;
+}
+
+.CodeMirror {
+	border: 1px solid #c1c9d4;
+}
+
+.alert-success {
+	background-color: #4b9ad9;
+	border-color: #4b9ad9;
+	color: #fff;
+}
+
+input[type="checkbox"] {
+	top: -2px;
+}
+
+.rex-main-sidebar {
+	opacity: 1;
+}
+
+.panel-default .panel-heading[data-toggle]:hover {
+	background-color: #4b9ad9;
+	border-color: #4b9ad9;
+	color: #fff;	
+}
+
+@media screen and (max-width: 991px) {
+	.rex-nav-meta {
+		margin-top: 20px;
+	}
+}
+
+/* anti flicker logo */
+.navbar-brand > img.rex-redaxo-logo {
+	display: inline-block;
+}
+
+/* quick navigation */
+#qnid {
+	width: 3.5em !important;
+}
+
+.page-header .col-sm-1.pull-right {
+	padding-left: 0 !important;
+	padding-right: 10px !important;
+}
+
+@media screen and (max-width: 512px) {
+	.page-header .dropdown.pull-right,
+	.page-header .col-sm-1.pull-right {
+		margin-bottom: 15px;
+	}
+}
+
+/* customizer */
+.be-style-customizer-title {
+    margin-left: 51px;
+}
+
+/* multiupload */
+
+.rex-form-aligned, 
+.btn-toolbar .rex-form-aligned {
+    margin-left: 305px;
+}
+
+/* quick nav */
+#qnid {
+	width: 4em;
+	background: #fff;
+}
+
+#qsearch {
+	margin: 5px 0 8px 10px;
+	width: 290px;
+}
+
+.quicknavi {
+	min-width: 310px;
+	max-height: 400px;
+	max-width: 360px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.quicknavi li a {
+	width: 300px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+/* xcore */
+#rex-page-xcore-main #logo {
+	text-align: center;
+	margin-top: 45px;
+	margin-bottom: 45px;
+}
+
+#rex-page-xcore-main #logo img {
+	display: inline-block;
+}
+
+.pretty-var-box {
+	border: 1px solid #aaa; 
+	margin: 0; 
+	padding: 7px;
+}
+
+.pretty-var-box i {
+	font-size: 17px;
+	margin-right: 3px;
+}
+
+/* mform */
+
+.mform .form-group {
+	overflow: hidden;
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 20px;
+}
+
+.mform .form-group label {
+	display: block;
+	text-align: left;
+}
+
+.mform .form-group .control-label {
+	width: 100%;
+	padding: 0;
+}
+
+.mform .form-group .col-sm-10 {
+	width: 100%;
+	padding: 0;
+}
+
+.mform .radio, 
+.mform .checkbox {
+	margin: 0;
+}
+
+.mform span.optional::after {
+	content: "(optional)";
+	font-weight: normal;
+	font-size: 13px;
+}
+
+/* slice pimper  */
+
+.rex-slice .panel-body {
+	padding: 0;
+	margin: 15px;
+	overflow: hidden;
+}
+
+
+/*.rex-slice .panel-body {
+	height: 300px;
+}
+
+.rex-slice .fade-out {
+    background-image: linear-gradient(to bottom, transparent, #ffffff);
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 70px 0 0;
+    position: absolute;
+    text-align: center;
+    text-indent: -9999px;
+    width: 100%;
+}*/
+
+/* xcore panel toggler */
+
+.rex-slice [data-rexx-panel] {
+	display: none;
+}
+
+/* codemirror */
+
+.codemirror {
+	display: none;
+}
+
+#rexx-setup pre {
+	height: 250px;
+}
+
