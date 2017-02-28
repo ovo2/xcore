@@ -1,5 +1,5 @@
 <?php
-class rexx_parsedown extends Parsedown { 
+class rexx_markdown extends Parsedown { 
 	public function __construct($breaksEnabled = true) {
 		$this->breaksEnabled = $breaksEnabled;
 	}
