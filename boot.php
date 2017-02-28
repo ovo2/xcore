@@ -10,23 +10,20 @@ require_once(rex_path::addon('xcore', 'functions/functions.php'));
 if (rexx::isFrontend()) {
 	rex_extension::register('PACKAGES_INCLUDED', function() {	
 		if (isset($_SERVER['REQUEST_URI'])) {
-			$requestUri = $_SERVER['REQUEST_URI'];
+			$requestUrl = ltrim($_SERVER['REQUEST_URI'], '/');
+			$trimmedRequestUrl = str_replace('.html', '', rtrim($requestUrl, '/'));
 			$urlEnding = rex_config::get('xcore', 'url_ending');
+			$newUrl = $trimmedRequestUrl . $urlEnding;
 
-			if ($requestUri != '/') {
-				if (strrpos($requestUri, $urlEnding) === false) {
-					$trimmedRequestUri = trim($requestUri, '/');
-					$trimmedRequestUri = str_replace('.html', '', $trimmedRequestUri);
-					$newUrl = $trimmedRequestUri . $urlEnding;
-
-					// check if url really exists
-					array_walk_recursive(rex_yrewrite::$paths, function($item, $key) use ($newUrl) {
-						if ($item == $newUrl) {
-							$urlStart = rex_config::get('xcore', 'url_start');
-							rexx::redirect($urlStart . $newUrl);
-						}
-					});
-				}
+			if ($requestUrl != '' && $requestUrl != $newUrl) {
+				// check if url really exists
+				array_walk_recursive(rex_yrewrite::$paths, function($item, $key) use ($newUrl) {
+					if ($item == $newUrl) {
+						$urlStart = rex_config::get('xcore', 'url_start');
+						rexx::redirect($urlStart . $newUrl);
+					}
+				});
+			
 			}
 		}
 	}, rex_extension::LATE);
