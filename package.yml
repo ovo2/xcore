@@ -21,5 +21,6 @@ page:
                 changelog: { title: 'translate:help_changelog' }
                 license: { title: 'translate:help_license' }
 requires:
+    redaxo: '^5.0'
     packages:
         yrewrite: '^2.0'

@@ -154,10 +154,6 @@ class rexx extends rex {
 		return rex_global_settings::getDefaultValue('tracking_code', true);
 	}
 
-	public static function getString($field, $clangId = null, $allowEmpty = false) {
-		return rex_global_settings::getValue($field, $clangId, $allowEmpty);
-	}
-
 	public static function getMediaTypeDescription($mediaType) {
 		$query = 'SELECT * FROM '. rexx::getTablePrefix() .'media_manager_type WHERE name LIKE "' . $mediaType . '"';
 
@@ -630,12 +626,20 @@ class rexx extends rex {
 		return rexx_resource_includer::getJSCodeFromFile($file, $simpleMinify);
 	}
 
-	public static function getGlobalValue($field, $clangId = null) {
-		return rex_global_settings::getValue($field, $clangId);
+	public static function getGlobalValue($field, $clangId = null, $allowEmpty = true) {
+		return rex_global_settings::getValue($field, $clangId, $allowEmpty);
 	}
 
-	public static function getDefaultGlobalValue($field) {
-		return rex_global_settings::getDefaultValue($field);
+	public static function getDefaultGlobalValue($field, $allowEmpty = true) {
+		return rex_global_settings::getDefaultValue($field, $allowEmpty);
+	}
+
+	public static function getString($field, $clangId = null, $allowEmpty = false) {
+		return  rex_global_settings::getString($field, $clangId, $allowEmpty);
+	}
+
+	public static function getDefaultString($field, $allowEmpty = false) {
+		return rex_global_settings::getDefaultString($field, $allowEmpty);
 	}
 }
 
