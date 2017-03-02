@@ -160,6 +160,19 @@ if (rex_config::get('xcore', 'offline_404_mode') == 1 && rexx::isFrontend()) {
 	}, rex_extension::LATE);
 }
 
+// correct redaxo behaviour and send 404 if sitestartarticle = notfoundarticle
+if (rexx::isFrontend()) {
+	if (rexx::getSiteStartArticleId() == rexx::getNotfoundArticleId()) {
+		rex_extension::register('PACKAGES_INCLUDED', function(rex_extension_point $ep) {
+			if (!rexx::currentUrlExists()) {
+				rex_extension::register('RESPONSE_SHUTDOWN', function() {
+					header("HTTP/1.0 404 Not Found");
+				});
+			}
+		});
+	}
+}
+
 // xcore included ep
 rex_extension::registerPoint(new rex_extension_point('XCORE_INCLUDED'));
 
