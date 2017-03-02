@@ -35,6 +35,9 @@ if (rexx::isFrontend()) {
 	}, rex_extension::LATE);
 }
 
+// set correct locale
+rexx::setLocale();
+
 // add x-core customs styles
 if (rexx::isBackend()) {
 	rex_extension::register('PACKAGES_INCLUDED', function(rex_extension_point $ep) {

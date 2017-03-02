@@ -589,6 +589,19 @@ class rexx extends rex {
 		return null;
 	}
 
+	public static function setLocale($regionCode = '') {
+		if ($regionCode == '') {
+			$langCode = rex_clang::getCurrent()->getCode();
+			$regionCode = rexx_clang::getPresetValue($langCode, 'region_code');
+		}
+
+		if ($regionCode != null) {
+			$regionCode = str_replace('-', '_', $regionCode);
+
+			setlocale(LC_ALL, $regionCode . '.UTF-8');
+		}
+	}
+
 	public static function getDownloadFile($file) {
 		return rexx::getUrlStart() . rexx::downloadDir . '/' . $file;
 	}
