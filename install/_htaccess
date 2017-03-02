@@ -93,6 +93,9 @@ FileETag None
 	# REDIRECT ROBOTS.TXT TO SEO42 ROBOTS FUNCTION
     RewriteRule ^robots\.txt$ %{ENV:BASE}/index.php?rex_yrewrite_func=robots [NC,L]
 
+	# REWRITE RULE FOR SEO FRIENDLY DOWNLOAD URLS
+	RewriteRule ^download[s]?/([^/]*) %{ENV:BASE}/index.php?rexx_func=download&rexx_file=$1 [NC,L]
+
     # REWRITE RULE FOR SEO FRIENDLY IMAGE MANAGER URLS
     RewriteRule ^mediatypes/([^/]*)/([^/]*) %{ENV:BASE}/index.php?rex_media_type=$1&rex_media_file=$2
 

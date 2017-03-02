@@ -6,6 +6,12 @@ rexx::init();
 // add some useful functions like out() 
 require_once(rex_path::addon('xcore', 'functions/functions.php'));
 
+// activate controller
+if (rexx::isFrontend()) {
+	$controller = new rexx_controller();
+	$controller->route();
+}
+
 // smart redirects
 if (rexx::isFrontend()) {
 	rex_extension::register('PACKAGES_INCLUDED', function() {	

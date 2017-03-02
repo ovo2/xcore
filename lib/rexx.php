@@ -9,6 +9,7 @@ class rexx extends rex {
 	static $favIconsDir;
 
 	const mediaTypesDir = 'mediatypes';
+	const downloadDir = 'download';
 	const defaultRobotsArchiveFlag = 'noarchive';
 
 	public static function init() {	
@@ -584,6 +585,10 @@ class rexx extends rex {
 		}
 
 		return null;
+	}
+
+	public static function getDownloadFile($file) {
+		return rexx::getUrlStart() . rexx::downloadDir . '/' . $file;
 	}
 
 	public static function getCSSFile($file, $vars = []) {
