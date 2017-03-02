@@ -3,6 +3,7 @@
 class rexx extends rex {
 	static $titleDelimeter;
 	static $urlStart;
+	static $urlEnding;
 	static $cssDir;
 	static $jsDir;
 	static $imageDir;
@@ -15,6 +16,7 @@ class rexx extends rex {
 	public static function init() {	
 		self::$titleDelimeter = rex_config::get('xcore', 'title_delimeter');
 		self::$urlStart = rex_config::get('xcore', 'url_start');
+		self::$urlEnding = rex_config::get('xcore', 'url_ending');
 		self::$cssDir = rex_config::get('xcore', 'css_dir');
 		self::$jsDir = rex_config::get('xcore', 'js_dir');
 		self::$imageDir = rex_config::get('xcore', 'image_dir');
@@ -130,7 +132,7 @@ class rexx extends rex {
 	}
 
 	public static function getUrlEnding() {
-		return rexx::$urlEnding;
+		return self::$urlEnding;
 	}
 
 	public static function getLangTags() {
