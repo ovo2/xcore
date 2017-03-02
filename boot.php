@@ -101,3 +101,7 @@ if (rexx::isFrontend()) {
 		header('Expires: '. gmdate('D, d M Y H:i:s \G\M\T', time() + 604800));
 	}
 }
+
+// xcore included ep
+rex_extension::registerPoint(new rex_extension_point('XCORE_INCLUDED'));
+
