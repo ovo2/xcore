@@ -15,21 +15,12 @@ if (rexx::isFrontend()) {
 // smart redirects
 if (rexx::isFrontend()) {
 	rex_extension::register('PACKAGES_INCLUDED', function() {	
-		if (isset($_SERVER['REQUEST_URI'])) {
-			$requestUrl = ltrim($_SERVER['REQUEST_URI'], '/');
-			$trimmedRequestUrl = str_replace('.html', '', rtrim($requestUrl, '/'));
-			$urlEnding = rex_config::get('xcore', 'url_ending');
-			$newUrl = $trimmedRequestUrl . $urlEnding;
+		if (!rexx::currentUrlExists() && isset($_SERVER['REQUEST_URI'])) {
+			$trimmedRequestUrl = str_replace('.html', '', trim($_SERVER['REQUEST_URI'], '/'));
+			$newUrl = $trimmedRequestUrl . rexx::getUrlEnding();
 
-			if ($requestUrl != '' && $requestUrl != $newUrl) {
-				// check if url really exists
-				array_walk_recursive(rex_yrewrite::$paths, function($item, $key) use ($newUrl) {
-					if ($item == $newUrl) {
-						$urlStart = rex_config::get('xcore', 'url_start');
-						rexx::redirect($urlStart . $newUrl);
-					}
-				});
-			
+			if (rexx::urlExists($newUrl)) {
+				rexx::redirect(rexx::getUrlStart() . $newUrl);
 			}
 		}
 	}, rex_extension::LATE);
@@ -103,6 +94,70 @@ if (rexx::isFrontend()) {
 		header('Cache-Control: max-age=604800'); // 1 week
 		header('Expires: '. gmdate('D, d M Y H:i:s \G\M\T', time() + 604800));
 	}
+}
+
+// show offline 404 message for frontend user
+if (rex_config::get('xcore', 'offline_404_mode') == 1 && rexx::isFrontend()) {
+	rex_extension::register('PACKAGES_INCLUDED', function(rex_extension_point $ep) {
+		$article = rexx::getCurrentArticle();
+
+		if (!$article->isOnline() && $article->getId() != rex_article::getNotfoundArticleId()) {
+			if (rex_backend_login::createUser()) {
+				rex_extension::register('OUTPUT_FILTER', function($ep) {
+					$subject = $ep->getSubject();
+
+					$insert = '
+						<!-- X-CORE Offline 404 Mode -->
+						<style type="text/css">
+							html { 
+								margin-top: 30px !important;
+							}
+
+							body { 
+								position: relative;
+							}
+
+							#rexx-offline-404-frontend-msg { 
+								font-family: Arial, sans-serif; 
+								font-size: 13px; 
+								color: white; 
+								background: #4b9ad9;
+								border: 0;
+								position: fixed; 
+								left: 0; 
+								right: 0; 
+								top: 0; 
+								padding: 0; 
+								text-align: center;
+								z-index: 100;
+								height: 30px;
+								line-height: 30px;
+								box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6) !important;
+							}
+
+							#rexx-logo {
+								background: #4b9ad9 url("/assets/addons/xcore/images/redaxo-logo_logged_in.svg") no-repeat left top;
+								height: 16px;
+								position: absolute;
+								left: 12px;
+								top: 7px;
+								width: 115px;
+							}
+						</style>
+						<div id="rexx-offline-404-frontend-msg"><strong>' . rex_i18n::msg('xcore_offline_404_frontend_msg1') . '</strong> ' . rex_i18n::msg('xcore_offline_404_frontend_msg2') . '<div id="rexx-logo"></div></div>
+						<!-- X-CORE Offline 404 Mode -->' .  PHP_EOL;
+
+					return str_replace('</body>', $insert . '</body>', $subject);
+				});
+			} else {
+				rex_addon::get('structure')->setProperty('article_id', rexx::getNotfoundArticleId());
+
+				rex_extension::register('RESPONSE_SHUTDOWN', function() {
+					header("HTTP/1.0 404 Not Found");
+				});
+			}
+		}
+	}, rex_extension::LATE);
 }
 
 // xcore included ep

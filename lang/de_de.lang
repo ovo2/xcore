@@ -21,3 +21,6 @@ xcore_help = Hilfe
 xcore_help_readme = Readme
 xcore_help_changelog = Changelog
 xcore_help_license = Lizenz
+
+xcore_offline_404_frontend_msg1 = Offline Artikel
+xcore_offline_404_frontend_msg2 = (nur für eingeloggte Benutzer sichtbar)

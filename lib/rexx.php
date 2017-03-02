@@ -266,6 +266,10 @@ class rexx extends rex {
 		return rex_article::getSiteStartArticleId();
 	}
 
+	public static function getNotfoundArticleId() {
+		return rex_article::getNotfoundArticleId();
+	}
+
 	public static function getCurrentClang() {
 		return rex_clang::getCurrent();
 	}
@@ -604,6 +608,27 @@ class rexx extends rex {
 
 	public static function getDownloadFile($file) {
 		return rexx::getUrlStart() . rexx::downloadDir . '/' . $file;
+	}
+
+	public static function urlExists($url) { // call in PACKAGE_INCLUDED and later!
+		$curDomain = rex_yrewrite::getCurrentDomain();
+
+		if (rex_yrewrite::getArticleIdByUrl($curDomain, $url) !== false ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static function currentUrlExists() { // call in PACKAGE_INCLUDED and later!
+		if (isset($_SERVER['REQUEST_URI'])) {
+			$requestUrl = strtok($_SERVER['REQUEST_URI'], '?');
+			$requestUrl = ltrim($requestUrl, '/');
+
+			return rexx::urlExists($requestUrl);
+		} else {
+			return false;
+		}
 	}
 
 	public static function getCSSFile($file, $vars = []) {

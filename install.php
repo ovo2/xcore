@@ -28,3 +28,7 @@ if (!$this->hasConfig('image_dir')) {
 if (!$this->hasConfig('favicon_dir')) {
     $this->setConfig('favicon_dir', '/resources/favicons/');
 }
+
+if (!$this->hasConfig('offline_404_mode')) {
+    $this->setConfig('offline_404_mode', 1);
+}

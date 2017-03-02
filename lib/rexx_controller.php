@@ -14,7 +14,7 @@ class rexx_controller {
 		}
 	}
 
-	protected function sendDownloadFile($file) {
+	private function sendDownloadFile($file) {
 		@error_reporting(0);
 		@ini_set('display_errors', 0);
 
@@ -39,7 +39,7 @@ class rexx_controller {
 		}
 	}
 
-	protected function sanitizeFile($file) {
+	private function sanitizeFile($file) {
 		$sanitizeFile = strtolower(preg_replace("/[^a-zA-Z0-9.\-\$\+]/", "_", $file));
 		$sanitizeFile = urlencode(basename($sanitizeFile));
 
