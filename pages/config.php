@@ -22,13 +22,13 @@ if (rex_post('formsubmit', 'string') == '1') {
 
     echo rex_view::success($this->i18n('config_saved'));
 
-	rex_yrewrite::deleteCache();
-
 	$developerDir = rex_path::addon('project', 'developer');
 
 	if (file_exists($developerDir)) {
-		//rexx::removeDirRecursively();
+		rexx::removeDirRecursively($developerDir);
 	}
+
+	rex_yrewrite::deleteCache();
 }
 
 // title_delimeter
