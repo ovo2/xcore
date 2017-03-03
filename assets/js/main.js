@@ -15,7 +15,7 @@ $(function () {
 			$(this).change();
 		});
 
-		// panel toggler
+		// persistent tabs
 		$('.rexx-persistent-tabs').each(function() {
 			var jsTab = $(this).find('a[data-toggle="tab"]');
 
