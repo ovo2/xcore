@@ -424,7 +424,7 @@ class rexx extends rex {
 		$tabIdPrefix = 'tab-';
 
 		$tabControl .= '<div class="mform">';
-		$tabControl .= '<ul class="nav nav-tabs" role="tablist">';
+		$tabControl .= '<ul class="nav nav-tabs rexx-persistent-tabs" role="tablist">';
 
 		for ($i = 0; $i < count($tabs); $i++) {
 			if ($i == 0) {
@@ -452,21 +452,6 @@ class rexx extends rex {
 		$tabControl .= '</div>';
 		$tabControl .= '</div>';
 
-		// add js for persistant tabs (tabs keep position after reload )
-		$tabControl .= "
-			<script type=\"text/javascript\">
-				$('a[data-toggle=\"tab\"]').on(\"shown.bs.tab\", function (e) {
-					var id = $(e.target).attr(\"href\");
-					localStorage.setItem('selectedTab', id)
-				});
-
-				var selectedTab = localStorage.getItem('selectedTab');
-
-				if (selectedTab != null) {
-					$('a[data-toggle=\"tab\"][href=\"' + selectedTab + '\"]').tab('show');
-				}
-			</script>";
-
 		return $tabControl;
 	}
 
@@ -491,7 +476,7 @@ class rexx extends rex {
 			$iTag = '<i class="rex-icon ' . $icon . '"></i> ';
 		}
 
-		$out .= '<div class="pretty-var-box">';
+		$out .= '<div class="rexx-pretty-var-box">';
 		$out .= $iTag . '<strong>' . $varTitle . ':</strong> ' . $varValue;
 		$out .= '</div>';
 
@@ -628,6 +613,21 @@ class rexx extends rex {
 			return rexx::urlExists($requestUrl);
 		} else {
 			return false;
+		}
+	}
+
+	// removes all subdirs and files recursively
+	public static function removeDirRecursively($dir = null) {
+		if ($dir != null && file_exists($dir)) {
+			foreach(glob($dir . '/*') as $file) {
+				if (is_dir($file)) {
+				    self::removeDirRecursively($file);
+				} else {
+				    unlink($file);
+				}
+			}
+
+			rmdir($dir);
 		}
 	}
 

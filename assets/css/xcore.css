@@ -71,10 +71,6 @@ select:focus {
 	background-color: #b2bbca;
 }
 
-.CodeMirror {
-	border: 1px solid #c1c9d4;
-}
-
 .alert-success {
 	background-color: #4b9ad9;
 	border-color: #4b9ad9;
@@ -95,32 +91,18 @@ input[type="checkbox"] {
 	color: #fff;	
 }
 
-@media screen and (max-width: 991px) {
-	.rex-nav-meta {
-		margin-top: 20px;
-	}
-}
-
-/* anti flicker logo */
-.navbar-brand > img.rex-redaxo-logo {
-	display: inline-block;
-}
-
-/* quick navigation */
-#qnid {
-	width: 3.5em !important;
-}
-
 .page-header .col-sm-1.pull-right {
 	padding-left: 0 !important;
 	padding-right: 10px !important;
 }
 
-@media screen and (max-width: 512px) {
-	.page-header .dropdown.pull-right,
-	.page-header .col-sm-1.pull-right {
-		margin-bottom: 15px;
-	}
+/* codemirror */
+.codemirror {
+	display: none;
+}
+
+.CodeMirror {
+	border: 1px solid #c1c9d4;
 }
 
 /* customizer */
@@ -129,62 +111,12 @@ input[type="checkbox"] {
 }
 
 /* multiupload */
-
 .rex-form-aligned, 
 .btn-toolbar .rex-form-aligned {
     margin-left: 305px;
 }
 
-/* quick nav */
-#qnid {
-	width: 4em;
-	background: #fff;
-}
-
-#qsearch {
-	margin: 5px 0 8px 10px;
-	width: 290px;
-}
-
-.quicknavi {
-	min-width: 310px;
-	max-height: 400px;
-	max-width: 360px;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-.quicknavi li a {
-	width: 300px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-
-/* xcore */
-#rex-page-xcore-main #logo {
-	text-align: center;
-	margin-top: 45px;
-	margin-bottom: 45px;
-}
-
-#rex-page-xcore-main #logo img {
-	display: inline-block;
-}
-
-.pretty-var-box {
-	border: 1px solid #aaa; 
-	margin: 0; 
-	padding: 7px;
-}
-
-.pretty-var-box i {
-	font-size: 17px;
-	margin-right: 3px;
-}
-
 /* mform */
-
 .mform .form-group {
 	overflow: hidden;
 	margin-left: 0;
@@ -219,43 +151,21 @@ input[type="checkbox"] {
 }
 
 /* slice pimper  */
-
 .rex-slice .panel-body {
 	padding: 0;
 	margin: 15px;
 	overflow: hidden;
 }
 
-
-/*.rex-slice .panel-body {
-	height: 300px;
+@media screen and (max-width: 991px) {
+	.rex-nav-meta {
+		margin-top: 20px;
+	}
 }
 
-.rex-slice .fade-out {
-    background-image: linear-gradient(to bottom, transparent, #ffffff);
-    bottom: 0;
-    left: 0;
-    margin: 0;
-    padding: 70px 0 0;
-    position: absolute;
-    text-align: center;
-    text-indent: -9999px;
-    width: 100%;
-}*/
-
-/* xcore panel toggler */
-
-.rex-slice [data-rexx-panel] {
-	display: none;
+@media screen and (max-width: 512px) {
+	.page-header .dropdown.pull-right,
+	.page-header .col-sm-1.pull-right {
+		margin-bottom: 15px;
+	}
 }
-
-/* codemirror */
-
-.codemirror {
-	display: none;
-}
-
-#rexx-setup pre {
-	height: 250px;
-}
-

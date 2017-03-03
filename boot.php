@@ -13,7 +13,7 @@ if (rexx::isFrontend()) {
 }
 
 // smart redirects
-if (rexx::isFrontend()) {
+if (rex_config::get('xcore', 'smart_redirects') == 1 && rexx::isFrontend()) {
 	rex_extension::register('PACKAGES_INCLUDED', function() {	
 		if (!rexx::currentUrlExists() && isset($_SERVER['REQUEST_URI'])) {
 			$trimmedRequestUrl = str_replace('.html', '', trim($_SERVER['REQUEST_URI'], '/'));
@@ -32,28 +32,34 @@ rexx::setLocale();
 // add x-core customs styles
 if (rexx::isBackend()) {
 	rex_extension::register('PACKAGES_INCLUDED', function(rex_extension_point $ep) {
-		rex_view::addCssFile($this->getAssetsUrl('css/style.css'));
 		rex_view::addJsFile($this->getAssetsUrl('js/main.js'));
+		rex_view::addCssFile($this->getAssetsUrl('css/backend.css'));
+
+		if (rex_config::get('xcore', 'xcore_styles') == 1) {
+			rex_view::addCssFile($this->getAssetsUrl('css/xcore.css'));
+		}
 	}, rex_extension::LATE);
 }
 
 // multiupload: undo deactivate mediapool pages done by multiupload addon
-if (rex_addon::get('multiupload')->isAvailable()) {
-	rex_extension::register('PAGES_PREPARED', function() {
-		$page = rex_be_controller::getPageObject('mediapool/upload');
+if (rex_config::get('xcore', 'show_multiupload_pages') == 1 && rexx::isBackend()) {
+	if (rex_addon::get('multiupload')->isAvailable()) {
+		rex_extension::register('PAGES_PREPARED', function() {
+			$page = rex_be_controller::getPageObject('mediapool/upload');
 
-		if ($page instanceof rex_be_page) {
-		    $page->setHidden(false);
-		    $page->setHasLayout(true);
-		    $page->setSubPath(rex_path::addon('mediapool', 'pages/upload.php'));
-		}
+			if ($page instanceof rex_be_page) {
+				$page->setHidden(false);
+				$page->setHasLayout(true);
+				$page->setSubPath(rex_path::addon('mediapool', 'pages/upload.php'));
+			}
 
-		$page = rex_be_controller::getPageObject('mediapool/sync');
+			$page = rex_be_controller::getPageObject('mediapool/sync');
 
-		if ($page instanceof rex_be_page) {
-		    $page->setHidden(false);
-		}
-	}, rex_extension::LATE);
+			if ($page instanceof rex_be_page) {
+				$page->setHidden(false);
+			}
+		}, rex_extension::LATE);
+	}
 }
 
 // yrewrite: add own schema
@@ -78,8 +84,10 @@ if (rexx::isBackend()) {
 }
 
 // redirect sync dir of developer to project addon
-if (rex_addon::get('developer')->isAvailable()) {
-    rex_extension::register('DEVELOPER_MANAGER_START', array('rexx_developer_manager', 'start'), rex_extension::NORMAL, [], true);
+if (rex_config::get('xcore', 'developer_project_sync') == 1) {
+	if (rex_addon::get('developer')->isAvailable()) {
+		rex_extension::register('DEVELOPER_MANAGER_START', array('rexx_developer_manager', 'start'), rex_extension::NORMAL, [], true);
+	}
 }
 
 // send headers
@@ -109,40 +117,10 @@ if (rex_config::get('xcore', 'offline_404_mode') == 1 && rexx::isFrontend()) {
 					$insert = '
 						<!-- X-CORE Offline 404 Mode -->
 						<style type="text/css">
-							html { 
-								margin-top: 30px !important;
-							}
-
-							body { 
-								position: relative;
-							}
-
-							#rexx-offline-404-frontend-msg { 
-								font-family: Arial, sans-serif; 
-								font-size: 13px; 
-								color: white; 
-								background: #4b9ad9;
-								border: 0;
-								position: fixed; 
-								left: 0; 
-								right: 0; 
-								top: 0; 
-								padding: 0; 
-								text-align: center;
-								z-index: 100;
-								height: 30px;
-								line-height: 30px;
-								box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6) !important;
-							}
-
-							#rexx-logo {
-								background: #4b9ad9 url("/assets/addons/xcore/images/redaxo-logo_logged_in.svg") no-repeat left top;
-								height: 16px;
-								position: absolute;
-								left: 12px;
-								top: 7px;
-								width: 115px;
-							}
+							html { margin-top: 30px !important; }
+							body { position: relative; }
+							#rexx-offline-404-frontend-msg { font-family: Arial, sans-serif; font-size: 13px; color: white; background: #4b9ad9; border: 0; position: fixed; left: 0; right: 0; top: 0; padding: 0; text-align: center; z-index: 100; height: 30px; line-height: 30px; box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6) !important; }
+							#rexx-logo { background: #4b9ad9 url("/assets/addons/xcore/images/redaxo-logo_logged_in.svg") no-repeat left top; height: 16px; position: absolute; left: 12px; top: 7px; width: 115px; }
 						</style>
 						<div id="rexx-offline-404-frontend-msg"><strong>' . rex_i18n::msg('xcore_offline_404_frontend_msg1') . '</strong> ' . rex_i18n::msg('xcore_offline_404_frontend_msg2') . '<div id="rexx-logo"></div></div>
 						<!-- X-CORE Offline 404 Mode -->' .  PHP_EOL;

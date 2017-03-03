@@ -1,0 +1,35 @@
+/* xcore */
+#rex-page-xcore-main #logo {
+	text-align: center;
+	margin-top: 45px;
+	margin-bottom: 45px;
+}
+
+#rex-page-xcore-main #logo img {
+	display: inline-block;
+}
+
+#rexx-setup pre {
+	height: 250px;
+}
+
+.rexx-pretty-var-box {
+	border: 1px solid #aaa; 
+	margin: 0; 
+	padding: 7px;
+}
+
+.rexx-pretty-var-box i {
+	font-size: 17px;
+	margin-right: 3px;
+}
+
+.rex-slice [data-rexx-panel] {
+	display: none;
+}
+
+/* anti flicker logo */
+.navbar-brand > img.rex-redaxo-logo {
+	display: inline-block;
+}
+

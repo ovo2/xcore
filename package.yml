@@ -10,7 +10,6 @@ page:
     icon: rex-icon fa-times-circle
     subpages:
         main: { title: 'translate:main' }
-        features: { title: 'translate:features' }
         rexx_api: { title: 'translate:rexx_api' }
         config: { title: 'translate:config' }
         setup: { title: 'translate:setup' }

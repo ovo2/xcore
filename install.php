@@ -32,3 +32,20 @@ if (!$this->hasConfig('favicon_dir')) {
 if (!$this->hasConfig('offline_404_mode')) {
     $this->setConfig('offline_404_mode', 1);
 }
+
+if (!$this->hasConfig('developer_project_sync')) {
+    $this->setConfig('developer_project_sync', 1);
+}
+
+if (!$this->hasConfig('smart_redirects')) {
+    $this->setConfig('smart_redirects', 1);
+}
+
+if (!$this->hasConfig('xcore_styles')) {
+    $this->setConfig('xcore_styles', 1);
+}
+
+if (!$this->hasConfig('show_multiupload_pages')) {
+    $this->setConfig('show_multiupload_pages', 1);
+}
+
