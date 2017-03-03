@@ -28,15 +28,14 @@ xcore_help_license = Lizenz
 xcore_offline_404_frontend_msg1 = Offline Artikel
 xcore_offline_404_frontend_msg2 = (nur für eingeloggte Benutzer sichtbar)
 
-xcore_config_title_delimeter = Trenner für Titel-Tag
-xcore_config_url_start = Url Start
+xcore_config_title_delimeter = Trenner für Title-Tag
 xcore_config_url_ending = Url Endung
 xcore_config_css_dir = CSS Verzeichnis
 xcore_config_js_dir = JS Verzeichnis
 xcore_config_image_dir = Image Verzeichnis
 xcore_config_favicon_dir = Favicon Verzeichnis
 xcore_config_offline_404_mode = 404 Ofline Modus (Offline Artikel sind nicht mehr erreichbar wenn nicht eingeloggt)
-xcore_config_show_meta_frontend_link = Frontend Link im REDAXO Metamenu (rechts oben) anzeigen
+xcore_config_show_meta_frontend_link = Frontend Link im REDAXO Metamenu rechts oben anzeigen
 xcore_config_developer_project_sync = Developer Sync in das Project AddOn (Sync Checkboxen müssen aktiviert sein im Developer AddOn)
 xcore_config_smart_redirects = Smart Redirects (Url Endungen werden automatisch korrigiert und weitergeleitet)
 xcore_config_xcore_styles = Extra X-Core Styles (entfernt z.B. das Grün aus dem Backend ;))
@@ -44,5 +43,5 @@ xcore_config_show_multiupload_pages = Alle Pages im Medienpool anzeigen (betriff
 xcore_config_saved = Einstellungen gespeichert.
 xcore_config_save = Einstellungen speichern
 
-xcore_addon_installed = Bitte führen Sie dass <a href="index.php?page=xcore/setup">X-Core Setup</a> als nächstes aus.
+xcore_addon_installed = Bitte führen Sie als nächstes dass <a href="index.php?page=xcore/setup">X-Core Setup</a> aus.
 xcore_goto_website = zur Website

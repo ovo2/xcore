@@ -7,7 +7,6 @@ $buttons = '';
 if (rex_post('formsubmit', 'string') == '1') {
     $this->setConfig(rex_post('config', [
         ['title_delimeter', 'string'],
-        ['url_start', 'string'],
         ['url_ending', 'string'],
         ['css_dir', 'string'],
         ['js_dir', 'string'],
@@ -37,17 +36,6 @@ $formElements = [];
 $n = [];
 $n['label'] = '<label for="title_delimeter">' . $this->i18n('config_title_delimeter') . '</label>';
 $n['field'] = '<input class="form-control" type="text" id="title_delimeter" name="config[title_delimeter]" value="' . $this->getConfig('title_delimeter') . '"/>';
-$formElements[] = $n;
-
-$fragment = new rex_fragment();
-$fragment->setVar('elements', $formElements, false);
-$content .= $fragment->parse('core/form/container.php');
-
-// url_start
-$formElements = [];
-$n = [];
-$n['label'] = '<label for="url_start">' . $this->i18n('config_url_start') . '</label>';
-$n['field'] = '<input class="form-control" type="text" id="url_start" name="config[url_start]" value="' . $this->getConfig('url_start') . '"/>';
 $formElements[] = $n;
 
 $fragment = new rex_fragment();
