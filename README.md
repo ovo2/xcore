@@ -31,7 +31,7 @@ Features
 Dokumentation
 -------------
 
-* [rexx API](docs/rex_api.md)
+* [rexx API](docs/rexx_api.md)
 * [Simple Html Dom](http://simplehtmldom.sourceforge.net/)
 
 Hinweise
