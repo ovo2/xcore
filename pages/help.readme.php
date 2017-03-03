@@ -1,5 +1,6 @@
 <?php
 $file = rex_file::get($this->getPath('README.md'));
+$file = str_replace('(docs/rex_api.md)', '(' . rex_url::backendPage('xcore/rexx_api') . ')', $file);
 
 $parsedown = new rexx_markdown();
 $content = $parsedown->text($file);

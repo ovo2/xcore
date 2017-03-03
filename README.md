@@ -28,18 +28,19 @@ Features
 * JS Tools wie der Panel Toggler und Persistent Tabs für die Speicherung der Boostrap Tabposition (über die CSS Klasse `rexx-persistent-tabs` einstellbar)
 * Zur Website Link in der Metanavigation
 
-Abhängigkeiten
---------------
+Dokumentation
+-------------
 
-* yRewrite
+* [rexx API](docs/rex_api.md)
+* [Simple Html Dom](http://simplehtmldom.sourceforge.net/)
 
 Hinweise
 --------
 
 * Getestet mit REDAXO 5.2, 5.3
 * AddOn-Ordner lautet: `xcore`
+* Abhängigkeiten: yRewrite
 * 500 Serverfehler: Wenn Sie einen 500 Serverfehler bekommen entfernen Sie die Zeile `Options -Indexes` aus der `.htaccess` Datei im root Verzeichnis.
-* Simple Html Dom Dokumentation: http://simplehtmldom.sourceforge.net/
 
 Changelog
 ---------
