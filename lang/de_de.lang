@@ -36,6 +36,7 @@ xcore_config_js_dir = JS Verzeichnis
 xcore_config_image_dir = Image Verzeichnis
 xcore_config_favicon_dir = Favicon Verzeichnis
 xcore_config_offline_404_mode = 404 Ofline Modus (Offline Artikel sind nicht mehr erreichbar wenn nicht eingeloggt)
+xcore_config_show_meta_frontend_link = Frontend Link im REDAXO Metamenu (rechts oben) anzeigen
 xcore_config_developer_project_sync = Developer Sync in das Project AddOn (Sync Checkboxen müssen aktiviert sein im Developer AddOn)
 xcore_config_smart_redirects = Smart Redirects (Url Endungen werden automatisch korrigiert und weitergeleitet)
 xcore_config_xcore_styles = Extra X-Core Styles (entfernt z.B. das Grün aus dem Backend ;))
@@ -44,3 +45,4 @@ xcore_config_saved = Einstellungen gespeichert.
 xcore_config_save = Einstellungen speichern
 
 xcore_addon_installed = Bitte führen Sie dass <a href="index.php?page=xcore/setup">X-Core Setup</a> als nächstes aus.
+xcore_goto_website = zur Website

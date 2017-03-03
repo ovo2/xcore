@@ -87,6 +87,7 @@ if (rexx::isBackend()) {
 	
 		$subject = str_replace('../assets/core/redaxo-logo.svg', $this->getAssetsUrl('images/' . $newLogo), $subject);
 
+		// setup msg in addon install page
 		if (rex_be_controller::getCurrentPagePart(1) == 'packages') {
 			$subject = str_replace(rex_i18n::msg('addon_installed', 'xcore'), rex_i18n::msg('addon_installed', 'xcore') . ' <br/>' . rex_i18n::rawMsg('xcore_addon_installed'), $subject);
 		}
@@ -164,7 +165,7 @@ if (rexx::isFrontend()) {
 }
 
 // add docs to api_docs addon if available
-if (rexx::isBackend()) {
+if (rexx::isBackend() && rex_addon::get('api_docs')->isAvailable()) {
 	rex_extension::register('API_DOCS', function(rex_extension_point $ep) {
 		$subject = $ep->getSubject();
 
@@ -174,6 +175,16 @@ if (rexx::isBackend()) {
 			'href' => rex_url::backendPage('xcore/rexx_api'),
 			'open_in_new_window' => false
 		];
+
+		$ep->setSubject($subject);
+	});
+}
+
+if (rexx::isBackend() && $this->getConfig('show_meta_frontend_link') == 1) {
+	rex_extension::register('META_NAVI', function(rex_extension_point $ep) {
+		$subject = $ep->getSubject();
+
+		$subject[] = '<li><a href="' . rex_url::frontend() . '" target="_blank"><i class="rex-icon fa-globe"></i> ' . rex_i18n::msg('xcore_goto_website') . '</a></li>';
 
 		$ep->setSubject($subject);
 	});

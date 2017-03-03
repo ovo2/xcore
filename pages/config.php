@@ -15,6 +15,7 @@ if (rex_post('formsubmit', 'string') == '1') {
         ['favicon_dir', 'string'],
         ['smart_redirects', 'int'],
         ['offline_404_mode', 'int'],
+        ['show_meta_frontend_link', 'int'],
         ['xcore_styles', 'int'],
         ['developer_project_sync', 'int'],
         ['show_multiupload_pages', 'int'],              
@@ -132,6 +133,17 @@ $formElements = [];
 $n = [];
 $n['label'] = '<label for="offline_404_mode">' . $this->i18n('config_offline_404_mode') . '</label>';
 $n['field'] = '<input type="checkbox" id="offline_404_mode" name="config[offline_404_mode]"' . (!empty($this->getConfig('offline_404_mode')) && $this->getConfig('offline_404_mode') == '1' ? ' checked="checked"' : '') . ' value="1" />';
+$formElements[] = $n;
+
+$fragment = new rex_fragment();
+$fragment->setVar('elements', $formElements, false);
+$content .= $fragment->parse('core/form/checkbox.php');
+
+// show_meta_frontend_link
+$formElements = [];
+$n = [];
+$n['label'] = '<label for="show_meta_frontend_link">' . $this->i18n('config_show_meta_frontend_link') . '</label>';
+$n['field'] = '<input type="checkbox" id="show_meta_frontend_link" name="config[show_meta_frontend_link]"' . (!empty($this->getConfig('show_meta_frontend_link')) && $this->getConfig('show_meta_frontend_link') == '1' ? ' checked="checked"' : '') . ' value="1" />';
 $formElements[] = $n;
 
 $fragment = new rex_fragment();

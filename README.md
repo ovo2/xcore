@@ -26,6 +26,7 @@ Features
 * Klasse `rexx_markdown`: modifizierte Parsedown Klasse die Syntax Highlighting von Codeblöcken in MD Dateien unterstützt
 * Klasse `rexx_simple_html_dom`: Wrapper für Simple Html Dom zum einfachen manipulieren des HTML Doms per PHP
 * JS Tools wie der Panel Toggler und Persistent Tabs für die Speicherung der Boostrap Tabposition (über die CSS Klasse `rexx-persistent-tabs` einstellbar)
+* Zur Website Link in der Metanavigation
 
 Abhängigkeiten
 --------------
