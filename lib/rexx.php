@@ -403,8 +403,6 @@ class rexx extends rex {
 
 	// converts a form with fieldsets into tabs :)
 	public static function getTabbedForm($form) {
-		$form = str_replace('"selected', '" selected', $form); // bugfix mform
-		$form = str_replace('"checked', '" checked', $form); // bugfix mform
 		$html = rexx_simple_html_dom::str_get_html($form);
 		$tabs = [];
 
@@ -617,11 +615,13 @@ class rexx extends rex {
 	}
 
 	// removes all subdirs and files recursively
-	public static function removeDirRecursively($dir = null) {
-		if ($dir != null && file_exists($dir)) {
+	public static function removeDirRecursively($dir = null, $securitySwitch = false) {
+		if (!$securitySwitch) {
+			throw new InvalidArgumentException('rexx::removeDirRecursively(): expecting $securitySwitch to be true. {{{ ATTENTION: this method deletes everything in "' . $dir . '"!!! }}}');
+		} elseif ($dir != null && file_exists($dir)) {
 			foreach(glob($dir . '/*') as $file) {
 				if (is_dir($file)) {
-				    self::removeDirRecursively($file);
+				    self::removeDirRecursively($file, true);
 				} else {
 				    unlink($file);
 				}
@@ -685,6 +685,18 @@ class rexx extends rex {
 
 	public static function getDefaultString($field, $allowEmpty = false) {
 		return rex_global_settings::getDefaultString($field, $allowEmpty);
+	}
+
+	public static function setGlobalLangPreset($specialChars = [], $specialCharsRewrite = []) {
+		rexx_clang::setGlobalLangPreset($specialChars, $specialCharsRewrite);
+	}
+
+	public static function setLangPreset($originalName, $code, $regionCode, $urlSlug, $hreflang, $dir, $specialChars, $specialCharsRewrite) {
+		rexx_clang::setLangPreset($originalName, $code, $regionCode, $urlSlug, $hreflang, $dir, $specialChars, $specialCharsRewrite);
+	}
+
+	public static function addLangPreset($originalName, $code, $regionCode, $urlSlug, $hreflang, $dir, $specialChars, $specialCharsRewrite) {
+		rexx_clang::addLangPreset($originalName, $code, $regionCode, $urlSlug, $hreflang, $dir, $specialChars, $specialCharsRewrite);
 	}
 }
 

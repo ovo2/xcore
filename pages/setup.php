@@ -2,7 +2,7 @@
 <?php
 
 $content = '<h2>' . rex_i18n::rawMsg('xcore_setup_msg1') . '</h2>';
-$content .= '<p>' . rex_i18n::rawMsg('xcore_setup_msg1_desc') . '</p>';
+$content .= '<ul><li>' . rex_i18n::rawMsg('xcore_setup_msg1_desc1') . '</li><li>' . rex_i18n::rawMsg('xcore_setup_msg1_desc2') . '</li><li>' . rex_i18n::rawMsg('xcore_setup_msg1_desc3') . '</li></ul>';
 
 $fragment = new rex_fragment();
 $fragment->setVar('title', rex_i18n::rawMsg('xcore_setup_step1'));

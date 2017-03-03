@@ -13,10 +13,10 @@ if (rex_post('formsubmit', 'string') == '1') {
         ['js_dir', 'string'],
         ['image_dir', 'string'],
         ['favicon_dir', 'string'],
-        ['offline_404_mode', 'int'],
-        ['developer_project_sync', 'int'],
         ['smart_redirects', 'int'],
+        ['offline_404_mode', 'int'],
         ['xcore_styles', 'int'],
+        ['developer_project_sync', 'int'],
         ['show_multiupload_pages', 'int'],              
     ]));
 
@@ -24,8 +24,8 @@ if (rex_post('formsubmit', 'string') == '1') {
 
 	$developerDir = rex_path::addon('project', 'developer');
 
-	if (file_exists($developerDir)) {
-		rexx::removeDirRecursively($developerDir);
+	if (rex_addon::getConfig('developer_project_sync') == 0 && file_exists($developerDir)) {
+		rexx::removeDirRecursively($developerDir, true);
 	}
 
 	rex_yrewrite::deleteCache();
@@ -116,22 +116,22 @@ $fragment = new rex_fragment();
 $fragment->setVar('elements', $formElements, false);
 $content .= $fragment->parse('core/form/container.php');
 
-// offline_404_mode
+// smart_redirects
 $formElements = [];
 $n = [];
-$n['label'] = '<label for="offline_404_mode">' . $this->i18n('config_offline_404_mode') . '</label>';
-$n['field'] = '<input type="checkbox" id="offline_404_mode" name="config[offline_404_mode]"' . (!empty($this->getConfig('offline_404_mode')) && $this->getConfig('offline_404_mode') == '1' ? ' checked="checked"' : '') . ' value="1" />';
+$n['label'] = '<label for="smart_redirects">' . $this->i18n('config_smart_redirects') . '</label>';
+$n['field'] = '<input type="checkbox" id="smart_redirects" name="config[smart_redirects]"' . (!empty($this->getConfig('smart_redirects')) && $this->getConfig('smart_redirects') == '1' ? ' checked="checked"' : '') . ' value="1" />';
 $formElements[] = $n;
 
 $fragment = new rex_fragment();
 $fragment->setVar('elements', $formElements, false);
 $content .= $fragment->parse('core/form/checkbox.php');
 
-// smart_redirects
+// offline_404_mode
 $formElements = [];
 $n = [];
-$n['label'] = '<label for="smart_redirects">' . $this->i18n('config_smart_redirects') . '</label>';
-$n['field'] = '<input type="checkbox" id="smart_redirects" name="config[smart_redirects]"' . (!empty($this->getConfig('smart_redirects')) && $this->getConfig('smart_redirects') == '1' ? ' checked="checked"' : '') . ' value="1" />';
+$n['label'] = '<label for="offline_404_mode">' . $this->i18n('config_offline_404_mode') . '</label>';
+$n['field'] = '<input type="checkbox" id="offline_404_mode" name="config[offline_404_mode]"' . (!empty($this->getConfig('offline_404_mode')) && $this->getConfig('offline_404_mode') == '1' ? ' checked="checked"' : '') . ' value="1" />';
 $formElements[] = $n;
 
 $fragment = new rex_fragment();

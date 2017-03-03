@@ -39,6 +39,14 @@ if (rexx::isBackend()) {
 			rex_view::addCssFile($this->getAssetsUrl('css/xcore.css'));
 		}
 	}, rex_extension::LATE);
+
+	if (rex_config::get('xcore', 'xcore_styles') == 1 && rex_config::get('be_style/customizer', 'labelcolor') == '#43a047') {
+		rex_extension::register('PAGE_BODY_ATTR', function (\rex_extension_point $ep) {
+		    $subject = $ep->getSubject();
+		    $subject['class'][] = 'rexx-customizer-is-green';
+		    $ep->setSubject($subject);
+		});		
+	}
 }
 
 // multiupload: undo deactivate mediapool pages done by multiupload addon
@@ -78,6 +86,10 @@ if (rexx::isBackend()) {
 		}
 	
 		$subject = str_replace('../assets/core/redaxo-logo.svg', $this->getAssetsUrl('images/' . $newLogo), $subject);
+
+		if (rex_be_controller::getCurrentPagePart(1) == 'packages') {
+			$subject = str_replace(rex_i18n::msg('addon_installed', 'xcore'), rex_i18n::msg('addon_installed', 'xcore') . ' <br/>' . rex_i18n::rawMsg('xcore_addon_installed'), $subject);
+		}
 		
 		return $subject;
 	}, rex_extension::LATE);

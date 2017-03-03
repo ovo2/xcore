@@ -110,10 +110,8 @@ input[type="checkbox"] {
     margin-left: 51px;
 }
 
-/* multiupload */
-.rex-form-aligned, 
-.btn-toolbar .rex-form-aligned {
-    margin-left: 305px;
+.rexx-customizer-is-green .rex-nav-top {
+	border: 0 !important;
 }
 
 /* mform */

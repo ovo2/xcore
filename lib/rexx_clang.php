@@ -176,4 +176,35 @@ class rexx_clang {
 			self::$globalLangPresets[$key] = $value;
 		}
 	}
+
+	public static function setGlobalLangPreset($specialChars = [], $specialCharsRewrite = []) {
+		rexx_clang::setGlobalPresetValue('special_chars', $specialChars);
+		rexx_clang::setGlobalPresetValue('special_chars_rewrite', $specialCharsRewrite);
+	}
+
+	public static function setLangPreset($originalName, $code, $regionCode, $urlSlug, $hreflang, $dir, $specialChars, $specialCharsRewrite) {
+		rexx_clang::setPresetValue($code, 'original_name', $originalName);
+		rexx_clang::setPresetValue($code, 'code', $code);
+		rexx_clang::setPresetValue($code, 'region_code', $regionCode);
+		rexx_clang::setPresetValue($code, 'url_slug', $urlSlug);
+		rexx_clang::setPresetValue($code, 'hreflang', $hreflang);
+		rexx_clang::setPresetValue($code, 'dir', $dir);
+		rexx_clang::setPresetValue($code, 'special_chars', $specialChars);
+		rexx_clang::setPresetValue($code, 'special_chars_rewrite', $specialCharsRewrite);
+	}
+
+	public static function addLangPreset($originalName, $code, $regionCode, $urlSlug, $hreflang, $dir, $specialChars, $specialCharsRewrite) {
+		if (!isset(self::$langPresets[$code])) {
+			self::$langPresets[$code] = [
+				'original_name' => $originalName,
+				'code' => $code,
+				'region_code' => $regionCode,
+				'url_slug' => $urlSlug,
+				'hreflang' => $hreflang,
+				'dir' => $dir,
+				'special_chars' => $specialChars,
+				'special_chars_rewrite' => $specialCharsRewrite
+			];
+		}
+	}
 }
