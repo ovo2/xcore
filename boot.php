@@ -15,7 +15,7 @@ if (rexx::isFrontend()) {
 // smart redirects
 if (rex_config::get('xcore', 'smart_redirects') == 1 && rexx::isFrontend()) {
 	rex_extension::register('PACKAGES_INCLUDED', function() {	
-		if (!rexx::currentUrlExists() && isset($_SERVER['REQUEST_URI'])) {
+		if (!rexx::iscurrentUrlValid() && isset($_SERVER['REQUEST_URI'])) {
 			$trimmedRequestUrl = str_replace('.html', '', trim($_SERVER['REQUEST_URI'], '/'));
 			$newUrl = $trimmedRequestUrl . rexx::getUrlEnding();
 
@@ -154,13 +154,28 @@ if (rex_config::get('xcore', 'offline_404_mode') == 1 && rexx::isFrontend()) {
 if (rexx::isFrontend()) {
 	if (rexx::getSiteStartArticleId() == rexx::getNotfoundArticleId()) {
 		rex_extension::register('PACKAGES_INCLUDED', function(rex_extension_point $ep) {
-			if (!rexx::currentUrlExists()) {
+			if (!rexx::iscurrentUrlValid()) {
 				rex_extension::register('RESPONSE_SHUTDOWN', function() {
 					header("HTTP/1.0 404 Not Found");
 				});
 			}
 		});
 	}
+}
+
+if (rexx::isBackend()) {
+	rex_extension::register('API_DOCS', function(rex_extension_point $ep) {
+		$subject = $ep->getSubject();
+
+		$subject['api'][] = [
+			'title' => 'X-Core API',
+			'description' => 'Die API der rexx Klasse aus dem X-Core AddOn',
+			'href' => rex_url::backendPage('xcore/rexx_api'),
+			'open_in_new_window' => false
+		];
+
+		$ep->setSubject($subject);
+	});
 }
 
 // xcore included ep

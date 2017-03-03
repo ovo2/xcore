@@ -603,7 +603,7 @@ class rexx extends rex {
 		}
 	}
 
-	public static function currentUrlExists() { // call in PACKAGE_INCLUDED and later!
+	public static function iscurrentUrlValid() { // call in PACKAGE_INCLUDED and later!
 		if (isset($_SERVER['REQUEST_URI'])) {
 			$requestUrl = strtok($_SERVER['REQUEST_URI'], '?');
 			$requestUrl = ltrim($requestUrl, '/');

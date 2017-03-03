@@ -14,7 +14,8 @@ xcore_setup_msg3 = 3) Template anpassen
 xcore_setup_msg1_desc1 = Überprüfen Sie die <a href="index.php?page=xcore/config">Einstellungen</a> dieses Addons und passen diese ggf. an.
 xcore_setup_msg1_desc2 = Achten Sie darauf dass unter <a href="index.php?page=system/lang">System > Sprachen</a> die Sprach-Codes richtig eingegeben sind.
 xcore_setup_msg1_desc3 = Stellen Sie bitte sicher dass unter yRewrite > Domaineinstellungen und unter System > Einstellungen die selben Werte wie Url, Fehlerartikel etc. gesetzt sind.
-xcore_setup_msg2_desc = Mitgelieferte <code>/xcore/install/_htaccess</code> kopieren in das root Verzeichnis dieser Website und dort in <code>.htaccess</code> umbenennen.<br />Wenn Sie einen <strong>500 Serverfehler</strong> bekommen entfernen Sie die Zeile <code>Options -Indexes</code>.
+xcore_setup_msg2_desc1 = Bitte die mitgelieferte <code>/xcore/install/_htaccess</code> in das root Verzeichnis dieser Website kopieren und dort in <code>.htaccess</code> umbenennen.
+xcore_setup_msg2_desc2 = Wenn Sie einen <strong>500 Serverfehler</strong> bekommen entfernen Sie die Zeile <code>Options -Indexes</code>.
 xcore_setup_msg3_desc = Benutzen Sie die rexx API und passen Sie Ihre Templates dementsprechend  an.
 xcore_config = Einstellungen
 xcore_rexx_class = rexx Klasse

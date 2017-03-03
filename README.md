@@ -54,4 +54,5 @@ Credits
 -------
 
 * X-Core nutzt Code aus dem Theme Addon von Daniel Weitenauer
+* PHP-Markdown-Documentation-Generator
 * More to come...

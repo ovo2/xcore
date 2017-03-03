@@ -14,7 +14,7 @@ echo $fragment->parse('core/page/section.php');
 
 $rexxContent = file_get_contents($this->getPath('install/_htaccess'));
 $content = '<h2>' . rex_i18n::rawMsg('xcore_setup_msg2') . '</h2>';
-$content .= '<p>' . rex_i18n::rawMsg('xcore_setup_msg2_desc') . '</p>';
+$content .= '<ul><li>' . rex_i18n::rawMsg('xcore_setup_msg2_desc1') . '</li><li>' . rex_i18n::rawMsg('xcore_setup_msg2_desc2') . '</li></ul>';
 $content .= '<code><pre>' . highlight_string($rexxContent, true)  . '</pre></code>';
 
 $fragment = new rex_fragment();
@@ -27,7 +27,7 @@ echo $fragment->parse('core/page/section.php');
 
 $rexxContent = file_get_contents($this->getPath('install/template.php'));
 $content = '<h2>' . rex_i18n::rawMsg('xcore_setup_msg3') . '</h2>';
-$content .= '<p>' . rex_i18n::rawMsg('xcore_setup_msg3_desc') . '</p>';
+$content .= '<ul><li>' . rex_i18n::rawMsg('xcore_setup_msg3_desc') . '</li></ul>';
 $content .= '<code><pre>' . highlight_string($rexxContent, true)  . '</pre></code>';
 
 $fragment = new rex_fragment();

@@ -1,12 +1,18 @@
-<?php
+<div class="rexx-markdown">
+	<div class="table-container">
+		<?php
+		$file = rex_file::get($this->getPath('docs/rexx_api.md'));
+		$file = str_replace('Class: rexx', 'Class: rexx extends rex', $file);
+		$file = str_replace('Function', 'Method', $file);
 
-$rexxContent = file_get_contents($this->getPath('lib/rexx.php'));
-$content = '<h2>' . $this->i18n('rexx_class') . '</h2>';
-$content .= '<code><pre>' . highlight_string($rexxContent, true)  . '</pre></code>';
+		$parsedown = new ParsedownExtra();
+		$content = $parsedown->text($file);
 
-$fragment = new rex_fragment();
-$fragment->setVar('title', $this->i18n('rexx_api'));
-$fragment->setVar('body', $content, false);
+		$fragment = new rex_fragment();
+		$fragment->setVar('title', $this->i18n('rexx_api'));
+		$fragment->setVar('body', $content, false);
 
-echo $fragment->parse('core/page/section.php');
-
+		echo $fragment->parse('core/page/section.php');
+		?>
+	</div>
+</div>
