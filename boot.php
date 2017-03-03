@@ -19,7 +19,7 @@ if (rex_config::get('xcore', 'smart_redirects') == 1 && rexx::isFrontend()) {
 			$trimmedRequestUrl = str_replace('.html', '', trim($_SERVER['REQUEST_URI'], '/'));
 			$newUrl = $trimmedRequestUrl . rexx::getUrlEnding();
 
-			if (rexx::urlExists($newUrl)) {
+			if (rexx::isUrlValid($newUrl)) {
 				rexx::redirect(rexx::getUrlStart() . $newUrl);
 			}
 		}
@@ -163,6 +163,7 @@ if (rexx::isFrontend()) {
 	}
 }
 
+// add docs to api_docs addon if available
 if (rexx::isBackend()) {
 	rex_extension::register('API_DOCS', function(rex_extension_point $ep) {
 		$subject = $ep->getSubject();

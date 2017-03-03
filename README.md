@@ -18,8 +18,8 @@ Features
 * Sync der Developer Files in das Project AddOn
 * Automatisches senden von Header wie `X-UA-Compatible` oder einen `Cache-Control` Header für Server die Media Manager Bilder sonst nicht korrekt cachen
 * Bei gleichem Startartikel wie Fehlerartikel wird ein 404 gesendet (was REDAXO sonst nicht tut)
-* rex API: Umfangreiche API a la seo42 Klasse
-* Mitgeliefertes Boilerplate
+* rexx API: Umfangreiche API a la seo42 Klasse (diesmal) inkl. Dokumentation
+* Mitgeliefertes Boilerplate (Template) welches die rexx API benutzt
 * Resourcen Handling: Kombinieren von mehreren CSS / JS Dateien zu einer. Senden eines Versionsstrings (Cache-Buster) usw.
 * Integrierter LESS sowie SCSS Compiler
 * X-Core Extra Styles, Backend ohne grün sowie REDAXO Logo Flicker Fixer
@@ -55,4 +55,5 @@ Credits
 
 * X-Core nutzt Code aus dem Theme Addon von Daniel Weitenauer
 * PHP-Markdown-Documentation-Generator
+* Logo ist Public Domain
 * More to come...

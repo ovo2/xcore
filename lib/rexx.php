@@ -593,7 +593,7 @@ class rexx extends rex {
 		return rexx::getUrlStart() . rexx::downloadDir . '/' . $file;
 	}
 
-	public static function urlExists($url) { // call in PACKAGE_INCLUDED and later!
+	public static function isUrlValid($url) { // call in PACKAGE_INCLUDED and later!
 		$curDomain = rex_yrewrite::getCurrentDomain();
 
 		if (rex_yrewrite::getArticleIdByUrl($curDomain, $url) !== false ) {
@@ -608,7 +608,7 @@ class rexx extends rex {
 			$requestUrl = strtok($_SERVER['REQUEST_URI'], '?');
 			$requestUrl = ltrim($requestUrl, '/');
 
-			return rexx::urlExists($requestUrl);
+			return rexx::isUrlValid($requestUrl);
 		} else {
 			return false;
 		}
@@ -629,6 +629,30 @@ class rexx extends rex {
 
 			rmdir($dir);
 		}
+	}
+
+	public static function stringContains($haystack, $needle) {
+		if (strpos($haystack, $needle) !== false) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static function stringStartsWith($haystack, $needle) {
+		$length = strlen($needle);
+
+		return (substr($haystack, 0, $length) === $needle);
+	}
+
+	public static function stringEndsWith($haystack, $needle) {
+		$length = strlen($needle);
+
+		if ($length == 0) {
+			return true;
+		}
+
+		return (substr($haystack, -$length) === $needle);
 	}
 
 	public static function getCSSFile($file, $vars = []) {
