@@ -16,22 +16,22 @@ Features
 * Offline 404 Modus: Offline Artikel sind für nicht eingeloggte Benutzer nicht mehr erreichbar (404 Seite)
 * Automatisches setzen der Locale in PHP um z.B. Monatsnamen/Datumsangaben in der richtigen Sprache zu erhalten
 * Sync der Developer Files in das Project AddOn
-* Automatisches senden von Header wie `X-UA-Compatible` oder einen `Cache-Control` Header für Server die Media Manager Bilder sonst nicht korrekt cachen
+* Automatisches senden von Header wie `X-UA-Compatible` oder einen `Cache-Control` Header für manche Server die Media Manager Bilder sonst nicht korrekt cachen
 * Bei gleichem Startartikel wie Fehlerartikel wird ein 404 gesendet (was REDAXO sonst nicht tut)
 * rexx API: Umfangreiche API a la seo42 Klasse (diesmal) inkl. Dokumentation
 * Mitgeliefertes Boilerplate (Template) welches die rexx API benutzt
 * Resourcen Handling: Kombinieren von mehreren CSS / JS Dateien zu einer. Senden eines Versionsstrings (Cache-Buster) usw.
-* Resourcen Handling: Integrierter LESS sowie SCSS Compiler
+* Mitgelieferte und integrierter LESS sowie SCSS Compiler
 * X-Core Extra Styles, Backend ohne grün sowie REDAXO Logo Flicker Fixer
 * JS Tools wie der Panel Toggler und Persistent Tabs für die Speicherung der Boostrap Tabposition (über die CSS Klasse `rexx-persistent-tabs` einstellbar)
 * Frontend Link "zur Website" in der Metanavigation
 * Klasse `rexx_markdown`: modifizierte Parsedown Klasse die Syntax Highlighting von Codeblöcken in MD Dateien unterstützt
-* Klasse `rexx_simple_html_dom`: Wrapper für Simple Html Dom zum einfachen manipulieren des HTML Doms per PHP
+* Klasse `rexx_simple_html_dom`: Wrapper für die mitgelieferte Simple Html Dom Bibliothek zum einfachen manipulieren des HTML Doms per PHP
 
 Verfügbare Sprachumschreibungen
 -------------------------------
 
-Die Urls werden mittels dieser Sprachumschreibungen (LangPresets) automatisch generiert wenn die Codes unter REDAXO > System > Sprachen korrekt eingegeben wurden.
+Die Urls werden mittels dieser LangPresets automatisch sauber umgeschrieben wenn die Codes der Sprachen unter REDAXO > System > Sprachen korrekt eingegeben wurden.
 
 české (cs), dansk (da), deutsch (de), english (en), español, (es), française (fr), italiano (it), magyar (hu), nederlands (nl), norsk (no), polska (pl), português (pt), svensk (sv), türk (tr)
 
@@ -44,7 +44,7 @@ Dokumentation
 Hinweise
 --------
 
-* Getestet mit REDAXO 5.2, 5.3
+* Getestet mit REDAXO 5.3
 * AddOn-Ordner lautet: `xcore`
 * Abhängigkeiten: yRewrite
 * 500 Serverfehler: Wenn Sie einen 500 Serverfehler bekommen entfernen Sie die Zeile `Options -Indexes` aus der `.htaccess` Datei im root Verzeichnis.

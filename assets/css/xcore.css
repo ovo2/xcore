@@ -116,14 +116,14 @@ input[type="checkbox"] {
 	line-height: 1.1;
 }
 
-.be-style-customizer-title .be-style-customizer-title-name {
+/*.be-style-customizer-title .be-style-customizer-title-name {
 	font-weight: bold;
 	font-size: 18px;
 }
 
 .rexx-has-meta-frontend-link .be-style-customizer-title i {
 	display: none;
-}
+}*/
 
 .rexx-customizer-is-green .rex-nav-top {
 	border: 0 !important;

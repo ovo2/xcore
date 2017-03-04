@@ -483,7 +483,7 @@ class rexx extends rex {
 	}
 
 	/**
-	 * Returns the article object from article id.
+	 * Returns the article object from given article id.
 	 *
 	 * @param int $articleId
 	 *
@@ -602,7 +602,7 @@ class rexx extends rex {
 	}
 
 	/**
-	 * Returns the absolute file with path of the given media file of resource dir.
+	 * Returns the absolute file with path of the given media file of media dir.
 	 *
 	 * @param string $file 
 	 *
@@ -818,13 +818,24 @@ class rexx extends rex {
 	 * Returns true if given number is odd.
 	 *
 	 * @param int $number
-	 * @param int $statusCode
 	 * 
 	 * @return bool
 	 *
 	 */
 	public static function isOdd($number) {
 		return ($number & 1);
+	}
+
+	/**
+	 * Returns true if given number is even.
+	 *
+	 * @param int $number
+	 * 
+	 * @return bool
+	 *
+	 */
+	public static function isEven($number) {
+		return !rexx::isOdd($number);
 	}
 
 	/**
@@ -1203,7 +1214,8 @@ class rexx extends rex {
 	// 
 	/**
 	 * Removes all subdirs and files recursively.
-	 * If $securitySwitch you will see your path in exception first!
+	 * Keep $securitySwitch = false first to see the path you will delete first in exception!
+	 * Be careful with this!
 	 *
 	 * @param string $dir
 	 * @param bool $securitySwitch
@@ -1454,7 +1466,7 @@ class rexx extends rex {
 	}
 
 	/**
-	 * Modifys a lang preset that already exists. Can be used in boot.php of project modify existing presets.
+	 * Modifys a lang preset that already exists. Can be used in boot.php of project addon to modify the existing presets.
 	 *
 	 * @param string $originalName 
 	 * @param string $code
