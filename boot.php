@@ -15,7 +15,7 @@ if (rexx::isFrontend()) {
 // smart redirects
 if (rex_config::get('xcore', 'smart_redirects') == 1 && rexx::isFrontend()) {
 	rex_extension::register('PACKAGES_INCLUDED', function() {	
-		if (!rexx::iscurrentUrlValid() && isset($_SERVER['REQUEST_URI'])) {
+		if (!rexx::isCurrentUrlValid() && isset($_SERVER['REQUEST_URI'])) {
 			$trimmedRequestUrl = str_replace('.html', '', trim($_SERVER['REQUEST_URI'], '/'));
 			$newUrl = $trimmedRequestUrl . rexx::getUrlEnding();
 
@@ -155,7 +155,7 @@ if (rex_config::get('xcore', 'offline_404_mode') == 1 && rexx::isFrontend()) {
 if (rexx::isFrontend()) {
 	if (rexx::getSiteStartArticleId() == rexx::getNotfoundArticleId()) {
 		rex_extension::register('PACKAGES_INCLUDED', function(rex_extension_point $ep) {
-			if (!rexx::iscurrentUrlValid()) {
+			if (!rexx::isCurrentUrlValid()) {
 				rex_extension::register('RESPONSE_SHUTDOWN', function() {
 					header("HTTP/1.0 404 Not Found");
 				});

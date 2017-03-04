@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The main class of X-Core AddOn.
+ * The main class of X-Core AddOn inherited from class rex.
  */
 class rexx extends rex {
 	static $titleDelimeter;
@@ -49,38 +49,68 @@ class rexx extends rex {
 		return self::$cssDir;
 	}
 
+	/**
+	 * Returns the js dir specified in the config of addon.
+	 *
+	 * @return string
+	 */
 	public static function getJSDir() {
 		return self::$jsDir;
 	}
 
+	/**
+	 * Returns the image dir specified in the config of addon.
+	 *
+	 * @return string
+	 */
 	public static function getImageDir() {
 		return self::$imageDir;
 	}
 
+	/**
+	 * Returns the favicon dir specified in the config of addon.
+	 *
+	 * @return string
+	 */
 	public static function getFavIconDir() {
 		return self::$favIconsDir;
 	}
 
+	/**
+	 * Returns the the current lang code.
+	 *
+	 * @return string
+	 */
 	public static function getLangCode() {
 		$curClang = rexx::getCurrentClang();
 
 		return $curClang->getCode();
 	}
 
+	/**
+	 * Returns number of langauges of the site.
+	 *
+	 * @return int
+	 */
 	public static function getLangCount() {
 		return count(rex_clang::getAll());
 	}
 
+	/**
+	 * Returns the base url of site. Same as rexx::getServer().
+	 *
+	 * @return string
+	 */
 	public static function getBaseUrl() {
 		return rexx::getServer();
 	}
 
 	/**
-	 * Returns if the given key is set.
+	 * Returns title for title tag. If $siteName specified the default sitename will be ignored.
 	 *
-	 * @param string $namespace The namespace e.g. an addon name
+	 * @param string $siteName
 	 *
-	 * @return bool TRUE if the key is set, otherwise FALSE
+	 * @return string
 	 */
 	public static function getTitle($siteName = '') {
 		if ($siteName == '') {
@@ -96,6 +126,11 @@ class rexx extends rex {
 		return htmlspecialchars($fullTitle);
 	}
 
+	/**
+	 * Checks if the current article is the site start article.
+	 *
+	 * @return bool
+	 */
 	public static function isSiteStartArticle() {
 		if (rexx::getSiteStartArticleId() == rexx::getCurrentArticleId()) {
 			return true;
@@ -104,14 +139,29 @@ class rexx extends rex {
 		}
 	}
 
+	/**
+	 * Returns the sitename. Same as rexx::getServerName().
+	 *
+	 * @return string
+	 */
 	public static function getSiteName() {
 		return rexx::getServerName();
 	}
 
+	/**
+	 * Returns the title delimiter for the title tag.
+	 *
+	 * @return string
+	 */
 	public static function getTitleDelimiter() {
 		return self::$titleDelimeter;
 	}
 
+	/**
+	 * Returns the current title part without sitename.
+	 *
+	 * @return string
+	 */
 	public static function getTitlePart() {
 		$curArticle = rexx::getCurrentArticle();
 
@@ -122,6 +172,11 @@ class rexx extends rex {
         }
 	}
 
+	/**
+	 * Returns the current description for the description tag.
+	 *
+	 * @return string
+	 */
 	public static function getDescription() {
 		$curArticle = rexx::getCurrentArticle();
 		$description = $curArticle->getValue('yrewrite_description');
@@ -130,10 +185,20 @@ class rexx extends rex {
 		return $description;
 	}
 
+	/**
+	 * Returns the current keywords for the keywords tag. Does nothing at the moment!
+	 *
+	 * @return string
+	 */
 	public static function getKeywords() {
-		return ''; // nothing there yet
+		return ''; // do nothing
 	}
 
+	/**
+	 * Returns the current robot rules for the robots tag.
+	 *
+	 * @return string
+	 */
 	public static function getRobotRules() {
 		$curArticle = rexx::getCurrentArticle();
 
@@ -144,42 +209,104 @@ class rexx extends rex {
         }
 	}
 
+	/**
+	 * Returns the current canonical url.
+	 *
+	 * @return string
+	 */
 	public static function getCanonicalUrl() {
 		$seo = new rex_yrewrite_seo();
 
 		return $seo->getCanonicalUrl();
 	}
 
+	/**
+	 * Returns the url start slug.
+	 *
+	 * @return string
+	 */
 	public static function getUrlStart() {
 		return self::$urlStart;
 	}
 
+	/**
+	 * Returns the url ending.
+	 *
+	 * @return string
+	 */
 	public static function getUrlEnding() {
 		return self::$urlEnding;
 	}
 
+	/**
+	 * Returns the current hreflang Tags.
+	 *
+	 * @return string
+	 */
 	public static function getLangTags() {
 		$seo = new rex_yrewrite_seo();
 
 		return $seo->getHreflangTags() . PHP_EOL;
 	}
 
+	/**
+	 * Returns a relative url based on the params. Same as rex_getUrl().
+	 *
+	 * @param int $id
+	 * @param int $clang
+	 * @param string[] $params
+	 * @param string $separator
+	 *
+	 * @return string
+	 */
 	public static function getUrl($id = null, $clang = null, array $params = [], $separator = '&amp;') {
 		return rex_getUrl($id, $clang, $params, $separator);
 	}
 
+	/**
+	 * Returns a full url starting with http:// based on the params.
+	 *
+	 * @param int $id
+	 * @param int $clang
+	 * @param string[] $params
+	 * @param string $separator
+	 *
+	 * @return string
+	 */
 	public static function getFullUrl($id = null, $clang = null, array $params = [], $separator = '&amp;') {
 		return rexx::getServerUrl() . rexx::getTrimmedUrl($id, $clang, $params, $separator);
 	}
 
+	/**
+	 * Returns a relative url based on the params without url start slug.
+	 *
+	 * @param int $id
+	 * @param int $clang
+	 * @param string[] $params
+	 * @param string $separator
+	 *
+	 * @return string
+	 */
 	public static function getTrimmedUrl($id = null, $clang = null, array $params = [], $separator = '&amp;') {
 		return ltrim(rexx::getUrl($id, $clang, $params, $separator), "./");
 	}
 
+	/**
+	 * Returns value from "tracking_code" field from global_settings addon. 
+	 *
+	 * @return string
+	 */
 	public static function getTrackingCode() {
 		return rex_global_settings::getDefaultValue('tracking_code', true);
 	}
 
+	/**
+	 * Returns the description of the given mediatype.
+	 *
+	 * @param string $mediaType
+	 *
+	 * @return string
+	 */
 	public static function getMediaTypeDescription($mediaType) {
 		$query = 'SELECT * FROM '. rexx::getTablePrefix() .'media_manager_type WHERE name LIKE "' . $mediaType . '"';
 
@@ -193,6 +320,14 @@ class rexx extends rex {
 		}
 	}
 
+	/**
+	 * Gives an attribute value pair for html usage. If $value is empty, an empty string will be returned.
+	 *
+	 * @param string $attribute
+	 * @param string $value
+	 *
+	 * @return string
+	 */
 	public static function getHtmlAttribute($attribute, $value) {
 		if ($value != '' || $attribute == 'alt') {
 			return ' ' . $attribute . '="' . htmlspecialchars($value) . '"';
@@ -201,6 +336,11 @@ class rexx extends rex {
 		}
 	}
 	
+	/**
+	 * Includes a template. Same as REX_TEMPLATE[].
+	 *
+	 * @param int $templateId
+	 */
 	public static function includeTemplate($templateId) {
 		$template = new rex_template($templateId);
 		
@@ -208,25 +348,62 @@ class rexx extends rex {
 			include_once($template->getFile());
 		}
 	}
-	
+
+	/**
+	 * Returns the article content for the given article id.
+	 *
+	 * @param int $articleId
+	 * @param int $ctypeId
+	 *
+	 * @return string
+	 */	
 	public static function getArticleContent($articleId, $ctypeId = -1) {
 		$article = new rex_article_content($articleId);
 		
 		return $article->getArticle($ctypeId); 
 	}
 	
+	/**
+	 * Returns the content of the current article.
+	 *
+	 * @param int $articleId
+	 *
+	 * @return string
+	 */	
 	public static function getCurrentArticleContent($ctypeId = -1) {
 		return rexx::getArticleContent(rexx::getCurrentArticleId(), $ctypeId); 
 	}
-	
+
+	/**
+	 * Returns an link tag with url and name from specified article id.
+	 *
+	 * @param int $articleId
+	 *
+	 * @return string
+	 */	
 	public static function getArticleLink($articleId) {
 		return '<a href="' . rexx::getUrl($articleId) . '">' . rexx::getArticleName($articleId) . '</a>';
 	}
 
+	/**
+	 * Returns backend url. Same as rex_url::backendController();
+	 *
+	 * @param array $params
+	 * @param bool $escape
+	 *
+	 * @return string
+	 */	
 	public static function getBackendUrl(array $params = [], $escape = true) {
 		return rex_url::backendController($params, $escape);
 	}
 
+	/**
+	 * Returns the article name from specified article id.
+	 *
+	 * @param int $articleId
+	 *
+	 * @return string
+	 */	
 	public static function getArticleName($articleId) {
 		$article = rexx::getArticle($articleId);
 
@@ -237,72 +414,160 @@ class rexx extends rex {
 		}
 	}
 
+	/**
+	 * Returns the name of current article.
+	 *
+	 * @return string
+	 */	
 	public static function getCurrentArticleName() {
 		return rexx::getArticleName(rexx::getCurrentArticleId());
 	}
 
+	/**
+	 * Returns the id of current article.
+	 *
+	 * @return int
+	 */	
 	public static function getCurrentArticleId() {
 		return rex_article::getCurrentId();
 	}
 
+	/**
+	 * Returns the current article.
+	 *
+	 * @return rex_article
+	 */	
 	public static function getCurrentArticle() {
 		return rex_article::getCurrent();
 	}
 
+	/**
+	 * Returns the current category id.
+	 *
+	 * @return int
+	 */	
 	public static function getCurrentCategoryId() {
 		return rex_category::getCurrentId();
 	}
 
+	/**
+	 * Returns the current category.
+	 *
+	 * @return rex_category
+	 */	
 	public static function getCurrentCategory() {
 		return rex_category::getCurrent();
 	}
 
+	/**
+	 * Returns the parent id of current category.
+	 *
+	 * @return int
+	 */	
 	public static function getCurrentParentCategoryId() {
 		$parentCategory = rexx::getCurrentParentCategory();
 
 		return $category->getId();
 	}
 
+	/**
+	 * Returns the parent category of current category.
+	 *
+	 * @return rex_category
+	 */	
 	public static function getCurrentParentCategory() {
 		$category = rexx::getCurrentCategory();
 
 		return $category->getParent();
 	}
 
+	/**
+	 * Returns the article object from article id.
+	 *
+	 * @param int $articleId
+	 *
+	 * @return rex_article
+	 */
 	public static function getArticle($articleId) {
 		return rex_article::get($articleId);
 	}
 
+	/**
+	 * Returns the server url specified in system settings. Same as rexx::getServer().
+	 *
+	 * @return string
+	 */
 	public static function getServerUrl() {
 		return rexx::getServer();
 	}
 
+	/**
+	 * Returns the site startarticle id specified in system settings. Same as rex_article::getSiteStartArticleId().
+	 *
+	 * @return string
+	 */
 	public static function getSiteStartArticleId() {
 		return rex_article::getSiteStartArticleId();
 	}
 
+	/**
+	 * Returns the notfound article id specified in system settings. Same as rex_article::getNotfoundArticleId().
+	 *
+	 * @return string
+	 */
 	public static function getNotfoundArticleId() {
 		return rex_article::getNotfoundArticleId();
 	}
 
+	/**
+	 * Returns the current clang. Same as rex_clang::getCurrent().
+	 *
+	 * @return rex_clang
+	 */
 	public static function getCurrentClang() {
 		return rex_clang::getCurrent();
 	}
 
+	/**
+	 * Returns the current clang id. Same as rex_clang::getCurrentId().
+	 *
+	 * @return int
+	 */
 	public static function getCurrentClangId() {
 		return rex_clang::getCurrentId();
 	}
 
+	/**
+	 * Returns a normalized string that can be used in urls and anchor names.
+	 *
+	 * @param string $string
+	 *
+	 * @return string
+	 */
 	public static function getUrlString($string) {
 		$scheme = new rex_xcore_yrewrite_scheme();
 
 		return $scheme->normalize($string, rexx::getCurrentClangId());
 	}
 
+	/**
+	 * Returns media object. Same as rex_media::get().
+	 *
+	 * @param string $filename
+	 *
+	 * @return rex_media
+	 */
 	public static function getMedia($filename) {
 		return rex_media::get($filename);
 	}
 
+	/**
+	 * Checks if media is valid.
+	 *
+	 * @param rex_media $media
+	 *
+	 * @return bool
+	 */
 	public static function isMediaValid($media) {
 		if ($media instanceof rex_media) {
 			return true;
@@ -311,10 +576,22 @@ class rexx extends rex {
 		}
 	}
 
+	/**
+	 * Returns media directory. Same as rex_url::media().
+	 *
+	 * @return rex_media
+	 */
 	public static function getMediaDir() {
 		return rex_url::media();
 	}
 
+	/**
+	 * Returns given media file with media directory.
+	 *
+	 * @param string $file
+	 *
+	 * @return string
+	 */
 	public static function getMediaFile($file) {
 		if ($file == '') {
 			return '';
@@ -323,26 +600,72 @@ class rexx extends rex {
 		}
 	}
 
+	/**
+	 * Returns the absolute file with path of the given media file of resource dir.
+	 *
+	 * @param string $file 
+	 *
+	 * @return string
+	 *
+	 */
 	public static function getAbsoluteMediaFile($file) {
 		return rexx::getAbsolutePath(rexx::getMediaDir()) . $file;
 	}
 
+	/**
+	 * Returns the absolute path of the given path starting from frontend path.
+	 *
+	 * @param string $path
+	 *
+	 * @return string
+	 *
+	 */
 	public static function getAbsolutePath($path) {
 		return rex_path::frontend() . trim($path, "/") . '/';
 	}
 
+	/**
+	 * Returns the absolute file with path of the given file starting from frontend path.
+	 *
+	 * @param string $file 
+	 *
+	 * @return string
+	 *
+	 */
 	public static function getAbsoluteFile($file) {
 		return rex_path::frontend() . trim($file, "/");
 	}
 
+	/**
+	 * Returns a full media url starting with http://.
+	 *
+	 * @param string $file
+	 *
+	 * @return string
+	 */
 	public static function getFullMediaUrl($file) {
 		return rexx::getServerUrl() . rexx::getMediaDirName() . '/' . $file;
 	}
 
+	/**
+	 * Returns the trimmed media dir name.
+	 *
+	 * @return string
+	 */
 	public static function getMediaDirName() {
 		return trim(rexx::getMediaDir(), "/");
 	}
 
+	/**
+	 * Returns a seo friendly url for the media manager file.
+	 *
+	 * @param string $mediaFile 
+	 * @param string $mediaType 
+	 * @param bool $validHtml 
+	 *
+	 * @return string
+	 *
+	 */
 	public static function getMediaManagerFile($mediaFile, $mediaType, $validHtml = true) {
 		$url = '';
 
@@ -359,6 +682,14 @@ class rexx extends rex {
 		}
 	}
 
+	/**
+	 * Returns the last update date of site based on the last article update date. $format is the same param type as in date() function.
+	 *
+	 * @param string $format  
+	 *
+	 * @return string
+	 *
+	 */
 	public static function getLastUpdateDate($format = 'd.m.Y') {
 		$query =  'SELECT updatedate FROM ' . rexx::getTablePrefix() . 'article WHERE updatedate <> 0 ORDER BY updatedate DESC LIMIT 1';
 
@@ -368,6 +699,20 @@ class rexx extends rex {
 		return date($format, strtotime($sql->getValue('updatedate')));
 	}
 
+	/**
+	 * Converts global settings values to javascript variables.
+	 * Example param:
+	 * $jsVars = [
+	 * 		'cmsSliderPause' => 'glob_slider_pause',
+	 * 		'cmsSliderSpeed' => 'glob_slider_speed',
+	 * 		'cmsOpenExternalLinksInNewWindow' => 'glob_external_link_new_window'
+	 * ];
+	 *
+	 * @param string[] $jsVars  
+	 *
+	 * @return string
+	 *
+	 */
 	public static function getGlobalJSVars($jsVars = []) {
 		$out = '';
 
@@ -384,24 +729,68 @@ class rexx extends rex {
 		return $out;
 	}
 
+	/**
+	 * Explodes a medialist from a REX_MEDIA_BUTTON[] to an array.
+	 *
+	 * @param string $mediaList  
+	 *
+	 * @return string
+	 *
+	 */
 	public static function getMediaListAsArray($mediaList) {
 		return explode(',', $mediaList);
 	}
 
+	/**
+	 * Redirects to given article with default 301 status code.
+	 *
+	 * @param int $id  
+	 * @param int $clang  
+	 * @param string[] $params
+	 * @param int $statusCode
+	 *
+	 */
 	public static function redirectToArticle($id, $clang = null, array $params = [], $statusCode = 301) {
 		rexx::redirectToUrl(rexx::getFullUrl($id, $clang, $params, '&'), $statusCode);
 	}
 
+	/**
+	 * Redirects to given url with default 301 status code.
+	 *
+	 * @param string[] $url
+	 * @param int $statusCode
+	 *
+	 */
 	public static function redirectToUrl($url, $statusCode = 301) {
 	    while (@ob_end_clean());
 		header('Location: ' . $url, true, $statusCode);
 		die();
 	}
 
+	/**
+	 * Redirects to given url with default 301 status code. Wrapper for rexx::redirectToUrl();
+	 *
+	 * @param string[] $url
+	 * @param int $statusCode
+	 *
+	 */
 	public static function redirect($url, $statusCode = 301) {
 		rexx::redirectToUrl($url, $statusCode);
 	}
 
+	/**
+	 * Gets html attribute based on given attribute values and current article id.
+	 * Example param:
+	 * $attributeValues = [
+	 * 		'1' => 'home'
+	 * ];
+	 *
+	 * @param string[] $attributeValues
+	 * @param string $attributeType    
+	 *
+	 * @return string
+	 *
+	 */
 	public static function getCurrentArticleAttribute($attributeValues, $attributeType = 'id') {
 		$curArticleId = rexx::getCurrentArticleId();
 
@@ -412,11 +801,27 @@ class rexx extends rex {
 		}		
 	}
 
-	public static function isOdd($int) {
-		return ($int & 1);
+	/**
+	 * Returns true if given number is odd.
+	 *
+	 * @param int $number
+	 * @param int $statusCode
+	 * 
+	 * @return bool
+	 *
+	 */
+	public static function isOdd($number) {
+		return ($number & 1);
 	}
 
-	// converts a form with fieldsets into tabs :)
+	/**
+	 * Converts a form with fieldsets into tabs :)
+	 *
+	 * @param string $form
+	 * 
+	 * @return string
+	 *
+	 */
 	public static function getTabbedForm($form) {
 		$html = rexx_simple_html_dom::str_get_html($form);
 		$tabs = [];
@@ -468,18 +873,54 @@ class rexx extends rex {
 		return $tabControl;
 	}
 
+	/**
+	 * Returns an array from a rex value. Wrapper for rex_var::toArray($value);
+	 *
+	 * @param string $value
+	 *
+	 * @return array[]
+	 *
+	 */
 	public static function getArrayFromRexValue($value) {
 		return rex_var::toArray($value);
 	}
 
+	/**
+	 * Returns image width of media manager file base on media type.
+	 *
+	 * @param string $mediaFile
+	 * @param string $mediaType
+	 *
+	 * @return int
+	 *
+	 */
 	public static function getMediaManagerImageWidth($mediaFile, $mediaType) {
 		return rex_media_manager::create($mediaType, $mediaFile)->getMedia()->getImageWidth();
     }
 
+	/**
+	 * Returns image height of media manager file base on media type.
+	 *
+	 * @param string $mediaFile
+	 * @param string $mediaType
+	 *
+	 * @return int
+	 *
+	 */
 	public static function getMediaManagerImageHeight($mediaFile, $mediaType) {
 		return rex_media_manager::create($mediaType, $mediaFile)->getMedia()->getImageHeight();
     }
 
+	/**
+	 * Returns a html box for a key/value pair data. Useful for module output in backend.
+	 *
+	 * @param string $varTitle
+	 * @param string $varValue
+	 * @param string $icon
+	 *
+	 * @return string
+	 *
+	 */
 	public static function prettyPrintVar($varTitle, $varValue, $icon = 'fa-info-circle') {
 		$out = '';
 
@@ -496,10 +937,26 @@ class rexx extends rex {
 		return $out;
 	}
 
+	/**
+	 * Returns true if given slice is valid. Same as rexx::isSliceValid();
+	 *
+	 * @param rex_article_slice $slice
+	 * 
+	 * @return bool
+	 *
+	 */
 	public static function isArticleSliceValid($slice) {
 		return rexx::isSliceValid($slice);
 	}
 
+	/**
+	 * Returns true if given slice is valid.
+	 *
+	 * @param rex_article_slice $slice
+	 * 
+	 * @return bool
+	 *
+	 */
 	public static function isSliceValid($slice) {
 		if ($slice instanceof rex_article_slice) {
 			return true;
@@ -508,6 +965,14 @@ class rexx extends rex {
 		}
 	}
 
+	/**
+	 * Returns true if given article is valid.
+	 *
+	 * @param rex_article $article
+	 * 
+	 * @return bool
+	 *
+	 */
 	public static function isArticleValid($article) {
 		if ($article instanceof rex_article) {
 			return true;
@@ -516,6 +981,14 @@ class rexx extends rex {
 		}
 	}
 
+	/**
+	 * Returns true if given category is valid.
+	 *
+	 * @param rex_category $category
+	 * 
+	 * @return bool
+	 *
+	 */
 	public static function isCategoryValid($category) {
 		if ($category instanceof rex_category) {
 			return true;
@@ -524,6 +997,15 @@ class rexx extends rex {
 		}
 	}
 
+	/**
+	 * Returns a string without p tags. Useful to remove tgas from editor output.
+	 *
+	 * @param string $string
+	 * @param bool $removeParagraphs
+	 * 
+	 * @return string
+	 *
+	 */
 	public static function getStrippedString($string, $removeParagraphs = true) {
 		if ($removeParagraphs) {
 			$string = str_replace(['<p>', '</p>'], '', $string);
@@ -532,6 +1014,14 @@ class rexx extends rex {
 		return $string;
 	}
 
+	/**
+	 * Returns true if article with given id is online.
+	 *
+	 * @param int $articleId
+	 * 
+	 * @return bool
+	 *
+	 */
 	public static function isArticleOnline($articleId) {
 		$article = rexx::getArticle($articleId);
 
@@ -542,20 +1032,49 @@ class rexx extends rex {
 		}
 	}
 
+	/**
+	 * Returns true if current article is online.
+	 * 
+	 * @return bool
+	 *
+	 */
 	public static function isCurrentArticleOnline() {
 		return rexx::isArticleOnline(rexx::getCurrentArticleId());
 	}
 
-	// check if previous slice is from same module type
+	/**
+	 * Check if previous slice is from same module type. Useful in module outputs to create multi blocks.
+	 *
+	 * @param int $sliceId
+	 * 
+	 * @return bool
+	 *
+	 */
 	public static function isFirstSliceOfSameType($sliceId) {
 		return rexx::isSliceOfSameType($sliceId, true);
 	}
 	
-	// check if next slice is from same module type
+	/**
+	 * Check if next slice is from same module type. Useful in module outputs to create multi blocks.
+	 *
+	 * @param int $sliceId
+	 * 
+	 * @return bool
+	 *
+	 */
 	public static function isLastSliceOfSameType($sliceId) {
 		return rexx::isSliceOfSameType($sliceId, false);
 	}
 
+	/**
+	 * Helper for isFirstSliceOfSameType() and isLastSliceOfSameType().
+	 *
+	 * @param int $sliceId
+	 * @param bool $previous
+	 * 
+	 * @return bool
+	 *
+	 */
 	protected static function isSliceOfSameType($sliceId, $previous = true) {
 		$curSlice = rex_article_slice::getArticleSliceById($sliceId, rexx::getCurrentClangId());
 
@@ -580,6 +1099,14 @@ class rexx extends rex {
 		return true;
 	}
 
+	/**
+	 * Returns the status of the slice. Works only if addon like blöcks is installed.
+	 *
+	 * @param int $sliceId
+	 * 
+	 * @return int
+	 *
+	 */
 	public static function getSliceStatus($sliceId) {
 		$sql = rex_sql::factory();
 		$sql->setQuery('SELECT status FROM ' . rexx::getTablePrefix() . 'article_slice WHERE id = ' . $sliceId);
@@ -591,6 +1118,12 @@ class rexx extends rex {
 		return null;
 	}
 
+	/**
+	 * Sets the global locale for php. Then all php strings like month names are in the desired language.
+	 *
+	 * @param string $regionCode
+	 *
+	 */
 	public static function setLocale($regionCode = '') {
 		if ($regionCode == '') {
 			$langCode = rex_clang::getCurrent()->getCode();
@@ -604,11 +1137,28 @@ class rexx extends rex {
 		}
 	}
 
+	/**
+	 * Returns a download url for the given file. Browser will prompt user to download file with this.
+	 *
+	 * @param string $file
+	 * 
+	 * @return string
+	 *
+	 */
 	public static function getDownloadFile($file) {
 		return rexx::getUrlStart() . rexx::downloadDir . '/' . $file;
 	}
 
-	public static function isUrlValid($url) { // call in PACKAGE_INCLUDED and later!
+	/**
+	 * Checks if given url is available by the used rewriter. 
+	 * Must be called in PACKAGE_INCLUDED or later!
+	 *
+	 * @param string $url
+	 * 
+	 * @return bool
+	 *
+	 */
+	public static function isUrlValid($url) {
 		$curDomain = rex_yrewrite::getCurrentDomain();
 
 		if (rex_yrewrite::getArticleIdByUrl($curDomain, $url) !== false ) {
@@ -618,7 +1168,14 @@ class rexx extends rex {
 		}
 	}
 
-	public static function iscurrentUrlValid() { // call in PACKAGE_INCLUDED and later!
+	/**
+	 * Checks if current url is available by the used rewriter.
+	 * Must be called in PACKAGE_INCLUDED or later!
+	 * 
+	 * @return bool
+	 *
+	 */
+	public static function isCurrentUrlValid() { 
 		if (isset($_SERVER['REQUEST_URI'])) {
 			$requestUrl = strtok($_SERVER['REQUEST_URI'], '?');
 			$requestUrl = ltrim($requestUrl, '/');
@@ -629,7 +1186,15 @@ class rexx extends rex {
 		}
 	}
 
-	// removes all subdirs and files recursively
+	// 
+	/**
+	 * Removes all subdirs and files recursively.
+	 * If $securitySwitch you will see your path in exception first!
+	 *
+	 * @param string $dir
+	 * @param bool $securitySwitch
+	 *
+	 */
 	public static function removeDirRecursively($dir = null, $securitySwitch = false) {
 		if (!$securitySwitch) {
 			throw new InvalidArgumentException('rexx::removeDirRecursively(): expecting $securitySwitch to be true. {{{ ATTENTION: this method deletes everything in "' . $dir . '"!!! }}}');
@@ -646,6 +1211,15 @@ class rexx extends rex {
 		}
 	}
 
+	/**
+	 * Checks if $haystack contains $needle.
+	 *
+	 * @param string $haystack
+	 * @param string $needle
+	 * 
+	 * @return bool
+	 *
+	 */
 	public static function stringContains($haystack, $needle) {
 		if (strpos($haystack, $needle) !== false) {
 			return true;
@@ -654,12 +1228,30 @@ class rexx extends rex {
 		}
 	}
 
+	/**
+	 * Checks if $haystack starts with $needle.
+	 *
+	 * @param string $haystack
+	 * @param string $needle
+	 * 
+	 * @return bool
+	 *
+	 */
 	public static function stringStartsWith($haystack, $needle) {
 		$length = strlen($needle);
 
 		return (substr($haystack, 0, $length) === $needle);
 	}
 
+	/**
+	 * Checks if $haystack ends with $needle.
+	 *
+	 * @param string $haystack
+	 * @param string $needle
+	 * 
+	 * @return bool
+	 *
+	 */
 	public static function stringEndsWith($haystack, $needle) {
 		$length = strlen($needle);
 
@@ -670,70 +1262,213 @@ class rexx extends rex {
 		return (substr($haystack, -$length) === $needle);
 	}
 
+	/**
+	 * Returns css file with path of resource dir and version string. If less or scss file is given it will be compiled.
+	 *
+	 * @param string $file
+	 * @param string[] $vars
+	 * 
+	 * @return string
+	 *
+	 */
 	public static function getCSSFile($file, $vars = []) {
 		return rexx_resource_includer::getCSSFile($file, $vars);
 	}
 
+	/**
+	 * Returns js file with path of resource dir and version string.
+	 *
+	 * @param string $file
+	 * 
+	 * @return string
+	 *
+	 */
 	public static function getJSFile($file) {
 		return rexx_resource_includer::getJSFile($file);
 	}
 
+	/**
+	 * Returns image file with path of resource dir.
+	 *
+	 * @param string $file
+	 * 
+	 * @return string
+	 *
+	 */
 	public static function getImageFile($file) {
 		return rexx_resource_includer::getImageFile($file);
 	}
 
+	/**
+	 * Returns the absolute file with path of the given image of resource dir.
+	 *
+	 * @param string $file 
+	 *
+	 * @return string
+	 *
+	 */
 	public static function getAbsoluteImageFile($file) {
 		return rexx_resource_includer::getAbsoluteImageFile($file);
 	}
 
+	/**
+	 * Returns favicon file with path of resource dir.
+	 *
+	 * @param string $file
+	 * 
+	 * @return string
+	 *
+	 */
 	public static function getFavIconFile($file) {
 		return rexx_resource_includer::getFavIconFile($file);
 	}
 
+	/**
+	 * Returns file with path of resource dir and version string. If less or scss file is given it will be compiled.
+	 *
+	 * @param string $fileWithPath
+	 * 
+	 * @return string
+	 *
+	 */
 	public static function getResourceFile($fileWithPath) {
 		return rexx_resource_includer::getResourceFile($fileWithPath);
 	}
 
+	/**
+	 * Combines multiple css files and returns file with path of resource dir and version string. Also compiles scss and less if necessary.
+	 *
+	 * @param string $combinedFile
+	 * @param string[] $sourceFiles
+	 * 
+	 * @return string
+	 *
+	 */
 	public static function getCombinedCSSFile($combinedFile, $sourceFiles) {
 		return rexx_resource_includer::getCombinedCSSFile($combinedFile, $sourceFiles);
 	}
 
+	/**
+	 * Combines multiple js files and returns file with path of resource dir and version string.
+	 *
+	 * @param string $combinedFile
+	 * @param string[] $sourceFiles
+	 * 
+	 * @return string
+	 *
+	 */
 	public static function getCombinedJSFile($combinedFile, $sourceFiles) {
 		 return rexx_resource_includer::getCombinedJSFile($combinedFile, $sourceFiles);
 	}
 
-	public static function getJSCodeFromTemplate($templateId, $simpleMinify = true) {
-		return rexx_resource_includer::getJSCodeFromTemplate($templateId, $simpleMinify);
-	}
-
+	/**
+	 * Returns js code as sring from given file.
+	 *
+	 * @param string $file
+	 * @param bool $simpleMinify
+	 * 
+	 * @return string
+	 *
+	 */
 	public static function getJSCodeFromFile($file, $simpleMinify = true) {
 		return rexx_resource_includer::getJSCodeFromFile($file, $simpleMinify);
 	}
 
+	/**
+	 * Returns global value from global settings addon. If value is empty output will be empty. Same as rex_global_settings::getValue();
+	 *
+	 * @param string $field
+	 * @param int $clangId
+	 * @param int $allowEmpty
+	 * 
+	 * @return string
+	 *
+	 */
 	public static function getGlobalValue($field, $clangId = null, $allowEmpty = true) {
 		return rex_global_settings::getValue($field, $clangId, $allowEmpty);
 	}
 
+	/**
+	 * Returns default global value from global settings addon. If value is empty output will be empty. Same as rex_global_settings::getDefaultValue();
+	 *
+	 * @param string $field
+	 * @param int $allowEmpty
+	 * 
+	 * @return string
+	 *
+	 */
 	public static function getDefaultGlobalValue($field, $allowEmpty = true) {
 		return rex_global_settings::getDefaultValue($field, $allowEmpty);
 	}
 
+	/**
+	 * Returns global string value from global settings addon. If value is empty output will be a placeholder. Same as rex_global_settings::getString();
+	 *
+	 * @param string $field
+	 * @param int $clangId
+	 * @param int $allowEmpty
+	 * 
+	 * @return string
+	 *
+	 */
 	public static function getString($field, $clangId = null, $allowEmpty = false) {
 		return  rex_global_settings::getString($field, $clangId, $allowEmpty);
 	}
 
+	/**
+	 * Returns default global string value from global settings addon. If value is empty output will be a placeholder. Same as rex_global_settings::getDefaultString();
+	 *
+	 * @param string $field
+	 * @param int $allowEmpty
+	 * 
+	 * @return string
+	 *
+	 */
 	public static function getDefaultString($field, $allowEmpty = false) {
 		return rex_global_settings::getDefaultString($field, $allowEmpty);
 	}
 
+	/**
+	 * Sets the global preset. Can be used in boot.php of project addon.
+	 *
+	 * @param string[] $specialChars
+	 * @param string[] $specialCharsRewrite
+	 *
+	 */
 	public static function setGlobalLangPreset($specialChars = [], $specialCharsRewrite = []) {
 		rexx_clang::setGlobalLangPreset($specialChars, $specialCharsRewrite);
 	}
 
+	/**
+	 * Modifys a lang preset that already exists. Can be used in boot.php of project modify existing presets.
+	 *
+	 * @param string $originalName 
+	 * @param string $code
+	 * @param string $regionCode
+	 * @param string $urlSlug
+	 * @param string $hreflang
+	 * @param string $dir
+	 * @param string[] $specialChars
+	 * @param string[] $specialCharsRewrite
+	 *
+	 */
 	public static function setLangPreset($originalName, $code, $regionCode, $urlSlug, $hreflang, $dir, $specialChars, $specialCharsRewrite) {
 		rexx_clang::setLangPreset($originalName, $code, $regionCode, $urlSlug, $hreflang, $dir, $specialChars, $specialCharsRewrite);
 	}
 
+	/**
+	 * Adds a custom lang preset. Can be used in boot.php of project addon to add a custom preset.
+	 *
+	 * @param string $originalName 
+	 * @param string $code
+	 * @param string $regionCode
+	 * @param string $urlSlug
+	 * @param string $hreflang
+	 * @param string $dir
+	 * @param string[] $specialChars
+	 * @param string[] $specialCharsRewrite
+	 *
+	 */
 	public static function addLangPreset($originalName, $code, $regionCode, $urlSlug, $hreflang, $dir, $specialChars, $specialCharsRewrite) {
 		rexx_clang::addLangPreset($originalName, $code, $regionCode, $urlSlug, $hreflang, $dir, $specialChars, $specialCharsRewrite);
 	}
