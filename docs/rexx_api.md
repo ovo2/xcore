@@ -2,6 +2,8 @@
 
 ### Class: rexx
 
+> The main class of X-Core AddOn.
+
 | Visibility | Function |
 |:-----------|:---------|
 | public static | <strong>addLangPreset(</strong><em>mixed</em> <strong>$originalName</strong>, <em>mixed</em> <strong>$code</strong>, <em>mixed</em> <strong>$regionCode</strong>, <em>mixed</em> <strong>$urlSlug</strong>, <em>mixed</em> <strong>$hreflang</strong>, <em>mixed</em> <strong>$dir</strong>, <em>mixed</em> <strong>$specialChars</strong>, <em>mixed</em> <strong>$specialCharsRewrite</strong>)</strong> : <em>void</em> |
@@ -16,7 +18,7 @@
 | public static | <strong>getArticleName(</strong><em>mixed</em> <strong>$articleId</strong>)</strong> : <em>mixed</em> |
 | public static | <strong>getBackendUrl(</strong><em>array</em> <strong>$params=array()</strong>, <em>bool</em> <strong>$escape=true</strong>)</strong> : <em>mixed</em> |
 | public static | <strong>getBaseUrl()</strong> : <em>mixed</em> |
-| public static | <strong>getCSSDir()</strong> : <em>mixed</em> |
+| public static | <strong>getCSSDir()</strong> : <em>string</em><br /><em>Returns the css dir specified in the config of addon.</em> |
 | public static | <strong>getCSSFile(</strong><em>mixed</em> <strong>$file</strong>, <em>array</em> <strong>$vars=array()</strong>)</strong> : <em>mixed</em> |
 | public static | <strong>getCanonicalUrl()</strong> : <em>mixed</em> |
 | public static | <strong>getCombinedCSSFile(</strong><em>mixed</em> <strong>$combinedFile</strong>, <em>mixed</em> <strong>$sourceFiles</strong>)</strong> : <em>mixed</em> |
@@ -67,12 +69,13 @@
 | public static | <strong>getResourceFile(</strong><em>mixed</em> <strong>$fileWithPath</strong>)</strong> : <em>mixed</em> |
 | public static | <strong>getRobotRules()</strong> : <em>mixed</em> |
 | public static | <strong>getServerUrl()</strong> : <em>mixed</em> |
+| public static | <strong>getSiteName()</strong> : <em>mixed</em> |
 | public static | <strong>getSiteStartArticleId()</strong> : <em>mixed</em> |
 | public static | <strong>getSliceStatus(</strong><em>mixed</em> <strong>$sliceId</strong>)</strong> : <em>mixed</em> |
 | public static | <strong>getString(</strong><em>mixed</em> <strong>$field</strong>, <em>mixed</em> <strong>$clangId=null</strong>, <em>bool</em> <strong>$allowEmpty=false</strong>)</strong> : <em>mixed</em> |
 | public static | <strong>getStrippedString(</strong><em>mixed</em> <strong>$string</strong>, <em>bool</em> <strong>$removeParagraphs=true</strong>)</strong> : <em>mixed</em> |
 | public static | <strong>getTabbedForm(</strong><em>mixed</em> <strong>$form</strong>)</strong> : <em>mixed</em> |
-| public static | <strong>getTitle(</strong><em>string</em> <strong>$websiteName=`''`</strong>)</strong> : <em>mixed</em> |
+| public static | <strong>getTitle(</strong><em>string</em> <strong>$siteName=`''`</strong>)</strong> : <em>bool TRUE if the key is set, otherwise FALSE</em><br /><em>Returns if the given key is set.</em> |
 | public static | <strong>getTitleDelimiter()</strong> : <em>mixed</em> |
 | public static | <strong>getTitlePart()</strong> : <em>mixed</em> |
 | public static | <strong>getTrackingCode()</strong> : <em>mixed</em> |
@@ -81,22 +84,21 @@
 | public static | <strong>getUrlEnding()</strong> : <em>mixed</em> |
 | public static | <strong>getUrlStart()</strong> : <em>mixed</em> |
 | public static | <strong>getUrlString(</strong><em>mixed</em> <strong>$string</strong>)</strong> : <em>mixed</em> |
-| public static | <strong>getWebsiteName()</strong> : <em>mixed</em> |
 | public static | <strong>includeTemplate(</strong><em>mixed</em> <strong>$templateId</strong>)</strong> : <em>void</em> |
-| public static | <strong>init()</strong> : <em>void</em> |
+| public static | <strong>init()</strong> : <em>void</em><br /><em>Initilizes the rexx class.</em> |
 | public static | <strong>isArticleOnline(</strong><em>mixed</em> <strong>$articleId</strong>)</strong> : <em>bool</em> |
 | public static | <strong>isArticleSliceValid(</strong><em>mixed</em> <strong>$slice</strong>)</strong> : <em>bool</em> |
 | public static | <strong>isArticleValid(</strong><em>mixed</em> <strong>$article</strong>)</strong> : <em>bool</em> |
 | public static | <strong>isCategoryValid(</strong><em>mixed</em> <strong>$category</strong>)</strong> : <em>bool</em> |
 | public static | <strong>isCurrentArticleOnline()</strong> : <em>bool</em> |
 | public static | <strong>isFirstSliceOfSameType(</strong><em>mixed</em> <strong>$sliceId</strong>)</strong> : <em>bool</em> |
-| public static | <strong>isFrontend()</strong> : <em>bool</em> |
+| public static | <strong>isFrontend()</strong> : <em>bool</em><br /><em>Opposite of rexx::isBackend().</em> |
 | public static | <strong>isLastSliceOfSameType(</strong><em>mixed</em> <strong>$sliceId</strong>)</strong> : <em>bool</em> |
 | public static | <strong>isMediaValid(</strong><em>mixed</em> <strong>$media</strong>)</strong> : <em>bool</em> |
 | public static | <strong>isOdd(</strong><em>mixed</em> <strong>$int</strong>)</strong> : <em>bool</em> |
 | public static | <strong>isSiteStartArticle()</strong> : <em>bool</em> |
 | public static | <strong>isSliceValid(</strong><em>mixed</em> <strong>$slice</strong>)</strong> : <em>bool</em> |
-| public static | <strong>isValidArticle(</strong><em>mixed</em> <strong>$article</strong>)</strong> : <em>bool</em> |
+| public static | <strong>isUrlValid(</strong><em>mixed</em> <strong>$url</strong>)</strong> : <em>bool</em> |
 | public static | <strong>iscurrentUrlValid()</strong> : <em>bool</em> |
 | public static | <strong>prettyPrintVar(</strong><em>mixed</em> <strong>$varTitle</strong>, <em>mixed</em> <strong>$varValue</strong>, <em>string</em> <strong>$icon=`'fa-info-circle'`</strong>)</strong> : <em>void</em> |
 | public static | <strong>redirect(</strong><em>mixed</em> <strong>$url</strong>, <em>mixed</em> <strong>$statusCode=301</strong>)</strong> : <em>void</em> |
@@ -106,7 +108,9 @@
 | public static | <strong>setGlobalLangPreset(</strong><em>array</em> <strong>$specialChars=array()</strong>, <em>array</em> <strong>$specialCharsRewrite=array()</strong>)</strong> : <em>void</em> |
 | public static | <strong>setLangPreset(</strong><em>mixed</em> <strong>$originalName</strong>, <em>mixed</em> <strong>$code</strong>, <em>mixed</em> <strong>$regionCode</strong>, <em>mixed</em> <strong>$urlSlug</strong>, <em>mixed</em> <strong>$hreflang</strong>, <em>mixed</em> <strong>$dir</strong>, <em>mixed</em> <strong>$specialChars</strong>, <em>mixed</em> <strong>$specialCharsRewrite</strong>)</strong> : <em>void</em> |
 | public static | <strong>setLocale(</strong><em>string</em> <strong>$regionCode=`''`</strong>)</strong> : <em>void</em> |
-| public static | <strong>urlExists(</strong><em>mixed</em> <strong>$url</strong>)</strong> : <em>void</em> |
+| public static | <strong>stringContains(</strong><em>mixed</em> <strong>$haystack</strong>, <em>mixed</em> <strong>$needle</strong>)</strong> : <em>void</em> |
+| public static | <strong>stringEndsWith(</strong><em>mixed</em> <strong>$haystack</strong>, <em>mixed</em> <strong>$needle</strong>)</strong> : <em>void</em> |
+| public static | <strong>stringStartsWith(</strong><em>mixed</em> <strong>$haystack</strong>, <em>mixed</em> <strong>$needle</strong>)</strong> : <em>void</em> |
 | protected static | <strong>isSliceOfSameType(</strong><em>mixed</em> <strong>$sliceId</strong>, <em>bool</em> <strong>$previous=true</strong>)</strong> : <em>bool</em> |
 
 *This class extends \rex*

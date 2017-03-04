@@ -1,10 +1,10 @@
 <?php
 
+// includes
+require_once(rex_path::addon('xcore', 'functions/functions.php')); // contains out() function which is very useful for debugging purpose
+
 // init main class
 rexx::init();
-
-// add some useful functions like out() 
-require_once(rex_path::addon('xcore', 'functions/functions.php'));
 
 // activate controller
 if (rexx::isFrontend()) {
@@ -169,12 +169,14 @@ if (rexx::isBackend() && rex_addon::get('api_docs')->isAvailable()) {
 	rex_extension::register('API_DOCS', function(rex_extension_point $ep) {
 		$subject = $ep->getSubject();
 
-		$subject['api'][] = [
-			'title' => 'X-Core API',
-			'description' => 'Die API der rexx Klasse aus dem X-Core AddOn',
-			'href' => rex_url::backendPage('xcore/rexx_api'),
-			'open_in_new_window' => false
-		];
+		if (isset($subject['api']['links'])) {
+			$subject['api']['links'][] = [
+				'title' => rex_i18n::msg('xcore_api_docs_title'),
+				'description' => rex_i18n::msg('xcore_api_docs_description'),
+				'href' => rex_url::backendPage('xcore/rexx_api'),
+				'open_in_new_window' => false
+			];
+		}
 
 		$ep->setSubject($subject);
 	});

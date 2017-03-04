@@ -16,7 +16,7 @@ xcore_setup_msg1_desc2 = Achten Sie darauf dass unter <a href="index.php?page=sy
 xcore_setup_msg1_desc3 = Stellen Sie bitte sicher dass unter yRewrite > Domaineinstellungen und unter System > Einstellungen die selben Werte wie Url, Fehlerartikel etc. gesetzt sind.
 xcore_setup_msg2_desc1 = Bitte die mitgelieferte <code>/xcore/install/_htaccess</code> in das root Verzeichnis dieser Website kopieren und dort in <code>.htaccess</code> umbenennen.
 xcore_setup_msg2_desc2 = Wenn Sie einen <strong>500 Serverfehler</strong> bekommen entfernen Sie die Zeile <code>Options -Indexes</code>.
-xcore_setup_msg3_desc = Benutzen Sie die rexx API und passen Sie Ihre Templates dementsprechend  an.
+xcore_setup_msg3_desc = Benutzen Sie die <a href="index.php?page=xcore/rexx_api">rexx API</a> und passen Sie Ihre Templates dementsprechend  an.
 xcore_config = Einstellungen
 xcore_rexx_class = rexx Klasse
 
@@ -45,3 +45,5 @@ xcore_config_save = Einstellungen speichern
 
 xcore_addon_installed = Bitte führen Sie als nächstes dass <a href="index.php?page=xcore/setup">X-Core Setup</a> aus.
 xcore_goto_website = zur Website
+xcore_api_docs_title = X-Core API
+xcore_api_docs_description = Die API der rexx Klasse aus dem X-Core AddOn

@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * The main class of X-Core AddOn.
+ */
 class rexx extends rex {
 	static $titleDelimeter;
 	static $urlStart;
@@ -13,6 +16,9 @@ class rexx extends rex {
 	const downloadDir = 'download';
 	const defaultRobotsArchiveFlag = 'noarchive';
 
+	/**
+	 * Initilizes the rexx class.
+	 */
 	public static function init() {	
 		self::$titleDelimeter = rex_config::get('xcore', 'title_delimeter');
 		self::$urlStart = rex_config::get('xcore', 'url_start');
@@ -25,10 +31,20 @@ class rexx extends rex {
 		rexx_resource_includer::init(self::$cssDir, self::$jsDir, self::$imageDir, self::$favIconsDir);
 	}
 
+	/**
+	 * Opposite of rexx::isBackend().
+	 *
+	 * @return bool
+	 */
 	public static function isFrontend() {
 		return !rexx::isBackend();
 	}	
 
+	/**
+	 * Returns the css dir specified in the config of addon.
+	 *
+	 * @return string
+	 */
 	public static function getCSSDir() {
 		return self::$cssDir;
 	}
@@ -59,15 +75,22 @@ class rexx extends rex {
 		return rexx::getServer();
 	}
 
-	public static function getTitle($websiteName = '') {
-		if ($websiteName == '') {
-			$websiteName = rexx::getWebsiteName();
+	/**
+	 * Returns if the given key is set.
+	 *
+	 * @param string $namespace The namespace e.g. an addon name
+	 *
+	 * @return bool TRUE if the key is set, otherwise FALSE
+	 */
+	public static function getTitle($siteName = '') {
+		if ($siteName == '') {
+			$siteName = rexx::getSiteName();
 		}
 		
 		if (rexx::isSiteStartArticle()) {
-			$fullTitle = $websiteName . ' ' . rexx::getTitleDelimiter() . ' ' . rexx::getTitlePart();
+			$fullTitle = $siteName . ' ' . rexx::getTitleDelimiter() . ' ' . rexx::getTitlePart();
 		} else {
-			$fullTitle = rexx::getTitlePart() . ' ' . rexx::getTitleDelimiter() . ' ' . $websiteName;
+			$fullTitle = rexx::getTitlePart() . ' ' . rexx::getTitleDelimiter() . ' ' . $siteName;
 		}
 
 		return htmlspecialchars($fullTitle);
@@ -81,7 +104,7 @@ class rexx extends rex {
 		}
 	}
 
-	public static function getWebsiteName() {
+	public static function getSiteName() {
 		return rexx::getServerName();
 	}
 
@@ -207,7 +230,7 @@ class rexx extends rex {
 	public static function getArticleName($articleId) {
 		$article = rexx::getArticle($articleId);
 
-		if (rexx::isValidArticle($article)) {
+		if (rexx::isArticleValid($article)) {
 			return $article->getName();
 		} else {
 			return 'Article with ID = ' . $articleId . ' not found.';
@@ -216,14 +239,6 @@ class rexx extends rex {
 
 	public static function getCurrentArticleName() {
 		return rexx::getArticleName(rexx::getCurrentArticleId());
-	}
-
-	public static function isValidArticle($article) {
-		if ($article instanceof rex_article) {
-			return true;
-		} else {
-			return false;
-		}
 	}
 
 	public static function getCurrentArticleId() {
