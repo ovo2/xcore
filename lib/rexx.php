@@ -18,6 +18,7 @@ class rexx extends rex {
 
 	/**
 	 * Initilizes the rexx class.
+	 * X-Core calls this automatically.
 	 */
 	public static function init() {	
 		self::$titleDelimeter = rex_config::get('xcore', 'title_delimeter');
@@ -998,7 +999,7 @@ class rexx extends rex {
 	}
 
 	/**
-	 * Returns a string without p tags. Useful to remove tgas from editor output.
+	 * Returns a string without p tags. Useful to remove p tags from editor output.
 	 *
 	 * @param string $string
 	 * @param bool $removeParagraphs
@@ -1120,6 +1121,7 @@ class rexx extends rex {
 
 	/**
 	 * Sets the global locale for php. Then all php strings like month names are in the desired language.
+	 * X-Core calls this automatically.
 	 *
 	 * @param string $regionCode
 	 *
