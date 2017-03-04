@@ -21,12 +21,19 @@ Features
 * rexx API: Umfangreiche API a la seo42 Klasse (diesmal) inkl. Dokumentation
 * Mitgeliefertes Boilerplate (Template) welches die rexx API benutzt
 * Resourcen Handling: Kombinieren von mehreren CSS / JS Dateien zu einer. Senden eines Versionsstrings (Cache-Buster) usw.
-* Integrierter LESS sowie SCSS Compiler
+* Resourcen Handling: Integrierter LESS sowie SCSS Compiler
 * X-Core Extra Styles, Backend ohne grün sowie REDAXO Logo Flicker Fixer
+* JS Tools wie der Panel Toggler und Persistent Tabs für die Speicherung der Boostrap Tabposition (über die CSS Klasse `rexx-persistent-tabs` einstellbar)
+* Frontend Link "zur Website" in der Metanavigation
 * Klasse `rexx_markdown`: modifizierte Parsedown Klasse die Syntax Highlighting von Codeblöcken in MD Dateien unterstützt
 * Klasse `rexx_simple_html_dom`: Wrapper für Simple Html Dom zum einfachen manipulieren des HTML Doms per PHP
-* JS Tools wie der Panel Toggler und Persistent Tabs für die Speicherung der Boostrap Tabposition (über die CSS Klasse `rexx-persistent-tabs` einstellbar)
-* Zur Website Link in der Metanavigation
+
+Verfügbare Sprachumschreibungen
+-------------------------------
+
+Die Urls werden mittels dieser Sprachumschreibungen (LangPresets) automatisch generiert wenn die Codes unter REDAXO > System > Sprachen korrekt eingegeben wurden.
+
+české (cs), dansk (da), deutsch (de), english (en), español, (es), française (fr), italiano (it), magyar (hu), nederlands (nl), norsk (no), polska (pl), português (pt), svensk (sv), türk (tr)
 
 Dokumentation
 -------------
