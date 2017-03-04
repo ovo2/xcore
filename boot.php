@@ -40,13 +40,20 @@ if (rexx::isBackend()) {
 		}
 	}, rex_extension::LATE);
 
-	if (rex_config::get('xcore', 'xcore_styles') == 1 && rex_config::get('be_style/customizer', 'labelcolor') == '#43a047') {
-		rex_extension::register('PAGE_BODY_ATTR', function (\rex_extension_point $ep) {
-		    $subject = $ep->getSubject();
+
+	rex_extension::register('PAGE_BODY_ATTR', function (\rex_extension_point $ep) {
+	    $subject = $ep->getSubject();
+	
+		if (rex_config::get('xcore', 'xcore_styles') == 1 && rex_config::get('be_style/customizer', 'labelcolor') == '#43a047') {
 		    $subject['class'][] = 'rexx-customizer-is-green';
-		    $ep->setSubject($subject);
-		});		
-	}
+		}
+
+		if (rex_config::get('xcore', 'show_meta_frontend_link') == 1) {
+		    $subject['class'][] = 'rexx-has-meta-frontend-link';
+		}
+
+	    $ep->setSubject($subject);
+	});
 }
 
 // multiupload: undo deactivate mediapool pages done by multiupload addon

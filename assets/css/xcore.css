@@ -96,6 +96,10 @@ input[type="checkbox"] {
 	padding-right: 10px !important;
 }
 
+.rex-nav-meta .text-muted {
+	display: none;
+}
+
 /* codemirror */
 .codemirror {
 	display: none;
@@ -108,6 +112,17 @@ input[type="checkbox"] {
 /* customizer */
 .be-style-customizer-title {
     margin-left: 51px;
+	font-weight: bold;
+	line-height: 1.1;
+}
+
+.be-style-customizer-title .be-style-customizer-title-name {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.rexx-has-meta-frontend-link .be-style-customizer-title i {
+	display: none;
 }
 
 .rexx-customizer-is-green .rex-nav-top {
