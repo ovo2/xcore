@@ -367,7 +367,7 @@ class rexx extends rex {
 	/**
 	 * Returns the content of the current article.
 	 *
-	 * @param int $articleId
+	 * @param int $ctypeId
 	 *
 	 * @return string
 	 */	
@@ -649,7 +649,7 @@ class rexx extends rex {
 	}
 
 	/**
-	 * Returns the trimmed media dir name.
+	 * Returns the pure media directory name.
 	 *
 	 * @return string
 	 */
@@ -731,7 +731,7 @@ class rexx extends rex {
 	}
 
 	/**
-	 * Explodes a medialist from a REX_MEDIA_BUTTON[] to an array.
+	 * Explodes a medialist from a REX_MEDIALIST[] button to an array.
 	 *
 	 * @param string $mediaList  
 	 *
@@ -739,6 +739,18 @@ class rexx extends rex {
 	 *
 	 */
 	public static function getMediaListAsArray($mediaList) {
+		return explode(',', $mediaList);
+	}
+
+	/**
+	 * Explodes a linklist from a REX_LINKLIST[] button to an array.
+	 *
+	 * @param string $mediaList  
+	 *
+	 * @return string
+	 *
+	 */
+	public static function getLinkListAsArray($mediaList) {
 		return explode(',', $mediaList);
 	}
 

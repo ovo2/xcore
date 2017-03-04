@@ -25,7 +25,7 @@
 | public static | <strong>getCombinedJSFile(</strong><em>string</em> <strong>$combinedFile</strong>, <em>string[]</em> <strong>$sourceFiles</strong>)</strong> : <em>string</em><br /><em>Combines multiple js files and returns file with path of resource dir and version string.</em> |
 | public static | <strong>getCurrentArticle()</strong> : <em>\rex_article</em><br /><em>Returns the current article.</em> |
 | public static | <strong>getCurrentArticleAttribute(</strong><em>string[]</em> <strong>$attributeValues</strong>, <em>string</em> <strong>$attributeType=`'id'`</strong>)</strong> : <em>string</em><br /><em>Gets html attribute based on given attribute values and current article id. Example param: $attributeValues = [ '1' => 'home' ];</em> |
-| public static | <strong>getCurrentArticleContent(</strong><em>mixed</em> <strong>$ctypeId=-1</strong>)</strong> : <em>string</em><br /><em>Returns the content of the current article.</em> |
+| public static | <strong>getCurrentArticleContent(</strong><em>int</em> <strong>$ctypeId=-1</strong>)</strong> : <em>string</em><br /><em>Returns the content of the current article.</em> |
 | public static | <strong>getCurrentArticleId()</strong> : <em>int</em><br /><em>Returns the id of current article.</em> |
 | public static | <strong>getCurrentArticleName()</strong> : <em>string</em><br /><em>Returns the name of current article.</em> |
 | public static | <strong>getCurrentCategory()</strong> : <em>\rex_category</em><br /><em>Returns the current category.</em> |
@@ -55,11 +55,12 @@
 | public static | <strong>getLangCount()</strong> : <em>int</em><br /><em>Returns number of langauges of the site.</em> |
 | public static | <strong>getLangTags()</strong> : <em>string</em><br /><em>Returns the current hreflang Tags.</em> |
 | public static | <strong>getLastUpdateDate(</strong><em>string</em> <strong>$format=`'d.m.Y'`</strong>)</strong> : <em>string</em><br /><em>Returns the last update date of site based on the last article update date. $format is the same param type as in date() function.</em> |
+| public static | <strong>getLinkListAsArray(</strong><em>string</em> <strong>$mediaList</strong>)</strong> : <em>string</em><br /><em>Explodes a linklist from a REX_LINKLIST[] button to an array.</em> |
 | public static | <strong>getMedia(</strong><em>string</em> <strong>$filename</strong>)</strong> : <em>\rex_media</em><br /><em>Returns media object. Same as rex_media::get().</em> |
 | public static | <strong>getMediaDir()</strong> : <em>\rex_media</em><br /><em>Returns media directory. Same as rex_url::media().</em> |
-| public static | <strong>getMediaDirName()</strong> : <em>string</em><br /><em>Returns the trimmed media dir name.</em> |
+| public static | <strong>getMediaDirName()</strong> : <em>string</em><br /><em>Returns the pure media directory name.</em> |
 | public static | <strong>getMediaFile(</strong><em>string</em> <strong>$file</strong>)</strong> : <em>string</em><br /><em>Returns given media file with media directory.</em> |
-| public static | <strong>getMediaListAsArray(</strong><em>string</em> <strong>$mediaList</strong>)</strong> : <em>string</em><br /><em>Explodes a medialist from a REX_MEDIA_BUTTON[] to an array.</em> |
+| public static | <strong>getMediaListAsArray(</strong><em>string</em> <strong>$mediaList</strong>)</strong> : <em>string</em><br /><em>Explodes a medialist from a REX_MEDIALIST[] button to an array.</em> |
 | public static | <strong>getMediaManagerFile(</strong><em>string</em> <strong>$mediaFile</strong>, <em>string</em> <strong>$mediaType</strong>, <em>bool</em> <strong>$validHtml=true</strong>)</strong> : <em>string</em><br /><em>Returns a seo friendly url for the media manager file.</em> |
 | public static | <strong>getMediaManagerImageHeight(</strong><em>string</em> <strong>$mediaFile</strong>, <em>string</em> <strong>$mediaType</strong>)</strong> : <em>int</em><br /><em>Returns image height of media manager file base on media type.</em> |
 | public static | <strong>getMediaManagerImageWidth(</strong><em>string</em> <strong>$mediaFile</strong>, <em>string</em> <strong>$mediaType</strong>)</strong> : <em>int</em><br /><em>Returns image width of media manager file base on media type.</em> |
