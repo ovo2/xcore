@@ -21,7 +21,7 @@ Features
 * rexx API: Umfangreiche API a la seo42 Klasse (diesmal) inkl. Dokumentation
 * Mitgeliefertes Boilerplate (Template) welches die rexx API benutzt
 * Resourcen Handling: Kombinieren von mehreren CSS / JS Dateien zu einer. Senden eines Versionsstrings (Cache-Buster) usw.
-* Mitgelieferte und integrierter LESS sowie SCSS Compiler
+* Mitgelieferter und integrierter LESS sowie SCSS Compiler
 * X-Core Extra Styles, Backend ohne grün sowie REDAXO Logo Flicker Fixer
 * JS Tools wie der Panel Toggler und Persistent Tabs für die Speicherung der Boostrap Tabposition (über die CSS Klasse `rexx-persistent-tabs` einstellbar)
 * Frontend Link "zur Website" in der Metanavigation

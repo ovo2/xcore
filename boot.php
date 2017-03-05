@@ -113,7 +113,7 @@ if (rex_config::get('xcore', 'developer_project_sync') == 1) {
 // send headers
 if (rexx::isFrontend()) {
 	// this is only for current article
-	rex_extension::register('RESPONSE_SHUTDOWN', function() {
+	rex_extension::register('OUTPUT_FILTER', function() {
 		header('X-UA-Compatible: IE=Edge');	// html tag not necessary anymore with this
 	});
 
@@ -150,7 +150,7 @@ if (rex_config::get('xcore', 'offline_404_mode') == 1 && rexx::isFrontend()) {
 			} else {
 				rex_addon::get('structure')->setProperty('article_id', rexx::getNotfoundArticleId());
 
-				rex_extension::register('RESPONSE_SHUTDOWN', function() {
+				rex_extension::register('OUTPUT_FILTER', function() {
 					header("HTTP/1.0 404 Not Found");
 				});
 			}
@@ -163,7 +163,7 @@ if (rexx::isFrontend()) {
 	if (rexx::getSiteStartArticleId() == rexx::getNotfoundArticleId()) {
 		rex_extension::register('PACKAGES_INCLUDED', function(rex_extension_point $ep) {
 			if (!rexx::isCurrentUrlValid()) {
-				rex_extension::register('RESPONSE_SHUTDOWN', function() {
+				rex_extension::register('OUTPUT_FILTER', function() {
 					header("HTTP/1.0 404 Not Found");
 				});
 			}
