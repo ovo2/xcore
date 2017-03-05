@@ -68,6 +68,7 @@
 | public static | <strong>getNotfoundArticleId()</strong> : <em>string</em><br /><em>Returns the notfound article id specified in system settings. Same as rex_article::getNotfoundArticleId().</em> |
 | public static | <strong>getResourceFile(</strong><em>string</em> <strong>$fileWithPath</strong>)</strong> : <em>string</em><br /><em>Returns file with path of resource dir and version string. If less or scss file is given it will be compiled.</em> |
 | public static | <strong>getRobotRules()</strong> : <em>string</em><br /><em>Returns the current robot rules for the robots tag.</em> |
+| public static | <strong>getServerSubDir()</strong> : <em>string</em><br /><em>Returns the subdir if redaxo is installed in subdir.</em> |
 | public static | <strong>getServerUrl()</strong> : <em>string</em><br /><em>Returns the server url specified in system settings. Same as rexx::getServer().</em> |
 | public static | <strong>getSiteName()</strong> : <em>string</em><br /><em>Returns the sitename. Same as rexx::getServerName().</em> |
 | public static | <strong>getSiteStartArticleId()</strong> : <em>string</em><br /><em>Returns the site startarticle id specified in system settings. Same as rex_article::getSiteStartArticleId().</em> |
@@ -100,6 +101,7 @@
 | public static | <strong>isOdd(</strong><em>int</em> <strong>$number</strong>)</strong> : <em>bool</em><br /><em>Returns true if given number is odd.</em> |
 | public static | <strong>isSiteStartArticle()</strong> : <em>bool</em><br /><em>Checks if the current article is the site start article.</em> |
 | public static | <strong>isSliceValid(</strong><em>\rex_article_slice</em> <strong>$slice</strong>)</strong> : <em>bool</em><br /><em>Returns true if given slice is valid.</em> |
+| public static | <strong>isSubDirInstall()</strong> : <em>bool</em><br /><em>Returns true if redaxo is installed in subdir.</em> |
 | public static | <strong>isUrlValid(</strong><em>string</em> <strong>$url</strong>)</strong> : <em>bool</em><br /><em>Checks if given url is available by the used rewriter. Must be called in PACKAGE_INCLUDED or later!</em> |
 | public static | <strong>prettyPrintVar(</strong><em>string</em> <strong>$varTitle</strong>, <em>string</em> <strong>$varValue</strong>, <em>string</em> <strong>$icon=`'fa-info-circle'`</strong>)</strong> : <em>string</em><br /><em>Returns a html box for a key/value pair data. Useful for module output in backend.</em> |
 | public static | <strong>redirect(</strong><em>string[]</em> <strong>$url</strong>, <em>int</em> <strong>$statusCode=301</strong>)</strong> : <em>void</em><br /><em>Redirects to given url with default 301 status code. Wrapper for rexx::redirectToUrl();</em> |

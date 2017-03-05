@@ -10,11 +10,15 @@ select:focus {
 	outline: none;
 }
 
-/* There you go, only valid for Firefox and the ugly dotted outline around the selected option is gone. */
-/*select:-moz-focusring {
-    color: transparent;
-    text-shadow: 0 0 0 #000;
-}*/
+h1, 
+.h1 {
+	font-size: 34px;
+}
+
+h2, 
+.h2 {
+	font-size: 26px;
+}
 
 .navbar-collapse {
 	padding-left: 0;
@@ -115,15 +119,6 @@ input[type="checkbox"] {
 	font-weight: bold;
 	line-height: 1.1;
 }
-
-/*.be-style-customizer-title .be-style-customizer-title-name {
-	font-weight: bold;
-	font-size: 18px;
-}
-
-.rexx-has-meta-frontend-link .be-style-customizer-title i {
-	display: none;
-}*/
 
 .rexx-customizer-is-green .rex-nav-top {
 	border: 0 !important;

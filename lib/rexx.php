@@ -5,12 +5,15 @@
  */
 class rexx extends rex {
 	static $titleDelimeter;
-	static $urlStart;
 	static $urlEnding;
 	static $cssDir;
 	static $jsDir;
 	static $imageDir;
 	static $favIconsDir;
+
+	static $urlStart;
+	static $serverSubDir;
+	static $isSubDirInstall;
 
 	const mediaTypesDir = 'mediatypes';
 	const downloadDir = 'download';
@@ -22,12 +25,36 @@ class rexx extends rex {
 	 */
 	public static function init() {	
 		self::$titleDelimeter = rex_config::get('xcore', 'title_delimeter');
-		self::$urlStart = rex_config::get('xcore', 'url_start');
 		self::$urlEnding = rex_config::get('xcore', 'url_ending');
 		self::$cssDir = rex_config::get('xcore', 'css_dir');
 		self::$jsDir = rex_config::get('xcore', 'js_dir');
 		self::$imageDir = rex_config::get('xcore', 'image_dir');
 		self::$favIconsDir = rex_config::get('xcore', 'favicon_dir');
+
+		// pull apart server url
+		$urlParts = parse_url(rexx::getServerUrl());
+
+		if (isset($urlParts['path']) && isset($urlParts['scheme'])) { // if scheme is empty don't count on path as possible subdir 
+			self::$serverSubDir = trim($urlParts['path'], '/'); 
+		} else {
+			self::$serverSubDir = '';
+		}
+
+		// check for subdir install
+		if (self::$serverSubDir == '') {
+			self::$isSubDirInstall = false;
+		} else {
+			self::$isSubDirInstall = true;
+		}
+		
+		// set url start
+		if (self::$isSubDirInstall) {
+			// url start for subdirs
+			self::$urlStart = '/'  . self::$serverSubDir . '/';
+		} else {
+			// url start for normal redaxo installations
+			self::$urlStart = '/';
+		}
 
 		rexx_resource_includer::init(self::$cssDir, self::$jsDir, self::$imageDir, self::$favIconsDir);
 	}
@@ -1286,6 +1313,26 @@ class rexx extends rex {
 		}
 
 		return (substr($haystack, -$length) === $needle);
+	}
+
+	/**
+	 * Returns true if redaxo is installed in subdir.
+	 * 
+	 * @return bool
+	 *
+	 */
+	public static function isSubDirInstall() {
+		return self::$isSubDirInstall;
+	}
+
+	/**
+	 * Returns the subdir if redaxo is installed in subdir.
+	 * 
+	 * @return string
+	 *
+	 */
+	public static function getServerSubDir() {
+		return self::$serverSubDir;
 	}
 
 	/**
