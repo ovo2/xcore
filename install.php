@@ -5,10 +5,6 @@ if (!$this->hasConfig('title_delimeter')) {
     $this->setConfig('title_delimeter', '-');
 }
 
-if (!$this->hasConfig('url_start')) {
-    $this->setConfig('url_start', '/');
-}
-
 if (!$this->hasConfig('url_ending')) {
     $this->setConfig('url_ending', '.html');
 }
