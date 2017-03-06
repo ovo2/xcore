@@ -120,6 +120,11 @@ input[type="checkbox"] {
 	line-height: 1.1;
 }
 
+.be-style-customizer-title i {
+	font-size: 14px;
+	margin-left: 7px;
+}
+
 .rexx-customizer-is-green .rex-nav-top {
 	border: 0 !important;
 }

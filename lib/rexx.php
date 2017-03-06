@@ -874,6 +874,9 @@ class rexx extends rex {
 	 *
 	 */
 	public static function getTabbedForm($form) {
+		$form = str_replace('"selected>', '" selected>', $form); // bugfix mform
+		$form = str_replace('"checked="checked"', '" checked="checked"', $form); // bugfix mform
+
 		$html = rexx_simple_html_dom::str_get_html($form);
 		$tabs = [];
 
