@@ -1339,6 +1339,25 @@ class rexx extends rex {
 	}
 
 	/**
+	 * Returns the server url without http:// and can also remove www from host.
+	 * 
+	 * @param bool $removeWWW
+	 * 
+	 * @return string
+	 *
+	 */
+	public static function getServerHost($removeWWW = false) {
+		$urlParts = parse_url(rexx::getServerUrl());
+
+		// remove www
+		if ($removeWWW) {
+			return preg_replace('/^www\./', '', $urlParts['host']);
+		} else {
+			return $urlParts['host'];
+		}
+	}
+
+	/**
 	 * Returns css file with path of resource dir and version string. If less or scss file is given it will be compiled.
 	 *
 	 * @param string $file

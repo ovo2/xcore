@@ -68,6 +68,7 @@
 | public static | <strong>getNotfoundArticleId()</strong> : <em>string</em><br /><em>Returns the notfound article id specified in system settings. Same as rex_article::getNotfoundArticleId().</em> |
 | public static | <strong>getResourceFile(</strong><em>string</em> <strong>$fileWithPath</strong>)</strong> : <em>string</em><br /><em>Returns file with path of resource dir and version string. If less or scss file is given it will be compiled.</em> |
 | public static | <strong>getRobotRules()</strong> : <em>string</em><br /><em>Returns the current robot rules for the robots tag.</em> |
+| public static | <strong>getServerHost(</strong><em>bool</em> <strong>$removeWWW=false</strong>)</strong> : <em>string</em><br /><em>Returns the server url without http:// and can also remove www from host.</em> |
 | public static | <strong>getServerSubDir()</strong> : <em>string</em><br /><em>Returns the subdir if redaxo is installed in subdir.</em> |
 | public static | <strong>getServerUrl()</strong> : <em>string</em><br /><em>Returns the server url specified in system settings. Same as rexx::getServer().</em> |
 | public static | <strong>getSiteName()</strong> : <em>string</em><br /><em>Returns the sitename. Same as rexx::getServerName().</em> |
