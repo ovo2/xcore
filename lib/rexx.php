@@ -1349,7 +1349,6 @@ class rexx extends rex {
 	public static function getServerHost($removeWWW = false) {
 		$urlParts = parse_url(rexx::getServerUrl());
 
-		// remove www
 		if ($removeWWW) {
 			return preg_replace('/^www\./', '', $urlParts['host']);
 		} else {
