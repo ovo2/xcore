@@ -29,10 +29,6 @@ if (!$this->hasConfig('offline_404_mode')) {
     $this->setConfig('offline_404_mode', 1);
 }
 
-if (!$this->hasConfig('developer_project_sync')) {
-    $this->setConfig('developer_project_sync', 1);
-}
-
 if (!$this->hasConfig('smart_redirects')) {
     $this->setConfig('smart_redirects', 1);
 }

@@ -16,17 +16,10 @@ if (rex_post('formsubmit', 'string') == '1') {
         ['offline_404_mode', 'int'],
         ['show_meta_frontend_link', 'int'],
         ['xcore_styles', 'int'],
-        ['developer_project_sync', 'int'],
         ['show_multiupload_pages', 'int'],              
     ]));
 
     echo rex_view::success($this->i18n('config_saved'));
-
-	$developerDir = rex_path::addon('project', 'developer');
-
-	if (rex_addon::getConfig('developer_project_sync') == 0 && file_exists($developerDir)) {
-		rexx::removeDirRecursively($developerDir, true);
-	}
 
 	rex_yrewrite::deleteCache();
 }
@@ -143,17 +136,6 @@ $formElements = [];
 $n = [];
 $n['label'] = '<label for="xcore_styles">' . $this->i18n('config_xcore_styles') . '</label>';
 $n['field'] = '<input type="checkbox" id="xcore_styles" name="config[xcore_styles]"' . (!empty($this->getConfig('xcore_styles')) && $this->getConfig('xcore_styles') == '1' ? ' checked="checked"' : '') . ' value="1" />';
-$formElements[] = $n;
-
-$fragment = new rex_fragment();
-$fragment->setVar('elements', $formElements, false);
-$content .= $fragment->parse('core/form/checkbox.php');
-
-// developer_project_sync
-$formElements = [];
-$n = [];
-$n['label'] = '<label for="developer_project_sync">' . $this->i18n('config_developer_project_sync') . '</label>';
-$n['field'] = '<input type="checkbox" id="developer_project_sync" name="config[developer_project_sync]"' . (!empty($this->getConfig('developer_project_sync')) && $this->getConfig('developer_project_sync') == '1' ? ' checked="checked"' : '') . ' value="1" />';
 $formElements[] = $n;
 
 $fragment = new rex_fragment();

@@ -103,13 +103,6 @@ if (rexx::isBackend()) {
 	}, rex_extension::LATE);
 }
 
-// redirect sync dir of developer to project addon
-if (rex_config::get('xcore', 'developer_project_sync') == 1) {
-	if (rex_addon::get('developer')->isAvailable()) {
-		rex_extension::register('DEVELOPER_MANAGER_START', array('rexx_developer_manager', 'start'), rex_extension::NORMAL, [], true);
-	}
-}
-
 // send headers
 if (rexx::isFrontend()) {
 	// this is only for current article

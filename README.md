@@ -15,7 +15,6 @@ Features
 * Smart Redirects: Automatische Umleitungen für falsch eingegebene Urls z.B. von Url-Endung `/` nach `.html`
 * Offline 404 Modus: Offline Artikel sind für nicht eingeloggte Benutzer nicht mehr erreichbar (404 Seite)
 * Automatisches setzen der Locale in PHP um z.B. Monatsnamen/Datumsangaben in der richtigen Sprache zu erhalten
-* Sync der Developer Files in das Project AddOn
 * Automatisches senden von Header wie `X-UA-Compatible` oder einen `Cache-Control` Header für manche Server die Media Manager Bilder sonst nicht korrekt cachen würden
 * Bei gleichem Startartikel wie Fehlerartikel wird ein 404 gesendet (was REDAXO sonst nicht tut)
 * rexx API: Umfangreiche API a la seo42 Klasse (diesmal) inkl. Dokumentation
