@@ -1395,6 +1395,18 @@ class rexx extends rex {
 	}
 
 	/**
+	 * Returns the root categories.
+	 * 
+	 * @param bool $ignoreOfflines
+	 * @param int $clang
+	 *
+	 * @return rex_category[]
+	 */	
+	public static function getRootCategories($ignoreOfflines = false, $clang = null) {
+		return rex_category::getRootCategories($ignoreOfflines, $clang);
+	}
+
+	/**
 	 * Returns css file with path of resource dir and version string. If less or scss file is given it will be compiled.
 	 *
 	 * @param string $file
