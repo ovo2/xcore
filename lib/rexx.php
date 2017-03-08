@@ -214,12 +214,15 @@ class rexx extends rex {
 	}
 
 	/**
-	 * Returns the current keywords for the keywords tag. Does nothing at the moment!
+	 * Returns the current keywords for the keywords tag. 
+	 * At the moment "art_keywords" meta info field of article will be used (if present).
 	 *
 	 * @return string
 	 */
 	public static function getKeywords() {
-		return ''; // do nothing
+		$article = rexx::getCurrentArticle();
+
+		return $article->getValue('art_keywords');
 	}
 
 	/**

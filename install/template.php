@@ -6,6 +6,7 @@
 	<base href="<?php echo rexx::getBaseUrl(); ?>" />
 	<title><?php echo rexx::getTitle(); ?></title>
 	<meta name="description" content="<?php echo rexx::getDescription(); ?>" />
+	<meta name="keywords" content="<?php echo rexx::getKeywords(); ?>" />
 	<meta name="robots" content="<?php echo rexx::getRobotRules();?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="canonical" href="<?php echo rexx::getCanonicalUrl(); ?>" />

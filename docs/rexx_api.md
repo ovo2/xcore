@@ -50,7 +50,7 @@
 | public static | <strong>getJSCodeFromFile(</strong><em>string</em> <strong>$file</strong>, <em>bool</em> <strong>$simpleMinify=true</strong>)</strong> : <em>string</em><br /><em>Returns js code as sring from given file.</em> |
 | public static | <strong>getJSDir()</strong> : <em>string</em><br /><em>Returns the js dir specified in the config of addon.</em> |
 | public static | <strong>getJSFile(</strong><em>string</em> <strong>$file</strong>)</strong> : <em>string</em><br /><em>Returns js file with path of resource dir and version string.</em> |
-| public static | <strong>getKeywords()</strong> : <em>string</em><br /><em>Returns the current keywords for the keywords tag. Does nothing at the moment!</em> |
+| public static | <strong>getKeywords()</strong> : <em>string</em><br /><em>Returns the current keywords for the keywords tag. At the moment "art_keywords" meta info field of article will be used (if present).</em> |
 | public static | <strong>getLangCode()</strong> : <em>string</em><br /><em>Returns the the current lang code.</em> |
 | public static | <strong>getLangCount()</strong> : <em>int</em><br /><em>Returns number of langauges of the site.</em> |
 | public static | <strong>getLangTags()</strong> : <em>string</em><br /><em>Returns the current hreflang Tags.</em> |
