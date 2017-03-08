@@ -1374,6 +1374,16 @@ class rexx extends rex {
 	}
 
 	/**
+	 * Returns the url of the site start article = home of frontend.
+	 * 
+	 * @return string
+	 *
+	 */
+	public static function getSiteUrl() {
+		return rexx::getUrl(rexx::getSiteStartArticleId(), rexx::getCurrentClangId());
+	}
+
+	/**
 	 * Returns css file with path of resource dir and version string. If less or scss file is given it will be compiled.
 	 *
 	 * @param string $file

@@ -74,6 +74,7 @@
 | public static | <strong>getServerUrl()</strong> : <em>string</em><br /><em>Returns the server url specified in system settings. Same as rexx::getServer().</em> |
 | public static | <strong>getSiteName()</strong> : <em>string</em><br /><em>Returns the sitename. Same as rexx::getServerName().</em> |
 | public static | <strong>getSiteStartArticleId()</strong> : <em>string</em><br /><em>Returns the site startarticle id specified in system settings. Same as rex_article::getSiteStartArticleId().</em> |
+| public static | <strong>getSiteUrl()</strong> : <em>string</em><br /><em>Returns the url of the site start article = home of frontend.</em> |
 | public static | <strong>getSliceStatus(</strong><em>int</em> <strong>$sliceId</strong>)</strong> : <em>int</em><br /><em>Returns the status of the slice. Works only if addon like blöcks is installed.</em> |
 | public static | <strong>getString(</strong><em>string</em> <strong>$field</strong>, <em>int</em> <strong>$clangId=null</strong>, <em>bool/int</em> <strong>$allowEmpty=false</strong>)</strong> : <em>string</em><br /><em>Returns global string value from global settings addon. If value is empty output will be a placeholder. Same as rex_global_settings::getString();</em> |
 | public static | <strong>getStrippedString(</strong><em>string</em> <strong>$string</strong>, <em>bool</em> <strong>$removeParagraphs=true</strong>)</strong> : <em>string</em><br /><em>Returns a string without p tags. Useful to remove p tags from editor output.</em> |
