@@ -21,6 +21,7 @@
 | public static | <strong>getCSSDir()</strong> : <em>string</em><br /><em>Returns the css dir specified in the config of addon.</em> |
 | public static | <strong>getCSSFile(</strong><em>string</em> <strong>$file</strong>, <em>array/string[]</em> <strong>$vars=array()</strong>)</strong> : <em>string</em><br /><em>Returns css file with path of resource dir and version string. If less or scss file is given it will be compiled.</em> |
 | public static | <strong>getCanonicalUrl()</strong> : <em>string</em><br /><em>Returns the current canonical url.</em> |
+| public static | <strong>getCategory(</strong><em>bool</em> <strong>$id</strong>)</strong> : <em>\rex_category</em><br /><em>Returns the category by id.</em> |
 | public static | <strong>getCombinedCSSFile(</strong><em>string</em> <strong>$combinedFile</strong>, <em>string[]</em> <strong>$sourceFiles</strong>)</strong> : <em>string</em><br /><em>Combines multiple css files and returns file with path of resource dir and version string. Also compiles scss and less if necessary.</em> |
 | public static | <strong>getCombinedJSFile(</strong><em>string</em> <strong>$combinedFile</strong>, <em>string[]</em> <strong>$sourceFiles</strong>)</strong> : <em>string</em><br /><em>Combines multiple js files and returns file with path of resource dir and version string.</em> |
 | public static | <strong>getCurrentArticle()</strong> : <em>\rex_article</em><br /><em>Returns the current article.</em> |

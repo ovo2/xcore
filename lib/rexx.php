@@ -1384,6 +1384,17 @@ class rexx extends rex {
 	}
 
 	/**
+	 * Returns the category by id.
+	 * 
+	 * @param bool $id
+	 *
+	 * @return rex_category
+	 */	
+	public static function getCategory($id) {
+		return rex_category::get($id);
+	}
+
+	/**
 	 * Returns css file with path of resource dir and version string. If less or scss file is given it will be compiled.
 	 *
 	 * @param string $file
