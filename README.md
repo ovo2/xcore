@@ -9,8 +9,8 @@ Features
 * Sauber eingestelltes Caching sowie Komprimierung für Resourcen wie Bildern, Fonts, CSS und JS Dateien (.htaccess)
 * Verschiedene URL-Endungen einstellbar (z.B. Endung `.html` oder `/`)
 * Automatische Titel-Generierung. Mitgeliefertes Titel-Schema aus [Google-PDF](http://www.google.de/webmasters/docs/einfuehrung-in-suchmaschinenoptimierung.pdf) entnommen.
-* Suchmaschinenfreundliche Media Manager Urls durch Verwendung der verfügbaren PHP-Methoden
-* Force Download Funktionalität inkl. suchmaschinenfreundlicher URLs und Canonical Header (z.B. für PDF Downloads)
+* Suchmaschinenfreundliche Media Manager Urls durch Verwendung der verfügbaren PHP-Methode `rexx::getManagedMediaFile()`
+* Force Download Funktionalität inkl. suchmaschinenfreundlicher URLs und Canonical Header (z.B. für PDF Downloads) durch Verwendung von `rexx::getDownloadFile()`
 * LangPresets: Spezielle sprachabhängige sowie sprachunabhängige Sonderzeichen-Umschreibungen einstellbar. Aktuell werden 14 Sprachen out-of-the-box unterstützt
 * Smart Redirects: Automatische Umleitungen für falsch eingegebene Urls z.B. von Url-Endung `/` nach `.html`
 * Offline 404 Modus: Offline Artikel sind für nicht eingeloggte Benutzer nicht mehr erreichbar (404 Seite)
@@ -32,13 +32,29 @@ Verfügbare Sprachumschreibungen
 
 Die Urls werden mittels dieser LangPresets automatisch sauber umgeschrieben wenn die Codes der Sprachen unter REDAXO > System > Sprachen korrekt eingegeben wurden.
 
-české (cs), dansk (da), deutsch (de), english (en), español, (es), française (fr), italiano (it), magyar (hu), nederlands (nl), norsk (no), polska (pl), português (pt), svensk (sv), türk (tr)
+* české (cs)
+* dansk (da)
+* deutsch (de)
+* english (en)
+* español (es)
+* française (fr)
+* italiano (it)
+* magyar (hu)
+* nederlands (nl)
+* norsk (no)
+* polska (pl)
+* português (pt)
+* svensk (sv)
+* türk (tr)
 
 Dokumentation
 -------------
 
 * [rexx API](docs/rexx_api.md)
+* [Less.php](http://lessphp.typesettercms.com/)
+* [scssphp](http://leafo.net/scssphp/docs/)
 * [Simple Html Dom](http://simplehtmldom.sourceforge.net/)
+* [Parsedown](https://github.com/erusev/parsedown/wiki)
 
 Hinweise
 --------
@@ -61,7 +77,6 @@ MIT-Lizenz, siehe `LICENSE.md` des AddOns
 Credits
 -------
 
-* X-Core nutzt Code aus dem Theme Addon von Daniel Weitenauer
 * PHP-Markdown-Documentation-Generator
 * Logo ist Public Domain
 * More to come...
