@@ -85,7 +85,7 @@
 | public static | <strong>getTitleDelimiter()</strong> : <em>string</em><br /><em>Returns the title delimiter for the title tag.</em> |
 | public static | <strong>getTitlePart()</strong> : <em>string</em><br /><em>Returns the current title part without sitename.</em> |
 | public static | <strong>getTrackingCode()</strong> : <em>string</em><br /><em>Returns value from "tracking_code" field from global_settings addon.</em> |
-| public static | <strong>getTrimmedUrl(</strong><em>int</em> <strong>$id=null</strong>, <em>int</em> <strong>$clang=null</strong>, <em>array/string[]</em> <strong>$params=array()</strong>, <em>string</em> <strong>$separator=`'&amp;'`</strong>)</strong> : <em>string</em><br /><em>Returns a relative url based on the params without url start slug.</em> |
+| public static | <strong>getTrimmedUrl(</strong><em>int</em> <strong>$id=null</strong>, <em>int</em> <strong>$clang=null</strong>, <em>array/string[]</em> <strong>$params=array()</strong>, <em>string</em> <strong>$separator=`'&amp;'`</strong>)</strong> : <em>string</em><br /><em>Returns a relative url based on the params without url start slug, http etc.</em> |
 | public static | <strong>getUrl(</strong><em>int</em> <strong>$id=null</strong>, <em>int</em> <strong>$clang=null</strong>, <em>array/string[]</em> <strong>$params=array()</strong>, <em>string</em> <strong>$separator=`'&amp;'`</strong>)</strong> : <em>string</em><br /><em>Returns a relative url based on the params. Same as rex_getUrl().</em> |
 | public static | <strong>getUrlEnding()</strong> : <em>string</em><br /><em>Returns the url ending.</em> |
 | public static | <strong>getUrlStart()</strong> : <em>string</em><br /><em>Returns the url start slug.</em> |

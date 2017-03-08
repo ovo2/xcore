@@ -309,7 +309,7 @@ class rexx extends rex {
 	}
 
 	/**
-	 * Returns a relative url based on the params without url start slug.
+	 * Returns a relative url based on the params without url start slug, http etc.
 	 *
 	 * @param int $id
 	 * @param int $clang
@@ -319,7 +319,13 @@ class rexx extends rex {
 	 * @return string
 	 */
 	public static function getTrimmedUrl($id = null, $clang = null, array $params = [], $separator = '&amp;') {
-		return ltrim(rexx::getUrl($id, $clang, $params, $separator), "./");
+		$url = rexx::getUrl($id, $clang, $params, $separator);
+
+		if (strpos($url, rexx::getServerUrl()) === 0) {
+			$url = substr($url, strlen(rexx::getServerUrl()));
+		}
+
+		return ltrim($url, "./");
 	}
 
 	/**
