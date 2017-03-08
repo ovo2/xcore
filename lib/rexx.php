@@ -478,7 +478,7 @@ class rexx extends rex {
 	 * @return int
 	 */	
 	public static function getCurrentCategoryId() {
-		return rex_category::getCurrentId();
+		return rex_category::getCurrent()->getId();
 	}
 
 	/**
