@@ -56,6 +56,7 @@
 | public static | <strong>getLangTags()</strong> : <em>string</em><br /><em>Returns the current hreflang Tags.</em> |
 | public static | <strong>getLastUpdateDate(</strong><em>string</em> <strong>$format=`'d.m.Y'`</strong>)</strong> : <em>string</em><br /><em>Returns the last update date of site based on the last article update date. $format is the same param type as in date() function.</em> |
 | public static | <strong>getLinkListAsArray(</strong><em>string</em> <strong>$mediaList</strong>)</strong> : <em>string</em><br /><em>Explodes a linklist from a REX_LINKLIST[] button to an array.</em> |
+| public static | <strong>getManagedMediaFile(</strong><em>string</em> <strong>$mediaFile</strong>, <em>string</em> <strong>$mediaType</strong>, <em>bool</em> <strong>$validHtml=true</strong>)</strong> : <em>string</em><br /><em>Returns a seo friendly url for the media manager file.</em> |
 | public static | <strong>getManagedMediaImageHeight(</strong><em>string</em> <strong>$mediaFile</strong>, <em>string</em> <strong>$mediaType</strong>)</strong> : <em>int</em><br /><em>Returns image height of media manager file base on media type.</em> |
 | public static | <strong>getManagedMediaImageWidth(</strong><em>string</em> <strong>$mediaFile</strong>, <em>string</em> <strong>$mediaType</strong>)</strong> : <em>int</em><br /><em>Returns image width of media manager file base on media type.</em> |
 | public static | <strong>getMedia(</strong><em>string</em> <strong>$filename</strong>)</strong> : <em>\rex_media</em><br /><em>Returns media object. Same as rex_media::get().</em> |
@@ -63,7 +64,7 @@
 | public static | <strong>getMediaDirName()</strong> : <em>string</em><br /><em>Returns the pure media directory name.</em> |
 | public static | <strong>getMediaFile(</strong><em>string</em> <strong>$file</strong>)</strong> : <em>string</em><br /><em>Returns given media file with media directory.</em> |
 | public static | <strong>getMediaListAsArray(</strong><em>string</em> <strong>$mediaList</strong>)</strong> : <em>string</em><br /><em>Explodes a medialist from a REX_MEDIALIST[] button to an array.</em> |
-| public static | <strong>getMediaManagerFile(</strong><em>string</em> <strong>$mediaFile</strong>, <em>string</em> <strong>$mediaType</strong>, <em>bool</em> <strong>$validHtml=true</strong>)</strong> : <em>string</em><br /><em>Returns a seo friendly url for the media manager file.</em> |
+| public static | <strong>getMediaManagerFile(</strong><em>string</em> <strong>$mediaFile</strong>, <em>string</em> <strong>$mediaType</strong>, <em>bool</em> <strong>$validHtml=true</strong>)</strong> : <em>string</em><br /><em>Deprecated: use getManagedMediaFile().</em> |
 | public static | <strong>getMediaTypeDescription(</strong><em>string</em> <strong>$mediaType</strong>)</strong> : <em>string</em><br /><em>Returns the description of the given mediatype.</em> |
 | public static | <strong>getNotfoundArticleId()</strong> : <em>string</em><br /><em>Returns the notfound article id specified in system settings. Same as rex_article::getNotfoundArticleId().</em> |
 | public static | <strong>getResourceFile(</strong><em>string</em> <strong>$fileWithPath</strong>)</strong> : <em>string</em><br /><em>Returns file with path of resource dir and version string. If less or scss file is given it will be compiled.</em> |

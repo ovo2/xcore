@@ -694,7 +694,7 @@ class rexx extends rex {
 	 * @return string
 	 *
 	 */
-	public static function getMediaManagerFile($mediaFile, $mediaType, $validHtml = true) {
+	public static function getManagedMediaFile($mediaFile, $mediaType, $validHtml = true) {
 		$url = '';
 
 		if (rexx::isBackend()) {
@@ -708,6 +708,20 @@ class rexx extends rex {
 		} else {
 			return $url;
 		}
+	}
+
+	/**
+	 * Deprecated: use getManagedMediaFile().
+	 *
+	 * @param string $mediaFile 
+	 * @param string $mediaType 
+	 * @param bool $validHtml 
+	 *
+	 * @return string
+	 *
+	 */
+	public static function getMediaManagerFile($mediaFile, $mediaType, $validHtml = true) {
+		return rexx::getManagedMediaFile($mediaFile, $mediaType, $validHtml);
 	}
 
 	/**
