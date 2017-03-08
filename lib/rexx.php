@@ -962,7 +962,7 @@ class rexx extends rex {
 	 * @return int
 	 *
 	 */
-	public static function getManagedMediaImageWidth($mediaFile, $mediaType) {
+	public static function getManagedMediaWidth($mediaFile, $mediaType) {
 		return rex_media_manager::create($mediaType, $mediaFile)->getMedia()->getImageWidth();
     }
 
@@ -975,7 +975,7 @@ class rexx extends rex {
 	 * @return int
 	 *
 	 */
-	public static function getManagedMediaImageHeight($mediaFile, $mediaType) {
+	public static function getManagedMediaHeight($mediaFile, $mediaType) {
 		return rex_media_manager::create($mediaType, $mediaFile)->getMedia()->getImageHeight();
     }
 
