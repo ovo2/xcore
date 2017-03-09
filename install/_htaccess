@@ -90,7 +90,7 @@ FileETag None
 	# REDIRECT SITEMAP.XML TO SITEMAP FUNCTION
     RewriteRule ^sitemap\.xml$ %{ENV:BASE}/index.php?rex_yrewrite_func=sitemap [NC,L]
 
-	# REDIRECT ROBOTS.TXT TO SEO42 ROBOTS FUNCTION
+	# REDIRECT ROBOTS.TXT TO ROBOTS FUNCTION
     RewriteRule ^robots\.txt$ %{ENV:BASE}/index.php?rex_yrewrite_func=robots [NC,L]
 
 	# REWRITE RULE FOR SEO FRIENDLY DOWNLOAD URLS
