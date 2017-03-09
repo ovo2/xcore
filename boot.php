@@ -165,7 +165,7 @@ if (rexx::isFrontend()) {
 }
 
 // add docs to api_docs addon if available
-if (rexx::isBackend() && rex_addon::get('api_docs')->isAvailable()) {
+if (rexx::isBackend()) {
 	rex_extension::register('API_DOCS', function(rex_extension_point $ep) {
 		$subject = $ep->getSubject();
 
