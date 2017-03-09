@@ -1,6 +1,6 @@
 <?php
 
-class rexx_controller {
+class rexx_router {
 	public function route() {
 		$func = rex_get('rexx_func', 'string');
 

@@ -6,9 +6,9 @@ require_once(rex_path::addon('xcore', 'functions/functions.php')); // contains o
 // init main class
 rexx::init();
 
-// activate controller
+// activate router
 if (rexx::isFrontend()) {
-	$controller = new rexx_controller();
+	$controller = new rexx_router();
 	$controller->route();
 }
 
