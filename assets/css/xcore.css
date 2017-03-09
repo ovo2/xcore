@@ -104,6 +104,10 @@ input[type="checkbox"] {
 	display: none;
 }
 
+a[data-toggle="tab"] label {
+	cursor: pointer;
+}
+
 /* codemirror */
 .codemirror {
 	display: none;
