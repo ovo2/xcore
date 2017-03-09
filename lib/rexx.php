@@ -1392,7 +1392,7 @@ class rexx extends rex {
 	/**
 	 * Returns the category by id.
 	 * 
-	 * @param bool $id
+	 * @param int $id
 	 *
 	 * @return rex_category
 	 */	
