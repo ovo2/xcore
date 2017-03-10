@@ -522,6 +522,7 @@ class rexx extends rex {
 	 * Returns the article object from given article id.
 	 *
 	 * @param int $articleId
+	 * @param int $clangId
 	 *
 	 * @return rex_article
 	 */
@@ -1393,6 +1394,7 @@ class rexx extends rex {
 	 * Returns the category by id.
 	 * 
 	 * @param int $id
+	 * @param int $clangId
 	 *
 	 * @return rex_category
 	 */	
@@ -1404,7 +1406,7 @@ class rexx extends rex {
 	 * Returns the root categories.
 	 * 
 	 * @param bool $ignoreOfflines
-	 * @param int $clang
+	 * @param int $clangId
 	 *
 	 * @return rex_category[]
 	 */	

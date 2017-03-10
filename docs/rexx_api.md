@@ -12,7 +12,7 @@
 | public static | <strong>getAbsoluteMediaFile(</strong><em>string</em> <strong>$file</strong>)</strong> : <em>string</em><br /><em>Returns the absolute file with path of the given media file of media dir.</em> |
 | public static | <strong>getAbsolutePath(</strong><em>string</em> <strong>$path</strong>)</strong> : <em>string</em><br /><em>Returns the absolute path of the given path starting from frontend path.</em> |
 | public static | <strong>getArrayFromRexValue(</strong><em>string</em> <strong>$value</strong>)</strong> : <em>array[]</em><br /><em>Returns an array from a rex value. Wrapper for rex_var::toArray($value);</em> |
-| public static | <strong>getArticle(</strong><em>int</em> <strong>$articleId</strong>, <em>mixed</em> <strong>$clangId=null</strong>)</strong> : <em>\rex_article</em><br /><em>Returns the article object from given article id.</em> |
+| public static | <strong>getArticle(</strong><em>int</em> <strong>$articleId</strong>, <em>int</em> <strong>$clangId=null</strong>)</strong> : <em>\rex_article</em><br /><em>Returns the article object from given article id.</em> |
 | public static | <strong>getArticleContent(</strong><em>int</em> <strong>$articleId</strong>, <em>int</em> <strong>$ctypeId=-1</strong>)</strong> : <em>string</em><br /><em>Returns the article content for the given article id.</em> |
 | public static | <strong>getArticleLink(</strong><em>int</em> <strong>$articleId</strong>)</strong> : <em>string</em><br /><em>Returns an link tag with url and name from specified article id.</em> |
 | public static | <strong>getArticleName(</strong><em>int</em> <strong>$articleId</strong>)</strong> : <em>string</em><br /><em>Returns the article name from specified article id.</em> |
@@ -21,7 +21,7 @@
 | public static | <strong>getCSSDir()</strong> : <em>string</em><br /><em>Returns the css dir specified in the config of addon.</em> |
 | public static | <strong>getCSSFile(</strong><em>string</em> <strong>$file</strong>, <em>array/string[]</em> <strong>$vars=array()</strong>)</strong> : <em>string</em><br /><em>Returns css file with path of resource dir and version string. If less or scss file is given it will be compiled.</em> |
 | public static | <strong>getCanonicalUrl()</strong> : <em>string</em><br /><em>Returns the current canonical url.</em> |
-| public static | <strong>getCategory(</strong><em>int</em> <strong>$id</strong>, <em>mixed</em> <strong>$clangId=null</strong>)</strong> : <em>\rex_category</em><br /><em>Returns the category by id.</em> |
+| public static | <strong>getCategory(</strong><em>int</em> <strong>$id</strong>, <em>int</em> <strong>$clangId=null</strong>)</strong> : <em>\rex_category</em><br /><em>Returns the category by id.</em> |
 | public static | <strong>getCombinedCSSFile(</strong><em>string</em> <strong>$combinedFile</strong>, <em>string[]</em> <strong>$sourceFiles</strong>)</strong> : <em>string</em><br /><em>Combines multiple css files and returns file with path of resource dir and version string. Also compiles scss and less if necessary.</em> |
 | public static | <strong>getCombinedJSFile(</strong><em>string</em> <strong>$combinedFile</strong>, <em>string[]</em> <strong>$sourceFiles</strong>)</strong> : <em>string</em><br /><em>Combines multiple js files and returns file with path of resource dir and version string.</em> |
 | public static | <strong>getCurrentArticle()</strong> : <em>\rex_article</em><br /><em>Returns the current article.</em> |
@@ -70,7 +70,7 @@
 | public static | <strong>getNotfoundArticleId()</strong> : <em>string</em><br /><em>Returns the notfound article id specified in system settings. Same as rex_article::getNotfoundArticleId().</em> |
 | public static | <strong>getResourceFile(</strong><em>string</em> <strong>$fileWithPath</strong>)</strong> : <em>string</em><br /><em>Returns file with path of resource dir and version string. If less or scss file is given it will be compiled.</em> |
 | public static | <strong>getRobotRules()</strong> : <em>string</em><br /><em>Returns the current robot rules for the robots tag.</em> |
-| public static | <strong>getRootCategories(</strong><em>bool</em> <strong>$ignoreOfflines=false</strong>, <em>mixed</em> <strong>$clangId=null</strong>)</strong> : <em>\rex_category[]</em><br /><em>Returns the root categories.</em> |
+| public static | <strong>getRootCategories(</strong><em>bool</em> <strong>$ignoreOfflines=false</strong>, <em>int</em> <strong>$clangId=null</strong>)</strong> : <em>\rex_category[]</em><br /><em>Returns the root categories.</em> |
 | public static | <strong>getServerHost(</strong><em>bool</em> <strong>$removeWWW=false</strong>)</strong> : <em>string</em><br /><em>Returns the server url without http:// and can also remove www from host.</em> |
 | public static | <strong>getServerSubDir()</strong> : <em>string</em><br /><em>Returns the subdir if redaxo is installed in subdir.</em> |
 | public static | <strong>getServerUrl()</strong> : <em>string</em><br /><em>Returns the server url specified in system settings. Same as rexx::getServer().</em> |
