@@ -110,7 +110,7 @@ FileETag None
 	# EXCLUDE SPECIFIC FOLDERS FROM REWRITE ENGINE
 	RewriteCond %{REQUEST_URI} !^redaxo/.*
 	RewriteCond %{REQUEST_URI} !^media/.*
-    RewriteCond %{REQUEST_URI} !^assets/.*
+	RewriteCond %{REQUEST_URI} !^assets/.*
 	RewriteCond %{REQUEST_URI} !^resources/.*
 
 	# REWRITE ALL OTHER REQUESTS TO INDEX.PHP
