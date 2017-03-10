@@ -66,10 +66,9 @@ class rexx_resource_includer {
 
 	public static function getResourceFile($fileWithPath) {
 		$info = pathinfo($fileWithPath);
-		$dir = $info['dirname'] . '/';
 
 		if ($info['extension'] == 'css' || $info['extension'] == 'js') {
-			return self::prepareDir($info['dirname']) . self::getFileWithVersionParam($info['basename'], $info['dirname']);
+			return self::prepareDir($info['dirname']) . self::getFileWithVersionParam($info['basename'], rexx::getAbsolutePath($info['dirname']));
 		} else {
 			return self::prepareDir($info['dirname']) . $info['basename'];
 		}
@@ -127,6 +126,7 @@ class rexx_resource_includer {
 		}
 
 		$file = ltrim($file, "./");
+		$path = rtrim($path, "/");
 		$mtime = @filemtime($path . '/' . $file); 
 
 		if ($mtime != false) {
