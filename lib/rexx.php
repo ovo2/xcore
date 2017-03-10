@@ -525,8 +525,8 @@ class rexx extends rex {
 	 *
 	 * @return rex_article
 	 */
-	public static function getArticle($articleId) {
-		return rex_article::get($articleId);
+	public static function getArticle($articleId, $clangId = null) {
+		return rex_article::get($articleId, $clangId);
 	}
 
 	/**
@@ -1396,8 +1396,8 @@ class rexx extends rex {
 	 *
 	 * @return rex_category
 	 */	
-	public static function getCategory($id) {
-		return rex_category::get($id);
+	public static function getCategory($id, $clangId = null) {
+		return rex_category::get($id, $clangId);
 	}
 
 	/**
@@ -1408,8 +1408,8 @@ class rexx extends rex {
 	 *
 	 * @return rex_category[]
 	 */	
-	public static function getRootCategories($ignoreOfflines = false, $clang = null) {
-		return rex_category::getRootCategories($ignoreOfflines, $clang);
+	public static function getRootCategories($ignoreOfflines = false, $clangId = null) {
+		return rex_category::getRootCategories($ignoreOfflines, $clangId);
 	}
 
 	/**
