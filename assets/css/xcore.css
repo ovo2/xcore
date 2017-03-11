@@ -161,7 +161,8 @@ a[data-toggle="tab"] label {
 	margin: 0;
 }
 
-.mform span.optional::after {
+.mform span.optional::after, /* compat */
+.rexx-optional-msg::after {
 	content: "(optional)";
 	font-weight: normal;
 	font-size: 13px;

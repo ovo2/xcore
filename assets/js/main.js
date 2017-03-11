@@ -30,6 +30,14 @@ $(function () {
 				$('a[data-toggle="tab"][href="' + selectedTab + '"]').tab('show');
 			}
 		});
+
+		// labels with optional style
+		$('.rexx-optional,.mform .optional').each(function() {
+			jLabel = $("label[for='" + $(this).attr('id') + "']");
+			jLabelHtml = jLabel.html();
+
+			jLabel.html(jLabelHtml + ' <span class="rexx-optional-msg"></span>');
+		});
     });
 });	
 
