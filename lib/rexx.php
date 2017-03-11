@@ -1418,20 +1418,32 @@ class rexx extends rex {
 	 * Returns the phone number for use in link with tel: protocol. Strips whitespaces etc and converts + to 00.
 	 * 
 	 * @param string $phoneNumber
+	 * @param bool $convertPrefix
 	 * @param string $prefix
 	 * @param string $substitute
 	 *
 	 * @return string
 	 */	
-	public static function getTelLink($phoneNumber, $prefix = '+', $substitute = '00') {
+	public static function getTelLink($phoneNumber, $convertPrefix = true, $prefix = '+', $substitute = '00') {
 		if (rexx::stringStartsWith($phoneNumber, $prefix)) {
-			// convert prefix (+ -> 00)
+			$hasPrefix = true;
+		} else {
+			$hasPrefix = false;
+		}
+
+		// convert prefix if necessary 
+		if ($convertPrefix && $hasPrefix) {
 			$pos = strpos($phoneNumber, $prefix);
 			$phoneNumber = substr_replace($phoneNumber, $substitute, $pos, strlen($prefix));
 		}
 
-		// remove all whitespaces
+		// remove all unwanted chars
 		$phoneNumber = preg_replace('/\D+/', '', $phoneNumber);
+
+		// put back prefix if necessary 
+		if (!$convertPrefix && $hasPrefix) {
+			$phoneNumber = '+' . $phoneNumber;
+		}
 
 		// prepend tel protocol
 		$phoneNumber = 'tel:' . $phoneNumber;
