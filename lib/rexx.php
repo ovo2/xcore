@@ -1452,6 +1452,17 @@ class rexx extends rex {
 	}
 
 	/**
+	 * Returns the email link with mailto: at the beginning.
+	 * 
+	 * @param string $email
+	 *
+	 * @return string
+	 */	
+	public static function getEmailLink($email) {
+		return 'mailto:' . $email;
+	}
+
+	/**
 	 * Returns css file with path of resource dir and version string. If less or scss file is given it will be compiled.
 	 *
 	 * @param string $file
