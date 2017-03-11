@@ -583,7 +583,7 @@ class rexx extends rex {
 	 * @return string
 	 */
 	public static function getUrlString($string) {
-		$scheme = new rex_xcore_yrewrite_scheme();
+		$scheme = new rexx_yrewrite_scheme();
 
 		return $scheme->normalize($string, rexx::getCurrentClangId());
 	}
