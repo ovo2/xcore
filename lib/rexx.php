@@ -1415,6 +1415,31 @@ class rexx extends rex {
 	}
 
 	/**
+	 * Returns the phone number for use in link with tel: protocol. Strips whitespaces etc and converts + to 00.
+	 * 
+	 * @param string $phoneNumber
+	 * @param string $prefix
+	 * @param string $substitute
+	 *
+	 * @return string
+	 */	
+	public static function getTelLink($phoneNumber, $prefix = '+', $substitute = '00') {
+		if (rexx::stringStartsWith($phoneNumber, $prefix)) {
+			// convert prefix (+ -> 00)
+			$pos = strpos($phoneNumber, $prefix);
+			$phoneNumber = substr_replace($phoneNumber, $substitute, $pos, strlen($prefix));
+		}
+
+		// remove all whitespaces
+		$phoneNumber = preg_replace('/\D+/', '', $phoneNumber);
+
+		// prepend tel protocol
+		$phoneNumber = 'tel:' . $phoneNumber;
+
+		return $phoneNumber;
+	}
+
+	/**
 	 * Returns css file with path of resource dir and version string. If less or scss file is given it will be compiled.
 	 *
 	 * @param string $file
