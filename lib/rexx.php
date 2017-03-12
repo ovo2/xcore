@@ -106,13 +106,19 @@ class rexx extends rex {
 
 	/**
 	 * Returns the the current lang code.
+	 * 
+	 * @param int $clangId
 	 *
 	 * @return string
 	 */
-	public static function getLangCode() {
-		$curClang = rexx::getCurrentClang();
+	public static function getLangCode($clangId = null) {
+		if ($clangId == null) {
+			$clang = rexx::getCurrentClang();
+		} else {
+			$clang = rex_clang::get($clangId);
+		}
 
-		return $curClang->getCode();
+		return $clang->getCode();
 	}
 
 	/**
