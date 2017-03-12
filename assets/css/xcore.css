@@ -133,6 +133,16 @@ a[data-toggle="tab"] label {
 	border: 0 !important;
 }
 
+@media screen and (max-width: 991px) {
+	.rexx-has-meta-frontend-link .be-style-customizer-title {
+		display: none;
+	}
+
+	.rex-nav-meta li a {
+		line-height: 26px;
+	}
+}
+
 /* mform */
 .mform .form-group {
 	overflow: hidden;
@@ -173,6 +183,10 @@ a[data-toggle="tab"] label {
 	padding: 0;
 	margin: 15px;
 	overflow: hidden;
+}
+
+.rex-slice-input .nav-tabs  {
+	margin-bottom: 15px;
 }
 
 @media screen and (max-width: 991px) {

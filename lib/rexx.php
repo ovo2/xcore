@@ -276,8 +276,11 @@ class rexx extends rex {
 	 */
 	public static function getLangTags() {
 		$seo = new rex_yrewrite_seo();
+		$tags = $seo->getHreflangTags();
+		$tags = str_replace('/>', '/>' . PHP_EOL . "\t", $tags);
+		$tags = trim($tags, "\t");
 
-		return $seo->getHreflangTags() . PHP_EOL;
+		return $tags;
 	}
 
 	/**

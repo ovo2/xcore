@@ -39,6 +39,7 @@
 | public static | <strong>getDefaultString(</strong><em>string</em> <strong>$field</strong>, <em>bool/int</em> <strong>$allowEmpty=false</strong>)</strong> : <em>string</em><br /><em>Returns default global string value from global settings addon. If value is empty output will be a placeholder. Same as rex_global_settings::getDefaultString();</em> |
 | public static | <strong>getDescription()</strong> : <em>string</em><br /><em>Returns the current description for the description tag.</em> |
 | public static | <strong>getDownloadFile(</strong><em>string</em> <strong>$file</strong>)</strong> : <em>string</em><br /><em>Returns a download url for the given file. Browser will prompt user to download file with this.</em> |
+| public static | <strong>getEmailLink(</strong><em>string</em> <strong>$email</strong>)</strong> : <em>string</em><br /><em>Returns the email link with mailto: at the beginning.</em> |
 | public static | <strong>getFavIconDir()</strong> : <em>string</em><br /><em>Returns the favicon dir specified in the config of addon.</em> |
 | public static | <strong>getFavIconFile(</strong><em>string</em> <strong>$file</strong>)</strong> : <em>string</em><br /><em>Returns favicon file with path of resource dir.</em> |
 | public static | <strong>getFullMediaUrl(</strong><em>string</em> <strong>$file</strong>)</strong> : <em>string</em><br /><em>Returns a full media url starting with http://.</em> |
