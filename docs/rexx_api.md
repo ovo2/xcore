@@ -62,7 +62,7 @@
 | public static | <strong>getManagedMediaHeight(</strong><em>string</em> <strong>$mediaFile</strong>, <em>string</em> <strong>$mediaType</strong>)</strong> : <em>int</em><br /><em>Returns image height of media manager file base on media type.</em> |
 | public static | <strong>getManagedMediaWidth(</strong><em>string</em> <strong>$mediaFile</strong>, <em>string</em> <strong>$mediaType</strong>)</strong> : <em>int</em><br /><em>Returns image width of media manager file base on media type.</em> |
 | public static | <strong>getMedia(</strong><em>string</em> <strong>$filename</strong>)</strong> : <em>\rex_media</em><br /><em>Returns media object. Same as rex_media::get().</em> |
-| public static | <strong>getMediaDir()</strong> : <em>\rex_media</em><br /><em>Returns media directory. Same as rex_url::media().</em> |
+| public static | <strong>getMediaDir()</strong> : <em>\rex_media</em><br /><em>Returns media directory.</em> |
 | public static | <strong>getMediaDirName()</strong> : <em>string</em><br /><em>Returns the pure media directory name.</em> |
 | public static | <strong>getMediaFile(</strong><em>string</em> <strong>$file</strong>)</strong> : <em>string</em><br /><em>Returns given media file with media directory.</em> |
 | public static | <strong>getMediaManagerFile(</strong><em>string</em> <strong>$mediaFile</strong>, <em>string</em> <strong>$mediaType</strong>, <em>bool</em> <strong>$validHtml=true</strong>)</strong> : <em>string</em><br /><em>Deprecated: use getManagedMediaFile().</em> |
