@@ -15,8 +15,7 @@ if (rex_post('formsubmit', 'string') == '1') {
         ['smart_redirects', 'int'],
         ['offline_404_mode', 'int'],
         ['show_meta_frontend_link', 'int'],
-        ['xcore_styles', 'int'],
-        ['show_multiupload_pages', 'int'],              
+        ['xcore_styles', 'int'],       
     ]));
 
     echo rex_view::success($this->i18n('config_saved'));
@@ -136,17 +135,6 @@ $formElements = [];
 $n = [];
 $n['label'] = '<label for="xcore_styles">' . $this->i18n('config_xcore_styles') . '</label>';
 $n['field'] = '<input type="checkbox" id="xcore_styles" name="config[xcore_styles]"' . (!empty($this->getConfig('xcore_styles')) && $this->getConfig('xcore_styles') == '1' ? ' checked="checked"' : '') . ' value="1" />';
-$formElements[] = $n;
-
-$fragment = new rex_fragment();
-$fragment->setVar('elements', $formElements, false);
-$content .= $fragment->parse('core/form/checkbox.php');
-
-// show_multiupload_pages
-$formElements = [];
-$n = [];
-$n['label'] = '<label for="show_multiupload_pages">' . $this->i18n('config_show_multiupload_pages') . '</label>';
-$n['field'] = '<input type="checkbox" id="show_multiupload_pages" name="config[show_multiupload_pages]"' . (!empty($this->getConfig('show_multiupload_pages')) && $this->getConfig('show_multiupload_pages') == '1' ? ' checked="checked"' : '') . ' value="1" />';
 $formElements[] = $n;
 
 $fragment = new rex_fragment();

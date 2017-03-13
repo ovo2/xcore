@@ -37,10 +37,6 @@ if (!$this->hasConfig('xcore_styles')) {
     $this->setConfig('xcore_styles', 1);
 }
 
-if (!$this->hasConfig('show_multiupload_pages')) {
-    $this->setConfig('show_multiupload_pages', 1);
-}
-
 if (!$this->hasConfig('show_meta_frontend_link')) {
     $this->setConfig('show_meta_frontend_link', 1);
 }

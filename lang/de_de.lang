@@ -38,7 +38,6 @@ xcore_config_offline_404_mode = 404 Ofline Modus (Offline Artikel sind nicht meh
 xcore_config_show_meta_frontend_link = Frontend Link im REDAXO Metamenu rechts oben anzeigen
 xcore_config_smart_redirects = Smart Redirects (Url Endungen werden automatisch korrigiert und weitergeleitet)
 xcore_config_xcore_styles = Extra X-Core Styles (entfernt z.B. das Grün aus dem Backend ;))
-xcore_config_show_multiupload_pages = Alle Pages im Medienpool anzeigen (betrifft Multiupload AddOn)
 xcore_config_saved = Einstellungen gespeichert.
 xcore_config_save = Einstellungen speichern
 

@@ -56,27 +56,6 @@ if (rexx::isBackend()) {
 	});
 }
 
-// multiupload: undo deactivate mediapool pages done by multiupload addon
-if (rex_config::get('xcore', 'show_multiupload_pages') == 1 && rexx::isBackend()) {
-	if (rex_addon::get('multiupload')->isAvailable()) {
-		rex_extension::register('PAGES_PREPARED', function() {
-			$page = rex_be_controller::getPageObject('mediapool/upload');
-
-			if ($page instanceof rex_be_page) {
-				$page->setHidden(false);
-				$page->setHasLayout(true);
-				$page->setSubPath(rex_path::addon('mediapool', 'pages/upload.php'));
-			}
-
-			$page = rex_be_controller::getPageObject('mediapool/sync');
-
-			if ($page instanceof rex_be_page) {
-				$page->setHidden(false);
-			}
-		}, rex_extension::LATE);
-	}
-}
-
 // yrewrite: add own schema
 rex_yrewrite::setScheme(new rexx_yrewrite_scheme());
 
