@@ -1,7 +1,7 @@
 package: xcore
 version: '1.0.0-dev'
 author: RexDude
-supportpage: https://www.redaxo.org
+supportpage: http://www.redaxo.org/de/forum/
 load: early
 page:
     title: 'translate:title'

@@ -624,12 +624,12 @@ class rexx extends rex {
 	}
 
 	/**
-	 * Returns media directory. Same as rex_url::media().
+	 * Returns media directory.
 	 *
 	 * @return rex_media
 	 */
 	public static function getMediaDir() {
-		return rex_url::media();
+		return ltrim(rex_url::media(), '.');
 	}
 
 	/**
