@@ -80,11 +80,12 @@ if (rex_config::get('xcore', 'show_multiupload_pages') == 1 && rexx::isBackend()
 // yrewrite: add own schema
 rex_yrewrite::setScheme(new rexx_yrewrite_scheme());
 
-// logo anti flicker patch
+// backend hacks throught output filter ep
 if (rexx::isBackend()) {
 	rex_extension::register('OUTPUT_FILTER', function($ep) {
 		$subject = $ep->getSubject();
 
+		// logo anti flicker patch
 		if (rex::getUser() instanceof rex_user) {
 			$newLogo = 'redaxo-logo_logged_in.svg';
 		} else {
@@ -97,6 +98,11 @@ if (rexx::isBackend()) {
 		// setup msg in addon install page
 		if (rex_be_controller::getCurrentPagePart(1) == 'packages') {
 			$subject = str_replace(rex_i18n::msg('addon_installed', 'xcore'), rex_i18n::msg('addon_installed', 'xcore') . ' <br/>' . rex_i18n::rawMsg('xcore_addon_installed'), $subject);
+		}
+
+		// restore normal bootstrap tab style for mform
+		if (rex_config::get('xcore', 'xcore_styles') == 1) {
+			$subject = str_replace('mform-tabs rex-page-nav', 'mform-tabs', $subject);
 		}
 		
 		return $subject;
