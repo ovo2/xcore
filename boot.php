@@ -144,7 +144,7 @@ if (rex_config::get('xcore', 'offline_404_mode') == 1 && rexx::isFrontend()) {
 				rex_addon::get('structure')->setProperty('article_id', rexx::getNotfoundArticleId());
 
 				rex_extension::register('OUTPUT_FILTER', function() {
-					header("HTTP/1.0 404 Not Found");
+					rex_response::setStatus(rex_response::HTTP_NOT_FOUND);
 				});
 			}
 		}
@@ -157,7 +157,7 @@ if (rexx::isFrontend()) {
 		rex_extension::register('PACKAGES_INCLUDED', function(rex_extension_point $ep) {
 			if (!rexx::isCurrentUrlValid()) {
 				rex_extension::register('OUTPUT_FILTER', function() {
-					header("HTTP/1.0 404 Not Found");
+					rex_response::setStatus(rex_response::HTTP_NOT_FOUND);
 				});
 			}
 		});

@@ -178,6 +178,10 @@ a[data-toggle="tab"] label {
 	font-size: 13px;
 }
 
+.mform .mform-description {
+	margin-top: -8px;
+}
+
 /* slice pimper  */
 .rex-slice .panel-body {
 	padding: 0;
