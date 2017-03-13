@@ -127,25 +127,13 @@ if (rex_config::get('xcore', 'offline_404_mode') == 1 && rexx::isFrontend()) {
 				rex_extension::register('OUTPUT_FILTER', function($ep) {
 					$subject = $ep->getSubject();
 
-					$insert = '
-						<!-- X-CORE Offline 404 Mode -->
-						<style type="text/css">
-							html { margin-top: 30px !important; }
-							body { position: relative; }
-							#rexx-offline-404-frontend-msg { font-family: Arial, sans-serif; font-size: 13px; color: white; background: #4b9ad9; border: 0; position: fixed; left: 0; right: 0; top: 0; padding: 0; text-align: center; z-index: 100; height: 30px; line-height: 30px; box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6) !important; }
-							#rexx-logo { background: #4b9ad9 url("/assets/addons/xcore/images/redaxo-logo_logged_in.svg") no-repeat left top; height: 16px; position: absolute; left: 12px; top: 7px; width: 115px; }
-						</style>
-						<div id="rexx-offline-404-frontend-msg"><strong>' . rex_i18n::msg('xcore_offline_404_frontend_msg1') . '</strong> ' . rex_i18n::msg('xcore_offline_404_frontend_msg2') . '<div id="rexx-logo"></div></div>
-						<!-- X-CORE Offline 404 Mode -->' .  PHP_EOL;
-
-					return str_replace('</body>', $insert . '</body>', $subject);
+					return str_replace('</body>', rexx_utils::get404OfflineModeMsg() . '</body>', $subject);
 				});
 			} else {
 				rex_addon::get('structure')->setProperty('article_id', rexx::getNotfoundArticleId());
 
-				rex_extension::register('OUTPUT_FILTER', function() {
-					rex_response::setStatus(rex_response::HTTP_NOT_FOUND);
-				});
+				rexx_utils::set404Status();
+				rexx_utils::set404OfflineMode();
 			}
 		}
 	}, rex_extension::LATE);
@@ -153,16 +141,33 @@ if (rex_config::get('xcore', 'offline_404_mode') == 1 && rexx::isFrontend()) {
 
 // correct redaxo behaviour and send 404 if sitestartarticle = notfoundarticle
 if (rexx::isFrontend()) {
-	if (rexx::getSiteStartArticleId() == rexx::getNotfoundArticleId()) {
-		rex_extension::register('PACKAGES_INCLUDED', function(rex_extension_point $ep) {
+	rex_extension::register('PACKAGES_INCLUDED', function(rex_extension_point $ep) {
+		if (rexx::getSiteStartArticleId() == rexx::getNotfoundArticleId()) {
 			if (!rexx::isCurrentUrlValid()) {
-				rex_extension::register('OUTPUT_FILTER', function() {
-					rex_response::setStatus(rex_response::HTTP_NOT_FOUND);
-				});
+				rexx_utils::set404Status();
+				rexx_utils::set404CustomPage();
+			} else {
+				if (rexx_utils::is404OfflineMode()) {
+					rexx_utils::set404Status();
+					rexx_utils::set404CustomPage();	
+				}
 			}
-		});
-	}
+		}
+	}, rex_extension::LATE);
 }
+
+// send 404 header and page if necessary
+rex_extension::register('PACKAGES_INCLUDED', function() {
+	if (rexx::isFrontend() && rexx_utils::is404Status()) {
+		rex_extension::register('OUTPUT_FILTER', function(rex_extension_point $ep) {
+			rex_response::setStatus(rex_response::HTTP_NOT_FOUND);
+
+			if (rexx_utils::is404CustomPage()) {
+				$ep->setSubject(rexx_utils::get404Page());
+			}
+		}, rex_extension::LATE);
+	}
+}, rex_extension::LATE);
 
 // add docs to api_docs addon if available
 if (rexx::isBackend()) {

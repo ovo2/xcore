@@ -16,7 +16,7 @@ Features
 * Offline 404 Modus: Offline Artikel sind für nicht eingeloggte Benutzer nicht mehr erreichbar (404 Seite)
 * Automatisches setzen der Locale in PHP um z.B. Monatsnamen/Datumsangaben in der richtigen Sprache zu erhalten
 * Automatisches senden von Header wie `X-UA-Compatible` oder einen `Cache-Control` Header für manche Server die Media Manager Bilder sonst nicht korrekt cachen würden
-* Bei gleichem Startartikel wie Fehlerartikel wird ein 404 gesendet (was REDAXO sonst nicht tut)
+* Bei gleichem Startartikel wie Fehlerartikel (nicht empfohlen!) wird ein 404 gesendet (was REDAXO sonst nicht tut). Desweiteren liefert X-Core in diesem Fall eine eigene 404 Seite aus um Double Content Probleme zu vermeiden.
 * rexx API: Umfangreiche API a la seo42 Klasse (diesmal) inkl. Dokumentation
 * Mitgeliefertes Boilerplate (Template) welches die rexx API benutzt
 * Resourcen Handling: Kombinieren von mehreren CSS / JS Dateien zu einer. Senden eines Versionsstrings (Cache-Buster) usw.
@@ -63,6 +63,7 @@ Hinweise
 * AddOn-Ordner lautet: `xcore`
 * Abhängigkeiten: yRewrite
 * 500 Serverfehler: Wenn Sie einen 500 Serverfehler bekommen entfernen Sie die Zeile `Options -Indexes` aus der `.htaccess` Datei im root Verzeichnis.
+* Stellen Sie einen Fehlerartikel ein. Sonst liefert X-Core eine eigene 404 Seite aus um Double Content Probleme zu vermeiden.
 
 Changelog
 ---------
