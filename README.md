@@ -14,7 +14,7 @@ Features
 * LangPresets: Spezielle sprachabhängige sowie sprachunabhängige Sonderzeichen-Umschreibungen einstellbar. Aktuell werden 14 Sprachen out-of-the-box unterstützt
 * Smart Redirects: Automatische Umleitungen für falsch eingegebene Urls z.B. von Url-Endung `/` nach `.html`
 * Offline 404 Modus: Offline Artikel sind für nicht eingeloggte Benutzer nicht mehr erreichbar (404 Seite)
-* Automatisches setzen der Locale in PHP um z.B. Monatsnamen/Datumsangaben in der richtigen Sprache zu erhalten
+* Automatisches setzen der Locale in PHP um z.B. Monatsnamen/Datumsangaben in der richtigen Sprache zu erhalten (z.b. über `strftime`)
 * Automatisches senden von Header wie `X-UA-Compatible` oder einen `Cache-Control` Header für manche Server die Media Manager Bilder sonst nicht korrekt cachen würden
 * Bei gleichem Startartikel wie Fehlerartikel (nicht empfohlen!) wird ein 404 gesendet (was REDAXO sonst nicht tut). Desweiteren liefert X-Core in diesem Fall eine eigene 404 Seite aus um Double Content Probleme zu vermeiden.
 * rexx API: Umfangreiche API a la seo42 Klasse (diesmal) inkl. Dokumentation

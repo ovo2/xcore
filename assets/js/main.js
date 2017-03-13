@@ -32,7 +32,7 @@ $(function () {
 		});
 
 		// labels with optional style
-		$('.rexx-optional,.mform .optional').each(function() {
+		$('.rexx-optional').each(function() {
 			jLabel = $("label[for='" + $(this).attr('id') + "']");
 			jLabelHtml = jLabel.html();
 

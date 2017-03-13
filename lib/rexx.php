@@ -791,27 +791,23 @@ class rexx extends rex {
 	}
 
 	/**
-	 * Explodes a medialist from a REX_MEDIALIST[] button to an array.
+	 * Explodes and trims a string by given delimiter. Default delimeter is the comma char. Useful for REX_MEDIALIST[] /  REX_LINKLIST[] output.
 	 *
-	 * @param string $mediaList  
+	 * @param string $string
+	 * @param string $delimiter
+	 * @param bool $trim
 	 *
 	 * @return string
 	 *
 	 */
-	public static function getMediaListAsArray($mediaList) {
-		return explode(',', $mediaList);
-	}
+	public static function getArrayFromString($string, $delimiter = ',', $trim = true) {
+		$array = explode($delimiter, $string);
 
-	/**
-	 * Explodes a linklist from a REX_LINKLIST[] button to an array.
-	 *
-	 * @param string $mediaList  
-	 *
-	 * @return string
-	 *
-	 */
-	public static function getLinkListAsArray($mediaList) {
-		return explode(',', $mediaList);
+		if ($trim) {
+			$array = array_map('trim', $array);
+		}
+
+		return $array;
 	}
 
 	/**
@@ -907,9 +903,6 @@ class rexx extends rex {
 	 *
 	 */
 	public static function getTabbedForm($form) {
-		$form = str_replace('"selected>', '" selected>', $form); // bugfix mform
-		$form = str_replace('"checked="checked"', '" checked="checked"', $form); // bugfix mform
-
 		$html = rexx_simple_html_dom::str_get_html($form);
 		$tabs = [];
 
@@ -1206,7 +1199,7 @@ class rexx extends rex {
 	}
 
 	/**
-	 * Sets the global locale for php. Then all php strings like month names are in the desired language.
+	 * Sets the global locale for php. Then all php strings like month names are in the desired language, use strftime(). 
 	 * X-Core calls this automatically.
 	 *
 	 * @param string $regionCode
