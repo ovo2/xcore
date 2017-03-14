@@ -4,16 +4,16 @@
  * The main class of X-Core AddOn inherited from class rex.
  */
 class rexx extends rex {
-	static $titleDelimeter;
-	static $urlEnding;
-	static $cssDir;
-	static $jsDir;
-	static $imageDir;
-	static $favIconsDir;
+	protected static $titleDelimeter;
+	protected static $urlEnding;
+	protected static $cssDir;
+	protected static $jsDir;
+	protected static $imageDir;
+	protected static $favIconsDir;
 
-	static $urlStart;
-	static $serverSubDir;
-	static $isSubDirInstall;
+	protected static $urlStart;
+	protected static $serverSubDir;
+	protected static $isSubDirInstall;
 
 	const mediaTypesDir = 'mediatypes';
 	const downloadDir = 'download';

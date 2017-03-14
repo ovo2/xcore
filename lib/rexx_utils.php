@@ -61,8 +61,8 @@ class rexx_utils {
 					}
 
 					h1 {
-						font-size: 200px;
-						line-height: 200px;
+						font-size: 180px;
+						line-height: 180px;
 						padding-top: 100px;
 						margin: 0;
 					}
@@ -82,8 +82,8 @@ class rexx_utils {
 					@media screen and (max-width: 700px) {
 						h1 {
 							padding-top: 20px;
-							font-size: 140px;
-							line-height: 140px;
+							font-size: 120px;
+							line-height: 120px;
 						}
 					}
 				</style>

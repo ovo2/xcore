@@ -15,7 +15,8 @@ if (rex_post('formsubmit', 'string') == '1') {
         ['smart_redirects', 'int'],
         ['offline_404_mode', 'int'],
         ['show_meta_frontend_link', 'int'],
-        ['xcore_styles', 'int'],       
+        ['xcore_styles', 'int'],
+        ['allow_downloads', 'int'],
     ]));
 
     echo rex_view::success($this->i18n('config_saved'));
@@ -135,6 +136,17 @@ $formElements = [];
 $n = [];
 $n['label'] = '<label for="xcore_styles">' . $this->i18n('config_xcore_styles') . '</label>';
 $n['field'] = '<input type="checkbox" id="xcore_styles" name="config[xcore_styles]"' . (!empty($this->getConfig('xcore_styles')) && $this->getConfig('xcore_styles') == '1' ? ' checked="checked"' : '') . ' value="1" />';
+$formElements[] = $n;
+
+$fragment = new rex_fragment();
+$fragment->setVar('elements', $formElements, false);
+$content .= $fragment->parse('core/form/checkbox.php');
+
+// allow downloads
+$formElements = [];
+$n = [];
+$n['label'] = '<label for="allow_downloads">' . $this->i18n('config_allow_downloads') . '</label>';
+$n['field'] = '<input type="checkbox" id="allow_downloads" name="config[allow_downloads]"' . (!empty($this->getConfig('allow_downloads')) && $this->getConfig('allow_downloads') == '1' ? ' checked="checked"' : '') . ' value="1" />';
 $formElements[] = $n;
 
 $fragment = new rex_fragment();

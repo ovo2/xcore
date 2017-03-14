@@ -182,6 +182,6 @@ if (rexx::isBackend() && $this->getConfig('show_meta_frontend_link') == 1) {
 	});
 }
 
-// xcore included ep
+// xcore included ep (TODO: put everything in PACKAGES_INCLUDED so this can make sense finally ;))
 rex_extension::registerPoint(new rex_extension_point('XCORE_INCLUDED'));
 

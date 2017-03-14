@@ -6,10 +6,12 @@ class rexx_router {
 
 		switch ($func) {
 			case 'download':
-				$file = rex_get('rexx_file', 'string');
-				$file = $this->sanitizeFile($file);
+				if (rex_config::get('xcore', 'allow_downloads') == 1) {
+					$file = rex_get('rexx_file', 'string');
+					$file = $this->sanitizeFile($file);
 
-				$this->sendDownloadFile($file);
+					$this->sendDownloadFile($file);
+				}
 			break;
 		}
 	}
@@ -20,7 +22,7 @@ class rexx_router {
 
 		$fileWithPath = rexx::getAbsoluteMediaFile($file);
 
-		if (file_exists($fileWithPath)) {
+		if (file_exists($fileWithPath) && is_file($fileWithPath)) {
 			header('Content-Description: File Transfer');
 			header('Content-Type: application/octet-stream');
 			header('Content-Disposition: attachment; filename=' . $file);

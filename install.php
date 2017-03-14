@@ -41,3 +41,7 @@ if (!$this->hasConfig('show_meta_frontend_link')) {
     $this->setConfig('show_meta_frontend_link', 1);
 }
 
+if (!$this->hasConfig('allow_downloads')) {
+    $this->setConfig('allow_downloads', 1);
+}
+
