@@ -1,6 +1,10 @@
 SEO42 - Changelog
 =================
 
+### Version 4.6.0-dev
+
+* SCSS Compiler auf neuste Version v0.6.7 aktualisiert
+
 ### Version 4.5.0 - 01. März 2016
 
 * Update: Das Navigation Factory Addon ersetzt nun die Klasse `nav42`. Bitte die Changelog des Addons studieren für API Änderungen. Die Dokumentation ist nun ebenfalls dort hingewandert.

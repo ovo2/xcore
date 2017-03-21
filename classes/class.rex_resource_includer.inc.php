@@ -275,16 +275,16 @@ class rex_resource_includer {
 
 				if ($sourceFileContent == $compiledCSS) {
 					// include compiler
-					if (!class_exists('scssc')) {
+					if (!class_exists('\Leafo\ScssPhp\Compiler')) {
 						require_once($REX['INCLUDE_PATH'] . '/addons/seo42/classes/scssphp/scss.inc.php');
 					}
 					
-					$formatter = new scss_formatter;
+					$formatter = new \Leafo\ScssPhp\Formatter\Expanded;
 					$formatter->indentChar = "\t";
 					$formatter->close = "}" . PHP_EOL;
 					$formatter->assignSeparator = ": ";
 	
-					$scss = new scssc();
+					$scss = new \Leafo\ScssPhp\Compiler();
 					$scss->addImportPath($path['dirname']);
 					$scss->setFormatter($formatter);
 					

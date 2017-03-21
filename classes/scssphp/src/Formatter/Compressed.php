@@ -2,7 +2,7 @@
 /**
  * SCSSPHP
  *
- * @copyright 2012-2015 Leaf Corcoran
+ * @copyright 2012-2017 Leaf Corcoran
  *
  * @license http://opensource.org/licenses/MIT MIT
  *
@@ -12,9 +12,10 @@
 namespace Leafo\ScssPhp\Formatter;
 
 use Leafo\ScssPhp\Formatter;
+use Leafo\ScssPhp\Formatter\OutputBlock;
 
 /**
- * SCSS compressed formatter
+ * Compressed formatter
  *
  * @author Leaf Corcoran <leafot@gmail.com>
  */
@@ -32,24 +33,13 @@ class Compressed extends Formatter
         $this->close = '}';
         $this->tagSeparator = ',';
         $this->assignSeparator = ':';
+        $this->keepSemicolons = false;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function stripSemicolon(&$lines)
-    {
-        if (($count = count($lines))
-            && substr($lines[$count - 1], -1) === ';'
-        ) {
-            $lines[$count - 1] = substr($lines[$count - 1], 0, -1);
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function blockLines($block)
+    public function blockLines(OutputBlock $block)
     {
         $inner = $this->indentStr();
 
@@ -68,16 +58,5 @@ class Compressed extends Formatter
         if (! empty($block->children)) {
             echo $this->break;
         }
-    }
-
-    /**
-     * {@inherit}
-     */
-    public function format($block)
-    {
-        return parent::format($block);
-
-        // TODO: we need to fix the 2 "compressed" tests where the "close" is applied
-        return trim(str_replace(';}', '}', parent::format($block)));
     }
 }

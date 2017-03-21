@@ -2,7 +2,7 @@
 /**
  * SCSSPHP
  *
- * @copyright 2012-2015 Leaf Corcoran
+ * @copyright 2012-2017 Leaf Corcoran
  *
  * @license http://opensource.org/licenses/MIT MIT
  *
@@ -12,9 +12,10 @@
 namespace Leafo\ScssPhp\Formatter;
 
 use Leafo\ScssPhp\Formatter;
+use Leafo\ScssPhp\Formatter\OutputBlock;
 
 /**
- * SCSS debug formatter
+ * Debug formatter
  *
  * @author Anthon Pang <anthon.pang@gmail.com>
  */
@@ -32,6 +33,7 @@ class Debug extends Formatter
         $this->close = ' }';
         $this->tagSeparator = ', ';
         $this->assignSeparator = ': ';
+        $this->keepSemicolons = true;
     }
 
     /**
@@ -45,7 +47,7 @@ class Debug extends Formatter
     /**
      * {@inheritdoc}
      */
-    protected function blockLines($block)
+    protected function blockLines(OutputBlock $block)
     {
         $indent = $this->indentStr();
 
@@ -63,7 +65,7 @@ class Debug extends Formatter
     /**
      * {@inheritdoc}
      */
-    protected function blockSelectors($block)
+    protected function blockSelectors(OutputBlock $block)
     {
         $indent = $this->indentStr();
 
@@ -81,7 +83,7 @@ class Debug extends Formatter
     /**
      * {@inheritdoc}
      */
-    protected function blockChildren($block)
+    protected function blockChildren(OutputBlock $block)
     {
         $indent = $this->indentStr();
 
@@ -103,7 +105,7 @@ class Debug extends Formatter
     /**
      * {@inheritdoc}
      */
-    protected function block($block)
+    protected function block(OutputBlock $block)
     {
         $indent = $this->indentStr();
 
