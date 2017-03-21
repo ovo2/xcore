@@ -1,7 +1,7 @@
 SEO42 - Changelog
 =================
 
-### Version 4.6.0-dev
+### Version 4.5.1 - 21. März 2017
 
 * SCSS Compiler auf neuste Version v0.6.7 aktualisiert
 
