@@ -1683,53 +1683,35 @@ class rexx extends rex {
 	public static function sortArticles($articles, $sortType = self::ARTICLE_SORT_TYPE_NAME, $sortDirectionAsc = true) {
 		switch ($sortType) {
 			case self::ARTICLE_SORT_TYPE_PRIO:
-				if ($sortDirectionAsc) {
-					usort($articles, function ($a, $b) { 
-						return ($a->getValue('priority') <=> $b->getValue('priority')); 
-					});
-				} else {
-					usort($articles, function ($a, $b) { 
-						return -($a->getValue('priority') <=> $b->getValue('priority')); 
-					});
-				}
+				$sortFunction = function ($a, $b) { 
+					return ($a->getValue('priority') <=> $b->getValue('priority')); 
+				};
 
 				break;
 			case self::ARTICLE_SORT_TYPE_NAME:
-				if ($sortDirectionAsc) {
-					usort($articles, function ($a, $b) { 
-						return (strtolower($a->getName()) <=> strtolower($b->getName())); 
-					});
-				} else {
-					usort($articles, function ($a, $b) { 
-						return -(strtolower($a->getName()) <=> strtolower($b->getName())); 
-					});
-				}
+				$sortFunction = function ($a, $b) { 
+					return (strtolower($a->getName()) <=> strtolower($b->getName())); 
+				};
 
 				break;
 			case self::ARTICLE_SORT_TYPE_CREATEDATE:
-				if ($sortDirectionAsc) {
-					usort($articles, function ($a, $b) { 
-						return ($a->getValue('createdate') <=> $b->getValue('createdate')); 
-					});
-				} else {
-					usort($articles, function ($a, $b) { 
-						return -($a->getValue('createdate') <=> $b->getValue('createdate')); 
-					});
-				}
+				$sortFunction = function ($a, $b) { 
+					return ($a->getValue('createdate') <=> $b->getValue('createdate')); 
+				};
 
 				break;
 			case self::ARTICLE_SORT_TYPE_UPDATEDATE:
-				if ($sortDirectionAsc) {
-					usort($articles, function ($a, $b) { 
-						return ($a->getValue('updatedate') <=> $b->getValue('updatedate')); 
-					});
-				} else {
-					usort($articles, function ($a, $b) { 
-						return -($a->getValue('updatedate') <=> $b->getValue('updatedate')); 
-					});
-				}
+				$sortFunction = function ($a, $b) { 
+					return ($a->getValue('updatedate') <=> $b->getValue('updatedate')); 
+				};
 
 				break;	 	
+		}
+
+		usort($articles, $sortFunction);
+
+		if (!$sortDirectionAsc) {
+			$articles = array_reverse($articles);
 		}
 
 		return $articles;
