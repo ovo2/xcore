@@ -19,6 +19,11 @@ class rexx extends rex {
 	const downloadDir = 'download';
 	const defaultRobotsArchiveFlag = 'noarchive';
 
+    const ARTICLE_SORT_TYPE_PRIO = 1;
+    const ARTICLE_SORT_TYPE_NAME = 2;
+    const ARTICLE_SORT_TYPE_CREATEDATE = 3;
+    const ARTICLE_SORT_TYPE_UPDATEDATE = 4;
+
 	/**
 	 * Initilizes the rexx class.
 	 * X-Core calls this automatically.
@@ -1675,9 +1680,9 @@ class rexx extends rex {
 		rexx_clang::addLangPreset($originalName, $code, $regionCode, $urlSlug, $hreflang, $dir, $specialChars, $specialCharsRewrite);
 	}
 
-	public static function sortArticles($articles, $sortType, $sortDirectionAsc = true) {
+	public static function sortArticles($articles, $sortType = self::ARTICLE_SORT_TYPE_NAME, $sortDirectionAsc = true) {
 		switch ($sortType) {
-			case 'sortByPrio':
+			case self::ARTICLE_SORT_TYPE_PRIO:
 				if ($sortDirectionAsc) {
 					usort($articles, function ($a, $b) { 
 						return ($a->getValue('priority') <=> $b->getValue('priority')); 
@@ -1689,7 +1694,7 @@ class rexx extends rex {
 				}
 
 				break;
-			case 'sortByName':
+			case self::ARTICLE_SORT_TYPE_NAME:
 				if ($sortDirectionAsc) {
 					usort($articles, function ($a, $b) { 
 						return (strtolower($a->getName()) <=> strtolower($b->getName())); 
@@ -1701,7 +1706,7 @@ class rexx extends rex {
 				}
 
 				break;
-			case 'sortByCreateDate':
+			case self::ARTICLE_SORT_TYPE_CREATEDATE:
 				if ($sortDirectionAsc) {
 					usort($articles, function ($a, $b) { 
 						return ($a->getValue('createdate') <=> $b->getValue('createdate')); 
@@ -1713,7 +1718,7 @@ class rexx extends rex {
 				}
 
 				break;
-			case 'sortByUpdateDate':
+			case self::ARTICLE_SORT_TYPE_UPDATEDATE:
 				if ($sortDirectionAsc) {
 					usort($articles, function ($a, $b) { 
 						return ($a->getValue('updatedate') <=> $b->getValue('updatedate')); 
