@@ -1676,39 +1676,58 @@ class rexx extends rex {
 	}
 
 	public static function sortArticles($articles, $sortType, $sortDirectionAsc = true) {
+		switch ($sortType) {
+			case 'sortByPrio':
+				if ($sortDirectionAsc) {
+					usort($articles, function ($a, $b) { 
+						return ($a->getValue('priority') <=> $b->getValue('priority')); 
+					});
+				} else {
+					usort($articles, function ($a, $b) { 
+						return -($a->getValue('priority') <=> $b->getValue('priority')); 
+					});
+				}
 
-     switch ($sortType) {
-     	 case "sortByPrio":
-	     if($sortDirectionAsc) : 
-	     	usort($articles, function ( $a, $b) { return ($a->getValue("priority") <=> $b->getValue("priority")); });
-	     else: 
-	     	usort($articles, function ( $a, $b) { return -($a->getValue("priority") <=> $b->getValue("priority")); });
-	     endif;
-	     break;
-       case "sortByName":
-       if($sortDirectionAsc) : 
-       	usort($articles, function ( $a, $b) { return (strtolower($a->getName()) <=> strtolower($b->getName())); });
-       else: 
-       	usort($articles, function ( $a, $b) { return -(strtolower($a->getName()) <=> strtolower($b->getName())); });
-       endif;
-       break;
-       case "sortByCreateDate":
-       if($sortDirectionAsc) : 
-       	usort($articles, function ( $a, $b) { return ($a->getValue("createdate") <=> $b->getValue("createdate")); });
-       else: 
-       	usort($articles, function ( $a, $b) { return -($a->getValue("createdate") <=> $b->getValue("createdate")); });
-       endif;
-       break;
-       case "sortByUpdateDate":
-       if($sortDirectionAsc) : 
-       	usort($articles, function ( $a, $b) { return ($a->getValue("updatedate") <=> $b->getValue("updatedate")); });
-       else: 
-       	usort($articles, function ( $a, $b) { return -($a->getValue("updatedate") <=> $b->getValue("updatedate")); });
-       endif;
-       break;	 	
-     }
+				break;
+			case 'sortByName':
+				if ($sortDirectionAsc) {
+					usort($articles, function ($a, $b) { 
+						return (strtolower($a->getName()) <=> strtolower($b->getName())); 
+					});
+				} else {
+					usort($articles, function ($a, $b) { 
+						return -(strtolower($a->getName()) <=> strtolower($b->getName())); 
+					});
+				}
 
-     return $articles;
+				break;
+			case 'sortByCreateDate':
+				if ($sortDirectionAsc) {
+					usort($articles, function ($a, $b) { 
+						return ($a->getValue('createdate') <=> $b->getValue('createdate')); 
+					});
+				} else {
+					usort($articles, function ($a, $b) { 
+						return -($a->getValue('createdate') <=> $b->getValue('createdate')); 
+					});
+				}
+
+				break;
+			case 'sortByUpdateDate':
+				if ($sortDirectionAsc) {
+					usort($articles, function ($a, $b) { 
+						return ($a->getValue('updatedate') <=> $b->getValue('updatedate')); 
+					});
+				} else {
+					usort($articles, function ($a, $b) { 
+						return -($a->getValue('updatedate') <=> $b->getValue('updatedate')); 
+					});
+				}
+
+				break;	 	
+		}
+
+		return $articles;
 	}
 }
 
