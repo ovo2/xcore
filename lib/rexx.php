@@ -1682,7 +1682,7 @@ class rexx extends rex {
 	}
 
 	/**
-	 * Sorts the given array of articles by sort type: rexx::ARTICLE_SORT_TYPE_PRIO, rexx::ARTICLE_SORT_TYPE_NAME, rexx::ARTICLE_SORT_TYPE_CREATEDATE, rexx::ARTICLE_SORT_TYPE_UPDATEDATE
+	 * Sorts the given array of articles by sort direction and sort type: rexx::ARTICLE_SORT_TYPE_PRIO, rexx::ARTICLE_SORT_TYPE_NAME, rexx::ARTICLE_SORT_TYPE_CREATEDATE, rexx::ARTICLE_SORT_TYPE_UPDATEDATE.
 	 *
 	 * @param rex_article[] $articles
 	 * @param int $sortType
@@ -1692,39 +1692,43 @@ class rexx extends rex {
 	 *
 	 */
 	public static function sortArticles($articles, $sortType = self::ARTICLE_SORT_TYPE_NAME, $sortDirectionAsc = true) {
+		// create sort funtion based on sort type
 		switch ($sortType) {
 			case self::ARTICLE_SORT_TYPE_PRIO:
-				$sortFunction = function ($a, $b) { 
-					return ($a->getValue('priority') <=> $b->getValue('priority')); 
+				$sortFunction = function($article1, $article2) { 
+					return ($article1->getValue('priority') <=> $article2->getValue('priority')); 
 				};
 
 				break;
 			case self::ARTICLE_SORT_TYPE_NAME:
-				$sortFunction = function ($a, $b) { 
-					return (strtolower($a->getName()) <=> strtolower($b->getName())); 
+				$sortFunction = function($article1, $article2) { 
+					return (strtolower($article1->getName()) <=> strtolower($article2->getName())); 
 				};
 
 				break;
 			case self::ARTICLE_SORT_TYPE_CREATEDATE:
-				$sortFunction = function ($a, $b) { 
-					return ($a->getValue('createdate') <=> $b->getValue('createdate')); 
+				$sortFunction = function($article1, $article2) { 
+					return ($article1->getValue('createdate') <=> $article2->getValue('createdate')); 
 				};
 
 				break;
 			case self::ARTICLE_SORT_TYPE_UPDATEDATE:
-				$sortFunction = function ($a, $b) { 
-					return ($a->getValue('updatedate') <=> $b->getValue('updatedate')); 
+				$sortFunction = function($article1, $article2) { 
+					return ($article1->getValue('updatedate') <=> $article2->getValue('updatedate')); 
 				};
 
 				break;	 	
 		}
 
+		// sort
 		usort($articles, $sortFunction);
 
+		// reverse array if desc sort direction
 		if (!$sortDirectionAsc) {
 			$articles = array_reverse($articles);
 		}
 
+		// return sorted articles
 		return $articles;
 	}
 }
