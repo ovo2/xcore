@@ -19,6 +19,7 @@ class rexx extends rex {
 	const downloadDir = 'download';
 	const defaultRobotsArchiveFlag = 'noarchive';
 
+	// sort types for rexx::sortArticles()
     const ARTICLE_SORT_TYPE_PRIO = 1;
     const ARTICLE_SORT_TYPE_NAME = 2;
     const ARTICLE_SORT_TYPE_CREATEDATE = 3;
@@ -1680,6 +1681,16 @@ class rexx extends rex {
 		rexx_clang::addLangPreset($originalName, $code, $regionCode, $urlSlug, $hreflang, $dir, $specialChars, $specialCharsRewrite);
 	}
 
+	/**
+	 * Sorts the given array of articles by sort type: rexx::ARTICLE_SORT_TYPE_PRIO, rexx::ARTICLE_SORT_TYPE_NAME, rexx::ARTICLE_SORT_TYPE_CREATEDATE, rexx::ARTICLE_SORT_TYPE_UPDATEDATE
+	 *
+	 * @param rex_article[] $articles
+	 * @param int $sortType
+	 * @param bool $sortDirectionAsc
+	 * 
+	 * @return rex_article[]
+	 *
+	 */
 	public static function sortArticles($articles, $sortType = self::ARTICLE_SORT_TYPE_NAME, $sortDirectionAsc = true) {
 		switch ($sortType) {
 			case self::ARTICLE_SORT_TYPE_PRIO:
