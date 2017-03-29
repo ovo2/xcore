@@ -15,9 +15,9 @@ class rexx extends rex {
 	protected static $serverSubDir;
 	protected static $isSubDirInstall;
 
-	const mediaTypesDir = 'mediatypes';
-	const downloadDir = 'download';
-	const defaultRobotsArchiveFlag = 'noarchive';
+	const MEDIATYPES_DIR = 'mediatypes';
+	const DOWNLOAD_DIR = 'download';
+	const DEFAULT_ROBOTS_ARCHIVE_FLAG = 'noarchive';
 
 	// sort types for rexx::sortArticles()
     const ARTICLE_SORT_TYPE_PRIO = 1;
@@ -246,9 +246,9 @@ class rexx extends rex {
 		$curArticle = rexx::getCurrentArticle();
 
 	     if ($curArticle->getValue('yrewrite_index') == 1 || ($curArticle->getValue('yrewrite_index') == 0 && $curArticle->isOnline())) {
-            return 'index, follow, ' . self::defaultRobotsArchiveFlag;
+            return 'index, follow, ' . self::DEFAULT_ROBOTS_ARCHIVE_FLAG;
         } else {
-            return 'noindex, follow, ' . self::defaultRobotsArchiveFlag;
+            return 'noindex, follow, ' . self::DEFAULT_ROBOTS_ARCHIVE_FLAG;
         }
 	}
 
@@ -725,7 +725,7 @@ class rexx extends rex {
 		if (rexx::isBackend()) {
 			$url = rex_url::backendController() . '?rex_media_type=' . $mediaType . '&rex_media_file=' . $mediaFile;
 		} else {
-			$url = rexx::getUrlStart() . self::mediaTypesDir . '/' . $mediaType . '/' . $mediaFile;
+			$url = rexx::getUrlStart() . self::MEDIATYPES_DIR . '/' . $mediaType . '/' . $mediaFile;
 		}
 
 		if ($validHtml) {
@@ -1233,7 +1233,7 @@ class rexx extends rex {
 	 *
 	 */
 	public static function getDownloadFile($file) {
-		return rexx::getUrlStart() . rexx::downloadDir . '/' . $file;
+		return rexx::getUrlStart() . rexx::DOWNLOAD_DIR . '/' . $file;
 	}
 
 	/**
