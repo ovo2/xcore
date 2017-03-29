@@ -182,6 +182,10 @@ a[data-toggle="tab"] label {
 	margin-top: -8px;
 }
 
+.mform.form-horizontal .checkbox {
+	padding-top: 0;
+}
+
 /* slice pimper  */
 .rex-slice .panel-body {
 	padding: 0;
