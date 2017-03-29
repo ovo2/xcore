@@ -3,6 +3,7 @@ X-Core - Changelog
 
 ### Version 1.0.1-dev
 
+* X-Core Styles: Extra MForm Tabs Style entfernt
 * X-Core Styles: MForm Checkbox wieder ausgerichtet
 * rexx API: `sortArticles()` hinzugefügt, thx@fietstouring
 

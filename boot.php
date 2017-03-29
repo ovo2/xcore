@@ -81,7 +81,7 @@ if (rexx::isBackend()) {
 
 		// restore normal bootstrap tab style for mform
 		if (rex_config::get('xcore', 'xcore_styles') == 1) {
-			$subject = str_replace('mform-tabs rex-page-nav', 'mform-tabs', $subject);
+			$subject = str_replace('mform-tabs rex-page-nav', '', $subject);
 		}
 		
 		return $subject;
