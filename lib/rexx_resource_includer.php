@@ -256,13 +256,13 @@ class rexx_resource_includer {
 		        $compiledCSS = rex_extension::registerPoint(new rex_extension_point('XCORE_COMPILE_SCSS', $sourceFileContent, ['vars' => $vars]));
 
 				if ($sourceFileContent == $compiledCSS) {
-					$formatter = new scss_formatter;
+					$formatter = new \Leafo\ScssPhp\Formatter\Expanded();
 					$formatter->indentChar = "\t";
 					$formatter->close = "}" . PHP_EOL;
 
 					$formatter->assignSeparator = ": ";
 	
-					$scss = new scssc();
+					$scss = new \Leafo\ScssPhp\Compiler();
 					$scss->addImportPath($path['dirname']);
 					$scss->setFormatter($formatter);
 					

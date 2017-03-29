@@ -2,7 +2,7 @@
 /**
  * SCSSPHP
  *
- * @copyright 2012-2015 Leaf Corcoran
+ * @copyright 2012-2017 Leaf Corcoran
  *
  * @license http://opensource.org/licenses/MIT MIT
  *
@@ -11,8 +11,10 @@
 
 namespace Leafo\ScssPhp;
 
+use Leafo\ScssPhp\Formatter\OutputBlock;
+
 /**
- * SCSS base formatter
+ * Base formatter
  *
  * @author Leaf Corcoran <leafot@gmail.com>
  */
@@ -53,6 +55,16 @@ abstract class Formatter
      */
     public $assignSeparator;
 
+    /**
+     * @var boolea
+     */
+    public $keepSemicolons;
+
+    /**
+     * Initialize formatter
+     *
+     * @api
+     */
     abstract public function __construct();
 
     /**
@@ -68,6 +80,8 @@ abstract class Formatter
     /**
      * Return property assignment
      *
+     * @api
+     *
      * @param string $name
      * @param mixed  $value
      *
@@ -81,18 +95,29 @@ abstract class Formatter
     /**
      * Strip semi-colon appended by property(); it's a separator, not a terminator
      *
+     * @api
+     *
      * @param array $lines
      */
     public function stripSemicolon(&$lines)
     {
+        if ($this->keepSemicolons) {
+            return;
+        }
+
+        if (($count = count($lines))
+            && substr($lines[$count - 1], -1) === ';'
+        ) {
+            $lines[$count - 1] = substr($lines[$count - 1], 0, -1);
+        }
     }
 
     /**
      * Output lines inside a block
      *
-     * @param \stdClass $block
+     * @param \Leafo\ScssPhp\Formatter\OutputBlock $block
      */
-    protected function blockLines($block)
+    protected function blockLines(OutputBlock $block)
     {
         $inner = $this->indentStr();
 
@@ -108,9 +133,9 @@ abstract class Formatter
     /**
      * Output block selectors
      *
-     * @param \stdClass $block
+     * @param \Leafo\ScssPhp\Formatter\OutputBlock $block
      */
-    protected function blockSelectors($block)
+    protected function blockSelectors(OutputBlock $block)
     {
         $inner = $this->indentStr();
 
@@ -122,9 +147,9 @@ abstract class Formatter
     /**
      * Output block children
      *
-     * @param \stdClass $block
+     * @param \Leafo\ScssPhp\Formatter\OutputBlock $block
      */
-    protected function blockChildren($block)
+    protected function blockChildren(OutputBlock $block)
     {
         foreach ($block->children as $child) {
             $this->block($child);
@@ -134,9 +159,9 @@ abstract class Formatter
     /**
      * Output non-empty block
      *
-     * @param \stdClass $block
+     * @param \Leafo\ScssPhp\Formatter\OutputBlock $block
      */
-    protected function block($block)
+    protected function block(OutputBlock $block)
     {
         if (empty($block->lines) && empty($block->children)) {
             return;
@@ -172,11 +197,13 @@ abstract class Formatter
     /**
      * Entry point to formatting a block
      *
-     * @param \stdClass $block An abstract syntax tree
+     * @api
+     *
+     * @param \Leafo\ScssPhp\Formatter\OutputBlock $block An abstract syntax tree
      *
      * @return string
      */
-    public function format($block)
+    public function format(OutputBlock $block)
     {
         ob_start();
 
