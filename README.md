@@ -47,6 +47,22 @@ Die Urls werden mittels dieser LangPresets automatisch sauber umgeschrieben wenn
 * svensk (sv)
 * türk (tr)
 
+500 Serverfehler
+----------------
+
+Wenn Sie einen 500 Serverfehler bekommen entfernen Sie die Zeile `Options -Indexes` aus der `.htaccess` Datei im root Verzeichnis.
+
+
+Fehlerartikel
+-------------
+
+Stellen Sie einen Fehlerartikel ein. Sonst liefert X-Core eine eigene 404 Seite aus um Double Content Probleme zu vermeiden.
+
+Unterordner-Installationen
+--------------------------
+
+Unter REDAXO > System ist es wichtig den Unterordner bei der URL der Website mit anzugeben. Wenn Sie unter yRewrite > Domains eine Domain/Url eingestellt haben sollte diese ebenfalls mit Unterordner angegeben werden.
+
 Dokumentation
 -------------
 
@@ -62,8 +78,6 @@ Hinweise
 * Getestet mit REDAXO 5.3
 * AddOn-Ordner lautet: `xcore`
 * Abhängigkeiten: yRewrite
-* 500 Serverfehler: Wenn Sie einen 500 Serverfehler bekommen entfernen Sie die Zeile `Options -Indexes` aus der `.htaccess` Datei im root Verzeichnis.
-* Stellen Sie einen Fehlerartikel ein. Sonst liefert X-Core eine eigene 404 Seite aus um Double Content Probleme zu vermeiden.
 
 Changelog
 ---------
