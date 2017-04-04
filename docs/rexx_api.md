@@ -7,6 +7,7 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public static | <strong>addLangPreset(</strong><em>string</em> <strong>$originalName</strong>, <em>string</em> <strong>$code</strong>, <em>string</em> <strong>$regionCode</strong>, <em>string</em> <strong>$urlSlug</strong>, <em>string</em> <strong>$hreflang</strong>, <em>string</em> <strong>$dir</strong>, <em>string[]</em> <strong>$specialChars</strong>, <em>string[]</em> <strong>$specialCharsRewrite</strong>)</strong> : <em>void</em><br /><em>Adds a custom lang preset. Can be used in boot.php of project addon to add a custom preset.</em> |
+| public static | <strong>formatBytes(</strong><em>int</em> <strong>$bytes</strong>)</strong> : <em>string</em><br /><em>Formats given bytes (e.g. from filesize()) to human readable string like 20,53 MB.</em> |
 | public static | <strong>getAbsoluteFile(</strong><em>string</em> <strong>$file</strong>)</strong> : <em>string</em><br /><em>Returns the absolute file with path of the given file starting from frontend path.</em> |
 | public static | <strong>getAbsoluteImageFile(</strong><em>string</em> <strong>$file</strong>)</strong> : <em>string</em><br /><em>Returns the absolute file with path of the given image of resource dir.</em> |
 | public static | <strong>getAbsoluteMediaFile(</strong><em>string</em> <strong>$file</strong>)</strong> : <em>string</em><br /><em>Returns the absolute file with path of the given media file of media dir.</em> |
