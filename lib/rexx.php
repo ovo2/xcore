@@ -1696,25 +1696,25 @@ class rexx extends rex {
 		switch ($sortType) {
 			case self::ARTICLE_SORT_TYPE_PRIO:
 				$sortFunction = function($article1, $article2) { 
-					return ($article1->getValue('priority') <=> $article2->getValue('priority')); 
+					return rexx::threeWayComparison($article1->getValue('priority'), $article2->getValue('priority'));
 				};
 
 				break;
 			case self::ARTICLE_SORT_TYPE_NAME:
 				$sortFunction = function($article1, $article2) { 
-					return (strtolower($article1->getName()) <=> strtolower($article2->getName())); 
+					return rexx::threeWayComparison(strtolower($article1->getName()), strtolower($article2->getName()));
 				};
 
 				break;
 			case self::ARTICLE_SORT_TYPE_CREATEDATE:
 				$sortFunction = function($article1, $article2) { 
-					return ($article1->getValue('createdate') <=> $article2->getValue('createdate')); 
+					return rexx::threeWayComparison($article1->getValue('createdate'), $article2->getValue('createdate'));
 				};
 
 				break;
 			case self::ARTICLE_SORT_TYPE_UPDATEDATE:
 				$sortFunction = function($article1, $article2) { 
-					return ($article1->getValue('updatedate') <=> $article2->getValue('updatedate')); 
+					return rexx::threeWayComparison($article1->getValue('updatedate'), $article2->getValue('updatedate'));
 				};
 
 				break;	 	
@@ -1730,6 +1730,25 @@ class rexx extends rex {
 
 		// return sorted articles
 		return $articles;
+	}
+
+	/**
+	 * PHP5 Three way comparison. In PHP7 you can use spaceship operator <=>.
+	 *
+	 * @param integer $left
+	 * @param integer $right
+	 *
+	 * @return integer
+	 *
+	 */
+	public static function threeWayComparison($left, $right) {
+		if ($left < $right) {
+			return -1;
+		} elseif ($left > $right) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 }
 

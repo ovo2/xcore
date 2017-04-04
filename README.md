@@ -92,6 +92,4 @@ MIT-Lizenz, siehe `LICENSE.md` des AddOns
 Credits
 -------
 
-* PHP-Markdown-Documentation-Generator
-* Logo ist Public Domain
-* More to come...
+* PHP-Markdown-Documentation-Generator, itsliamjones (threeWayComparison()), Public Domain Logo, More to come...
