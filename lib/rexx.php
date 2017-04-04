@@ -1796,16 +1796,16 @@ class rexx extends rex {
 	 * @return bool
 	 *
 	 */
-	public static function validateFormData($data, $dataType = self::DATA_TYPE_NOT_EMPTY) {
-		if ($dataType == self::DATA_TYPE_EMAIL && filter_var($data, FILTER_VALIDATE_EMAIL)) {
+	public static function validateFormData($data, $dataType = rexx::DATA_TYPE_NOT_EMPTY) {
+		if ($dataType == rexx::DATA_TYPE_EMAIL && filter_var($data, FILTER_VALIDATE_EMAIL)) {
 			return true;
-		} elseif ($dataType == self::DATA_TYPE_INT && filter_var($data, FILTER_VALIDATE_INT)) {
+		} elseif ($dataType == rexx::DATA_TYPE_INT && filter_var($data, FILTER_VALIDATE_INT)) {
 			return true;
-		} elseif ($dataType == self::DATA_TYPE_URL && filter_var($data, FILTER_VALIDATE_URL)) {
+		} elseif ($dataType == rexx::DATA_TYPE_URL && filter_var($data, FILTER_VALIDATE_URL)) {
 			return true;
-		} elseif ($dataType == self::DATA_TYPE_NOT_EMPTY && $data != '') { 
+		} elseif ($dataType == rexx::DATA_TYPE_NOT_EMPTY && $data != '') { 
 			return true;
-		} elseif ($dataType == self::DATA_TYPE_EMPTY && $data == '') { 
+		} elseif ($dataType == rexx::DATA_TYPE_EMPTY && $data == '') { 
 			return true;
 		} else {
 			return false;
