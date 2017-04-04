@@ -8,6 +8,11 @@ X-Core - Changelog
 * X-Core Styles: MForm Checkbox wieder ausgerichtet
 * rexx API: `rexx::sortArticles()` hinzugefügt, thx@fietstouring
 * rexx API: `rexx::threeWayComparison()` hinzugefügt, PHP5 Ersatz für Spaceship Operator `<=>` aus PHP 7
+* rexx API: `rexx::sanitizeFormValue()` hinzugefügt, bereinigt den Wert eines Formulars (Helfer für Custom Frontend Formular)
+* rexx API: `rexx::validateFormData()` hinzugefügt, validiert den Wert eines Formulars (Helfer für Custom Frontend Formular)
+* rexx API: `rexx::getValidateAlertClass()` hinzugefügt, Helfer für Custom Frontend Formular
+* rexx API: `rexx::getRequiredString()` hinzugefügt, Helfer für Custom Frontend Formular
+* rexx API: `rexx::getRequiredPlaceholderString()` hinzugefügt, Helfer für Custom Frontend Formular
 * Readme: Hinweis zu Unterordner-Installationen hinzugefügt
 
 ### Version 1.0.0 - 15. März 2017

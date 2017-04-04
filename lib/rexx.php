@@ -25,6 +25,19 @@ class rexx extends rex {
     const ARTICLE_SORT_TYPE_CREATEDATE = 3;
     const ARTICLE_SORT_TYPE_UPDATEDATE = 4;
 
+	// for rexx::sanitizeFormValue()
+	const VALIDATE_TYPE_STRING = FILTER_SANITIZE_STRING;
+	const VALIDATE_TYPE_EMAIL = FILTER_SANITIZE_EMAIL;
+	const VALIDATE_TYPE_INT = FILTER_SANITIZE_NUMBER_INT;
+	const VALIDATE_TYPE_URL = FILTER_SANITIZE_URL;
+
+	// for rexx::validateFormData()
+	const DATA_TYPE_NOT_EMPTY = 1;
+	const DATA_TYPE_EMPTY = 2;
+	const DATA_TYPE_EMAIL = 3;
+	const DATA_TYPE_INT = 4;
+	const DATA_TYPE_URL = 5;
+
 	/**
 	 * Initilizes the rexx class.
 	 * X-Core calls this automatically.
@@ -1691,7 +1704,7 @@ class rexx extends rex {
 	 * @return rex_article[]
 	 *
 	 */
-	public static function sortArticles($articles, $sortType = self::ARTICLE_SORT_TYPE_NAME, $sortDirectionAsc = true) {
+	public static function sortArticles($articles, $sortType = rexx::ARTICLE_SORT_TYPE_NAME, $sortDirectionAsc = true) {
 		// create sort funtion based on sort type
 		switch ($sortType) {
 			case self::ARTICLE_SORT_TYPE_PRIO:
@@ -1735,10 +1748,10 @@ class rexx extends rex {
 	/**
 	 * PHP5 Three way comparison. In PHP7 you can use spaceship operator <=>.
 	 *
-	 * @param integer $left
-	 * @param integer $right
+	 * @param int $left
+	 * @param int $right
 	 *
-	 * @return integer
+	 * @return int
 	 *
 	 */
 	public static function threeWayComparison($left, $right) {
@@ -1748,6 +1761,108 @@ class rexx extends rex {
 			return 1;
 		} else {
 			return 0;
+		}
+	}
+	
+	/**
+	 * Sanitizes a form value by given validate type constant. 
+	 *
+	 * @param string $value
+	 * @param int $validateType
+	 *
+	 * @return string
+	 *
+	 */
+	public static function sanitizeFormValue($value, $validateType = rexx::VALIDATE_TYPE_STRING) {
+		if (isset($_POST[$value])) {
+			$data = $_POST[$value];
+			$data = filter_var($data, $validateType);
+			$data = trim($data);
+			$data = stripslashes($data);
+			$data = htmlspecialchars($data);
+
+			return $data;
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Validates a form data by given data type constant.
+	 *
+	 * @param string $data
+	 * @param int $dataType
+	 *
+	 * @return bool
+	 *
+	 */
+	public static function validateFormData($data, $dataType = self::DATA_TYPE_NOT_EMPTY) {
+		if ($dataType == self::DATA_TYPE_EMAIL && filter_var($data, FILTER_VALIDATE_EMAIL)) {
+			return true;
+		} elseif ($dataType == self::DATA_TYPE_INT && filter_var($data, FILTER_VALIDATE_INT)) {
+			return true;
+		} elseif ($dataType == self::DATA_TYPE_URL && filter_var($data, FILTER_VALIDATE_URL)) {
+			return true;
+		} elseif ($dataType == self::DATA_TYPE_NOT_EMPTY && $data != '') { 
+			return true;
+		} elseif ($dataType == self::DATA_TYPE_EMPTY && $data == '') { 
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Helper for getting validate class if $value in $valueArray.
+	 *
+	 * @param string $value
+	 * @param string[] $valueArray
+	 *
+	 * @return string
+	 *
+	 */
+	public static function getValidateAlertClass($value, $valueArray, $validateClass = 'validate-alert') {
+		if (isset($valueArray[$value])) { 
+			return $validateClass;
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Helper for getting required string with extra required span tag.
+	 *
+	 * @param string $key
+	 * @param bool $required
+	 * @param string $requiredClass
+	 * @param string $requiredContent
+	 *
+	 * @return string
+	 *
+	 */
+	public static function getRequiredString($key, $required = false, $requiredClass = 'required', $requiredContent = '*') {
+		if ($required) {
+			return rexx::getString($key) . ' <span class="' . $requiredClass . '">' . $requiredContent . '</span>';
+		} else {
+			return rexx::getString($key);
+		}
+	}
+
+	/**
+	 * Helper for getting required placeholder string with extra required content string.
+	 *
+	 * @param string $key
+	 * @param bool $required
+	 * @param string $requiredContent
+	 *
+	 * @return string
+	 *
+	 */
+	public static function getRequiredPlaceholderString($key, $required = false, $requiredContent = '*') {
+		if ($required) {
+			return rexx::getString($key) . $requiredContent;
+		} else {
+			return rexx::getString($key);
 		}
 	}
 }
