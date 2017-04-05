@@ -48,6 +48,10 @@ if (rexx::isBackend()) {
 		    $subject['class'][] = 'rexx-customizer-is-green';
 		}
 
+		if (rex_config::get('xcore', 'xcore_styles') == 1 && rex_config::get('be_style/customizer', 'codemirror') == '1') {
+		    $subject['class'][] = 'rexx-customizer-codemirror-available';
+		}
+
 		if (rex_config::get('xcore', 'show_meta_frontend_link') == 1) {
 		    $subject['class'][] = 'rexx-has-meta-frontend-link';
 		}

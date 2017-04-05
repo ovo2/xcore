@@ -109,7 +109,7 @@ a[data-toggle="tab"] label {
 }
 
 /* codemirror */
-.codemirror {
+.rexx-customizer-codemirror-available .codemirror {
 	display: none;
 }
 
