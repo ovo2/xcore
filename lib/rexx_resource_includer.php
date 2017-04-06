@@ -256,6 +256,8 @@ class rexx_resource_includer {
 		        $compiledCSS = rex_extension::registerPoint(new rex_extension_point('XCORE_COMPILE_SCSS', $sourceFileContent, ['vars' => $vars]));
 
 				if ($sourceFileContent == $compiledCSS) {
+					require_once(rex_path::addon('xcore', 'lib/scssphp/scss.inc.php'));
+
 					$formatter = new \Leafo\ScssPhp\Formatter\Expanded();
 					$formatter->indentChar = "\t";
 					$formatter->close = "}" . PHP_EOL;
