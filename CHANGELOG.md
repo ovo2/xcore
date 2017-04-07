@@ -3,6 +3,7 @@ X-Core - Changelog
 
 ### Version 1.0.1-dev
 
+* Code Snippets hinzugefügt: Boilerplate, Resource Includer und Frontend Form
 * SCSS Compiler auf Version v0.6.7 aktualisiert
 * X-Core Styles: Extra MForm Tabs Style entfernt
 * X-Core Styles: MForm Checkbox wieder ausgerichtet

@@ -17,6 +17,21 @@
 	height: 250px;
 }
 
+
+.rexx-code {
+	overflow: auto;
+	white-space: nowrap;
+}
+
+.rexx-code pre {
+	overflow-wrap: normal;
+	word-break: keep-all;
+}
+
+.rexx-code code {
+	background-color: transparent;
+}
+
 /* ------------------------------------------------------------------------- */
 
 .rexx-pretty-var-box {

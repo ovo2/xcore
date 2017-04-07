@@ -11,6 +11,12 @@ page:
     subpages:
         main: { title: 'translate:main' }
         rexx_api: { title: 'translate:rexx_api' }
+        code_snippets: 
+            title: 'translate:code_snippets'
+            subpages:
+                boilerplate: { title: 'translate:code_snippets_boilerplate' }
+                resource_includer: { title: 'translate:code_snippets_resource_includer' }
+                frontend_form: { title: 'translate:code_snippets_frontend_form' }
         config: { title: 'translate:config' }
         setup: { title: 'translate:setup' }
         help:

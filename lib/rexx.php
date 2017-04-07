@@ -1803,9 +1803,9 @@ class rexx extends rex {
 			return true;
 		} elseif ($dataType == rexx::DATA_TYPE_URL && filter_var($data, FILTER_VALIDATE_URL)) {
 			return true;
-		} elseif ($dataType == rexx::DATA_TYPE_NOT_EMPTY && $data != '') { 
+		} elseif ($dataType == rexx::DATA_TYPE_NOT_EMPTY && !empty($data)) {
 			return true;
-		} elseif ($dataType == rexx::DATA_TYPE_EMPTY && $data == '') { 
+		} elseif ($dataType == rexx::DATA_TYPE_EMPTY && empty($data)) {
 			return true;
 		} else {
 			return false;
