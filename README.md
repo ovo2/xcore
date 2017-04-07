@@ -1,7 +1,7 @@
 X-Core für REDAXO 5
 ===================
 
-Nachfolger von SEO42 :)
+SEO Verbesserungen, Url Manipulation, Tweaks, Code Snippets Sammlung, Extra Stuff und die rexx API. Nachfolger von SEO42.
 
 Features
 --------
@@ -26,6 +26,7 @@ Features
 * Frontend Link "zur Website" in der Metanavigation
 * Klasse `rexx_markdown`: modifizierte Parsedown Klasse die Syntax Highlighting von Codeblöcken in MD Dateien unterstützt
 * Klasse `rexx_simple_html_dom`: Wrapper für die mitgelieferte Simple Html Dom Bibliothek zum einfachen manipulieren des HTML Doms per PHP
+* Code Snippets u.a. mit einem PHP Custom Frontend Form Beispiel ohne yForm
 
 Verfügbare Sprachumschreibungen
 -------------------------------
