@@ -9,6 +9,7 @@ if (rex::isBackend()) {
 		$rc = [];
 
 		$fields = [];
+		$fields[] = ['name' => 'email_to', 'value' => '', 'type' => REX_GLOBAL_SETTINGS_FIELD_TEXT];
 		$fields[] = ['name' => 'form_name', 'value' => 'Name', 'type' => REX_GLOBAL_SETTINGS_FIELD_TEXT];
 		$fields[] = ['name' => 'form_email', 'value' => 'E-Mail', 'type' => REX_GLOBAL_SETTINGS_FIELD_TEXT];
 		$fields[] = ['name' => 'form_phone', 'value' => 'Telefon', 'type' => REX_GLOBAL_SETTINGS_FIELD_TEXT];
