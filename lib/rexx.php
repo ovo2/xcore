@@ -1765,7 +1765,7 @@ class rexx extends rex {
 	}
 
 	/**
-	 * Sanitizes a form value by given sanitize type constant. Wrapper for rexx_frontend_form::sanitizeFormValue().
+	 * Sanitizes a form value by given sanitize type constant like rexx::SANITIZE_TYPE_STRING, rexx::SANITIZE_TYPE_EMAIL, rexx::SANITIZE_TYPE_INT, rexx::SANITIZE_TYPE_URL. Wrapper for rexx_frontend_form::sanitizeFormValue().
 	 *
 	 * @param string $valueName
 	 * @param int $sanitizeType
@@ -1778,7 +1778,7 @@ class rexx extends rex {
 	}
 
 	/**
-	 * Validates a form value by given validate type constant. Wrapper for rexx_frontend_form::validateFormValue().
+	 * Validates a form value by given validate type constant like rexx::VALIDATE_TYPE_NOT_EMPTY, rexx::VALIDATE_TYPE_EMPTY, rexx::VALIDATE_TYPE_EMAIL, rexx::VALIDATE_TYPE_INT, rexx::VALIDATE_TYPE_URL. Wrapper for rexx_frontend_form::validateFormValue().
 	 *
 	 * @param string $value
 	 * @param int $validateType

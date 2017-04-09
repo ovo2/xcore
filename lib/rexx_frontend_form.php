@@ -15,7 +15,7 @@ class rexx_frontend_form {
 	const VALIDATE_TYPE_URL = 5;
 
 	/**
-	 * Sanitizes a form value by given sanitize type constant. 
+	 * Sanitizes a form value by given sanitize type constant like rexx_frontend_form::SANITIZE_TYPE_STRING, rexx_frontend_form::SANITIZE_TYPE_EMAIL, rexx_frontend_form::SANITIZE_TYPE_INT, rexx_frontend_form::SANITIZE_TYPE_URL.
 	 *
 	 * @param string $valueName
 	 * @param int $sanitizeType
@@ -60,7 +60,7 @@ class rexx_frontend_form {
 	}
 
 	/**
-	 * Validates a form value by given validate type constant.
+	 * Validates a form value by given validate type constant like rexx_frontend_form::VALIDATE_TYPE_NOT_EMPTY, rexx_frontend_form::VALIDATE_TYPE_EMPTY, rexx_frontend_form::VALIDATE_TYPE_EMAIL, rexx_frontend_form::VALIDATE_TYPE_INT, rexx_frontend_form::VALIDATE_TYPE_URL.
 	 *
 	 * @param string $value
 	 * @param int $validateType
