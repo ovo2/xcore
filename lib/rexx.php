@@ -31,7 +31,7 @@ class rexx extends rex {
 	const SANITIZE_TYPE_INT = 3;
 	const SANITIZE_TYPE_URL = 4;
 
-	// validate types for rexx::validateFormData()
+	// validate types for rexx::validateFormValue()
 	const VALIDATE_TYPE_NOT_EMPTY = 1;
 	const VALIDATE_TYPE_EMPTY = 2;
 	const VALIDATE_TYPE_EMAIL = 3;
@@ -1773,7 +1773,7 @@ class rexx extends rex {
 	 * @return string
 	 *
 	 */
-	public static function sanitizeFormValue($value, $sanitizeType = rexx::SANITIZE_TYPE_STRING) {
+	public static function sanitizeFormValue($value, $sanitizeType) {
 		$filterType = 0;
 
 		switch ($sanitizeType) {
@@ -1818,7 +1818,7 @@ class rexx extends rex {
 	 * @return bool
 	 *
 	 */
-	public static function validateFormData($data, $validateType = rexx::VALIDATE_TYPE_NOT_EMPTY) {
+	public static function validateFormValue($data, $validateType) {
 		$isValid = false;
 
 		switch ($validateType) {
@@ -1848,7 +1848,7 @@ class rexx extends rex {
 				}
 				break;
 			default:
-				throw new InvalidArgumentException('Value of $validateType in validateFormData() call not recongized!');			
+				throw new InvalidArgumentException('Value of $validateType in validateFormValue() call not recongized!');			
 		}
 
 		return $isValid;

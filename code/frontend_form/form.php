@@ -34,26 +34,26 @@
 	/* ------------------------------------------------------------------ */
 
 	if ($formData['submit'] == 'submit') {	
-		if (!rexx::validateFormData($formData['name'], rexx::VALIDATE_TYPE_NOT_EMPTY)) {
+		if (!rexx::validateFormValue($formData['name'], rexx::VALIDATE_TYPE_NOT_EMPTY)) {
 			$formValid = false;
 			$validateAlerts['name'] = true;
 			$validateMessages['name'] = '';
 		}
 
-		if (!rexx::validateFormData($formData['email'], rexx::VALIDATE_TYPE_EMAIL)) {
+		if (!rexx::validateFormValue($formData['email'], rexx::VALIDATE_TYPE_EMAIL)) {
 			$formValid = false;
 			$validateAlerts['email'] = true;
 			$validateMessages['email'] = '';
 		}
 
-		if (!rexx::validateFormData($formData['message'], rexx::VALIDATE_TYPE_NOT_EMPTY)) {
+		if (!rexx::validateFormValue($formData['message'], rexx::VALIDATE_TYPE_NOT_EMPTY)) {
 			$formValid = false;
 			$validateAlerts['message'] = true;
 			$validateMessages['message'] = '';
 		}
 
-		// humans will let honeypot empty because it is hidden by css but spambots will most likeley fill it out. form is then not valid.
-		if (!rexx::validateFormData($formData['robotron'], rexx::VALIDATE_TYPE_EMPTY)) {
+		// robotron: humans will let honeypot field empty because it is hidden by css but spambots will most likeley fill it out.
+		if (!rexx::validateFormValue($formData['robotron'], rexx::VALIDATE_TYPE_EMPTY)) {
 			$formValid = false;
 			$validateAlerts['robotron'] = true;
 			$validateMessages['robotron'] = '';
@@ -61,7 +61,7 @@
 
 		if ($formValid) {
 			/* ------------------------------------------------------------------ */
-			/* 4) Mail Stuff                                                      */
+			/* 4) Mail Settings                                                   */
 			/* ------------------------------------------------------------------ */
 
 			$mailTo = rexx::getDefaultGlobalValue('email_to');
@@ -74,7 +74,7 @@
 			$mailBody .= rexx::getDefaultString('form_phone') . ': ' . $formData['phone'] . PHP_EOL;
 			$mailBody .= rexx::getDefaultString('form_message') . ': ' . $formData['message'] . PHP_EOL;
 
-			// init mailer
+			// send mail
 			$mail = new rex_mailer();
 			$mail->AddAddress($mailTo, $mailTo);
 			$mail->WordWrap = 80;

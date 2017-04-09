@@ -12,7 +12,7 @@ X-Core - Changelog
 * rexx API: `rexx::formatBytes()` hinzugefügt, gibt Bytes z.b. von `filesize()` formatiert aus z.B. 20,53 MB.
 * rexx API: `rexx::threeWayComparison()` hinzugefügt, PHP5 Ersatz für Spaceship Operator `<=>` aus PHP 7
 * rexx API: `rexx::sanitizeFormValue()` hinzugefügt, bereinigt den Wert eines Formulars (Helfer für Custom Frontend Formular)
-* rexx API: `rexx::validateFormData()` hinzugefügt, validiert den Wert eines Formulars (Helfer für Custom Frontend Formular)
+* rexx API: `rexx::validateFormValue()` hinzugefügt, validiert den Wert eines Formulars (Helfer für Custom Frontend Formular)
 * rexx API: `rexx::getValidateAlertClass()` hinzugefügt, Helfer für Custom Frontend Formular
 * rexx API: `rexx::getRequiredString()` hinzugefügt, Helfer für Custom Frontend Formular
 * rexx API: `rexx::getRequiredPlaceholderString()` hinzugefügt, Helfer für Custom Frontend Formular
