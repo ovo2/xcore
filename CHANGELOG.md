@@ -3,6 +3,7 @@ X-Core - Changelog
 
 ### Version 1.0.1-dev
 
+* PHP Custom Frontend Form ohne yForm hinzugefügt
 * Code Snippets hinzugefügt: Boilerplate, Resource Includer und Frontend Form
 * SCSS Compiler auf Version v0.6.7 aktualisiert
 * X-Core Styles: Extra MForm Tabs Style entfernt
@@ -11,11 +12,7 @@ X-Core - Changelog
 * rexx API: `rexx::sortArticles()` hinzugefügt, thx@fietstouring
 * rexx API: `rexx::formatBytes()` hinzugefügt, gibt Bytes z.b. von `filesize()` formatiert aus z.B. 20,53 MB.
 * rexx API: `rexx::threeWayComparison()` hinzugefügt, PHP5 Ersatz für Spaceship Operator `<=>` aus PHP 7
-* rexx API: `rexx::sanitizeFormValue()` hinzugefügt, bereinigt den Wert eines Formulars (Helfer für Custom Frontend Formular)
-* rexx API: `rexx::validateFormValue()` hinzugefügt, validiert den Wert eines Formulars (Helfer für Custom Frontend Formular)
-* rexx API: `rexx::getValidateAlertClass()` hinzugefügt, Helfer für Custom Frontend Formular
-* rexx API: `rexx::getRequiredString()` hinzugefügt, Helfer für Custom Frontend Formular
-* rexx API: `rexx::getRequiredPlaceholderString()` hinzugefügt, Helfer für Custom Frontend Formular
+* rexx API: `rexx::sanitizeFormValue()`, `rexx::validateFormValue()` und weitere Helfer hinzugefügt für den Custom Frontend Form Code
 * Readme: Hinweis zu Unterordner-Installationen hinzugefügt
 
 ### Version 1.0.0 - 15. März 2017

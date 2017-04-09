@@ -52,7 +52,7 @@
 			$validateMessages['message'] = '';
 		}
 
-		// robotron: humans will let honeypot field empty because it is hidden by css but spambots will most likeley fill it out.
+		// robotron: humans will let honeypot field empty because it is hidden by css but spambots will most likeley fill it out and form will not be send then.
 		if (!rexx::validateFormValue($formData['robotron'], rexx::VALIDATE_TYPE_EMPTY)) {
 			$formValid = false;
 			$validateAlerts['robotron'] = true;
@@ -61,7 +61,7 @@
 
 		if ($formValid) {
 			/* ------------------------------------------------------------------ */
-			/* 4) Mail Settings                                                   */
+			/* 4) Mail settings                                                   */
 			/* ------------------------------------------------------------------ */
 
 			$mailTo = rexx::getDefaultGlobalValue('email_to');
@@ -135,7 +135,7 @@
 
 	if ($showForm) {
 		/* ------------------------------------------------------------------ */
-		/* 5) Form Fields                                                     */
+		/* 5) Form fields                                                     */
 		/* ------------------------------------------------------------------ */
 	?>
 		<form action="<?php echo rexx::getUrl(rexx::getCurrentArticleId(), rexx::getCurrentClangId()); ?>#rexx-form" method="post">

@@ -26,17 +26,17 @@ class rexx extends rex {
 	const ARTICLE_SORT_TYPE_UPDATEDATE = 4;
 
 	// sanitize types for rexx::sanitizeFormValue()
-	const SANITIZE_TYPE_STRING = 1;
-	const SANITIZE_TYPE_EMAIL = 2;
-	const SANITIZE_TYPE_INT = 3;
-	const SANITIZE_TYPE_URL = 4;
+	const SANITIZE_TYPE_STRING = rexx_frontend_form::SANITIZE_TYPE_STRING;
+	const SANITIZE_TYPE_EMAIL = rexx_frontend_form::SANITIZE_TYPE_EMAIL;
+	const SANITIZE_TYPE_INT = rexx_frontend_form::SANITIZE_TYPE_INT;
+	const SANITIZE_TYPE_URL = rexx_frontend_form::SANITIZE_TYPE_URL;
 
 	// validate types for rexx::validateFormValue()
-	const VALIDATE_TYPE_NOT_EMPTY = 1;
-	const VALIDATE_TYPE_EMPTY = 2;
-	const VALIDATE_TYPE_EMAIL = 3;
-	const VALIDATE_TYPE_INT = 4;
-	const VALIDATE_TYPE_URL = 5;
+	const VALIDATE_TYPE_NOT_EMPTY = rexx_frontend_form::VALIDATE_TYPE_NOT_EMPTY;
+	const VALIDATE_TYPE_EMPTY = rexx_frontend_form::VALIDATE_TYPE_EMPTY;
+	const VALIDATE_TYPE_EMAIL = rexx_frontend_form::VALIDATE_TYPE_EMAIL;
+	const VALIDATE_TYPE_INT = rexx_frontend_form::VALIDATE_TYPE_INT;
+	const VALIDATE_TYPE_URL = rexx_frontend_form::VALIDATE_TYPE_URL;
 
 	/**
 	 * Initilizes the rexx class.
@@ -1765,7 +1765,7 @@ class rexx extends rex {
 	}
 	
 	/**
-	 * Sanitizes a form value by given validate type constant. 
+	 * Sanitizes a form value by given sanitize type constant. Wrapper for rexx_frontend_form::sanitizeFormValue().
 	 *
 	 * @param string $value
 	 * @param int $sanitizeType
@@ -1774,43 +1774,11 @@ class rexx extends rex {
 	 *
 	 */
 	public static function sanitizeFormValue($value, $sanitizeType) {
-		$filterType = 0;
-
-		switch ($sanitizeType) {
-			case rexx::SANITIZE_TYPE_STRING:
-				$filterType = FILTER_SANITIZE_STRING;
-				break;	
-			case rexx::SANITIZE_TYPE_EMAIL:
-				$filterType = FILTER_SANITIZE_EMAIL;
-				break;
-			case rexx::SANITIZE_TYPE_INT:
-				$filterType = FILTER_SANITIZE_INT;
-				break;
-			case rexx::SANITIZE_TYPE_URL:
-				$filterType = FILTER_SANITIZE_URL;
-				break;
-			default:
-				throw new InvalidArgumentException('Value of $sanitizeType in sanitizeFormValue() call not recongized!');
-		}
-
-		if (isset($_POST[$value])) {
-			$data = $_POST[$value];
-			$data = filter_var($data, $filterType);
-
-			if ($data !== false) {
-				$data = trim($data);
-				$data = stripslashes($data);
-				$data = htmlspecialchars($data);
-
-				return $data;
-			}
-		} 
-
-		return '';
+		return rexx_frontend_form::sanitizeFormValue($value, $sanitizeType);
 	}
 
 	/**
-	 * Validates a form data by given data type constant.
+	 * Validates a form value by given validate type constant. Wrapper for rexx_frontend_form::validateFormValue().
 	 *
 	 * @param string $data
 	 * @param int $validateType
@@ -1819,43 +1787,11 @@ class rexx extends rex {
 	 *
 	 */
 	public static function validateFormValue($data, $validateType) {
-		$isValid = false;
-
-		switch ($validateType) {
-			case rexx::VALIDATE_TYPE_EMAIL:
-				if (filter_var($data, FILTER_VALIDATE_EMAIL) !== false) {
-					$isValid = true;
-				}
-				break;	
-			case rexx::VALIDATE_TYPE_INT:
-				if (filter_var($data, FILTER_VALIDATE_INT) !== false) {
-					$isValid = true;
-				}
-				break;
-			case rexx::VALIDATE_TYPE_URL:
-				if (filter_var($data, FILTER_VALIDATE_URL) !== false) {
-					$isValid = true;
-				}
-				break;
-			case rexx::VALIDATE_TYPE_NOT_EMPTY:
-				if (!empty($data)) {
-					$isValid = true;
-				}
-				break;
-			case rexx::VALIDATE_TYPE_EMPTY:
-				if (empty($data)) {
-					$isValid = true;
-				}
-				break;
-			default:
-				throw new InvalidArgumentException('Value of $validateType in validateFormValue() call not recongized!');			
-		}
-
-		return $isValid;
+		return rexx_frontend_form::validateFormValue($value, $validateType);
 	}
 
 	/**
-	 * Helper for getting validate class if $value in $valueArray.
+	 * Helper for getting validate class if $value in $valueArray. Wrapper for rexx_frontend_form::getValidateAlertClass().
 	 *
 	 * @param string $value
 	 * @param string[] $valueArray
@@ -1864,15 +1800,11 @@ class rexx extends rex {
 	 *
 	 */
 	public static function getValidateAlertClass($value, $valueArray, $validateClass = 'validate-alert') {
-		if (isset($valueArray[$value])) { 
-			return $validateClass;
-		} else {
-			return '';
-		}
+		return rexx_frontend_form::getValidateAlertClass($value, $valueArray, $validateClass);
 	}
 
 	/**
-	 * Helper for getting required string with extra required span tag.
+	 * Helper for getting required string with extra required span tag. Wrapper for rexx_frontend_form::getRequiredString().
 	 *
 	 * @param string $key
 	 * @param bool $required
@@ -1883,15 +1815,11 @@ class rexx extends rex {
 	 *
 	 */
 	public static function getRequiredString($key, $required = false, $requiredClass = 'required', $requiredContent = '*') {
-		if ($required) {
-			return rexx::getString($key) . ' <span class="' . $requiredClass . '">' . $requiredContent . '</span>';
-		} else {
-			return rexx::getString($key);
-		}
+		return rexx_frontend_form::getRequiredString($key, $required, $requiredClass, $requiredContent);
 	}
 
 	/**
-	 * Helper for getting required placeholder string with extra required content string.
+	 * Helper for getting required placeholder string with extra required content string. Wrapper for rexx_frontend_form::getRequiredPlaceholderString().
 	 *
 	 * @param string $key
 	 * @param bool $required
@@ -1901,11 +1829,7 @@ class rexx extends rex {
 	 *
 	 */
 	public static function getRequiredPlaceholderString($key, $required = false, $requiredContent = '*') {
-		if ($required) {
-			return rexx::getString($key) . $requiredContent;
-		} else {
-			return rexx::getString($key);
-		}
+		return rexx_frontend_form::getRequiredPlaceholderString($key, $required, $requiredContent);
 	}
 
 	/**
