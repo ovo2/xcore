@@ -101,7 +101,7 @@
 		} else {
 			// not validated
 			$showForm = true;
-			$message = '<span class="validate-alert-headline">' . rexx::getString('form_not_valid_msg') . '</span>';
+			$message = '<span class="validate-alert-text">' . rexx::getString('form_not_valid_msg') . '</span>';
 		}
 
 		if ($redirectToConfirmationArticle && $confirmationArticleId > 0 && $redirect) {
@@ -111,7 +111,7 @@
 			// message output
 			if ($message != '') {
 				// main message
-				$msgOut = '<p class="validate-alert-text">' . $message . '</p>';
+				$msgOut = '<p class="form-messages">' . $message . '</p>';
 
 				// message details
 				if (count($validateMessages) > 0) {

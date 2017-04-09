@@ -1763,30 +1763,30 @@ class rexx extends rex {
 			return 0;
 		}
 	}
-	
+
 	/**
 	 * Sanitizes a form value by given sanitize type constant. Wrapper for rexx_frontend_form::sanitizeFormValue().
 	 *
-	 * @param string $value
+	 * @param string $valueName
 	 * @param int $sanitizeType
 	 *
 	 * @return string
 	 *
 	 */
-	public static function sanitizeFormValue($value, $sanitizeType) {
-		return rexx_frontend_form::sanitizeFormValue($value, $sanitizeType);
+	public static function sanitizeFormValue($valueName, $sanitizeType) {
+		return rexx_frontend_form::sanitizeFormValue($valueName, $sanitizeType);
 	}
 
 	/**
 	 * Validates a form value by given validate type constant. Wrapper for rexx_frontend_form::validateFormValue().
 	 *
-	 * @param string $data
+	 * @param string $value
 	 * @param int $validateType
 	 *
 	 * @return bool
 	 *
 	 */
-	public static function validateFormValue($data, $validateType) {
+	public static function validateFormValue($value, $validateType) {
 		return rexx_frontend_form::validateFormValue($value, $validateType);
 	}
 

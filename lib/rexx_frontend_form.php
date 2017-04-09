@@ -17,42 +17,42 @@ class rexx_frontend_form {
 	/**
 	 * Sanitizes a form value by given sanitize type constant. 
 	 *
-	 * @param string $value
+	 * @param string $valueName
 	 * @param int $sanitizeType
 	 *
 	 * @return string
 	 *
 	 */
-	public static function sanitizeFormValue($value, $sanitizeType) {
-		$filterType = 0;
+	public static function sanitizeFormValue($valueName, $sanitizeType) {
+		$filter = 0;
 
 		switch ($sanitizeType) {
 			case rexx::SANITIZE_TYPE_STRING:
-				$filterType = FILTER_SANITIZE_STRING;
+				$filter = FILTER_SANITIZE_STRING;
 				break;	
 			case rexx::SANITIZE_TYPE_EMAIL:
-				$filterType = FILTER_SANITIZE_EMAIL;
+				$filter = FILTER_SANITIZE_EMAIL;
 				break;
 			case rexx::SANITIZE_TYPE_INT:
-				$filterType = FILTER_SANITIZE_INT;
+				$filter = FILTER_SANITIZE_INT;
 				break;
 			case rexx::SANITIZE_TYPE_URL:
-				$filterType = FILTER_SANITIZE_URL;
+				$filter = FILTER_SANITIZE_URL;
 				break;
 			default:
 				throw new InvalidArgumentException('Value of $sanitizeType in sanitizeFormValue() call not recongized!');
 		}
 
-		if (isset($_POST[$value])) {
-			$data = $_POST[$value];
-			$data = filter_var($data, $filterType);
+		if (isset($_POST[$valueName])) {
+			$value = $_POST[$valueName];
+			$value = filter_var($value, $filter);
 
-			if ($data !== false) {
-				$data = trim($data);
-				$data = stripslashes($data);
-				$data = htmlspecialchars($data);
+			if ($value !== false) {
+				$value = trim($value);
+				$value = stripslashes($value);
+				$value = htmlspecialchars($value);
 
-				return $data;
+				return $value;
 			}
 		} 
 
@@ -62,38 +62,38 @@ class rexx_frontend_form {
 	/**
 	 * Validates a form value by given validate type constant.
 	 *
-	 * @param string $data
+	 * @param string $value
 	 * @param int $validateType
 	 *
 	 * @return bool
 	 *
 	 */
-	public static function validateFormValue($data, $validateType) {
+	public static function validateFormValue($value, $validateType) {
 		$isValid = false;
 
 		switch ($validateType) {
 			case rexx::VALIDATE_TYPE_EMAIL:
-				if (filter_var($data, FILTER_VALIDATE_EMAIL) !== false) {
+				if (filter_var($value, FILTER_VALIDATE_EMAIL) !== false) {
 					$isValid = true;
 				}
 				break;	
 			case rexx::VALIDATE_TYPE_INT:
-				if (filter_var($data, FILTER_VALIDATE_INT) !== false) {
+				if (filter_var($value, FILTER_VALIDATE_INT) !== false) {
 					$isValid = true;
 				}
 				break;
 			case rexx::VALIDATE_TYPE_URL:
-				if (filter_var($data, FILTER_VALIDATE_URL) !== false) {
+				if (filter_var($value, FILTER_VALIDATE_URL) !== false) {
 					$isValid = true;
 				}
 				break;
 			case rexx::VALIDATE_TYPE_NOT_EMPTY:
-				if (!empty($data)) {
+				if (!empty($value)) {
 					$isValid = true;
 				}
 				break;
 			case rexx::VALIDATE_TYPE_EMPTY:
-				if (empty($data)) {
+				if (empty($value)) {
 					$isValid = true;
 				}
 				break;
