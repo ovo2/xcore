@@ -1,7 +1,7 @@
 X-Core - Changelog
 ==================
 
-### Version 1.0.1-dev
+### Version 1.1.0 - 09. April 2017
 
 * PHP Custom Frontend Form ohne yForm hinzugefügt
 * Code Snippets hinzugefügt: Boilerplate, Resource Includer und Frontend Form
