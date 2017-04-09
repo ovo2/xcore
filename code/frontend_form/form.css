@@ -31,14 +31,8 @@
     float: left;
 }
 
-#rexx-form .control.validate-alert.textfield input, 
-#rexx-form .control.validate-alert.textarea textarea {
-	 border: 1px solid #FF0000;
-}
-
 #rexx-form .control.textarea textarea {
-	color: #000;
-	height: 150px;
+	height: 200px;
 }
 
 #rexx-form .control.submit-button button {
@@ -54,6 +48,15 @@
 	padding: 12px 12px;
 	cursor: pointer;
 	border: 0;
+}
+
+#rexx-form .control.validate-alert.textfield input, 
+#rexx-form .control.validate-alert.textarea textarea {
+	 border: 1px solid #FF0000;
+}
+
+#rexx-form .validate-alert-text {
+	color: #FF0000;
 }
 
 #rexx-form p {

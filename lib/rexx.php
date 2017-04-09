@@ -20,23 +20,23 @@ class rexx extends rex {
 	const DEFAULT_ROBOTS_ARCHIVE_FLAG = 'noarchive';
 
 	// sort types for rexx::sortArticles()
-    const ARTICLE_SORT_TYPE_PRIO = 1;
-    const ARTICLE_SORT_TYPE_NAME = 2;
-    const ARTICLE_SORT_TYPE_CREATEDATE = 3;
-    const ARTICLE_SORT_TYPE_UPDATEDATE = 4;
+	const ARTICLE_SORT_TYPE_PRIO = 1;
+	const ARTICLE_SORT_TYPE_NAME = 2;
+	const ARTICLE_SORT_TYPE_CREATEDATE = 3;
+	const ARTICLE_SORT_TYPE_UPDATEDATE = 4;
 
-	// for rexx::sanitizeFormValue()
-	const VALIDATE_TYPE_STRING = FILTER_SANITIZE_STRING;
-	const VALIDATE_TYPE_EMAIL = FILTER_SANITIZE_EMAIL;
-	const VALIDATE_TYPE_INT = FILTER_SANITIZE_NUMBER_INT;
-	const VALIDATE_TYPE_URL = FILTER_SANITIZE_URL;
+	// sanitize types for rexx::sanitizeFormValue()
+	const SANITIZE_TYPE_STRING = 1;
+	const SANITIZE_TYPE_EMAIL = 2;
+	const SANITIZE_TYPE_INT = 3;
+	const SANITIZE_TYPE_URL = 4;
 
-	// for rexx::validateFormData()
-	const DATA_TYPE_NOT_EMPTY = 1;
-	const DATA_TYPE_EMPTY = 2;
-	const DATA_TYPE_EMAIL = 3;
-	const DATA_TYPE_INT = 4;
-	const DATA_TYPE_URL = 5;
+	// validate types for rexx::validateFormData()
+	const VALIDATE_TYPE_NOT_EMPTY = 1;
+	const VALIDATE_TYPE_EMPTY = 2;
+	const VALIDATE_TYPE_EMAIL = 3;
+	const VALIDATE_TYPE_INT = 4;
+	const VALIDATE_TYPE_URL = 5;
 
 	/**
 	 * Initilizes the rexx class.
@@ -1768,48 +1768,90 @@ class rexx extends rex {
 	 * Sanitizes a form value by given validate type constant. 
 	 *
 	 * @param string $value
-	 * @param int $validateType
+	 * @param int $sanitizeType
 	 *
 	 * @return string
 	 *
 	 */
-	public static function sanitizeFormValue($value, $validateType = rexx::VALIDATE_TYPE_STRING) {
+	public static function sanitizeFormValue($value, $sanitizeType = rexx::SANITIZE_TYPE_STRING) {
+		$filterType = 0;
+
+		switch ($sanitizeType) {
+			case rexx::SANITIZE_TYPE_STRING:
+				$filterType = FILTER_SANITIZE_STRING;
+				break;	
+			case rexx::SANITIZE_TYPE_EMAIL:
+				$filterType = FILTER_SANITIZE_EMAIL;
+				break;
+			case rexx::SANITIZE_TYPE_INT:
+				$filterType = FILTER_SANITIZE_INT;
+				break;
+			case rexx::SANITIZE_TYPE_URL:
+				$filterType = FILTER_SANITIZE_URL;
+				break;
+			default:
+				throw new InvalidArgumentException('Value of $sanitizeType in sanitizeFormValue() call not recongized!');
+		}
+
 		if (isset($_POST[$value])) {
 			$data = $_POST[$value];
-			$data = filter_var($data, $validateType);
-			$data = trim($data);
-			$data = stripslashes($data);
-			$data = htmlspecialchars($data);
+			$data = filter_var($data, $filterType);
 
-			return $data;
-		} else {
-			return '';
-		}
+			if ($data !== false) {
+				$data = trim($data);
+				$data = stripslashes($data);
+				$data = htmlspecialchars($data);
+
+				return $data;
+			}
+		} 
+
+		return '';
 	}
 
 	/**
 	 * Validates a form data by given data type constant.
 	 *
 	 * @param string $data
-	 * @param int $dataType
+	 * @param int $validateType
 	 *
 	 * @return bool
 	 *
 	 */
-	public static function validateFormData($data, $dataType = rexx::DATA_TYPE_NOT_EMPTY) {
-		if ($dataType == rexx::DATA_TYPE_EMAIL && filter_var($data, FILTER_VALIDATE_EMAIL)) {
-			return true;
-		} elseif ($dataType == rexx::DATA_TYPE_INT && filter_var($data, FILTER_VALIDATE_INT)) {
-			return true;
-		} elseif ($dataType == rexx::DATA_TYPE_URL && filter_var($data, FILTER_VALIDATE_URL)) {
-			return true;
-		} elseif ($dataType == rexx::DATA_TYPE_NOT_EMPTY && !empty($data)) {
-			return true;
-		} elseif ($dataType == rexx::DATA_TYPE_EMPTY && empty($data)) {
-			return true;
-		} else {
-			return false;
+	public static function validateFormData($data, $validateType = rexx::VALIDATE_TYPE_NOT_EMPTY) {
+		$isValid = false;
+
+		switch ($validateType) {
+			case rexx::VALIDATE_TYPE_EMAIL:
+				if (filter_var($data, FILTER_VALIDATE_EMAIL) !== false) {
+					$isValid = true;
+				}
+				break;	
+			case rexx::VALIDATE_TYPE_INT:
+				if (filter_var($data, FILTER_VALIDATE_INT) !== false) {
+					$isValid = true;
+				}
+				break;
+			case rexx::VALIDATE_TYPE_URL:
+				if (filter_var($data, FILTER_VALIDATE_URL) !== false) {
+					$isValid = true;
+				}
+				break;
+			case rexx::VALIDATE_TYPE_NOT_EMPTY:
+				if (!empty($data)) {
+					$isValid = true;
+				}
+				break;
+			case rexx::VALIDATE_TYPE_EMPTY:
+				if (empty($data)) {
+					$isValid = true;
+				}
+				break;
+			default:
+				throw new InvalidArgumentException('Value of $validateType in validateFormData() call not recongized!');			
 		}
+
+		return $isValid;
 	}
 
 	/**
