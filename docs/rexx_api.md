@@ -94,7 +94,7 @@
 | public static | <strong>getUrlEnding()</strong> : <em>string</em><br /><em>Returns the url ending.</em> |
 | public static | <strong>getUrlStart()</strong> : <em>string</em><br /><em>Returns the url start slug.</em> |
 | public static | <strong>getUrlString(</strong><em>string</em> <strong>$string</strong>)</strong> : <em>string</em><br /><em>Returns a normalized string that can be used in urls and anchor names.</em> |
-| public static | <strong>getValidateAlertClass(</strong><em>string</em> <strong>$value</strong>, <em>string[]</em> <strong>$valueArray</strong>, <em>string</em> <strong>$validateClass=`'validate-alert'`</strong>)</strong> : <em>string</em><br /><em>Helper for getting validate class if $value in $valueArray. Wrapper for rexx_frontend_form::getValidateAlertClass().</em> |
+| public static | <strong>getValidateAlertClass(</strong><em>string</em> <strong>$valueName</strong>, <em>string[]</em> <strong>$valueArray</strong>, <em>string</em> <strong>$validateClass=`'validate-alert'`</strong>)</strong> : <em>string</em><br /><em>Helper for getting validate class if $valueName in $valueArray. Wrapper for rexx_frontend_form::getValidateAlertClass().</em> |
 | public static | <strong>includeTemplate(</strong><em>int</em> <strong>$templateId</strong>)</strong> : <em>void</em><br /><em>Includes a template. Same as REX_TEMPLATE[].</em> |
 | public static | <strong>init()</strong> : <em>void</em><br /><em>Initilizes the rexx class. X-Core calls this automatically.</em> |
 | public static | <strong>isArticleOnline(</strong><em>int</em> <strong>$articleId</strong>)</strong> : <em>bool</em><br /><em>Returns true if article with given id is online.</em> |

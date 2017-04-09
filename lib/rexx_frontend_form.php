@@ -105,16 +105,16 @@ class rexx_frontend_form {
 	}
 
 	/**
-	 * Helper for getting validate class if $value in $valueArray.
+	 * Helper for getting validate class if $valueName in $valueArray.
 	 *
-	 * @param string $value
+	 * @param string $valueName
 	 * @param string[] $valueArray
 	 *
 	 * @return string
 	 *
 	 */
-	public static function getValidateAlertClass($value, $valueArray, $validateClass = 'validate-alert') {
-		if (isset($valueArray[$value])) { 
+	public static function getValidateAlertClass($valueName, $valueArray, $validateClass = 'validate-alert') {
+		if (isset($valueArray[$valueName])) { 
 			return $validateClass;
 		} else {
 			return '';

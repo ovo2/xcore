@@ -1791,16 +1791,16 @@ class rexx extends rex {
 	}
 
 	/**
-	 * Helper for getting validate class if $value in $valueArray. Wrapper for rexx_frontend_form::getValidateAlertClass().
+	 * Helper for getting validate class if $valueName in $valueArray. Wrapper for rexx_frontend_form::getValidateAlertClass().
 	 *
-	 * @param string $value
+	 * @param string $valueName
 	 * @param string[] $valueArray
 	 *
 	 * @return string
 	 *
 	 */
-	public static function getValidateAlertClass($value, $valueArray, $validateClass = 'validate-alert') {
-		return rexx_frontend_form::getValidateAlertClass($value, $valueArray, $validateClass);
+	public static function getValidateAlertClass($valueName, $valueArray, $validateClass = 'validate-alert') {
+		return rexx_frontend_form::getValidateAlertClass($valueName, $valueArray, $validateClass);
 	}
 
 	/**
