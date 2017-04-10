@@ -13,7 +13,6 @@
 	<link rel="stylesheet" href="<?php echo rexx::getCSSFile('library.css'); ?>" type="text/css" media="all" />
 	<link rel="stylesheet" href="<?php echo rexx::getCSSFile('default.css'); ?>" type="text/css" media="all" />
 	<link rel="stylesheet" href="<?php echo rexx::getCSSFile('print.css'); ?>" type="text/css" media="print" />
-	<link rel="shortcut icon" href="<?php echo rexx::getFavIconFile("favicon.ico"); ?>" />
 	<script type="text/javascript" src="<?php echo rexx::getJSFile('jquery.min.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo rexx::getJSFile('library.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo rexx::getJSFile('init.js'); ?>"></script>

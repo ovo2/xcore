@@ -1,6 +1,7 @@
 <?php
-// modify for your needs then add to boot.php of project addon and reload backend one time, then remove it!
-// global_settings addon needed!
+// - only execute this code once!
+// - modify for your needs then add to boot.php of project addon and reload backend one time, then remove it!
+// - global_settings addon needed!
 
 if (rex::isBackend()) {
 	rex_extension::register('PACKAGES_INCLUDED', function(rex_extension_point $ep) {

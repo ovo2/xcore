@@ -51,3 +51,6 @@ xcore_addon_installed = Bitte führen Sie als nächstes dass <a href="index.php?
 xcore_goto_website = zur Website
 xcore_api_docs_title = X-Core API
 xcore_api_docs_description = Die API der rexx Klasse aus dem X-Core AddOn
+
+xcore_module_input = Eingabe
+xcore_module_output = Ausgabe

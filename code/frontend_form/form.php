@@ -74,7 +74,7 @@
 			$mailBody .= rexx::getDefaultString('form_phone') . ': ' . $formData['phone'] . PHP_EOL;
 			$mailBody .= rexx::getDefaultString('form_message') . ': ' . $formData['message'] . PHP_EOL;
 
-			// send mail
+			// init mailer
 			$mail = new rex_mailer();
 			$mail->AddAddress($mailTo, $mailTo);
 			$mail->WordWrap = 80;
@@ -85,6 +85,7 @@
 			$mail->Body = nl2br($mailBody);
 			$mail->AltBody = strip_tags($mailBody);
 
+			// send mail
 			if ($mail->send()) {
 				$redirect = true;
 				$showForm = false;
@@ -94,6 +95,7 @@
 				$showForm = false;
 				$message = rexx::getString('mail_error_msg');
 
+				// error message is only visible to logged in users
 				if (rex_backend_login::createUser() && $mail->ErrorInfo != '') {
 					$message .= '<br /><br /><strong>PHPMailer Error:</strong>' . $mail->ErrorInfo;
 				}

@@ -3,7 +3,7 @@ X-Core - Changelog
 
 ### Version 1.1.1-dev
 
-* Code Snippets hinzugefügt: Multi Slice Module
+* Code Snippet hinzugefügt: Multi Slice Module
 
 ### Version 1.1.0 - 09. April 2017
 

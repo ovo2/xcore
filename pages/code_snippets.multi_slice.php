@@ -8,8 +8,8 @@ $content2 = '<div class="rexx-code"><code><pre>' . highlight_string($code2, true
 
 $content = '<div>
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#input" aria-controls="input" role="tab" data-toggle="tab">Input</a></li>
-    <li role="presentation"><a href="#output" aria-controls="css" role="output" data-toggle="tab">Output</a></li>
+    <li role="presentation" class="active"><a href="#input" aria-controls="input" role="tab" data-toggle="tab">' .  rex_i18n::msg('xcore_module_input') . '</a></li>
+    <li role="presentation"><a href="#output" aria-controls="css" role="output" data-toggle="tab">' .  rex_i18n::msg('xcore_module_output') . '</a></li>
   </ul>
 
   <div class="tab-content">
