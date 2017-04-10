@@ -1,7 +1,7 @@
 X-Core - Changelog
 ==================
 
-### Version 1.1.1-dev
+### Version 1.1.1 - 10. April 2017
 
 * Code Snippet hinzugefügt: Multi Slice Module
 * `rexx::getResourceFile()` kompiliert jetzt auch LESS/SCSS Dateien
