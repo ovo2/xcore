@@ -17,6 +17,7 @@ page:
                 boilerplate: { title: 'translate:code_snippets_boilerplate' }
                 resource_includer: { title: 'translate:code_snippets_resource_includer' }
                 frontend_form: { title: 'translate:code_snippets_frontend_form' }
+                multi_slice: { title: 'translate:code_snippets_multi_slice' }
         config: { title: 'translate:config' }
         setup: { title: 'translate:setup' }
         help:
