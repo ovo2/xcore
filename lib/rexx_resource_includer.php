@@ -64,13 +64,23 @@ class rexx_resource_includer {
 		return self::$favIconsDir . $file;
 	}
 
-	public static function getResourceFile($fileWithPath) {
+	public static function getResourceFile($fileWithPath, $vars = []) {
 		$info = pathinfo($fileWithPath);
+		$fileName = $info['basename'];
+		$fileExtension = $info['extension'];
+		$path = $info['dirname'];
 
-		if ($info['extension'] == 'css' || $info['extension'] == 'js') {
-			return self::prepareDir($info['dirname']) . self::getFileWithVersionParam($info['basename'], rexx::getAbsolutePath($info['dirname']));
+		// compile first
+		if ($fileExtension == 'scss' || $fileExtension == 'less') {
+			$file = self::getCompiledCSSFile($fileName, $fileExtension, $vars);
 		} else {
-			return self::prepareDir($info['dirname']) . $info['basename'];
+			$file = $fileName;
+		}
+
+		if ($fileExtension == 'css' || $fileExtension == 'scss' || $fileExtension == 'less' || $fileExtension == 'js') {
+			return self::prepareDir($path) . self::getFileWithVersionParam($file, rexx::getAbsolutePath($path));
+		} else {
+			return self::prepareDir($path) . $file;
 		}
 	}
 
