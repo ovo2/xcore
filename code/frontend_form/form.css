@@ -3,6 +3,10 @@
 	padding: 10px 0 20px 0;
 }
 
+#rexx-form form {
+	position: relative;
+}
+
 #rexx-form label {
 	display: none;
 }
