@@ -1,5 +1,5 @@
 package: xcore
-version: '1.1.1'
+version: '1.2.0-dev'
 author: RexDude
 supportpage: http://www.redaxo.org/de/forum/
 load: early

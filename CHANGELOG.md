@@ -1,6 +1,10 @@
 X-Core - Changelog
 ==================
 
+### Version 1.2.0-dev
+
+* CSS für Code Snippet "Frontend Form" ergänzt
+
 ### Version 1.1.1 - 10. April 2017
 
 * Code Snippet hinzugefügt: Multi Slice Module
