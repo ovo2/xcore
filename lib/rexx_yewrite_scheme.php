@@ -19,8 +19,8 @@ class rexx_yrewrite_scheme extends rex_yrewrite_scheme {
 
 		if ($specialChars == null) {
 			// code not found, use defaults
-            $specialChars = ['Ä', 'Ö', 'Ü', 'ä', 'ö', 'ü', 'ß', '/', '®', '©', '™'];
-            $specialCharsRewrite = ['Ae', 'Oe', 'Ue', 'ae', 'oe', 'ue', 'ss', '-', '', '', ''];
+			$specialChars = ['Ä', 'Ö', 'Ü', 'ä', 'ö', 'ü', 'ß', '/', '®', '©', '™'];
+			$specialCharsRewrite = ['Ae', 'Oe', 'Ue', 'ae', 'oe', 'ue', 'ss', '-', '', '', ''];
 
 		}
 
